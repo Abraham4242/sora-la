@@ -1,0 +1,650 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SORA · Brand Kit · La Compañía</title>
+<meta name="description" content="The SORA Travel Agency brand system — wordmark, colors, typography, voice, photography direction. For designers, photographers, and partners.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23f7f0df'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Georgia,serif' font-size='20' font-weight='400' fill='%23e07a5f'%3ES%3C/text%3E%3C/svg%3E">
+<meta name="theme-color" content="#1d3a2c">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #f7f0df;
+    --cream-2: #fcf6e6;
+    --cream-3: #ede4ca;
+    --paper-deep: #e3d9c2;
+    --ink: #14110c;
+    --ink-2: #2a251d;
+    --ink-soft: #4a4337;
+    --ink-faint: #807761;
+    --ink-ghost: #b0a78e;
+    --line: rgba(20, 17, 12, 0.10);
+    --line-2: rgba(20, 17, 12, 0.18);
+    --line-strong: rgba(20, 17, 12, 0.40);
+    --green: #1d3a2c;
+    --green-2: #2a5440;
+    --green-deep: #0f2218;
+    --coral: #e07a5f;
+    --coral-deep: #b85439;
+    --mango: #f4b942;
+    --mango-deep: #b88a16;
+    --teal: #2e8a96;
+    --teal-deep: #1b6671;
+    --bronze: #a07b3e;
+    --gold: #d4b87a;
+    --gold-deep: #b39656;
+    --rose: #c64a5e;
+    --serif: "Fraunces", Georgia, serif;
+    --display: "Instrument Serif", Georgia, serif;
+    --sans: "Inter", -apple-system, sans-serif;
+    --mono: "JetBrains Mono", Menlo, monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 15.5px; line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+  a { color: var(--coral-deep); }
+  ::selection { background: var(--ink); color: var(--cream); }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 32px; }
+
+  /* ============ HERO ============ */
+  .hero {
+    padding: 80px 0 60px;
+    text-align: left;
+    border-bottom: 1px solid var(--line);
+  }
+  .hero .eyebrow {
+    font-family: var(--mono); font-size: 11px;
+    letter-spacing: 3px; text-transform: uppercase;
+    color: var(--coral-deep); font-weight: 700;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: var(--display); font-weight: 400;
+    font-size: clamp(48px, 8vw, 96px);
+    line-height: 0.95; letter-spacing: -0.025em;
+    margin-bottom: 18px;
+  }
+  .hero h1 em { font-style: italic; color: var(--coral); font-weight: 400; }
+  .hero p {
+    font-size: 18px; color: var(--ink-soft);
+    max-width: 680px; line-height: 1.55;
+  }
+
+  /* ============ SECTION ============ */
+  section { padding: 70px 0; border-bottom: 1px solid var(--line); }
+  .sec-head { margin-bottom: 36px; }
+  .sec-head .eyebrow {
+    font-family: var(--mono); font-size: 10.5px;
+    letter-spacing: 3px; text-transform: uppercase;
+    color: var(--coral-deep); font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .sec-head h2 {
+    font-family: var(--display); font-weight: 400;
+    font-size: clamp(32px, 5vw, 48px);
+    line-height: 1.05; letter-spacing: -0.02em;
+  }
+  .sec-head h2 em { font-style: italic; color: var(--coral); }
+  .sec-head p {
+    font-size: 16px; color: var(--ink-soft);
+    margin-top: 12px; max-width: 620px;
+  }
+
+  /* ============ WORDMARK SHOWCASE ============ */
+  .wordmark-card {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 80px 40px;
+    border-radius: 24px;
+    text-align: center;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .wordmark-card .wm {
+    font-family: var(--display);
+    font-weight: 300;
+    font-size: clamp(64px, 12vw, 144px);
+    letter-spacing: 0.20em;
+    text-indent: 0.20em;
+    line-height: 1;
+    color: var(--cream);
+    margin-bottom: 14px;
+  }
+  .wordmark-card .sub {
+    font-family: var(--sans);
+    font-size: 13px; font-weight: 700;
+    letter-spacing: 0.5em;
+    text-indent: 0.5em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+  .variants {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  @media (max-width: 720px) { .variants { grid-template-columns: 1fr; } }
+  .variant {
+    background: var(--cream-2);
+    border: 1px solid var(--line);
+    padding: 32px 24px;
+    border-radius: 14px;
+    text-align: center;
+  }
+  .variant .label {
+    font-family: var(--mono); font-size: 10px;
+    color: var(--ink-faint); letter-spacing: 2px;
+    text-transform: uppercase; font-weight: 700;
+    margin-bottom: 18px;
+  }
+  .variant.dark { background: var(--green-deep); color: var(--cream); }
+  .variant.dark .label { color: var(--gold); }
+  .variant.coral { background: var(--coral); color: #fff; }
+  .variant.coral .label { color: rgba(255,255,255,0.8); }
+  .variant .wm-small {
+    font-family: var(--display); font-weight: 300;
+    font-size: 48px; letter-spacing: 0.20em; text-indent: 0.20em;
+    line-height: 1; margin-bottom: 6px;
+  }
+  .variant .sub-small {
+    font-family: var(--sans); font-size: 9px; font-weight: 700;
+    letter-spacing: 0.32em; text-indent: 0.32em;
+    text-transform: uppercase;
+    opacity: 0.85;
+  }
+
+  /* ============ COLOR PALETTE ============ */
+  .palette {
+    display: grid; grid-template-columns: repeat(6, 1fr);
+    gap: 12px;
+  }
+  @media (max-width: 920px) { .palette { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 540px) { .palette { grid-template-columns: repeat(2, 1fr); } }
+  .swatch {
+    border-radius: 14px;
+    padding: 24px 16px 16px;
+    aspect-ratio: 1 / 1.2;
+    display: flex; flex-direction: column; justify-content: space-between;
+    border: 1px solid var(--line);
+  }
+  .swatch.dark-text { color: var(--ink); }
+  .swatch.light-text { color: var(--cream); }
+  .swatch .name {
+    font-family: var(--serif); font-size: 17px; font-weight: 500;
+    line-height: 1.1;
+  }
+  .swatch .meta {
+    font-family: var(--mono); font-size: 10px;
+    line-height: 1.5; letter-spacing: 0.5px;
+    opacity: 0.85;
+  }
+
+  /* ============ TYPOGRAPHY ============ */
+  .typo-row {
+    padding: 28px 0;
+    border-bottom: 1px solid var(--line);
+    display: grid; grid-template-columns: 180px 1fr; gap: 24px;
+    align-items: center;
+  }
+  @media (max-width: 720px) { .typo-row { grid-template-columns: 1fr; } }
+  .typo-row:last-child { border-bottom: none; }
+  .typo-meta {
+    font-family: var(--mono); font-size: 10.5px;
+    color: var(--ink-faint); letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  .typo-meta .font-name { color: var(--coral-deep); font-weight: 700; margin-bottom: 4px; display: block; }
+  .typo-meta .use { color: var(--ink-faint); display: block; margin-top: 6px; }
+  .typo-sample.display { font-family: var(--display); font-weight: 400; font-size: 48px; line-height: 1; letter-spacing: -0.01em; color: var(--ink); }
+  .typo-sample.display em { font-style: italic; color: var(--coral); }
+  .typo-sample.serif-h1 { font-family: var(--serif); font-weight: 400; font-size: 36px; line-height: 1.05; letter-spacing: -0.02em; }
+  .typo-sample.serif-italic { font-family: var(--serif); font-weight: 400; font-style: italic; font-size: 22px; line-height: 1.4; color: var(--coral); }
+  .typo-sample.sans-body { font-family: var(--sans); font-size: 16px; line-height: 1.55; color: var(--ink-2); }
+  .typo-sample.sans-button {
+    font-family: var(--sans); font-size: 14px; font-weight: 700;
+    letter-spacing: 0.04em;
+    color: #fff; background: var(--coral);
+    padding: 14px 24px; border-radius: 100px;
+    display: inline-block;
+  }
+  .typo-sample.mono {
+    font-family: var(--mono); font-size: 12px;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--ink-faint); font-weight: 600;
+  }
+
+  /* ============ VOICE TABLE ============ */
+  .voice {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+  }
+  @media (max-width: 720px) { .voice { grid-template-columns: 1fr; } }
+  .voice-col {
+    background: var(--cream-2);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 28px;
+  }
+  .voice-col.yes { border-left: 3px solid var(--green); }
+  .voice-col.no  { border-left: 3px solid var(--rose); }
+  .voice-col h4 {
+    font-family: var(--mono); font-size: 11px;
+    color: var(--ink-faint); letter-spacing: 2px;
+    text-transform: uppercase; font-weight: 700;
+    margin-bottom: 16px;
+  }
+  .voice-col.yes h4 { color: var(--green); }
+  .voice-col.no  h4 { color: var(--rose); }
+  .voice-col ul { list-style: none; padding: 0; }
+  .voice-col li {
+    padding: 10px 0;
+    border-bottom: 1px dotted var(--line);
+    font-family: var(--serif); font-size: 16px;
+    line-height: 1.45;
+  }
+  .voice-col li:last-child { border-bottom: none; }
+  .voice-col li::before {
+    display: inline-block;
+    margin-right: 10px;
+    font-family: var(--mono); font-size: 13px;
+    color: var(--ink-faint);
+  }
+  .voice-col.yes li::before { content: '✓'; color: var(--green); }
+  .voice-col.no  li::before { content: '✕'; color: var(--rose); }
+
+  /* ============ PHOTO DIRECTION ============ */
+  .photo-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  @media (max-width: 720px) { .photo-grid { grid-template-columns: 1fr; } }
+  .photo-card {
+    background: var(--cream-2);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .photo-card .preview {
+    aspect-ratio: 4 / 3;
+    position: relative;
+    background-size: cover; background-position: center;
+  }
+  .photo-card .preview.do  { background: radial-gradient(ellipse at 30% 25%, rgba(244,185,66,0.5), transparent 60%), linear-gradient(180deg, #2a3d4a, #0a1218); }
+  .photo-card .preview.do2 { background: radial-gradient(ellipse at 70% 30%, rgba(212,184,122,0.5), transparent 60%), linear-gradient(180deg, #4a5c3a, #15200d); }
+  .photo-card .preview.dont {
+    background: linear-gradient(135deg, #ff0080 0%, #ffff00 50%, #00ffff 100%);
+    position: relative;
+  }
+  .photo-card .preview.dont::after {
+    content: '⛔';
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 48px;
+  }
+  .photo-card .body {
+    padding: 18px 20px;
+  }
+  .photo-card .body .tag {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 1.6px; text-transform: uppercase;
+    color: var(--green); font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .photo-card.dont .body .tag { color: var(--rose); }
+  .photo-card .body h4 {
+    font-family: var(--serif); font-size: 18px; font-weight: 500;
+    margin-bottom: 6px;
+  }
+  .photo-card .body p {
+    font-size: 13px; color: var(--ink-soft); line-height: 1.55;
+  }
+
+  /* ============ DOWNLOAD ROW ============ */
+  .downloads {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;
+  }
+  @media (max-width: 720px) { .downloads { grid-template-columns: 1fr; } }
+  .download {
+    background: var(--cream-2);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 22px 26px;
+    text-decoration: none; color: var(--ink);
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px;
+    transition: all .15s;
+  }
+  .download:hover {
+    border-color: var(--line-strong);
+    transform: translateY(-1px);
+  }
+  .download .body .name {
+    font-family: var(--serif); font-size: 17px; font-weight: 500;
+  }
+  .download .body .desc {
+    font-size: 12.5px; color: var(--ink-faint); margin-top: 3px;
+  }
+  .download .arr {
+    font-family: var(--mono); font-size: 11px;
+    color: var(--coral-deep); letter-spacing: 1.5px;
+  }
+
+  /* ============ FOOTER ============ */
+  footer {
+    text-align: center;
+    padding: 40px 24px 60px;
+    color: var(--ink-faint); font-size: 12px;
+    font-family: var(--mono); letter-spacing: 1px;
+  }
+  footer a { color: var(--coral-deep); }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="eyebrow">SORA · Brand Kit · v1.0 · May 2026</div>
+  <h1>The <em>system</em>.<br>One brand, fifteen chapters.</h1>
+  <p>This is the single source of truth for SORA Travel Agency's visual identity. Designers, photographers, and partners — use this. Don't improvise.</p>
+</div>
+
+<!-- ============ WORDMARK ============ -->
+<section>
+  <div class="sec-head">
+    <div class="eyebrow">01 · Wordmark</div>
+    <h2><em>SORA</em> set in Instrument Serif, generous letter-spacing.</h2>
+    <p>The wordmark is always set in Instrument Serif, light weight (300), with letter-spacing of 0.20em. Always include the "Travel Agency" subline where space allows. On dark backgrounds use cream. On cream backgrounds use ink.</p>
+  </div>
+
+  <div class="wordmark-card">
+    <div class="wm">SORA</div>
+    <div class="sub">Travel Agency</div>
+  </div>
+
+  <div class="variants">
+    <div class="variant">
+      <div class="label">On cream</div>
+      <div class="wm-small" style="color: var(--ink)">SORA</div>
+      <div class="sub-small" style="color: var(--bronze)">Travel Agency</div>
+    </div>
+    <div class="variant dark">
+      <div class="label">On green</div>
+      <div class="wm-small">SORA</div>
+      <div class="sub-small" style="color: var(--gold)">Travel Agency</div>
+    </div>
+    <div class="variant coral">
+      <div class="label">On coral (limited use)</div>
+      <div class="wm-small">SORA</div>
+      <div class="sub-small">Travel Agency</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COLOR ============ -->
+<section>
+  <div class="sec-head">
+    <div class="eyebrow">02 · Color</div>
+    <h2>The <em>palette</em>.</h2>
+    <p>Cream is the canvas. Green is the brand depth. Coral is the action. Gold + mango are accent. Use sparingly — overcoloring kills the feel.</p>
+  </div>
+
+  <div class="palette">
+    <div class="swatch dark-text" style="background:#f7f0df">
+      <div class="name">Cream</div>
+      <div class="meta">#F7F0DF<br>RGB 247 240 223<br>Base canvas</div>
+    </div>
+    <div class="swatch light-text" style="background:#1d3a2c">
+      <div class="name">Green</div>
+      <div class="meta">#1D3A2C<br>RGB 29 58 44<br>Depth / nav / footer</div>
+    </div>
+    <div class="swatch light-text" style="background:#e07a5f">
+      <div class="name">Coral</div>
+      <div class="meta">#E07A5F<br>RGB 224 122 95<br>Action / italics / CTAs</div>
+    </div>
+    <div class="swatch dark-text" style="background:#f4b942">
+      <div class="name">Mango</div>
+      <div class="meta">#F4B942<br>RGB 244 185 66<br>Sun accent / highlight</div>
+    </div>
+    <div class="swatch dark-text" style="background:#d4b87a">
+      <div class="name">Gold</div>
+      <div class="meta">#D4B87A<br>RGB 212 184 122<br>Subtle accent</div>
+    </div>
+    <div class="swatch light-text" style="background:#2e8a96">
+      <div class="name">Teal</div>
+      <div class="meta">#2E8A96<br>RGB 46 138 150<br>Caribbean / Bocas</div>
+    </div>
+    <div class="swatch light-text" style="background:#14110c">
+      <div class="name">Ink</div>
+      <div class="meta">#14110C<br>RGB 20 17 12<br>Primary text</div>
+    </div>
+    <div class="swatch light-text" style="background:#0f2218">
+      <div class="name">Green Deep</div>
+      <div class="meta">#0F2218<br>RGB 15 34 24<br>Dark surfaces</div>
+    </div>
+    <div class="swatch light-text" style="background:#b85439">
+      <div class="name">Coral Deep</div>
+      <div class="meta">#B85439<br>RGB 184 84 57<br>Hover state / links</div>
+    </div>
+    <div class="swatch light-text" style="background:#a07b3e">
+      <div class="name">Bronze</div>
+      <div class="meta">#A07B3E<br>RGB 160 123 62<br>Eyebrow text</div>
+    </div>
+    <div class="swatch light-text" style="background:#c64a5e">
+      <div class="name">Rose</div>
+      <div class="meta">#C64A5E<br>RGB 198 74 94<br>Error / decline / nope</div>
+    </div>
+    <div class="swatch dark-text" style="background:#ede4ca">
+      <div class="name">Cream 3</div>
+      <div class="meta">#EDE4CA<br>RGB 237 228 202<br>Hover surfaces</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TYPOGRAPHY ============ -->
+<section>
+  <div class="sec-head">
+    <div class="eyebrow">03 · Typography</div>
+    <h2>Three <em>typefaces</em>.</h2>
+    <p>Display: <strong>Instrument Serif</strong> (wordmark + h1). Body serif: <strong>Fraunces</strong>. Sans: <strong>Inter</strong>. Mono: <strong>JetBrains Mono</strong> (system/data only).</p>
+  </div>
+
+  <div>
+    <div class="typo-row">
+      <div class="typo-meta"><span class="font-name">Instrument Serif</span>Display 48-144px · weight 300-400<span class="use">Use for wordmark + h1 only</span></div>
+      <div class="typo-sample display">Fines de semana <em>memorables</em>.</div>
+    </div>
+    <div class="typo-row">
+      <div class="typo-meta"><span class="font-name">Fraunces</span>H2 / H3 32-48px · weight 400-500<span class="use">Section heads, weekend titles, card titles</span></div>
+      <div class="typo-sample serif-h1">Lo que viene en 2026.</div>
+    </div>
+    <div class="typo-row">
+      <div class="typo-meta"><span class="font-name">Fraunces Italic</span>22-30px · weight 400<span class="use">Pull quotes, taglines</span></div>
+      <div class="typo-sample serif-italic">Solo por invitación. Por referencia personal.</div>
+    </div>
+    <div class="typo-row">
+      <div class="typo-meta"><span class="font-name">Inter</span>14-16px · weight 400-500<span class="use">Body, descriptions, UI</span></div>
+      <div class="typo-sample sans-body">SORA es una colección curada de fines de semana íntimos en Latinoamérica. Cada evento tiene 10-14 invitados. Cada uno entra por referencia personal de un miembro.</div>
+    </div>
+    <div class="typo-row">
+      <div class="typo-meta"><span class="font-name">Inter Bold</span>13-15px · weight 700<span class="use">Buttons, CTAs, navigation</span></div>
+      <div class="typo-sample"><span class="typo-sample sans-button">Solicitar invitación →</span></div>
+    </div>
+    <div class="typo-row">
+      <div class="typo-meta"><span class="font-name">JetBrains Mono</span>9.5-11px · weight 500-700, uppercase, 1.5-2.5px letter-spacing<span class="use">Eyebrows, system labels, data</span></div>
+      <div class="typo-sample mono">LA COMPAÑÍA · MMXXVI · CHAPTER COLOMBIA</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VOICE ============ -->
+<section>
+  <div class="sec-head">
+    <div class="eyebrow">04 · Voice</div>
+    <h2>How Sora <em>speaks</em>.</h2>
+    <p>Quiet, confident, curated. We don't sell. We invite. We don't superlative. We describe.</p>
+  </div>
+
+  <div class="voice">
+    <div class="voice-col yes">
+      <h4>Do</h4>
+      <ul>
+        <li>"Cena al atardecer sobre las nubes."</li>
+        <li>"Boat day en Sian Ka'an. Manatees al amanecer."</li>
+        <li>"12 invitados. Mesa larga. Música acústica."</li>
+        <li>"Solo por invitación."</li>
+        <li>Use single-line descriptions of sensory things.</li>
+        <li>Name the chef. Name the lodge. Name the trail.</li>
+        <li>Let beautiful nouns do the work.</li>
+      </ul>
+    </div>
+    <div class="voice-col no">
+      <h4>Don't</h4>
+      <ul>
+        <li>"The most unforgettable, life-changing weekend!"</li>
+        <li>"Book now — limited spots!"</li>
+        <li>"World-class · premium · luxury · exclusive · ultimate."</li>
+        <li>Stack of emojis at the end of every line. 🌅✨🍷</li>
+        <li>Anything that sounds like a hotel chain ad.</li>
+        <li>"Discover" anything. We don't discover; the guest does.</li>
+        <li>Walls of text with marketing language.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PHOTOGRAPHY ============ -->
+<section>
+  <div class="sec-head">
+    <div class="eyebrow">05 · Photography</div>
+    <h2>What an SVG <em>can't</em> do.</h2>
+    <p>The current site uses SVG illustrations as placeholders. Real photography is the next big upgrade. Brief any photographer with this direction.</p>
+  </div>
+
+  <div class="photo-grid">
+    <div class="photo-card">
+      <div class="preview do"></div>
+      <div class="body">
+        <div class="tag">DO</div>
+        <h4>Wide, slow, dusk</h4>
+        <p>Mountain silhouettes against a sun. Ávila at golden hour. The first 10 minutes after sunset. Mostly atmosphere, the guest is small or absent.</p>
+      </div>
+    </div>
+    <div class="photo-card">
+      <div class="preview do2"></div>
+      <div class="body">
+        <div class="tag">DO</div>
+        <h4>Detail. Texture. Hand.</h4>
+        <p>The cup of Geisha mid-pour. A weathered hand on a coffee branch. The fabric of a hammock. Close, deliberate, ungeneric.</p>
+      </div>
+    </div>
+    <div class="photo-card dont">
+      <div class="preview dont"></div>
+      <div class="body">
+        <div class="tag">DON'T</div>
+        <h4>Wedding-on-the-beach saturation</h4>
+        <p>Oversaturated, group of people raising cocktails at sunset, all looking at the camera. This is not Sora.</p>
+      </div>
+    </div>
+    <div class="photo-card">
+      <div class="preview do" style="background: radial-gradient(ellipse at 50% 30%, rgba(74,140,140,0.5), transparent 60%), linear-gradient(180deg, #1f4a4a, #0a1f1f)"></div>
+      <div class="body">
+        <div class="tag">DO</div>
+        <h4>Negative space + horizon</h4>
+        <p>One element + sky + sea. Caribbean overwater. Andean ridgeline. The horizon should always be quiet.</p>
+      </div>
+    </div>
+    <div class="photo-card">
+      <div class="preview do2" style="background: radial-gradient(ellipse at 30% 30%, rgba(74,125,99,0.5), transparent 60%), linear-gradient(180deg, #1f3a2c, #0a1a13)"></div>
+      <div class="body">
+        <div class="tag">DO</div>
+        <h4>Hands in the work</h4>
+        <p>Boquete coffee picker hands. Oaxaca weaver at the loom. The hands of the chef plating. Tells the curation story.</p>
+      </div>
+    </div>
+    <div class="photo-card dont">
+      <div class="preview dont"></div>
+      <div class="body">
+        <div class="tag">DON'T</div>
+        <h4>Stock-photo travel</h4>
+        <p>Couple holding hands silhouetted on the beach. Drone shot of the resort pool. Buffet hands picking up shrimp. All wrong.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ASSETS DOWNLOAD ============ -->
+<section>
+  <div class="sec-head">
+    <div class="eyebrow">06 · Assets</div>
+    <h2>Download <em>files</em>.</h2>
+    <p>The single OG image we have today + the data layer that powers everything. As we ship real photography and a printable brand book, those will be linked here too.</p>
+  </div>
+
+  <div class="downloads">
+    <a class="download" href="og-image.svg" target="_blank">
+      <div class="body">
+        <div class="name">Social share image · SVG</div>
+        <div class="desc">1200 × 630 · used for og:image on every public page</div>
+      </div>
+      <div class="arr">↗ OPEN</div>
+    </a>
+    <a class="download" href="data.js" target="_blank">
+      <div class="body">
+        <div class="name">Multi-country data · data.js</div>
+        <div class="desc">15 countries · events · experiences · properties · per-country config</div>
+      </div>
+      <div class="arr">↗ OPEN</div>
+    </a>
+    <a class="download" href="events-playbook.html" target="_blank">
+      <div class="body">
+        <div class="name">Events Playbook</div>
+        <div class="desc">How a Sora weekend operates from start to close</div>
+      </div>
+      <div class="arr">↗ OPEN</div>
+    </a>
+    <a class="download" href="../SORA-ARCHITECTURE.md" target="_blank">
+      <div class="body">
+        <div class="name">System Architecture</div>
+        <div class="desc">How everything fits together · for new team members</div>
+      </div>
+      <div class="arr">↗ OPEN</div>
+    </a>
+  </div>
+</section>
+
+<!-- ============ DON'T DO THIS ============ -->
+<section style="border-bottom: none">
+  <div class="sec-head">
+    <div class="eyebrow">07 · Never do this</div>
+    <h2>Six things that <em>break</em> the brand.</h2>
+  </div>
+  <ol style="font-family: var(--serif); font-size: 18px; line-height: 1.7; color: var(--ink-2); padding-left: 24px; max-width: 720px;">
+    <li>Use Arial, Helvetica, or any system serif for the wordmark. Always Instrument Serif (or Fraunces as fallback).</li>
+    <li>Stretch or skew the SORA letters. The 0.20em letter-spacing is fixed.</li>
+    <li>Use coral as a background for body text. It's for buttons and italics only.</li>
+    <li>Show pricing larger than the title. The story leads; the number trails.</li>
+    <li>Add the company tagline in English when the page is Spanish, or vice versa. Match the language.</li>
+    <li>Put a CTA on a photo without a scrim. Always darken the bottom 40% of an image before putting text on it.</li>
+  </ol>
+</section>
+
+</div>
+
+<footer>
+  SORA Brand Kit · La Compañía 2026 · v1.0 ·
+  <a href="../sora-hq.html">Back to HQ</a> ·
+  <a href="../SORA-ARCHITECTURE.md">Architecture</a>
+</footer>
+
+</body>
+</html>

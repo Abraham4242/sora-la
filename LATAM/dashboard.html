@@ -1,0 +1,1327 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SORA · LATAM Atlas · Live Dashboard</title>
+<meta name="description" content="Live comparison dashboard for SORA Travel Agency's 15 LATAM chapters. Real news, real data, real per-country deep links.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230c0d10'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Georgia,serif' font-size='20' font-weight='400' fill='%23d4b87a'%3ES%3C/text%3E%3C/svg%3E">
+<meta name="theme-color" content="#0c0d10">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0c0d10;
+    --bg-2: #15171c;
+    --bg-3: #1d2027;
+    --line: rgba(255,255,255,0.08);
+    --line-2: rgba(255,255,255,0.16);
+    --line-strong: rgba(255,255,255,0.30);
+    --fg: #f5f5f5;
+    --fg-2: rgba(255,255,255,0.72);
+    --fg-3: rgba(255,255,255,0.50);
+    --fg-4: rgba(255,255,255,0.32);
+    --gold: #d4b87a;
+    --gold-2: #e6cf9a;
+    --bronze: #a07b3e;
+    --coral: #e07a5f;
+    --teal: #2e8a96;
+    --rose: #c64a5e;
+    --green: #4a7d63;
+    --green-2: #2e8a96;
+    --serif: "Fraunces", Georgia, serif;
+    --sans: "Inter", -apple-system, sans-serif;
+    --mono: "JetBrains Mono", Menlo, monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background:
+      radial-gradient(ellipse 60% 50% at 80% 0%, rgba(160,123,62,0.14), transparent 60%),
+      radial-gradient(ellipse 50% 40% at 10% 100%, rgba(47,71,57,0.16), transparent 60%),
+      var(--bg);
+    background-attachment: fixed;
+    color: var(--fg);
+    font-family: var(--sans); font-size: 14px;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: var(--gold); color: #1a1a1a; }
+  a { color: var(--gold); text-decoration: none; }
+  a:hover { color: var(--gold-2); }
+
+  /* ============ HEADER ============ */
+  header.top {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(12,13,16,0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--line);
+    padding: 14px 28px;
+  }
+  header .row1 { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  header .brand {
+    display: flex; align-items: center; gap: 12px;
+  }
+  header .brand .word {
+    font-family: var(--serif); font-size: 22px; font-weight: 500;
+    letter-spacing: 0.18em;
+  }
+  header .brand .pill {
+    font-family: var(--mono); font-size: 10px;
+    color: var(--gold);
+    background: rgba(212,184,122,0.10);
+    border: 1px solid rgba(212,184,122,0.30);
+    padding: 4px 8px; border-radius: 6px;
+    letter-spacing: 1.5px;
+  }
+  header .row1 .actions { display: flex; gap: 8px; align-items: center; }
+  header .row1 .actions button, header .row1 .actions a {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--line);
+    color: var(--fg-2);
+    padding: 8px 14px; border-radius: 100px;
+    font-family: var(--mono); font-size: 10.5px;
+    letter-spacing: 1px; cursor: pointer;
+    text-decoration: none;
+    transition: all .15s;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  header .row1 .actions button:hover, header .row1 .actions a:hover {
+    background: rgba(212,184,122,0.10);
+    border-color: var(--gold); color: var(--gold);
+  }
+  header .row1 .actions .primary {
+    background: var(--gold); color: #1a1a1a; border-color: var(--gold);
+  }
+  header .row1 .actions .primary:hover { background: var(--gold-2); }
+  header .row2 {
+    display: flex; align-items: center; gap: 14px;
+    margin-top: 12px;
+    font-family: var(--mono); font-size: 10.5px;
+    color: var(--fg-3); letter-spacing: 1.2px;
+  }
+  header .row2 .last-updated { display: flex; align-items: center; gap: 6px; }
+  header .row2 .live-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--gold); display: inline-block;
+    animation: pulse 1.6s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+  /* ============ AGGREGATE STRIP ============ */
+  .summary {
+    background: rgba(255,255,255,0.025);
+    border-bottom: 1px solid var(--line);
+    padding: 22px 28px;
+  }
+  .summary-grid {
+    max-width: 1400px; margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 18px;
+  }
+  @media (max-width: 1000px) { .summary-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 600px) { .summary-grid { grid-template-columns: repeat(2, 1fr); } }
+  .summary-item .label {
+    font-family: var(--mono);
+    font-size: 9.5px; color: var(--fg-3);
+    letter-spacing: 2px; text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .summary-item .value {
+    font-family: var(--serif);
+    font-size: 26px; font-weight: 500;
+    color: var(--gold);
+    letter-spacing: -0.01em;
+    line-height: 1;
+  }
+  .summary-item .sub {
+    font-size: 11px; color: var(--fg-3);
+    margin-top: 4px;
+  }
+
+  /* ============ CONTROLS ============ */
+  .controls {
+    max-width: 1400px; margin: 0 auto;
+    padding: 22px 28px 14px;
+    display: flex; align-items: center; gap: 12px;
+    flex-wrap: wrap;
+  }
+  .controls .filters {
+    display: flex; gap: 8px; flex-wrap: wrap;
+  }
+  .controls .chip {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--line);
+    color: var(--fg-2);
+    padding: 7px 14px;
+    border-radius: 100px;
+    font-family: var(--mono); font-size: 10.5px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all .15s;
+  }
+  .controls .chip:hover { color: var(--gold); border-color: rgba(212,184,122,0.4); }
+  .controls .chip.active { background: var(--gold); color: #1a1a1a; border-color: var(--gold); }
+  .controls .sort-select {
+    margin-left: auto;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--line);
+    color: var(--fg-2);
+    padding: 8px 14px; border-radius: 100px;
+    font-family: var(--mono); font-size: 10.5px;
+    letter-spacing: 1px; cursor: pointer;
+    appearance: none; -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'><path d='M1 3 L5 7 L9 3' fill='none' stroke='%23d4b87a' stroke-width='1.4'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 30px;
+  }
+
+  /* ============ TABLE ============ */
+  .table-wrap {
+    max-width: 1400px; margin: 0 auto;
+    padding: 0 28px 80px;
+  }
+  table.atlas {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    overflow: hidden;
+    font-size: 13.5px;
+  }
+  table.atlas thead th {
+    background: rgba(255,255,255,0.04);
+    text-align: left;
+    padding: 14px 14px;
+    font-family: var(--mono);
+    font-size: 9.5px;
+    color: var(--fg-3);
+    letter-spacing: 2px; text-transform: uppercase;
+    font-weight: 600;
+    border-bottom: 1px solid var(--line);
+    cursor: pointer;
+    user-select: none;
+  }
+  table.atlas thead th:hover { color: var(--gold); }
+  table.atlas thead th.sorted-asc::after { content: ' ↑'; color: var(--gold); }
+  table.atlas thead th.sorted-desc::after { content: ' ↓'; color: var(--gold); }
+  table.atlas tbody tr {
+    cursor: pointer;
+    transition: background .12s;
+  }
+  table.atlas tbody tr:hover { background: rgba(212,184,122,0.04); }
+  table.atlas tbody tr.expanded { background: rgba(212,184,122,0.08); }
+  table.atlas tbody td {
+    padding: 14px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: middle;
+  }
+  table.atlas tbody tr:last-child td { border-bottom: none; }
+  td.country-cell { display: flex; align-items: center; gap: 12px; }
+  td.country-cell .flag { font-size: 22px; line-height: 1; }
+  td.country-cell .name {
+    font-family: var(--serif); font-size: 17px; font-weight: 500; color: var(--fg);
+    line-height: 1.1;
+  }
+  td.country-cell .hero { font-size: 11.5px; color: var(--fg-3); margin-top: 3px; }
+  td.numeric { font-family: var(--mono); font-feature-settings: 'tnum'; color: var(--fg); }
+  td.numeric .sub { font-size: 10px; color: var(--fg-3); margin-top: 2px; }
+  .pill {
+    display: inline-block;
+    font-family: var(--mono); font-size: 9.5px;
+    padding: 3px 9px; border-radius: 100px;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    font-weight: 600;
+  }
+  .pill.tier1 { background: rgba(212,184,122,0.18); color: var(--gold); }
+  .pill.tier2 { background: rgba(46,138,150,0.18); color: var(--teal); }
+  .pill.tier3 { background: rgba(160,123,62,0.16); color: var(--bronze); }
+  .pill.live { background: rgba(74,125,99,0.20); color: var(--green); }
+  .pill.launching { background: rgba(244,185,66,0.18); color: #f4b942; }
+  .pill.soon { background: rgba(255,255,255,0.06); color: var(--fg-3); }
+  .pill.gated { background: rgba(198,74,94,0.16); color: var(--rose); }
+  .pill.level-1 { background: rgba(74,125,99,0.20); color: var(--green); }
+  .pill.level-2 { background: rgba(244,185,66,0.18); color: #f4b942; }
+  .pill.level-3 { background: rgba(224,122,95,0.18); color: var(--coral); }
+  .pill.level-4 { background: rgba(198,74,94,0.20); color: var(--rose); }
+
+  /* ============ EXPANDED DETAIL PANEL ============ */
+  .detail-row { background: rgba(0,0,0,0.25); }
+  .detail-row td { padding: 0 !important; }
+  .detail-panel {
+    padding: 28px 28px 34px;
+    border-top: 2px solid var(--gold);
+    border-bottom: 1px solid var(--line);
+    animation: slideDown .25s ease;
+  }
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .detail-header {
+    display: flex; align-items: baseline; gap: 16px;
+    margin-bottom: 22px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--line);
+  }
+  .detail-header .flag { font-size: 42px; line-height: 1; }
+  .detail-header h2 {
+    font-family: var(--serif); font-weight: 500;
+    font-size: 32px; color: var(--fg);
+    letter-spacing: -0.01em;
+  }
+  .detail-header h2 .sub {
+    font-family: var(--sans); font-size: 13px;
+    color: var(--fg-3); margin-left: 14px;
+    letter-spacing: 0.06em; text-transform: uppercase; font-weight: 600;
+  }
+  .detail-header .tier-stat {
+    margin-left: auto;
+    text-align: right;
+    font-family: var(--mono); font-size: 10.5px;
+    color: var(--fg-3); letter-spacing: 1.5px;
+  }
+  .detail-header .tier-stat strong { color: var(--gold); font-size: 13px; }
+  .detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.1fr;
+    gap: 22px;
+  }
+  @media (max-width: 1080px) { .detail-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 720px)  { .detail-grid { grid-template-columns: 1fr; } }
+  .detail-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 20px;
+  }
+  .detail-card h3 {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--gold);
+    letter-spacing: 2.2px; text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--line);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .detail-card h3 .refresh {
+    background: none; border: none; cursor: pointer;
+    color: var(--fg-3); font-family: var(--mono); font-size: 10px;
+    transition: color .15s;
+  }
+  .detail-card h3 .refresh:hover { color: var(--gold); }
+  .detail-stats {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px 16px;
+  }
+  .detail-stats .stat {
+    padding: 8px 0;
+    border-bottom: 1px dotted var(--line);
+  }
+  .detail-stats .stat:last-child, .detail-stats .stat:nth-last-child(2) { border-bottom: none; }
+  .detail-stats .stat .key {
+    font-family: var(--mono); font-size: 9.5px;
+    color: var(--fg-3); letter-spacing: 1.5px; text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .detail-stats .stat .val {
+    font-family: var(--serif); font-size: 17px; color: var(--fg);
+    font-weight: 500;
+    line-height: 1.2;
+  }
+  .detail-stats .stat .val.numeric {
+    font-family: var(--mono); font-feature-settings: 'tnum';
+    font-size: 16px;
+  }
+
+  /* News list */
+  .news-cat { margin-bottom: 18px; }
+  .news-cat:last-child { margin-bottom: 4px; }
+  .news-cat .cat-label {
+    display: flex; align-items: center; justify-content: space-between;
+    font-family: var(--mono);
+    font-size: 9.5px; color: var(--bronze);
+    letter-spacing: 1.8px; text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .news-cat .cat-label a {
+    font-size: 9px; color: var(--fg-3); border-bottom: 1px dotted var(--fg-4);
+  }
+  .news-cat .cat-label a:hover { color: var(--gold); border-color: var(--gold); }
+  .news-item {
+    padding: 7px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .news-item:last-child { border-bottom: none; }
+  .news-item a {
+    color: var(--fg);
+    font-size: 12.5px;
+    line-height: 1.4;
+    display: block;
+  }
+  .news-item a:hover { color: var(--gold); }
+  .news-item .meta {
+    font-family: var(--mono); font-size: 9.5px;
+    color: var(--fg-3); margin-top: 4px;
+    letter-spacing: 0.5px;
+  }
+  .news-loading {
+    color: var(--fg-3); font-style: italic; font-size: 12px;
+    font-family: var(--serif);
+  }
+  .news-error {
+    color: var(--coral); font-size: 11.5px;
+    font-family: var(--mono); letter-spacing: 0.5px;
+  }
+
+  /* Deep links */
+  .deep-links {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+  }
+  .deep-links a {
+    display: flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--line);
+    color: var(--fg-2);
+    padding: 10px 12px;
+    border-radius: 9px;
+    font-size: 12px;
+    font-weight: 500;
+    transition: all .15s;
+  }
+  .deep-links a:hover { background: rgba(212,184,122,0.10); border-color: var(--gold); color: var(--gold); }
+  .deep-links a .icon { font-size: 14px; color: var(--gold); }
+  .deep-links a .arrow {
+    margin-left: auto; color: var(--fg-3);
+    font-size: 11px;
+  }
+  .deep-links a:hover .arrow { color: var(--gold); }
+
+  /* Chapter link */
+  .chapter-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    margin-top: 14px;
+    background: var(--gold);
+    color: #1a1a1a;
+    padding: 10px 18px;
+    border-radius: 100px;
+    font-family: var(--mono); font-size: 11px; font-weight: 600;
+    letter-spacing: 1.2px;
+    transition: transform .15s;
+  }
+  .chapter-link:hover { transform: translateY(-1px); color: #1a1a1a; }
+
+  footer {
+    text-align: center;
+    padding: 40px 24px 60px;
+    color: var(--fg-3); font-size: 12px;
+    font-family: var(--mono); letter-spacing: 1px;
+  }
+  footer a { color: var(--gold); }
+
+  .badge-row { display: flex; gap: 6px; flex-wrap: wrap; }
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="top">
+  <div class="row1">
+    <div class="brand">
+      <span class="word">SORA</span>
+      <span class="pill">LATAM · LIVE ATLAS</span>
+    </div>
+    <div class="actions">
+      <a href="_OVERVIEW.md" target="_blank">↗ STRATEGY DOC</a>
+      <a href="../sora/web/index.html" target="_blank">↗ WEB</a>
+      <a href="../sora/web/admin.html" target="_blank">↗ ADMIN</a>
+      <button id="refresh-all" class="primary" onclick="refreshAllNews()">↻ REFRESH NEWS</button>
+    </div>
+  </div>
+  <div class="row2">
+    <span class="last-updated"><span class="live-dot"></span>LAST FETCHED: <span id="last-updated">never</span></span>
+    <span>· AUTO-REFRESH EVERY 30 MIN</span>
+    <span>· NEWS VIA GOOGLE NEWS RSS + ALLORIGINS PROXY</span>
+  </div>
+</header>
+
+<!-- ============ AGGREGATE SUMMARY ============ -->
+<section class="summary">
+  <div class="summary-grid">
+    <div class="summary-item">
+      <div class="label">Chapters</div>
+      <div class="value">15</div>
+      <div class="sub">Across LATAM</div>
+    </div>
+    <div class="summary-item">
+      <div class="label">Live / Launching</div>
+      <div class="value" id="ag-live">4</div>
+      <div class="sub">PA · MX · CO · VE</div>
+    </div>
+    <div class="summary-item">
+      <div class="label">Total Setup</div>
+      <div class="value" id="ag-setup">$92k</div>
+      <div class="sub">to be live in all 15</div>
+    </div>
+    <div class="summary-item">
+      <div class="label">Monthly burn · full</div>
+      <div class="value" id="ag-burn">$42k</div>
+      <div class="sub">at steady state</div>
+    </div>
+    <div class="summary-item">
+      <div class="label">Quarterly BE · full</div>
+      <div class="value" id="ag-be">$135k</div>
+      <div class="sub">events alone, ex-RE</div>
+    </div>
+    <div class="summary-item">
+      <div class="label">Languages</div>
+      <div class="value">3</div>
+      <div class="sub">ES · PT · EN</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTROLS ============ -->
+<div class="controls">
+  <div class="filters">
+    <button class="chip active" onclick="setFilter('all', this)">ALL · 15</button>
+    <button class="chip" onclick="setFilter('live', this)">LIVE / LAUNCHING · 4</button>
+    <button class="chip" onclick="setFilter('soon', this)">SOON · 10</button>
+    <button class="chip" onclick="setFilter('tier1', this)">TIER 1 · 5</button>
+    <button class="chip" onclick="setFilter('tier2', this)">TIER 2 · 5</button>
+    <button class="chip" onclick="setFilter('tier3', this)">TIER 3 · 5</button>
+  </div>
+  <select class="sort-select" onchange="setSort(this.value)">
+    <option value="tier">SORT · TIER + STATUS</option>
+    <option value="name">SORT · NAME A-Z</option>
+    <option value="setupCost">SORT · SETUP COST</option>
+    <option value="monthlyBurn">SORT · MONTHLY BURN</option>
+    <option value="gdpPerCapita">SORT · GDP PER CAPITA</option>
+    <option value="population">SORT · POPULATION</option>
+    <option value="advisory">SORT · TRAVEL ADVISORY</option>
+  </select>
+</div>
+
+<!-- ============ TABLE ============ -->
+<div class="table-wrap">
+  <table class="atlas">
+    <thead>
+      <tr>
+        <th>Country</th>
+        <th>Tier</th>
+        <th>Status</th>
+        <th>Setup $</th>
+        <th>Burn / mo</th>
+        <th>BE / qtr</th>
+        <th>Currency</th>
+        <th>Travel Adv.</th>
+        <th>GDP/cap</th>
+      </tr>
+    </thead>
+    <tbody id="atlas-body"></tbody>
+  </table>
+</div>
+
+<footer>
+  SORA · LATAM Atlas · La Compañía 2026 ·
+  News via Google News RSS through a public CORS proxy (allorigins.win) ·
+  All deep links open in new tabs ·
+  <a href="_OVERVIEW.md">strategy</a> ·
+  <a href="outreach/MX/_README.md">MX outreach</a>
+</footer>
+
+<script>
+// ============================================================
+//  COUNTRY DATA — 15 chapters with everything for the dashboard
+// ============================================================
+const COUNTRIES = [
+  {
+    code: 'MX', name: 'Mexico', flag: '🇲🇽', tier: 1, status: 'launching',
+    hero: 'CDMX · Tulum · Oaxaca · San Miguel',
+    capital: 'Mexico City', population: 129000000, gdpPerCapita: 11500,
+    currency: 'MXN', currencyName: 'Mexican Peso', usdRate: '~17.5',
+    language: 'Spanish', timezone: 'GMT-6 to -8',
+    visaUS: 'Tourist visa-free up to 180 days', advisory: 2,
+    setupCost: 8000, monthlyBurn: 5900, breakEvenQtr: 17700,
+    legalEntity: 'SAPI · Sociedad Anónima Promotora de Inversión',
+    risks: 'Restricted-zone real estate · cartel-related insurance optics in select corridors · peso volatility',
+    chapterFile: 'MX-mexico.md',
+    newsQ: {
+      politics: 'Mexico government Sheinbaum politics',
+      economy: 'Mexico economy peso GDP',
+      realestate: 'Mexico real estate Tulum San Miguel property market',
+      tourism: 'Mexico tourism CDMX Oaxaca premium travel',
+      safety: 'Mexico US State Department travel advisory'
+    },
+    links: {
+      stateDept: 'https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Mexico.html',
+      worldBank: 'https://data.worldbank.org/country/mexico',
+      numbeo: 'https://www.numbeo.com/cost-of-living/country_result.jsp?country=Mexico',
+      xe: 'https://www.xe.com/currencycharts/?from=USD&to=MXN',
+      bloomberg: 'https://www.bloomberg.com/quickfeed/mexico',
+      reuters: 'https://www.reuters.com/world/americas/mexico/',
+      ft: 'https://www.ft.com/world/mexico',
+      cia: 'https://www.cia.gov/the-world-factbook/countries/mexico/'
+    }
+  },
+  {
+    code: 'CO', name: 'Colombia', flag: '🇨🇴', tier: 1, status: 'launching',
+    hero: 'Medellín · Cartagena · Coffee Region',
+    capital: 'Bogotá', population: 52000000, gdpPerCapita: 6800,
+    currency: 'COP', currencyName: 'Colombian Peso', usdRate: '~4,100',
+    language: 'Spanish', timezone: 'GMT-5',
+    visaUS: 'Visa-free up to 90 days', advisory: 3,
+    setupCost: 4500, monthlyBurn: 5000, breakEvenQtr: 15000,
+    legalEntity: 'SAS · Sociedad por Acciones Simplificada',
+    risks: 'Reputation overhang for US travelers · seasonal weather in Cartagena · over-foreign ownership tension in Medellín',
+    chapterFile: 'CO-colombia.md',
+    newsQ: {
+      politics: 'Colombia government Petro politics',
+      economy: 'Colombia economy peso GDP investment',
+      realestate: 'Colombia real estate Medellín Cartagena property',
+      tourism: 'Colombia tourism premium travel Cartagena',
+      safety: 'Colombia US State Department travel advisory'
+    },
+    links: {
+      stateDept: 'https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Colombia.html',
+      worldBank: 'https://data.worldbank.org/country/colombia',
+      numbeo: 'https://www.numbeo.com/cost-of-living/country_result.jsp?country=Colombia',
+      xe: 'https://www.xe.com/currencycharts/?from=USD&to=COP',
+      bloomberg: 'https://www.bloomberg.com/quickfeed/colombia',
+      reuters: 'https://www.reuters.com/world/americas/colombia/',
+      ft: 'https://www.ft.com/world/colombia',
+      cia: 'https://www.cia.gov/the-world-factbook/countries/colombia/'
+    }
+  },
+  {
+    code: 'BR', name: 'Brazil', flag: '🇧🇷', tier: 1, status: 'soon',
+    hero: 'Trancoso · Rio · Búzios · Noronha',
+    capital: 'Brasília', population: 217000000, gdpPerCapita: 10500,
+    currency: 'BRL', currencyName: 'Brazilian Real', usdRate: '~5.6',
+    language: 'Portuguese', timezone: 'GMT-2 to -5',
+    visaUS: 'eVisa required (since April 2025)', advisory: 2,
+    setupCost: 12000, monthlyBurn: 6500, breakEvenQtr: 19500,
+    legalEntity: 'Ltda · Sociedade Limitada',
+    risks: 'Complex tax code · currency volatility · Carnival oversell · Fernando de Noronha access caps',
+    chapterFile: 'BR-brazil.md',
+    newsQ: {
+      politics: 'Brazil government Lula politics',
+      economy: 'Brazil economy real Petrobras GDP',
+      realestate: 'Brazil real estate Bahia Rio property market',
+      tourism: 'Brazil tourism premium travel Trancoso Rio',
+      safety: 'Brazil US State Department travel advisory'
+    },
+    links: {
+      stateDept: 'https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Brazil.html',
+      worldBank: 'https://data.worldbank.org/country/brazil',
+      numbeo: 'https://www.numbeo.com/cost-of-living/country_result.jsp?country=Brazil',
+      xe: 'https://www.xe.com/currencycharts/?from=USD&to=BRL',
+      bloomberg: 'https://www.bloomberg.com/quickfeed/brazil',
+      reuters: 'https://www.reuters.com/world/americas/brazil/',
+      ft: 'https://www.ft.com/brazil',
+      cia: 'https://www.cia.gov/the-world-factbook/countries/brazil/'
+    }
+  },
+  {
+    code: 'AR', name: 'Argentina', flag: '🇦🇷', tier: 1, status: 'soon',
+    hero: 'Buenos Aires · Mendoza · Patagonia',
+    capital: 'Buenos Aires', population: 46000000, gdpPerCapita: 13500,
+    currency: 'ARS', currencyName: 'Argentine Peso', usdRate: '~1,000 (blue)',
+    language: 'Spanish', timezone: 'GMT-3',
+    visaUS: 'Visa-free up to 90 days', advisory: 1,
+    setupCost: 5200, monthlyBurn: 3800, breakEvenQtr: 11400,
+    legalEntity: 'SAS · Sociedad Anónima Simplificada',
+    risks: 'Inflation · capital controls · Peronist policy volatility · Patagonia weather window',
+    chapterFile: 'AR-argentina.md',
+    newsQ: {
+      politics: 'Argentina government Milei politics',
+      economy: 'Argentina economy peso inflation Milei',
+      realestate: 'Argentina real estate Buenos Aires Mendoza property',
+      tourism: 'Argentina tourism premium travel Patagonia Mendoza',
+      safety: 'Argentina US State Department travel advisory'
+    },
+    links: {
+      stateDept: 'https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Argentina.html',
+      worldBank: 'https://data.worldbank.org/country/argentina',
+      numbeo: 'https://www.numbeo.com/cost-of-living/country_result.jsp?country=Argentina',
+      xe: 'https://www.xe.com/currencycharts/?from=USD&to=ARS',
+      bloomberg: 'https://www.bloomberg.com/quickfeed/argentina',
+      reuters: 'https://www.reuters.com/world/americas/argentina/',
+      ft: 'https://www.ft.com/world/argentina',
+      cia: 'https://www.cia.gov/the-world-factbook/countries/argentina/'
+    }
+  },
+  {
+    code: 'CR', name: 'Costa Rica', flag: '🇨🇷', tier: 1, status: 'soon',
+    hero: 'Nosara · Santa Teresa · Manuel Antonio',
+    capital: 'San José', population: 5200000, gdpPerCapita: 13400,
+    currency: 'CRC', currencyName: 'Costa Rican Colón', usdRate: '~520',
+    language: 'Spanish', timezone: 'GMT-6',
+    visaUS: 'Visa-free up to 180 days', advisory: 2,
+    setupCost: 9000, monthlyBurn: 6500, breakEvenQtr: 19500,
+    legalEntity: 'SRL · Sociedad de Responsabilidad Limitada',
+    risks: 'Saturated mid-tier yoga retreat market · high lodging costs · rainy season May-Nov · title-deed murkiness',
+    chapterFile: 'CR-costa-rica.md',
+    newsQ: {
+      politics: 'Costa Rica government Chaves politics',
+      economy: 'Costa Rica economy colon investment GDP',
+      realestate: 'Costa Rica real estate Guanacaste Nosara property',
+      tourism: 'Costa Rica tourism premium travel Pura Vida',
+      safety: 'Costa Rica US State Department travel advisory'
+    },
+    links: {
+      stateDept: 'https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/CostaRica.html',
+      worldBank: 'https://data.worldbank.org/country/costa-rica',
+      numbeo: 'https://www.numbeo.com/cost-of-living/country_result.jsp?country=Costa+Rica',
+      xe: 'https://www.xe.com/currencycharts/?from=USD&to=CRC',
+      bloomberg: 'https://www.bloomberg.com/quickfeed/costa-rica',
+      reuters: 'https://www.reuters.com/world/americas/',
+      ft: 'https://www.ft.com/search?q=costa+rica',
+      cia: 'https://www.cia.gov/the-world-factbook/countries/costa-rica/'
+    }
+  },
+  {
+    code: 'PE', name: 'Peru', flag: '🇵🇪', tier: 2, status: 'soon',
+    hero: 'Lima · Sacred Valley · Machu Picchu',
+    capital: 'Lima', population: 33000000, gdpPerCapita: 7000,
+    currency: 'PEN', currencyName: 'Peruvian Sol', usdRate: '~3.75',
+    language: 'Spanish', timezone: 'GMT-5',
+    visaUS: 'Visa-free up to 90 days', advisory: 2,
+    setupCost: 5500, monthlyBurn: 4500, breakEvenQtr: 13500,
+    legalEntity: 'SAC · Sociedad Anónima Cerrada',
+    risks: 'Altitude at Cusco · political demonstrations · Machu Picchu access caps · Lima restaurant booking lead times',
+    chapterFile: 'PE-peru.md',
+    newsQ: {
+      politics: 'Peru government Boluarte politics',
+      economy: 'Peru economy sol mining GDP',
+      realestate: 'Peru real estate Lima Barranco property',
+      tourism: 'Peru tourism Machu Picchu Cusco premium',
+      safety: 'Peru US State Department travel advisory'
+    },
+    links: {
+      stateDept: 'https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Peru.html',
+      worldBank: 'https://data.worldbank.org/country/peru',
+      numbeo: 'https://www.numbeo.com/cost-of-living/country_result.jsp?country=Peru',
+      xe: 'https://www.xe.com/currencycharts/?from=USD&to=PEN',
+      bloomberg: 'https://www.bloomberg.com/quickfeed/peru',
+      reuters: 'https://www.reuters.com/world/americas/peru/',
+      ft: 'https://www.ft.com/search?q=peru',
+      cia: 'https://www.cia.gov/the-world-factbook/countries/peru/'
+    }
+  },
+  {
+    code: 'CL', name: 'Chile', flag: '🇨🇱', tier: 2, status: 'soon',
+    hero: 'Atacama · Patagonia · Wine Country',
+    capital: 'Santiago', population: 19500000, gdpPerCapita: 17100,
+    currency: 'CLP', currencyName: 'Chilean Peso', usdRate: '~950',
+    language: 'Spanish', timezone: 'GMT-3 to -4',
+    visaUS: 'Visa-free up to 90 days', advisory: 1,
+    setupCost: 7000, monthlyBurn: 6500, breakEvenQtr: 19500,
+    legalEntity: 'SpA · Sociedad por Acciones',
+    risks: 'Most expensive Tier 2 · Patagonia season Nov-March only · 2019-style social unrest risk · Easter Island flight constraints',
+    chapterFile: 'CL-chile.md',
+    newsQ: {
+      politics: 'Chile government Boric politics',
+      economy: 'Chile economy peso copper GDP',
+      realestate: 'Chile real estate Santiago Vitacura property',
+      tourism: 'Chile tourism Atacama Patagonia premium',
+      safety: 'Chile US State Department travel advisory'
+    },
+    links: {
+      stateDept: 'https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Chile.html',
+      worldBank: 'https://data.worldbank.org/country/chile',
+      numbeo: 'https://www.numbeo.com/cost-of-living/country_result.jsp?country=Chile',
+      xe: 'https://www.xe.com/currencycharts/?from=USD&to=CLP',
+      bloomberg: 'https://www.bloomberg.com/quickfeed/chile',
+      reuters: 'https://www.reuters.com/world/americas/chile/',
+      ft: 'https://www.ft.com/search?q=chile',
+      cia: 'https://www.cia.gov/the-world-factbook/countries/chile/'
+    }
+  },
+  {
+    code: 'UY', name: 'Uruguay', flag: '🇺🇾', tier: 2, status: 'soon',
+    hero: 'José Ignacio · Punta del Este',
+    capital: 'Montevideo', population: 3500000, gdpPerCapita: 21300,
+    currency: 'UYU', currencyName: 'Uruguayan Peso', usdRate: '~40',
+    language: 'Spanish', timezone: 'GMT-3',
+    visaUS: 'Visa-free up to 90 days', advisory: 1,
+    setupCost: 4000, monthlyBurn: 1500, breakEvenQtr: 11000,
+    legalEntity: 'SA / SRL',
+    risks: 'Seasonal only (Dec-Mar) · small market ceiling · beach-house bubble at José Ignacio',
+    chapterFile: 'UY-uruguay.md',
+    newsQ: {
+      politics: 'Uruguay government Orsi politics',
+      economy: 'Uruguay economy peso GDP investment',
+      realestate: 'Uruguay real estate José Ignacio Punta del Este property',
+      tourism: 'Uruguay tourism José Ignacio premium travel',
+      safety: 'Uruguay US State Department travel advisory'
+    },
+    links: {
+      stateDept: 'https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Uruguay.html',
+      worldBank: 'https://data.worldbank.org/country/uruguay',
+      numbeo: 'https://www.numbeo.com/cost-of-living/country_result.jsp?country=Uruguay',
+      xe: 'https://www.xe.com/currencycharts/?from=USD&to=UYU',
+      bloomberg: 'https://www.bloomberg.com/quickfeed/uruguay',
+      reuters: 'https://www.reuters.com/world/americas/',
+      ft: 'https://www.ft.com/search?q=uruguay',
+      cia: 'https://www.cia.gov/the-world-factbook/countries/uruguay/'
+    }
+  },
+  {
+    code: 'PA', name: 'Panama', flag: '🇵🇦', tier: 2, status: 'live',
+    hero: 'Chiriquí · Bocas del Toro',
+    capital: 'Panama City', population: 4400000, gdpPerCapita: 17300,
+    currency: 'USD + PAB', currencyName: 'US Dollar (dollarized) + Balboa', usdRate: '1:1',
+    language: 'Spanish', timezone: 'GMT-5',
+    visaUS: 'Visa-free up to 180 days', advisory: 1,
+    setupCost: 0, monthlyBurn: 2500, breakEvenQtr: 7500,
+    legalEntity: 'Already incorporated (origin chapter)',
+    risks: 'Climate · Bocas overdevelopment · origin-mindset trap',
+    chapterFile: 'PA-panama.md',
+    newsQ: {
+      politics: 'Panama government Mulino politics canal',
+      economy: 'Panama economy canal copper GDP',
+      realestate: 'Panama real estate Boquete Bocas property',
+      tourism: 'Panama tourism Bocas del Toro Boquete travel',
+      safety: 'Panama US State Department travel advisory Darién'
+    },
+    links: {
+      stateDept: 'https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Panama.html',
+      worldBank: 'https://data.worldbank.org/country/panama',
+      numbeo: 'https://www.numbeo.com/cost-of-living/country_result.jsp?country=Panama',
+      xe: 'https://www.xe.com/currencycharts/?from=USD&to=PAB',
+      bloomberg: 'https://www.bloomberg.com/quickfeed/panama',
+      reuters: 'https://www.reuters.com/world/americas/panama/',
+      ft: 'https://www.ft.com/search?q=panama',
+      cia: 'https://www.cia.gov/the-world-factbook/countries/panama/'
+    }
+  },
+  {
+    code: 'VE', name: 'Venezuela', flag: '🇻🇪', tier: 2, status: 'launching',
+    hero: 'Caracas · Los Roques · Mérida',
+    capital: 'Caracas', population: 28000000, gdpPerCapita: 3500,
+    currency: 'USD (de facto) + VES', currencyName: 'US Dollar + Bolívar', usdRate: '~530',
+    language: 'Spanish', timezone: 'GMT-4',
+    visaUS: 'eVisa required (since April 2026)', advisory: 3,
+    setupCost: 10000, monthlyBurn: 3000, breakEvenQtr: 9000,
+    legalEntity: 'C.A. · Compañía Anónima',
+    risks: 'OFAC strict liability for US persons · Rodríguez interim govt past 90-day cap · Maiquetía-Caracas road · currency volatility',
+    chapterFile: 'VE-venezuela.md',
+    newsQ: {
+      politics: 'Venezuela government Rodriguez Maduro politics',
+      economy: 'Venezuela economy bolivar dollar dollarization',
+      realestate: 'Venezuela real estate Caracas Altamira property',
+      tourism: 'Venezuela tourism American Airlines Caracas',
+      safety: 'Venezuela US State Department travel advisory'
+    },
+    links: {
+      stateDept: 'https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Venezuela.html',
+      worldBank: 'https://data.worldbank.org/country/venezuela-rb',
+      numbeo: 'https://www.numbeo.com/cost-of-living/country_result.jsp?country=Venezuela',
+      xe: 'https://www.xe.com/currencycharts/?from=USD&to=VES',
+      bloomberg: 'https://www.bloomberg.com/quickfeed/venezuela',
+      reuters: 'https://www.reuters.com/world/americas/venezuela/',
+      ft: 'https://www.ft.com/world/venezuela',
+      cia: 'https://www.cia.gov/the-world-factbook/countries/venezuela/'
+    }
+  },
+  {
+    code: 'DO', name: 'Dominican Republic', flag: '🇩🇴', tier: 3, status: 'soon',
+    hero: 'Las Terrenas · Santo Domingo · Cap Cana',
+    capital: 'Santo Domingo', population: 11000000, gdpPerCapita: 11000,
+    currency: 'DOP', currencyName: 'Dominican Peso', usdRate: '~60',
+    language: 'Spanish', timezone: 'GMT-4',
+    visaUS: 'Tourist card on arrival', advisory: 2,
+    setupCost: 5000, monthlyBurn: 4500, breakEvenQtr: 13500,
+    legalEntity: 'SRL',
+    risks: 'Cap Cana gated bubble · hurricane season Jun-Nov · Punta Cana brand spillover · Las Terrenas Airbnb saturation',
+    chapterFile: 'DO-dominican-republic.md',
+    newsQ: {
+      politics: 'Dominican Republic government Abinader politics',
+      economy: 'Dominican Republic economy peso tourism GDP',
+      realestate: 'Dominican Republic real estate Las Terrenas Cap Cana property',
+      tourism: 'Dominican Republic tourism premium travel Samaná',
+      safety: 'Dominican Republic US State Department travel advisory'
+    },
+    links: {
+      stateDept: 'https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/DominicanRepublic.html',
+      worldBank: 'https://data.worldbank.org/country/dominican-republic',
+      numbeo: 'https://www.numbeo.com/cost-of-living/country_result.jsp?country=Dominican+Republic',
+      xe: 'https://www.xe.com/currencycharts/?from=USD&to=DOP',
+      bloomberg: 'https://www.bloomberg.com/quickfeed/dominican-republic',
+      reuters: 'https://www.reuters.com/world/americas/',
+      ft: 'https://www.ft.com/search?q=dominican+republic',
+      cia: 'https://www.cia.gov/the-world-factbook/countries/dominican-republic/'
+    }
+  },
+  {
+    code: 'GT', name: 'Guatemala', flag: '🇬🇹', tier: 3, status: 'soon',
+    hero: 'Antigua · Lake Atitlán · Tikal',
+    capital: 'Guatemala City', population: 17600000, gdpPerCapita: 5600,
+    currency: 'GTQ', currencyName: 'Guatemalan Quetzal', usdRate: '~7.7',
+    language: 'Spanish + Mayan', timezone: 'GMT-6',
+    visaUS: 'Visa-free up to 90 days', advisory: 2,
+    setupCost: 3500, monthlyBurn: 2500, breakEvenQtr: 7500,
+    legalEntity: 'Sociedad Anónima',
+    risks: 'Security perceptions outside tourist corridor · volcanic activity (Fuego) · small market ceiling',
+    chapterFile: 'GT-guatemala.md',
+    newsQ: {
+      politics: 'Guatemala government Arévalo politics',
+      economy: 'Guatemala economy quetzal GDP remittances',
+      realestate: 'Guatemala real estate Antigua property',
+      tourism: 'Guatemala tourism Antigua Atitlán premium',
+      safety: 'Guatemala US State Department travel advisory'
+    },
+    links: {
+      stateDept: 'https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Guatemala.html',
+      worldBank: 'https://data.worldbank.org/country/guatemala',
+      numbeo: 'https://www.numbeo.com/cost-of-living/country_result.jsp?country=Guatemala',
+      xe: 'https://www.xe.com/currencycharts/?from=USD&to=GTQ',
+      bloomberg: 'https://www.bloomberg.com/quickfeed/guatemala',
+      reuters: 'https://www.reuters.com/world/americas/',
+      ft: 'https://www.ft.com/search?q=guatemala',
+      cia: 'https://www.cia.gov/the-world-factbook/countries/guatemala/'
+    }
+  },
+  {
+    code: 'EC', name: 'Ecuador', flag: '🇪🇨', tier: 3, status: 'soon',
+    hero: 'Galápagos · Quito · Mindo',
+    capital: 'Quito', population: 18000000, gdpPerCapita: 6300,
+    currency: 'USD', currencyName: 'US Dollar (dollarized)', usdRate: '1:1',
+    language: 'Spanish + Quechua', timezone: 'GMT-5',
+    visaUS: 'Visa-free up to 90 days', advisory: 3,
+    setupCost: 4000, monthlyBurn: 3500, breakEvenQtr: 10500,
+    legalEntity: 'Sociedad Anónima',
+    risks: 'Galápagos park access strict · yacht weather risk · Guayaquil + mainland coast security · political demos in Quito',
+    chapterFile: 'EC-ecuador.md',
+    newsQ: {
+      politics: 'Ecuador government Noboa politics violence',
+      economy: 'Ecuador economy dollar GDP oil',
+      realestate: 'Ecuador real estate Quito Cuenca property',
+      tourism: 'Ecuador tourism Galápagos Quito premium',
+      safety: 'Ecuador US State Department travel advisory violence'
+    },
+    links: {
+      stateDept: 'https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Ecuador.html',
+      worldBank: 'https://data.worldbank.org/country/ecuador',
+      numbeo: 'https://www.numbeo.com/cost-of-living/country_result.jsp?country=Ecuador',
+      xe: 'https://www.xe.com/currencycharts/?from=USD&to=USD',
+      bloomberg: 'https://www.bloomberg.com/quickfeed/ecuador',
+      reuters: 'https://www.reuters.com/world/americas/ecuador/',
+      ft: 'https://www.ft.com/search?q=ecuador',
+      cia: 'https://www.cia.gov/the-world-factbook/countries/ecuador/'
+    }
+  },
+  {
+    code: 'PR', name: 'Puerto Rico', flag: '🇵🇷', tier: 3, status: 'soon',
+    hero: 'Old San Juan · Vieques · Dorado',
+    capital: 'San Juan', population: 3200000, gdpPerCapita: 35000,
+    currency: 'USD', currencyName: 'US Dollar', usdRate: '1:1',
+    language: 'Spanish + English', timezone: 'GMT-4',
+    visaUS: 'US territory — no passport needed for Americans', advisory: 1,
+    setupCost: 2500, monthlyBurn: 4000, breakEvenQtr: 12000,
+    legalEntity: 'Puerto Rico LLC',
+    risks: 'Hurricane season Jun-Nov (esp Aug-Oct) · Act 60 political tension · local vs expat resentment',
+    chapterFile: 'PR-puerto-rico.md',
+    newsQ: {
+      politics: 'Puerto Rico government González politics statehood',
+      economy: 'Puerto Rico economy Act 60 tax GDP',
+      realestate: 'Puerto Rico real estate Dorado Condado property',
+      tourism: 'Puerto Rico tourism Old San Juan Vieques premium',
+      safety: 'Puerto Rico US State Department travel advisory hurricane'
+    },
+    links: {
+      stateDept: 'https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages.html',
+      worldBank: 'https://data.worldbank.org/country/puerto-rico',
+      numbeo: 'https://www.numbeo.com/cost-of-living/country_result.jsp?country=Puerto+Rico',
+      xe: 'https://www.xe.com/currencycharts/?from=USD&to=USD',
+      bloomberg: 'https://www.bloomberg.com/quickfeed/puerto-rico',
+      reuters: 'https://www.reuters.com/world/americas/',
+      ft: 'https://www.ft.com/search?q=puerto+rico',
+      cia: 'https://www.cia.gov/the-world-factbook/countries/puerto-rico/'
+    }
+  },
+  {
+    code: 'CU', name: 'Cuba', flag: '🇨🇺', tier: 3, status: 'gated',
+    hero: 'Havana · Viñales · Trinidad',
+    capital: 'Havana', population: 11000000, gdpPerCapita: 9500,
+    currency: 'CUP', currencyName: 'Cuban Peso', usdRate: '~120 (informal)',
+    language: 'Spanish', timezone: 'GMT-5',
+    visaUS: '12 authorized travel categories only (OFAC)', advisory: 2,
+    setupCost: 15000, monthlyBurn: 4500, breakEvenQtr: 13500,
+    legalEntity: 'Spain SL holding + Cuba representation',
+    risks: 'US-Cuba sanctions (OFAC strict liability) · GAESA government overhead · internet + payment friction · political volatility',
+    chapterFile: 'CU-cuba.md',
+    newsQ: {
+      politics: 'Cuba government Díaz-Canel politics sanctions',
+      economy: 'Cuba economy peso dollar tourism',
+      realestate: 'Cuba real estate Havana foreign ownership',
+      tourism: 'Cuba tourism Havana Viñales travel',
+      safety: 'Cuba US State Department travel advisory OFAC'
+    },
+    links: {
+      stateDept: 'https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Cuba.html',
+      worldBank: 'https://data.worldbank.org/country/cuba',
+      numbeo: 'https://www.numbeo.com/cost-of-living/country_result.jsp?country=Cuba',
+      xe: 'https://www.xe.com/currencycharts/?from=USD&to=CUP',
+      bloomberg: 'https://www.bloomberg.com/quickfeed/cuba',
+      reuters: 'https://www.reuters.com/world/americas/cuba/',
+      ft: 'https://www.ft.com/search?q=cuba',
+      cia: 'https://www.cia.gov/the-world-factbook/countries/cuba/'
+    }
+  }
+];
+
+// ============================================================
+//  STATE
+// ============================================================
+let currentFilter = 'all';
+let currentSort = 'tier';
+let sortDirection = 'asc';
+let expandedRow = null;
+const newsCache = {}; // { CODE: { category: { items, fetchedAt } } }
+const CACHE_TTL = 30 * 60 * 1000; // 30 minutes
+const PROXY = 'https://api.allorigins.win/raw?url=';
+let liveRatesFetchedAt = null;
+
+// ============================================================
+//  LIVE CURRENCY RATES (free, no auth, jsDelivr-hosted)
+// ============================================================
+// Map country code → currency code for the rate lookup (lower-case for the API).
+// Dollarized countries (PA, EC, PR) stay 1:1 and don't need lookup.
+const RATE_LOOKUP = {
+  MX: 'mxn', CO: 'cop', BR: 'brl', AR: 'ars', CR: 'crc',
+  PE: 'pen', CL: 'clp', UY: 'uyu', VE: 'ves',
+  DO: 'dop', GT: 'gtq'
+  // PA, EC, PR are USD; AR uses informal "blue dollar" rate which the API doesn't return — falls back to static.
+  // CU's CUP rate from the API isn't the informal market rate either; falls back to static.
+};
+async function fetchLiveRates() {
+  try {
+    // Primary source
+    const r = await fetch('https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/usd.json');
+    if (!r.ok) throw new Error('rate api ' + r.status);
+    const json = await r.json();
+    const rates = json.usd || {};
+    let updated = 0;
+    for (const c of COUNTRIES) {
+      const code = RATE_LOOKUP[c.code];
+      if (!code) continue;
+      const live = rates[code];
+      if (typeof live === 'number' && isFinite(live) && live > 0) {
+        // Format reasonably: small numbers 2 decimals, large numbers no decimals
+        c.usdRate = live < 100
+          ? '~' + live.toFixed(2)
+          : '~' + Math.round(live).toLocaleString();
+        c.liveRate = true;
+        updated++;
+      }
+    }
+    liveRatesFetchedAt = Date.now();
+    if (updated > 0) renderTable();
+    // Show a marker in header
+    const stamp = document.getElementById('last-updated');
+    if (stamp && !stamp.dataset.hasRates) {
+      stamp.dataset.hasRates = '1';
+      stamp.textContent = new Date().toLocaleTimeString() + ' (live rates ✓)';
+    }
+  } catch (e) {
+    console.warn('Could not fetch live rates:', e.message);
+  }
+}
+
+// ============================================================
+//  FILTER + SORT
+// ============================================================
+function setFilter(f, btn) {
+  currentFilter = f;
+  document.querySelectorAll('.controls .chip').forEach(c => c.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  renderTable();
+}
+function setSort(field) {
+  currentSort = field;
+  renderTable();
+}
+function filtered() {
+  let list = [...COUNTRIES];
+  if (currentFilter === 'live') list = list.filter(c => c.status === 'live' || c.status === 'launching');
+  if (currentFilter === 'soon') list = list.filter(c => c.status === 'soon' || c.status === 'gated');
+  if (currentFilter === 'tier1') list = list.filter(c => c.tier === 1);
+  if (currentFilter === 'tier2') list = list.filter(c => c.tier === 2);
+  if (currentFilter === 'tier3') list = list.filter(c => c.tier === 3);
+
+  if (currentSort === 'name') list.sort((a,b) => a.name.localeCompare(b.name));
+  else if (currentSort === 'setupCost') list.sort((a,b) => a.setupCost - b.setupCost);
+  else if (currentSort === 'monthlyBurn') list.sort((a,b) => a.monthlyBurn - b.monthlyBurn);
+  else if (currentSort === 'gdpPerCapita') list.sort((a,b) => b.gdpPerCapita - a.gdpPerCapita);
+  else if (currentSort === 'population') list.sort((a,b) => b.population - a.population);
+  else if (currentSort === 'advisory') list.sort((a,b) => a.advisory - b.advisory);
+  else if (currentSort === 'tier') list.sort((a,b) => {
+    // Sort by tier asc, then by status (live > launching > soon > gated), then by name
+    const statusOrder = { 'live': 0, 'launching': 1, 'soon': 2, 'gated': 3 };
+    return a.tier - b.tier || statusOrder[a.status] - statusOrder[b.status] || a.name.localeCompare(b.name);
+  });
+  return list;
+}
+
+// ============================================================
+//  RENDER TABLE
+// ============================================================
+function renderTable() {
+  const tbody = document.getElementById('atlas-body');
+  const list = filtered();
+  tbody.innerHTML = list.map(c => row(c)).join('');
+}
+function row(c) {
+  const statusLabel = { live: 'Live', launching: 'Launching', soon: 'Soon', gated: 'Gated' }[c.status];
+  const advisoryLabel = `Level ${c.advisory}`;
+  return `
+    <tr onclick="toggleDetail('${c.code}')" class="${expandedRow === c.code ? 'expanded' : ''}" id="row-${c.code}">
+      <td class="country-cell">
+        <span class="flag">${c.flag}</span>
+        <div>
+          <div class="name">${c.name}</div>
+          <div class="hero">${c.hero}</div>
+        </div>
+      </td>
+      <td><span class="pill tier${c.tier}">Tier ${c.tier}</span></td>
+      <td><span class="pill ${c.status}">${statusLabel}</span></td>
+      <td class="numeric">$${(c.setupCost/1000).toFixed(1)}k</td>
+      <td class="numeric">$${(c.monthlyBurn/1000).toFixed(1)}k<div class="sub">/ mo</div></td>
+      <td class="numeric">$${(c.breakEvenQtr/1000).toFixed(0)}k<div class="sub">/ qtr</div></td>
+      <td class="numeric">${c.currency}<div class="sub">${c.usdRate} per USD${c.liveRate ? ' <span style="color:var(--gold)" title="Live rate">●</span>' : ''}</div></td>
+      <td><span class="pill level-${c.advisory}">${advisoryLabel}</span></td>
+      <td class="numeric">$${c.gdpPerCapita.toLocaleString()}<div class="sub">USD / pers</div></td>
+    </tr>
+    ${expandedRow === c.code ? `<tr class="detail-row"><td colspan="9">${detailPanel(c)}</td></tr>` : ''}
+  `;
+}
+
+// ============================================================
+//  DETAIL PANEL
+// ============================================================
+function detailPanel(c) {
+  return `
+    <div class="detail-panel">
+      <div class="detail-header">
+        <div class="flag">${c.flag}</div>
+        <h2>${c.name}<span class="sub">${c.hero}</span></h2>
+        <div class="tier-stat">
+          <div>TIER <strong>${c.tier}</strong> · STATUS <strong>${c.status.toUpperCase()}</strong></div>
+          <div style="margin-top: 4px">CHAPTER FILE <strong>${c.chapterFile}</strong></div>
+        </div>
+      </div>
+
+      <div class="detail-grid">
+
+        <!-- STATS -->
+        <div class="detail-card">
+          <h3>Country snapshot</h3>
+          <div class="detail-stats">
+            <div class="stat"><div class="key">Capital</div><div class="val">${c.capital}</div></div>
+            <div class="stat"><div class="key">Population</div><div class="val numeric">${(c.population/1000000).toFixed(1)}M</div></div>
+            <div class="stat"><div class="key">GDP / capita</div><div class="val numeric">$${c.gdpPerCapita.toLocaleString()}</div></div>
+            <div class="stat"><div class="key">Currency</div><div class="val">${c.currency}<br><span style="font-size:11px; color:var(--fg-3); font-family:var(--sans); font-weight:400">${c.currencyName}</span></div></div>
+            <div class="stat"><div class="key">USD rate</div><div class="val numeric">${c.usdRate}</div></div>
+            <div class="stat"><div class="key">Timezone</div><div class="val">${c.timezone}</div></div>
+            <div class="stat"><div class="key">Language</div><div class="val" style="font-size:14px">${c.language}</div></div>
+            <div class="stat"><div class="key">Visa · US citizen</div><div class="val" style="font-size:12px; line-height:1.4">${c.visaUS}</div></div>
+            <div class="stat" style="grid-column: 1/-1"><div class="key">Legal entity</div><div class="val" style="font-size:13px; font-family: var(--sans); color: var(--gold)">${c.legalEntity}</div></div>
+            <div class="stat" style="grid-column: 1/-1"><div class="key">Sora ops · setup / burn / BE</div><div class="val numeric">$${(c.setupCost/1000).toFixed(1)}k · $${(c.monthlyBurn/1000).toFixed(1)}k/mo · $${(c.breakEvenQtr/1000).toFixed(0)}k/qtr</div></div>
+            <div class="stat" style="grid-column: 1/-1"><div class="key">Key risks</div><div class="val" style="font-size:12px; color:var(--fg-2); line-height:1.5; font-family:var(--sans); font-weight:400">${c.risks}</div></div>
+          </div>
+          <a href="${c.chapterFile}" target="_blank" class="chapter-link">↗ Open chapter file · ${c.chapterFile}</a>
+        </div>
+
+        <!-- NEWS -->
+        <div class="detail-card">
+          <h3>Live news <button class="refresh" onclick="event.stopPropagation(); refreshCountryNews('${c.code}')">↻ refresh</button></h3>
+          ${newsCategoryBlock(c, 'politics',   'Politics')}
+          ${newsCategoryBlock(c, 'economy',    'Economy')}
+          ${newsCategoryBlock(c, 'realestate', 'Real Estate')}
+          ${newsCategoryBlock(c, 'tourism',    'Tourism')}
+          ${newsCategoryBlock(c, 'safety',     'Travel Safety')}
+        </div>
+
+        <!-- DEEP LINKS -->
+        <div class="detail-card">
+          <h3>Deep links · authoritative sources</h3>
+          <div class="deep-links">
+            <a href="${c.links.stateDept}" target="_blank" rel="noopener"><span class="icon">⚐</span> US State Dept advisory <span class="arrow">→</span></a>
+            <a href="${c.links.worldBank}" target="_blank" rel="noopener"><span class="icon">◍</span> World Bank country data <span class="arrow">→</span></a>
+            <a href="${c.links.numbeo}" target="_blank" rel="noopener"><span class="icon">$</span> Numbeo · cost of living <span class="arrow">→</span></a>
+            <a href="${c.links.xe}" target="_blank" rel="noopener"><span class="icon">¤</span> XE · live currency chart <span class="arrow">→</span></a>
+            <a href="${c.links.bloomberg}" target="_blank" rel="noopener"><span class="icon">▣</span> Bloomberg country <span class="arrow">→</span></a>
+            <a href="${c.links.reuters}" target="_blank" rel="noopener"><span class="icon">▥</span> Reuters Americas <span class="arrow">→</span></a>
+            <a href="${c.links.ft}" target="_blank" rel="noopener"><span class="icon">●</span> Financial Times <span class="arrow">→</span></a>
+            <a href="${c.links.cia}" target="_blank" rel="noopener"><span class="icon">⚭</span> CIA World Factbook <span class="arrow">→</span></a>
+          </div>
+          <div style="margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--line); font-family: var(--mono); font-size: 9.5px; color: var(--fg-3); letter-spacing: 1px; line-height: 1.6;">
+            ALL LINKS OPEN IN NEW TAB · BOOKMARK THESE · DATA AT SOURCE REFRESHES INDEPENDENTLY OF THIS DASHBOARD
+          </div>
+        </div>
+
+      </div>
+    </div>
+  `;
+}
+function newsCategoryBlock(c, key, label) {
+  const cached = newsCache[c.code]?.[key];
+  const status = cached?.status || 'pending';
+  const items = cached?.items || [];
+  const gnUrl = `https://news.google.com/search?q=${encodeURIComponent(c.newsQ[key])}`;
+  let body = '';
+  if (status === 'loading') {
+    body = `<div class="news-loading">Fetching live headlines…</div>`;
+  } else if (status === 'error') {
+    body = `<div class="news-error">⚠ Could not fetch via proxy. Click "↗ All on Google News" below to read live.</div>`;
+  } else if (status === 'ok' && items.length === 0) {
+    body = `<div class="news-loading">No headlines returned. Try refresh.</div>`;
+  } else if (status === 'ok') {
+    body = items.slice(0, 4).map(it => `
+      <div class="news-item">
+        <a href="${esc(it.link)}" target="_blank" rel="noopener">${esc(it.title)}</a>
+        <div class="meta">${esc(it.source)} · ${esc(it.when)}</div>
+      </div>
+    `).join('');
+  } else {
+    body = `<div class="news-loading">Tap "↻ refresh" above to load.</div>`;
+  }
+  return `
+    <div class="news-cat">
+      <div class="cat-label">
+        <span>${label}</span>
+        <a href="${gnUrl}" target="_blank" rel="noopener">↗ All on Google News</a>
+      </div>
+      ${body}
+    </div>
+  `;
+}
+function esc(s) { return String(s || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+// ============================================================
+//  TOGGLE DETAIL
+// ============================================================
+function toggleDetail(code) {
+  if (expandedRow === code) {
+    expandedRow = null;
+    renderTable();
+    return;
+  }
+  expandedRow = code;
+  renderTable();
+  // Fetch news for this country if not cached
+  setTimeout(() => fetchCountryNews(code, false), 50);
+}
+
+// ============================================================
+//  NEWS FETCHING via Google News RSS + CORS proxy
+// ============================================================
+async function fetchCountryNews(code, force) {
+  const c = COUNTRIES.find(x => x.code === code);
+  if (!c) return;
+  if (!newsCache[code]) newsCache[code] = {};
+  const categories = Object.keys(c.newsQ);
+
+  for (const cat of categories) {
+    const cached = newsCache[code][cat];
+    if (!force && cached && (Date.now() - cached.fetchedAt) < CACHE_TTL && cached.status === 'ok') continue;
+    newsCache[code][cat] = { status: 'loading' };
+    if (expandedRow === code) renderTable();
+
+    const query = c.newsQ[cat];
+    const rssUrl = `https://news.google.com/rss/search?q=${encodeURIComponent(query)}&hl=en-US&gl=US&ceid=US:en`;
+    try {
+      const r = await fetch(PROXY + encodeURIComponent(rssUrl));
+      if (!r.ok) throw new Error('proxy ' + r.status);
+      const xml = await r.text();
+      const items = parseRSS(xml);
+      newsCache[code][cat] = { status: 'ok', items, fetchedAt: Date.now() };
+    } catch (e) {
+      newsCache[code][cat] = { status: 'error', items: [], fetchedAt: Date.now(), error: e.message };
+    }
+    if (expandedRow === code) renderTable();
+  }
+  updateLastFetched();
+}
+
+function parseRSS(xml) {
+  const doc = new DOMParser().parseFromString(xml, 'text/xml');
+  return [...doc.querySelectorAll('item')].map(item => ({
+    title: text(item, 'title'),
+    link: text(item, 'link'),
+    pubDate: text(item, 'pubDate'),
+    source: text(item, 'source') || 'Google News',
+    when: relativeTime(text(item, 'pubDate'))
+  }));
+}
+function text(parent, tag) {
+  const el = parent.querySelector(tag);
+  return el ? el.textContent.trim() : '';
+}
+function relativeTime(dateStr) {
+  if (!dateStr) return '—';
+  const d = new Date(dateStr);
+  if (isNaN(d)) return '—';
+  const diff = (Date.now() - d.getTime()) / 1000;
+  if (diff < 3600)    return Math.round(diff / 60) + 'm ago';
+  if (diff < 86400)   return Math.round(diff / 3600) + 'h ago';
+  if (diff < 604800)  return Math.round(diff / 86400) + 'd ago';
+  return d.toLocaleDateString();
+}
+
+function refreshCountryNews(code) {
+  fetchCountryNews(code, true);
+}
+async function refreshAllNews() {
+  const btn = document.getElementById('refresh-all');
+  btn.textContent = '⟳ FETCHING…';
+  btn.disabled = true;
+  if (expandedRow) {
+    await fetchCountryNews(expandedRow, true);
+  } else {
+    // Fetch the live/launching countries (4) eagerly
+    const live = COUNTRIES.filter(c => c.status === 'live' || c.status === 'launching');
+    for (const c of live) await fetchCountryNews(c.code, true);
+  }
+  btn.textContent = '↻ REFRESH NEWS';
+  btn.disabled = false;
+}
+function updateLastFetched() {
+  document.getElementById('last-updated').textContent = new Date().toLocaleTimeString();
+}
+
+// ============================================================
+//  AUTO-REFRESH every 30 minutes
+// ============================================================
+setInterval(() => {
+  if (expandedRow) fetchCountryNews(expandedRow, true);
+}, CACHE_TTL);
+
+// ============================================================
+//  INIT
+// ============================================================
+renderTable();
+// Live currency rates immediately
+fetchLiveRates();
+// Re-fetch rates every 4 hours
+setInterval(fetchLiveRates, 4 * 60 * 60 * 1000);
+// Eagerly pre-cache news for the 4 launched/launching countries so the first expand is instant
+setTimeout(async () => {
+  const live = COUNTRIES.filter(c => c.status === 'live' || c.status === 'launching');
+  for (const c of live) {
+    await fetchCountryNews(c.code, false);
+  }
+  updateLastFetched();
+}, 800);
+</script>
+
+</body>
+</html>

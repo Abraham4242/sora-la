@@ -1,0 +1,1452 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SORA Travel Agency — La Compañía · Latinoamérica</title>
+<meta name="description" content="SORA Travel Agency · fines de semana curados, experiencias y bienes raíces en 15 países de Latinoamérica. Solo por invitación.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23f7f0df'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Georgia,serif' font-size='20' font-weight='400' fill='%23e07a5f'%3ES%3C/text%3E%3C/svg%3E">
+<meta property="og:title" content="SORA Travel Agency · La Compañía">
+<meta property="og:description" content="Fines de semana curados, experiencias y bienes raíces · Chiriquí, Bocas del Toro y 13 chapters más por Latinoamérica.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="../og-image.svg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SORA Travel Agency · La Compañía">
+<meta name="twitter:description" content="Fines de semana memorables · sólo por invitación.">
+<meta name="twitter:image" content="../og-image.svg">
+<meta name="theme-color" content="#1d3a2c">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #f7f0df;
+    --cream-2: #fcf6e6;
+    --cream-3: #ede4ca;
+    --ink: #1c140c;
+    --ink-2: rgba(28,20,12,0.72);
+    --ink-3: rgba(28,20,12,0.5);
+    --line: rgba(28,20,12,0.10);
+    --line-2: rgba(28,20,12,0.20);
+    --green: #1d3a2c;
+    --green-2: #2a5440;
+    --green-deep: #0f2218;
+    --coral: #e07a5f;
+    --coral-deep: #b85439;
+    --mango: #f4b942;
+    --teal: #2e8a96;
+    --bronze: #a07b3e;
+    --gold: #d4b87a;
+    --wa: #25d366;
+    --wa-deep: #128c7e;
+    --rose: #c64a5e;
+    --serif: "Fraunces", Georgia, serif;
+    --sans: "Inter", -apple-system, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--cream); color: var(--ink);
+    font-family: var(--sans); font-size: 16px; line-height: 1.55;
+    -webkit-font-smoothing: antialiased; overflow-x: hidden;
+  }
+  ::selection { background: var(--ink); color: var(--cream); }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 28px; }
+
+  /* ============ NAV ============ */
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(247,240,223,0.92);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    max-width: 1080px; margin: 0 auto;
+    padding: 16px 28px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px;
+  }
+  .nav-brand {
+    font-family: var(--serif);
+    font-size: 20px; font-weight: 500;
+    letter-spacing: 0.22em; color: var(--ink);
+    display: inline-flex; align-items: baseline; gap: 8px;
+    line-height: 1;
+  }
+  .nav-brand .sub {
+    font-family: var(--sans);
+    font-size: 9.5px; font-weight: 700;
+    letter-spacing: 0.22em;
+    color: var(--bronze);
+    text-transform: uppercase;
+    border-left: 1px solid var(--line-2);
+    padding-left: 8px;
+    line-height: 1;
+  }
+  @media (max-width: 540px) { .nav-brand .sub { display: none; } }
+  .nav-links {
+    display: flex; gap: 26px;
+    font-size: 13px; font-weight: 500;
+    color: var(--ink-2);
+  }
+  .nav-links a:hover { color: var(--coral-deep); }
+  .nav-right { display: flex; align-items: center; gap: 12px; }
+  .lang-toggle {
+    display: flex; gap: 0;
+    background: rgba(28,20,12,0.04);
+    border: 1px solid var(--line);
+    border-radius: 100px;
+    padding: 3px;
+  }
+  .lang-btn {
+    background: none; border: none;
+    padding: 6px 12px;
+    border-radius: 100px;
+    font-family: var(--sans);
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--ink-3);
+    cursor: pointer;
+    transition: all .15s;
+  }
+  .lang-btn.active { background: var(--ink); color: var(--cream); }
+
+  /* ============ COUNTRY SWITCHER ============ */
+  .country-pick {
+    position: relative;
+  }
+  .country-trigger {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--cream-2);
+    border: 1px solid var(--line);
+    border-radius: 100px;
+    padding: 8px 12px 8px 10px;
+    font-family: var(--sans);
+    font-size: 12.5px; font-weight: 600;
+    color: var(--ink); cursor: pointer;
+    letter-spacing: 0.02em;
+    transition: all .15s;
+  }
+  .country-trigger:hover { background: var(--cream); border-color: var(--line-2); }
+  .country-trigger .flag { font-size: 16px; line-height: 1; }
+  .country-trigger .chev { font-size: 10px; opacity: 0.6; margin-left: 2px; }
+  .country-menu {
+    position: absolute;
+    top: calc(100% + 8px); right: 0;
+    background: var(--cream);
+    border: 1px solid var(--line-2);
+    border-radius: 14px;
+    padding: 8px;
+    min-width: 280px;
+    box-shadow: 0 18px 40px -20px rgba(31,27,23,0.3), 0 1px 2px rgba(31,27,23,0.04);
+    display: none;
+    z-index: 60;
+    max-height: 70vh;
+    overflow-y: auto;
+  }
+  .country-menu.open { display: block; }
+  .country-section {
+    padding: 8px 10px 4px;
+    font-family: var(--sans);
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .country-item {
+    display: flex; align-items: center; gap: 12px;
+    width: 100%;
+    background: none; border: none;
+    padding: 10px 12px;
+    border-radius: 10px;
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--ink);
+    cursor: pointer;
+    text-align: left;
+    transition: background .12s;
+  }
+  .country-item:hover { background: var(--cream-2); }
+  .country-item.active { background: var(--cream-2); color: var(--coral-deep); font-weight: 600; }
+  .country-item .flag { font-size: 18px; line-height: 1; flex-shrink: 0; width: 22px; text-align: center; }
+  .country-item .body { flex: 1; min-width: 0; }
+  .country-item .body .name { font-size: 13.5px; font-weight: 600; }
+  .country-item .body .sub { font-size: 11.5px; color: var(--ink-3); font-weight: 500; line-height: 1.3; margin-top: 1px; }
+  .country-item .pill {
+    font-size: 9.5px; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 3px 8px; border-radius: 100px;
+    flex-shrink: 0;
+  }
+  .country-item .pill.live      { background: rgba(46,138,150,0.16);  color: var(--teal); }
+  .country-item .pill.launching { background: rgba(244,185,66,0.18);  color: var(--mango-deep, #b88a16); }
+  .country-item .pill.soon      { background: rgba(28,20,12,0.08);    color: var(--ink-3); }
+  .country-item.disabled { opacity: 0.55; cursor: not-allowed; }
+  .country-item.disabled:hover { background: none; }
+  .nav-cta {
+    background: var(--green); color: var(--cream);
+    padding: 10px 18px; border-radius: 100px;
+    font-size: 13px; font-weight: 600;
+    transition: transform .15s, background .15s;
+  }
+  .nav-cta:hover { background: var(--green-2); transform: translateY(-1px); }
+  @media (max-width: 880px) { .nav-links { display: none; } }
+  @media (max-width: 540px) { .nav-cta { display: none; } }
+
+  /* ============ HERO ============ */
+  .hero {
+    position: relative;
+    min-height: 92vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 80px 0 60px;
+    color: var(--cream);
+    background:
+      radial-gradient(ellipse 75% 50% at 70% 22%, rgba(244,185,66,0.55), transparent 60%),
+      radial-gradient(ellipse 90% 60% at 25% 38%, rgba(224,122,95,0.45), transparent 65%),
+      linear-gradient(180deg, #2a1a14 0%, #1f3024 55%, #0a1812 100%);
+    overflow: hidden;
+  }
+  .hero-art {
+    position: absolute; bottom: -2px; left: 0; right: 0;
+    height: 38%; pointer-events: none; opacity: 0.95;
+  }
+  .hero-art svg { width: 100%; height: 100%; display: block; }
+  .hero-stars { position: absolute; inset: 0; pointer-events: none; }
+  .hero-stars span {
+    position: absolute; width: 2px; height: 2px;
+    background: #fbf6e8; border-radius: 50%;
+    opacity: 0.5;
+    animation: twinkle 4s ease-in-out infinite;
+  }
+  .hero-stars span:nth-child(1) { top: 12%; left: 10%; }
+  .hero-stars span:nth-child(2) { top: 18%; left: 40%; animation-delay: 1.2s; }
+  .hero-stars span:nth-child(3) { top: 8%; left: 72%; animation-delay: 0.6s; width: 2.5px; height: 2.5px; }
+  .hero-stars span:nth-child(4) { top: 24%; left: 88%; animation-delay: 2s; }
+  .hero-stars span:nth-child(5) { top: 32%; left: 22%; animation-delay: 1.6s; }
+  .hero-stars span:nth-child(6) { top: 16%; left: 58%; animation-delay: 0.4s; }
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 0.9; transform: scale(1.5); }
+  }
+  .hero-content { position: relative; z-index: 2; }
+  .hero-eyebrow {
+    font-size: 11px; letter-spacing: 5px; text-transform: uppercase;
+    color: var(--mango); font-weight: 600; margin-bottom: 22px;
+  }
+  .hero h1 {
+    font-family: var(--serif); font-weight: 300;
+    font-size: clamp(56px, 11vw, 132px); line-height: 0.92;
+    letter-spacing: 0.16em; text-indent: 0.16em;
+    color: var(--cream); margin-bottom: 4px;
+  }
+  .hero .h1-sub {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: clamp(11px, 1.4vw, 14px);
+    letter-spacing: 0.55em;
+    text-transform: uppercase;
+    text-indent: 0.55em;
+    color: var(--gold);
+    margin-bottom: 28px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(212,184,122,0.25);
+    display: inline-block;
+  }
+  .hero .tag {
+    font-family: var(--serif); font-style: italic; font-weight: 400;
+    font-size: clamp(20px, 3vw, 30px);
+    color: rgba(247,240,223,0.86);
+    max-width: 540px; line-height: 1.3; margin-bottom: 36px;
+  }
+  .hero-meta {
+    display: flex; flex-wrap: wrap; gap: 22px;
+    font-size: 13px;
+    color: rgba(247,240,223,0.65); letter-spacing: 0.04em;
+  }
+  .hero-meta .item { display: flex; align-items: center; gap: 8px; }
+  .hero-meta .dot {
+    width: 6px; height: 6px;
+    background: var(--mango); border-radius: 50%;
+    box-shadow: 0 0 12px rgba(244,185,66,0.6);
+  }
+  .hero-cta { margin-top: 44px; display: flex; gap: 14px; flex-wrap: wrap; }
+
+  .btn-primary {
+    background: var(--coral); color: #fff;
+    padding: 16px 28px; border-radius: 100px;
+    font-family: var(--sans); font-size: 14.5px; font-weight: 700;
+    letter-spacing: 0.04em; border: none; cursor: pointer;
+    box-shadow: 0 14px 30px -10px rgba(224,122,95,0.55);
+    transition: transform .15s, box-shadow .15s;
+    display: inline-flex; align-items: center; gap: 10px;
+  }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 18px 36px -10px rgba(224,122,95,0.65); }
+  .btn-primary.sm { padding: 11px 18px; font-size: 12.5px; }
+  .btn-ghost {
+    background: transparent; color: var(--cream);
+    padding: 16px 24px; border-radius: 100px;
+    font-family: var(--sans); font-size: 14.5px; font-weight: 600;
+    border: 1px solid rgba(247,240,223,0.32); cursor: pointer;
+    transition: all .15s; display: inline-flex; align-items: center; gap: 10px;
+  }
+  .btn-ghost:hover { background: rgba(247,240,223,0.08); border-color: rgba(247,240,223,0.55); }
+  .btn-wa {
+    background: var(--wa); color: #fff;
+    padding: 14px 22px; border-radius: 100px;
+    font-family: var(--sans); font-size: 14px; font-weight: 700;
+    border: none; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 10px;
+    box-shadow: 0 12px 28px -10px rgba(37,211,102,0.55);
+    transition: transform .15s, box-shadow .15s;
+  }
+  .btn-wa:hover { transform: translateY(-1px); box-shadow: 0 16px 32px -10px rgba(37,211,102,0.7); }
+  .btn-wa svg { width: 18px; height: 18px; fill: currentColor; }
+
+  /* ============ FLOATING WA BUTTON ============ */
+  .wa-float {
+    position: fixed;
+    right: 22px; bottom: 22px;
+    width: 60px; height: 60px;
+    background: var(--wa); color: #fff;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 14px 32px -10px rgba(37,211,102,0.6), 0 0 0 0 rgba(37,211,102,0.5);
+    z-index: 60;
+    transition: transform .2s;
+    animation: waPulse 2.4s ease-out infinite;
+  }
+  .wa-float:hover { transform: scale(1.08); }
+  .wa-float svg { width: 30px; height: 30px; fill: currentColor; }
+  @keyframes waPulse {
+    0% { box-shadow: 0 14px 32px -10px rgba(37,211,102,0.6), 0 0 0 0 rgba(37,211,102,0.5); }
+    70% { box-shadow: 0 14px 32px -10px rgba(37,211,102,0.6), 0 0 0 18px rgba(37,211,102,0); }
+    100% { box-shadow: 0 14px 32px -10px rgba(37,211,102,0.6), 0 0 0 0 rgba(37,211,102,0); }
+  }
+
+  /* ============ SECTIONS ============ */
+  section { padding: 96px 0; }
+  @media (max-width: 720px) { section { padding: 64px 0; } }
+  .sec-head { text-align: center; max-width: 640px; margin: 0 auto 56px; }
+  .sec-eyebrow {
+    font-size: 10.5px; letter-spacing: 3.5px; text-transform: uppercase;
+    color: var(--coral-deep); font-weight: 700; margin-bottom: 14px;
+  }
+  .sec-head h2 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(34px, 5vw, 52px); line-height: 1.05;
+    letter-spacing: -0.02em; color: var(--ink); margin-bottom: 12px;
+  }
+  .sec-head h2 em { color: var(--coral-deep); font-style: italic; }
+  .sec-head p { font-size: 16.5px; color: var(--ink-2); max-width: 520px; margin: 0 auto; line-height: 1.6; }
+
+  /* ============ DIVISION TOGGLE ============ */
+  .division-toggle {
+    display: flex; gap: 8px;
+    background: var(--cream-2);
+    border: 1px solid var(--line);
+    border-radius: 100px;
+    padding: 6px;
+    max-width: 380px;
+    margin: 0 auto 48px;
+  }
+  .division-toggle button {
+    flex: 1;
+    background: none; border: none;
+    padding: 11px 14px;
+    border-radius: 100px;
+    font-family: var(--sans);
+    font-size: 12.5px; font-weight: 600;
+    color: var(--ink-2); cursor: pointer;
+    letter-spacing: 0.04em;
+    transition: all .2s;
+  }
+  .division-toggle button.active {
+    background: var(--ink); color: var(--cream);
+    box-shadow: 0 6px 14px -6px rgba(28,20,12,0.4);
+  }
+
+  /* ============ HOW ============ */
+  #how { background: var(--cream-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .how-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 32px; max-width: 920px; margin: 0 auto;
+  }
+  @media (max-width: 760px) { .how-grid { grid-template-columns: 1fr; gap: 24px; } }
+  .how-card { text-align: center; padding: 8px; }
+  .how-num {
+    font-family: var(--serif); font-style: italic; font-weight: 400;
+    font-size: 56px; line-height: 1; color: var(--coral); margin-bottom: 14px;
+  }
+  .how-card h3 {
+    font-family: var(--serif); font-weight: 500;
+    font-size: 22px; margin-bottom: 8px; letter-spacing: -0.01em;
+  }
+  .how-card p { font-size: 14.5px; color: var(--ink-2); line-height: 1.55; }
+
+  /* ============ WEEKENDS / EXP / RE GRID ============ */
+  .weekends-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px;
+  }
+  @media (max-width: 760px) { .weekends-grid { grid-template-columns: 1fr; } }
+  .weekend-card {
+    background: var(--cream-2);
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    overflow: hidden;
+    transition: transform .25s ease, box-shadow .25s;
+  }
+  .weekend-card:hover { transform: translateY(-3px); box-shadow: 0 22px 50px -28px rgba(31,27,23,0.3); }
+  .weekend-img { position: relative; height: 280px; overflow: hidden; }
+  .weekend-img .bg { position: absolute; inset: 0; background-size: cover; background-position: center; }
+  .weekend-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .weekend-img .scene { position: absolute; inset: 0; opacity: 0.92; pointer-events: none; }
+  .weekend-img .scene svg { width: 100%; height: 100%; display: block; }
+  .weekend-img .scrim { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.05) 50%, rgba(0,0,0,0.65) 100%); }
+  .weekend-img .badge {
+    position: absolute; top: 16px; left: 16px;
+    background: var(--coral); color: #fff;
+    padding: 6px 12px; border-radius: 100px;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 1.8px; text-transform: uppercase;
+    box-shadow: 0 8px 18px -6px rgba(224,122,95,0.55);
+  }
+  .weekend-img .badge.sold { background: var(--ink-2); }
+  .weekend-img .date {
+    position: absolute; top: 16px; right: 16px;
+    background: rgba(0,0,0,0.55); backdrop-filter: blur(8px);
+    color: var(--cream); padding: 6px 14px; border-radius: 100px;
+    font-size: 11.5px; font-weight: 600; letter-spacing: 1px;
+  }
+  .weekend-body { padding: 22px 24px 26px; }
+  .weekend-body .where {
+    font-size: 11px; color: var(--bronze); letter-spacing: 2px; text-transform: uppercase;
+    font-weight: 700; margin-bottom: 8px;
+  }
+  .weekend-body h3 {
+    font-family: var(--serif); font-weight: 500;
+    font-size: 26px; line-height: 1.1; letter-spacing: -0.015em; margin-bottom: 12px;
+  }
+  .weekend-body h3 em { color: var(--coral-deep); font-style: italic; font-weight: 400; }
+  .weekend-body .desc { font-size: 14.5px; color: var(--ink-2); line-height: 1.55; margin-bottom: 18px; }
+  .weekend-foot {
+    display: flex; align-items: baseline; justify-content: space-between;
+    padding-top: 18px; border-top: 1px solid var(--line); gap: 10px;
+  }
+  .weekend-foot .price {
+    font-family: var(--serif); font-size: 28px; font-weight: 500;
+    color: var(--ink); letter-spacing: -0.01em;
+  }
+  .weekend-foot .price small {
+    font-family: var(--sans); font-size: 11px; color: var(--ink-3);
+    text-transform: uppercase; letter-spacing: 1.5px; margin-left: 6px; font-weight: 600;
+  }
+  .weekend-foot .pax { font-size: 12.5px; color: var(--ink-3); font-weight: 500; }
+  .weekend-foot .cta-wa {
+    background: var(--wa); color: #fff;
+    padding: 9px 14px; border-radius: 100px;
+    font-size: 12px; font-weight: 700; letter-spacing: 0.04em;
+    border: none; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .weekend-foot .cta-wa svg { width: 13px; height: 13px; fill: currentColor; }
+
+  /* Experiences */
+  #experiences { background: var(--cream-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .exp-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+  }
+  @media (max-width: 880px) { .exp-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 540px) { .exp-grid { grid-template-columns: 1fr; } }
+  .exp-card {
+    background: var(--cream); border: 1px solid var(--line);
+    border-radius: 18px; overflow: hidden;
+    transition: transform .2s, border-color .2s;
+  }
+  .exp-card:hover { transform: translateY(-2px); border-color: var(--line-2); }
+  .exp-img { position: relative; aspect-ratio: 4 / 3; overflow: hidden; }
+  .exp-img .bg { position: absolute; inset: 0; background-size: cover; background-position: center; }
+  .exp-img .scene { position: absolute; inset: 0; opacity: 0.9; pointer-events: none; }
+  .exp-img .scene svg { width: 100%; height: 100%; display: block; }
+  .exp-img .scrim { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,0.6) 100%); }
+  .exp-img .price {
+    position: absolute; top: 12px; left: 12px;
+    background: rgba(0,0,0,0.55); backdrop-filter: blur(8px);
+    color: var(--cream); padding: 5px 10px; border-radius: 100px;
+    font-family: var(--serif); font-size: 13px; font-weight: 500;
+  }
+  .exp-img .cat-tag {
+    position: absolute; bottom: 12px; left: 12px;
+    color: var(--cream); font-size: 9.5px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase; opacity: 0.9;
+  }
+  .exp-body { padding: 16px 18px 20px; }
+  .exp-body h4 {
+    font-family: var(--serif); font-weight: 500; font-size: 17px;
+    line-height: 1.2; letter-spacing: -0.005em; margin-bottom: 6px;
+  }
+  .exp-body .meta { font-size: 12.5px; color: var(--ink-3); display: flex; gap: 12px; font-weight: 500; }
+
+  /* ============ REAL ESTATE ============ */
+  #realestate { background: var(--cream); }
+  .re-empty {
+    text-align: center;
+    padding: 40px 24px;
+    color: var(--ink-3);
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 16px;
+    background: var(--cream-2);
+    border: 1px dashed var(--line-2);
+    border-radius: 18px;
+  }
+  .re-empty a { color: var(--coral-deep); border-bottom: 1px solid var(--coral); }
+  .re-card .weekend-img .badge.disponible { background: var(--green); }
+  .re-card .weekend-img .badge.vendido { background: var(--ink-2); }
+  .re-card.sold .weekend-body h3,
+  .re-card.sold .weekend-foot .price { opacity: 0.6; }
+  .re-card.sold .weekend-img::after {
+    content: ''; position: absolute; inset: 0;
+    background: rgba(28,20,12,0.18);
+    pointer-events: none;
+  }
+  .re-feat {
+    display: flex; gap: 14px; flex-wrap: wrap;
+    margin: 12px 0 16px;
+    font-size: 12.5px; color: var(--ink-3); font-weight: 500;
+  }
+  .re-feat .item {
+    display: inline-flex; align-items: center; gap: 5px;
+    background: var(--cream); padding: 5px 11px;
+    border-radius: 100px;
+    border: 1px solid var(--line);
+  }
+  .re-feat .item strong { color: var(--ink); font-weight: 600; }
+
+  /* ============ INVITATION ============ */
+  #invite {
+    background:
+      radial-gradient(ellipse 60% 50% at 70% 30%, rgba(244,185,66,0.30), transparent 65%),
+      radial-gradient(ellipse 70% 50% at 30% 70%, rgba(224,122,95,0.25), transparent 65%),
+      linear-gradient(180deg, #1f3024 0%, #0f2218 100%);
+    color: var(--cream);
+  }
+  #invite .sec-head h2 { color: var(--cream); }
+  #invite .sec-head h2 em { color: var(--mango); }
+  #invite .sec-head p { color: rgba(247,240,223,0.72); }
+  #invite .sec-eyebrow { color: var(--mango); }
+  .invite-form {
+    max-width: 480px; margin: 32px auto 0;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .invite-input {
+    background: rgba(247,240,223,0.06);
+    border: 1px solid rgba(247,240,223,0.20);
+    color: var(--cream); border-radius: 14px;
+    padding: 16px 18px;
+    font-family: var(--sans); font-size: 15px; font-weight: 500;
+    outline: none; transition: border-color .15s; width: 100%;
+  }
+  .invite-input::placeholder { color: rgba(247,240,223,0.35); }
+  .invite-input:focus { border-color: var(--gold); }
+  .invite-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+  .invite-actions > * { flex: 1; min-width: 180px; }
+  .invite-actions .btn-primary, .invite-actions .btn-wa { justify-content: center; }
+  .invite-note {
+    text-align: center; font-size: 12.5px;
+    color: rgba(247,240,223,0.5); margin-top: 6px;
+    letter-spacing: 0.02em;
+  }
+  .invite-ok {
+    background: rgba(212,184,122,0.14);
+    border: 1px solid rgba(212,184,122,0.35);
+    color: var(--mango); padding: 14px 18px;
+    border-radius: 14px; text-align: center;
+    font-family: var(--serif); font-style: italic; font-size: 16px;
+    display: none;
+  }
+  .invite-ok.show { display: block; animation: fade .35s ease; }
+  @keyframes fade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ============ FOOTER ============ */
+  footer { background: var(--green-deep); color: rgba(247,240,223,0.65); padding: 56px 0 32px; }
+  .footer-grid {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 36px; margin-bottom: 40px;
+  }
+  @media (max-width: 720px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; } }
+  .footer-brand .wordmark {
+    font-family: var(--serif); font-size: 28px; font-weight: 400;
+    letter-spacing: 0.22em; color: var(--cream); margin-bottom: 4px;
+  }
+  .footer-brand .wordmark-sub {
+    font-family: var(--sans);
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+    text-indent: 0.4em;
+  }
+  .footer-brand .tag {
+    font-family: var(--serif); font-style: italic;
+    font-size: 15px; line-height: 1.5; max-width: 280px;
+  }
+  .footer-col h5 {
+    font-size: 11px; color: var(--gold);
+    letter-spacing: 2.5px; text-transform: uppercase;
+    font-weight: 700; margin-bottom: 16px;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: 10px; font-size: 13.5px; }
+  .footer-col a { transition: color .15s; }
+  .footer-col a:hover { color: var(--mango); }
+  .footer-bottom {
+    padding-top: 28px;
+    border-top: 1px solid rgba(247,240,223,0.10);
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    font-size: 12px; color: rgba(247,240,223,0.4); letter-spacing: 0.04em;
+  }
+  .social { display: flex; gap: 12px; }
+  .social a {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: rgba(247,240,223,0.05);
+    border: 1px solid rgba(247,240,223,0.15);
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(247,240,223,0.7); transition: all .15s;
+  }
+  .social a:hover { background: var(--coral); color: #fff; border-color: var(--coral); transform: translateY(-2px); }
+  .social a svg { width: 16px; height: 16px; fill: currentColor; }
+  .admin-link {
+    font-size: 11px; color: rgba(247,240,223,0.3);
+    letter-spacing: 1px;
+  }
+  .admin-link a { border-bottom: 1px dotted rgba(247,240,223,0.3); }
+</style>
+</head>
+<body>
+
+<!-- ====== SCENE SPRITE ====== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="scene-mirador" viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice"><defs><radialGradient id="sun-mira" cx="0.7" cy="0.3" r="0.4"><stop offset="0%" stop-color="#f6d68a" stop-opacity="0.95"/><stop offset="100%" stop-color="#e07a5f" stop-opacity="0"/></radialGradient></defs><circle cx="280" cy="70" r="120" fill="url(#sun-mira)"/><circle cx="280" cy="70" r="22" fill="#f6d68a" opacity="0.95"/><path d="M0 200 L60 160 L100 175 L160 130 L210 165 L260 140 L320 175 L380 145 L400 160 L400 240 L0 240 Z" fill="#0e2218" opacity="0.92"/><path d="M0 220 L80 195 L160 210 L240 192 L320 208 L400 195 L400 240 L0 240 Z" fill="#000" opacity="0.55"/></symbol>
+    <symbol id="scene-bocas" viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="sea-bocas" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#2c6e7f" stop-opacity="0.85"/><stop offset="100%" stop-color="#0e2530" stop-opacity="0.95"/></linearGradient></defs><rect x="0" y="155" width="400" height="85" fill="url(#sea-bocas)"/><path d="M0 165 Q 80 158 160 168 T 320 165 T 400 170 L400 240 L0 240 Z" fill="#0e2530" opacity="0.6"/><path d="M50 240 L60 160" stroke="#1a2530" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M60 162 Q 30 130 5 145" stroke="#1a3530" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M60 162 Q 90 130 115 140" stroke="#1a3530" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M60 162 Q 30 155 5 175" stroke="#1a3530" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M60 162 Q 90 155 115 175" stroke="#1a3530" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M270 175 L320 175 L310 182 L280 182 Z" fill="#0a1a20"/><path d="M295 175 L295 160" stroke="#0a1a20" stroke-width="1.5"/><path d="M295 160 L305 175 Z" fill="#0a1a20"/><ellipse cx="350" cy="158" rx="60" ry="6" fill="#0e2530" opacity="0.7"/></symbol>
+    <symbol id="scene-finca" viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice"><defs><radialGradient id="sun-finca" cx="0.3" cy="0.25" r="0.5"><stop offset="0%" stop-color="#f4d28a" stop-opacity="0.9"/><stop offset="100%" stop-color="#d49a26" stop-opacity="0"/></radialGradient></defs><circle cx="120" cy="60" r="120" fill="url(#sun-finca)"/><circle cx="120" cy="60" r="18" fill="#f4d28a" opacity="0.9"/><path d="M0 200 Q 80 170 200 195 T 400 180 L400 240 L0 240 Z" fill="#1a200e" opacity="0.9"/><path d="M0 215 Q 100 195 200 215 T 400 205 L400 240 L0 240 Z" fill="#0a1208" opacity="0.7"/><path d="M30 180 Q 50 165 70 175 Q 60 195 50 205" stroke="#3d4a30" stroke-width="2" fill="none" stroke-linecap="round"/><circle cx="45" cy="172" r="3" fill="#b85439"/><circle cx="58" cy="180" r="3" fill="#b85439"/><circle cx="68" cy="188" r="3" fill="#b85439"/></symbol>
+    <symbol id="scene-bosque" viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="mist" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#a8b5a0" stop-opacity="0.25"/><stop offset="100%" stop-color="#a8b5a0" stop-opacity="0"/></linearGradient></defs><path d="M0 170 L60 110 L130 145 L200 95 L280 140 L360 100 L400 130 L400 240 L0 240 Z" fill="#0e2218" opacity="0.85"/><rect x="0" y="130" width="400" height="60" fill="url(#mist)"/><g stroke="#0a1a13" stroke-width="2" fill="none" stroke-linecap="round"><path d="M40 240 L40 180 M40 195 L30 200 M40 205 L48 210 M40 215 L32 218"/><path d="M90 240 L90 165 M90 180 L82 184 M90 192 L100 196 M90 205 L83 208"/><path d="M340 240 L340 175 M340 188 L350 192 M340 200 L332 204"/><path d="M370 240 L370 190 M370 200 L378 204"/></g></symbol>
+    <symbol id="scene-termas" viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice"><defs><radialGradient id="glow-termas" cx="0.5" cy="0.6" r="0.5"><stop offset="0%" stop-color="#d4b87a" stop-opacity="0.5"/><stop offset="100%" stop-color="#d4b87a" stop-opacity="0"/></radialGradient></defs><ellipse cx="200" cy="180" rx="200" ry="60" fill="url(#glow-termas)"/><g stroke="#fbf6e8" stroke-width="2" fill="none" opacity="0.35" stroke-linecap="round"><path d="M100 140 Q 110 120 100 100 Q 90 80 100 60"/><path d="M180 130 Q 190 110 180 90 Q 170 70 180 50"/><path d="M280 145 Q 290 125 280 105 Q 270 85 280 65"/></g><ellipse cx="60" cy="220" rx="40" ry="8" fill="#1a200e" opacity="0.7"/><ellipse cx="200" cy="225" rx="80" ry="10" fill="#1a200e" opacity="0.7"/><ellipse cx="340" cy="220" rx="50" ry="8" fill="#1a200e" opacity="0.7"/></symbol>
+    <symbol id="scene-tierra" viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice"><defs><radialGradient id="g-tierra" cx="0.5" cy="0.4" r="0.6"><stop offset="0%" stop-color="#d4b87a" stop-opacity="0.4"/><stop offset="100%" stop-color="#d4b87a" stop-opacity="0"/></radialGradient></defs><rect x="0" y="0" width="400" height="240" fill="url(#g-tierra)"/><path d="M0 170 L100 150 L200 165 L300 145 L400 160 L400 240 L0 240 Z" fill="#3a4a2a" opacity="0.85"/><path d="M0 195 L80 180 L160 195 L240 178 L320 195 L400 185 L400 240 L0 240 Z" fill="#1a200e" opacity="0.8"/><g stroke="#a07b3e" stroke-width="1.2" fill="none" stroke-dasharray="3 4" opacity="0.7"><path d="M40 215 L60 195 L180 205 L240 188"/><path d="M260 195 L320 215 L360 205"/></g></symbol>
+  </defs>
+</svg>
+
+<!-- ============== NAV ============== -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">SORA <span class="sub">Travel Agency</span></a>
+    <div class="nav-links">
+      <a href="#how" data-es="Cómo funciona" data-en="How it works">Cómo funciona</a>
+      <a href="#weekends" data-es="Fines de semana" data-en="Weekends">Fines de semana</a>
+      <a href="#experiences" data-es="Experiencias" data-en="Experiences">Experiencias</a>
+      <a href="#realestate" data-es="Bienes raíces" data-en="Real estate">Bienes raíces</a>
+      <a href="#register" data-es="Registrarse" data-en="Sign up">Registrarse</a>
+      <a href="#invite" data-es="Invitación" data-en="Invitation">Invitación</a>
+    </div>
+    <div class="nav-right">
+      <div class="country-pick">
+        <button class="country-trigger" id="country-trigger" onclick="toggleCountryMenu(event)">
+          <span class="flag" id="ct-flag">🇵🇦</span>
+          <span id="ct-label">Panamá</span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="country-menu" id="country-menu"></div>
+      </div>
+      <div class="lang-toggle">
+        <button class="lang-btn" data-lang="es">ES</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
+      <a href="#invite" class="nav-cta" data-es="Solicitar invitación" data-en="Request invite">Solicitar invitación</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============== HERO ============== -->
+<header class="hero">
+  <div class="hero-stars" aria-hidden="true">
+    <span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
+  <div class="hero-art" aria-hidden="true">
+    <svg viewBox="0 0 1440 380" preserveAspectRatio="xMidYMid slice">
+      <path d="M0 280 L120 230 L240 250 L380 200 L520 235 L660 195 L820 240 L960 200 L1120 245 L1280 215 L1440 245 L1440 380 L0 380 Z" fill="#0e1f15" opacity="0.85"/>
+      <path d="M0 320 L160 290 L320 310 L480 285 L640 305 L800 285 L960 305 L1120 290 L1280 305 L1440 295 L1440 380 L0 380 Z" fill="#000" opacity="0.65"/>
+    </svg>
+  </div>
+  <div class="wrap hero-content">
+    <div class="hero-eyebrow" data-es="La Compañía · MMXXVI" data-en="La Compañía · MMXXVI">La Compañía · MMXXVI</div>
+    <h1>SORA</h1>
+    <div class="h1-sub">Travel Agency</div>
+    <p class="tag" data-es="Fines de semana memorables, experiencias curadas y tierras únicas en Chiriquí y Bocas del Toro." data-en="Memorable weekends, curated experiences and unique land in Chiriquí and Bocas del Toro.">Fines de semana memorables, experiencias curadas y tierras únicas en Chiriquí y Bocas del Toro.</p>
+    <div class="hero-meta">
+      <span class="item"><span class="dot"></span><span data-es="Boquete · Volcán · Bocas del Toro" data-en="Boquete · Volcán · Bocas del Toro">Boquete · Volcán · Bocas del Toro</span></span>
+      <span class="item" data-es="12 – 24 invitados por evento" data-en="12 – 24 guests per event">12 – 24 invitados por evento</span>
+      <span class="item" data-es="Próximo · 14 de Junio" data-en="Next · June 14">Próximo · 14 de Junio</span>
+    </div>
+    <div class="hero-cta">
+      <a href="#invite" class="btn-primary" data-es="Solicitar invitación →" data-en="Request invite →">Solicitar invitación →</a>
+      <a href="#weekends" class="btn-ghost" data-es="Ver próximos eventos" data-en="See upcoming events">Ver próximos eventos</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============== HOW ============== -->
+<section id="how">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow" data-es="Cómo funciona" data-en="How it works">Cómo funciona</div>
+      <h2 data-es-html="Tres pasos. <em>Sin ruido</em>." data-en-html="Three steps. <em>No noise</em>.">Tres pasos. <em>Sin ruido</em>.</h2>
+      <p data-es="Curamos cada experiencia con producto local, anfitriones de confianza y grupos reducidos para que cada momento importe." data-en="We curate every experience with local product, trusted hosts and small groups so every moment counts.">Curamos cada experiencia con producto local, anfitriones de confianza y grupos reducidos para que cada momento importe.</p>
+    </div>
+    <div class="how-grid">
+      <div class="how-card">
+        <div class="how-num">i.</div>
+        <h3 data-es="Recibís una invitación" data-en="Receive an invitation">Recibís una invitación</h3>
+        <p data-es="Un miembro Sora te invita personalmente. Activás tu acceso con un código que llega por mensaje." data-en="A Sora member invites you personally. Activate your access with a code sent by message.">Un miembro Sora te invita personalmente. Activás tu acceso con un código que llega por mensaje.</p>
+      </div>
+      <div class="how-card">
+        <div class="how-num">ii.</div>
+        <h3 data-es="Elegís lo que querés" data-en="Choose what you want">Elegís lo que querés</h3>
+        <p data-es="Fin de semana, experiencia del día, o un terreno para invertir en Boquete o Bocas." data-en="A weekend, a day experience, or land to invest in Boquete or Bocas.">Fin de semana, experiencia del día, o un terreno para invertir en Boquete o Bocas.</p>
+      </div>
+      <div class="how-card">
+        <div class="how-num">iii.</div>
+        <h3 data-es="Te acompañamos" data-en="We guide you">Te acompañamos</h3>
+        <p data-es="Coordinamos transporte, alojamiento, comida o legales. Vos sólo disfrutás." data-en="We coordinate transport, lodging, food or paperwork. You just enjoy.">Coordinamos transporte, alojamiento, comida o legales. Vos sólo disfrutás.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== WEEKENDS ============== -->
+<section id="weekends">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow" data-es="Próximos fines de semana" data-en="Upcoming weekends">Próximos fines de semana</div>
+      <h2 data-es-html="Lo que viene en <em>2026</em>." data-en-html="What's next in <em>2026</em>.">Lo que viene en <em>2026</em>.</h2>
+      <p data-es="Cuatro eventos confirmados. Grupos pequeños, transporte y alojamiento incluidos." data-en="Four confirmed events. Small groups, transport and lodging included.">Cuatro eventos confirmados. Grupos pequeños, transporte y alojamiento incluidos.</p>
+    </div>
+    <div class="weekends-grid" id="weekends-grid"></div>
+    <div class="re-empty" id="weekends-empty" style="display:none">
+      <span data-es="Próximamente. Estamos curando los primeros eventos en este país." data-en="Coming soon. We're curating the first events in this country.">Próximamente. Estamos curando los primeros eventos en este país.</span>
+    </div>
+    <!-- (archive of static seed cards removed — content now sourced from data.js) -->
+  </div>
+</section>
+
+<!-- ============== EXPERIENCES ============== -->
+<section id="experiences">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow" data-es="Experiencias del día" data-en="Day experiences">Experiencias del día</div>
+      <h2 data-es-html="Curado <em>handpicked</em> en tu zona." data-en-html="<em>Handpicked</em> in your zone.">Curado <em>handpicked</em> en tu zona.</h2>
+      <p data-es="Reservá una experiencia suelta. Todas son privadas, con guía local y grupo reducido." data-en="Book a single experience. All private, with local guide and small group.">Reservá una experiencia suelta. Todas son privadas, con guía local y grupo reducido.</p>
+    </div>
+    <div class="exp-grid" id="exp-grid-pub"></div>
+    <div class="re-empty" id="experiences-empty" style="display:none">
+      <span data-es="Próximamente experiencias del día." data-en="Day experiences coming soon.">Próximamente experiencias del día.</span>
+    </div>
+    <!-- (archive of static seed exp cards removed — content now sourced from data.js) -->
+  </div>
+</section>
+
+<!-- ============== REAL ESTATE ============== -->
+<section id="realestate">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow" data-es="Bienes raíces · Tierras" data-en="Real estate · Land">Bienes raíces · Tierras</div>
+      <h2 data-es-html="Tierra para <em>vivir</em>." data-en-html="Land to <em>live on</em>.">Tierra para <em>vivir</em>.</h2>
+      <p data-es="Lotes y fincas curadas en Boquete y Bocas del Toro. Cada propiedad la visitamos personalmente." data-en="Lots and farms curated in Boquete and Bocas del Toro. We visit every property personally.">Lotes y fincas curadas en Boquete y Bocas del Toro. Cada propiedad la visitamos personalmente.</p>
+    </div>
+
+    <div class="division-toggle">
+      <button class="active" onclick="filterProps('all', this)" data-es="Todas" data-en="All">Todas</button>
+      <button onclick="filterProps('available', this)" data-es="Disponibles" data-en="Available">Disponibles</button>
+      <button onclick="filterProps('sold', this)" data-es="Vendidas" data-en="Sold">Vendidas</button>
+    </div>
+
+    <div class="weekends-grid" id="properties-grid"></div>
+    <div class="re-empty" id="properties-empty" style="display:none">
+      <span data-es="Todavía no hay propiedades publicadas. Próximamente listamos lotes en Boquete y Bocas." data-en="No properties listed yet. Coming soon: lots in Boquete and Bocas.">Todavía no hay propiedades publicadas. Próximamente listamos lotes en Boquete y Bocas.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============== REGISTER ============== -->
+<section id="register" style="background: var(--cream-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow" data-es="Crear cuenta · Registro" data-en="Create account · Sign up">Crear cuenta · Registro</div>
+      <h2 data-es-html="Registrate para recibir <em>novedades</em>." data-en-html="Sign up for <em>updates</em>.">Registrate para recibir <em>novedades</em>.</h2>
+      <p data-es="Te avisamos cuando publiquemos nuevos eventos, experiencias o propiedades. Sin spam, una notificación cuando hay algo bueno." data-en="We'll let you know when we publish new events, experiences or properties. No spam, just when there's something good.">Te avisamos cuando publiquemos nuevos eventos, experiencias o propiedades. Sin spam, una notificación cuando hay algo bueno.</p>
+    </div>
+
+    <form id="register-form" style="max-width: 540px; margin: 32px auto 0; display: flex; flex-direction: column; gap: 14px;">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+        <div class="field" style="display:flex; flex-direction:column; gap:6px">
+          <label style="font-size:11px; font-weight:600; color: var(--ink-3); letter-spacing:1.5px; text-transform:uppercase" data-es="Nombre" data-en="Name">Nombre</label>
+          <input class="reg-input" name="name" required
+                 data-placeholder-es="Tu nombre" data-placeholder-en="Your name" placeholder="Tu nombre">
+        </div>
+        <div class="field" style="display:flex; flex-direction:column; gap:6px">
+          <label style="font-size:11px; font-weight:600; color: var(--ink-3); letter-spacing:1.5px; text-transform:uppercase" data-es="Apellido" data-en="Last name">Apellido</label>
+          <input class="reg-input" name="lastname"
+                 data-placeholder-es="Tu apellido" data-placeholder-en="Last name" placeholder="Tu apellido">
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+        <div class="field" style="display:flex; flex-direction:column; gap:6px">
+          <label style="font-size:11px; font-weight:600; color: var(--ink-3); letter-spacing:1.5px; text-transform:uppercase" data-es="Correo" data-en="Email">Correo</label>
+          <input class="reg-input" name="email" type="email" required
+                 data-placeholder-es="correo@ejemplo.com" data-placeholder-en="email@example.com" placeholder="correo@ejemplo.com">
+        </div>
+        <div class="field" style="display:flex; flex-direction:column; gap:6px">
+          <label style="font-size:11px; font-weight:600; color: var(--ink-3); letter-spacing:1.5px; text-transform:uppercase">WhatsApp</label>
+          <input class="reg-input" name="phone"
+                 data-placeholder-es="+507 6000 0000" data-placeholder-en="+507 6000 0000" placeholder="+507 6000 0000">
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+        <div class="field" style="display:flex; flex-direction:column; gap:6px">
+          <label style="font-size:11px; font-weight:600; color: var(--ink-3); letter-spacing:1.5px; text-transform:uppercase" data-es="Ciudad / país" data-en="City / country">Ciudad / país</label>
+          <input class="reg-input" name="city"
+                 data-placeholder-es="Boquete, Panamá" data-placeholder-en="Boquete, Panama" placeholder="Boquete, Panamá">
+        </div>
+        <div class="field" style="display:flex; flex-direction:column; gap:6px">
+          <label style="font-size:11px; font-weight:600; color: var(--ink-3); letter-spacing:1.5px; text-transform:uppercase" data-es="Me interesa" data-en="I'm interested in">Me interesa</label>
+          <select class="reg-input" name="interest" style="cursor:pointer">
+            <option value="todo" data-es="Todo · eventos + propiedades" data-en="Everything · events + properties">Todo · eventos + propiedades</option>
+            <option value="eventos" data-es="Solo eventos y viajes" data-en="Only events and trips">Solo eventos y viajes</option>
+            <option value="propiedades" data-es="Solo bienes raíces" data-en="Only real estate">Solo bienes raíces</option>
+            <option value="experiencias" data-es="Solo experiencias del día" data-en="Only day experiences">Solo experiencias del día</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field" style="display:flex; flex-direction:column; gap:6px">
+        <label style="font-size:11px; font-weight:600; color: var(--ink-3); letter-spacing:1.5px; text-transform:uppercase" data-es="Mensaje (opcional)" data-en="Message (optional)">Mensaje (opcional)</label>
+        <textarea class="reg-input" name="message" rows="3"
+                  data-placeholder-es="Contanos un poco sobre vos..." data-placeholder-en="Tell us a bit about you..." placeholder="Contanos un poco sobre vos..."></textarea>
+      </div>
+
+      <div class="invite-actions" style="display: flex; gap: 10px; flex-wrap: wrap;">
+        <button class="btn-primary" type="submit" style="flex:1; min-width:180px; justify-content:center;" data-es="Crear cuenta" data-en="Create account">Crear cuenta</button>
+        <button class="btn-wa" type="button" onclick="submitRegisterToWa()" style="flex:1; min-width:180px; justify-content:center;">
+          <svg viewBox="0 0 24 24"><path d="M20.5 3.5A11 11 0 0 0 4.6 18.9L3 23l4.2-1.6a11 11 0 0 0 5.3 1.4h0c6 0 11-4.9 11-11 0-3-1.2-5.7-3-7.8ZM12.5 21h0a9 9 0 0 1-4.6-1.3l-.3-.2-2.6 1 .9-2.5-.2-.3a9 9 0 1 1 16.7-4.7c0 5-4 9-9 9Z"/></svg>
+          <span data-es="Registrar por WhatsApp" data-en="Sign up via WhatsApp">Registrar por WhatsApp</span>
+        </button>
+      </div>
+      <div id="register-ok" style="display:none; background:rgba(46,138,150,0.10); border:1px solid rgba(46,138,150,0.35); color:var(--teal); padding:14px 18px; border-radius:14px; text-align:center; font-family:var(--serif); font-style:italic; font-size:15px;">
+        <span data-es="✓ ¡Bienvenido! Te tenemos registrado. Te avisamos pronto." data-en="✓ Welcome! You're signed up. We'll be in touch soon.">✓ ¡Bienvenido! Te tenemos registrado. Te avisamos pronto.</span>
+      </div>
+      <p style="text-align:center; font-size:12px; color:var(--ink-3); margin-top:4px; font-style:italic" data-es="Tu información se guarda de forma privada. Solo el administrador la ve." data-en="Your info is private. Only the administrator sees it.">Tu información se guarda de forma privada. Solo el administrador la ve.</p>
+    </form>
+  </div>
+</section>
+
+<style>
+  .reg-input {
+    background: var(--cream);
+    border: 1px solid var(--line);
+    color: var(--ink);
+    border-radius: 12px;
+    padding: 13px 16px;
+    font-family: var(--sans); font-size: 14.5px; font-weight: 500;
+    outline: none;
+    transition: border-color .15s;
+    width: 100%;
+  }
+  .reg-input::placeholder { color: var(--ink-3); }
+  .reg-input:focus { border-color: var(--bronze); }
+  select.reg-input { appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'><path d='M2 4 L6 8 L10 4' fill='none' stroke='%231c140c' stroke-width='1.5' stroke-linecap='round'/></svg>"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+</style>
+
+<!-- ============== INVITATION ============== -->
+<section id="invite">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow" data-es="Reservas y contacto" data-en="Reservations and contact">Reservas y contacto</div>
+      <h2 data-es-html="Solicitá tu <em>acceso</em>." data-en-html="Request your <em>access</em>.">Solicitá tu <em>acceso</em>.</h2>
+      <p data-es="Dejanos tu nombre y mensaje. Podés enviar por formulario o directo por WhatsApp. Respondemos en menos de 24 horas." data-en="Send your name and message. By form or directly via WhatsApp. We reply in under 24 hours.">Dejanos tu nombre y mensaje. Podés enviar por formulario o directo por WhatsApp. Respondemos en menos de 24 horas.</p>
+    </div>
+    <form class="invite-form" id="invite-form">
+      <input class="invite-input" name="name" required
+             data-placeholder-es="Tu nombre" data-placeholder-en="Your name" placeholder="Tu nombre">
+      <input class="invite-input" name="email" type="email" required
+             data-placeholder-es="Correo" data-placeholder-en="Email" placeholder="Correo">
+      <input class="invite-input" name="phone"
+             data-placeholder-es="WhatsApp (opcional)" data-placeholder-en="WhatsApp (optional)" placeholder="WhatsApp (opcional)">
+      <input class="invite-input" name="message"
+             data-placeholder-es="¿Qué te interesa? (evento, experiencia, terreno...)" data-placeholder-en="What interests you? (event, experience, land...)" placeholder="¿Qué te interesa? (evento, experiencia, terreno...)">
+      <div class="invite-actions">
+        <button class="btn-primary" type="submit" data-es="Enviar solicitud" data-en="Send request">Enviar solicitud</button>
+        <button class="btn-wa" type="button" onclick="submitToWa()">
+          <svg viewBox="0 0 24 24"><path d="M20.5 3.5A11 11 0 0 0 4.6 18.9L3 23l4.2-1.6a11 11 0 0 0 5.3 1.4h0c6 0 11-4.9 11-11 0-3-1.2-5.7-3-7.8ZM12.5 21h0a9 9 0 0 1-4.6-1.3l-.3-.2-2.6 1 .9-2.5-.2-.3a9 9 0 1 1 16.7-4.7c0 5-4 9-9 9Zm5-6.7c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1s-1.3-.5-2.4-1.5c-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1.1 1.1-1.1 2.6 0 1.6 1.1 3.1 1.3 3.3.2.2 2.2 3.4 5.3 4.8 1.9.8 2.6.9 3.5.8 1-.1 1.8-.7 2.1-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4Z"/></svg>
+          <span data-es="Mandar por WhatsApp" data-en="Send via WhatsApp">Mandar por WhatsApp</span>
+        </button>
+      </div>
+      <div class="invite-ok" id="invite-ok"><span data-es="¡Gracias! Te escribimos pronto." data-en="Thanks! We'll be in touch soon.">¡Gracias! Te escribimos pronto.</span></div>
+      <p class="invite-note" data-es="Cada solicitud se guarda y se envía a nuestro WhatsApp." data-en="Every request is saved and sent to our WhatsApp.">Cada solicitud se guarda y se envía a nuestro WhatsApp.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ============== FLOATING WA ============== -->
+<a href="#" class="wa-float" id="wa-float" target="_blank" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M20.5 3.5A11 11 0 0 0 4.6 18.9L3 23l4.2-1.6a11 11 0 0 0 5.3 1.4h0c6 0 11-4.9 11-11 0-3-1.2-5.7-3-7.8ZM12.5 21h0a9 9 0 0 1-4.6-1.3l-.3-.2-2.6 1 .9-2.5-.2-.3a9 9 0 1 1 16.7-4.7c0 5-4 9-9 9Zm5-6.7c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1s-1.3-.5-2.4-1.5c-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1.1 1.1-1.1 2.6 0 1.6 1.1 3.1 1.3 3.3.2.2 2.2 3.4 5.3 4.8 1.9.8 2.6.9 3.5.8 1-.1 1.8-.7 2.1-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4Z"/></svg>
+</a>
+
+<!-- ============== FOOTER ============== -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="wordmark">SORA</div>
+        <div class="wordmark-sub">Travel Agency</div>
+        <div class="tag" data-es="Fines de semana, experiencias y bienes raíces en Chiriquí y Bocas del Toro. Una colección de La Compañía." data-en="Weekends, experiences and real estate in Chiriquí and Bocas del Toro. A La Compañía collection.">Fines de semana, experiencias y bienes raíces en Chiriquí y Bocas del Toro. Una colección de La Compañía.</div>
+      </div>
+      <div class="footer-col">
+        <h5 data-es="Sora" data-en="Sora">Sora</h5>
+        <ul>
+          <li><a href="#how" data-es="Cómo funciona" data-en="How it works">Cómo funciona</a></li>
+          <li><a href="#weekends" data-es="Fines de semana" data-en="Weekends">Fines de semana</a></li>
+          <li><a href="#experiences" data-es="Experiencias" data-en="Experiences">Experiencias</a></li>
+          <li><a href="#realestate" data-es="Bienes raíces" data-en="Real estate">Bienes raíces</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5 data-es="Contacto" data-en="Contact">Contacto</h5>
+        <ul>
+          <li><a href="#" id="wa-link-footer" target="_blank">WhatsApp</a></li>
+          <li><a href="#" id="email-link-footer">hola@sora.la</a></li>
+          <li><a href="#invite" data-es="Solicitar invitación" data-en="Request invite">Solicitar invitación</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5 data-es="Síguenos" data-en="Follow">Síguenos</h5>
+        <div class="social">
+          <a href="#" aria-label="Instagram" id="ig-link">
+            <svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58 0 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s0 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58 0-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s0-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16M12 0C8.74 0 8.33 0 7.05.07c-1.28.06-2.15.26-2.91.55-.79.31-1.46.72-2.13 1.39A5.85 5.85 0 0 0 .62 4.14C.33 4.9.13 5.77.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.28.26 2.15.55 2.91a5.85 5.85 0 0 0 1.39 2.13 5.85 5.85 0 0 0 2.13 1.39c.76.29 1.63.49 2.91.55C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.28-.06 2.15-.26 2.91-.55a5.85 5.85 0 0 0 2.13-1.39 5.85 5.85 0 0 0 1.39-2.13c.29-.76.49-1.63.55-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.28-.26-2.15-.55-2.91a5.85 5.85 0 0 0-1.39-2.13A5.85 5.85 0 0 0 19.86.62c-.76-.29-1.63-.49-2.91-.55C15.67.01 15.26 0 12 0Zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32Zm0 10.16a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm6.4-11.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88Z"/></svg>
+          </a>
+          <a href="#" aria-label="TikTok" id="tt-link">
+            <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.8 20.1a6.34 6.34 0 0 0 10.86-4.43V8.45a8.31 8.31 0 0 0 4.84 1.56V6.55a4.79 4.79 0 0 1-1.91-.16h0Z"/></svg>
+          </a>
+          <a href="#" aria-label="Facebook" id="fb-link">
+            <svg viewBox="0 0 24 24"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.69.23 2.69.23v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.27h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07Z"/></svg>
+          </a>
+          <a href="#" aria-label="WhatsApp" id="wa-link-social">
+            <svg viewBox="0 0 24 24"><path d="M20.5 3.5A11 11 0 0 0 4.6 18.9L3 23l4.2-1.6a11 11 0 0 0 5.3 1.4h0c6 0 11-4.9 11-11 0-3-1.2-5.7-3-7.8ZM12.5 21h0a9 9 0 0 1-4.6-1.3l-.3-.2-2.6 1 .9-2.5-.2-.3a9 9 0 1 1 16.7-4.7c0 5-4 9-9 9Zm5-6.7c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1s-1.3-.5-2.4-1.5c-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1.1 1.1-1.1 2.6 0 1.6 1.1 3.1 1.3 3.3.2.2 2.2 3.4 5.3 4.8 1.9.8 2.6.9 3.5.8 1-.1 1.8-.7 2.1-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4Z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span data-es="© 2026 La Compañía · Sora · Panamá" data-en="© 2026 La Compañía · Sora · Panamá">© 2026 La Compañía · Sora · Panamá</span>
+      <span class="admin-link"><a href="admin.html" data-es="Panel" data-en="Admin">Panel</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../data.js"></script>
+<script>
+// ============================================================
+//  SORA · WEB · multi-country
+//  Reads from window.SORA_DATA (loaded via ../data.js) plus
+//  admin overrides from localStorage. Filters everything by the
+//  currently-selected country.
+// ============================================================
+
+function getCountry() {
+  return localStorage.getItem('sora.country') || (window.SORA_DATA?.meta?.defaultCountry || 'PA');
+}
+function setCountry(code) {
+  localStorage.setItem('sora.country', code);
+  // Re-render everything that depends on country
+  applyCountry();
+}
+function effective() {
+  return window.soraData ? window.soraData.loadEffective() : { events: [], experiences: [], properties: [], configByCountry: {} };
+}
+function getConfig() {
+  const e = effective();
+  const c = getCountry();
+  // Per-country config first, then global "_" fallback, then hard defaults
+  return {
+    whatsapp: '50760000000', email: 'hola@sora.la',
+    instagram: '', tiktok: '', facebook: '',
+    ...(e.configByCountry._ || {}),
+    ...(e.configByCountry[c] || {})
+  };
+}
+
+// ============================================================
+//  PROPERTIES, EVENTS, EXPERIENCES — sourced from data.js
+//  All scoped by current country.
+// ============================================================
+function getProperties() {
+  const all = effective().properties;
+  const c = getCountry();
+  return all.filter(p => !p.country || p.country === c);
+}
+function getCountryEvents() {
+  const all = effective().events;
+  const c = getCountry();
+  return all.filter(e => !e.country || e.country === c);
+}
+function getCountryExperiences() {
+  const all = effective().experiences;
+  const c = getCountry();
+  return all.filter(e => !e.country || e.country === c);
+}
+
+// ============================================================
+//  i18n — Language toggle
+// ============================================================
+function getLang() { return localStorage.getItem('sora.lang') || 'es'; }
+function applyLang(lang) {
+  document.querySelectorAll('[data-es]').forEach(el => {
+    const v = el.getAttribute('data-' + lang);
+    if (v != null) el.textContent = v;
+  });
+  document.querySelectorAll('[data-es-html]').forEach(el => {
+    const v = el.getAttribute('data-' + lang + '-html');
+    if (v != null) el.innerHTML = v;
+  });
+  document.querySelectorAll('[data-placeholder-es]').forEach(el => {
+    const v = el.getAttribute('data-placeholder-' + lang);
+    if (v != null) el.placeholder = v;
+  });
+  document.documentElement.lang = lang;
+  localStorage.setItem('sora.lang', lang);
+  document.querySelectorAll('.lang-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.lang === lang);
+  });
+  // Re-render everything language-dependent
+  applyCountry();
+}
+
+// ============================================================
+//  WHATSAPP HELPERS
+// ============================================================
+function waLink(text) {
+  const cfg = getConfig();
+  return `https://wa.me/${cfg.whatsapp}?text=${encodeURIComponent(text)}`;
+}
+function waReserve(eventName) {
+  const lang = getLang();
+  const greet = lang === 'es' ? 'Hola Sora!' : 'Hi Sora!';
+  const want = lang === 'es' ? 'Me interesa reservar' : "I'd like to book";
+  const msg = `${greet} ${want}: ${eventName}`;
+  saveRequest({ kind: 'reservation', subject: eventName });
+  window.open(waLink(msg), '_blank');
+}
+function waProperty(prop) {
+  const lang = getLang();
+  const title = lang === 'es' ? prop.titleEs : prop.titleEn;
+  const greet = lang === 'es' ? 'Hola Sora!' : 'Hi Sora!';
+  const want = lang === 'es' ? 'Me interesa esta propiedad' : "I'm interested in this property";
+  const msg = `${greet} ${want}: ${title} (${prop.location}) — ${prop.price}`;
+  saveRequest({ kind: 'property', subject: title, propId: prop.id });
+  window.open(waLink(msg), '_blank');
+}
+
+// ============================================================
+//  SAVED RESERVATIONS (localStorage backup for admin)
+// ============================================================
+function saveRequest(rec) {
+  const list = JSON.parse(localStorage.getItem('sora.requests') || '[]');
+  list.unshift({ ts: Date.now(), ...rec });
+  localStorage.setItem('sora.requests', JSON.stringify(list.slice(0, 200)));
+}
+
+// ============================================================
+//  REGISTER (new user signup)
+// ============================================================
+function getRegisterData() {
+  const f = document.getElementById('register-form');
+  return {
+    name: f.name.value.trim(),
+    lastname: f.lastname.value.trim(),
+    email: f.email.value.trim(),
+    phone: f.phone.value.trim(),
+    city: f.city.value.trim(),
+    interest: f.interest.value,
+    message: f.message.value.trim()
+  };
+}
+function buildRegisterMessage(d) {
+  const lang = getLang();
+  const lines = lang === 'es'
+    ? [`Hola Sora! Nuevo registro de usuario.`,
+       `Nombre: ${d.name} ${d.lastname}`.trim(),
+       `Correo: ${d.email}`,
+       `WhatsApp: ${d.phone || '(sin teléfono)'}`,
+       `Ciudad: ${d.city || '(sin ciudad)'}`,
+       `Interés: ${d.interest}`,
+       d.message ? `Mensaje: ${d.message}` : null]
+    : [`Hi Sora! New user signup.`,
+       `Name: ${d.name} ${d.lastname}`.trim(),
+       `Email: ${d.email}`,
+       `WhatsApp: ${d.phone || '(none)'}`,
+       `City: ${d.city || '(none)'}`,
+       `Interest: ${d.interest}`,
+       d.message ? `Message: ${d.message}` : null];
+  return lines.filter(Boolean).join('\n');
+}
+function submitRegister() {
+  const d = getRegisterData();
+  if (!d.name || !d.email) {
+    alert(getLang() === 'es' ? 'Necesitamos al menos tu nombre y correo.' : 'We need at least your name and email.');
+    return false;
+  }
+  saveRequest({ kind: 'user', ...d });
+  document.getElementById('register-ok').style.display = 'block';
+  document.getElementById('register-form').reset();
+  setTimeout(() => document.getElementById('register-ok').style.display = 'none', 6000);
+  return true;
+}
+function submitRegisterToWa() {
+  const d = getRegisterData();
+  if (!d.name || !d.email) {
+    alert(getLang() === 'es' ? 'Necesitamos al menos tu nombre y correo.' : 'We need at least your name and email.');
+    return;
+  }
+  saveRequest({ kind: 'user-wa', ...d });
+  window.open(waLink(buildRegisterMessage(d)), '_blank');
+  document.getElementById('register-ok').style.display = 'block';
+  document.getElementById('register-form').reset();
+  setTimeout(() => document.getElementById('register-ok').style.display = 'none', 6000);
+}
+
+// ============================================================
+//  INVITE FORM
+// ============================================================
+function buildInviteMessage(data) {
+  const lang = getLang();
+  if (lang === 'en') {
+    return `Hi Sora! New request.
+Name: ${data.name}
+Email: ${data.email}
+WhatsApp: ${data.phone || '(none)'}
+Interest: ${data.message || '(none)'}`;
+  }
+  return `Hola Sora! Nueva solicitud.
+Nombre: ${data.name}
+Correo: ${data.email}
+WhatsApp: ${data.phone || '(sin teléfono)'}
+Me interesa: ${data.message || '(sin detalle)'}`;
+}
+function getFormData() {
+  const f = document.getElementById('invite-form');
+  return {
+    name: f.name.value.trim(),
+    email: f.email.value.trim(),
+    phone: f.phone.value.trim(),
+    message: f.message.value.trim()
+  };
+}
+function submitToWa() {
+  const data = getFormData();
+  if (!data.name || !data.email) {
+    alert(getLang() === 'es' ? 'Necesitamos al menos tu nombre y correo.' : 'We need at least your name and email.');
+    return;
+  }
+  saveRequest({ kind: 'form-wa', ...data });
+  window.open(waLink(buildInviteMessage(data)), '_blank');
+  showInviteOk();
+}
+function showInviteOk() {
+  document.getElementById('invite-ok').classList.add('show');
+  document.getElementById('invite-form').reset();
+  setTimeout(() => document.getElementById('invite-ok').classList.remove('show'), 6000);
+}
+
+// ============================================================
+//  COUNTRY SWITCHER UI
+// ============================================================
+function renderCountryMenu() {
+  const menu = document.getElementById('country-menu');
+  const lang = getLang();
+  const cur = getCountry();
+  if (!window.SORA_DATA) { menu.innerHTML = ''; return; }
+  const tier1 = window.SORA_DATA.countries.filter(c => c.tier === 1);
+  const tier2 = window.SORA_DATA.countries.filter(c => c.tier === 2);
+  const tier3 = window.SORA_DATA.countries.filter(c => c.tier === 3);
+  const section = (label, list) => {
+    if (!list.length) return '';
+    return `<div class="country-section">${label}</div>` + list.map(c => countryRow(c, cur, lang)).join('');
+  };
+  menu.innerHTML =
+    section(lang === 'es' ? 'Disponibles' : 'Available', [...tier1, ...tier2].filter(c => c.status === 'live' || c.status === 'launching')) +
+    section(lang === 'es' ? 'Próximamente' : 'Coming soon', [...tier1, ...tier2, ...tier3].filter(c => c.status === 'soon' || c.status === 'gated'));
+}
+function countryRow(c, cur, lang) {
+  const launched = c.status === 'live' || c.status === 'launching';
+  const labels = {
+    live:      lang === 'es' ? 'En vivo' : 'Live',
+    launching: lang === 'es' ? 'Lanzando' : 'Launching',
+    soon:      lang === 'es' ? 'Próximo' : 'Soon',
+    gated:     lang === 'es' ? 'Pronto' : 'Soon'
+  };
+  return `
+    <button class="country-item ${cur === c.code ? 'active' : ''} ${launched ? '' : 'disabled'}"
+            onclick="${launched ? `pickCountry('${c.code}')` : `event.preventDefault()`}">
+      <span class="flag">${c.flag}</span>
+      <span class="body">
+        <span class="name">${c.name[lang] || c.name.es}</span>
+        <span class="sub">${c.hero}</span>
+      </span>
+      <span class="pill ${c.status}">${labels[c.status]}</span>
+    </button>
+  `;
+}
+function toggleCountryMenu(e) {
+  e && e.stopPropagation();
+  const menu = document.getElementById('country-menu');
+  const open = menu.classList.toggle('open');
+  if (open) renderCountryMenu();
+}
+function pickCountry(code) {
+  setCountry(code);
+  document.getElementById('country-menu').classList.remove('open');
+}
+document.addEventListener('click', (e) => {
+  const menu = document.getElementById('country-menu');
+  const trigger = document.getElementById('country-trigger');
+  if (!menu || !trigger) return;
+  if (!menu.contains(e.target) && !trigger.contains(e.target)) menu.classList.remove('open');
+});
+function updateCountryTrigger() {
+  const c = window.soraData ? window.soraData.byCode(getCountry()) : null;
+  if (!c) return;
+  const lang = getLang();
+  document.getElementById('ct-flag').textContent = c.flag;
+  document.getElementById('ct-label').textContent = c.name[lang] || c.name.es;
+}
+
+// ============================================================
+//  WEEKEND EVENTS RENDERING
+// ============================================================
+function renderWeekends() {
+  const grid = document.getElementById('weekends-grid');
+  const empty = document.getElementById('weekends-empty');
+  if (!grid) return;
+  const lang = getLang();
+  const list = getCountryEvents();
+  if (!list.length) {
+    grid.innerHTML = '';
+    empty.style.display = 'block';
+    return;
+  }
+  empty.style.display = 'none';
+  grid.innerHTML = list.map(e => weekendCard(e, lang)).join('');
+}
+function weekendCard(e, lang) {
+  const title = lang === 'es' ? e.titleEs : e.titleEn;
+  const desc  = lang === 'es' ? e.descEs : e.descEn;
+  const date  = typeof e.date === 'object' ? (e.date[lang] || e.date.es) : e.date;
+  const badge = typeof e.badge === 'object' ? (e.badge[lang] || e.badge.es) : (e.badge || '');
+  const sub   = lang === 'es' ? 'por persona' : 'per person';
+  const subject = `${stripTags(title)} · ${date}`;
+  return `
+    <div class="weekend-card">
+      <div class="weekend-img">
+        <div class="bg" style="background:${e.bg || ''}"></div>
+        ${e.scene ? `<div class="scene"><svg><use href="#scene-${e.scene}"/></svg></div>` : ''}
+        <div class="scrim"></div>
+        ${badge ? `<span class="badge">${escHtml(badge)}</span>` : ''}
+        <span class="date">${escHtml(date)}</span>
+      </div>
+      <div class="weekend-body">
+        <div class="where">${escHtml(e.where || '')}</div>
+        <h3>${title}</h3>
+        <p class="desc">${escHtml(desc)}</p>
+        <div class="weekend-foot">
+          <div class="price">${escHtml(e.price)}<small>${sub}</small></div>
+          <button class="cta-wa" onclick='waReserve(${JSON.stringify(subject)})'>
+            <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1s-1.3-.5-2.4-1.5c-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1.1 1.1-1.1 2.6 0 1.6 1.1 3.1 1.3 3.3.2.2 2.2 3.4 5.3 4.8 1.9.8 2.6.9 3.5.8 1-.1 1.8-.7 2.1-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4Z"/></svg>
+            WhatsApp
+          </button>
+        </div>
+      </div>
+    </div>
+  `;
+}
+function stripTags(s) { return String(s || '').replace(/<[^>]+>/g, ''); }
+
+// ============================================================
+//  EXPERIENCES RENDERING (public web grid)
+// ============================================================
+function renderExperiencesPub() {
+  const grid = document.getElementById('exp-grid-pub');
+  const empty = document.getElementById('experiences-empty');
+  if (!grid) return;
+  const lang = getLang();
+  const list = getCountryExperiences();
+  if (!list.length) {
+    grid.innerHTML = '';
+    empty.style.display = 'block';
+    return;
+  }
+  empty.style.display = 'none';
+  grid.innerHTML = list.map(e => expCard(e, lang)).join('');
+}
+function expCard(e, lang) {
+  const name = (e.name && (e.name[lang] || e.name.es)) || e.name;
+  const catLabels = {
+    gastronomia: { es: 'Gastronomía', en: 'Food' },
+    aventura:    { es: 'Aventura',    en: 'Adventure' },
+    naturaleza:  { es: 'Naturaleza',  en: 'Nature' },
+    bienestar:   { es: 'Bienestar',   en: 'Wellness' },
+    cultura:     { es: 'Cultura',     en: 'Culture' }
+  };
+  const catLabel = (catLabels[e.cat] && catLabels[e.cat][lang]) || e.cat;
+  return `
+    <div class="exp-card">
+      <div class="exp-img">
+        <div class="bg" style="background:${e.bg || ''}"></div>
+        ${e.scene ? `<div class="scene"><svg><use href="#scene-${e.scene}"/></svg></div>` : ''}
+        <div class="scrim"></div>
+        <span class="price">${escHtml(e.price)}</span>
+        <span class="cat-tag">${escHtml(catLabel)} · ${escHtml(e.dur)}</span>
+      </div>
+      <div class="exp-body">
+        <h4>${escHtml(name)}</h4>
+        <div class="meta"><span>${escHtml(e.loc || '')}</span></div>
+      </div>
+    </div>
+  `;
+}
+function escHtml(s) { return String(s || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+// ============================================================
+//  APPLY COUNTRY — re-render everything country-scoped
+// ============================================================
+function applyCountry() {
+  updateCountryTrigger();
+  renderWeekends();
+  renderExperiencesPub();
+  renderProperties(currentFilter || 'all');
+  applyLinks();
+}
+
+// ============================================================
+//  PROPERTIES RENDERING
+// ============================================================
+let currentFilter = 'all';
+function filterProps(status, btn) {
+  currentFilter = status;
+  document.querySelectorAll('.division-toggle button').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  renderProperties(status);
+}
+function renderProperties(filter) {
+  filter = filter || currentFilter;
+  const grid = document.getElementById('properties-grid');
+  const empty = document.getElementById('properties-empty');
+  const lang = getLang();
+  const props = getProperties().filter(p => filter === 'all' ? true : p.status === filter);
+  if (!props.length) {
+    grid.innerHTML = '';
+    empty.style.display = 'block';
+    return;
+  }
+  empty.style.display = 'none';
+  grid.innerHTML = props.map(p => propertyCard(p, lang)).join('');
+}
+function propertyCard(p, lang) {
+  const title = lang === 'es' ? p.titleEs : p.titleEn;
+  const desc = lang === 'es' ? p.descEs : p.descEn;
+  const size = lang === 'es' ? p.sizeEs : p.sizeEn;
+  const statusKey = p.status === 'sold' ? 'vendido' : 'disponible';
+  const statusLabel = p.status === 'sold'
+    ? (lang === 'es' ? 'Vendido' : 'Sold')
+    : (lang === 'es' ? 'Disponible' : 'Available');
+  const moreLabel = lang === 'es' ? 'Pedir info' : 'Get info';
+  const imgLayer = p.image
+    ? `<img src="${escapeAttr(p.image)}" alt="${escapeAttr(title)}">`
+    : `<div class="bg" style="background:linear-gradient(180deg, #3a4a30, #1a200e)"></div>${p.scene ? `<div class="scene"><svg><use href="#scene-${p.scene}"/></svg></div>` : ''}`;
+  return `
+    <div class="weekend-card re-card ${p.status === 'sold' ? 'sold' : ''}">
+      <div class="weekend-img">
+        ${imgLayer}
+        <div class="scrim"></div>
+        <span class="badge ${statusKey}">${statusLabel}</span>
+      </div>
+      <div class="weekend-body">
+        <div class="where">${escapeHtml(p.location)}</div>
+        <h3>${escapeHtml(title)}</h3>
+        <div class="re-feat">
+          <span class="item"><strong>${escapeHtml(size)}</strong></span>
+          ${p.bedrooms ? `<span class="item">${p.bedrooms} ${lang === 'es' ? 'hab.' : 'beds'}</span>` : ''}
+        </div>
+        <p class="desc">${escapeHtml(desc)}</p>
+        <div class="weekend-foot">
+          <div class="price">${escapeHtml(p.price)}</div>
+          ${p.status === 'sold'
+            ? `<span class="pax">${lang === 'es' ? 'Vendida' : 'Sold'}</span>`
+            : `<button class="cta-wa" onclick='waProperty(${JSON.stringify(p)})'><svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1s-1.3-.5-2.4-1.5c-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1.1 1.1-1.1 2.6 0 1.6 1.1 3.1 1.3 3.3.2.2 2.2 3.4 5.3 4.8 1.9.8 2.6.9 3.5.8 1-.1 1.8-.7 2.1-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4Z"/></svg>${moreLabel}</button>`}
+        </div>
+      </div>
+    </div>
+  `;
+}
+function escapeHtml(s) { return String(s || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function escapeAttr(s) { return escapeHtml(s); }
+
+// ============================================================
+//  FOOTER + SOCIAL LINKS
+// ============================================================
+function applyLinks() {
+  const cfg = getConfig();
+  const waUrl = waLink(getLang() === 'es' ? 'Hola Sora!' : 'Hi Sora!');
+  document.getElementById('wa-float').href = waUrl;
+  const waLinkFooter = document.getElementById('wa-link-footer');
+  if (waLinkFooter) waLinkFooter.href = waUrl;
+  const emailLink = document.getElementById('email-link-footer');
+  if (emailLink) { emailLink.href = 'mailto:' + cfg.email; emailLink.textContent = cfg.email; }
+  const ig = document.getElementById('ig-link');
+  const tt = document.getElementById('tt-link');
+  const fb = document.getElementById('fb-link');
+  const waSoc = document.getElementById('wa-link-social');
+  if (ig) ig.href = cfg.instagram;
+  if (tt) tt.href = cfg.tiktok;
+  if (fb) fb.href = cfg.facebook;
+  if (waSoc) waSoc.href = waUrl;
+}
+
+// ============================================================
+//  INIT
+// ============================================================
+document.querySelectorAll('.lang-btn').forEach(b => {
+  b.addEventListener('click', () => applyLang(b.dataset.lang));
+});
+document.getElementById('invite-form').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const data = getFormData();
+  saveRequest({ kind: 'form', ...data });
+  showInviteOk();
+});
+document.getElementById('register-form').addEventListener('submit', (e) => {
+  e.preventDefault();
+  submitRegister();
+});
+
+applyLang(getLang());
+applyCountry();
+</script>
+
+</body>
+</html>

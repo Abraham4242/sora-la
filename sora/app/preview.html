@@ -1,0 +1,1166 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SORA · Preview · iPhone 14 Pro Max</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0c0d10;
+    --bg-2: #15171c;
+    --line: rgba(255,255,255,0.08);
+    --line-2: rgba(255,255,255,0.16);
+    --fg: #f5f5f5;
+    --fg-2: rgba(255,255,255,0.72);
+    --fg-3: rgba(255,255,255,0.5);
+    --gold: #d4b87a;
+    --bronze: #a07b3e;
+    --coral: #e07a5f;
+    --teal: #2e8a96;
+    --rose: #c64a5e;
+    --green: #2c4032;
+    --serif: "Fraunces", Georgia, serif;
+    --sans: "Inter", -apple-system, sans-serif;
+    --mono: "SF Mono", Menlo, monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    background: var(--bg); color: var(--fg);
+    font-family: var(--sans); font-size: 14px;
+    min-height: 100vh; -webkit-font-smoothing: antialiased;
+  }
+  body {
+    background:
+      radial-gradient(ellipse 60% 50% at 80% 10%, rgba(160,123,62,0.16), transparent),
+      radial-gradient(ellipse 50% 40% at 20% 90%, rgba(47,71,57,0.18), transparent),
+      var(--bg);
+    background-attachment: fixed;
+  }
+
+  /* ============= HEADER ============= */
+  header.top {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(12,13,16,0.92);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--line);
+    padding: 14px 28px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px;
+  }
+  header.top .brand {
+    display: flex; align-items: center; gap: 12px;
+  }
+  header.top .brand .word {
+    font-family: var(--serif);
+    font-size: 22px; font-weight: 400;
+    letter-spacing: 0.18em; color: var(--fg);
+  }
+  header.top .brand .badge {
+    font-family: var(--mono); font-size: 10px;
+    color: var(--gold);
+    background: rgba(212,184,122,0.10);
+    border: 1px solid rgba(212,184,122,0.30);
+    padding: 4px 8px; border-radius: 6px;
+    letter-spacing: 1.5px;
+  }
+  header.top .mode-toggle {
+    display: flex; gap: 4px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--line);
+    border-radius: 100px;
+    padding: 4px;
+  }
+  header.top .mode-toggle button {
+    background: none; border: none;
+    color: var(--fg-3);
+    padding: 8px 16px; border-radius: 100px;
+    font-family: var(--sans); font-size: 12px;
+    font-weight: 600; letter-spacing: 0.5px;
+    cursor: pointer;
+    text-transform: uppercase;
+    display: inline-flex; align-items: center; gap: 6px;
+    transition: all .2s;
+  }
+  header.top .mode-toggle button.active {
+    background: var(--gold); color: #1a1a1a;
+  }
+  header.top .actions { display: flex; gap: 8px; }
+  header.top .actions a, header.top .actions button {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--line);
+    color: var(--fg-2);
+    padding: 8px 14px; border-radius: 100px;
+    font-family: var(--mono); font-size: 10.5px;
+    letter-spacing: 1px; cursor: pointer;
+    text-decoration: none;
+    transition: all .2s;
+  }
+  header.top .actions a:hover, header.top .actions button:hover {
+    background: rgba(212,184,122,0.10);
+    border-color: var(--gold); color: var(--gold);
+  }
+  header.top .actions .primary {
+    background: var(--gold); color: #1a1a1a; border-color: var(--gold);
+  }
+
+  /* ============= MODES ============= */
+  .mode { display: none; }
+  .mode.active { display: block; animation: fade .25s; }
+  @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+
+  /* ============= INTERACTIVE MODE ============= */
+  #mode-interactive {
+    display: none;
+    padding: 28px;
+  }
+  #mode-interactive.active { display: grid; }
+  .interactive-grid {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 32px;
+    max-width: 1320px; margin: 0 auto;
+    min-height: calc(100vh - 90px);
+  }
+  @media (max-width: 1000px) {
+    .interactive-grid { grid-template-columns: 240px 1fr; gap: 20px; }
+  }
+  @media (max-width: 820px) {
+    .interactive-grid { grid-template-columns: 1fr; }
+    .jumper { position: static !important; max-height: none !important; }
+  }
+
+  .jumper {
+    position: sticky; top: 92px;
+    background: rgba(255,255,255,0.025);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 18px 14px;
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+  }
+  .jumper h4 {
+    font-family: var(--mono);
+    font-size: 10px; color: var(--fg-3);
+    letter-spacing: 2.5px;
+    padding: 0 8px 14px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 12px;
+  }
+  .jumper-group { margin-bottom: 14px; }
+  .jumper-group:last-child { margin-bottom: 4px; }
+  .jumper-group .group-label {
+    font-family: var(--mono);
+    font-size: 9.5px; color: var(--gold);
+    letter-spacing: 2px;
+    padding: 6px 10px 8px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  .jumper-btn {
+    display: flex; align-items: center; gap: 10px;
+    width: 100%;
+    background: none; border: none;
+    color: var(--fg-2);
+    padding: 9px 10px; border-radius: 9px;
+    font-family: var(--sans); font-size: 12.5px;
+    font-weight: 500; cursor: pointer;
+    text-align: left;
+    transition: all .15s;
+  }
+  .jumper-btn:hover {
+    background: rgba(212,184,122,0.08); color: var(--gold);
+  }
+  .jumper-btn.active {
+    background: rgba(212,184,122,0.18); color: var(--gold);
+  }
+  .jumper-btn .ico {
+    width: 20px; text-align: center;
+    color: var(--bronze); font-size: 12px;
+    flex-shrink: 0;
+  }
+  .jumper-btn.active .ico { color: var(--gold); }
+  .jumper-btn .num {
+    margin-left: auto;
+    font-family: var(--mono);
+    font-size: 9.5px; color: var(--fg-3);
+    letter-spacing: 0.5px;
+  }
+  .jumper-btn.active .num { color: var(--gold); }
+
+  /* Phone container (shared between interactive & flows) */
+  .phone-area {
+    display: flex; flex-direction: column;
+    align-items: center;
+    padding-top: 8px;
+  }
+  .phone-label {
+    font-family: var(--mono);
+    font-size: 10.5px; color: var(--fg-3);
+    letter-spacing: 2px; text-transform: uppercase;
+    margin-bottom: 14px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .phone-label .now {
+    color: var(--gold);
+    font-weight: 600;
+  }
+  .phone-label .live-dot {
+    width: 6px; height: 6px;
+    background: var(--gold); border-radius: 50%;
+    animation: livePulse 1.6s ease-in-out infinite;
+  }
+  @keyframes livePulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+  .phone {
+    --w: 430px; --h: 932px;
+    --scale: 0.74;
+    width: calc(var(--w) * var(--scale));
+    height: calc(var(--h) * var(--scale));
+    position: relative;
+  }
+  @media (max-height: 1080px) { .phone { --scale: 0.66; } }
+  @media (max-height: 940px)  { .phone { --scale: 0.58; } }
+  @media (max-height: 820px)  { .phone { --scale: 0.50; } }
+  @media (max-height: 720px)  { .phone { --scale: 0.44; } }
+  .phone-body {
+    position: absolute; inset: 0;
+    background: #0a0a0a;
+    border-radius: calc(62px * var(--scale));
+    box-shadow:
+      0 0 0 calc(2px * var(--scale)) #1a1a1c,
+      0 0 0 calc(12px * var(--scale)) #2c2c30,
+      0 0 0 calc(13px * var(--scale)) #404045,
+      0 60px 120px -30px rgba(0,0,0,0.6),
+      0 30px 60px -20px rgba(212,184,122,0.15);
+    overflow: hidden;
+  }
+  .phone-screen {
+    position: absolute;
+    inset: calc(12px * var(--scale));
+    border-radius: calc(50px * var(--scale));
+    background: #f7f1e3; overflow: hidden;
+  }
+  .phone-screen iframe {
+    border: none;
+    transform-origin: top left;
+    transform: scale(var(--scale));
+    width: calc(100% / var(--scale));
+    height: calc(100% / var(--scale));
+  }
+  .dynamic-island {
+    position: absolute;
+    top: calc(14px * var(--scale)); left: 50%;
+    transform: translateX(-50%);
+    width: calc(124px * var(--scale));
+    height: calc(36px * var(--scale));
+    background: #000;
+    border-radius: calc(20px * var(--scale));
+    z-index: 10;
+  }
+  .home-indicator {
+    position: absolute;
+    bottom: calc(8px * var(--scale)); left: 50%;
+    transform: translateX(-50%);
+    width: calc(140px * var(--scale)); height: calc(5px * var(--scale));
+    background: #1f1b17; border-radius: calc(3px * var(--scale));
+    z-index: 10; opacity: 0.85;
+  }
+  .phone-controls {
+    margin-top: 16px; display: flex; gap: 8px;
+  }
+  .phone-controls button {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--line);
+    color: var(--fg-2);
+    padding: 6px 14px; border-radius: 100px;
+    font-family: var(--mono); font-size: 10.5px;
+    letter-spacing: 1px; cursor: pointer;
+    transition: all .2s;
+  }
+  .phone-controls button:hover {
+    background: rgba(212,184,122,0.10);
+    color: var(--gold); border-color: var(--gold);
+  }
+
+  /* ============= FLOWS MODE ============= */
+  #mode-flows {
+    display: none;
+    padding: 28px;
+  }
+  #mode-flows.active { display: grid; }
+  .flows-grid {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 32px;
+    max-width: 1400px; margin: 0 auto;
+    min-height: calc(100vh - 90px);
+  }
+  @media (max-width: 1080px) {
+    .flows-grid { grid-template-columns: 280px 1fr; gap: 22px; }
+  }
+  @media (max-width: 880px) {
+    .flows-grid { grid-template-columns: 1fr; }
+    .flow-list { position: static !important; max-height: none !important; }
+  }
+
+  .flow-list {
+    position: sticky; top: 92px;
+    background: rgba(255,255,255,0.025);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 18px;
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+  }
+  .flow-list .fl-head {
+    display: flex; align-items: baseline; justify-content: space-between;
+    padding: 0 4px 12px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 10px;
+  }
+  .flow-list .fl-head h4 {
+    font-family: var(--mono);
+    font-size: 10px; color: var(--fg-3);
+    letter-spacing: 2.5px;
+  }
+  .flow-list .fl-head .ct {
+    font-family: var(--mono);
+    font-size: 10px; color: var(--gold);
+    letter-spacing: 1.5px;
+  }
+  .flow-item {
+    display: block; width: 100%;
+    background: none; border: 1px solid transparent;
+    border-radius: 14px;
+    padding: 14px 14px;
+    margin-bottom: 6px;
+    cursor: pointer;
+    text-align: left;
+    transition: all .15s;
+    font-family: var(--sans);
+  }
+  .flow-item:hover {
+    background: rgba(212,184,122,0.06);
+    border-color: rgba(212,184,122,0.2);
+  }
+  .flow-item.active {
+    background: rgba(212,184,122,0.14);
+    border-color: rgba(212,184,122,0.5);
+  }
+  .flow-item .row {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 6px;
+  }
+  .flow-item .glyph {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    background: rgba(212,184,122,0.12);
+    border: 1px solid rgba(212,184,122,0.25);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gold);
+    font-family: var(--serif); font-size: 17px;
+    flex-shrink: 0;
+  }
+  .flow-item.active .glyph {
+    background: var(--gold); color: #1a1a1a; border-color: var(--gold);
+  }
+  .flow-item .name {
+    font-size: 14px; font-weight: 600;
+    color: var(--fg);
+    letter-spacing: -0.005em;
+  }
+  .flow-item .desc {
+    font-size: 12px; color: var(--fg-3);
+    line-height: 1.5;
+    margin-left: 48px;
+  }
+  .flow-item .stepcount {
+    margin-left: auto;
+    font-family: var(--mono);
+    font-size: 10px; color: var(--fg-3);
+    letter-spacing: 1.5px;
+  }
+  .flow-item.active .stepcount { color: var(--gold); }
+
+  .flow-stage {
+    display: flex; flex-direction: column;
+    align-items: center;
+  }
+  .flow-caption-card {
+    width: 100%; max-width: 540px;
+    background: linear-gradient(135deg, rgba(212,184,122,0.10), rgba(160,123,62,0.05));
+    border: 1px solid rgba(212,184,122,0.35);
+    border-radius: 18px;
+    padding: 22px 26px;
+    margin-bottom: 24px;
+    position: relative;
+  }
+  .flow-caption-card .step-pill {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: var(--mono); font-size: 10.5px;
+    color: var(--gold);
+    letter-spacing: 2px; text-transform: uppercase;
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+  .flow-caption-card .step-pill .dot {
+    width: 6px; height: 6px; background: var(--gold);
+    border-radius: 50%;
+    animation: livePulse 1.4s ease-in-out infinite;
+  }
+  .flow-caption-card h3 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: 24px; color: var(--fg);
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+  .flow-caption-card h3 em { color: var(--gold); font-style: italic; }
+  .flow-caption-card p {
+    font-size: 14px; color: var(--fg-2);
+    line-height: 1.55;
+  }
+  .flow-progress {
+    height: 3px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 100px;
+    margin-top: 16px;
+    overflow: hidden;
+  }
+  .flow-progress .bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold), var(--coral));
+    transition: width .35s cubic-bezier(0.32,0.72,0,1);
+    border-radius: 100px;
+  }
+  /* Numbered pagination row */
+  .flow-pager {
+    display: flex; gap: 6px;
+    margin-top: 18px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .flow-pager button {
+    width: 34px; height: 34px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--line);
+    color: var(--fg-2);
+    border-radius: 9px;
+    font-family: var(--mono); font-size: 12px;
+    font-weight: 600; letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all .15s;
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+  .flow-pager button:hover {
+    background: rgba(212,184,122,0.10);
+    border-color: rgba(212,184,122,0.4);
+    color: var(--gold);
+  }
+  .flow-pager button.done {
+    background: rgba(212,184,122,0.10);
+    color: var(--gold);
+    border-color: rgba(212,184,122,0.3);
+  }
+  .flow-pager button.current {
+    background: var(--gold);
+    color: #1a1a1a;
+    border-color: var(--gold);
+    box-shadow: 0 0 16px rgba(212,184,122,0.45);
+    transform: scale(1.06);
+  }
+
+  .flow-player {
+    display: flex; gap: 10px; align-items: center;
+    margin-top: 16px;
+    background: rgba(255,255,255,0.025);
+    border: 1px solid var(--line);
+    border-radius: 100px;
+    padding: 6px;
+  }
+  .flow-player button {
+    background: none;
+    border: none;
+    color: var(--fg-2);
+    padding: 10px 18px;
+    border-radius: 100px;
+    font-family: var(--mono); font-size: 11px;
+    font-weight: 600; letter-spacing: 1.2px;
+    cursor: pointer;
+    text-transform: uppercase;
+    display: inline-flex; align-items: center; gap: 6px;
+    transition: all .15s;
+  }
+  .flow-player button:hover:not(:disabled) {
+    background: rgba(212,184,122,0.1);
+    color: var(--gold);
+  }
+  .flow-player button:disabled {
+    opacity: 0.3; cursor: not-allowed;
+  }
+  .flow-player .spacer { width: 1px; height: 22px; background: var(--line); }
+  .flow-player .step-num {
+    padding: 0 14px;
+    font-family: var(--mono); font-size: 11px;
+    color: var(--fg-3); letter-spacing: 1px;
+  }
+  .flow-player .step-num strong { color: var(--gold); }
+  .flow-empty {
+    text-align: center;
+    color: var(--fg-3);
+    padding: 60px 28px;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 16px;
+  }
+
+  /* ============= GALLERY MODE ============= */
+  #mode-gallery {
+    padding: 32px 28px;
+  }
+  .gallery-intro {
+    max-width: 760px; margin: 0 auto 36px;
+    text-align: center;
+  }
+  .gallery-intro h2 {
+    font-family: var(--serif); font-weight: 300;
+    font-size: clamp(28px, 4vw, 40px);
+    letter-spacing: -0.02em; margin-bottom: 10px;
+  }
+  .gallery-intro h2 em { color: var(--gold); font-style: italic; }
+  .gallery-intro p {
+    font-size: 14.5px; color: var(--fg-2);
+    line-height: 1.55;
+  }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 32px 24px;
+    max-width: 1400px; margin: 0 auto;
+  }
+  .screen-card {
+    display: flex; flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: transform .25s;
+  }
+  .screen-card:hover { transform: translateY(-4px); }
+  .screen-card .mini-phone {
+    --w: 430px; --h: 932px;
+    --scale: 0.56;
+    width: calc(var(--w) * var(--scale));
+    height: calc(var(--h) * var(--scale));
+    position: relative;
+    margin-bottom: 14px;
+  }
+  .screen-card .mini-phone .body {
+    position: absolute; inset: 0;
+    background: #0a0a0a;
+    border-radius: calc(62px * var(--scale));
+    box-shadow:
+      0 0 0 calc(2px * var(--scale)) #1a1a1c,
+      0 0 0 calc(10px * var(--scale)) #2c2c30,
+      0 0 0 calc(11px * var(--scale)) #3a3a40,
+      0 30px 60px -16px rgba(0,0,0,0.6);
+    overflow: hidden;
+  }
+  .screen-card .mini-phone .screen {
+    position: absolute;
+    inset: calc(10px * var(--scale));
+    border-radius: calc(52px * var(--scale));
+    background: #f7f1e3;
+    overflow: hidden;
+  }
+  .screen-card .mini-phone iframe {
+    border: none;
+    transform-origin: top left;
+    transform: scale(var(--scale));
+    width: calc(100% / var(--scale));
+    height: calc(100% / var(--scale));
+    pointer-events: none;
+  }
+  .screen-card .mini-phone .island {
+    position: absolute;
+    top: calc(14px * var(--scale)); left: 50%;
+    transform: translateX(-50%);
+    width: calc(124px * var(--scale));
+    height: calc(36px * var(--scale));
+    background: #000;
+    border-radius: calc(20px * var(--scale));
+    z-index: 10;
+  }
+  .screen-card .mini-phone .hi {
+    position: absolute;
+    bottom: calc(8px * var(--scale)); left: 50%;
+    transform: translateX(-50%);
+    width: calc(140px * var(--scale)); height: calc(5px * var(--scale));
+    background: #1f1b17; border-radius: 3px;
+    z-index: 10; opacity: 0.85;
+  }
+  .screen-card .meta {
+    text-align: center;
+    width: 100%;
+    max-width: 260px;
+  }
+  .screen-card .meta .num {
+    font-family: var(--mono); font-size: 10px;
+    color: var(--gold); letter-spacing: 2px;
+    margin-bottom: 4px;
+  }
+  .screen-card .meta h4 {
+    font-family: var(--serif); font-weight: 500;
+    font-size: 16px; color: var(--fg);
+    margin-bottom: 4px;
+    letter-spacing: -0.005em;
+  }
+  .screen-card .meta p {
+    font-size: 12px; color: var(--fg-3);
+    line-height: 1.4;
+  }
+  .gallery-section { margin-bottom: 48px; }
+  .gallery-section-head {
+    max-width: 1400px; margin: 0 auto 22px;
+    padding: 0 8px;
+    display: flex; align-items: baseline; justify-content: space-between;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 12px;
+  }
+  .gallery-section-head h3 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: 22px; letter-spacing: -0.01em;
+  }
+  .gallery-section-head .count {
+    font-family: var(--mono); font-size: 10.5px;
+    color: var(--fg-3); letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  footer {
+    padding: 40px 28px 60px;
+    text-align: center;
+    color: var(--fg-3); font-size: 12px;
+    font-family: var(--mono);
+    letter-spacing: 1px;
+  }
+  footer a { color: var(--gold); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="brand">
+    <span class="word">SORA</span>
+    <span class="badge">PREVIEW · v0.3</span>
+  </div>
+  <div class="mode-toggle">
+    <button id="btn-flows" class="active" onclick="setMode('flows')">▶ Flujos</button>
+    <button id="btn-interactive" onclick="setMode('interactive')">Interactivo</button>
+    <button id="btn-gallery" onclick="setMode('gallery')">Galería · <span id="screen-count">24</span></button>
+  </div>
+  <div class="actions">
+    <a href="index.html" target="_blank" class="primary">↗ ABRIR APP</a>
+    <a href="../events-playbook.html">PLAYBOOK</a>
+  </div>
+</header>
+
+<!-- ============= FLOWS MODE ============= -->
+<div id="mode-flows" class="mode active">
+  <div class="flows-grid">
+    <aside class="flow-list">
+      <div class="fl-head">
+        <h4>Walkthroughs</h4>
+        <span class="ct" id="flow-count">6</span>
+      </div>
+      <div id="flow-buttons"></div>
+    </aside>
+
+    <div class="flow-stage">
+      <div class="flow-caption-card" id="flow-caption">
+        <div class="step-pill"><span class="dot"></span><span id="flow-step-pill">PASO 1 · CREAR CUENTA</span></div>
+        <h3 id="flow-step-title">Welcome</h3>
+        <p id="flow-step-caption">Elige un flujo de la izquierda para empezar.</p>
+        <div class="flow-progress"><div class="bar" id="flow-progress-bar" style="width: 0%"></div></div>
+        <div class="flow-pager" id="flow-pager"></div>
+      </div>
+
+      <div class="phone-label">
+        iPhone 14 Pro Max · 430 × 932<span class="live-dot"></span><span class="now" id="flow-now-label">—</span>
+      </div>
+      <div class="phone">
+        <div class="phone-body">
+          <div class="dynamic-island"></div>
+          <div class="phone-screen">
+            <iframe id="flow-frame" src="about:blank"></iframe>
+          </div>
+          <div class="home-indicator"></div>
+        </div>
+      </div>
+
+      <div class="flow-player">
+        <button onclick="flowPrev()" id="fl-prev">← Anterior</button>
+        <span class="step-num" id="fl-step-num"><strong>1</strong> / <span id="fl-total">8</span></span>
+        <button onclick="flowNext()" id="fl-next">Siguiente →</button>
+        <span class="spacer"></span>
+        <button onclick="flowReset()">Reset</button>
+        <button onclick="flowOpenInApp()">↗ App</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============= INTERACTIVE MODE ============= -->
+<div id="mode-interactive" class="mode">
+  <div class="interactive-grid">
+    <aside class="jumper">
+      <h4>Navega <span id="jumper-count">24</span> pantallas</h4>
+
+      <div class="jumper-group">
+        <div class="group-label">Entrada</div>
+        <button class="jumper-btn" onclick="jumpTo('welcome', this)"><span class="ico">◐</span>Welcome<span class="num">01</span></button>
+        <button class="jumper-btn" onclick="jumpTo('invite', this)"><span class="ico">◑</span>Invitación<span class="num">02</span></button>
+      </div>
+
+      <div class="jumper-group">
+        <div class="group-label">Onboarding</div>
+        <button class="jumper-btn" onclick="jumpTo('onboard-1', this)"><span class="ico">①</span>Nombre<span class="num">03</span></button>
+        <button class="jumper-btn" onclick="jumpTo('onboard-2', this)"><span class="ico">②</span>Solo o grupo<span class="num">04</span></button>
+        <button class="jumper-btn" onclick="jumpTo('onboard-3', this)"><span class="ico">③</span>Comida<span class="num">05</span></button>
+        <button class="jumper-btn" onclick="jumpTo('onboard-4', this)"><span class="ico">④</span>Bio<span class="num">06</span></button>
+        <button class="jumper-btn" onclick="jumpTo('location', this)"><span class="ico">⊙</span>Ubicación<span class="num">07</span></button>
+      </div>
+
+      <div class="jumper-group">
+        <div class="group-label">App principal</div>
+        <button class="jumper-btn active" onclick="jumpTo('home', this)"><span class="ico">◆</span>Eventos<span class="num">08</span></button>
+        <button class="jumper-btn" onclick="jumpTo('cerca', this)"><span class="ico">⊙</span>Cerca · swipe<span class="num">09</span></button>
+        <button class="jumper-btn" onclick="jumpTo('conecta', this)"><span class="ico">⚭</span>Conecta · match<span class="num">10</span></button>
+        <button class="jumper-btn" onclick="jumpTo('experiencias', this)"><span class="ico">⊛</span>Experiencias<span class="num">11</span></button>
+        <button class="jumper-btn" onclick="jumpTo('calendar', this)"><span class="ico">▢</span>Calendario<span class="num">12</span></button>
+        <button class="jumper-btn" onclick="jumpTo('profile', this)"><span class="ico">○</span>Perfil<span class="num">13</span></button>
+        <button class="jumper-btn" onclick="jumpTo('saved', this)"><span class="ico">♡</span>Guardados<span class="num">14</span></button>
+        <button class="jumper-btn" onclick="jumpTo('inbox', this)"><span class="ico">✉</span>Mensajes<span class="num">15</span></button>
+      </div>
+
+      <div class="jumper-group">
+        <div class="group-label">Detalles</div>
+        <button class="jumper-btn" onclick="jumpTo('event-0', this)"><span class="ico">▷</span>Mirador Barú<span class="num">16</span></button>
+        <button class="jumper-btn" onclick="jumpTo('event-1', this)"><span class="ico">▷</span>Caribbean Drift<span class="num">17</span></button>
+        <button class="jumper-btn" onclick="jumpTo('event-2', this)"><span class="ico">▷</span>Finca Lerida<span class="num">18</span></button>
+        <button class="jumper-btn" onclick="jumpTo('event-3', this)"><span class="ico">▷</span>Isla Colón<span class="num">19</span></button>
+        <button class="jumper-btn" onclick="jumpTo('exp-geisha', this)"><span class="ico">▶</span>Video · Geisha<span class="num">20</span></button>
+        <button class="jumper-btn" onclick="jumpTo('exp-baru', this)"><span class="ico">▶</span>Video · Sunrise Barú<span class="num">21</span></button>
+        <button class="jumper-btn" onclick="jumpTo('exp-punta-caracol', this)"><span class="ico">▶</span>Video · Punta Caracol<span class="num">22</span></button>
+        <button class="jumper-btn" onclick="jumpTo('rsvp', this)"><span class="ico">↗</span>RSVP sheet<span class="num">23</span></button>
+        <button class="jumper-btn" onclick="jumpTo('match', this)"><span class="ico">✨</span>Match modal<span class="num">24</span></button>
+      </div>
+    </aside>
+
+    <div class="phone-area">
+      <div class="phone-label">iPhone 14 Pro Max · 430 × 932<span class="live-dot"></span><span class="now" id="now-label">Eventos</span></div>
+      <div class="phone">
+        <div class="phone-body">
+          <div class="dynamic-island"></div>
+          <div class="phone-screen">
+            <iframe id="phone-frame" src="index.html#home"></iframe>
+          </div>
+          <div class="home-indicator"></div>
+        </div>
+      </div>
+      <div class="phone-controls">
+        <button onclick="reload()">RELOAD</button>
+        <button onclick="resetAll()">RESET</button>
+        <button onclick="openFull()">OPEN ↗</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============= GALLERY MODE ============= -->
+<div id="mode-gallery" class="mode">
+  <div class="gallery-intro">
+    <h2>Todas las pantallas, <em>juntas</em>.</h2>
+    <p>Cada tile es una iframe en vivo del iPhone 14 Pro Max. Toca cualquiera para abrirla en modo Interactivo.</p>
+  </div>
+
+  <div class="gallery-section">
+    <div class="gallery-section-head"><h3>Entrada</h3><span class="count">02 PANTALLAS</span></div>
+    <div class="gallery-grid" id="gal-entry"></div>
+  </div>
+
+  <div class="gallery-section">
+    <div class="gallery-section-head"><h3>Onboarding</h3><span class="count">05 PANTALLAS</span></div>
+    <div class="gallery-grid" id="gal-onboard"></div>
+  </div>
+
+  <div class="gallery-section">
+    <div class="gallery-section-head"><h3>App principal</h3><span class="count">08 PANTALLAS</span></div>
+    <div class="gallery-grid" id="gal-main"></div>
+  </div>
+
+  <div class="gallery-section">
+    <div class="gallery-section-head"><h3>Detalles + Modales</h3><span class="count">09 PANTALLAS</span></div>
+    <div class="gallery-grid" id="gal-detail"></div>
+  </div>
+</div>
+
+<footer>
+  SORA · /lacompania/sora/app/ · La Compañía 2026 ·
+  <a href="../events-playbook.html">Playbook</a> ·
+  <a href="DEPLOY.md">Deploy guide</a>
+</footer>
+
+<script>
+// ============= SCREEN CATALOG =============
+const screens = [
+  // Entry
+  { id:'01', hash:'welcome', name:'Welcome', desc:'Wordmark + invitación únicamente', group:'entry', noState:true },
+  { id:'02', hash:'invite', name:'Invitación', desc:'Gate de código · SORA-2026', group:'entry', noState:true },
+  // Onboarding
+  { id:'03', hash:'onboard-1', name:'Onboarding · Nombre', desc:'Tu nombre completo', group:'onboard', partialState:1 },
+  { id:'04', hash:'onboard-2', name:'Onboarding · Tu grupo', desc:'Solo / familia / amigos', group:'onboard', partialState:2 },
+  { id:'05', hash:'onboard-3', name:'Onboarding · Comida', desc:'6 chips de preferencias', group:'onboard', partialState:3 },
+  { id:'06', hash:'onboard-4', name:'Onboarding · Bio', desc:'Una línea pública', group:'onboard', partialState:4 },
+  { id:'07', hash:'location', name:'Permiso de ubicación', desc:'Pulso · mapa · zona detectada', group:'onboard', partialState:5 },
+  // Main app
+  { id:'08', hash:'home', name:'Eventos', desc:'Hero · próximos · countdown', group:'main' },
+  { id:'09', hash:'cerca', name:'Cerca · swipe', desc:'8 eventos cercanos · filter chips', group:'main' },
+  { id:'10', hash:'conecta', name:'Conecta · match', desc:'Forma grupo · profiles swipeables', group:'main' },
+  { id:'11', hash:'experiencias', name:'Experiencias', desc:'12 cards · filtro · video', group:'main' },
+  { id:'12', hash:'calendar', name:'Calendario 2026', desc:'6 eventos · month-scrub', group:'main' },
+  { id:'13', hash:'profile', name:'Perfil', desc:'Founding Member · stats · ajustes', group:'main' },
+  { id:'14', hash:'saved', name:'Guardados', desc:'Tu lista de Cerca, con scene SVG', group:'main' },
+  { id:'15', hash:'inbox', name:'Mensajes', desc:'4 chats · Mariana, Diego, Sora, Sofía', group:'main' },
+  // Detail
+  { id:'16', hash:'event-0', name:'Mirador Barú', desc:'Volcán · Chiriquí · 14-15 Jun', group:'detail' },
+  { id:'17', hash:'event-1', name:'Caribbean Drift', desc:'Bastimentos · Bocas · 24-27 Jul', group:'detail' },
+  { id:'18', hash:'event-2', name:'Finca Lerida', desc:'Boquete · Chiriquí · 22-23 Ago', group:'detail' },
+  { id:'19', hash:'event-3', name:'Isla Colón Sunset', desc:'Bocas Town · 19-20 Sep', group:'detail' },
+  { id:'20', hash:'exp-geisha', name:'Video · Geisha', desc:'Cata privada · Ken Burns', group:'detail' },
+  { id:'21', hash:'exp-baru', name:'Video · Sunrise Barú', desc:'Trekking nocturno', group:'detail' },
+  { id:'22', hash:'exp-punta-caracol', name:'Video · Punta Caracol', desc:'Cena overwater Bocas', group:'detail' },
+  { id:'23', hash:'rsvp', name:'RSVP sheet', desc:'Asistencia · transporte · habitación', group:'detail' },
+  { id:'24', hash:'match', name:'Match modal', desc:'Rings + confetti + link knot', group:'detail' }
+];
+
+// ============= STATE BOOTSTRAP =============
+const STATE_KEY = 'sora.state';
+function fullState() {
+  return {
+    onboarded:true, locationGranted:true,
+    name:'Abraham', prefs:['pescetariano'], bio:'Founder · La Compañía',
+    partyType:'solo', partySize:1,
+    currentTab:'home', onboardStep:4,
+    cercaIdx:0, conectaIdx:0, cercaLikes:[0, 4], conectaLikes:[], matches:0
+  };
+}
+function partialState(step) {
+  return {
+    onboarded:false, locationGranted: step >= 5,
+    name: step >= 2 ? 'Abraham' : null,
+    prefs: step >= 4 ? ['pescetariano'] : [],
+    bio: null,
+    partyType:'solo', partySize:1,
+    currentTab:'home', onboardStep: Math.min(step, 4),
+    cercaIdx:0, conectaIdx:0, cercaLikes:[], conectaLikes:[], matches:0
+  };
+}
+function clearState() { try { localStorage.removeItem(STATE_KEY); } catch(e) {} }
+function setState(s) { try { localStorage.setItem(STATE_KEY, JSON.stringify(s)); } catch(e) {} }
+
+function applyStateFor(hash, partialOverride, noStateOverride) {
+  // partial: numeric step
+  // noState: boolean
+  // Otherwise consult screens list
+  if (noStateOverride === true) { clearState(); return; }
+  if (typeof partialOverride === 'number') { setState(partialState(partialOverride)); return; }
+  const scr = screens.find(s => s.hash === hash);
+  if (scr && scr.noState) clearState();
+  else if (scr && scr.partialState) setState(partialState(scr.partialState));
+  else setState(fullState());
+}
+
+// ============= MODE TOGGLE =============
+function setMode(m) {
+  document.querySelectorAll('.mode').forEach(x => x.classList.remove('active'));
+  document.getElementById('mode-' + m).classList.add('active');
+  document.getElementById('btn-flows').classList.toggle('active', m === 'flows');
+  document.getElementById('btn-interactive').classList.toggle('active', m === 'interactive');
+  document.getElementById('btn-gallery').classList.toggle('active', m === 'gallery');
+  if (m === 'gallery') renderGallery();
+  if (m === 'flows' && !currentFlow) selectFlow(flows[0].id);
+  if (m === 'flows' && currentFlow) renderCurrentStep();
+  window.scrollTo({ top: 0, behavior: 'instant' });
+}
+
+// ============= INTERACTIVE MODE =============
+function jumpTo(target, btn) {
+  if (btn) {
+    document.querySelectorAll('.jumper-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const label = btn.textContent.replace(/\d+/g,'').trim();
+    document.getElementById('now-label').textContent = label;
+  }
+  applyStateFor(target);
+  const f = document.getElementById('phone-frame');
+  f.src = 'about:blank';
+  requestAnimationFrame(() => { f.src = 'index.html#' + target; });
+}
+function reload() {
+  const f = document.getElementById('phone-frame');
+  // Re-apply state for current screen, then reload
+  const m = f.src.match(/#(.+)$/);
+  if (m) applyStateFor(m[1]);
+  f.src = f.src;
+}
+function resetAll() {
+  clearState();
+  const f = document.getElementById('phone-frame');
+  f.src = 'index.html';
+  document.querySelectorAll('.jumper-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('now-label').textContent = 'Welcome';
+}
+function openFull() { window.open('index.html', '_blank'); }
+
+// ============= GALLERY MODE =============
+function renderGallery() {
+  const groups = { entry:[], onboard:[], main:[], detail:[] };
+  screens.forEach(s => groups[s.group].push(s));
+
+  function buildCard(scr) {
+    applyStateFor(scr.hash);
+    return `
+      <div class="screen-card" onclick="openFromGallery('${scr.hash}', '${scr.name.replace(/'/g,"\\'")}')">
+        <div class="mini-phone">
+          <div class="body">
+            <div class="island"></div>
+            <div class="screen">
+              <iframe src="index.html#${scr.hash}" loading="lazy"></iframe>
+            </div>
+            <div class="hi"></div>
+          </div>
+        </div>
+        <div class="meta">
+          <div class="num">${scr.id} · ${scr.hash.toUpperCase()}</div>
+          <h4>${scr.name}</h4>
+          <p>${scr.desc}</p>
+        </div>
+      </div>
+    `;
+  }
+  document.getElementById('gal-entry').innerHTML = groups.entry.map(buildCard).join('');
+  document.getElementById('gal-onboard').innerHTML = groups.onboard.map(buildCard).join('');
+  document.getElementById('gal-main').innerHTML = groups.main.map(buildCard).join('');
+  document.getElementById('gal-detail').innerHTML = groups.detail.map(buildCard).join('');
+  setTimeout(() => setState(fullState()), 1500);
+}
+function openFromGallery(hash, name) {
+  setMode('interactive');
+  setTimeout(() => {
+    const btn = Array.from(document.querySelectorAll('.jumper-btn')).find(b => b.outerHTML.includes(`jumpTo('${hash}'`));
+    jumpTo(hash, btn);
+  }, 100);
+}
+
+// ============= FLOWS =============
+const flows = [
+  {
+    id: 'create-account',
+    glyph: '✺',
+    name: 'Crear cuenta',
+    desc: 'Welcome → onboarding completo → home. La experiencia exacta del primer usuario.',
+    steps: [
+      { hash:'welcome', noState:true,    title:'Welcome',          caption:'El nuevo invitado abre Sora por primera vez. Esta pantalla deja muy claro: <em>solo por invitación</em>.' },
+      { hash:'invite',  noState:true,    title:'Código de invitación', caption:'Toca el CTA y aparece el campo. Para esta demo el código es <strong>SORA-2026</strong>.' },
+      { hash:'onboard-1', partial:1,     title:'¿Cómo te llamamos?', caption:'Primera info. Aparece en la lista de invitados de los eventos.' },
+      { hash:'onboard-2', partial:2,     title:'¿Cómo vienes?',    caption:'Solo / familia / amigos. Ajusta el tamaño default y las recomendaciones.' },
+      { hash:'onboard-3', partial:3,     title:'Preferencias de comida', caption:'Toca varios chips. El verde + check confirma. Se envía al chef del evento.' },
+      { hash:'onboard-4', partial:4,     title:'Bio pública',      caption:'Una línea. Otros invitados la verán antes del evento. Brevedad gana.' },
+      { hash:'location',  partial:5,     title:'Ubicación',        caption:'Pulso animado + mapa estilizado. Solo se usa mientras la app está abierta.' },
+      { hash:'home',                     title:'¡Bienvenido a Sora!', caption:'Estás dentro. Lo primero que ves: Mirador Barú, hosted por Andrés, Bambi & Camila.' }
+    ]
+  },
+  {
+    id: 'connect',
+    glyph: '⚭',
+    name: 'Conectar con alguien',
+    desc: 'Home → Conecta → swipe right → Match modal → Inbox. Forma grupo para un evento.',
+    steps: [
+      { hash:'home',     title:'Eventos',     caption:'Llegas al home. El próximo es <em>Mirador Barú</em>. Pero antes quieres encontrar con quién ir.' },
+      { hash:'conecta',  title:'Conecta',     caption:'Formando grupo para Mirador Barú. Aparecen profiles swipeables con bio y "amigos en común".' },
+      { hash:'match',    title:'¡Match!',     caption:'Anillos dorados pulsando + confeti + link entre avatares. Tú y Mariana quieren ir al mismo evento.' },
+      { hash:'inbox',    title:'Mensajes',    caption:'El CTA "Mandar mensaje" del match modal te trae aquí. Mariana ya tiene un mensaje esperando.' }
+    ]
+  },
+  {
+    id: 'rsvp',
+    glyph: '↗',
+    name: 'Reservar un evento',
+    desc: 'Home → Event detail (Mirador Barú) → tabs → RSVP sheet → confirmado.',
+    steps: [
+      { hash:'home',      title:'Home',           caption:'Tap en el hero card de Mirador Barú.' },
+      { hash:'event-0',   title:'Mirador Barú',   caption:'Hero con Volcán SVG, hosts, key facts. Scroll para itinerario, venue, talento, invitados.' },
+      { hash:'rsvp',      title:'RSVP sheet',     caption:'El sheet sube desde abajo: asistencia, transporte (helicóptero!), habitación. Total $680 USDC.' },
+      { hash:'profile',   title:'Confirmado',     caption:'Tras confirmar, el evento aparece en tu calendario (icono superior derecho) y subes al stat de Próximos.' }
+    ]
+  },
+  {
+    id: 'save',
+    glyph: '♡',
+    name: 'Guardar y volver',
+    desc: 'Cerca → swipe right en algo que te llama → ver en Guardados → unsave.',
+    steps: [
+      { hash:'cerca',  title:'Cerca · swipe',   caption:'Aparecen 8 cards con scene SVG (finca, mirador, termas...). Filter chips arriba. Stack visible detrás.' },
+      { hash:'cerca',  title:'Desliza derecha', caption:'Aparece el badge "ME INTERESA" en teal. Suelta. La tarjeta sale volando, vibra el haptic.' },
+      { hash:'saved',  title:'Guardados',       caption:'Tap en bookmark arriba a la derecha. Aquí vives tu lista, con precio + scene + corazón rojo para quitar.' },
+      { hash:'profile', title:'Live count',     caption:'El contador "Guardados · 2 eventos" en el menú de Perfil queda sincronizado.' }
+    ]
+  },
+  {
+    id: 'experience',
+    glyph: '▶',
+    name: 'Ver experiencia + reservar',
+    desc: 'Experiencias → filter → tap → video modal Ken Burns → Reservar.',
+    steps: [
+      { hash:'experiencias', title:'Experiencias', caption:'Magazine grid: hero ancho cada 5 tiles, precio chip arriba izquierda, play icon arriba derecha.' },
+      { hash:'exp-geisha',   title:'Cata de Geisha', caption:'Modal full-screen. Fondo con Ken Burns animado + scene de finca. Incluye + precio.' },
+      { hash:'exp-baru',     title:'Sunrise Barú',   caption:'Cambia a otra: aventura, $95, 8h. Misma estructura, scene de mirador.' },
+      { hash:'exp-punta-caracol', title:'Punta Caracol', caption:'Versión cena overwater. Sopa de cuesta scene de Bocas. El play big bota un toast (luego: video real).' }
+    ]
+  },
+  {
+    id: 'tour',
+    glyph: '✦',
+    name: 'Tour completo',
+    desc: '8 paradas: vista panorámica de cada zona principal de la app.',
+    steps: [
+      { hash:'home',         title:'Eventos',      caption:'El home. Hero + lista de próximos.' },
+      { hash:'cerca',        title:'Cerca',        caption:'Swipe descubrir. Filter chips.' },
+      { hash:'conecta',      title:'Conecta',      caption:'Forma grupo. Profiles swipeables.' },
+      { hash:'experiencias', title:'Experiencias', caption:'Grid magazine de 12 experiencias.' },
+      { hash:'calendar',     title:'Calendario',   caption:'6 eventos del año + month scrub + PRÓXIMO pill.' },
+      { hash:'saved',        title:'Guardados',    caption:'Tu lista privada de Cerca.' },
+      { hash:'inbox',        title:'Mensajes',     caption:'Chats post-match.' },
+      { hash:'profile',      title:'Perfil',       caption:'Founding Member, stats, ajustes, calendario.' }
+    ]
+  }
+];
+
+let currentFlow = null;
+let currentStepIdx = 0;
+
+function renderFlowButtons() {
+  const wrap = document.getElementById('flow-buttons');
+  wrap.innerHTML = flows.map(f => `
+    <button class="flow-item" data-id="${f.id}" onclick="selectFlow('${f.id}')">
+      <div class="row">
+        <div class="glyph">${f.glyph}</div>
+        <div class="name">${f.name}</div>
+        <div class="stepcount">${f.steps.length} pasos</div>
+      </div>
+      <div class="desc">${f.desc}</div>
+    </button>
+  `).join('');
+  document.getElementById('flow-count').textContent = flows.length;
+}
+
+function selectFlow(id) {
+  const f = flows.find(x => x.id === id);
+  if (!f) return;
+  currentFlow = f;
+  currentStepIdx = 0;
+  document.querySelectorAll('.flow-item').forEach(b => b.classList.toggle('active', b.dataset.id === id));
+  renderCurrentStep();
+}
+
+// Force a real reload so the iframe always re-runs init() with fresh state.
+// Setting iframe.src to the same path with only-hash differences would normally
+// just fire hashchange — that proved unreliable when switching flows. The
+// about:blank bounce guarantees a clean re-init every step.
+function navIframeTo(url) {
+  const f = document.getElementById('flow-frame');
+  f.src = 'about:blank';
+  // Wait one frame so the unload completes before the new navigation starts.
+  requestAnimationFrame(() => {
+    f.src = url;
+  });
+}
+
+function renderCurrentStep() {
+  if (!currentFlow) return;
+  const step = currentFlow.steps[currentStepIdx];
+  const total = currentFlow.steps.length;
+
+  document.getElementById('flow-step-pill').textContent =
+    `PASO ${currentStepIdx + 1} · ${currentFlow.name.toUpperCase()}`;
+  document.getElementById('flow-step-title').innerHTML = step.title;
+  document.getElementById('flow-step-caption').innerHTML = step.caption;
+  document.getElementById('flow-progress-bar').style.width =
+    ((currentStepIdx + 1) / total * 100) + '%';
+  document.getElementById('flow-now-label').textContent = step.title;
+  document.getElementById('fl-step-num').innerHTML =
+    `<strong>${currentStepIdx + 1}</strong> / <span id="fl-total">${total}</span>`;
+
+  // Numbered pager
+  const pager = document.getElementById('flow-pager');
+  pager.innerHTML = currentFlow.steps.map((s, i) => {
+    const cls = i < currentStepIdx ? 'done' : (i === currentStepIdx ? 'current' : '');
+    return `<button class="${cls}" onclick="goToStep(${i})" title="${s.title}">${i + 1}</button>`;
+  }).join('');
+
+  document.getElementById('fl-prev').disabled = currentStepIdx === 0;
+  document.getElementById('fl-next').disabled = currentStepIdx >= total - 1;
+
+  applyStateFor(step.hash, step.partial, step.noState);
+  navIframeTo('index.html#' + step.hash);
+}
+
+function goToStep(i) {
+  if (!currentFlow) return;
+  if (i < 0 || i >= currentFlow.steps.length) return;
+  currentStepIdx = i;
+  renderCurrentStep();
+}
+function flowPrev() {
+  if (currentStepIdx > 0) { currentStepIdx--; renderCurrentStep(); }
+}
+function flowNext() {
+  if (!currentFlow) return;
+  if (currentStepIdx < currentFlow.steps.length - 1) {
+    currentStepIdx++;
+    renderCurrentStep();
+  }
+}
+function flowReset() {
+  currentStepIdx = 0;
+  renderCurrentStep();
+}
+function flowOpenInApp() {
+  if (!currentFlow) return;
+  const step = currentFlow.steps[currentStepIdx];
+  applyStateFor(step.hash, step.partial, step.noState);
+  window.open('index.html#' + step.hash, '_blank');
+}
+
+// Keyboard shortcuts: arrows + R to reset. No autoplay.
+document.addEventListener('keydown', (e) => {
+  if (!document.getElementById('mode-flows').classList.contains('active')) return;
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+  if (e.key === 'ArrowRight') { e.preventDefault(); flowNext(); }
+  else if (e.key === 'ArrowLeft') { e.preventDefault(); flowPrev(); }
+  else if (e.key.toLowerCase() === 'r') { e.preventDefault(); flowReset(); }
+});
+
+// ============= INIT =============
+window.addEventListener('load', () => {
+  document.getElementById('screen-count').textContent = screens.length;
+  document.getElementById('jumper-count').textContent = screens.length;
+  renderFlowButtons();
+  selectFlow(flows[0].id);
+  setState(fullState());
+});
+</script>
+
+</body>
+</html>

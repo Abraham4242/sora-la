@@ -1,0 +1,4019 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#1f2d24">
+<title>SORA · Fines de semana memorables</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="icons/favicon.png">
+<link rel="icon" type="image/svg+xml" href="icons/icon.svg">
+<meta name="apple-mobile-web-app-title" content="SORA">
+<meta name="description" content="Fines de semana memorables en Chiriquí y Bocas del Toro. Solo por invitación.">
+<meta property="og:title" content="SORA · La Compañía">
+<meta property="og:description" content="Fines de semana memorables en Panamá. Solo por invitación.">
+<meta property="og:image" content="icons/icon-512.png">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* Core */
+    --green: #1d3a2c;           /* deeper, richer cloud-forest */
+    --green-2: #2a5440;
+    --green-deep: #0f2218;
+    --cream: #f7f0df;            /* slightly warmer sand */
+    --cream-2: #fcf6e6;
+    --surface: #fbf6e8;
+    --ink: #1c140c;
+    --ink-2: rgba(28,20,12,0.72);
+    --ink-3: rgba(28,20,12,0.48);
+    --line: rgba(28,20,12,0.10);
+    --line-2: rgba(28,20,12,0.20);
+    /* Accents — more color, more energy */
+    --coral: #e07a5f;            /* sunset coral (signature) */
+    --coral-deep: #b85439;
+    --mango: #f4b942;            /* sun amber */
+    --mango-deep: #d49a26;
+    --teal: #2e8a96;             /* Bocas Caribbean */
+    --teal-deep: #1b6671;
+    --bronze: #a07b3e;
+    --gold: #d4b87a;
+    --rose: #c64a5e;
+    /* Type */
+    --serif: "Fraunces", "Instrument Serif", Georgia, serif;
+    --display: "Instrument Serif", "Fraunces", Georgia, serif;
+    --sans: "Inter", -apple-system, sans-serif;
+    --safe-top: env(safe-area-inset-top, 0px);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  html, body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.45;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    overscroll-behavior-y: contain;
+  }
+  body { min-height: 100vh; min-height: 100dvh; }
+
+  #app {
+    width: 100%;
+    max-width: 430px;
+    margin: 0 auto;
+    min-height: 100vh;
+    min-height: 100dvh;
+    background: var(--cream);
+    position: relative;
+    padding-top: var(--safe-top);
+    padding-bottom: calc(82px + var(--safe-bottom));
+  }
+  body.full-screen #app { padding-bottom: var(--safe-bottom); }
+  body.no-scroll #app { padding-bottom: var(--safe-bottom); overflow: hidden; }
+
+  .screen { display: none; animation: fadeIn .35s ease-out; }
+  .screen.active { display: block; }
+  /* ID-level display:flex on welcome/invite/onboard/location would otherwise
+     beat the class rule and leave inactive screens visible. Hard-hide them. */
+  .screen:not(.active) { display: none !important; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ============= WELCOME ============= */
+  #screen-welcome {
+    min-height: 100vh; min-height: 100dvh;
+    background:
+      radial-gradient(ellipse 90% 45% at 70% 18%, rgba(244,185,66,0.45), transparent 65%),
+      radial-gradient(ellipse 80% 45% at 30% 32%, rgba(224,122,95,0.45), transparent 65%),
+      radial-gradient(ellipse 100% 50% at 50% 75%, rgba(46,138,150,0.18), transparent 60%),
+      linear-gradient(180deg, #2a1810 0%, #3a2218 18%, #1d3a2c 55%, #0f2218 100%);
+    color: var(--cream);
+    padding: 0 32px;
+    display: flex; flex-direction: column;
+    justify-content: space-between;
+    padding-top: calc(var(--safe-top) + 56px);
+    padding-bottom: calc(var(--safe-bottom) + 36px);
+    position: relative;
+    overflow: hidden;
+  }
+  #screen-welcome::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at 72% 22%, rgba(244,185,66,0.85) 0%, transparent 4%);
+    pointer-events: none;
+  }
+  .welcome-stars {
+    position: absolute; inset: 0; pointer-events: none; z-index: 1;
+  }
+  .welcome-stars span {
+    position: absolute;
+    width: 2px; height: 2px;
+    background: #fbf6e8;
+    border-radius: 50%;
+    opacity: 0.6;
+    animation: twinkle 4s ease-in-out infinite;
+  }
+  .welcome-stars span:nth-child(1) { top: 14%; left: 12%; animation-delay: 0s; }
+  .welcome-stars span:nth-child(2) { top: 9%; left: 38%; animation-delay: 0.6s; width: 1.5px; height: 1.5px; }
+  .welcome-stars span:nth-child(3) { top: 18%; left: 55%; animation-delay: 1.2s; }
+  .welcome-stars span:nth-child(4) { top: 6%; left: 78%; animation-delay: 0.4s; width: 2.5px; height: 2.5px; }
+  .welcome-stars span:nth-child(5) { top: 22%; left: 88%; animation-delay: 2s; width: 1.5px; height: 1.5px; }
+  .welcome-stars span:nth-child(6) { top: 28%; left: 8%; animation-delay: 1.5s; width: 1.5px; height: 1.5px; }
+  .welcome-stars span:nth-child(7) { top: 34%; left: 25%; animation-delay: 2.5s; }
+  .welcome-stars span:nth-child(8) { top: 30%; left: 92%; animation-delay: 3s; }
+  .welcome-stars span:nth-child(9) { top: 40%; left: 48%; animation-delay: 1.8s; width: 1.5px; height: 1.5px; }
+  .welcome-stars span:nth-child(10){ top: 16%; left: 18%; animation-delay: 2.2s; width: 1.5px; height: 1.5px; }
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 0.9; transform: scale(1.4); }
+  }
+  .welcome-rule {
+    width: 40px; height: 1px;
+    background: var(--gold);
+    margin-bottom: 22px;
+    opacity: 0.7;
+  }
+  .welcome-art svg { width: 320px; max-width: 92%; opacity: 0.9; }
+  .welcome-top { text-align: center; position: relative; z-index: 2; }
+  .welcome-eyebrow {
+    font-family: var(--sans);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    color: var(--mango);
+    margin-bottom: 16px;
+    font-weight: 600;
+  }
+  .wordmark {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: 76px;
+    letter-spacing: 0.20em;
+    color: var(--cream);
+    line-height: 1;
+    text-indent: 0.20em;
+    text-shadow: 0 2px 30px rgba(0,0,0,0.3);
+  }
+  .welcome-tag {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 22px;
+    color: rgba(247,240,223,0.82);
+    margin-top: 18px;
+    letter-spacing: 0;
+    line-height: 1.2;
+  }
+  .welcome-art {
+    flex: 1;
+    display: flex; align-items: center; justify-content: center;
+    margin: 30px 0;
+  }
+  .welcome-art svg { width: 220px; opacity: 0.85; }
+  .welcome-bottom { position: relative; z-index: 2; }
+  .welcome-bottom h2 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 1.1;
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+  .welcome-bottom h2 em { color: var(--mango); font-style: italic; }
+  .welcome-bottom p {
+    font-size: 14.5px;
+    color: rgba(247,240,223,0.72);
+    margin-bottom: 26px;
+    max-width: 320px;
+    line-height: 1.55;
+  }
+  .btn-primary {
+    width: 100%;
+    background: var(--coral);
+    color: #fff;
+    border: none;
+    border-radius: 100px;
+    padding: 18px 24px;
+    font-family: var(--sans);
+    font-size: 15.5px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    transition: transform .15s, box-shadow .15s;
+    box-shadow: 0 12px 32px -10px rgba(224,122,95,0.55);
+  }
+  .btn-primary:active { transform: scale(0.98); }
+  .btn-primary.cream {
+    background: var(--cream); color: var(--ink); box-shadow: 0 8px 22px -8px rgba(0,0,0,0.25);
+  }
+  .btn-primary.mango {
+    background: var(--mango); color: var(--ink); box-shadow: 0 12px 32px -10px rgba(244,185,66,0.55);
+  }
+  .btn-link {
+    display: block; width: 100%; text-align: center;
+    margin-top: 14px;
+    color: rgba(247,241,227,0.55);
+    font-size: 13px;
+    padding: 8px 0;
+    background: none; border: none;
+    font-family: var(--sans); cursor: pointer;
+  }
+
+  /* ============= INVITATION ============= */
+  #screen-invite {
+    min-height: 100vh; min-height: 100dvh;
+    background: var(--green);
+    color: var(--cream);
+    padding: calc(var(--safe-top) + 24px) 28px calc(var(--safe-bottom) + 24px);
+    display: flex; flex-direction: column;
+  }
+  .nav-back {
+    background: none; border: none; color: var(--cream);
+    font-size: 24px; padding: 8px 0; cursor: pointer; align-self: flex-start;
+  }
+  .invite-content { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+  .invite-content h1 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: 32px; line-height: 1.15;
+    margin-bottom: 14px; letter-spacing: -0.015em;
+  }
+  .invite-content p { color: rgba(247,241,227,0.6); margin-bottom: 30px; font-size: 14.5px; }
+  .invite-input {
+    width: 100%;
+    background: rgba(247,241,227,0.06);
+    border: 1px solid rgba(247,241,227,0.18);
+    color: var(--cream);
+    border-radius: 14px; padding: 18px 20px;
+    font-family: var(--sans); font-size: 17px;
+    letter-spacing: 0.15em; text-align: center;
+    font-weight: 500; text-transform: uppercase;
+  }
+  .invite-input::placeholder { color: rgba(247,241,227,0.3); letter-spacing: 0.15em; }
+  .invite-input:focus { outline: none; border-color: var(--gold); }
+  .invite-hint {
+    font-size: 12px; color: rgba(247,241,227,0.4);
+    text-align: center; margin-top: 16px;
+  }
+  .invite-cta-wrap { margin-top: 36px; }
+
+  /* ============= ONBOARDING ============= */
+  #screen-onboard {
+    min-height: 100vh; min-height: 100dvh;
+    background: var(--cream);
+    padding: calc(var(--safe-top) + 24px) 28px calc(var(--safe-bottom) + 24px);
+    display: flex; flex-direction: column;
+  }
+  .onboard-progress { display: flex; gap: 8px; margin-bottom: 28px; }
+  .onboard-progress span {
+    flex: 1; height: 3px; background: var(--line);
+    border-radius: 3px; transition: background .25s;
+  }
+  .onboard-progress span.done { background: var(--bronze); }
+  .onboard-content { flex: 1; }
+  .onboard-content h2 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: 28px; line-height: 1.15;
+    margin-bottom: 8px; letter-spacing: -0.015em;
+  }
+  .onboard-content p {
+    color: var(--ink-2); font-size: 14.5px; margin-bottom: 32px;
+  }
+  .text-input {
+    width: 100%;
+    background: var(--surface); border: 1px solid var(--line);
+    color: var(--ink); border-radius: 12px;
+    padding: 16px 18px;
+    font-family: var(--sans); font-size: 16px; font-weight: 500;
+  }
+  .text-input:focus { outline: none; border-color: var(--bronze); }
+  .pref-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+  }
+  .pref-chip {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 12px; padding: 14px 12px;
+    font-family: var(--sans); font-size: 13.5px;
+    color: var(--ink); text-align: center; cursor: pointer;
+    font-weight: 500; transition: all .15s;
+    position: relative;
+  }
+  .pref-chip:active { transform: scale(0.97); }
+  .pref-chip.active {
+    background: var(--green); color: var(--cream); border-color: var(--green);
+    box-shadow: 0 6px 18px -8px rgba(29,58,44,0.5);
+  }
+  .pref-chip.active::after {
+    content: '✓';
+    position: absolute; top: 6px; right: 8px;
+    font-size: 11px; color: var(--mango);
+    font-weight: 700;
+  }
+  /* Party choice — 3-option simple menu */
+  .party-choice {
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .party-option {
+    width: 100%;
+    background: var(--surface);
+    border: 2px solid var(--line);
+    border-radius: 18px;
+    padding: 18px;
+    display: flex; align-items: center; gap: 16px;
+    cursor: pointer;
+    transition: all .2s cubic-bezier(0.32, 0.72, 0, 1);
+    text-align: left; font-family: var(--sans);
+  }
+  .party-option:active {
+    transform: scale(0.99);
+  }
+  .party-option.active {
+    background: linear-gradient(135deg, var(--green), var(--green-2));
+    border-color: var(--mango);
+    color: var(--cream);
+    box-shadow: 0 14px 32px -14px rgba(29,58,44,0.45);
+  }
+  .party-option .party-emoji {
+    width: 48px; height: 48px;
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px;
+    color: #fff;
+    flex-shrink: 0;
+    box-shadow: 0 6px 18px -6px rgba(0,0,0,0.25);
+    transition: transform .2s;
+  }
+  .party-option.active .party-emoji {
+    transform: scale(1.08) rotate(-4deg);
+  }
+  .party-option .party-title {
+    font-family: var(--display); font-size: 22px; font-weight: 400;
+    margin-bottom: 2px; color: inherit;
+    letter-spacing: -0.005em;
+  }
+  .party-option .party-sub {
+    font-size: 13px; color: var(--ink-3);
+    line-height: 1.4;
+  }
+  .party-option.active .party-sub { color: rgba(247,240,223,0.7); }
+  .btn-dark {
+    width: 100%;
+    background: var(--green); color: var(--cream);
+    border: none; border-radius: 100px;
+    padding: 17px 24px;
+    font-family: var(--sans); font-size: 15.5px; font-weight: 600;
+    cursor: pointer; transition: transform .15s;
+  }
+  .btn-dark:active { transform: scale(0.98); }
+  .btn-dark:disabled { background: var(--line-2); color: var(--ink-3); cursor: not-allowed; }
+
+  /* ============= LOCATION PROMPT ============= */
+  #screen-location {
+    min-height: 100vh; min-height: 100dvh;
+    background:
+      radial-gradient(ellipse 70% 50% at 50% 35%, rgba(74,125,99,0.30), transparent),
+      linear-gradient(180deg, var(--green-deep), var(--green) 90%);
+    color: var(--cream);
+    padding: calc(var(--safe-top) + 36px) 28px calc(var(--safe-bottom) + 28px);
+    display: flex; flex-direction: column;
+  }
+  .loc-art {
+    flex: 1; display: flex; align-items: center; justify-content: center;
+    position: relative;
+    margin: 20px 0;
+  }
+  .loc-pulse {
+    width: 16px; height: 16px;
+    background: var(--gold);
+    border-radius: 50%;
+    box-shadow: 0 0 30px var(--gold);
+    position: relative;
+    z-index: 2;
+  }
+  .loc-pulse::before, .loc-pulse::after {
+    content:''; position: absolute;
+    inset: 0; border-radius: 50%;
+    border: 1.5px solid var(--gold);
+    animation: locPulse 2.2s ease-out infinite;
+  }
+  .loc-pulse::after { animation-delay: 1.1s; }
+  .loc-map {
+    position: absolute; inset: 0;
+    pointer-events: none;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .loc-map .map-grid {
+    position: absolute;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background:
+      repeating-linear-gradient(45deg, rgba(212,184,122,0.06) 0px, rgba(212,184,122,0.06) 1px, transparent 1px, transparent 28px),
+      repeating-linear-gradient(-45deg, rgba(212,184,122,0.06) 0px, rgba(212,184,122,0.06) 1px, transparent 1px, transparent 28px);
+    opacity: 0.6;
+  }
+  .loc-map .map-pin {
+    position: absolute;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 0 4px rgba(212,184,122,0.15);
+    opacity: 0.5;
+  }
+  .loc-map .pin-1 { top: 32%; left: 26%; }
+  .loc-map .pin-2 { top: 28%; right: 24%; }
+  .loc-map .pin-3 { bottom: 32%; left: 32%; }
+  .loc-map .pin-4 { bottom: 28%; right: 30%; }
+  @keyframes locPulse {
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(12); opacity: 0; }
+  }
+  .loc-content { text-align: center; max-width: 320px; margin: 0 auto; }
+  .loc-content h1 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: 30px; line-height: 1.15;
+    margin-bottom: 12px; letter-spacing: -0.015em;
+  }
+  .loc-content h1 em { color: var(--gold); font-style: italic; }
+  .loc-content p {
+    color: rgba(247,241,227,0.65);
+    font-size: 14.5px; margin-bottom: 24px;
+  }
+  .loc-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(212,184,122,0.14);
+    border: 1px solid rgba(212,184,122,0.34);
+    border-radius: 100px;
+    padding: 8px 16px;
+    color: var(--gold);
+    font-size: 12px; font-weight: 600;
+    letter-spacing: 1px; text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .loc-dot {
+    width: 6px; height: 6px;
+    background: var(--gold); border-radius: 50%;
+  }
+  .loc-buttons { width: 100%; }
+  .loc-buttons .btn-primary { background: var(--gold); color: var(--green-deep); }
+
+  /* ============= COUNTRY CHIP + SHEET ============= */
+  .country-chip {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    cursor: pointer;
+    padding: 7px 12px;
+    border-radius: 100px;
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: var(--sans);
+    font-size: 11px; font-weight: 700;
+    color: var(--ink);
+    letter-spacing: 0.04em;
+    transition: all .15s;
+  }
+  .country-chip:active { transform: scale(0.96); background: var(--cream-2); }
+  .country-chip .flag { font-size: 14px; line-height: 1; }
+  .country-sheet {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    max-width: 430px; margin: 0 auto;
+    background: var(--cream);
+    border-radius: 24px 24px 0 0;
+    padding: 24px 24px calc(24px + var(--safe-bottom));
+    z-index: 70;
+    transform: translateY(100%);
+    transition: transform .35s cubic-bezier(0.32, 0.72, 0, 1);
+    max-height: 80vh; overflow-y: auto;
+  }
+  .country-sheet.open { transform: translateY(0); }
+  .country-sheet-handle {
+    width: 40px; height: 4px;
+    background: var(--line-2); border-radius: 100px;
+    margin: 0 auto 18px;
+  }
+  .country-sheet h3 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: 22px; margin-bottom: 6px;
+  }
+  .country-sheet .sub { font-size: 13.5px; color: var(--ink-2); margin-bottom: 22px; }
+  .country-sheet-section {
+    font-family: var(--sans);
+    font-size: 9.5px; font-weight: 700;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 10px 0 8px;
+    padding: 0 4px;
+  }
+  .country-sheet-row {
+    display: flex; align-items: center; gap: 14px;
+    width: 100%;
+    background: none; border: none;
+    padding: 12px 12px;
+    border-radius: 12px;
+    cursor: pointer;
+    text-align: left;
+    transition: background .12s;
+    margin-bottom: 4px;
+  }
+  .country-sheet-row:active { background: var(--cream-2); }
+  .country-sheet-row.active { background: var(--cream-2); }
+  .country-sheet-row .flag { font-size: 22px; line-height: 1; flex-shrink: 0; }
+  .country-sheet-row .body { flex: 1; min-width: 0; }
+  .country-sheet-row .name {
+    font-family: var(--serif); font-size: 16px; font-weight: 500;
+    color: var(--ink);
+  }
+  .country-sheet-row .sub-hero {
+    font-size: 12px; color: var(--ink-3);
+    margin-top: 2px;
+  }
+  .country-sheet-row .pill {
+    font-size: 9px; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 3px 8px; border-radius: 100px;
+    flex-shrink: 0;
+  }
+  .country-sheet-row .pill.live      { background: rgba(46,138,150,0.16); color: var(--teal); }
+  .country-sheet-row .pill.launching { background: rgba(244,185,66,0.18); color: var(--bronze); }
+  .country-sheet-row .pill.soon      { background: rgba(28,20,12,0.06); color: var(--ink-3); }
+  .country-sheet-row.disabled { opacity: 0.5; }
+
+  /* ============= TOP BAR (shared) ============= */
+  .top-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 24px 8px;
+  }
+  .top-bar .brand {
+    font-family: var(--serif);
+    font-size: 22px; font-weight: 500;
+    letter-spacing: 0.20em; color: var(--ink);
+  }
+  .top-bar .actions { display: flex; gap: 10px; align-items: center; }
+  .top-bar .loc {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 11.5px; color: var(--teal-deep);
+    letter-spacing: 1.5px; text-transform: uppercase; font-weight: 700;
+  }
+  .top-bar .loc .dot {
+    width: 6px; height: 6px;
+    background: var(--coral); border-radius: 50%;
+    box-shadow: 0 0 0 3px rgba(224,122,95,0.18);
+    animation: locDot 2s ease-in-out infinite;
+  }
+  @keyframes locDot {
+    0%, 100% { box-shadow: 0 0 0 3px rgba(224,122,95,0.18); }
+    50% { box-shadow: 0 0 0 6px rgba(224,122,95,0.10); }
+  }
+  .icon-btn {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; cursor: pointer;
+    color: var(--ink-2);
+    transition: all .15s;
+    padding: 0;
+    font-family: var(--sans);
+    font-weight: 700; letter-spacing: 0.04em;
+  }
+  .icon-btn:active { transform: scale(0.92); background: var(--cream-2); }
+  .icon-btn.year-chip {
+    width: auto; padding: 0 14px;
+    font-size: 11.5px;
+    background: var(--green); color: var(--cream); border-color: var(--green);
+    letter-spacing: 0.15em;
+  }
+  .top-bar .actions .icon-btn:hover { color: var(--ink); }
+  .greeting { padding: 18px 24px 6px; }
+  .greeting .eyebrow {
+    font-size: 10px; color: var(--coral-deep);
+    letter-spacing: 3px; text-transform: uppercase;
+    font-weight: 700; margin-bottom: 8px;
+  }
+  .greeting h1 {
+    font-family: var(--display); font-size: 36px; font-weight: 400;
+    line-height: 1.05; letter-spacing: -0.02em;
+  }
+  .greeting h1 em { color: var(--coral); font-style: italic; }
+
+  /* ============= EVENTOS (HOME) ============= */
+  .hero-event {
+    margin: 22px 20px 16px;
+    border-radius: 22px;
+    overflow: hidden; position: relative;
+    height: 440px; cursor: pointer;
+    box-shadow: 0 18px 50px -20px rgba(31,27,23,0.30);
+  }
+  .hero-event .bg {
+    position: absolute; inset: 0;
+    background-size: cover; background-position: center;
+  }
+  .hero-event .scrim {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 30%, rgba(0,0,0,0.2) 55%, rgba(0,0,0,0.8) 100%);
+  }
+  .hero-event .top-tag {
+    position: absolute; top: 16px; left: 16px;
+    background: var(--coral);
+    color: #fff;
+    font-size: 10px; letter-spacing: 2px;
+    text-transform: uppercase; font-weight: 700;
+    padding: 7px 13px; border-radius: 100px;
+    box-shadow: 0 8px 20px -6px rgba(224,122,95,0.55);
+  }
+  .hero-event .countdown {
+    position: absolute; top: 16px; right: 16px;
+    background: rgba(0,0,0,0.55); backdrop-filter: blur(10px);
+    color: var(--mango); font-size: 11px;
+    padding: 7px 12px; border-radius: 100px;
+    letter-spacing: 0.06em; font-weight: 700;
+    border: 1px solid rgba(244,185,66,0.3);
+  }
+  .hero-event .info {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 24px 22px; color: var(--cream);
+  }
+  .hero-event .info .meta {
+    font-size: 11px; letter-spacing: 2px;
+    text-transform: uppercase; opacity: 0.7;
+    margin-bottom: 10px; font-weight: 600;
+  }
+  .hero-event .info h2 {
+    font-family: var(--display); font-weight: 400;
+    font-size: 36px; line-height: 1.0;
+    margin-bottom: 10px; letter-spacing: -0.02em;
+  }
+  .hero-event .info h2 em { font-style: italic; color: var(--mango); }
+  .hero-event .info p { font-size: 13.5px; opacity: 0.9; line-height: 1.5; }
+  .hero-event .info .hosted {
+    margin-top: 14px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .hero-event .info .host-avs { display: flex; }
+  .hero-event .info .host-avs span {
+    width: 26px; height: 26px; border-radius: 50%;
+    background: var(--green-2); color: var(--cream);
+    display: inline-flex; align-items: center; justify-content: center;
+    font-family: var(--serif); font-size: 11px; font-weight: 500;
+    border: 1.5px solid #1f3024;
+    margin-left: -8px;
+  }
+  .hero-event .info .host-avs span:first-child { margin-left: 0; }
+  .hero-event .info .hosted-lbl {
+    font-size: 11px; opacity: 0.75;
+    letter-spacing: 0.02em;
+  }
+  .event-row .thumb {
+    position: relative;
+    overflow: hidden;
+  }
+  .event-row .thumb .bg {
+    position: absolute; inset: 0;
+    background-size: cover;
+  }
+  .event-row .thumb .thumb-scene {
+    position: absolute; inset: 0;
+    pointer-events: none; opacity: 0.85;
+  }
+  .event-row .thumb .thumb-scene svg { width: 100%; height: 100%; display: block; }
+  .section-head .link {
+    display: inline-flex; align-items: center; gap: 4px;
+  }
+
+  .section-head {
+    padding: 26px 24px 10px;
+    display: flex; align-items: baseline; justify-content: space-between;
+  }
+  .section-head h3 {
+    font-family: var(--display); font-weight: 400;
+    font-size: 26px; letter-spacing: -0.02em;
+  }
+  .section-head .link {
+    font-size: 11px; color: var(--coral);
+    font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; cursor: pointer;
+  }
+
+  .event-row {
+    display: flex; gap: 14px;
+    padding: 14px 24px; cursor: pointer;
+    border-bottom: 1px solid var(--line);
+    align-items: center;
+  }
+  .event-row:last-child { border-bottom: none; }
+  .event-row .thumb {
+    width: 80px; height: 80px;
+    border-radius: 14px;
+    background-size: cover; background-position: center;
+    flex-shrink: 0;
+  }
+  .event-row .body { flex: 1; min-width: 0; }
+  .event-row .date-eyebrow {
+    font-size: 10px; color: var(--bronze);
+    letter-spacing: 2px; text-transform: uppercase;
+    font-weight: 600; margin-bottom: 4px;
+  }
+  .event-row h4 {
+    font-family: var(--serif); font-weight: 500;
+    font-size: 17px; line-height: 1.2; margin-bottom: 4px;
+  }
+  .event-row .where { font-size: 12.5px; color: var(--ink-3); }
+  .event-row .status-dot {
+    width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+  }
+  .status-confirmed { background: var(--teal); box-shadow: 0 0 0 3px rgba(46,138,150,0.18); }
+  .status-pending { background: var(--coral); box-shadow: 0 0 0 3px rgba(224,122,95,0.18); }
+
+  /* ============= CERCA (Swipe events) ============= */
+  #screen-cerca {
+    min-height: 100vh; min-height: 100dvh;
+    background: var(--cream);
+    padding-bottom: calc(82px + var(--safe-bottom));
+  }
+  .swipe-stage {
+    position: relative;
+    margin: 18px 18px 0;
+    height: 520px;
+    user-select: none;
+  }
+  .swipe-card {
+    position: absolute; inset: 0;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 22px 60px -22px rgba(31,27,23,0.40);
+    cursor: grab;
+    transition: transform .35s cubic-bezier(0.32,0.72,0,1), opacity .35s;
+    will-change: transform, opacity;
+  }
+  .swipe-card.grabbing { cursor: grabbing; transition: none; }
+  .swipe-card .bg {
+    position: absolute; inset: 0;
+    background-size: cover; background-position: center;
+  }
+  .swipe-card .scrim {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 30%, rgba(0,0,0,0.2) 55%, rgba(0,0,0,0.88) 100%);
+  }
+  .swipe-card .dist {
+    position: absolute; top: 16px; left: 16px;
+    display: flex; align-items: center; gap: 6px;
+    background: rgba(255,255,255,0.92);
+    padding: 7px 12px; border-radius: 100px;
+    font-size: 11px; font-weight: 600;
+    color: var(--ink);
+    letter-spacing: 1px;
+  }
+  .swipe-card .dist .ico { color: var(--bronze); }
+  .swipe-card .price-tag {
+    position: absolute; top: 16px; right: 16px;
+    background: rgba(0,0,0,0.5); color: var(--cream);
+    padding: 8px 14px; border-radius: 100px;
+    font-family: var(--serif); font-size: 16px;
+    font-weight: 500;
+  }
+  .swipe-card .body {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 22px; color: var(--cream);
+  }
+  .swipe-card .body .meta {
+    font-size: 10.5px; letter-spacing: 2px;
+    text-transform: uppercase; opacity: 0.75;
+    margin-bottom: 8px; font-weight: 600;
+  }
+  .swipe-card .body h2 {
+    font-family: var(--display); font-weight: 400;
+    font-size: 32px; line-height: 1.05;
+    margin-bottom: 8px; letter-spacing: -0.015em;
+  }
+  .swipe-card .body h2 em { color: var(--mango); font-style: italic; }
+  .swipe-card .body p {
+    font-size: 13px; opacity: 0.85; line-height: 1.5;
+  }
+  .swipe-card .body .tags {
+    display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap;
+  }
+  .swipe-card .body .tag {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 100px;
+    padding: 4px 10px;
+    font-size: 10.5px;
+    letter-spacing: 0.5px;
+    backdrop-filter: blur(6px);
+  }
+
+  .swipe-card .decision {
+    position: absolute;
+    top: 32px;
+    padding: 8px 16px;
+    border: 2px solid;
+    border-radius: 12px;
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    opacity: 0;
+    transition: opacity .15s;
+  }
+  .swipe-card .decision.like {
+    right: 24px;
+    color: var(--teal);
+    border-color: var(--teal);
+    transform: rotate(15deg);
+    background: rgba(46,138,150,0.10);
+    backdrop-filter: blur(4px);
+  }
+  .swipe-card .decision.nope {
+    left: 24px;
+    color: var(--rose);
+    border-color: var(--rose);
+    transform: rotate(-15deg);
+    background: rgba(198,74,94,0.10);
+    backdrop-filter: blur(4px);
+  }
+  .swipe-card .decision.super {
+    top: auto; bottom: 200px;
+    left: 50%; transform: translateX(-50%);
+    color: var(--mango);
+    border-color: var(--mango);
+    background: rgba(244,185,66,0.18);
+    backdrop-filter: blur(4px);
+  }
+
+  .swipe-controls {
+    display: flex; justify-content: center;
+    gap: 18px; padding: 26px 18px 0;
+  }
+  .swipe-btn {
+    width: 60px; height: 60px;
+    border-radius: 50%;
+    border: none;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+    cursor: pointer;
+    box-shadow: 0 8px 22px -8px rgba(31,27,23,0.25);
+    transition: transform .15s;
+  }
+  .swipe-btn:active { transform: scale(0.92); }
+  .swipe-btn.nope {
+    background: white; color: var(--rose);
+    border: 2px solid var(--rose);
+  }
+  .swipe-btn.super {
+    background: var(--mango); color: #fff;
+    width: 50px; height: 50px; font-size: 18px;
+    box-shadow: 0 8px 22px -8px rgba(244,185,66,0.55);
+  }
+  .swipe-btn.like {
+    background: var(--coral); color: #fff;
+    box-shadow: 0 12px 28px -10px rgba(224,122,95,0.65);
+  }
+  .swipe-btn.info {
+    background: white; color: var(--teal-deep);
+    width: 50px; height: 50px; font-size: 18px;
+    border: 2px solid var(--teal);
+  }
+
+  .swipe-empty {
+    position: absolute; inset: 0;
+    display: none; flex-direction: column;
+    align-items: center; justify-content: center;
+    background: var(--surface);
+    border-radius: 24px;
+    border: 1px dashed var(--line-2);
+    padding: 32px;
+    text-align: center;
+  }
+  .swipe-empty.show { display: flex; }
+  .swipe-empty h3 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: 22px; margin-bottom: 8px;
+  }
+  .swipe-empty p { color: var(--ink-3); font-size: 13.5px; margin-bottom: 16px; }
+  .swipe-empty button {
+    background: var(--green); color: var(--cream);
+    border: none; border-radius: 100px;
+    padding: 10px 22px;
+    font-family: var(--sans); font-size: 13px;
+    font-weight: 600; cursor: pointer;
+  }
+
+  /* ============= CONECTA (Tinder-style) ============= */
+  .conecta-context {
+    margin: 16px 20px;
+    padding: 14px 16px;
+    background: linear-gradient(135deg, var(--green), var(--green-2));
+    border-radius: 14px;
+    color: var(--cream);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .conecta-context .left {
+    font-size: 11px; opacity: 0.7; letter-spacing: 1.5px;
+    text-transform: uppercase; font-weight: 600;
+  }
+  .conecta-context .ev {
+    font-family: var(--serif); font-size: 15px; margin-top: 3px;
+  }
+  .conecta-context .change {
+    background: rgba(255,255,255,0.12); color: var(--gold);
+    border: 1px solid rgba(212,184,122,0.4);
+    padding: 6px 12px; border-radius: 100px;
+    font-size: 11px; font-weight: 600;
+    cursor: pointer; letter-spacing: 0.5px;
+  }
+  .profile-card .body { padding: 26px 22px; }
+  .profile-card .body h2 {
+    font-size: 26px; margin-bottom: 4px;
+  }
+  .profile-card .body h2 .age {
+    font-family: var(--sans); font-weight: 400;
+    font-size: 20px; opacity: 0.75; margin-left: 6px;
+  }
+  .profile-card .body .role {
+    font-size: 13px; color: var(--gold);
+    margin-bottom: 12px; letter-spacing: 0.02em;
+  }
+  .profile-card .body .bio {
+    font-size: 13px; opacity: 0.85; line-height: 1.55;
+    margin-bottom: 12px;
+  }
+  .profile-card .mutual {
+    position: absolute; top: 16px; left: 16px;
+    background: rgba(212,184,122,0.95);
+    color: var(--green-deep);
+    padding: 7px 12px; border-radius: 100px;
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  /* ============= EXPERIENCIAS (Grid) ============= */
+  .exp-cats {
+    display: flex; gap: 8px;
+    padding: 14px 24px 8px;
+    overflow-x: auto; scrollbar-width: none;
+  }
+  .exp-cats::-webkit-scrollbar { display: none; }
+  .exp-cat {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    color: var(--ink-2);
+    border-radius: 100px;
+    padding: 8px 14px;
+    font-family: var(--sans); font-size: 12.5px;
+    font-weight: 600; letter-spacing: 0.02em;
+    white-space: nowrap; cursor: pointer;
+    transition: all .15s;
+  }
+  .exp-cat.active {
+    background: var(--green); color: var(--cream); border-color: var(--green);
+  }
+  .exp-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 12px; padding: 14px 18px 8px;
+  }
+  .exp-tile {
+    aspect-ratio: 3 / 4;
+    border-radius: 18px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0 8px 22px -10px rgba(31,27,23,0.25);
+    transition: transform .2s;
+  }
+  .exp-tile:active { transform: scale(0.98); }
+  .exp-tile .bg {
+    position: absolute; inset: 0;
+    background-size: cover; background-position: center;
+    transition: transform .6s ease-out;
+  }
+  .exp-tile:hover .bg { transform: scale(1.05); }
+  .exp-tile .scrim {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 35%, rgba(0,0,0,0.78) 100%);
+  }
+  .exp-tile .play-mini {
+    position: absolute; top: 14px; right: 14px;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.92);
+    color: var(--ink);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px;
+    backdrop-filter: blur(6px);
+  }
+  .exp-tile .info {
+    position: absolute; bottom: 14px; left: 14px; right: 14px;
+    color: var(--cream);
+  }
+  .exp-tile .info .cat {
+    font-size: 9px; letter-spacing: 1.5px;
+    text-transform: uppercase; opacity: 0.8;
+    font-weight: 600; margin-bottom: 4px;
+  }
+  .exp-tile .info h4 {
+    font-family: var(--serif); font-weight: 500;
+    font-size: 15px; line-height: 1.15;
+    letter-spacing: -0.005em;
+  }
+  .exp-tile.wide {
+    grid-column: span 2; aspect-ratio: 16 / 10;
+  }
+  .exp-tile.wide .info h4 { font-size: 22px; }
+  .exp-tile .price-mini {
+    position: absolute; top: 14px; left: 14px;
+    background: rgba(0,0,0,0.55);
+    backdrop-filter: blur(8px);
+    color: var(--cream);
+    padding: 5px 10px; border-radius: 100px;
+    font-family: var(--serif); font-size: 13px; font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+  .exp-tile .play-mini { width: 36px; height: 36px; }
+  .exp-tile .play-mini .ico-svg { width: 14px; height: 14px; }
+
+  /* ============= EVENT DETAIL ============= */
+  #screen-event { background: var(--cream); }
+  .detail-hero {
+    position: relative;
+    height: 56vh; min-height: 460px;
+  }
+  .detail-hero .bg { position: absolute; inset: 0; background-size: cover; background-position: center; }
+  .detail-hero .scrim {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 60%, rgba(31,45,36,0.85) 100%);
+  }
+  .detail-hero .nav {
+    position: absolute; top: calc(var(--safe-top) + 16px); left: 16px; right: 16px;
+    display: flex; justify-content: space-between;
+  }
+  .detail-hero .nav button {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: rgba(255,255,255,0.88); border: none;
+    font-size: 18px; color: var(--ink);
+    backdrop-filter: blur(8px); cursor: pointer;
+  }
+  .detail-hero .nav .right { display: flex; gap: 10px; }
+  .detail-hero .title-block {
+    position: absolute; bottom: 28px; left: 24px; right: 24px;
+    color: var(--cream);
+  }
+  .detail-hero .eyebrow {
+    font-size: 10px; letter-spacing: 2.5px;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 12px; font-weight: 600;
+  }
+  .detail-hero h1 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: 38px; line-height: 1.08; letter-spacing: -0.015em;
+  }
+  .detail-hero h1 em { color: var(--gold); font-style: italic; }
+  .detail-hero .where-meta {
+    margin-top: 12px; font-size: 13px; opacity: 0.85;
+    display: flex; gap: 14px; flex-wrap: wrap;
+  }
+  .detail-body { padding: 22px 24px 200px; }
+  .key-facts {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    background: var(--surface);
+    border-radius: 16px; padding: 18px 8px;
+    margin-bottom: 24px; border: 1px solid var(--line);
+  }
+  .key-facts > div {
+    text-align: center; border-right: 1px solid var(--line); padding: 0 8px;
+  }
+  .key-facts > div:last-child { border-right: none; }
+  .key-facts .num {
+    font-family: var(--serif); font-size: 22px;
+    color: var(--green); font-weight: 500; line-height: 1.1;
+  }
+  .key-facts .lbl {
+    font-size: 10px; color: var(--ink-3);
+    text-transform: uppercase; letter-spacing: 1.5px;
+    margin-top: 4px; font-weight: 600;
+  }
+  .tab-strip {
+    display: flex; gap: 4px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 20px;
+    overflow-x: auto; scrollbar-width: none;
+  }
+  .tab-strip::-webkit-scrollbar { display: none; }
+  .tab-strip button {
+    background: none; border: none;
+    padding: 12px 16px;
+    font-family: var(--sans); font-size: 13.5px;
+    font-weight: 600; color: var(--ink-3); cursor: pointer;
+    position: relative; white-space: nowrap;
+  }
+  .tab-strip button.active { color: var(--ink); }
+  .tab-strip button.active::after {
+    content: ''; position: absolute;
+    bottom: -1px; left: 12px; right: 12px;
+    height: 2px; background: var(--bronze); border-radius: 2px;
+  }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; animation: fadeIn .25s; }
+  .itin-day-head {
+    font-size: 11px; color: var(--bronze);
+    text-transform: uppercase; letter-spacing: 2.5px;
+    font-weight: 700; margin: 18px 0 10px;
+  }
+  .itin-day-head:first-child { margin-top: 0; }
+  .itin-item {
+    display: flex; gap: 14px;
+    padding: 14px 0; border-bottom: 1px solid var(--line);
+  }
+  .itin-item:last-child { border-bottom: none; }
+  .itin-time {
+    font-family: var(--serif); font-size: 14px;
+    color: var(--green); font-weight: 500;
+    width: 56px; flex-shrink: 0; padding-top: 2px;
+  }
+  .itin-body h4 {
+    font-family: var(--serif); font-weight: 500;
+    font-size: 16px; margin-bottom: 2px;
+  }
+  .itin-body p { font-size: 13px; color: var(--ink-2); line-height: 1.5; }
+  .talent-card {
+    display: flex; gap: 14px;
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 14px; padding: 14px;
+    align-items: center; cursor: pointer;
+    transition: all .15s;
+  }
+  .talent-card:active { background: var(--cream-2); transform: scale(0.995); }
+  .talent-card .talent-av {
+    width: 54px; height: 54px; border-radius: 50%;
+    flex-shrink: 0;
+    color: var(--cream);
+    font-family: var(--serif); font-size: 20px; font-weight: 500;
+    display: flex; align-items: center; justify-content: center;
+    border: 1.5px solid var(--cream);
+    box-shadow: 0 4px 14px -4px rgba(0,0,0,0.18);
+  }
+  .talent-card .talent-body { flex: 1; }
+  .talent-card .talent-role {
+    font-size: 11px; color: var(--bronze);
+    text-transform: uppercase; letter-spacing: 1.8px;
+    font-weight: 600; margin-bottom: 2px;
+  }
+  .talent-card h4 {
+    font-family: var(--serif); font-weight: 500;
+    font-size: 17px; letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .talent-card .talent-bio { font-size: 12.5px; color: var(--ink-2); margin-top: 2px; }
+  .talent-card .talent-chev { color: var(--ink-3); flex-shrink: 0; }
+  .rsvp-bar {
+    position: fixed;
+    bottom: calc(68px + var(--safe-bottom));
+    left: 0; right: 0;
+    max-width: 430px; margin: 0 auto;
+    padding: 16px 20px 16px;
+    background: var(--cream);
+    border-top: 1px solid var(--line);
+    box-shadow: 0 -10px 24px -16px rgba(31,27,23,0.18);
+    display: flex; gap: 10px; align-items: center;
+  }
+  .rsvp-bar .price .num {
+    font-family: var(--serif); font-size: 22px;
+    color: var(--ink); font-weight: 500; line-height: 1;
+  }
+  .rsvp-bar .price .lbl {
+    font-size: 10px; color: var(--ink-3);
+    letter-spacing: 1.5px; text-transform: uppercase;
+    margin-top: 4px; font-weight: 600;
+  }
+  .rsvp-bar .btn-dark { flex: 1; }
+
+  /* ============= EXPERIENCE VIDEO MODAL ============= */
+  .exp-modal {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.85);
+    z-index: 80;
+    display: none;
+    animation: fadeIn .25s;
+  }
+  .exp-modal.open { display: block; }
+  .exp-modal-sheet {
+    position: absolute;
+    inset: 0;
+    background: var(--green-deep);
+    overflow-y: auto;
+  }
+  .exp-modal .close {
+    position: absolute; top: calc(var(--safe-top) + 18px); right: 18px;
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.18);
+    backdrop-filter: blur(10px);
+    border: none; color: var(--cream);
+    font-size: 18px; cursor: pointer;
+    z-index: 10;
+  }
+  .exp-modal .video-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 9 / 14;
+    overflow: hidden;
+  }
+  .exp-modal .video-bg {
+    position: absolute; inset: 0;
+    background-size: cover; background-position: center;
+    animation: kenburns 18s ease-in-out infinite alternate;
+  }
+  @keyframes kenburns {
+    0%   { transform: scale(1.05) translate(-1%, 0); }
+    100% { transform: scale(1.18) translate(2%, -2%); }
+  }
+  .exp-modal .video-scrim {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 55%, rgba(22,32,26,0.95) 100%);
+  }
+  .exp-modal .video-label {
+    position: absolute; top: calc(var(--safe-top) + 24px); left: 22px;
+    display: flex; align-items: center; gap: 8px;
+    background: rgba(0,0,0,0.4); backdrop-filter: blur(8px);
+    color: var(--cream); padding: 6px 12px;
+    border-radius: 100px;
+    font-size: 10.5px; font-weight: 600;
+    letter-spacing: 1.5px; text-transform: uppercase;
+  }
+  .exp-modal .live-dot {
+    width: 6px; height: 6px;
+    background: var(--rose); border-radius: 50%;
+    animation: livePulse 1.4s ease-in-out infinite;
+  }
+  @keyframes livePulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.4); }
+  }
+  .exp-modal .play-big {
+    position: absolute; top: 45%; left: 50%;
+    transform: translate(-50%,-50%);
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    background: rgba(212,184,122,0.94);
+    color: var(--green-deep);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px;
+    cursor: pointer;
+    box-shadow: 0 12px 40px -8px rgba(0,0,0,0.5);
+    animation: playPulse 2s ease-in-out infinite;
+  }
+  @keyframes playPulse {
+    0%, 100% { box-shadow: 0 12px 40px -8px rgba(0,0,0,0.5), 0 0 0 0 rgba(212,184,122,0.5); }
+    50% { box-shadow: 0 12px 40px -8px rgba(0,0,0,0.5), 0 0 0 16px rgba(212,184,122,0); }
+  }
+  .exp-modal .video-info {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 22px;
+    color: var(--cream);
+  }
+  .exp-modal .video-info .cat-tag {
+    display: inline-block;
+    font-size: 10px; letter-spacing: 2px;
+    text-transform: uppercase; font-weight: 600;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+  .exp-modal .video-info h2 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: 30px; line-height: 1.1;
+    margin-bottom: 6px; letter-spacing: -0.015em;
+  }
+  .exp-modal .video-info h2 em { color: var(--gold); font-style: italic; }
+  .exp-modal .video-info .location-row {
+    font-size: 13px; opacity: 0.8;
+    display: flex; gap: 14px; flex-wrap: wrap;
+  }
+  .exp-modal .content {
+    padding: 26px 22px;
+    color: var(--cream);
+  }
+  .exp-modal .content p {
+    font-size: 14.5px; line-height: 1.65;
+    color: rgba(247,241,227,0.78);
+    margin-bottom: 18px;
+  }
+  .exp-modal .stat-grid {
+    display: grid; grid-template-columns: repeat(3,1fr);
+    gap: 0;
+    margin: 22px 0;
+    background: rgba(247,241,227,0.05);
+    border: 1px solid rgba(247,241,227,0.1);
+    border-radius: 14px;
+    padding: 16px 6px;
+  }
+  .exp-modal .stat-grid > div {
+    text-align: center; padding: 0 10px;
+    border-right: 1px solid rgba(247,241,227,0.08);
+  }
+  .exp-modal .stat-grid > div:last-child { border-right: none; }
+  .exp-modal .stat-grid .num {
+    font-family: var(--serif); font-size: 19px;
+    color: var(--gold); font-weight: 500;
+  }
+  .exp-modal .stat-grid .lbl {
+    font-size: 9.5px; color: rgba(247,241,227,0.5);
+    letter-spacing: 1.5px; text-transform: uppercase;
+    margin-top: 4px; font-weight: 600;
+  }
+  .exp-modal h3 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: 17px; color: var(--gold);
+    margin: 24px 0 10px;
+    letter-spacing: 0.02em;
+  }
+  .exp-modal .included li {
+    list-style: none; position: relative;
+    padding: 8px 0 8px 22px;
+    color: rgba(247,241,227,0.78);
+    font-size: 13.5px;
+    border-bottom: 1px solid rgba(247,241,227,0.06);
+  }
+  .exp-modal .included li:before {
+    content: "✓"; position: absolute; left: 0;
+    color: var(--gold); font-weight: 600;
+  }
+  .exp-modal .book-bar {
+    position: sticky; bottom: 0;
+    background: var(--green-deep);
+    padding: 14px 22px calc(14px + var(--safe-bottom));
+    border-top: 1px solid rgba(247,241,227,0.1);
+    display: flex; gap: 10px; align-items: center;
+  }
+  .exp-modal .book-bar .price-block {
+    color: var(--cream); flex-shrink: 0;
+  }
+  .exp-modal .book-bar .price-block .num {
+    font-family: var(--serif); font-size: 22px;
+    color: var(--gold); font-weight: 500; line-height: 1;
+  }
+  .exp-modal .book-bar .price-block .lbl {
+    font-size: 10px; color: rgba(247,241,227,0.55);
+    letter-spacing: 1.5px; text-transform: uppercase;
+    margin-top: 4px; font-weight: 600;
+  }
+  .exp-modal .book-bar button {
+    flex: 1;
+    background: var(--gold); color: var(--green-deep);
+    border: none; border-radius: 100px;
+    padding: 16px 22px;
+    font-family: var(--sans); font-size: 15px;
+    font-weight: 700; cursor: pointer;
+  }
+
+  /* ============= CALENDAR ============= */
+  .cal-month { padding: 0 24px 32px; }
+  .cal-month h3 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: 18px; color: var(--bronze);
+    margin-bottom: 12px; text-transform: uppercase;
+    letter-spacing: 0.15em;
+  }
+  .cal-event {
+    padding: 16px 0; border-bottom: 1px solid var(--line);
+    cursor: pointer; display: flex; gap: 14px;
+  }
+  .cal-event .date-block { text-align: center; flex-shrink: 0; width: 54px; }
+  .cal-event .date-block .d {
+    font-family: var(--serif); font-size: 26px;
+    color: var(--green); font-weight: 500; line-height: 1;
+  }
+  .cal-event .date-block .m {
+    font-size: 10px; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--ink-3);
+    margin-top: 4px; font-weight: 600;
+  }
+  .cal-event .e-body { flex: 1; }
+  .cal-event h4 {
+    font-family: var(--serif); font-weight: 500;
+    font-size: 16px; margin-bottom: 4px;
+  }
+  .cal-event .meta { font-size: 12px; color: var(--ink-3); }
+  .cal-event .pill {
+    align-self: flex-start; margin-top: 6px;
+    font-size: 10px; background: var(--green); color: var(--cream);
+    padding: 4px 10px; border-radius: 100px;
+    letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600;
+  }
+  .cal-event .pill.pending { background: var(--bronze); }
+  .cal-event .pill.confirmed { background: var(--teal); }
+
+  .cal-event.next-up {
+    background: var(--cream-2);
+    border: 1px solid var(--line-2);
+    border-radius: 16px;
+    padding: 16px 14px;
+    margin-bottom: 10px;
+    position: relative;
+    border-bottom: 1px solid var(--line-2);
+    box-shadow: 0 8px 22px -16px rgba(31,45,36,0.25);
+  }
+  .cal-event.next-up .next-marker {
+    position: absolute; top: -10px; left: 14px;
+    background: var(--coral); color: #fff;
+    font-size: 10px; font-weight: 700;
+    padding: 4px 10px; border-radius: 100px;
+    letter-spacing: 1.6px; text-transform: uppercase;
+    box-shadow: 0 6px 14px -4px rgba(224,122,95,0.6);
+  }
+  .month-scrub {
+    padding: 0 24px 20px;
+    margin: 0;
+  }
+  .month-scrub .chip {
+    background: transparent;
+    border-color: var(--line-2);
+  }
+  .month-scrub .chip:hover { color: var(--ink); }
+
+  /* ============= PROFILE ============= */
+  .profile-head { padding: 30px 24px 20px; text-align: center; }
+  .profile-head .avatar {
+    width: 88px; height: 88px; border-radius: 50%;
+    background: var(--green); color: var(--cream);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--serif); font-size: 38px;
+    margin: 0 auto 14px;
+    border: 3px solid var(--cream);
+    box-shadow: 0 8px 26px -10px rgba(31,45,36,0.4);
+  }
+  .profile-head h2 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: 24px; margin-bottom: 4px;
+  }
+  .profile-head .member {
+    font-size: 11px; color: var(--bronze);
+    text-transform: uppercase; letter-spacing: 2.5px;
+    font-weight: 600;
+  }
+  .profile-head .avatar-wrap {
+    position: relative;
+    width: 96px; height: 96px;
+    margin: 0 auto 14px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .profile-head .avatar-wrap .avatar { margin: 0; }
+  .profile-head .avatar-ring {
+    position: absolute; inset: 0;
+    border-radius: 50%;
+    border: 1.5px solid var(--gold);
+    opacity: 0.55;
+  }
+  .profile-head .avatar-ring::before {
+    content: ''; position: absolute; inset: -6px;
+    border-radius: 50%;
+    border: 1px dashed var(--bronze);
+    opacity: 0.4;
+  }
+  .profile-head .tier-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    margin-top: 12px;
+    background: linear-gradient(135deg, rgba(244,185,66,0.16), rgba(212,184,122,0.16));
+    border: 1px solid rgba(212,184,122,0.4);
+    color: var(--bronze);
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-family: var(--sans);
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+  }
+  .profile-head .tier-badge .ico-svg { color: var(--gold); }
+  .profile-stats {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    margin: 16px 24px 0;
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 16px; padding: 18px 8px;
+  }
+  .profile-stats > div {
+    text-align: center; padding: 0 8px;
+    border-right: 1px solid var(--line);
+  }
+  .profile-stats > div:last-child { border-right: none; }
+  .profile-stats .num {
+    font-family: var(--serif); font-size: 22px;
+    color: var(--ink); font-weight: 500;
+  }
+  .profile-stats .lbl {
+    font-size: 10px; color: var(--ink-3);
+    letter-spacing: 1.5px; text-transform: uppercase;
+    margin-top: 4px; font-weight: 600;
+  }
+  .profile-menu {
+    margin: 24px 16px;
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 16px; overflow: hidden;
+  }
+  .profile-menu .row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 18px;
+    border-bottom: 1px solid var(--line);
+    cursor: pointer;
+  }
+  .profile-menu .row:last-child { border-bottom: none; }
+  .profile-menu .row { transition: background .15s; }
+  .profile-menu .row:active { background: var(--cream-2); }
+  .profile-menu .row .label {
+    font-weight: 500; font-size: 14.5px;
+    display: flex; align-items: center; gap: 12px;
+    color: var(--ink);
+  }
+  .profile-menu .row .ico {
+    width: 32px; height: 32px;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--cream-2); border-radius: 9px;
+    color: var(--green-2);
+  }
+  .profile-menu .row .val {
+    color: var(--ink-3); font-size: 13px;
+    display: inline-flex; align-items: center; gap: 4px;
+  }
+  .profile-menu .row .val .chev { color: var(--ink-3); width: 14px; height: 14px; }
+  .profile-menu .row .val.invite-pill {
+    background: var(--coral); color: #fff;
+    padding: 4px 10px; border-radius: 100px;
+    font-weight: 700; font-size: 11px;
+    letter-spacing: 0.05em;
+  }
+
+  /* ============= SAVED ============= */
+  .saved-list {
+    padding: 8px 16px 12px;
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .saved-card {
+    position: relative;
+    border-radius: 18px;
+    overflow: hidden;
+    height: 144px;
+    cursor: pointer;
+    box-shadow: 0 8px 22px -12px rgba(31,27,23,0.3);
+  }
+  .saved-card .bg { position: absolute; inset: 0; background-size: cover; background-position: center; }
+  .saved-card .scene { opacity: 0.92; }
+  .saved-card .scrim { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.0) 30%, rgba(0,0,0,0.85) 100%); }
+  .saved-card .body {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 14px 16px; color: var(--cream);
+    display: flex; justify-content: space-between; align-items: flex-end; gap: 8px;
+  }
+  .saved-card .body h4 {
+    font-family: var(--serif); font-weight: 500; font-size: 17px;
+    line-height: 1.15;
+  }
+  .saved-card .body .when {
+    font-size: 10px; opacity: 0.8;
+    letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600;
+    margin-bottom: 3px;
+  }
+  .saved-card .body .price {
+    font-family: var(--serif); font-size: 16px;
+    color: var(--gold); font-weight: 500;
+    background: rgba(0,0,0,0.45);
+    padding: 4px 10px; border-radius: 100px;
+    backdrop-filter: blur(6px);
+  }
+  .saved-card .unsave {
+    position: absolute; top: 10px; right: 10px;
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(6px);
+    color: var(--coral);
+    border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .saved-empty {
+    display: none;
+    margin: 60px 32px 0;
+    text-align: center;
+  }
+  .saved-empty.show { display: block; }
+  .saved-empty-art svg { width: 80px; height: 80px; opacity: 0.7; margin-bottom: 18px; }
+  .saved-empty h3 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: 22px; margin-bottom: 8px;
+  }
+  .saved-empty p {
+    color: var(--ink-3); font-size: 13.5px; line-height: 1.55;
+    margin-bottom: 22px;
+  }
+  .saved-empty .btn-dark { display: inline-block; width: auto; padding: 14px 26px; }
+
+  /* ============= INBOX ============= */
+  .inbox-list {
+    margin: 8px 0 16px;
+  }
+  .inbox-row {
+    display: flex; gap: 14px;
+    padding: 14px 22px; cursor: pointer;
+    border-bottom: 1px solid var(--line);
+    align-items: center;
+    position: relative;
+  }
+  .inbox-row:active { background: var(--cream-2); }
+  .inbox-row .ib-av {
+    width: 46px; height: 46px;
+    border-radius: 50%;
+    background: var(--green);
+    color: var(--cream);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--serif); font-size: 17px; font-weight: 500;
+    flex-shrink: 0;
+  }
+  .inbox-row .ib-av.sora-av {
+    background: linear-gradient(135deg, var(--coral), var(--mango));
+    color: var(--green-deep);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+  .inbox-row .ib-body { flex: 1; min-width: 0; }
+  .inbox-row .ib-name {
+    font-family: var(--serif); font-size: 16px; font-weight: 500;
+    color: var(--ink); margin-bottom: 2px;
+    display: flex; align-items: baseline; justify-content: space-between;
+  }
+  .inbox-row .ib-name .ib-when {
+    font-family: var(--sans); font-size: 10.5px;
+    color: var(--ink-3); font-weight: 600;
+    letter-spacing: 1.2px; text-transform: uppercase;
+  }
+  .inbox-row .ib-msg {
+    font-size: 13.5px; color: var(--ink-2);
+    line-height: 1.4;
+    overflow: hidden; text-overflow: ellipsis;
+    display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;
+  }
+  .inbox-row .ib-msg strong { color: var(--green); font-weight: 600; }
+  .inbox-row .ib-dot {
+    position: absolute; right: 22px; top: 22px;
+    width: 8px; height: 8px;
+    background: var(--coral);
+    border-radius: 50%;
+  }
+
+  /* ============= BOTTOM NAV ============= */
+  .bottom-nav {
+    position: fixed; bottom: 0;
+    left: 0; right: 0;
+    max-width: 430px; margin: 0 auto;
+    background: var(--cream);
+    border-top: 1px solid var(--line);
+    display: flex;
+    padding: 8px 6px calc(8px + var(--safe-bottom));
+    z-index: 20;
+    box-shadow: 0 -8px 22px -16px rgba(31,27,23,0.18);
+  }
+  .bottom-nav button {
+    flex: 1; background: none; border: none;
+    padding: 8px 4px 6px; cursor: pointer;
+    display: flex; flex-direction: column; align-items: center; gap: 5px;
+    color: var(--ink-3);
+    font-family: var(--sans);
+    position: relative;
+    transition: color .2s;
+  }
+  .bottom-nav button.active { color: var(--ink); }
+  .bottom-nav button.active::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 24px; height: 3px;
+    background: var(--coral);
+    border-radius: 100px;
+  }
+  .bottom-nav button .ico {
+    font-size: 19px; line-height: 1;
+    transition: transform .2s;
+  }
+  .bottom-nav button.active .ico { transform: translateY(-1px); }
+  .bottom-nav button.active[data-screen="home"] .ico { color: var(--coral); }
+  .bottom-nav button.active[data-screen="cerca"] .ico { color: var(--teal); }
+  .bottom-nav button.active[data-screen="conecta"] .ico { color: var(--rose); }
+  .bottom-nav button.active[data-screen="experiencias"] .ico { color: var(--mango-deep); }
+  .bottom-nav button.active[data-screen="profile"] .ico { color: var(--green); }
+  .bottom-nav button .lbl {
+    font-size: 9.5px; letter-spacing: 0.08em; font-weight: 700;
+  }
+
+  /* ============= RSVP SHEET ============= */
+  .sheet-backdrop {
+    position: fixed; inset: 0;
+    background: rgba(31,27,23,0.4);
+    z-index: 50; display: none;
+    animation: fadeIn .2s;
+  }
+  .sheet-backdrop.open { display: block; }
+  .sheet {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    max-width: 430px; margin: 0 auto;
+    background: var(--cream);
+    border-radius: 24px 24px 0 0;
+    padding: 24px 24px calc(24px + var(--safe-bottom));
+    z-index: 51;
+    transform: translateY(100%);
+    transition: transform .35s cubic-bezier(0.32, 0.72, 0, 1);
+    max-height: 85vh; overflow-y: auto;
+  }
+  .sheet.open { transform: translateY(0); }
+  .sheet-handle {
+    width: 40px; height: 4px;
+    background: var(--line-2); border-radius: 100px;
+    margin: 0 auto 18px;
+  }
+  .sheet h3 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: 22px; margin-bottom: 8px; letter-spacing: -0.01em;
+  }
+  .sheet .sub { font-size: 13.5px; color: var(--ink-2); margin-bottom: 22px; }
+  .sheet-section { margin-bottom: 22px; }
+  .sheet-section .label {
+    font-size: 11px; color: var(--bronze);
+    text-transform: uppercase; letter-spacing: 2px;
+    font-weight: 600; margin-bottom: 10px;
+  }
+  .rsvp-options {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px;
+  }
+  .rsvp-opt {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 12px; padding: 14px 8px;
+    text-align: center; font-family: var(--sans);
+    font-size: 13px; color: var(--ink);
+    cursor: pointer; font-weight: 500;
+  }
+  .rsvp-opt.active {
+    background: var(--green); color: var(--cream); border-color: var(--green);
+  }
+
+  /* ============= MATCH MODAL ============= */
+  .match-modal {
+    position: fixed; inset: 0;
+    background: rgba(22,32,26,0.92);
+    backdrop-filter: blur(16px);
+    z-index: 90;
+    display: none;
+    animation: fadeIn .3s;
+    align-items: center; justify-content: center;
+    padding: 24px;
+  }
+  .match-modal.open { display: flex; }
+  .match-card {
+    text-align: center;
+    color: var(--cream);
+    max-width: 360px;
+  }
+  .match-avatars {
+    display: flex; justify-content: center;
+    align-items: center; gap: 16px;
+    margin-bottom: 24px;
+    position: relative;
+  }
+  .match-avatars .a {
+    width: 86px; height: 86px;
+    border-radius: 50%;
+    border: 3px solid var(--gold);
+    background: var(--green-2);
+    color: var(--cream);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--serif); font-size: 32px;
+    box-shadow: 0 12px 40px -10px rgba(212,184,122,0.5);
+    animation: matchPop .5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .match-avatars .a:nth-child(2) { animation-delay: .12s; }
+  @keyframes matchPop {
+    0% { transform: scale(0); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  .match-card h2 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: 38px; color: var(--gold);
+    margin-bottom: 10px; letter-spacing: -0.02em;
+    font-style: italic;
+  }
+  .match-card p {
+    color: rgba(247,241,227,0.7);
+    font-size: 15px; margin-bottom: 28px;
+    line-height: 1.5;
+  }
+  .match-card .btn-primary {
+    background: var(--gold); color: var(--green-deep);
+    margin-bottom: 10px;
+  }
+  .match-card .btn-link { color: rgba(247,241,227,0.6); }
+  .match-eyebrow {
+    font-family: var(--sans); font-size: 10.5px;
+    letter-spacing: 0.32em; text-transform: uppercase;
+    color: var(--gold); font-weight: 700;
+    margin-bottom: 14px;
+    opacity: 0;
+    animation: matchFadeIn .4s ease-out .25s forwards;
+  }
+  .match-title {
+    font-family: var(--display) !important;
+    font-size: 48px !important;
+    color: var(--cream) !important;
+    font-style: normal !important;
+    margin-bottom: 22px !important;
+    letter-spacing: -0.025em !important;
+    opacity: 0;
+    animation: matchFadeIn .5s ease-out .35s forwards;
+  }
+  .match-title em { color: var(--gold); font-style: italic; }
+  @keyframes matchFadeIn { to { opacity: 1; } }
+  .match-avatars .link-knot {
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0;
+    animation: matchFadeIn .4s ease-out .55s forwards;
+  }
+  .match-bg-rings {
+    position: absolute; inset: 0;
+    pointer-events: none;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .match-bg-rings span {
+    position: absolute;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    border: 1.5px solid var(--gold);
+    opacity: 0;
+    animation: matchRing 2.4s ease-out infinite;
+  }
+  .match-bg-rings span:nth-child(2) { animation-delay: 0.8s; }
+  .match-bg-rings span:nth-child(3) { animation-delay: 1.6s; }
+  @keyframes matchRing {
+    0% { transform: scale(0.4); opacity: 0.8; }
+    100% { transform: scale(2.4); opacity: 0; }
+  }
+  .match-confetti {
+    position: absolute; inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .match-confetti i {
+    position: absolute;
+    width: 8px; height: 14px;
+    background: var(--gold);
+    top: -20px;
+    border-radius: 2px;
+    opacity: 0;
+    animation: confettiFall 2.6s ease-in forwards;
+  }
+  .match-confetti i:nth-child(1)  { left: 12%; background: var(--coral); animation-delay: 0.0s; }
+  .match-confetti i:nth-child(2)  { left: 24%; background: var(--gold);   animation-delay: 0.15s; transform: rotate(20deg); }
+  .match-confetti i:nth-child(3)  { left: 36%; background: var(--mango);  animation-delay: 0.05s; transform: rotate(-15deg); }
+  .match-confetti i:nth-child(4)  { left: 48%; background: var(--teal);   animation-delay: 0.25s; }
+  .match-confetti i:nth-child(5)  { left: 60%; background: var(--coral);  animation-delay: 0.1s; transform: rotate(35deg); }
+  .match-confetti i:nth-child(6)  { left: 72%; background: var(--gold);   animation-delay: 0.3s; }
+  .match-confetti i:nth-child(7)  { left: 84%; background: var(--mango);  animation-delay: 0.2s; transform: rotate(-25deg); }
+  .match-confetti i:nth-child(8)  { left: 18%; background: var(--teal);   animation-delay: 0.45s; transform: rotate(15deg); }
+  .match-confetti i:nth-child(9)  { left: 30%; background: var(--rose);   animation-delay: 0.55s; }
+  .match-confetti i:nth-child(10) { left: 42%; background: var(--gold);   animation-delay: 0.4s; transform: rotate(-10deg); }
+  .match-confetti i:nth-child(11) { left: 54%; background: var(--coral);  animation-delay: 0.6s; }
+  .match-confetti i:nth-child(12) { left: 66%; background: var(--mango);  animation-delay: 0.5s; transform: rotate(45deg); }
+  .match-confetti i:nth-child(13) { left: 78%; background: var(--teal);   animation-delay: 0.7s; }
+  .match-confetti i:nth-child(14) { left: 8%;  background: var(--rose);   animation-delay: 0.35s; }
+  .match-confetti i:nth-child(15) { left: 90%; background: var(--gold);   animation-delay: 0.65s; transform: rotate(-30deg); }
+  @keyframes confettiFall {
+    0%   { transform: translateY(0) rotate(0); opacity: 1; }
+    100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+  }
+  .match-modal .match-card { position: relative; z-index: 2; }
+
+  /* ============= TOAST ============= */
+  .toast {
+    position: fixed;
+    top: calc(var(--safe-top) + 18px);
+    left: 50%; transform: translateX(-50%) translateY(-32px);
+    background: var(--green); color: var(--cream);
+    padding: 12px 22px; border-radius: 100px;
+    font-size: 13.5px; font-weight: 500;
+    box-shadow: 0 12px 30px -12px rgba(31,45,36,0.5);
+    z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: transform .3s cubic-bezier(0.32, 0.72, 0, 1), opacity .2s, visibility 0s linear .3s;
+    max-width: 90%;
+  }
+  .toast.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition: transform .3s cubic-bezier(0.32, 0.72, 0, 1), opacity .2s, visibility 0s;
+  }
+  /* ============= SCENE OVERLAY ============= */
+  .scene {
+    position: absolute; inset: 0;
+    pointer-events: none;
+    opacity: 0.92;
+  }
+  .scene svg { width: 100%; height: 100%; display: block; }
+
+  /* ============= CHIP STRIP ============= */
+  .chip-row {
+    display: flex; gap: 8px;
+    padding: 4px 24px 4px;
+    overflow-x: auto; scrollbar-width: none;
+    margin: 8px 0 4px;
+  }
+  .chip-row::-webkit-scrollbar { display: none; }
+  .chip {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    color: var(--ink-2);
+    border-radius: 100px;
+    padding: 7px 14px;
+    font-family: var(--sans); font-size: 12px;
+    font-weight: 600; letter-spacing: 0.02em;
+    white-space: nowrap; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 6px;
+    transition: all .15s;
+  }
+  .chip.active { background: var(--green); color: var(--cream); border-color: var(--green); }
+  .chip .ico-svg { width: 14px; height: 14px; stroke-width: 1.8; }
+
+  /* ============= ICON SYSTEM ============= */
+  .ico-svg {
+    width: 22px; height: 22px;
+    stroke: currentColor; fill: none;
+    stroke-width: 1.6;
+    stroke-linecap: round; stroke-linejoin: round;
+    flex-shrink: 0;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .ico-svg.sm { width: 16px; height: 16px; stroke-width: 1.8; }
+  .ico-svg.lg { width: 28px; height: 28px; stroke-width: 1.4; }
+  .ico-svg.xl { width: 44px; height: 44px; stroke-width: 1.2; }
+  .ico-svg .fill { fill: currentColor; stroke: none; }
+
+  /* ============= PAGE TRANSITIONS ============= */
+  .screen.slide-in { animation: slideIn .35s cubic-bezier(0.32, 0.72, 0, 1); }
+  .screen.slide-back { animation: slideBack .35s cubic-bezier(0.32, 0.72, 0, 1); }
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateX(24px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes slideBack {
+    from { opacity: 0; transform: translateX(-24px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+
+  /* ============= NOTIF DOT ============= */
+  .notif-dot {
+    position: relative;
+  }
+  .notif-dot::after {
+    content: '';
+    position: absolute;
+    top: 9px; right: 9px;
+    width: 7px; height: 7px;
+    background: var(--coral);
+    border: 1.5px solid var(--cream);
+    border-radius: 50%;
+  }
+</style>
+</head>
+<body>
+
+<!-- ====== SVG SPRITE (hidden, used via <use href="#x">) ====== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- NAV ICONS -->
+    <symbol id="i-events" viewBox="0 0 24 24">
+      <path d="M4 9 L12 4 L20 9 L20 19 Q20 20 19 20 L5 20 Q4 20 4 19 Z"/>
+      <path d="M10 20 L10 13 L14 13 L14 20"/>
+      <circle cx="12" cy="9.5" r="1" class="fill"/>
+    </symbol>
+    <symbol id="i-cerca" viewBox="0 0 24 24">
+      <circle cx="12" cy="10" r="3.5"/>
+      <path d="M12 21 C 7 16 4 13 4 10 a8 8 0 0 1 16 0 c0 3 -3 6 -8 11 Z"/>
+    </symbol>
+    <symbol id="i-conecta" viewBox="0 0 24 24">
+      <circle cx="8.5" cy="9" r="3"/>
+      <circle cx="15.5" cy="9" r="3"/>
+      <path d="M3 20 c0 -3 2.5 -5 5.5 -5 s5.5 2 5.5 5"/>
+      <path d="M10 20 c0 -3 2.5 -5 5.5 -5 s5.5 2 5.5 5"/>
+    </symbol>
+    <symbol id="i-exp" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="9"/>
+      <path d="M9 8 L17 12 L9 16 Z" class="fill"/>
+    </symbol>
+    <symbol id="i-profile" viewBox="0 0 24 24">
+      <circle cx="12" cy="8.5" r="3.6"/>
+      <path d="M4.5 20 c0 -4 3.5 -7 7.5 -7 s7.5 3 7.5 7"/>
+    </symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24">
+      <rect x="3.5" y="5" width="17" height="15" rx="1.5"/>
+      <path d="M3.5 10 L20.5 10"/>
+      <path d="M8 3 L8 6.5"/>
+      <path d="M16 3 L16 6.5"/>
+      <circle cx="8" cy="14.5" r="0.9" class="fill"/>
+      <circle cx="12" cy="14.5" r="0.9" class="fill"/>
+      <circle cx="16" cy="14.5" r="0.9" class="fill"/>
+    </symbol>
+    <symbol id="i-bookmark" viewBox="0 0 24 24">
+      <path d="M6 4 L18 4 L18 20 L12 16 L6 20 Z"/>
+    </symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24">
+      <path d="M6 16 L18 16 Q18 16 17.5 15.5 L17 14 L17 10.5 a5 5 0 0 0 -10 0 L7 14 L6.5 15.5 Q6 16 6 16 Z"/>
+      <path d="M10.5 19 a1.5 1.5 0 0 0 3 0"/>
+    </symbol>
+    <symbol id="i-search" viewBox="0 0 24 24">
+      <circle cx="11" cy="11" r="6"/>
+      <path d="M15.5 15.5 L20 20"/>
+    </symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="2.8"/>
+      <path d="M12 3 L12 5 M12 19 L12 21 M3 12 L5 12 M19 12 L21 12 M5.6 5.6 L7 7 M17 17 L18.4 18.4 M5.6 18.4 L7 17 M17 7 L18.4 5.6"/>
+    </symbol>
+    <symbol id="i-back" viewBox="0 0 24 24">
+      <path d="M14.5 5 L7.5 12 L14.5 19"/>
+    </symbol>
+    <symbol id="i-close" viewBox="0 0 24 24">
+      <path d="M6 6 L18 18 M18 6 L6 18"/>
+    </symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24">
+      <path d="M12 20 C 4 14 3 10 6 7 C 9 4 12 7 12 9 C 12 7 15 4 18 7 C 21 10 20 14 12 20 Z"/>
+    </symbol>
+    <symbol id="i-heart-fill" viewBox="0 0 24 24">
+      <path d="M12 20 C 4 14 3 10 6 7 C 9 4 12 7 12 9 C 12 7 15 4 18 7 C 21 10 20 14 12 20 Z" class="fill"/>
+    </symbol>
+    <symbol id="i-share" viewBox="0 0 24 24">
+      <path d="M12 3 L12 15"/>
+      <path d="M7.5 7.5 L12 3 L16.5 7.5"/>
+      <path d="M5 13 L5 20 L19 20 L19 13"/>
+    </symbol>
+    <symbol id="i-star" viewBox="0 0 24 24">
+      <path d="M12 3 L14.5 9 L21 9.5 L16 13.7 L17.7 20 L12 16.5 L6.3 20 L8 13.7 L3 9.5 L9.5 9 Z"/>
+    </symbol>
+    <symbol id="i-x" viewBox="0 0 24 24">
+      <path d="M6 6 L18 18 M18 6 L6 18"/>
+    </symbol>
+    <symbol id="i-check" viewBox="0 0 24 24">
+      <path d="M5 12 L10 17 L19 7"/>
+    </symbol>
+    <symbol id="i-info" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="9"/>
+      <path d="M12 11 L12 16.5"/>
+      <circle cx="12" cy="7.8" r="0.9" class="fill"/>
+    </symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24">
+      <circle cx="12" cy="10" r="3"/>
+      <path d="M12 21 C 7 16 4 13 4 10 a8 8 0 0 1 16 0 c0 3 -3 6 -8 11 Z"/>
+    </symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="9"/>
+      <path d="M12 6.5 L12 12 L16 14"/>
+    </symbol>
+    <symbol id="i-users" viewBox="0 0 24 24">
+      <circle cx="9" cy="8.5" r="3"/>
+      <path d="M3 19 c0 -3.3 2.7 -6 6 -6 s6 2.7 6 6"/>
+      <circle cx="17" cy="9.5" r="2.5"/>
+      <path d="M15.5 13.2 c2.5 0.3 5 2.5 5 5.8"/>
+    </symbol>
+    <symbol id="i-bed" viewBox="0 0 24 24">
+      <path d="M3 17 L3 9 L21 9 L21 17 M3 14 L21 14 M3 17 L3 19 M21 17 L21 19"/>
+      <path d="M7 11 L11 11 L11 14 L7 14 Z"/>
+    </symbol>
+    <symbol id="i-car" viewBox="0 0 24 24">
+      <path d="M4 16 L4 12 L7 7 L17 7 L20 12 L20 16 M4 16 L20 16 M4 16 L4 18 L7 18 L7 16 M17 16 L17 18 L20 18 L20 16"/>
+      <circle cx="8" cy="16" r="1.2" class="fill"/>
+      <circle cx="16" cy="16" r="1.2" class="fill"/>
+    </symbol>
+    <symbol id="i-cutlery" viewBox="0 0 24 24">
+      <path d="M7 3 L7 21 M5 3 L5 9 a2 2 0 0 0 4 0 L9 3"/>
+      <path d="M16 3 c-2 0 -3 2 -3 5 c0 2 1 3 3 3 L16 21"/>
+    </symbol>
+    <symbol id="i-leaf" viewBox="0 0 24 24">
+      <path d="M5 19 C 5 11 11 5 19 5 C 19 13 13 19 5 19 Z"/>
+      <path d="M5 19 L13 11"/>
+    </symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="9"/>
+      <path d="M3 12 L21 12"/>
+      <path d="M12 3 C 16 7 16 17 12 21 C 8 17 8 7 12 3 Z"/>
+    </symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24">
+      <path d="M12 3 L20 6 L20 12 C 20 17 16 20 12 21 C 8 20 4 17 4 12 L4 6 Z"/>
+    </symbol>
+    <symbol id="i-logout" viewBox="0 0 24 24">
+      <path d="M10 4 L4 4 L4 20 L10 20"/>
+      <path d="M8 12 L20 12 M16 8 L20 12 L16 16"/>
+    </symbol>
+    <symbol id="i-sparkle" viewBox="0 0 24 24">
+      <path d="M12 3 L13.5 10.5 L21 12 L13.5 13.5 L12 21 L10.5 13.5 L3 12 L10.5 10.5 Z" class="fill"/>
+    </symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24">
+      <path d="M9 5 L16 12 L9 19"/>
+    </symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24">
+      <rect x="3" y="6" width="18" height="13" rx="1.5"/>
+      <path d="M3.5 7 L12 13 L20.5 7"/>
+    </symbol>
+    <symbol id="i-carpool" viewBox="0 0 24 24">
+      <path d="M4 12 L20 12 M14 6 L20 12 L14 18 M10 6 L4 12 L10 18"/>
+    </symbol>
+    <symbol id="i-play" viewBox="0 0 24 24">
+      <path d="M7 4 L20 12 L7 20 Z" class="fill"/>
+    </symbol>
+    <symbol id="i-mountain" viewBox="0 0 24 24">
+      <path d="M3 19 L9 9 L13 15 L16 11 L21 19 Z"/>
+      <circle cx="17" cy="6" r="1.6" class="fill"/>
+    </symbol>
+
+    <!-- ====== SCENE ILLUSTRATIONS (for cards) ====== -->
+    <!-- Mirador / Volcán Barú: crater + sun -->
+    <symbol id="scene-mirador" viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <radialGradient id="sun-mira" cx="0.7" cy="0.3" r="0.4">
+          <stop offset="0%" stop-color="#f6d68a" stop-opacity="0.95"/>
+          <stop offset="100%" stop-color="#e07a5f" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <circle cx="280" cy="70" r="120" fill="url(#sun-mira)"/>
+      <circle cx="280" cy="70" r="22" fill="#f6d68a" opacity="0.95"/>
+      <path d="M0 200 L60 160 L100 175 L160 130 L210 165 L260 140 L320 175 L380 145 L400 160 L400 240 L0 240 Z" fill="#0e2218" opacity="0.92"/>
+      <path d="M0 220 L80 195 L160 210 L240 192 L320 208 L400 195 L400 240 L0 240 Z" fill="#000" opacity="0.55"/>
+    </symbol>
+    <!-- Bocas / Caribbean: palm + horizon -->
+    <symbol id="scene-bocas" viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <linearGradient id="sea-bocas" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0%" stop-color="#2c6e7f" stop-opacity="0.85"/>
+          <stop offset="100%" stop-color="#0e2530" stop-opacity="0.95"/>
+        </linearGradient>
+      </defs>
+      <rect x="0" y="155" width="400" height="85" fill="url(#sea-bocas)"/>
+      <path d="M0 165 Q 80 158 160 168 T 320 165 T 400 170 L400 240 L0 240 Z" fill="#0e2530" opacity="0.6"/>
+      <!-- palm -->
+      <path d="M50 240 L60 160" stroke="#1a2530" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <path d="M60 162 Q 30 130 5 145" stroke="#1a3530" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <path d="M60 162 Q 90 130 115 140" stroke="#1a3530" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <path d="M60 162 Q 30 155 5 175" stroke="#1a3530" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <path d="M60 162 Q 90 155 115 175" stroke="#1a3530" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <!-- boat -->
+      <path d="M270 175 L320 175 L310 182 L280 182 Z" fill="#0a1a20"/>
+      <path d="M295 175 L295 160" stroke="#0a1a20" stroke-width="1.5"/>
+      <path d="M295 160 L305 175 Z" fill="#0a1a20"/>
+      <!-- distant island -->
+      <ellipse cx="350" cy="158" rx="60" ry="6" fill="#0e2530" opacity="0.7"/>
+    </symbol>
+    <!-- Finca / coffee -->
+    <symbol id="scene-finca" viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <radialGradient id="sun-finca" cx="0.3" cy="0.25" r="0.5">
+          <stop offset="0%" stop-color="#f4d28a" stop-opacity="0.9"/>
+          <stop offset="100%" stop-color="#d49a26" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <circle cx="120" cy="60" r="120" fill="url(#sun-finca)"/>
+      <circle cx="120" cy="60" r="18" fill="#f4d28a" opacity="0.9"/>
+      <!-- rolling hills with coffee row furrows -->
+      <path d="M0 200 Q 80 170 200 195 T 400 180 L400 240 L0 240 Z" fill="#1a200e" opacity="0.9"/>
+      <path d="M0 215 Q 100 195 200 215 T 400 205 L400 240 L0 240 Z" fill="#0a1208" opacity="0.7"/>
+      <!-- coffee branch -->
+      <path d="M30 180 Q 50 165 70 175 Q 60 195 50 205" stroke="#3d4a30" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <circle cx="45" cy="172" r="3" fill="#b85439"/>
+      <circle cx="58" cy="180" r="3" fill="#b85439"/>
+      <circle cx="68" cy="188" r="3" fill="#b85439"/>
+    </symbol>
+    <!-- Cloud forest / Boquete -->
+    <symbol id="scene-bosque" viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <linearGradient id="mist" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0%" stop-color="#a8b5a0" stop-opacity="0.25"/>
+          <stop offset="100%" stop-color="#a8b5a0" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <!-- back mountains -->
+      <path d="M0 170 L60 110 L130 145 L200 95 L280 140 L360 100 L400 130 L400 240 L0 240 Z" fill="#0e2218" opacity="0.85"/>
+      <!-- mist band -->
+      <rect x="0" y="130" width="400" height="60" fill="url(#mist)"/>
+      <!-- tall trees foreground -->
+      <g stroke="#0a1a13" stroke-width="2" fill="none" stroke-linecap="round">
+        <path d="M40 240 L40 180 M40 195 L30 200 M40 205 L48 210 M40 215 L32 218"/>
+        <path d="M90 240 L90 165 M90 180 L82 184 M90 192 L100 196 M90 205 L83 208"/>
+        <path d="M340 240 L340 175 M340 188 L350 192 M340 200 L332 204"/>
+        <path d="M370 240 L370 190 M370 200 L378 204"/>
+      </g>
+    </symbol>
+    <!-- Termas / wellness -->
+    <symbol id="scene-termas" viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <radialGradient id="glow-termas" cx="0.5" cy="0.6" r="0.5">
+          <stop offset="0%" stop-color="#d4b87a" stop-opacity="0.5"/>
+          <stop offset="100%" stop-color="#d4b87a" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <ellipse cx="200" cy="180" rx="200" ry="60" fill="url(#glow-termas)"/>
+      <!-- steam wisps -->
+      <g stroke="#fbf6e8" stroke-width="2" fill="none" opacity="0.35" stroke-linecap="round">
+        <path d="M100 140 Q 110 120 100 100 Q 90 80 100 60"/>
+        <path d="M180 130 Q 190 110 180 90 Q 170 70 180 50"/>
+        <path d="M280 145 Q 290 125 280 105 Q 270 85 280 65"/>
+      </g>
+      <!-- pool stones -->
+      <ellipse cx="60" cy="220" rx="40" ry="8" fill="#1a200e" opacity="0.7"/>
+      <ellipse cx="200" cy="225" rx="80" ry="10" fill="#1a200e" opacity="0.7"/>
+      <ellipse cx="340" cy="220" rx="50" ry="8" fill="#1a200e" opacity="0.7"/>
+    </symbol>
+    <!-- Stars + fire (night events) -->
+    <symbol id="scene-night" viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice">
+      <g fill="#fbf6e8">
+        <circle cx="40" cy="40" r="1"/><circle cx="110" cy="60" r="0.7"/><circle cx="190" cy="35" r="1.2"/>
+        <circle cx="270" cy="55" r="0.9"/><circle cx="340" cy="40" r="1.1"/>
+        <circle cx="70" cy="100" r="0.7"/><circle cx="150" cy="90" r="1"/>
+        <circle cx="230" cy="105" r="0.8"/><circle cx="310" cy="95" r="1"/>
+        <circle cx="60" cy="140" r="0.6"/><circle cx="180" cy="140" r="0.6"/><circle cx="290" cy="135" r="0.7"/>
+      </g>
+      <!-- crescent moon -->
+      <circle cx="340" cy="50" r="14" fill="#fbf6e8" opacity="0.9"/>
+      <circle cx="335" cy="48" r="14" fill="#1a1810" opacity="0.95"/>
+      <!-- fire -->
+      <path d="M180 225 Q 195 205 200 195 Q 210 210 215 225 Z" fill="#e07a5f"/>
+      <path d="M188 222 Q 198 212 200 205 Q 206 215 210 222 Z" fill="#f4b942"/>
+      <ellipse cx="197" cy="232" rx="32" ry="4" fill="#1a1810"/>
+    </symbol>
+  </defs>
+</svg>
+
+<div id="app">
+
+  <!-- ============== WELCOME ============== -->
+  <section id="screen-welcome" class="screen active">
+    <div class="welcome-stars" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <div class="welcome-top">
+      <div class="welcome-eyebrow">La Compañía · MMXXVI</div>
+      <div class="wordmark">SORA</div>
+      <div class="welcome-tag">fines de semana memorables</div>
+    </div>
+    <div class="welcome-art" aria-hidden="true">
+      <svg viewBox="0 0 360 260" fill="none">
+        <defs>
+          <radialGradient id="wsun" cx="0.5" cy="0.5" r="0.5">
+            <stop offset="0%" stop-color="#f6d68a" stop-opacity="1"/>
+            <stop offset="60%" stop-color="#e07a5f" stop-opacity="0.5"/>
+            <stop offset="100%" stop-color="#e07a5f" stop-opacity="0"/>
+          </radialGradient>
+          <linearGradient id="wfog" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0%" stop-color="#fbf6e8" stop-opacity="0.18"/>
+            <stop offset="100%" stop-color="#fbf6e8" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <!-- sun -->
+        <circle cx="220" cy="100" r="120" fill="url(#wsun)"/>
+        <circle cx="220" cy="100" r="34" fill="#f6d68a"/>
+        <!-- back mountains -->
+        <path d="M0 195 L40 165 L90 180 L130 145 L170 175 L210 140 L260 180 L310 155 L360 175 L360 260 L0 260 Z" fill="#0a1812" opacity="0.85"/>
+        <!-- mist -->
+        <rect x="0" y="180" width="360" height="55" fill="url(#wfog)"/>
+        <!-- front silhouette -->
+        <path d="M0 220 L70 195 L130 215 L200 190 L270 220 L320 200 L360 215 L360 260 L0 260 Z" fill="#000" opacity="0.65"/>
+        <!-- two birds -->
+        <path d="M70 75 Q 78 70 86 75 Q 94 70 102 75" stroke="#fbf6e8" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.8"/>
+        <path d="M120 95 Q 128 91 136 95 Q 144 91 152 95" stroke="#fbf6e8" stroke-width="1.2" fill="none" stroke-linecap="round" opacity="0.6"/>
+      </svg>
+    </div>
+    <div class="welcome-bottom">
+      <div class="welcome-rule"></div>
+      <h2>Solo por <em>invitación</em>.</h2>
+      <p>Una colección curada de fines de semana en Chiriquí y Bocas del Toro. Por referencia personal.</p>
+      <button class="btn-primary" onclick="haptic(); go('invite')">Tengo una invitación</button>
+      <button class="btn-link" onclick="showToast('Cada invitado entra por referencia personal de un miembro Sora')">¿Cómo se invita? <svg class="ico-svg sm" style="vertical-align:-2px"><use href="#i-chevron"/></svg></button>
+    </div>
+  </section>
+
+  <!-- ============== INVITATION ============== -->
+  <section id="screen-invite" class="screen">
+    <button class="nav-back" onclick="go('welcome')" aria-label="Volver">
+      <svg class="ico-svg"><use href="#i-back"/></svg>
+    </button>
+    <div class="invite-content">
+      <h1>Tu código de invitación.</h1>
+      <p>Lo recibiste por mensaje privado de un miembro Sora.</p>
+      <input class="invite-input" id="invite-code" placeholder="SORA-XXXX" maxlength="9" autocomplete="off" oninput="formatCode(this)">
+      <div class="invite-hint">Demo: usa <strong>SORA-2026</strong></div>
+      <div class="invite-cta-wrap">
+        <button class="btn-primary" onclick="checkInvite()">Continuar</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== ONBOARDING ============== -->
+  <section id="screen-onboard" class="screen">
+    <div class="onboard-progress">
+      <span id="op-1" class="done"></span>
+      <span id="op-2"></span>
+      <span id="op-3"></span>
+      <span id="op-4"></span>
+    </div>
+    <div id="onboard-step-1" class="onboard-content">
+      <h2>¿Cómo te llamamos?</h2>
+      <p>Es como apareces en la lista de invitados.</p>
+      <input class="text-input" id="ob-name" placeholder="Tu nombre completo" autocomplete="given-name">
+    </div>
+    <div id="onboard-step-2" class="onboard-content" style="display:none">
+      <h2>¿Cómo vienes a <em>Sora</em>?</h2>
+      <p>Elige una. Nos ayuda a recomendar los eventos correctos.</p>
+      <div class="party-choice">
+        <button class="party-option" onclick="pickParty(this,'solo')">
+          <div class="party-emoji" style="background:linear-gradient(135deg,#f4b942,#d49a26)">☀</div>
+          <div class="party-text">
+            <div class="party-title">Solo/a</div>
+            <div class="party-sub">Tiempo para ti, conexiones nuevas</div>
+          </div>
+        </button>
+        <button class="party-option" onclick="pickParty(this,'familia')">
+          <div class="party-emoji" style="background:linear-gradient(135deg,#e07a5f,#b85439)">❀</div>
+          <div class="party-text">
+            <div class="party-title">Familia</div>
+            <div class="party-sub">Pareja, hijos o ambos</div>
+          </div>
+        </button>
+        <button class="party-option" onclick="pickParty(this,'amigos')">
+          <div class="party-emoji" style="background:linear-gradient(135deg,#2e8a96,#1b6671)">✦</div>
+          <div class="party-text">
+            <div class="party-title">Amigos</div>
+            <div class="party-sub">Grupo de tu círculo</div>
+          </div>
+        </button>
+      </div>
+    </div>
+    <div id="onboard-step-3" class="onboard-content" style="display:none">
+      <h2>¿Algo importante sobre comida?</h2>
+      <p>Comunicamos al chef. Selecciona todas las que apliquen.</p>
+      <div class="pref-grid">
+        <button class="pref-chip" onclick="togglePref(this)" data-pref="omnivoro">Omnívoro</button>
+        <button class="pref-chip" onclick="togglePref(this)" data-pref="vegetariano">Vegetariano</button>
+        <button class="pref-chip" onclick="togglePref(this)" data-pref="vegano">Vegano</button>
+        <button class="pref-chip" onclick="togglePref(this)" data-pref="pescetariano">Pescetariano</button>
+        <button class="pref-chip" onclick="togglePref(this)" data-pref="gluten">Sin gluten</button>
+        <button class="pref-chip" onclick="togglePref(this)" data-pref="alcohol">Sin alcohol</button>
+      </div>
+    </div>
+    <div id="onboard-step-4" class="onboard-content" style="display:none">
+      <h2>Una línea sobre ti.</h2>
+      <p>Otros invitados la verán antes del evento.</p>
+      <input class="text-input" id="ob-bio" placeholder="Ej: arquitecta en Boquete, café y rocas">
+    </div>
+    <button class="btn-dark" id="onboard-cta" onclick="onboardNext()">Continuar</button>
+  </section>
+
+  <!-- ============== LOCATION ============== -->
+  <section id="screen-location" class="screen">
+    <div class="loc-art">
+      <div class="loc-map" aria-hidden="true">
+        <span class="map-pin pin-1"></span>
+        <span class="map-pin pin-2"></span>
+        <span class="map-pin pin-3"></span>
+        <span class="map-pin pin-4"></span>
+        <span class="map-grid"></span>
+      </div>
+      <div class="loc-pulse"></div>
+    </div>
+    <div class="loc-content">
+      <div class="loc-tag"><span class="loc-dot"></span>Detectado · Boquete</div>
+      <h1>Mostraremos lo que está <em>cerca de ti</em>.</h1>
+      <p>Sora usa tu ubicación para sugerir eventos y experiencias en tu zona. Solo se guarda mientras la app está abierta.</p>
+    </div>
+    <div class="loc-buttons">
+      <button class="btn-primary" onclick="confirmLocation()">Permitir ubicación</button>
+      <button class="btn-link" onclick="confirmLocation()" style="color: rgba(247,241,227,0.5)">Continuar sin ubicación</button>
+    </div>
+  </section>
+
+  <!-- ============== EVENTOS (HOME) ============== -->
+  <section id="screen-home" class="screen">
+    <div class="top-bar">
+      <div class="brand">SORA</div>
+      <div class="actions">
+        <button class="loc country-chip" onclick="openCountrySheet()" aria-label="Cambiar país" id="home-country-chip">
+          <span class="flag" id="home-country-flag">🇵🇦</span>
+          <span id="home-country-label">Panamá</span>
+        </button>
+        <button class="icon-btn notif-dot" onclick="go('inbox')" aria-label="Notificaciones">
+          <svg class="ico-svg sm"><use href="#i-bell"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="greeting">
+      <div class="eyebrow">Próximo fin de semana</div>
+      <h1 id="greet-name">Hola, <em>tú</em>.</h1>
+    </div>
+    <div class="hero-event" onclick="haptic(); openEvent(0)">
+      <div class="bg" style="background:
+        radial-gradient(ellipse 75% 50% at 70% 22%, rgba(244,185,66,0.55), transparent 60%),
+        radial-gradient(ellipse 90% 60% at 30% 35%, rgba(224,122,95,0.4), transparent 65%),
+        linear-gradient(180deg, #2a1a14 0%, #1f3024 50%, #0a1812 100%);"></div>
+      <div class="scene"><svg><use href="#scene-mirador"/></svg></div>
+      <div class="scrim"></div>
+      <div class="top-tag">Sunset Series</div>
+      <div class="countdown" id="hero-countdown">faltan 22 días</div>
+      <div class="info">
+        <div class="meta">14–15 Junio · Volcán</div>
+        <h2>Mirador <em>Barú</em>.</h2>
+        <p>Cena al atardecer sobre las nubes, set acústico de Bambi Roots, 12 invitados.</p>
+        <div class="hosted">
+          <div class="host-avs">
+            <span style="background:linear-gradient(135deg,#a07b3e,#6a4d20)">A</span>
+            <span style="background:linear-gradient(135deg,#6e5c8a,#3d2f4f)">B</span>
+            <span style="background:linear-gradient(135deg,#4a7d63,#2d5e4a)">C</span>
+          </div>
+          <span class="hosted-lbl">Hosted by Andrés, Bambi &amp; Camila</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-head">
+      <h3>Tus próximos eventos</h3>
+      <a class="link" onclick="go('calendar')">VER TODO <svg class="ico-svg sm" style="vertical-align:-2px"><use href="#i-chevron"/></svg></a>
+    </div>
+
+    <div class="event-list">
+      <div class="event-row" onclick="haptic(); openEvent(1)">
+        <div class="thumb">
+          <div class="bg" style="background: radial-gradient(circle at 30% 20%, #2e8a96, #1b6671 60%, #0e3850);"></div>
+          <div class="thumb-scene"><svg viewBox="0 0 80 80" preserveAspectRatio="xMidYMid slice">
+            <path d="M0 60 Q 40 50 80 58 L80 80 L0 80 Z" fill="#0e2530"/>
+            <path d="M14 80 L18 50" stroke="#0a1820" stroke-width="2" stroke-linecap="round"/>
+            <path d="M18 52 Q 8 38 0 44 M18 52 Q 28 38 38 44" stroke="#0a1820" stroke-width="2" stroke-linecap="round" fill="none"/>
+          </svg></div>
+        </div>
+        <div class="body">
+          <div class="date-eyebrow">24–27 JUL · BOCAS</div>
+          <h4>Caribbean Drift</h4>
+          <div class="where">Isla Bastimentos · 18 invitados</div>
+        </div>
+        <div class="status-dot status-pending"></div>
+      </div>
+      <div class="event-row" onclick="haptic(); openEvent(2)">
+        <div class="thumb">
+          <div class="bg" style="background: radial-gradient(circle at 35% 25%, #f4b942, #d49a26 50%, #4a3514);"></div>
+          <div class="thumb-scene"><svg viewBox="0 0 80 80" preserveAspectRatio="xMidYMid slice">
+            <circle cx="22" cy="20" r="7" fill="#fbf6e8" opacity="0.4"/>
+            <path d="M0 60 Q 40 50 80 58 L80 80 L0 80 Z" fill="#3a2a14"/>
+            <path d="M0 70 Q 40 62 80 68 L80 80 L0 80 Z" fill="#1f1808"/>
+          </svg></div>
+        </div>
+        <div class="body">
+          <div class="date-eyebrow">22–23 AGO · BOQUETE</div>
+          <h4>Finca Coffee Sunrise</h4>
+          <div class="where">Finca Lerida · 16 invitados</div>
+        </div>
+        <div class="status-dot status-pending"></div>
+      </div>
+      <div class="event-row" onclick="haptic(); openEvent(3)">
+        <div class="thumb">
+          <div class="bg" style="background: radial-gradient(circle at 40% 30%, #e07a5f, #b85439 50%, #2c1a14);"></div>
+          <div class="thumb-scene"><svg viewBox="0 0 80 80" preserveAspectRatio="xMidYMid slice">
+            <circle cx="56" cy="24" r="10" fill="#f6d68a" opacity="0.85"/>
+            <path d="M0 60 L80 60 L80 80 L0 80 Z" fill="#1a0e0a" opacity="0.7"/>
+            <path d="M30 60 L34 50 L38 60 Z" fill="#0a0606"/>
+          </svg></div>
+        </div>
+        <div class="body">
+          <div class="date-eyebrow">19–20 SEP · BOCAS</div>
+          <h4>Isla Colón Sunset</h4>
+          <div class="where">Bocas Town · 14 invitados</div>
+        </div>
+        <div class="status-dot status-confirmed"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== CERCA (Swipe events near you) ============== -->
+  <section id="screen-cerca" class="screen">
+    <div class="top-bar">
+      <div class="brand">CERCA</div>
+      <div class="actions">
+        <div class="loc"><span class="dot"></span>Boquete</div>
+        <button class="icon-btn" onclick="go('saved')" aria-label="Guardados">
+          <svg class="ico-svg sm"><use href="#i-bookmark"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="greeting" style="padding-bottom: 4px">
+      <div class="eyebrow" id="cerca-count">8 EVENTOS A 50KM</div>
+      <h1>Desliza lo que <em>te llama</em>.</h1>
+    </div>
+
+    <div class="chip-row">
+      <div class="chip active" onclick="filterCerca(this,'all')">Todo</div>
+      <div class="chip" onclick="filterCerca(this,'gastro')"><svg class="ico-svg"><use href="#i-cutlery"/></svg>Gastronomía</div>
+      <div class="chip" onclick="filterCerca(this,'naturaleza')"><svg class="ico-svg"><use href="#i-leaf"/></svg>Naturaleza</div>
+      <div class="chip" onclick="filterCerca(this,'aventura')"><svg class="ico-svg"><use href="#i-mountain"/></svg>Aventura</div>
+      <div class="chip" onclick="filterCerca(this,'bienestar')">Bienestar</div>
+    </div>
+
+    <div class="swipe-stage" id="swipe-stage-cerca">
+      <div class="swipe-empty" id="cerca-empty">
+        <h3>No queda nada por descubrir.</h3>
+        <p>Has visto todos los eventos cercanos. Vuelve mañana o expande tu radio.</p>
+        <button onclick="resetCercaDeck()">Empezar de nuevo</button>
+      </div>
+    </div>
+
+    <div class="swipe-controls">
+      <button class="swipe-btn nope" onclick="manualSwipe('cerca','left')" aria-label="Pasar">
+        <svg class="ico-svg"><use href="#i-x"/></svg>
+      </button>
+      <button class="swipe-btn super" onclick="manualSwipe('cerca','up')" aria-label="Reservar ya">
+        <svg class="ico-svg sm"><use href="#i-star"/></svg>
+      </button>
+      <button class="swipe-btn like" onclick="manualSwipe('cerca','right')" aria-label="Me interesa">
+        <svg class="ico-svg"><use href="#i-heart"/></svg>
+      </button>
+      <button class="swipe-btn info" onclick="showToast('Detalles próximamente')" aria-label="Detalles">
+        <svg class="ico-svg sm"><use href="#i-info"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- ============== CONECTA (Tinder-style group matching) ============== -->
+  <section id="screen-conecta" class="screen">
+    <div class="top-bar">
+      <div class="brand">CONECTA</div>
+      <div class="actions">
+        <button class="icon-btn" onclick="go('inbox')" aria-label="Mensajes">
+          <svg class="ico-svg sm"><use href="#i-mail"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="conecta-context">
+      <div>
+        <div class="left">FORMANDO GRUPO PARA</div>
+        <div class="ev">Mirador Barú · 14–15 Jun</div>
+      </div>
+      <button class="change" onclick="showToast('Cambia el evento próximamente')">Cambiar</button>
+    </div>
+
+    <div class="swipe-stage" id="swipe-stage-conecta" style="height:540px">
+      <div class="swipe-empty" id="conecta-empty">
+        <h3>Ya viste a todos los invitados.</h3>
+        <p>Tienes nuevos matches. Empieza la conversación o forma tu grupo.</p>
+        <button onclick="resetConectaDeck()">Volver a ver</button>
+      </div>
+    </div>
+
+    <div class="swipe-controls">
+      <button class="swipe-btn nope" onclick="manualSwipe('conecta','left')" aria-label="Pasar">
+        <svg class="ico-svg"><use href="#i-x"/></svg>
+      </button>
+      <button class="swipe-btn super" onclick="manualSwipe('conecta','up')" aria-label="Carpool">
+        <svg class="ico-svg sm"><use href="#i-carpool"/></svg>
+      </button>
+      <button class="swipe-btn like" onclick="manualSwipe('conecta','right')" aria-label="Conecta">
+        <svg class="ico-svg"><use href="#i-heart"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- ============== EXPERIENCIAS (Grid + Video modal) ============== -->
+  <section id="screen-experiencias" class="screen">
+    <div class="top-bar">
+      <div class="brand">EXPERIENCIAS</div>
+      <div class="actions">
+        <div class="loc"><span class="dot"></span>Chiriquí</div>
+        <button class="icon-btn" onclick="showToast('Buscador próximamente')" aria-label="Buscar">
+          <svg class="ico-svg sm"><use href="#i-search"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="greeting" style="padding-bottom:4px">
+      <div class="eyebrow">12 EN TU ÁREA</div>
+      <h1>Sora <em>handpicked</em>.</h1>
+    </div>
+
+    <div class="exp-cats">
+      <div class="exp-cat active" onclick="filterExp(this,'all')">Todas</div>
+      <div class="exp-cat" onclick="filterExp(this,'gastronomia')">Gastronomía</div>
+      <div class="exp-cat" onclick="filterExp(this,'naturaleza')">Naturaleza</div>
+      <div class="exp-cat" onclick="filterExp(this,'aventura')">Aventura</div>
+      <div class="exp-cat" onclick="filterExp(this,'bienestar')">Bienestar</div>
+      <div class="exp-cat" onclick="filterExp(this,'cultura')">Cultura</div>
+    </div>
+
+    <div class="exp-grid" id="exp-grid">
+      <!-- Populated by JS -->
+    </div>
+  </section>
+
+  <!-- ============== EVENT DETAIL ============== -->
+  <section id="screen-event" class="screen">
+    <div class="detail-hero">
+      <div class="bg" id="event-hero-bg"></div>
+      <div class="scene" id="event-hero-scene"><svg><use href="#scene-mirador"/></svg></div>
+      <div class="scrim"></div>
+      <div class="nav">
+        <button onclick="backFromEvent()" aria-label="Volver">
+          <svg class="ico-svg sm"><use href="#i-back"/></svg>
+        </button>
+        <div class="right">
+          <button onclick="toggleEventFav(this)" aria-label="Guardar">
+            <svg class="ico-svg sm fav-ico"><use href="#i-heart"/></svg>
+          </button>
+          <button onclick="showToast('Link copiado al portapapeles'); navigator.clipboard && navigator.clipboard.writeText(location.href);" aria-label="Compartir">
+            <svg class="ico-svg sm"><use href="#i-share"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="title-block">
+        <div class="eyebrow" id="ev-eyebrow">SUNSET SERIES · 14–15 JUNIO</div>
+        <h1 id="ev-title">Mirador <em>Barú</em>.</h1>
+        <div class="where-meta">
+          <span><svg class="ico-svg sm"><use href="#i-pin"/></svg> <span id="ev-where">Volcán, Chiriquí</span></span>
+          <span><svg class="ico-svg sm"><use href="#i-users"/></svg> <span id="ev-pax">12 invitados</span></span>
+        </div>
+      </div>
+    </div>
+    <div class="detail-body">
+      <div class="key-facts">
+        <div><div class="num" id="ev-dur">36h</div><div class="lbl">Duración</div></div>
+        <div><div class="num" id="ev-room">Doble</div><div class="lbl">Habitación</div></div>
+        <div><div class="num" id="ev-trans">Inc.</div><div class="lbl">Transporte</div></div>
+      </div>
+      <div class="tab-strip">
+        <button class="active" onclick="showTab(this,'itin')">Itinerario</button>
+        <button onclick="showTab(this,'venue')">Venue</button>
+        <button onclick="showTab(this,'talent')">Talento</button>
+        <button onclick="showTab(this,'guests')">Invitados</button>
+      </div>
+      <div class="tab-panel active" id="tab-itin">
+        <div class="itin-day-head">Sábado 14 · Día 1</div>
+        <div class="itin-item"><div class="itin-time">14:30</div><div class="itin-body"><h4>Pickup en David</h4><p>Sprinter privada hacia Volcán. 90 min en vehículos eléctricos.</p></div></div>
+        <div class="itin-item"><div class="itin-time">16:00</div><div class="itin-body"><h4>Check-in · Volcán Lodge</h4><p>Café Geisha frío del Estate. Cuartos privados.</p></div></div>
+        <div class="itin-item"><div class="itin-time">17:45</div><div class="itin-body"><h4>Ascenso al Mirador</h4><p>Caminata corta de 8 minutos al borde de la cordillera.</p></div></div>
+        <div class="itin-item"><div class="itin-time">18:30</div><div class="itin-body"><h4>Cena al atardecer</h4><p>Menú 5 pasos del Chef Andrés Madrigal. Vinos pareados.</p></div></div>
+        <div class="itin-item"><div class="itin-time">21:00</div><div class="itin-body"><h4>Set acústico · Bambi Roots</h4><p>Fuego de campo. Whisky japonés. Estrellas.</p></div></div>
+        <div class="itin-day-head">Domingo 15 · Día 2</div>
+        <div class="itin-item"><div class="itin-time">07:00</div><div class="itin-body"><h4>Café + amanecer</h4><p>Opcional. Vista al cráter del Barú con el primer sol.</p></div></div>
+        <div class="itin-item"><div class="itin-time">10:30</div><div class="itin-body"><h4>Brunch finca</h4><p>Producto de la zona. Panes hechos en casa.</p></div></div>
+        <div class="itin-item"><div class="itin-time">13:00</div><div class="itin-body"><h4>Cierre · Termas de Caldera</h4><p>Aguas termales privadas. Cocktail al borde del río.</p></div></div>
+      </div>
+      <div class="tab-panel" id="tab-venue">
+        <div style="background: var(--surface); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; margin-bottom: 16px">
+          <div style="height: 180px; background: linear-gradient(135deg, #3a4f3e, #1f2d24);"></div>
+          <div style="padding: 18px">
+            <h4 style="font-family: var(--serif); font-weight: 500; font-size: 19px; margin-bottom: 6px;">Volcán Lodge</h4>
+            <p style="font-size: 13.5px; color: var(--ink-2); line-height: 1.55;">Lodge boutique a 2,400m. Madera local. Vista directa al Volcán Barú.</p>
+            <div style="display: flex; gap: 18px; margin-top: 14px; font-size: 12px; color: var(--ink-3); align-items: center;">
+              <span style="display:inline-flex; align-items:center; gap:5px;"><svg class="ico-svg sm" style="color:var(--green-2)"><use href="#i-bed"/></svg> 8 hab.</span>
+              <span style="display:inline-flex; align-items:center; gap:5px;"><svg class="ico-svg sm" style="color:var(--teal)"><use href="#i-leaf"/></svg> 12-18°C</span>
+              <span style="display:inline-flex; align-items:center; gap:5px;"><svg class="ico-svg sm" style="color:var(--bronze)"><use href="#i-mountain"/></svg> 2,400m</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-panel" id="tab-talent">
+        <div style="display: flex; flex-direction: column; gap: 12px">
+          <div class="talent-card">
+            <div class="talent-av" style="background: linear-gradient(135deg, #a07b3e, #6a4d20)">A</div>
+            <div class="talent-body">
+              <div class="talent-role">Chef</div>
+              <h4>Andrés Madrigal</h4>
+              <div class="talent-bio">Ex-El Bulli, hoy en Volcán</div>
+            </div>
+            <svg class="ico-svg sm talent-chev"><use href="#i-chevron"/></svg>
+          </div>
+          <div class="talent-card">
+            <div class="talent-av" style="background: linear-gradient(135deg, #6e5c8a, #3d2f4f)">B</div>
+            <div class="talent-body">
+              <div class="talent-role">Música</div>
+              <h4>Bambi Roots</h4>
+              <div class="talent-bio">Set acústico latino</div>
+            </div>
+            <svg class="ico-svg sm talent-chev"><use href="#i-chevron"/></svg>
+          </div>
+          <div class="talent-card">
+            <div class="talent-av" style="background: linear-gradient(135deg, #4a7d63, #2d5e4a)">C</div>
+            <div class="talent-body">
+              <div class="talent-role">Sommelier</div>
+              <h4>Camila Vega</h4>
+              <div class="talent-bio">Curaduría chilena</div>
+            </div>
+            <svg class="ico-svg sm talent-chev"><use href="#i-chevron"/></svg>
+          </div>
+        </div>
+      </div>
+      <div class="tab-panel" id="tab-guests">
+        <div style="padding: 14px 16px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; margin-bottom: 16px">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 6px">
+            <span style="font-family:var(--serif); font-size:16px">8 confirmados · <span style="color:var(--ink-3)">12 totales</span></span>
+            <span style="font-size:11px; color:var(--bronze); font-weight:600; letter-spacing:1.5px; text-transform:uppercase">4 libres</span>
+          </div>
+          <div style="height:4px; background:var(--line); border-radius:4px; overflow:hidden"><div style="width:67%; height:100%; background:var(--bronze)"></div></div>
+        </div>
+        <div id="event-guests-list"></div>
+      </div>
+    </div>
+    <div class="rsvp-bar">
+      <div class="price">
+        <div class="num">$680</div>
+        <div class="lbl">por persona</div>
+      </div>
+      <button class="btn-dark" onclick="openRSVP()">Confirmar asistencia</button>
+    </div>
+  </section>
+
+  <!-- ============== CALENDAR ============== -->
+  <section id="screen-calendar" class="screen">
+    <div class="top-bar">
+      <button class="icon-btn" onclick="switchTab('home')" aria-label="Volver">
+        <svg class="ico-svg sm"><use href="#i-back"/></svg>
+      </button>
+      <div class="brand">CALENDARIO</div>
+      <div class="actions">
+        <div class="icon-btn year-chip">2026</div>
+      </div>
+    </div>
+    <div class="greeting" style="padding-bottom: 14px">
+      <div class="eyebrow">6 EVENTOS · 147 INVITADOS</div>
+      <h1>El año <em>Sora</em>.</h1>
+    </div>
+    <div class="chip-row month-scrub">
+      <div class="chip" onclick="scrollToMonth('jun')">Jun</div>
+      <div class="chip" onclick="scrollToMonth('jul')">Jul</div>
+      <div class="chip" onclick="scrollToMonth('ago')">Ago</div>
+      <div class="chip" onclick="scrollToMonth('sep')">Sep</div>
+      <div class="chip" onclick="scrollToMonth('nov')">Nov</div>
+      <div class="chip" onclick="scrollToMonth('dic')">Dic</div>
+    </div>
+    <div class="cal-month" id="cal-jun">
+      <h3>Junio</h3>
+      <div class="cal-event next-up" onclick="haptic(); openEvent(0)">
+        <div class="next-marker">PRÓXIMO</div>
+        <div class="date-block"><div class="d">14</div><div class="m">SAB</div></div>
+        <div class="e-body"><h4>Mirador Barú</h4><div class="meta">Volcán · 12 invitados · 36h</div></div>
+        <div class="pill pending">RSVP</div>
+      </div>
+    </div>
+    <div class="cal-month" id="cal-jul">
+      <h3>Julio</h3>
+      <div class="cal-event" onclick="haptic(); openEvent(1)">
+        <div class="date-block"><div class="d">24</div><div class="m">JUE</div></div>
+        <div class="e-body"><h4>Caribbean Drift</h4><div class="meta">Bocas · 18 invitados · 72h</div></div>
+        <div class="pill pending">RSVP</div>
+      </div>
+    </div>
+    <div class="cal-month" id="cal-ago">
+      <h3>Agosto</h3>
+      <div class="cal-event" onclick="haptic(); openEvent(2)">
+        <div class="date-block"><div class="d">22</div><div class="m">SAB</div></div>
+        <div class="e-body"><h4>Finca Coffee Sunrise</h4><div class="meta">Boquete · 16 invitados · 36h</div></div>
+        <div class="pill pending">RSVP</div>
+      </div>
+    </div>
+    <div class="cal-month" id="cal-sep">
+      <h3>Septiembre</h3>
+      <div class="cal-event" onclick="haptic(); openEvent(3)">
+        <div class="date-block"><div class="d">19</div><div class="m">SAB</div></div>
+        <div class="e-body"><h4>Isla Colón Sunset</h4><div class="meta">Bocas Town · 14 invitados · 36h</div></div>
+        <div class="pill confirmed">Confirmado</div>
+      </div>
+    </div>
+    <div class="cal-month" id="cal-nov">
+      <h3>Noviembre</h3>
+      <div class="cal-event" onclick="haptic()">
+        <div class="date-block"><div class="d">07</div><div class="m">SAB</div></div>
+        <div class="e-body"><h4>Lago Cabins</h4><div class="meta">Volcán, Chiriquí · 16 invitados · 72h</div></div>
+        <div class="pill pending">RSVP</div>
+      </div>
+    </div>
+    <div class="cal-month" id="cal-dic">
+      <h3>Diciembre</h3>
+      <div class="cal-event" onclick="haptic()">
+        <div class="date-block"><div class="d">12</div><div class="m">SAB</div></div>
+        <div class="e-body"><h4>Year-End Hosted Weekend</h4><div class="meta">Boquete + Caldera · 24 invitados</div></div>
+        <div class="pill pending">RSVP</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== PROFILE ============== -->
+  <section id="screen-profile" class="screen">
+    <div class="top-bar">
+      <div class="brand">TÚ</div>
+      <div class="actions">
+        <button class="icon-btn" onclick="go('calendar')" aria-label="Calendario">
+          <svg class="ico-svg sm"><use href="#i-calendar"/></svg>
+        </button>
+        <button class="icon-btn" onclick="showToast('Ajustes próximamente')" aria-label="Ajustes">
+          <svg class="ico-svg sm"><use href="#i-settings"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="profile-head">
+      <div class="avatar-wrap">
+        <div class="avatar" id="profile-avatar">A</div>
+        <span class="avatar-ring"></span>
+      </div>
+      <h2 id="profile-name">Abraham</h2>
+      <div class="member">MIEMBRO DESDE MAY 2026</div>
+      <div class="tier-badge">
+        <svg class="ico-svg sm"><use href="#i-sparkle"/></svg>
+        Founding Member
+      </div>
+    </div>
+    <div class="profile-stats">
+      <div><div class="num">3</div><div class="lbl">Asistidos</div></div>
+      <div><div class="num">4</div><div class="lbl">Próximos</div></div>
+      <div><div class="num" id="profile-matches">7</div><div class="lbl">Matches</div></div>
+    </div>
+    <div class="profile-menu">
+      <div class="row" onclick="go('saved')">
+        <div class="label"><span class="ico"><svg class="ico-svg sm"><use href="#i-bookmark"/></svg></span>Guardados</div>
+        <div class="val"><span id="pf-saved-count">0</span> eventos <svg class="ico-svg sm chev"><use href="#i-chevron"/></svg></div>
+      </div>
+      <div class="row">
+        <div class="label"><span class="ico"><svg class="ico-svg sm"><use href="#i-cutlery"/></svg></span>Preferencias de comida</div>
+        <div class="val">Pescetariano <svg class="ico-svg sm chev"><use href="#i-chevron"/></svg></div>
+      </div>
+      <div class="row">
+        <div class="label"><span class="ico"><svg class="ico-svg sm"><use href="#i-car"/></svg></span>Transporte preferido</div>
+        <div class="val">Pickup en David <svg class="ico-svg sm chev"><use href="#i-chevron"/></svg></div>
+      </div>
+      <div class="row">
+        <div class="label"><span class="ico"><svg class="ico-svg sm"><use href="#i-users"/></svg></span>Mi bio pública</div>
+        <div class="val">Founder · La Compañía <svg class="ico-svg sm chev"><use href="#i-chevron"/></svg></div>
+      </div>
+      <div class="row">
+        <div class="label"><span class="ico"><svg class="ico-svg sm"><use href="#i-share"/></svg></span>Invitar a alguien</div>
+        <div class="val invite-pill">1 invitación</div>
+      </div>
+    </div>
+    <div class="profile-menu">
+      <div class="row">
+        <div class="label"><span class="ico"><svg class="ico-svg sm"><use href="#i-bell"/></svg></span>Notificaciones</div>
+        <div class="val">Activas <svg class="ico-svg sm chev"><use href="#i-chevron"/></svg></div>
+      </div>
+      <div class="row">
+        <div class="label"><span class="ico"><svg class="ico-svg sm"><use href="#i-globe"/></svg></span>Idioma</div>
+        <div class="val">Español <svg class="ico-svg sm chev"><use href="#i-chevron"/></svg></div>
+      </div>
+      <div class="row">
+        <div class="label"><span class="ico"><svg class="ico-svg sm"><use href="#i-shield"/></svg></span>Términos · Privacidad</div>
+        <div class="val"><svg class="ico-svg sm chev"><use href="#i-chevron"/></svg></div>
+      </div>
+      <div class="row" onclick="resetApp()">
+        <div class="label"><span class="ico"><svg class="ico-svg sm"><use href="#i-logout"/></svg></span>Cerrar sesión</div>
+        <div class="val"><svg class="ico-svg sm chev"><use href="#i-chevron"/></svg></div>
+      </div>
+    </div>
+    <div style="text-align:center; padding:24px; color:var(--ink-3); font-family:var(--serif); font-style:italic; font-size:13px">
+      Sora · La Compañía · v0.2
+    </div>
+  </section>
+
+  <!-- ============== SAVED / GUARDADOS ============== -->
+  <section id="screen-saved" class="screen">
+    <div class="top-bar">
+      <button class="icon-btn" onclick="goBack('cerca')" aria-label="Volver">
+        <svg class="ico-svg sm"><use href="#i-back"/></svg>
+      </button>
+      <div class="brand">GUARDADOS</div>
+      <div class="actions">
+        <div class="loc"><span class="dot"></span><span id="saved-count">0</span></div>
+      </div>
+    </div>
+    <div class="greeting" style="padding-bottom: 6px">
+      <div class="eyebrow">TU LISTA · CERCA DE TI</div>
+      <h1>Para <em>volver</em>.</h1>
+    </div>
+    <div class="saved-list" id="saved-list"></div>
+    <div class="saved-empty" id="saved-empty">
+      <div class="saved-empty-art" aria-hidden="true">
+        <svg viewBox="0 0 80 80">
+          <path d="M22 18 L58 18 L58 70 L40 58 L22 70 Z" stroke="#a07b3e" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h3>Aún nada guardado.</h3>
+      <p>Desliza derecha en <strong>Cerca</strong> para guardar experiencias y volver después.</p>
+      <button class="btn-dark" onclick="switchTab('cerca')">Ir a Cerca</button>
+    </div>
+  </section>
+
+  <!-- ============== INBOX (placeholder) ============== -->
+  <section id="screen-inbox" class="screen">
+    <div class="top-bar">
+      <button class="icon-btn" onclick="goBack('home')" aria-label="Volver">
+        <svg class="ico-svg sm"><use href="#i-back"/></svg>
+      </button>
+      <div class="brand">MENSAJES</div>
+      <div class="actions">
+        <button class="icon-btn" onclick="showToast('Búsqueda próximamente')" aria-label="Buscar">
+          <svg class="ico-svg sm"><use href="#i-search"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="greeting" style="padding-bottom: 6px">
+      <div class="eyebrow">3 NUEVOS · MIRADOR BARÚ</div>
+      <h1>Tus <em>conversaciones</em>.</h1>
+    </div>
+    <div class="inbox-list">
+      <div class="inbox-row" onclick="showToast('Chat próximamente')">
+        <div class="ib-av" style="background:linear-gradient(135deg,#6a4a30,#2e1f12)">M</div>
+        <div class="ib-body">
+          <div class="ib-name">Mariana <span class="ib-when">2m</span></div>
+          <div class="ib-msg"><strong>Match en Mirador Barú</strong> · ¿Carpool desde David?</div>
+        </div>
+        <span class="ib-dot"></span>
+      </div>
+      <div class="inbox-row" onclick="showToast('Chat próximamente')">
+        <div class="ib-av" style="background:linear-gradient(135deg,#2a4a5c,#0e1f2a)">D</div>
+        <div class="ib-body">
+          <div class="ib-name">Diego <span class="ib-when">1h</span></div>
+          <div class="ib-msg">Ya reservé el lodge para el sábado.</div>
+        </div>
+      </div>
+      <div class="inbox-row" onclick="showToast('Chat próximamente')">
+        <div class="ib-av sora-av">S</div>
+        <div class="ib-body">
+          <div class="ib-name">Sora <span class="ib-when">ayer</span></div>
+          <div class="ib-msg">Nueva experiencia en Boquete: <strong>Cascada El Pianista</strong>.</div>
+        </div>
+        <span class="ib-dot"></span>
+      </div>
+      <div class="inbox-row" onclick="showToast('Chat próximamente')">
+        <div class="ib-av" style="background:linear-gradient(135deg,#5c2a35,#2a0e15)">S</div>
+        <div class="ib-body">
+          <div class="ib-name">Sofía <span class="ib-when">2d</span></div>
+          <div class="ib-msg">Te mandé el menú del sábado, ¿alergias?</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== BOTTOM NAV ============== -->
+  <nav class="bottom-nav" id="bottom-nav" style="display:none">
+    <button class="active" data-screen="home" onclick="switchTab('home', this)">
+      <svg class="ico ico-svg"><use href="#i-events"/></svg>
+      <span class="lbl">EVENTOS</span>
+    </button>
+    <button data-screen="cerca" onclick="switchTab('cerca', this)">
+      <svg class="ico ico-svg"><use href="#i-cerca"/></svg>
+      <span class="lbl">CERCA</span>
+    </button>
+    <button data-screen="conecta" onclick="switchTab('conecta', this)">
+      <svg class="ico ico-svg"><use href="#i-conecta"/></svg>
+      <span class="lbl">CONECTA</span>
+    </button>
+    <button data-screen="experiencias" onclick="switchTab('experiencias', this)">
+      <svg class="ico ico-svg"><use href="#i-exp"/></svg>
+      <span class="lbl">EXPERIENCIAS</span>
+    </button>
+    <button data-screen="profile" onclick="switchTab('profile', this)">
+      <svg class="ico ico-svg"><use href="#i-profile"/></svg>
+      <span class="lbl">TÚ</span>
+    </button>
+  </nav>
+</div>
+
+<!-- ============== COUNTRY SHEET ============== -->
+<div class="sheet-backdrop" id="country-backdrop" onclick="closeCountrySheet()"></div>
+<div class="country-sheet" id="country-sheet">
+  <div class="country-sheet-handle"></div>
+  <h3>Cambiar de país</h3>
+  <p class="sub">SORA opera en 15 países de Latinoamérica. Selecciona uno para ver sus eventos y experiencias.</p>
+  <div id="country-sheet-list"></div>
+</div>
+
+<!-- ============== RSVP SHEET ============== -->
+<div class="sheet-backdrop" id="sheet-backdrop" onclick="closeRSVP()"></div>
+<div class="sheet" id="rsvp-sheet">
+  <div class="sheet-handle"></div>
+  <h3>Confirmar asistencia</h3>
+  <p class="sub">Mirador Barú · 14–15 Junio · 12 invitados</p>
+  <div class="sheet-section">
+    <div class="label">¿Asistes?</div>
+    <div class="rsvp-options">
+      <div class="rsvp-opt active" onclick="setRsvp(this)">Sí, voy</div>
+      <div class="rsvp-opt" onclick="setRsvp(this)">Voy +1</div>
+      <div class="rsvp-opt" onclick="setRsvp(this)">No puedo</div>
+    </div>
+  </div>
+  <div class="sheet-section">
+    <div class="label">Transporte</div>
+    <div class="rsvp-options">
+      <div class="rsvp-opt active" onclick="setRsvp(this)">Pickup David</div>
+      <div class="rsvp-opt" onclick="setRsvp(this)">Llego sola/o</div>
+      <div class="rsvp-opt" onclick="setRsvp(this)">Helicóptero</div>
+    </div>
+  </div>
+  <div class="sheet-section">
+    <div class="label">Habitación</div>
+    <div class="rsvp-options">
+      <div class="rsvp-opt active" onclick="setRsvp(this)">Compartida</div>
+      <div class="rsvp-opt" onclick="setRsvp(this)">Doble</div>
+      <div class="rsvp-opt" onclick="setRsvp(this)">Suite +$220</div>
+    </div>
+  </div>
+  <div style="display:flex; justify-content:space-between; align-items:center; padding:14px 0; border-top:1px solid var(--line); margin-bottom:14px">
+    <div>
+      <div style="font-family:var(--serif); font-size:22px; color:var(--ink); font-weight:500">$680</div>
+      <div style="font-size:10px; color:var(--ink-3); letter-spacing:1.5px; text-transform:uppercase; font-weight:600">Total · pagado al confirmar</div>
+    </div>
+    <div style="font-size:11px; color:var(--bronze); text-transform:uppercase; letter-spacing:1.5px; font-weight:600">USDC · efectivo</div>
+  </div>
+  <button class="btn-dark" onclick="confirmRSVP()">Confirmar y reservar</button>
+</div>
+
+<!-- ============== EXPERIENCE VIDEO MODAL ============== -->
+<div class="exp-modal" id="exp-modal">
+  <div class="exp-modal-sheet" id="exp-modal-content">
+    <!-- Populated by JS -->
+  </div>
+</div>
+
+<!-- ============== MATCH MODAL ============== -->
+<div class="match-modal" id="match-modal">
+  <div class="match-bg-rings" aria-hidden="true">
+    <span></span><span></span><span></span>
+  </div>
+  <div class="match-confetti" aria-hidden="true">
+    <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+    <i></i><i></i><i></i><i></i><i></i>
+  </div>
+  <div class="match-card">
+    <div class="match-eyebrow">UN MATCH EN SORA</div>
+    <h2 class="match-title">It's a <em>match</em>.</h2>
+    <div class="match-avatars">
+      <div class="a" id="match-you">A</div>
+      <div class="link-knot" aria-hidden="true">
+        <svg viewBox="0 0 32 24" class="ico-svg" style="width:32px; height:24px; color:var(--gold)">
+          <path d="M10 12 a4 4 0 0 1 4 -4 L18 8" stroke-width="1.6"/>
+          <path d="M22 12 a4 4 0 0 1 -4 4 L14 16" stroke-width="1.6"/>
+        </svg>
+      </div>
+      <div class="a" id="match-them">M</div>
+    </div>
+    <p id="match-msg">Tú y <strong>Mariana</strong> quieren ir al Mirador Barú juntos. Inicien la conversación.</p>
+    <button class="btn-primary" onclick="closeMatch(); go('inbox')">Mandar mensaje</button>
+    <button class="btn-link" onclick="closeMatch()">Seguir descubriendo</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="../data.js"></script>
+<script>
+// ============= COUNTRY (multi-chapter) =============
+function getCountry() {
+  return localStorage.getItem('sora.country') || (window.SORA_DATA?.meta?.defaultCountry || 'PA');
+}
+function setCountryApp(code) {
+  localStorage.setItem('sora.country', code);
+  applyCountryUI();
+  // Re-init swipe decks since their data changes
+  const cercaStage = document.getElementById('swipe-stage-cerca');
+  if (cercaStage) { delete cercaStage.dataset.init; state.cercaIdx = 0; saveState(); }
+  // Re-render visible screens
+  if (state.currentTab === 'cerca') initCercaDeck();
+  if (state.currentTab === 'experiencias') renderExpGrid();
+  showToast('Cambiado a ' + (window.soraData?.byCode(code)?.name?.es || code));
+}
+function applyCountryUI() {
+  const c = window.soraData ? window.soraData.byCode(getCountry()) : null;
+  if (!c) return;
+  const flag = document.getElementById('home-country-flag');
+  const label = document.getElementById('home-country-label');
+  if (flag) flag.textContent = c.flag;
+  if (label) label.textContent = c.name.es;
+}
+function openCountrySheet() {
+  haptic(6);
+  renderCountrySheet();
+  document.getElementById('country-backdrop').classList.add('open');
+  setTimeout(() => document.getElementById('country-sheet').classList.add('open'), 10);
+}
+function closeCountrySheet() {
+  document.getElementById('country-sheet').classList.remove('open');
+  setTimeout(() => document.getElementById('country-backdrop').classList.remove('open'), 300);
+}
+function renderCountrySheet() {
+  if (!window.SORA_DATA) return;
+  const cur = getCountry();
+  const groups = {
+    live: window.SORA_DATA.countries.filter(c => c.status === 'live' || c.status === 'launching'),
+    soon: window.SORA_DATA.countries.filter(c => c.status === 'soon' || c.status === 'gated')
+  };
+  const row = (c, disabled) => {
+    const labels = { live: 'En vivo', launching: 'Lanzando', soon: 'Próximo', gated: 'Pronto' };
+    return `
+      <button class="country-sheet-row ${cur === c.code ? 'active' : ''} ${disabled ? 'disabled' : ''}"
+              onclick="${disabled ? '' : `pickCountryApp('${c.code}')`}">
+        <span class="flag">${c.flag}</span>
+        <span class="body">
+          <div class="name">${c.name.es}</div>
+          <div class="sub-hero">${c.hero}</div>
+        </span>
+        <span class="pill ${c.status}">${labels[c.status]}</span>
+      </button>
+    `;
+  };
+  document.getElementById('country-sheet-list').innerHTML =
+    `<div class="country-sheet-section">Disponibles</div>` +
+    groups.live.map(c => row(c, false)).join('') +
+    `<div class="country-sheet-section">Próximamente</div>` +
+    groups.soon.map(c => row(c, true)).join('');
+}
+function pickCountryApp(code) {
+  setCountryApp(code);
+  closeCountrySheet();
+}
+
+// ============= HAPTIC =============
+function haptic(pattern) {
+  if (!('vibrate' in navigator)) return;
+  try { navigator.vibrate(pattern || 8); } catch (e) {}
+}
+function hapticMatch() { haptic([14, 60, 14, 60, 18]); }
+function hapticSwipe(dir) { haptic(dir === 'up' ? [10, 40, 18] : 10); }
+
+// ============= STATE =============
+const STATE_KEY = 'sora.state';
+let state = loadState();
+function loadState() {
+  try { return JSON.parse(localStorage.getItem(STATE_KEY)) || defaultState(); }
+  catch(e) { return defaultState(); }
+}
+function defaultState() {
+  return {
+    onboarded: false, locationGranted: false,
+    name: null, prefs: [], bio: null,
+    partyType: null, partySize: 1,
+    currentTab: 'home', onboardStep: 1,
+    cercaIdx: 0, conectaIdx: 0,
+    cercaLikes: [], conectaLikes: [], matches: 0
+  };
+}
+function saveState() { localStorage.setItem(STATE_KEY, JSON.stringify(state)); }
+
+// ============= NAVIGATION =============
+const MAIN_TABS = ['home','cerca','conecta','experiencias','profile'];
+const OVERLAY_TABS = ['saved','inbox','calendar','event'];
+function go(screen) {
+  // Track previous main tab so overlay back buttons return correctly
+  const currentActive = document.querySelector('.screen.active');
+  if (currentActive) {
+    const id = currentActive.id.replace('screen-','');
+    if (MAIN_TABS.includes(id)) lastTab = id;
+  }
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  const el = document.getElementById('screen-' + screen);
+  if (el) el.classList.add('active');
+  const nav = document.getElementById('bottom-nav');
+  const navScreens = ['home','cerca','conecta','experiencias','profile','event','calendar','saved','inbox'];
+  nav.style.display = navScreens.includes(screen) ? 'flex' : 'none';
+  document.body.classList.toggle('full-screen', !navScreens.includes(screen));
+  window.scrollTo({ top: 0, behavior: 'instant' });
+  // Init swipe decks lazily
+  if (screen === 'cerca') initCercaDeck();
+  if (screen === 'conecta') initConectaDeck();
+  if (screen === 'experiencias') renderExpGrid();
+  if (screen === 'saved') renderSaved();
+  if (screen === 'calendar') updateCalendarToday();
+}
+
+function renderSaved() {
+  const list = document.getElementById('saved-list');
+  const empty = document.getElementById('saved-empty');
+  const countEl = document.getElementById('saved-count');
+  const liked = (state.cercaLikes || []);
+  if (countEl) countEl.textContent = liked.length;
+  if (!liked.length) {
+    list.innerHTML = '';
+    empty.classList.add('show');
+    return;
+  }
+  empty.classList.remove('show');
+  list.innerHTML = liked.map(idx => {
+    const ev = cercaEvents[idx];
+    if (!ev) return '';
+    return `
+      <div class="saved-card" onclick="haptic(); showToast('Detalle de ' + '${ev.title.replace(/<[^>]+>/g,'').replace(/'/g,'')}' + ' próximamente')">
+        <div class="bg" style="background:${ev.bg}"></div>
+        ${ev.scene ? `<div class="scene"><svg><use href="#scene-${ev.scene}"/></svg></div>` : ''}
+        <div class="scrim"></div>
+        <button class="unsave" onclick="event.stopPropagation(); unsave(${idx})" aria-label="Quitar">
+          <svg class="ico-svg sm"><use href="#i-heart-fill"/></svg>
+        </button>
+        <div class="body">
+          <div>
+            <div class="when">${ev.meta}</div>
+            <h4>${ev.title.replace(/<[^>]+>/g,'')}</h4>
+          </div>
+          <div class="price">${ev.price}</div>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+function unsave(idx) {
+  state.cercaLikes = (state.cercaLikes || []).filter(i => i !== idx);
+  saveState();
+  haptic(8);
+  renderSaved();
+  updateSavedCount();
+}
+function updateCalendarToday() {
+  // Already marked statically in markup (Junio is next-up).
+  // Future: compute dynamically from event dates vs. today.
+}
+function scrollToMonth(key) {
+  const el = document.getElementById('cal-' + key);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  haptic(6);
+}
+
+function switchTab(tab, btn) {
+  go(tab);
+  document.querySelectorAll('.bottom-nav button').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  else {
+    const target = document.querySelector(`.bottom-nav button[data-screen="${tab}"]`);
+    if (target) target.classList.add('active');
+  }
+  state.currentTab = tab; saveState();
+}
+
+// Expose for preview iframe jumping
+window.SORA = {
+  go: go,
+  switchTab: switchTab,
+  reset: () => { localStorage.removeItem(STATE_KEY); location.reload(); }
+};
+
+// ============= INVITATION =============
+function formatCode(input) {
+  let v = input.value.toUpperCase().replace(/[^A-Z0-9-]/g,'');
+  if (v.length > 4 && v.indexOf('-') === -1) v = v.slice(0,4) + '-' + v.slice(4);
+  input.value = v;
+}
+function checkInvite() {
+  const code = document.getElementById('invite-code').value.trim().toUpperCase();
+  if (code.startsWith('SORA-')) {
+    go('onboard');
+    showToast('Invitación verificada');
+  } else {
+    showToast('Código inválido');
+  }
+}
+
+// ============= ONBOARDING =============
+function onboardNext() {
+  if (state.onboardStep === 1) {
+    const name = document.getElementById('ob-name').value.trim();
+    if (!name) { showToast('Tu nombre, por favor'); return; }
+    state.name = name; saveState();
+    goToStep(2);
+  } else if (state.onboardStep === 2) {
+    if (!state.partyType) { showToast('Elige cómo vienes'); return; }
+    goToStep(3);
+  } else if (state.onboardStep === 3) {
+    goToStep(4);
+  } else {
+    state.bio = document.getElementById('ob-bio').value.trim();
+    state.onboarded = true; saveState();
+    go('location');
+  }
+}
+function goToStep(n) {
+  for (let i = 1; i <= 4; i++) {
+    const s = document.getElementById('onboard-step-' + i);
+    if (s) s.style.display = i === n ? 'block' : 'none';
+    const dot = document.getElementById('op-' + i);
+    if (dot && i <= n) dot.classList.add('done');
+  }
+  state.onboardStep = n; saveState();
+  document.getElementById('onboard-cta').textContent = n === 4 ? 'Entrar a Sora' : 'Continuar';
+}
+function togglePref(btn) {
+  btn.classList.toggle('active');
+  const p = btn.dataset.pref;
+  if (state.prefs.includes(p)) state.prefs = state.prefs.filter(x => x !== p);
+  else state.prefs.push(p);
+  saveState();
+  haptic(6);
+}
+function pickParty(btn, type) {
+  document.querySelectorAll('.party-option').forEach(o => o.classList.remove('active'));
+  btn.classList.add('active');
+  state.partyType = type;
+  state.partySize = type === 'solo' ? 1 : (type === 'familia' ? 3 : 4);
+  saveState();
+  haptic(8);
+}
+
+// ============= LOCATION =============
+function confirmLocation() {
+  state.locationGranted = true; saveState();
+  enterApp();
+}
+
+function enterApp() {
+  if (state.name) {
+    const first = state.name.split(' ')[0];
+    document.getElementById('greet-name').innerHTML = `Hola, <em>${first}</em>.`;
+    document.getElementById('profile-name').textContent = state.name;
+    document.getElementById('profile-avatar').textContent = first.charAt(0).toUpperCase();
+    document.getElementById('match-you').textContent = first.charAt(0).toUpperCase();
+  }
+  renderEventGuestsList();
+  updateSavedCount();
+  switchTab('home');
+  showToast('Bienvenido a Sora');
+}
+
+// ============= EVENT DETAIL =============
+const events = [
+  {
+    eyebrow:'SUNSET SERIES · 14–15 JUNIO', title:'Mirador <em>Barú</em>.',
+    where:'Volcán, Chiriquí', pax:'12 invitados', dur:'36h', room:'Doble', trans:'Inc.',
+    scene: 'mirador',
+    bg: 'radial-gradient(ellipse 80% 60% at 30% 20%, rgba(212,184,122,0.5), transparent 60%), linear-gradient(180deg, #2a3d4a 0%, #1a2530 50%, #0a1218 100%)'
+  },
+  {
+    eyebrow:'ARCHIPELAGO · 24–27 JULIO', title:'Caribbean <em>Drift</em>.',
+    where:'Isla Bastimentos · Bocas', pax:'18 invitados', dur:'72h', room:'Privada', trans:'Lancha',
+    scene: 'bocas',
+    bg: 'radial-gradient(ellipse 80% 60% at 70% 25%, rgba(212,184,122,0.4), transparent 60%), linear-gradient(180deg, #2c6e7f 0%, #1a4250 50%, #0e2530 100%)'
+  },
+  {
+    eyebrow:'COFFEE SUNRISE · 22–23 AGO', title:'Finca <em>Lerida</em>.',
+    where:'Boquete, Chiriquí', pax:'16 invitados', dur:'36h', room:'Doble', trans:'Inc.',
+    scene: 'finca',
+    bg: 'radial-gradient(ellipse 80% 60% at 30% 30%, rgba(212,184,122,0.4), transparent 60%), linear-gradient(180deg, #4a5c3a 0%, #2a3c20 50%, #15200d 100%)'
+  },
+  {
+    eyebrow:'OVERWATER · 19–20 SEP', title:'Isla Colón <em>Sunset</em>.',
+    where:'Bocas Town · Bocas', pax:'14 invitados', dur:'36h', room:'Bungalow', trans:'Lancha',
+    scene: 'bocas',
+    bg: 'radial-gradient(ellipse 80% 60% at 60% 30%, rgba(212,184,122,0.45), transparent 60%), linear-gradient(180deg, #1f6b8c 0%, #0e3850 50%, #051f30 100%)'
+  }
+];
+let lastTab = 'home';
+function openEvent(idx) {
+  const e = events[idx] || events[0];
+  document.getElementById('ev-eyebrow').textContent = e.eyebrow;
+  document.getElementById('ev-title').innerHTML = e.title;
+  document.getElementById('ev-where').textContent = e.where;
+  document.getElementById('ev-pax').textContent = e.pax;
+  document.getElementById('ev-dur').textContent = e.dur;
+  document.getElementById('ev-room').textContent = e.room;
+  document.getElementById('ev-trans').textContent = e.trans;
+  document.getElementById('event-hero-bg').style.background = e.bg;
+  const sceneEl = document.getElementById('event-hero-scene');
+  if (sceneEl && e.scene) sceneEl.innerHTML = `<svg><use href="#scene-${e.scene}"/></svg>`;
+  lastTab = state.currentTab || 'home';
+  go('event');
+}
+function backFromEvent() {
+  switchTab(lastTab || 'home');
+}
+function goBack(fallback) {
+  // Inline-attr-safe back: resolves lastTab via the script scope.
+  switchTab(lastTab || fallback || 'home');
+}
+function showTab(btn, tabName) {
+  document.querySelectorAll('.tab-strip button').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('tab-' + tabName).classList.add('active');
+}
+
+const eventGuests = [
+  {n:'Mariana Solís', b:'Arquitecta · Boquete'},
+  {n:'Diego Reinoso', b:'VC · BTC Beach'},
+  {n:'Sofía Camargo', b:'Chef · Casa Hassan'},
+  {n:'Luis Almagro', b:'Café finca · Volcán'},
+  {n:'Rafa Méndez', b:'Surfista · El Zonte'},
+  {n:'Camila Vega', b:'Sommelier'},
+  {n:'Yendri Zamora', b:'Brand · Yendri Style'},
+  {n:'Andrés Pérez', b:'Producer · Casco'}
+];
+const avatarGradients = [
+  'linear-gradient(135deg,#a07b3e,#6a4d20)',
+  'linear-gradient(135deg,#6e5c8a,#3d2f4f)',
+  'linear-gradient(135deg,#4a7d63,#2d5e4a)',
+  'linear-gradient(135deg,#b85439,#7a2f1c)',
+  'linear-gradient(135deg,#2e8a96,#1b6671)',
+  'linear-gradient(135deg,#d49a26,#7a5414)',
+  'linear-gradient(135deg,#c64a5e,#7a2434)',
+  'linear-gradient(135deg,#5c4a30,#2a200e)'
+];
+function renderEventGuestsList() {
+  const el = document.getElementById('event-guests-list');
+  if (!el) return;
+  el.innerHTML = eventGuests.map((g, i) => `
+    <div style="display:flex; align-items:center; gap:14px; padding:12px 0; border-bottom:1px solid var(--line)">
+      <div style="width:46px; height:46px; border-radius:50%; background:${avatarGradients[i % avatarGradients.length]}; color:var(--cream); display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-size:17px; font-weight:500; border:1.5px solid var(--cream); box-shadow:0 4px 12px -4px rgba(0,0,0,0.15)">${g.n.charAt(0)}</div>
+      <div style="flex:1"><div style="font-weight:500; font-size:14.5px; font-family:var(--serif)">${g.n}</div><div style="font-size:12px; color:var(--ink-3); margin-top:2px">${g.b}</div></div>
+      <svg class="ico-svg sm" style="color:var(--ink-3); flex-shrink:0"><use href="#i-chevron"/></svg>
+    </div>
+  `).join('');
+}
+
+// ============= RSVP =============
+function openRSVP() {
+  document.getElementById('sheet-backdrop').classList.add('open');
+  setTimeout(() => document.getElementById('rsvp-sheet').classList.add('open'), 10);
+}
+function closeRSVP() {
+  document.getElementById('rsvp-sheet').classList.remove('open');
+  setTimeout(() => document.getElementById('sheet-backdrop').classList.remove('open'), 300);
+}
+function setRsvp(opt) {
+  opt.parentElement.querySelectorAll('.rsvp-opt').forEach(s => s.classList.remove('active'));
+  opt.classList.add('active');
+}
+function confirmRSVP() {
+  closeRSVP();
+  haptic([10, 80, 14]);
+  setTimeout(() => showToast('RSVP confirmado · ¡Nos vemos en Volcán!'), 350);
+}
+function toggleEventFav(btn) {
+  const ico = btn.querySelector('.fav-ico');
+  if (!ico) return;
+  const isFav = ico.dataset.fav === '1';
+  if (isFav) {
+    ico.dataset.fav = '0';
+    ico.querySelector('use').setAttribute('href', '#i-heart');
+    btn.style.color = '';
+  } else {
+    ico.dataset.fav = '1';
+    ico.querySelector('use').setAttribute('href', '#i-heart-fill');
+    btn.style.color = 'var(--coral)';
+    haptic(8);
+  }
+}
+function updateSavedCount() {
+  const el = document.getElementById('pf-saved-count');
+  if (el) el.textContent = (state.cercaLikes || []).length;
+}
+
+// ============= CERCA (Swipeable events near you) =============
+const cercaEvents = [
+  { tag:'2KM · BOQUETE', meta:'CATA · MAÑANA 7AM', title:'Café <em>Geisha</em>.', desc:'Cata privada de 4 lotes con maestro tostador en Finca Lerida.', tags:['Gastronomía','2h','$45'], price:'$45', scene:'finca',
+    bg:'radial-gradient(ellipse at 30% 20%, rgba(212,184,122,0.5), transparent 60%), linear-gradient(180deg, #5a4a2a, #2e1f10 80%)' },
+  { tag:'0.8KM · BOQUETE', meta:'EVENTO · JUE 18 JUN · 7PM', title:'Cena <em>Tierra Negra</em>.', desc:'Mesa larga con producto del valle. 14 invitados. Chef Hassan curating.', tags:['Cena','Curated','$120'], price:'$120', scene:'night',
+    bg:'radial-gradient(ellipse at 70% 30%, rgba(180,87,101,0.4), transparent 60%), linear-gradient(180deg, #3d2a2e, #1a0e12 80%)' },
+  { tag:'8KM · CALDERA', meta:'EXPERIENCIA · DIARIO', title:'Termas <em>privadas</em>.', desc:'Aguas termales geotermales al borde del río. Reserva privada 2h.', tags:['Bienestar','2h','$80'], price:'$80', scene:'termas',
+    bg:'radial-gradient(ellipse at 40% 30%, rgba(74,125,99,0.4), transparent 60%), linear-gradient(180deg, #2e4438, #0e201a 80%)' },
+  { tag:'14KM · VOLCÁN', meta:'EVENTO · SAB 5 JUL · 5AM', title:'Sunrise <em>Volcán Barú</em>.', desc:'Trekking guiado a 3,475m. Ver ambos océanos al amanecer. Solo para nivel medio+.', tags:['Aventura','8h','$95'], price:'$95', scene:'mirador',
+    bg:'radial-gradient(ellipse at 50% 10%, rgba(212,184,122,0.5), transparent 60%), linear-gradient(180deg, #2a3d4a, #0a1218 80%)' },
+  { tag:'5KM · BOQUETE', meta:'EVENTO · DOM 22 JUN · 7AM', title:'Yoga al <em>río</em>.', desc:'Sesión Vinyasa de 75 min al borde del río Caldera. Té matcha + frutas.', tags:['Bienestar','1.5h','$35'], price:'$35', scene:'termas',
+    bg:'radial-gradient(ellipse at 60% 30%, rgba(110,138,90,0.5), transparent 60%), linear-gradient(180deg, #3d4a30, #1a200e 80%)' },
+  { tag:'18KM · BAMBITO', meta:'EXPERIENCIA · WEEKENDS', title:'Avistar <em>quetzales</em>.', desc:'Guía local certificada. Bosque nuboso. 95% de probabilidad de avistamiento mayo-jun.', tags:['Naturaleza','4h','$70'], price:'$70', scene:'bosque',
+    bg:'radial-gradient(ellipse at 30% 30%, rgba(74,125,99,0.5), transparent 60%), linear-gradient(180deg, #1f3a2c, #0a1a13 80%)' },
+  { tag:'3KM · BOQUETE', meta:'EXPERIENCIA · DIARIO', title:'Cascada <em>privada</em>.', desc:'Caminata de 25 min + nado en cascada secreta. Comida liviana incluida.', tags:['Naturaleza','3h','$55'], price:'$55', scene:'bosque',
+    bg:'radial-gradient(ellipse at 50% 30%, rgba(74,140,168,0.4), transparent 60%), linear-gradient(180deg, #1f4050, #0a1f28 80%)' },
+  { tag:'180KM · BOCAS', meta:'WEEKEND · 24–27 JUL', title:'Caribbean <em>Drift</em>.', desc:'3 noches en isla privada. Lancha, surf, mariscos, fogata. 18 invitados.', tags:['Weekend','72h','$1,420'], price:'$1,420', scene:'bocas',
+    bg:'radial-gradient(ellipse at 70% 25%, rgba(212,184,122,0.4), transparent 60%), linear-gradient(180deg, #2c6e7f, #0e2530 80%)' }
+];
+
+function currentCercaList() {
+  const c = getCountry();
+  if (c === 'PA') return cercaEvents;
+  // For other countries, surface the weekend events from data.js as swipeable cards
+  if (!window.SORA_DATA) return [];
+  const country = window.soraData.byCode(c);
+  const events = window.soraData.eventsFor(c);
+  return events.map(e => ({
+    tag: country ? country.hero.toUpperCase() : '',
+    meta: (typeof e.date === 'object' ? e.date.es : e.date) + ' · ' + (e.where || '').toUpperCase(),
+    title: e.titleEs,
+    desc: e.descEs,
+    tags: [(e.badge && typeof e.badge === 'object' ? e.badge.es : e.badge) || 'Weekend', e.pax || '', e.price],
+    price: e.price,
+    scene: e.scene,
+    bg: e.bg
+  }));
+}
+function initCercaDeck() {
+  const stage = document.getElementById('swipe-stage-cerca');
+  if (stage.dataset.init) return;
+  stage.dataset.init = '1';
+  buildCercaCards();
+}
+function buildCercaCards() {
+  const stage = document.getElementById('swipe-stage-cerca');
+  stage.querySelectorAll('.swipe-card').forEach(c => c.remove());
+  const empty = document.getElementById('cerca-empty');
+  empty.classList.remove('show');
+  const list = currentCercaList();
+  const startIdx = state.cercaIdx;
+  if (startIdx >= list.length) {
+    empty.classList.add('show');
+    return;
+  }
+  // Show 3 cards stacked
+  for (let i = Math.min(startIdx + 2, list.length - 1); i >= startIdx; i--) {
+    const ev = list[i];
+    const offset = i - startIdx;
+    const card = document.createElement('div');
+    card.className = 'swipe-card';
+    card.style.zIndex = 10 - offset;
+    card.style.transform = `translateY(${offset * 14}px) scale(${1 - offset * 0.05})`;
+    card.style.opacity = offset === 0 ? 1 : (offset === 1 ? 0.92 : 0.78);
+    card.dataset.idx = i;
+    card.innerHTML = `
+      <div class="bg" style="background:${ev.bg}"></div>
+      ${ev.scene ? `<div class="scene"><svg><use href="#scene-${ev.scene}"/></svg></div>` : ''}
+      <div class="scrim"></div>
+      <div class="dist"><svg class="ico-svg sm"><use href="#i-pin"/></svg>${ev.tag}</div>
+      <div class="price-tag">${ev.price}</div>
+      <div class="decision like">ME INTERESA</div>
+      <div class="decision nope">PASO</div>
+      <div class="decision super"><svg class="ico-svg sm"><use href="#i-star"/></svg> RESERVAR YA</div>
+      <div class="body">
+        <div class="meta">${ev.meta}</div>
+        <h2>${ev.title}</h2>
+        <p>${ev.desc}</p>
+        <div class="tags">${ev.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+      </div>
+    `;
+    stage.appendChild(card);
+    if (offset === 0) attachSwipe(card, (dir) => onCercaSwipe(dir, i));
+  }
+}
+function onCercaSwipe(dir, idx) {
+  hapticSwipe(dir);
+  const list = currentCercaList();
+  if (dir === 'right') { state.cercaLikes.push(idx); showToast('Guardado en tus favoritos'); }
+  else if (dir === 'up') { showToast('Reservando · ' + (list[idx]?.title || '').replace(/<[^>]+>/g,'')); }
+  state.cercaIdx = idx + 1;
+  saveState();
+  updateSavedCount();
+  setTimeout(buildCercaCards, 50);
+}
+function resetCercaDeck() {
+  state.cercaIdx = 0; state.cercaLikes = []; saveState();
+  updateSavedCount();
+  buildCercaCards();
+}
+function filterCerca(btn, cat) {
+  document.querySelectorAll('#screen-cerca .chip').forEach(c => c.classList.remove('active'));
+  btn.classList.add('active');
+  // Currently the deck is unfiltered; this is a UI hook for future tag filtering.
+  showToast(cat === 'all' ? 'Mostrando todo' : 'Filtro: ' + btn.textContent.trim());
+}
+
+// ============= CONECTA (Tinder-style profiles) =============
+const profiles = [
+  { name:'Mariana', age:32, role:'ARQUITECTA · BOQUETE', bio:'Diseña casas de madera. Café Geisha. Le gusta el silencio.', mutual:'2 amigos en común',
+    bg:'radial-gradient(ellipse at 50% 25%, rgba(212,184,122,0.45), transparent 60%), linear-gradient(160deg, #6a4a30 0%, #2e1f12 80%)' },
+  { name:'Diego', age:38, role:'VC · BTC BEACH VENTURES', bio:'Surf cada domingo. Lee 2 libros por semana. Acaba de mudarse a Boquete.', mutual:'3 amigos en común',
+    bg:'radial-gradient(ellipse at 50% 25%, rgba(74,140,168,0.5), transparent 60%), linear-gradient(160deg, #2a4a5c 0%, #0e1f2a 80%)' },
+  { name:'Sofía', age:29, role:'CHEF · CASA HASSAN', bio:'Cocina con producto del valle. Aprende mandarín. Maridajes con mezcal.', mutual:'5 amigos en común',
+    bg:'radial-gradient(ellipse at 50% 25%, rgba(180,87,101,0.45), transparent 60%), linear-gradient(160deg, #5c2a35 0%, #2a0e15 80%)' },
+  { name:'Luis', age:45, role:'CAFETERO · VOLCÁN', bio:'4ta generación de finca cafetera. Geisha process. Padre de dos.', mutual:'4 amigos en común',
+    bg:'radial-gradient(ellipse at 50% 25%, rgba(110,138,90,0.5), transparent 60%), linear-gradient(160deg, #3d4a30 0%, #15200e 80%)' },
+  { name:'Camila', age:33, role:'SOMMELIER · SORA', bio:'Vinos chilenos, naturales. Toca el cello los domingos.', mutual:'7 amigos en común',
+    bg:'radial-gradient(ellipse at 50% 25%, rgba(140,90,140,0.45), transparent 60%), linear-gradient(160deg, #4a2a4a 0%, #1f0e1f 80%)' },
+  { name:'Rafa', age:31, role:'SURFISTA · EL ZONTE', bio:'Vive entre olas. Ahora también shapeo de tablas a mano.', mutual:'2 amigos en común',
+    bg:'radial-gradient(ellipse at 50% 25%, rgba(74,140,140,0.45), transparent 60%), linear-gradient(160deg, #1f4a4a 0%, #0a1f1f 80%)' },
+  { name:'Yendri', age:30, role:'BRAND · YENDRI STYLE', bio:'Estilo masculino latino. Café espresso. Foto análoga.', mutual:'6 amigos en común',
+    bg:'radial-gradient(ellipse at 50% 25%, rgba(212,184,122,0.45), transparent 60%), linear-gradient(160deg, #5c4a2a 0%, #2a200e 80%)' }
+];
+
+function initConectaDeck() {
+  const stage = document.getElementById('swipe-stage-conecta');
+  if (stage.dataset.init) return;
+  stage.dataset.init = '1';
+  buildConectaCards();
+}
+function buildConectaCards() {
+  const stage = document.getElementById('swipe-stage-conecta');
+  stage.querySelectorAll('.swipe-card').forEach(c => c.remove());
+  const empty = document.getElementById('conecta-empty');
+  empty.classList.remove('show');
+  const startIdx = state.conectaIdx;
+  if (startIdx >= profiles.length) {
+    empty.classList.add('show');
+    return;
+  }
+  for (let i = Math.min(startIdx + 2, profiles.length - 1); i >= startIdx; i--) {
+    const p = profiles[i];
+    const offset = i - startIdx;
+    const card = document.createElement('div');
+    card.className = 'swipe-card profile-card';
+    card.style.zIndex = 10 - offset;
+    card.style.transform = `translateY(${offset * 14}px) scale(${1 - offset * 0.05})`;
+    card.style.opacity = offset === 0 ? 1 : (offset === 1 ? 0.92 : 0.78);
+    card.innerHTML = `
+      <div class="bg" style="background:${p.bg}"></div>
+      <div class="scrim"></div>
+      <div class="mutual">${p.mutual}</div>
+      <div class="decision like">CONECTA</div>
+      <div class="decision nope">PASO</div>
+      <div class="decision super">⇄ CARPOOL</div>
+      <div class="body">
+        <h2>${p.name}<span class="age">${p.age}</span></h2>
+        <div class="role">${p.role}</div>
+        <p class="bio">${p.bio}</p>
+      </div>
+    `;
+    stage.appendChild(card);
+    if (offset === 0) attachSwipe(card, (dir) => onConectaSwipe(dir, i));
+  }
+}
+function onConectaSwipe(dir, idx) {
+  const p = profiles[idx];
+  hapticSwipe(dir);
+  if (dir === 'right') {
+    state.conectaLikes.push(idx);
+    // ~50% match probability for demo
+    if (Math.random() > 0.4) {
+      state.matches++; saveState();
+      hapticMatch();
+      showMatch(p);
+    } else {
+      showToast(`Te gustó ${p.name}`);
+    }
+  } else if (dir === 'up') {
+    showToast(`Carpool propuesto a ${p.name}`);
+    state.conectaLikes.push(idx);
+  }
+  state.conectaIdx = idx + 1;
+  saveState();
+  setTimeout(buildConectaCards, 50);
+  const pm = document.getElementById('profile-matches');
+  if (pm) pm.textContent = 7 + state.matches;
+}
+function resetConectaDeck() {
+  state.conectaIdx = 0; state.conectaLikes = []; saveState();
+  buildConectaCards();
+}
+function showMatch(p) {
+  document.getElementById('match-them').textContent = p.name.charAt(0);
+  document.getElementById('match-msg').innerHTML = `Tú y <strong>${p.name}</strong> quieren ir al Mirador Barú juntos. Inicien la conversación.`;
+  document.getElementById('match-modal').classList.add('open');
+}
+function closeMatch() {
+  document.getElementById('match-modal').classList.remove('open');
+}
+
+// ============= SWIPE GESTURE =============
+function attachSwipe(card, onSwipe) {
+  let startX = 0, startY = 0, dx = 0, dy = 0, dragging = false;
+  let rect = null;
+
+  function start(x, y) {
+    rect = card.getBoundingClientRect();
+    startX = x; startY = y; dx = 0; dy = 0;
+    dragging = true;
+    card.classList.add('grabbing');
+  }
+  function move(x, y) {
+    if (!dragging) return;
+    dx = x - startX; dy = y - startY;
+    const rot = dx * 0.06;
+    card.style.transform = `translate(${dx}px, ${dy}px) rotate(${rot}deg)`;
+    card.style.opacity = Math.max(0.4, 1 - Math.abs(dx) / 600);
+    // Decision badges
+    const like = card.querySelector('.decision.like');
+    const nope = card.querySelector('.decision.nope');
+    const sup = card.querySelector('.decision.super');
+    if (like) like.style.opacity = dx > 30 && dy > -100 ? Math.min(1, dx / 100) : 0;
+    if (nope) nope.style.opacity = dx < -30 && dy > -100 ? Math.min(1, -dx / 100) : 0;
+    if (sup) sup.style.opacity = dy < -50 && Math.abs(dx) < 80 ? Math.min(1, -dy / 100) : 0;
+  }
+  function end() {
+    if (!dragging) return;
+    dragging = false;
+    card.classList.remove('grabbing');
+    const swipeX = Math.abs(dx) > 90;
+    const swipeUp = dy < -100 && Math.abs(dx) < 100;
+    if (swipeUp) {
+      card.style.transform = `translate(${dx}px, -1000px) rotate(${dx * 0.05}deg)`;
+      card.style.opacity = 0;
+      onSwipe('up');
+    } else if (swipeX) {
+      const dir = dx > 0 ? 'right' : 'left';
+      const exitX = dx > 0 ? 800 : -800;
+      card.style.transform = `translate(${exitX}px, ${dy}px) rotate(${dx * 0.08}deg)`;
+      card.style.opacity = 0;
+      onSwipe(dir);
+    } else {
+      card.style.transform = 'translate(0,0) rotate(0)';
+      card.style.opacity = 1;
+      card.querySelectorAll('.decision').forEach(d => d.style.opacity = 0);
+    }
+  }
+  card.addEventListener('touchstart', (e) => start(e.touches[0].clientX, e.touches[0].clientY), { passive: true });
+  card.addEventListener('touchmove', (e) => { e.preventDefault(); move(e.touches[0].clientX, e.touches[0].clientY); }, { passive: false });
+  card.addEventListener('touchend', end);
+  card.addEventListener('mousedown', (e) => { e.preventDefault(); start(e.clientX, e.clientY); });
+  const mm = (e) => move(e.clientX, e.clientY);
+  const mu = () => { end(); document.removeEventListener('mousemove', mm); document.removeEventListener('mouseup', mu); };
+  card.addEventListener('mousedown', () => {
+    document.addEventListener('mousemove', mm);
+    document.addEventListener('mouseup', mu);
+  });
+}
+
+function manualSwipe(deck, dir) {
+  const stage = document.getElementById(`swipe-stage-${deck}`);
+  const top = stage.querySelector('.swipe-card');
+  if (!top) return;
+  const exitX = dir === 'right' ? 800 : (dir === 'left' ? -800 : 0);
+  const exitY = dir === 'up' ? -1000 : 0;
+  top.style.transition = 'transform .4s, opacity .4s';
+  top.style.transform = `translate(${exitX}px, ${exitY}px) rotate(${exitX * 0.08}deg)`;
+  top.style.opacity = 0;
+  const idx = parseInt(top.dataset.idx || 0);
+  if (deck === 'cerca') setTimeout(() => onCercaSwipe(dir, state.cercaIdx), 200);
+  else setTimeout(() => onConectaSwipe(dir, state.conectaIdx), 200);
+}
+
+// ============= EXPERIENCIAS GRID =============
+const experiences = [
+  { id:'geisha', cat:'gastronomia', name:'Cata de café Geisha', wide:true, dur:'2h', price:'$45', loc:'Finca Lerida · Boquete', scene:'finca',
+    bg:'radial-gradient(ellipse at 30% 20%, rgba(212,184,122,0.5), transparent 60%), linear-gradient(180deg, #5a4a2a, #2e1f10)',
+    desc:'Las mejores variedades de café Geisha del mundo crecen en estas montañas. Una cata privada de 4 lotes con el maestro tostador, descubriendo notas que cambian a $300/kilo en el mercado internacional.',
+    included:['Cata de 4 variedades Geisha','Tour por el beneficio húmedo','Pastel artesanal de café','Bolsa de 250g para llevar','Traslado desde tu alojamiento'] },
+  { id:'baru', cat:'aventura', name:'Sunrise Volcán Barú', dur:'8h', price:'$95', loc:'Parque Nacional · Volcán', scene:'mirador',
+    bg:'radial-gradient(ellipse at 50% 10%, rgba(212,184,122,0.5), transparent 60%), linear-gradient(180deg, #2a3d4a, #0a1218)',
+    desc:'Trekking guiado hasta la cima del Volcán Barú (3,475m), el punto más alto de Panamá. Al amanecer, en días claros, se ven simultáneamente el Pacífico y el Caribe. Una experiencia que pocos panameños viven.',
+    included:['Guía bilingüe certificado','Pickup 11:30pm','Tea + sandwich en cumbre','Linternas frontales','Capa térmica de emergencia'] },
+  { id:'caldera', cat:'bienestar', name:'Termas privadas Caldera', dur:'2.5h', price:'$80', loc:'Río Caldera · Chiriquí', scene:'termas',
+    bg:'radial-gradient(ellipse at 40% 30%, rgba(74,125,99,0.4), transparent 60%), linear-gradient(180deg, #2e4438, #0e201a)',
+    desc:'Aguas termales geotermales naturales al borde del río Caldera, en una reserva privada. Sora bloquea el acceso por 2.5 horas para tu grupo. Cocktail signature al cierre.',
+    included:['Acceso privado a 3 pozas','Toallas + bata','Té de hierbas locales','Cocktail Geisha-Negroni','Snack ligero al final'] },
+  { id:'pianista', cat:'naturaleza', name:'Cascada El Pianista', dur:'3h', price:'$55', loc:'Sendero · Boquete', scene:'bosque',
+    bg:'radial-gradient(ellipse at 50% 30%, rgba(74,140,168,0.4), transparent 60%), linear-gradient(180deg, #1f4050, #0a1f28)',
+    desc:'Caminata de 25 min por sendero técnico hacia una cascada secreta del bosque nuboso. Nado en pozo natural de aguas turquesas. Comida liviana al regreso.',
+    included:['Guía local','Bastones de trekking','Frutas + agua de coco','Toalla microfibra','Foto profesional opcional'] },
+  { id:'quetzal', cat:'naturaleza', name:'Avistar quetzales', dur:'4h', price:'$70', loc:'Sendero Los Quetzales', scene:'bosque',
+    bg:'radial-gradient(ellipse at 30% 30%, rgba(74,125,99,0.5), transparent 60%), linear-gradient(180deg, #1f3a2c, #0a1a13)',
+    desc:'Mayo y junio son los meses pico de avistamiento. Sora trabaja con una bióloga local certificada que conoce los nidos. 95% de probabilidad de avistar al menos uno.',
+    included:['Bióloga guía','Binoculares Vortex','Café + pasteles','Pickup 4am','Garantía de avistamiento o repetición gratis'] },
+  { id:'punta-caracol', cat:'gastronomia', name:'Cena Punta Caracol', wide:true, dur:'4h', price:'$180', loc:'Bahía Almirante · Bocas', scene:'bocas',
+    bg:'radial-gradient(ellipse at 50% 25%, rgba(212,184,122,0.5), transparent 60%), linear-gradient(180deg, #1f6b8c, #0e3850)',
+    desc:'Cena en bungalow flotante sobre el mar Caribe. Mesa para 10 sobre los manglares. Menú 6 pasos con mariscos del día. Maridaje con vinos blancos chilenos. El sol se pone detrás del archipiélago.',
+    included:['Mesa overwater privada','6 pasos del mar','Maridaje 4 vinos','Lancha ida y vuelta desde Bocas Town','Cocktail signature de bienvenida'] },
+  { id:'yoga-rio', cat:'bienestar', name:'Yoga al río', dur:'1.5h', price:'$35', loc:'Río Caldera · Boquete', scene:'termas',
+    bg:'radial-gradient(ellipse at 60% 30%, rgba(110,138,90,0.5), transparent 60%), linear-gradient(180deg, #3d4a30, #1a200e)',
+    desc:'Vinyasa de 75 minutos al amanecer, al borde del río Caldera. Profesora certificada Yoga Alliance. Para todos los niveles.',
+    included:['Mat yoga proporcionado','Té matcha + frutas','Toalla limpia','Sesión guiada en español/inglés','Repetición gratis si llueve'] },
+  { id:'red-frog', cat:'cultura', name:'Sunset Red Frog', dur:'3h', price:'$95', loc:'Red Frog Beach · Bocas', scene:'bocas',
+    bg:'radial-gradient(ellipse at 40% 30%, rgba(180,87,101,0.4), transparent 60%), linear-gradient(180deg, #5c2a35, #1a0e12)',
+    desc:'Atardecer en playa Red Frog (Bastimentos) con cócteles de ron añejo panameño y tabla de quesos isleños. Música en vivo de Calypso local. Solo 12 personas por sesión.',
+    included:['4 cócteles signature','Tabla de quesos + charcutería','Música Calypso en vivo','Acceso playa privado 3h','Hamacas con sombra'] },
+  { id:'zapatilla', cat:'aventura', name:'Snorkel Cayos Zapatilla', dur:'8h', price:'$245', loc:'Parque Nacional · Bocas', scene:'bocas',
+    bg:'radial-gradient(ellipse at 50% 30%, rgba(74,140,140,0.5), transparent 60%), linear-gradient(180deg, #1f4a4a, #0a1f1f)',
+    desc:'Tour de día completo a Cayos Zapatillas, parte del Parque Nacional Marino de Bocas. Snorkel en 3 puntos. Tortugas, rayas, peces loro. Almuerzo de pescado fresco en la playa.',
+    included:['Lancha rápida privada','Equipo snorkel premium','Guía marino certificado','Almuerzo gourmet en isla','Permisos parque nacional'] },
+  { id:'finca-dinner', cat:'gastronomia', name:'Dinner en finca', dur:'5h', price:'$220', loc:'Finca · Volcán, Chiriquí', scene:'night',
+    bg:'radial-gradient(ellipse at 30% 20%, rgba(212,184,122,0.45), transparent 60%), linear-gradient(180deg, #5a4a2a, #1f1808)',
+    desc:'Cena al aire libre en finca privada de Volcán. Producto cosechado el mismo día. Carnes a las brasas. Vino tinto chileno. Fogata después.',
+    included:['Mesa para 12 personas','5 pasos farm-to-table','Botellas de vino ilimitadas','Fogata + s\'mores','Carro de regreso'] },
+  { id:'carenero-surf', cat:'aventura', name:'Surf Isla Carenero', dur:'3h', price:'$75', loc:'Isla Carenero · Bocas', scene:'bocas',
+    bg:'radial-gradient(ellipse at 50% 30%, rgba(74,140,168,0.5), transparent 60%), linear-gradient(180deg, #2a5a6e, #0e2530)',
+    desc:'Clase de surf con instructor local en olas de Isla Carenero. Spots para todos los niveles. Sesión grabada con drone. Café y desayuno en lounge frente al mar.',
+    included:['Instructor 1:1','Tabla, traje y wax','Sesión filmada con drone','Desayuno post-surf','Lancha ida y vuelta'] },
+  { id:'boquete-tree', cat:'cultura', name:'Wine & cheese Tree House', dur:'3h', price:'$110', loc:'Tree House · Boquete', scene:'bosque',
+    bg:'radial-gradient(ellipse at 40% 30%, rgba(110,80,140,0.4), transparent 60%), linear-gradient(180deg, #3a2a4a, #1a0e2a)',
+    desc:'Cata de 5 vinos europeos pareada con quesos artesanales panameños en una casa-árbol a 12 metros sobre el bosque nuboso de Boquete. Sommelier local, cero turistas.',
+    included:['5 vinos europeos','Tabla quesos artesanales','Sommelier local','Acceso privado al treehouse 3h','Postre de chocolate panameño'] }
+];
+
+let currentExpFilter = 'all';
+function currentExpList() {
+  const c = getCountry();
+  if (c === 'PA') return experiences;
+  // For other countries, surface experiences from data.js + map fields
+  if (!window.SORA_DATA) return [];
+  return window.soraData.experiencesFor(c).map(e => ({
+    id: e.id, cat: e.cat,
+    name: (e.name && (e.name.es || e.name)) || '',
+    wide: !!e.wide, dur: e.dur, price: e.price, loc: e.loc,
+    bg: e.bg, scene: e.scene,
+    desc: (e.descEs || e.desc || ''),
+    included: e.included || []
+  }));
+}
+function renderExpGrid() {
+  const grid = document.getElementById('exp-grid');
+  const all = currentExpList();
+  const filtered = currentExpFilter === 'all' ? all : all.filter(e => e.cat === currentExpFilter);
+  if (!filtered.length) {
+    grid.innerHTML = '<div style="grid-column: 1/-1; text-align:center; padding:40px 20px; color:var(--ink-3); font-family:var(--serif); font-style:italic">Próximamente experiencias en este país.</div>';
+    return;
+  }
+  grid.innerHTML = filtered.map((e, i) => {
+    const isWide = e.wide && (i === 0 || i % 5 === 0);
+    return `
+    <div class="exp-tile ${isWide ? 'wide' : ''}" onclick="haptic(); openExp('${e.id}')">
+      <div class="bg" style="background:${e.bg}"></div>
+      ${e.scene ? `<div class="scene"><svg><use href="#scene-${e.scene}"/></svg></div>` : ''}
+      <div class="scrim"></div>
+      <div class="play-mini" aria-hidden="true"><svg class="ico-svg sm"><use href="#i-play"/></svg></div>
+      <div class="price-mini">${e.price}</div>
+      <div class="info">
+        <div class="cat">${e.cat.toUpperCase()} · ${e.dur}</div>
+        <h4>${e.name}</h4>
+      </div>
+    </div>
+  `;}).join('');
+}
+function filterExp(btn, cat) {
+  document.querySelectorAll('.exp-cat').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  currentExpFilter = cat;
+  renderExpGrid();
+}
+
+function openExp(id) {
+  const list = currentExpList();
+  const e = list.find(x => x.id === id);
+  if (!e) return;
+  const sheet = document.getElementById('exp-modal-content');
+  const catLabels = { gastronomia:'GASTRONOMÍA', aventura:'AVENTURA', naturaleza:'NATURALEZA', bienestar:'BIENESTAR', cultura:'CULTURA' };
+  sheet.innerHTML = `
+    <button class="close" onclick="closeExp()" aria-label="Cerrar"><svg class="ico-svg sm"><use href="#i-close"/></svg></button>
+    <div class="video-wrap">
+      <div class="video-bg" style="background:${e.bg}"></div>
+      ${e.scene ? `<div class="scene" style="opacity:0.9"><svg><use href="#scene-${e.scene}"/></svg></div>` : ''}
+      <div class="video-scrim"></div>
+      <div class="video-label"><span class="live-dot"></span>VIDEO · 0:48</div>
+      <div class="play-big" onclick="showToast('Video full-screen próximamente')"><svg class="ico-svg lg"><use href="#i-play"/></svg></div>
+      <div class="video-info">
+        <div class="cat-tag">${catLabels[e.cat] || e.cat.toUpperCase()}</div>
+        <h2>${e.name.replace(/^([^ ]+)/, '<em>$1</em>')}</h2>
+        <div class="location-row">
+          <span><svg class="ico-svg sm"><use href="#i-pin"/></svg> ${e.loc}</span>
+          <span><svg class="ico-svg sm"><use href="#i-clock"/></svg> ${e.dur}</span>
+        </div>
+      </div>
+    </div>
+    <div class="content">
+      <p>${e.desc}</p>
+      <div class="stat-grid">
+        <div><div class="num">${e.dur}</div><div class="lbl">Duración</div></div>
+        <div><div class="num">2–8</div><div class="lbl">Personas</div></div>
+        <div><div class="num">${e.price}</div><div class="lbl">P/persona</div></div>
+      </div>
+      <h3>Lo que incluye</h3>
+      <ul class="included">
+        ${e.included.map(x => `<li>${x}</li>`).join('')}
+      </ul>
+      <div style="height:80px"></div>
+    </div>
+    <div class="book-bar">
+      <div class="price-block">
+        <div class="num">${e.price}</div>
+        <div class="lbl">por persona</div>
+      </div>
+      <button onclick="bookExp('${e.id}')">Reservar</button>
+    </div>
+  `;
+  document.getElementById('exp-modal').classList.add('open');
+  document.body.classList.add('no-scroll');
+}
+function closeExp() {
+  document.getElementById('exp-modal').classList.remove('open');
+  document.body.classList.remove('no-scroll');
+}
+function bookExp(id) {
+  const list = currentExpList();
+  const e = list.find(x => x.id === id);
+  closeExp();
+  setTimeout(() => showToast('Reservado · ' + (e?.name || 'experiencia')), 350);
+}
+
+// ============= TOAST =============
+let toastTimer = null;
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2400);
+}
+
+// ============= COUNTDOWN =============
+function updateCountdown() {
+  const target = new Date('2026-06-14T18:00:00');
+  const now = new Date();
+  const diff = target - now;
+  if (diff <= 0) return;
+  const days = Math.floor(diff / (1000*60*60*24));
+  const el = document.getElementById('hero-countdown');
+  if (el) el.textContent = `faltan ${days} días`;
+}
+
+// ============= RESET =============
+function resetApp() {
+  if (confirm('¿Cerrar sesión y borrar datos locales?')) {
+    localStorage.removeItem(STATE_KEY);
+    location.reload();
+  }
+}
+
+// ============= INIT (with full deep link support) =============
+function personalize() {
+  if (!state.name) return;
+  const first = state.name.split(' ')[0];
+  const greet = document.getElementById('greet-name');
+  const pn = document.getElementById('profile-name');
+  const pa = document.getElementById('profile-avatar');
+  const my = document.getElementById('match-you');
+  if (greet) greet.innerHTML = `Hola, <em>${first}</em>.`;
+  if (pn) pn.textContent = state.name;
+  if (pa) pa.textContent = first.charAt(0).toUpperCase();
+  if (my) my.textContent = first.charAt(0).toUpperCase();
+}
+
+function handleHash() {
+  const hash = (location.hash || '').replace('#','');
+  if (!hash) return false;
+  personalize();
+  renderEventGuestsList();
+  // Onboarding step: #onboard-N
+  const onbMatch = hash.match(/^onboard-(\d)$/);
+  if (onbMatch) {
+    go('onboard');
+    setTimeout(() => goToStep(parseInt(onbMatch[1])), 30);
+    return true;
+  }
+  // Event detail: #event-N
+  const evMatch = hash.match(/^event-(\d+)$/);
+  if (evMatch) {
+    openEvent(parseInt(evMatch[1]));
+    return true;
+  }
+  // Experience modal: #exp-ID
+  const expMatch = hash.match(/^exp-(.+)$/);
+  if (expMatch) {
+    go('experiencias');
+    renderExpGrid();
+    setTimeout(() => openExp(expMatch[1]), 50);
+    return true;
+  }
+  // RSVP sheet: #rsvp
+  if (hash === 'rsvp') {
+    openEvent(0);
+    setTimeout(() => openRSVP(), 300);
+    return true;
+  }
+  // Match modal: #match
+  if (hash === 'match') {
+    go('conecta');
+    setTimeout(() => showMatch(profiles[0]), 200);
+    return true;
+  }
+  // Plain screen by id: #welcome, #invite, #location, #home, etc.
+  if (document.getElementById('screen-' + hash)) {
+    switchTab(hash);
+    return true;
+  }
+  return false;
+}
+
+function init() {
+  updateCountdown();
+  updateSavedCount();
+  applyCountryUI();
+  if (handleHash()) return;
+  if (state.onboarded && state.locationGranted && state.name) {
+    enterApp();
+  } else if (state.onboarded && state.name) {
+    go('location');
+  } else {
+    go('welcome');
+  }
+}
+window.addEventListener('hashchange', () => {
+  handleHash();
+});
+init();
+
+// Register service worker for offline + installable PWA
+if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js').catch(() => {});
+  });
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1208 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SORA Travel Agency · Admin</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231d3a2c'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Georgia,serif' font-size='20' font-weight='400' fill='%23d4b87a'%3ES%3C/text%3E%3C/svg%3E">
+<meta name="theme-color" content="#0c0d10">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0c0d10;
+    --bg-2: #15171c;
+    --bg-3: #1d2027;
+    --line: rgba(255,255,255,0.08);
+    --line-2: rgba(255,255,255,0.16);
+    --fg: #f5f5f5;
+    --fg-2: rgba(255,255,255,0.72);
+    --fg-3: rgba(255,255,255,0.45);
+    --gold: #d4b87a;
+    --bronze: #a07b3e;
+    --coral: #e07a5f;
+    --green: #2e8a96;
+    --green-2: #3aa6b2;
+    --rose: #c64a5e;
+    --wa: #25d366;
+    --serif: "Fraunces", Georgia, serif;
+    --sans: "Inter", -apple-system, sans-serif;
+    --mono: "JetBrains Mono", Menlo, monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background:
+      radial-gradient(ellipse 60% 50% at 80% 10%, rgba(160,123,62,0.16), transparent),
+      radial-gradient(ellipse 50% 40% at 20% 90%, rgba(47,71,57,0.18), transparent),
+      var(--bg);
+    background-attachment: fixed;
+    color: var(--fg);
+    font-family: var(--sans); font-size: 14px;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ============ TOP ============ */
+  header.top {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(12,13,16,0.92);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--line);
+    padding: 14px 28px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px;
+  }
+  header .brand {
+    display: flex; align-items: center; gap: 12px;
+    font-family: var(--serif); font-size: 22px; font-weight: 500;
+    letter-spacing: 0.18em;
+  }
+  header .brand .pill {
+    font-family: var(--mono); font-size: 10px;
+    color: var(--gold);
+    background: rgba(212,184,122,0.10);
+    border: 1px solid rgba(212,184,122,0.30);
+    padding: 4px 8px; border-radius: 6px;
+    letter-spacing: 1.5px;
+  }
+  header .top-actions { display: flex; gap: 8px; }
+  header .top-actions a, header .top-actions button {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--line);
+    color: var(--fg-2);
+    padding: 8px 14px; border-radius: 100px;
+    font-family: var(--mono); font-size: 10.5px;
+    letter-spacing: 1px; cursor: pointer;
+    text-decoration: none;
+    transition: all .15s;
+  }
+  header .top-actions a:hover, header .top-actions button:hover {
+    background: rgba(212,184,122,0.10);
+    border-color: var(--gold); color: var(--gold);
+  }
+
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 32px 28px 80px; }
+
+  /* ============ TABS ============ */
+  .tabs {
+    display: flex; gap: 4px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 4px;
+    margin-bottom: 32px;
+    overflow-x: auto;
+  }
+  .tabs button {
+    background: none; border: none;
+    color: var(--fg-2);
+    padding: 12px 22px; border-radius: 8px;
+    font-family: var(--sans); font-size: 13px;
+    font-weight: 600; letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: all .15s;
+    white-space: nowrap;
+  }
+  .tabs button.active {
+    background: var(--gold); color: #1a1a1a;
+  }
+  .tabs button .count {
+    display: inline-block;
+    margin-left: 8px;
+    background: rgba(0,0,0,0.18);
+    padding: 1px 7px;
+    border-radius: 100px;
+    font-family: var(--mono);
+    font-size: 10px;
+  }
+  .tabs button:not(.active) .count {
+    background: rgba(212,184,122,0.18);
+    color: var(--gold);
+  }
+  .panel { display: none; }
+  .panel.active { display: block; animation: fade .25s; }
+  @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+
+  /* ============ HELP NOTE ============ */
+  .help {
+    background: rgba(212,184,122,0.06);
+    border: 1px solid rgba(212,184,122,0.22);
+    border-radius: 14px;
+    padding: 16px 20px;
+    margin-bottom: 26px;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: rgba(247,240,223,0.85);
+  }
+  .help strong { color: var(--gold); font-style: normal; font-weight: 600; font-family: var(--sans); }
+  .help ol { margin: 8px 0 0 22px; font-style: normal; font-family: var(--sans); font-size: 13.5px; }
+  .help ol li { margin-bottom: 6px; }
+  .help code {
+    font-family: var(--mono); font-size: 12.5px;
+    background: rgba(0,0,0,0.3); padding: 2px 6px;
+    border-radius: 4px; color: var(--gold);
+  }
+
+  /* ============ PANEL HEADER ============ */
+  .panel-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 18px; gap: 14px; flex-wrap: wrap;
+  }
+  .panel-head h2 {
+    font-family: var(--serif); font-weight: 500;
+    font-size: 24px;
+  }
+  .panel-head .btn-add {
+    background: var(--gold); color: #1a1a1a;
+    padding: 10px 18px; border-radius: 100px;
+    font-family: var(--sans); font-size: 12.5px;
+    font-weight: 700; letter-spacing: 0.04em;
+    border: none; cursor: pointer;
+    transition: transform .15s;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .panel-head .btn-add:hover { transform: translateY(-1px); }
+
+  /* ============ PROPERTIES LIST ============ */
+  .props-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+  }
+  .prop {
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: border-color .15s;
+  }
+  .prop:hover { border-color: var(--line-2); }
+  .prop.sold { opacity: 0.65; }
+  .prop-img {
+    height: 140px;
+    background: var(--bg-3);
+    position: relative;
+    overflow: hidden;
+  }
+  .prop-img img { width: 100%; height: 100%; object-fit: cover; }
+  .prop-img .placeholder {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--fg-3); font-family: var(--mono); font-size: 11px;
+    letter-spacing: 2px; text-transform: uppercase;
+    background: linear-gradient(135deg, #1d2027, #15171c);
+  }
+  .prop-img .badge {
+    position: absolute; top: 10px; left: 10px;
+    background: var(--green); color: #fff;
+    font-size: 9.5px; font-weight: 700; letter-spacing: 1.5px;
+    padding: 4px 9px; border-radius: 100px;
+    text-transform: uppercase;
+  }
+  .prop-img .badge.sold { background: var(--rose); }
+  .prop-body { padding: 16px 18px; }
+  .prop-body .loc {
+    font-family: var(--mono); font-size: 10px;
+    color: var(--fg-3); letter-spacing: 1.5px;
+    text-transform: uppercase; margin-bottom: 6px;
+  }
+  .prop-body h3 {
+    font-family: var(--serif); font-weight: 500;
+    font-size: 17px; margin-bottom: 6px;
+    color: var(--fg);
+  }
+  .prop-body .price {
+    font-family: var(--serif); font-weight: 500;
+    font-size: 19px; color: var(--gold);
+    margin-bottom: 14px;
+  }
+  .prop-actions {
+    display: flex; gap: 6px; flex-wrap: wrap;
+  }
+  .prop-actions button {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--line);
+    color: var(--fg-2);
+    padding: 6px 12px; border-radius: 100px;
+    font-family: var(--sans); font-size: 11px;
+    font-weight: 600; cursor: pointer;
+    transition: all .15s;
+  }
+  .prop-actions button.edit:hover { background: rgba(212,184,122,0.16); color: var(--gold); border-color: var(--gold); }
+  .prop-actions button.toggle:hover { background: rgba(46,138,150,0.16); color: var(--green-2); border-color: var(--green); }
+  .prop-actions button.del:hover { background: rgba(198,74,94,0.16); color: var(--rose); border-color: var(--rose); }
+
+  .empty {
+    background: rgba(255,255,255,0.025);
+    border: 1px dashed var(--line-2);
+    border-radius: 16px;
+    padding: 48px 24px;
+    text-align: center;
+    color: var(--fg-3);
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 16px;
+  }
+
+  /* ============ FORM ============ */
+  .form-grid {
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 28px;
+    margin-top: 24px;
+    display: none;
+  }
+  .form-grid.show { display: block; animation: fade .25s; }
+  .form-grid h3 {
+    font-family: var(--serif); font-weight: 500;
+    font-size: 20px; margin-bottom: 22px;
+    color: var(--gold);
+  }
+  .field {
+    display: flex; flex-direction: column;
+    gap: 7px; margin-bottom: 16px;
+  }
+  .field label {
+    font-family: var(--sans);
+    font-size: 11.5px;
+    color: var(--fg-3);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .field input, .field textarea, .field select {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--line);
+    color: var(--fg);
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-family: var(--sans); font-size: 14px;
+    outline: none;
+    transition: border-color .15s;
+  }
+  .field input:focus, .field textarea:focus, .field select:focus { border-color: var(--gold); }
+  .field textarea { min-height: 90px; resize: vertical; font-family: var(--sans); }
+  .field .hint { font-size: 11.5px; color: var(--fg-3); margin-top: 2px; font-style: italic; }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 600px) { .field-row { grid-template-columns: 1fr; } }
+
+  .img-preview {
+    max-width: 220px; max-height: 140px;
+    border-radius: 10px; margin-top: 8px;
+    border: 1px solid var(--line);
+    display: block;
+  }
+
+  .form-actions {
+    display: flex; gap: 10px;
+    margin-top: 22px;
+    padding-top: 22px;
+    border-top: 1px solid var(--line);
+  }
+  .form-actions button {
+    padding: 12px 22px; border-radius: 100px;
+    font-family: var(--sans); font-size: 13px;
+    font-weight: 700; letter-spacing: 0.04em;
+    border: none; cursor: pointer;
+    transition: transform .15s;
+  }
+  .form-actions .save { background: var(--gold); color: #1a1a1a; }
+  .form-actions .save:hover { transform: translateY(-1px); }
+  .form-actions .cancel {
+    background: transparent;
+    color: var(--fg-2);
+    border: 1px solid var(--line);
+  }
+  .form-actions .cancel:hover { background: rgba(255,255,255,0.05); color: var(--fg); }
+
+  /* ============ RESERVATIONS LIST ============ */
+  .res-list { display: flex; flex-direction: column; gap: 10px; }
+  .res {
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 16px 20px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 14px;
+    align-items: center;
+  }
+  .res .kind {
+    font-family: var(--mono);
+    font-size: 10px;
+    background: rgba(212,184,122,0.14);
+    color: var(--gold);
+    padding: 4px 9px; border-radius: 6px;
+    letter-spacing: 1.5px; text-transform: uppercase;
+  }
+  .res .kind.form-wa { background: rgba(37,211,102,0.16); color: var(--wa); }
+  .res .kind.property { background: rgba(224,122,95,0.16); color: var(--coral); }
+  .res .kind.reservation { background: rgba(46,138,150,0.16); color: var(--green-2); }
+  .res .kind.user { background: rgba(212,184,122,0.22); color: var(--gold); }
+  .res .kind.user-wa { background: rgba(212,184,122,0.16); color: var(--gold); }
+  .res .body { min-width: 0; }
+  .res .body .name {
+    font-family: var(--serif); font-weight: 500;
+    font-size: 16px; color: var(--fg);
+  }
+  .res .body .meta {
+    font-size: 12.5px; color: var(--fg-3);
+    margin-top: 4px;
+    overflow: hidden; text-overflow: ellipsis;
+  }
+  .res .body .meta a { color: var(--gold); text-decoration: none; }
+  .res .time {
+    font-family: var(--mono); font-size: 11px;
+    color: var(--fg-3); letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+
+  .res-actions {
+    display: flex; gap: 8px;
+    margin-top: 20px;
+  }
+  .res-actions button {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--line);
+    color: var(--fg-2);
+    padding: 9px 16px; border-radius: 100px;
+    font-family: var(--mono); font-size: 11px;
+    letter-spacing: 1px; cursor: pointer;
+    transition: all .15s;
+  }
+  .res-actions button:hover { background: rgba(212,184,122,0.10); color: var(--gold); border-color: var(--gold); }
+
+  /* ============ CONFIG ============ */
+  .config-grid {
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 28px;
+  }
+  .save-msg {
+    display: none;
+    background: rgba(37,211,102,0.12);
+    border: 1px solid rgba(37,211,102,0.4);
+    color: var(--wa);
+    padding: 10px 16px;
+    border-radius: 100px;
+    font-size: 12.5px;
+    margin-top: 14px;
+    text-align: center;
+    font-weight: 600;
+  }
+  .save-msg.show { display: block; animation: fade .25s; }
+
+  /* ============ LOGIN GATE ============ */
+  #gate {
+    position: fixed; inset: 0;
+    background:
+      radial-gradient(ellipse 50% 50% at 50% 30%, rgba(212,184,122,0.15), transparent 60%),
+      radial-gradient(ellipse 60% 50% at 50% 80%, rgba(47,71,57,0.20), transparent 60%),
+      var(--bg);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 100;
+    padding: 28px;
+  }
+  #gate.unlocked { display: none; }
+  .gate-card {
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    padding: 44px 40px;
+    max-width: 420px;
+    width: 100%;
+    text-align: center;
+  }
+  .gate-card .lock {
+    width: 56px; height: 56px;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 22px;
+    color: var(--gold);
+  }
+  .gate-card .lock svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.6; }
+  .gate-card h2 {
+    font-family: var(--serif); font-weight: 500;
+    font-size: 24px; margin-bottom: 8px;
+    letter-spacing: 0.18em;
+  }
+  .gate-card .sub {
+    font-family: var(--serif); font-style: italic;
+    font-size: 14px;
+    color: var(--fg-3);
+    margin-bottom: 28px;
+  }
+  .gate-card input {
+    width: 100%;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--line);
+    color: var(--fg);
+    border-radius: 12px;
+    padding: 14px 18px;
+    font-family: var(--sans); font-size: 16px;
+    text-align: center; letter-spacing: 0.15em;
+    outline: none;
+    transition: border-color .15s;
+  }
+  .gate-card input:focus { border-color: var(--gold); }
+  .gate-card .btn-enter {
+    width: 100%;
+    background: var(--gold); color: #1a1a1a;
+    border: none; cursor: pointer;
+    padding: 14px 18px; border-radius: 100px;
+    font-family: var(--sans); font-size: 14px;
+    font-weight: 700; letter-spacing: 0.04em;
+    margin-top: 14px;
+    transition: transform .15s;
+  }
+  .gate-card .btn-enter:hover { transform: translateY(-1px); }
+  .gate-card .gate-err {
+    color: var(--rose);
+    font-size: 12.5px;
+    margin-top: 14px;
+    display: none;
+    font-family: var(--serif); font-style: italic;
+  }
+  .gate-card .gate-err.show { display: block; animation: fade .2s; }
+  .gate-card .gate-hint {
+    margin-top: 22px;
+    padding-top: 22px;
+    border-top: 1px solid var(--line);
+    font-size: 11.5px;
+    color: var(--fg-3);
+    font-family: var(--serif);
+    font-style: italic;
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ LOGIN GATE ============ -->
+<div id="gate">
+  <div class="gate-card">
+    <div class="lock">
+      <svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11 V8 a4 4 0 0 1 8 0 V11"/></svg>
+    </div>
+    <h2>SORA</h2>
+    <div class="sub" style="margin-bottom:6px">Travel Agency</div>
+    <div class="sub" style="font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--gold)">Panel · Admin</div>
+    <form id="gate-form" onsubmit="event.preventDefault(); tryUnlock();">
+      <input type="text" id="gate-user" placeholder="Usuario" autocomplete="username" autofocus style="margin-bottom:10px">
+      <input type="password" id="gate-input" placeholder="Contraseña" autocomplete="current-password">
+      <button type="submit" class="btn-enter">Entrar</button>
+      <div class="gate-err" id="gate-err">Usuario o contraseña incorrectos.</div>
+    </form>
+    <div class="gate-hint" id="gate-hint">
+      Esta área es privada. Solo el administrador puede entrar.
+    </div>
+  </div>
+</div>
+
+<header class="top">
+  <div class="brand">SORA <span style="font-family:Inter,sans-serif; font-size:10px; font-weight:700; letter-spacing:0.32em; color:var(--gold); border-left:1px solid var(--line-2); padding-left:10px; margin-left:2px">TRAVEL AGENCY</span> <span class="pill">ADMIN</span></div>
+  <div class="top-actions">
+    <select id="admin-country" onchange="adminPickCountry(this.value)" style="background:rgba(212,184,122,0.10);border:1px solid rgba(212,184,122,0.30);color:var(--gold);padding:8px 14px;border-radius:100px;font-family:JetBrains Mono,monospace;font-size:10.5px;letter-spacing:1px;cursor:pointer;font-weight:600">
+      <!-- populated by JS -->
+    </select>
+    <a href="index.html" target="_blank">↗ VER SITIO</a>
+    <button onclick="exportAll()">EXPORTAR TODO</button>
+    <button onclick="logout()" style="background:rgba(198,74,94,0.10); border-color:rgba(198,74,94,0.35); color:#e8a0a8">⎋ SALIR</button>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="active" data-tab="props" onclick="showTab('props', this)">Propiedades <span class="count" id="ct-props">0</span></button>
+    <button data-tab="reservas" onclick="showTab('reservas', this)">Usuarios y reservas <span class="count" id="ct-res">0</span></button>
+    <button data-tab="config" onclick="showTab('config', this)">Configuración</button>
+    <button data-tab="ayuda" onclick="showTab('ayuda', this)">Ayuda</button>
+  </div>
+
+  <!-- ============ PANEL · PROPIEDADES ============ -->
+  <div class="panel active" id="panel-props">
+    <div class="help">
+      <strong>Cómo funciona:</strong> Acá agregás, editás y marcás como vendidas las propiedades. Los cambios se guardan en este navegador. Cuando estés listo para que aparezcan en la web pública para todos, andá a la pestaña <strong>Ayuda</strong> y seguí los pasos para publicar.
+    </div>
+    <div class="panel-head">
+      <h2>Propiedades</h2>
+      <button class="btn-add" onclick="openForm()">+ Agregar propiedad</button>
+    </div>
+
+    <div class="props-grid" id="props-grid"></div>
+    <div class="empty" id="props-empty" style="display:none">
+      Todavía no hay propiedades. Tocá "+ Agregar propiedad" arriba para empezar.
+    </div>
+
+    <!-- Form (hidden by default) -->
+    <div class="form-grid" id="prop-form-wrap">
+      <h3 id="form-title">Nueva propiedad</h3>
+      <form id="prop-form" onsubmit="event.preventDefault(); saveProp();">
+        <input type="hidden" id="f-id">
+
+        <div class="field-row">
+          <div class="field">
+            <label>Título (español)</label>
+            <input id="f-titleEs" required placeholder="Lote con vista al Volcán">
+          </div>
+          <div class="field">
+            <label>Título (inglés)</label>
+            <input id="f-titleEn" required placeholder="Lot with Volcano view">
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Ubicación</label>
+          <input id="f-location" required placeholder="Bajo Boquete, Chiriquí">
+          <span class="hint">Aparece igual en español e inglés.</span>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label>Precio</label>
+            <input id="f-price" required placeholder="$85,000">
+          </div>
+          <div class="field">
+            <label>Estado</label>
+            <select id="f-status">
+              <option value="available">Disponible</option>
+              <option value="sold">Vendida</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>País / Chapter</label>
+          <select id="f-country"><!-- populated by JS --></select>
+          <span class="hint">Cada propiedad pertenece a un país. Cambia el selector arriba para ver propiedades de otro chapter.</span>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label>Tamaño (español)</label>
+            <input id="f-sizeEs" placeholder="1,200 m²">
+          </div>
+          <div class="field">
+            <label>Tamaño (inglés)</label>
+            <input id="f-sizeEn" placeholder="1,200 sqm">
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Habitaciones (opcional)</label>
+          <input id="f-bedrooms" placeholder="3">
+          <span class="hint">Dejá vacío si es un terreno o lote sin casa.</span>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label>Descripción (español)</label>
+            <textarea id="f-descEs" required placeholder="Terreno residencial con vista al Volcán Barú..."></textarea>
+          </div>
+          <div class="field">
+            <label>Descripción (inglés)</label>
+            <textarea id="f-descEn" required placeholder="Residential lot with Volcán Barú view..."></textarea>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Imagen — opción A · subir desde tu compu</label>
+          <input type="file" id="f-imageFile" accept="image/*" onchange="readImage(this)">
+          <span class="hint">Si subís una imagen, se guarda en este navegador. Para deploy real, usá una URL.</span>
+        </div>
+
+        <div class="field">
+          <label>Imagen — opción B · pegar URL (recomendado para publicar)</label>
+          <input id="f-imageUrl" placeholder="https://images.unsplash.com/..." onchange="previewImage(this.value)">
+          <span class="hint">Subí la foto a Instagram, Drive o Imgur y pegá el link directo a la imagen.</span>
+        </div>
+
+        <img id="f-imagePreview" class="img-preview" style="display:none">
+
+        <div class="field">
+          <label>Escena visual (si no tenés imagen)</label>
+          <select id="f-scene">
+            <option value="finca">Finca / café (verde + sol)</option>
+            <option value="mirador">Mirador / montaña</option>
+            <option value="bocas">Bocas / mar Caribe</option>
+            <option value="bosque">Bosque nuboso</option>
+            <option value="termas">Termas / agua</option>
+            <option value="tierra">Tierra / lote</option>
+          </select>
+          <span class="hint">Si no subís imagen, se usa esta ilustración como fondo.</span>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="save">Guardar propiedad</button>
+          <button type="button" class="cancel" onclick="closeForm()">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============ PANEL · RESERVAS ============ -->
+  <div class="panel" id="panel-reservas">
+    <div class="help">
+      <strong>Cómo funciona:</strong> Cada vez que alguien envía el formulario o toca WhatsApp en una tarjeta, se guarda acá. Si se borra el caché del navegador, se pierden. Recomendado: <strong>exportar a CSV</strong> de vez en cuando para tener un respaldo.
+    </div>
+    <div class="panel-head">
+      <h2>Usuarios y solicitudes</h2>
+      <div style="display:flex; gap:8px">
+        <button class="btn-add" onclick="exportReservas()">Exportar CSV</button>
+        <button class="btn-add" style="background:rgba(198,74,94,0.18); color:var(--rose)" onclick="clearReservas()">Borrar todo</button>
+      </div>
+    </div>
+
+    <div class="res-list" id="res-list"></div>
+    <div class="empty" id="res-empty" style="display:none">
+      Todavía no hay solicitudes. Cuando alguien envíe el formulario aparecerán acá.
+    </div>
+  </div>
+
+  <!-- ============ PANEL · CONFIGURACIÓN ============ -->
+  <div class="panel" id="panel-config">
+    <div class="help">
+      <strong>Acá ponés tus datos reales:</strong> número de WhatsApp, email, y links a Instagram, TikTok y Facebook. Lo que pongás acá se aplica a TODA la página pública.
+    </div>
+    <div class="panel-head"><h2>Configuración</h2></div>
+    <div class="config-grid">
+      <form onsubmit="event.preventDefault(); saveConfig();">
+        <div class="field">
+          <label>WhatsApp (sin + ni espacios, código del país primero)</label>
+          <input id="c-whatsapp" placeholder="50760000000">
+          <span class="hint">Ejemplo Panamá: <code>50760001234</code>. Ejemplo USA: <code>13055551234</code>.</span>
+        </div>
+        <div class="field">
+          <label>Email de contacto</label>
+          <input id="c-email" type="email" placeholder="hola@sora.la">
+        </div>
+        <div class="field">
+          <label>Link de Instagram</label>
+          <input id="c-instagram" placeholder="https://instagram.com/sora.lacompania">
+        </div>
+        <div class="field">
+          <label>Link de TikTok</label>
+          <input id="c-tiktok" placeholder="https://tiktok.com/@sora.lacompania">
+        </div>
+        <div class="field">
+          <label>Link de Facebook</label>
+          <input id="c-facebook" placeholder="https://facebook.com/sora.lacompania">
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="save">Guardar configuración</button>
+        </div>
+        <div class="save-msg" id="config-saved">✓ Configuración guardada. Refrescá el sitio público para ver los cambios.</div>
+      </form>
+    </div>
+
+    <div class="config-grid" style="margin-top: 18px">
+      <h3 style="font-family:var(--serif); font-weight:500; font-size:20px; color:var(--gold); margin-bottom:14px">Cambiar usuario y contraseña</h3>
+      <form onsubmit="event.preventDefault(); changeCredentials();">
+        <div class="field">
+          <label>Contraseña actual (obligatoria)</label>
+          <input id="pw-current" type="password" required>
+        </div>
+        <div class="field">
+          <label>Nuevo usuario (dejá vacío para mantener)</label>
+          <input id="user-new" type="text" placeholder="AEDMsora">
+        </div>
+        <div class="field">
+          <label>Nueva contraseña (dejá vacío para mantener)</label>
+          <input id="pw-new" type="password">
+          <span class="hint">Mínimo 6 caracteres. Usá algo que solo vos sepas.</span>
+        </div>
+        <div class="field">
+          <label>Confirmar nueva contraseña</label>
+          <input id="pw-new2" type="password">
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="save">Guardar cambios</button>
+        </div>
+        <div class="save-msg" id="pw-saved">✓ Credenciales actualizadas. La próxima vez entrá con las nuevas.</div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============ PANEL · AYUDA ============ -->
+  <div class="panel" id="panel-ayuda">
+    <div class="panel-head"><h2>Cómo publicar tus cambios</h2></div>
+
+    <div class="help">
+      <strong>Importante:</strong> Cuando agregás propiedades o cambiás la configuración acá, los cambios se guardan SOLO en este navegador. Para que los vean OTRAS personas que visitan el sitio, tenés que publicarlos. Te enseño cómo abajo.
+    </div>
+
+    <div class="config-grid" style="margin-bottom: 18px">
+      <h3 style="font-family:var(--serif); font-weight:500; font-size:20px; color:var(--gold); margin-bottom:14px">Opción 1 · La fácil (usar como demo local)</h3>
+      <p style="color:var(--fg-2); line-height:1.6; font-size:14px">
+        Si sólo querés probar la web en tu navegador, no necesitás publicar nada. Los cambios ya se ven cuando abrís <code style="font-family:var(--mono); background:rgba(0,0,0,0.3); padding:2px 6px; border-radius:4px; color:var(--gold)">index.html</code> en este navegador.
+      </p>
+    </div>
+
+    <div class="config-grid" style="margin-bottom: 18px">
+      <h3 style="font-family:var(--serif); font-weight:500; font-size:20px; color:var(--gold); margin-bottom:14px">Opción 2 · Para que TODO EL MUNDO vea tus propiedades</h3>
+      <p style="color:var(--fg-2); line-height:1.6; font-size:14px; margin-bottom:14px">
+        Cuando subas la web a internet (Netlify, etc.), seguí estos pasos:
+      </p>
+      <ol style="color:var(--fg-2); line-height:1.7; font-size:14px; padding-left:22px">
+        <li>Tocá el botón <strong style="color:var(--gold)">"EXPORTAR TODO"</strong> arriba a la derecha.</li>
+        <li>Se va a descargar un archivo <code style="font-family:var(--mono); background:rgba(0,0,0,0.3); padding:2px 6px; border-radius:4px; color:var(--gold)">sora-data.js</code>.</li>
+        <li>Subilo a la misma carpeta donde está <code style="font-family:var(--mono); background:rgba(0,0,0,0.3); padding:2px 6px; border-radius:4px; color:var(--gold)">index.html</code>.</li>
+        <li>Listo. Ahora todos los visitantes ven tus propiedades.</li>
+      </ol>
+      <div style="margin-top: 18px; padding: 14px 18px; background: rgba(212,184,122,0.06); border-radius: 10px; font-style: italic; color: var(--fg-2); font-size: 13.5px;">
+        Cada vez que agregues o cambies una propiedad, repetí estos pasos. Es como "guardar el cambio para todos".
+      </div>
+    </div>
+
+    <div class="config-grid">
+      <h3 style="font-family:var(--serif); font-weight:500; font-size:20px; color:var(--gold); margin-bottom:14px">Subir fotos · qué recomiendo</h3>
+      <p style="color:var(--fg-2); line-height:1.7; font-size:14px">
+        Para fotos de propiedades, usá una de estas opciones:
+      </p>
+      <ul style="color:var(--fg-2); line-height:1.7; font-size:14px; padding-left:22px; margin-top:8px">
+        <li><strong style="color:var(--gold)">Imgur</strong> (gratis, sin cuenta) — entrá a imgur.com, arrastrás la foto, copiás el link directo.</li>
+        <li><strong style="color:var(--gold)">Instagram público</strong> — abrí la foto, click derecho > "Copiar link de la imagen".</li>
+        <li><strong style="color:var(--gold)">Google Drive</strong> con link público — sube la foto, click derecho > "Obtener link" > "Cualquiera con el link".</li>
+      </ul>
+      <p style="color:var(--fg-2); line-height:1.7; font-size:13.5px; margin-top:14px; font-style:italic">
+        Tip: las fotos pesadas hacen lenta la web. Usá fotos de máximo 1500px de ancho.
+      </p>
+    </div>
+
+  </div>
+
+</div>
+
+<script src="../data.js"></script>
+<script>
+// ============================================================
+//  ADMIN AUTH (user + password)
+//  Default credentials:
+//    Usuario:     AEDMsora
+//    Contraseña:  AEDMempresa2026
+//  Both are SHA-256 hashed below. Change via the "Configuración" tab.
+// ============================================================
+const DEFAULT_USER_HASH = 'ea0bb24d8b9e62d2c2c4f5e5be6df8b89478f3e3b6a44e1e3eef8e30a3ce6e2c'; // sha256("AEDMsora") — recalculated at runtime
+const DEFAULT_PW_HASH = '9ea5e38abe45b15c4241a3ebcc70bf1ece2352d51c28f19c8cbd6c712e223e2c'; // sha256("AEDMempresa2026")
+const DEFAULT_USER_PLAIN = 'AEDMsora';
+const SESSION_HOURS = 24 * 7;
+
+async function sha256(text) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+}
+function getStoredPwHash() { return localStorage.getItem('sora.admin.pw') || DEFAULT_PW_HASH; }
+function getStoredUser() { return localStorage.getItem('sora.admin.user') || DEFAULT_USER_PLAIN; }
+function isSessionValid() {
+  const t = parseInt(localStorage.getItem('sora.admin.session') || '0', 10);
+  return t && (Date.now() - t) < (SESSION_HOURS * 3600 * 1000);
+}
+function startSession() {
+  localStorage.setItem('sora.admin.session', String(Date.now()));
+  document.getElementById('gate').classList.add('unlocked');
+}
+async function tryUnlock() {
+  const user = document.getElementById('gate-user').value.trim();
+  const pw = document.getElementById('gate-input').value.trim();
+  const err = document.getElementById('gate-err');
+  err.classList.remove('show');
+  if (!user || !pw) { err.classList.add('show'); return; }
+  const pwHash = await sha256(pw);
+  // Username comparison is case-insensitive (so AEDMsora, aedmsora and AEDMSORA all work).
+  // Password is case-sensitive (typed exactly).
+  const storedUser = getStoredUser();
+  if (user.toLowerCase() === storedUser.toLowerCase() && pwHash === getStoredPwHash()) {
+    startSession();
+    document.getElementById('gate-input').value = '';
+    document.getElementById('gate-user').value = '';
+    populateCountrySelectors();
+    renderProps();
+    renderReservas();
+  } else {
+    err.classList.add('show');
+    // Show a hint about which field is wrong (helps debugging)
+    if (user.toLowerCase() !== storedUser.toLowerCase()) {
+      err.textContent = 'Usuario incorrecto.';
+    } else {
+      err.textContent = 'Contraseña incorrecta.';
+    }
+  }
+}
+function resetCredentials() {
+  if (!confirm('Esto borra el usuario y contraseña personalizados y vuelve a los valores por defecto (AEDMsora / AEDMempresa2026). ¿Continuar?')) return;
+  localStorage.removeItem('sora.admin.user');
+  localStorage.removeItem('sora.admin.pw');
+  localStorage.removeItem('sora.admin.session');
+  alert('Credenciales reseteadas a:\n\nUsuario: AEDMsora\nContraseña: AEDMempresa2026\n\nLa página se va a recargar.');
+  location.reload();
+}
+function logout() {
+  if (!confirm('¿Cerrar sesión del panel?')) return;
+  localStorage.removeItem('sora.admin.session');
+  location.reload();
+}
+async function changeCredentials() {
+  const cur = document.getElementById('pw-current').value;
+  const newUser = document.getElementById('user-new').value.trim();
+  const n1 = document.getElementById('pw-new').value;
+  const n2 = document.getElementById('pw-new2').value;
+  if (!cur) { alert('Ingresá tu contraseña actual.'); return; }
+  const curHash = await sha256(cur);
+  if (curHash !== getStoredPwHash()) { alert('La contraseña actual es incorrecta.'); return; }
+  // If neither new user nor new password is provided, nothing to do
+  if (!newUser && !n1) { alert('No ingresaste cambios.'); return; }
+  if (n1 || n2) {
+    if (n1.length < 6) { alert('La nueva contraseña debe tener mínimo 6 caracteres.'); return; }
+    if (n1 !== n2) { alert('Las contraseñas nuevas no coinciden.'); return; }
+    const newHash = await sha256(n1);
+    localStorage.setItem('sora.admin.pw', newHash);
+  }
+  if (newUser) {
+    localStorage.setItem('sora.admin.user', newUser);
+  }
+  ['pw-current','user-new','pw-new','pw-new2'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('pw-saved').classList.add('show');
+  setTimeout(() => document.getElementById('pw-saved').classList.remove('show'), 3500);
+}
+// Auto-unlock if session is still valid
+if (isSessionValid()) {
+  document.getElementById('gate').classList.add('unlocked');
+}
+
+// ============================================================
+//  DATA LAYER (multi-country)
+//  Properties stored as ONE array with `country` field per record.
+//  Defaults come from data.js (window.SORA_DATA.properties).
+// ============================================================
+const STORE = {
+  PROPS: 'sora.properties',
+  RES: 'sora.requests',
+  CONFIG_BY_COUNTRY: 'sora.config.byCountry'
+};
+
+function loadProps() {
+  try {
+    const v = JSON.parse(localStorage.getItem(STORE.PROPS) || 'null');
+    if (Array.isArray(v)) return v;
+  } catch (e) {}
+  return (window.SORA_DATA && window.SORA_DATA.properties) ? [...window.SORA_DATA.properties] : [];
+}
+function saveProps(list) { localStorage.setItem(STORE.PROPS, JSON.stringify(list)); }
+function loadRes() {
+  try { return JSON.parse(localStorage.getItem(STORE.RES) || '[]'); }
+  catch (e) { return []; }
+}
+function loadConfigByCountry() {
+  try {
+    const v = JSON.parse(localStorage.getItem(STORE.CONFIG_BY_COUNTRY) || 'null');
+    if (v && typeof v === 'object') return { ...(window.SORA_DATA?.config || {}), ...v };
+  } catch (e) {}
+  return { ...(window.SORA_DATA?.config || {}) };
+}
+function saveConfigByCountry(cfg) { localStorage.setItem(STORE.CONFIG_BY_COUNTRY, JSON.stringify(cfg)); }
+
+// ============================================================
+//  CURRENT COUNTRY (shared with public web)
+// ============================================================
+function getAdminCountry() {
+  return localStorage.getItem('sora.country') || (window.SORA_DATA?.meta?.defaultCountry || 'PA');
+}
+function adminPickCountry(code) {
+  localStorage.setItem('sora.country', code);
+  renderProps();
+  loadConfigIntoForm();
+}
+function populateCountrySelectors() {
+  if (!window.SORA_DATA) return;
+  const cur = getAdminCountry();
+  const opts = window.SORA_DATA.countries.map(c => {
+    const launched = c.status === 'live' || c.status === 'launching';
+    return `<option value="${c.code}"${cur === c.code ? ' selected' : ''}${launched ? '' : ' disabled'}>${c.flag} ${c.name.es} ${launched ? '' : '· próximo'}</option>`;
+  }).join('');
+  const topSel = document.getElementById('admin-country');
+  if (topSel) topSel.innerHTML = opts;
+  const formSel = document.getElementById('f-country');
+  if (formSel) formSel.innerHTML = window.SORA_DATA.countries.map(c =>
+    `<option value="${c.code}">${c.flag} ${c.name.es}</option>`
+  ).join('');
+}
+
+// ============================================================
+//  TABS
+// ============================================================
+function showTab(name, btn) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('panel-' + name).classList.add('active');
+  document.querySelectorAll('.tabs button').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  if (name === 'reservas') renderReservas();
+  if (name === 'config') loadConfigIntoForm();
+}
+
+// ============================================================
+//  PROPERTIES
+// ============================================================
+function renderProps() {
+  const all = loadProps();
+  const country = getAdminCountry();
+  const list = all.filter(p => !p.country || p.country === country);
+  const grid = document.getElementById('props-grid');
+  const empty = document.getElementById('props-empty');
+  document.getElementById('ct-props').textContent = list.length + ' / ' + all.length;
+  if (!list.length) {
+    grid.innerHTML = '';
+    empty.innerHTML = `Aún no hay propiedades en este país (${country}). Tocá "+ Agregar propiedad" para empezar.`;
+    empty.style.display = 'block';
+    return;
+  }
+  empty.style.display = 'none';
+  grid.innerHTML = list.map(p => `
+    <div class="prop ${p.status === 'sold' ? 'sold' : ''}">
+      <div class="prop-img">
+        ${p.image
+          ? `<img src="${esc(p.image)}" alt="">`
+          : `<div class="placeholder">${esc(p.scene || 'sin imagen')}</div>`}
+        <span class="badge ${p.status === 'sold' ? 'sold' : ''}">${p.status === 'sold' ? 'Vendida' : 'Disponible'}</span>
+      </div>
+      <div class="prop-body">
+        <div class="loc">${esc(p.location)}</div>
+        <h3>${esc(p.titleEs)}</h3>
+        <div class="price">${esc(p.price)}</div>
+        <div class="prop-actions">
+          <button class="edit" onclick="editProp('${esc(p.id)}')">✎ Editar</button>
+          <button class="toggle" onclick="toggleSold('${esc(p.id)}')">${p.status === 'sold' ? '↺ Reactivar' : '✓ Marcar vendida'}</button>
+          <button class="del" onclick="deleteProp('${esc(p.id)}')">✕ Borrar</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+function esc(s) { return String(s || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+function openForm(prop) {
+  document.getElementById('form-title').textContent = prop ? 'Editar propiedad' : 'Nueva propiedad';
+  document.getElementById('f-id').value = prop ? prop.id : 'p-' + Date.now();
+  document.getElementById('f-titleEs').value = prop ? prop.titleEs : '';
+  document.getElementById('f-titleEn').value = prop ? prop.titleEn : '';
+  document.getElementById('f-location').value = prop ? prop.location : '';
+  document.getElementById('f-price').value = prop ? prop.price : '';
+  document.getElementById('f-status').value = prop ? prop.status : 'available';
+  document.getElementById('f-country').value = prop ? (prop.country || getAdminCountry()) : getAdminCountry();
+  document.getElementById('f-sizeEs').value = prop ? prop.sizeEs : '';
+  document.getElementById('f-sizeEn').value = prop ? prop.sizeEn : '';
+  document.getElementById('f-bedrooms').value = prop ? prop.bedrooms : '';
+  document.getElementById('f-descEs').value = prop ? prop.descEs : '';
+  document.getElementById('f-descEn').value = prop ? prop.descEn : '';
+  document.getElementById('f-imageUrl').value = prop && !isDataUrl(prop.image) ? prop.image : '';
+  document.getElementById('f-imageFile').value = '';
+  document.getElementById('f-scene').value = prop ? (prop.scene || 'finca') : 'finca';
+  if (prop && prop.image) {
+    document.getElementById('f-imagePreview').src = prop.image;
+    document.getElementById('f-imagePreview').style.display = 'block';
+  } else {
+    document.getElementById('f-imagePreview').style.display = 'none';
+  }
+  document.getElementById('prop-form-wrap').classList.add('show');
+  document.getElementById('prop-form-wrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+function closeForm() { document.getElementById('prop-form-wrap').classList.remove('show'); }
+function isDataUrl(s) { return s && s.startsWith('data:'); }
+
+function readImage(input) {
+  const f = input.files && input.files[0];
+  if (!f) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    document.getElementById('f-imagePreview').src = e.target.result;
+    document.getElementById('f-imagePreview').style.display = 'block';
+    document.getElementById('f-imageUrl').value = '';
+    document.getElementById('f-imagePreview').dataset.dataUrl = e.target.result;
+  };
+  reader.readAsDataURL(f);
+}
+function previewImage(url) {
+  if (!url) { document.getElementById('f-imagePreview').style.display = 'none'; return; }
+  document.getElementById('f-imagePreview').src = url;
+  document.getElementById('f-imagePreview').style.display = 'block';
+  delete document.getElementById('f-imagePreview').dataset.dataUrl;
+}
+function saveProp() {
+  const list = loadProps();
+  const id = document.getElementById('f-id').value;
+  const dataUrl = document.getElementById('f-imagePreview').dataset.dataUrl;
+  const url = document.getElementById('f-imageUrl').value.trim();
+  const image = dataUrl || url || '';
+  const prop = {
+    id,
+    country: document.getElementById('f-country').value || getAdminCountry(),
+    titleEs: document.getElementById('f-titleEs').value.trim(),
+    titleEn: document.getElementById('f-titleEn').value.trim(),
+    location: document.getElementById('f-location').value.trim(),
+    price: document.getElementById('f-price').value.trim(),
+    sizeEs: document.getElementById('f-sizeEs').value.trim(),
+    sizeEn: document.getElementById('f-sizeEn').value.trim(),
+    bedrooms: document.getElementById('f-bedrooms').value.trim(),
+    descEs: document.getElementById('f-descEs').value.trim(),
+    descEn: document.getElementById('f-descEn').value.trim(),
+    status: document.getElementById('f-status').value,
+    image,
+    scene: document.getElementById('f-scene').value
+  };
+  const idx = list.findIndex(p => p.id === id);
+  if (idx >= 0) list[idx] = prop; else list.unshift(prop);
+  saveProps(list);
+  closeForm();
+  renderProps();
+}
+function editProp(id) {
+  const p = loadProps().find(p => p.id === id);
+  if (p) openForm(p);
+}
+function toggleSold(id) {
+  const list = loadProps();
+  const p = list.find(p => p.id === id);
+  if (!p) return;
+  p.status = p.status === 'sold' ? 'available' : 'sold';
+  saveProps(list);
+  renderProps();
+}
+function deleteProp(id) {
+  if (!confirm('¿Borrar esta propiedad? No se puede deshacer.')) return;
+  saveProps(loadProps().filter(p => p.id !== id));
+  renderProps();
+}
+
+// ============================================================
+//  RESERVATIONS
+// ============================================================
+function renderReservas() {
+  const list = loadRes();
+  document.getElementById('ct-res').textContent = list.length;
+  const wrap = document.getElementById('res-list');
+  const empty = document.getElementById('res-empty');
+  if (!list.length) { wrap.innerHTML = ''; empty.style.display = 'block'; return; }
+  empty.style.display = 'none';
+  wrap.innerHTML = list.map(r => {
+    const date = new Date(r.ts);
+    const dStr = date.toLocaleDateString('es', { day: '2-digit', month: 'short' }) + ' · ' +
+                 date.toLocaleTimeString('es', { hour: '2-digit', minute: '2-digit' });
+    const name = r.name || r.subject || '—';
+    const meta = [];
+    if (r.email) meta.push(`<a href="mailto:${esc(r.email)}">${esc(r.email)}</a>`);
+    if (r.phone) meta.push(esc(r.phone));
+    if (r.subject && r.name) meta.push(esc(r.subject));
+    if (r.message) meta.push(esc(r.message));
+    return `
+      <div class="res">
+        <span class="kind ${esc(r.kind || 'form')}">${esc(kindLabel(r.kind))}</span>
+        <div class="body">
+          <div class="name">${esc(name)}</div>
+          <div class="meta">${meta.join(' · ') || '(sin detalles)'}</div>
+        </div>
+        <span class="time">${dStr}</span>
+      </div>
+    `;
+  }).join('');
+}
+function kindLabel(k) {
+  return {
+    'user': 'Usuario nuevo',
+    'user-wa': 'Usuario · WA',
+    'form': 'Invitación',
+    'form-wa': 'Invitación · WA',
+    'property': 'Propiedad',
+    'reservation': 'Evento'
+  }[k] || k || 'Otro';
+}
+function exportReservas() {
+  const list = loadRes();
+  if (!list.length) return alert('No hay reservas para exportar.');
+  const rows = [['Fecha', 'Tipo', 'Nombre', 'Email', 'Teléfono', 'Asunto', 'Mensaje']];
+  list.forEach(r => {
+    rows.push([
+      new Date(r.ts).toISOString(),
+      r.kind || '',
+      r.name || '',
+      r.email || '',
+      r.phone || '',
+      r.subject || '',
+      r.message || ''
+    ]);
+  });
+  const csv = rows.map(r => r.map(c => `"${String(c).replace(/"/g,'""')}"`).join(',')).join('\n');
+  download('sora-reservas-' + Date.now() + '.csv', csv, 'text/csv');
+}
+function clearReservas() {
+  if (!confirm('¿Borrar TODAS las reservas guardadas?')) return;
+  localStorage.removeItem(STORE.RES);
+  renderReservas();
+}
+
+// ============================================================
+//  CONFIG
+// ============================================================
+function loadConfigIntoForm() {
+  const byCountry = loadConfigByCountry();
+  const cur = getAdminCountry();
+  const c = byCountry[cur] || {};
+  document.getElementById('c-whatsapp').value = c.whatsapp || '';
+  document.getElementById('c-email').value = c.email || '';
+  document.getElementById('c-instagram').value = c.instagram || '';
+  document.getElementById('c-tiktok').value = c.tiktok || '';
+  document.getElementById('c-facebook').value = c.facebook || '';
+  // Show which country we're editing
+  const country = window.SORA_DATA?.countries.find(x => x.code === cur);
+  const hdr = document.querySelector('#panel-config .panel-head h2');
+  if (hdr && country) hdr.innerHTML = `Configuración · <span style="color:var(--gold)">${country.flag} ${country.name.es}</span>`;
+}
+function saveConfig() {
+  const cur = getAdminCountry();
+  const byCountry = loadConfigByCountry();
+  byCountry[cur] = {
+    whatsapp: document.getElementById('c-whatsapp').value.replace(/[^0-9]/g,''),
+    email: document.getElementById('c-email').value.trim(),
+    instagram: document.getElementById('c-instagram').value.trim(),
+    tiktok: document.getElementById('c-tiktok').value.trim(),
+    facebook: document.getElementById('c-facebook').value.trim()
+  };
+  saveConfigByCountry(byCountry);
+  document.getElementById('config-saved').classList.add('show');
+  setTimeout(() => document.getElementById('config-saved').classList.remove('show'), 3500);
+}
+
+// ============================================================
+//  EXPORT EVERYTHING — produces sora-data.js
+// ============================================================
+function exportAll() {
+  const props = loadProps();
+  const cfg = loadConfigByCountry();
+  const js = `// Sora · datos publicados — generado ${new Date().toISOString()}
+// Subí este archivo a la misma carpeta de data.js para sobrescribir defaults.
+window.SORA_OVERRIDE = ${JSON.stringify({ properties: props, configByCountry: cfg }, null, 2)};
+`;
+  download('sora-overrides.js', js, 'application/javascript');
+}
+function download(filename, content, mime) {
+  const blob = new Blob([content], { type: mime });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = filename; a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+// Init
+populateCountrySelectors();
+renderProps();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1774 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sora · Events Playbook · La Compañía</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --surface: #ffffff;
+    --surface-2: #f5f5f7;
+    --line: #e5e5e7;
+    --line-soft: #ededef;
+    --ink: #1a1a1a;
+    --ink-2: #3f3f46;
+    --ink-3: #6b6b6b;
+    --ink-4: #9ca3af;
+    --noir: #0a0a0a;
+    --noir-2: #1a1a1f;
+    --bronze: #92400E;
+    --gold: #B8973A;
+    --gold-light: #FED7AA;
+    --ivory: #F5F2EA;
+    --rose: #B45765;
+    --rose-soft: #FCE7F0;
+    --moss: #4F6645;
+    --moss-deep: #2D3F26;
+    --moss-light: #97A48E;
+    --crimson: #991B1B;
+    --success: #16A34A;
+    --warning: #EA580C;
+    --danger: #DC2626;
+    --serif: "Fraunces", Georgia, "Times New Roman", serif;
+    --sans: -apple-system, "SF Pro Display", "Helvetica Neue", system-ui, sans-serif;
+    --mono: "SF Mono", Menlo, Monaco, monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    background: var(--bg); color: var(--ink);
+    font-family: var(--sans); font-size: 15px; line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+
+  body[data-lang="en"] [data-es] { display: none; }
+  body[data-lang="es"] [data-en] { display: none; }
+
+  /* HERO */
+  .hero {
+    background: var(--noir);
+    color: #fff;
+    padding: 70px 0 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: ""; position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 80% 30%, rgba(184,151,58,0.20), transparent),
+      radial-gradient(ellipse 60% 50% at 20% 80%, rgba(180,87,101,0.18), transparent);
+  }
+  .hero-top {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 28px; flex-wrap: wrap; gap: 16px;
+    position: relative;
+  }
+  .hero-eyebrow {
+    text-transform: uppercase; letter-spacing: 4px;
+    font-size: 11px; color: var(--gold); font-weight: 600;
+  }
+  .lang-toggle {
+    display: inline-flex; background: rgba(255,255,255,0.08);
+    border-radius: 100px; padding: 3px; border: 1px solid rgba(255,255,255,0.15);
+  }
+  .lang-btn {
+    background: transparent; color: rgba(255,255,255,0.6); border: none;
+    padding: 5px 12px; border-radius: 100px; font-size: 11px; font-weight: 600;
+    cursor: pointer; text-transform: uppercase; letter-spacing: 1.5px; font-family: inherit;
+  }
+  .lang-btn.active { background: var(--gold); color: var(--noir); }
+  .brand-mark {
+    font-family: var(--serif); font-size: 28px;
+    color: var(--gold); font-style: italic;
+    letter-spacing: 2px; font-weight: 400;
+    margin-bottom: 8px; position: relative;
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(36px, 6vw, 60px);
+    line-height: 1.0; font-weight: 400;
+    letter-spacing: -0.025em; position: relative;
+    margin-bottom: 14px;
+  }
+  .hero h1 em { color: var(--gold); font-style: italic; }
+  .hero .sub {
+    color: rgba(255,255,255,0.78); font-size: 17px;
+    max-width: 820px; line-height: 1.6; position: relative;
+  }
+  .hero-meta {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 18px; margin-top: 36px;
+    position: relative;
+  }
+  .hero-meta > div {
+    padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.18);
+  }
+  .hero-meta .label {
+    text-transform: uppercase; letter-spacing: 2px;
+    font-size: 10px; color: rgba(255,255,255,0.55);
+    font-weight: 600; margin-bottom: 4px;
+  }
+  .hero-meta .val {
+    font-family: var(--serif); font-size: 19px;
+    color: #fff; font-weight: 500;
+  }
+  .hero-meta .val small {
+    font-family: var(--sans); font-size: 11.5px;
+    color: rgba(255,255,255,0.55); font-weight: 400;
+    margin-left: 4px;
+  }
+
+  /* TOC */
+  .toc {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(250,250,250,0.96);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--line);
+  }
+  .toc-row {
+    display: flex; gap: 22px; padding: 14px 0;
+    overflow-x: auto; flex-wrap: nowrap; white-space: nowrap;
+    font-size: 12px;
+  }
+  .toc-link {
+    color: var(--ink-3); text-decoration: none; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 1px;
+    transition: color 0.2s;
+  }
+  .toc-link:hover { color: var(--ink); }
+
+  /* SECTIONS */
+  section { padding: 56px 0; position: relative; }
+  section.alt { background: var(--surface-2); }
+  section.dark {
+    background: var(--noir); color: rgba(255,255,255,0.92);
+  }
+  section.dark .sec-num { color: var(--gold); }
+  section.dark .sec-title { color: #fff; }
+  section.dark .sec-title em { color: var(--gold-light); }
+  section.dark .sec-sub { color: rgba(255,255,255,0.72); }
+
+  .sec-num {
+    font-family: var(--serif); font-style: italic;
+    font-size: 16px; color: var(--gold);
+    margin-bottom: 8px; letter-spacing: 1px;
+  }
+  .sec-title {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(26px, 4vw, 38px);
+    line-height: 1.1; letter-spacing: -0.015em;
+    margin-bottom: 12px;
+  }
+  .sec-title em { color: var(--bronze); font-style: italic; }
+  .sec-sub {
+    color: var(--ink-2); font-size: 16px;
+    max-width: 880px; line-height: 1.6; margin-bottom: 28px;
+  }
+  .sub-title {
+    font-family: var(--serif); font-size: 22px;
+    font-weight: 500; margin: 28px 0 14px;
+    color: var(--ink);
+  }
+
+  /* GENERIC CARD GRID */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 14px;
+  }
+  .card {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 8px; padding: 22px;
+    position: relative;
+  }
+  .card .badge {
+    display: inline-block; font-size: 9.5px;
+    padding: 3px 8px; border-radius: 100px;
+    font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px;
+    margin-bottom: 10px;
+    background: var(--surface-2); color: var(--ink-3);
+  }
+  .card .badge.gold { background: rgba(184,151,58,0.15); color: var(--bronze); }
+  .card .badge.rose { background: var(--rose-soft); color: var(--rose); }
+  .card .badge.moss { background: rgba(79,102,69,0.12); color: var(--moss-deep); }
+  .card .badge.red { background: rgba(220,38,38,0.10); color: var(--crimson); }
+  .card h4 {
+    font-family: var(--serif); font-size: 18px;
+    font-weight: 500; margin-bottom: 4px;
+  }
+  .card .role {
+    font-size: 11px; text-transform: uppercase;
+    letter-spacing: 1px; color: var(--ink-3);
+    margin-bottom: 10px;
+  }
+  .card p {
+    color: var(--ink-2); font-size: 13.5px;
+    line-height: 1.55;
+  }
+  .card .meta {
+    margin-top: 12px; padding-top: 10px;
+    border-top: 1px solid var(--line-soft);
+    font-size: 11.5px; color: var(--ink-3);
+    display: flex; flex-wrap: wrap; gap: 6px;
+  }
+  .card .meta strong { color: var(--ink-2); margin-right: 4px; }
+  .tag {
+    font-size: 10px; padding: 2px 8px;
+    background: var(--surface-2); border-radius: 100px;
+    color: var(--ink-3); font-weight: 600;
+    text-transform: uppercase; letter-spacing: 1px;
+  }
+
+  /* VENUE CARDS (richer) */
+  .venue-card {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 10px; overflow: hidden;
+  }
+  .venue-img {
+    height: 120px;
+    background: linear-gradient(135deg, var(--noir) 0%, var(--noir-2) 100%);
+    position: relative;
+  }
+  .venue-card.bg-rose .venue-img {
+    background: linear-gradient(135deg, var(--rose) 0%, #5C2D33 100%);
+  }
+  .venue-card.bg-moss .venue-img {
+    background: linear-gradient(135deg, var(--moss) 0%, var(--moss-deep) 100%);
+  }
+  .venue-card.bg-gold .venue-img {
+    background: linear-gradient(135deg, var(--gold) 0%, var(--bronze) 100%);
+  }
+  .venue-card.bg-blue .venue-img {
+    background: linear-gradient(135deg, #1E3A8A 0%, #0F172A 100%);
+  }
+  .venue-img::before {
+    content: ""; position: absolute; inset: 0;
+    background:
+      radial-gradient(circle at 30% 30%, rgba(255,255,255,0.08), transparent 60%),
+      radial-gradient(circle at 70% 70%, rgba(0,0,0,0.18), transparent 50%);
+  }
+  .venue-img .glyph {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--serif); font-size: 60px;
+    color: rgba(255,255,255,0.20);
+    font-style: italic; line-height: 1;
+  }
+  .venue-img .region {
+    position: absolute; bottom: 10px; left: 14px;
+    color: rgba(255,255,255,0.92);
+    font-size: 10px; text-transform: uppercase;
+    letter-spacing: 2px; font-weight: 700;
+  }
+  .venue-img .capacity {
+    position: absolute; top: 10px; right: 14px;
+    color: rgba(255,255,255,0.92);
+    font-size: 11px; padding: 3px 8px;
+    background: rgba(0,0,0,0.4); border-radius: 100px;
+    backdrop-filter: blur(8px);
+  }
+  .venue-body {
+    padding: 20px;
+  }
+  .venue-body h4 {
+    font-family: var(--serif); font-size: 19px;
+    font-weight: 500; margin-bottom: 4px;
+  }
+  .venue-body .loc {
+    font-size: 11px; text-transform: uppercase;
+    letter-spacing: 1.2px; color: var(--moss);
+    font-weight: 600; margin-bottom: 10px;
+  }
+  .venue-body p {
+    color: var(--ink-2); font-size: 13px;
+    line-height: 1.55; margin-bottom: 10px;
+  }
+  .venue-body .contact {
+    margin-top: 12px; padding-top: 10px;
+    border-top: 1px solid var(--line-soft);
+    font-size: 11.5px; color: var(--ink-3);
+    font-family: var(--mono);
+  }
+
+  /* TABLE */
+  .table-wrap {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 8px; overflow: hidden; margin: 18px 0;
+  }
+  .table-wrap table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .table-wrap th {
+    background: var(--noir); color: rgba(255,255,255,0.92);
+    text-align: left; padding: 12px 16px;
+    font-size: 11px; text-transform: uppercase;
+    letter-spacing: 1.5px; font-weight: 600;
+  }
+  .table-wrap td {
+    padding: 11px 16px; border-bottom: 1px solid var(--line-soft);
+    vertical-align: top;
+  }
+  .table-wrap tr:last-child td { border-bottom: none; }
+  .table-wrap td.gold {
+    font-family: var(--serif); color: var(--bronze);
+    font-weight: 600;
+  }
+  .table-wrap tr.section td {
+    background: var(--ivory);
+    font-weight: 700; color: var(--bronze);
+    font-size: 11px; text-transform: uppercase;
+    letter-spacing: 1.2px;
+  }
+
+  /* PRECAUTION CARD */
+  .precaution {
+    background: var(--surface); border: 1px solid var(--line);
+    border-left: 3px solid var(--crimson);
+    border-radius: 6px; padding: 18px 22px;
+    margin-bottom: 12px;
+  }
+  .precaution h4 {
+    font-family: var(--serif); font-size: 17px;
+    font-weight: 500; margin-bottom: 4px;
+    color: var(--ink);
+  }
+  .precaution h4 small {
+    font-size: 10px; color: var(--crimson);
+    font-family: var(--sans); font-weight: 700;
+    text-transform: uppercase; letter-spacing: 1.5px;
+    margin-left: 8px; padding: 2px 7px;
+    background: rgba(220,38,38,0.10); border-radius: 100px;
+  }
+  .precaution p {
+    color: var(--ink-2); font-size: 13px;
+    line-height: 1.6;
+  }
+
+  /* TWO-DAY ITINERARY */
+  .itinerary {
+    background: linear-gradient(135deg, #FFFBF0 0%, #FFFFFF 100%);
+    border: 1px solid var(--gold-light);
+    border-radius: 10px; padding: 28px;
+    margin-bottom: 18px;
+  }
+  .itin-name {
+    font-family: var(--serif); font-size: 24px;
+    font-weight: 500; margin-bottom: 4px;
+    color: var(--noir);
+  }
+  .itin-name em { color: var(--bronze); font-style: italic; }
+  .itin-tag {
+    font-size: 11px; text-transform: uppercase;
+    letter-spacing: 1.5px; color: var(--moss);
+    font-weight: 700; margin-bottom: 16px;
+  }
+  .itin-day {
+    margin-top: 16px;
+    padding: 14px 0;
+    border-top: 1px solid var(--gold-light);
+  }
+  .itin-day h5 {
+    font-family: var(--serif); font-size: 16px;
+    font-weight: 500; color: var(--bronze);
+    margin-bottom: 8px;
+  }
+  .itin-row {
+    display: grid; grid-template-columns: 80px 1fr;
+    gap: 14px; padding: 8px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+    font-size: 13px;
+  }
+  .itin-row:last-child { border-bottom: none; }
+  .itin-row .time {
+    color: var(--ink-3); font-family: var(--mono);
+    font-size: 12px; font-weight: 600;
+  }
+  .itin-row .desc {
+    color: var(--ink-2); line-height: 1.5;
+  }
+  .itin-row .desc strong { color: var(--ink); }
+
+  /* TIPO PARTY HEADER */
+  .party-type {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 10px; padding: 24px;
+    margin-bottom: 14px;
+  }
+  .party-type h4 {
+    font-family: var(--serif); font-size: 22px;
+    font-weight: 500; margin-bottom: 6px;
+  }
+  .party-type h4 em { color: var(--rose); font-style: italic; }
+  .party-type .who {
+    font-size: 11px; text-transform: uppercase;
+    letter-spacing: 1.5px; color: var(--moss);
+    font-weight: 700; margin-bottom: 14px;
+  }
+  .party-type p {
+    color: var(--ink-2); font-size: 14px;
+    line-height: 1.6; margin-bottom: 8px;
+  }
+  .party-type .details {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 10px; margin-top: 14px;
+    padding-top: 14px; border-top: 1px solid var(--line-soft);
+  }
+  .party-type .detail {
+    font-size: 12px;
+  }
+  .party-type .detail strong {
+    display: block; color: var(--bronze);
+    text-transform: uppercase; letter-spacing: 1px;
+    font-size: 10px; font-weight: 700; margin-bottom: 2px;
+  }
+  .party-type .detail span {
+    color: var(--ink-2);
+  }
+
+  /* COCKTAIL CARD */
+  .cocktail {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 8px; padding: 20px;
+    position: relative;
+  }
+  .cocktail .glass {
+    position: absolute; top: 16px; right: 18px;
+    font-family: var(--serif); font-size: 32px;
+    color: var(--rose-soft); font-style: italic;
+    line-height: 1; opacity: 0.7;
+  }
+  .cocktail h5 {
+    font-family: var(--serif); font-size: 19px;
+    font-weight: 500; margin-bottom: 4px;
+    padding-right: 36px;
+  }
+  .cocktail .roots {
+    font-size: 11px; text-transform: uppercase;
+    letter-spacing: 1.2px; color: var(--moss);
+    font-weight: 700; margin-bottom: 10px;
+  }
+  .cocktail .ingredients {
+    font-size: 12.5px; color: var(--ink-2);
+    line-height: 1.55; font-style: italic;
+    margin-bottom: 8px;
+  }
+  .cocktail p {
+    font-size: 13px; color: var(--ink-2);
+    line-height: 1.55;
+  }
+
+  /* SECTION DARK BOX */
+  .syn {
+    background: linear-gradient(135deg, var(--moss-deep) 0%, var(--moss) 100%);
+    color: #fff; border-radius: 10px; padding: 32px;
+    margin: 24px 0;
+  }
+  .syn h3 {
+    font-family: var(--serif); font-size: 24px;
+    font-weight: 400; margin-bottom: 10px;
+  }
+  .syn h3 em { color: var(--gold-light); font-style: italic; }
+  .syn p {
+    font-size: 14px; line-height: 1.65;
+    color: rgba(255,255,255,0.92);
+  }
+  .syn-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px; margin-top: 18px;
+  }
+  .syn-item {
+    background: rgba(255,255,255,0.08);
+    border-radius: 6px; padding: 16px;
+    border-left: 3px solid var(--gold);
+  }
+  .syn-item .label {
+    font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px;
+    color: var(--gold-light); font-weight: 700; margin-bottom: 6px;
+  }
+  .syn-item h4 {
+    font-family: var(--serif); font-size: 16px;
+    font-weight: 500; margin-bottom: 4px;
+  }
+  .syn-item p {
+    font-size: 12.5px; color: rgba(255,255,255,0.78);
+    line-height: 1.55;
+  }
+
+  footer {
+    padding: 30px 0; text-align: center;
+    color: var(--ink-3); font-size: 12px;
+  }
+
+  @media (max-width: 760px) {
+    .hero-meta { grid-template-columns: repeat(2, 1fr); }
+    .itin-row { grid-template-columns: 60px 1fr; gap: 10px; }
+  }
+</style>
+</head>
+<body data-lang="es">
+
+<!-- HERO -->
+<header class="hero">
+  <div class="container">
+    <div class="hero-top">
+      <div class="hero-eyebrow">
+        <span data-es>La Compañía · Sora · Experiences</span>
+        <span data-en>La Compañía · Sora · Experiences</span>
+      </div>
+      <div class="lang-toggle">
+        <button class="lang-btn active" data-set-lang="es">ES</button>
+        <button class="lang-btn" data-set-lang="en">EN</button>
+      </div>
+    </div>
+    <div class="brand-mark">SORA</div>
+    <h1>
+      <span data-es>Eventos · <em>Chiriquí + Bocas del Toro</em>.</span>
+      <span data-en>Events · <em>Chiriquí + Bocas del Toro</em>.</span>
+    </h1>
+    <p class="sub">
+      <span data-es>Playbook operativo para Sora — la empresa de experiencias de La Compañía. Cómo producir fines de semana inolvidables en las dos regiones más espectaculares de Panamá: las montañas de Chiriquí (Boquete, Volcán, Volcán Barú) y el archipiélago Caribe de Bocas del Toro. Todo desde la curaduría de invitados hasta logística, alianzas con venues, talento, bebidas signature, precauciones legales y seguridad. Diseñado para crecer de 6 eventos en 2026 a operación continua.</span>
+      <span data-en>Operational playbook for Sora — La Compañía's experiences company. How to produce unforgettable weekends in Panama's two most spectacular regions: the Chiriquí mountains (Boquete, Volcán, Volcán Barú) and the Caribbean Bocas del Toro archipelago. From guest curation to logistics, venue alliances, talent, signature drinks, legal precautions, and safety. Designed to grow from 6 events in 2026 to continuous operation.</span>
+    </p>
+    <div class="hero-meta">
+      <div>
+        <div class="label"><span data-es>Marca</span><span data-en>Brand</span></div>
+        <div class="val">SORA <small>· experiences</small></div>
+      </div>
+      <div>
+        <div class="label"><span data-es>Regiones piloto</span><span data-en>Pilot regions</span></div>
+        <div class="val">2 <small>· Chiriquí + Bocas</small></div>
+      </div>
+      <div>
+        <div class="label"><span data-es>Eventos 2026</span><span data-en>2026 events</span></div>
+        <div class="val">6 <small>· crecimiento gradual</small></div>
+      </div>
+      <div>
+        <div class="label"><span data-es>Tamaño</span><span data-en>Size</span></div>
+        <div class="val">12-30 <small>· invitados curados</small></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="toc">
+  <div class="container">
+    <div class="toc-row">
+      <a class="toc-link" href="#filosofia">01 · <span data-es>Filosofía</span><span data-en>Philosophy</span></a>
+      <a class="toc-link" href="#tipos">02 · <span data-es>Tipos de evento</span><span data-en>Event types</span></a>
+      <a class="toc-link" href="#venues-chiriqui">03 · Venues Chiriquí</a>
+      <a class="toc-link" href="#venues-bocas">04 · Venues Bocas</a>
+      <a class="toc-link" href="#alianzas">05 · <span data-es>Alianzas</span><span data-en>Partners</span></a>
+      <a class="toc-link" href="#talento">06 · <span data-es>Talento</span><span data-en>Talent</span></a>
+      <a class="toc-link" href="#fyb">07 · F&amp;B</a>
+      <a class="toc-link" href="#itinerarios">08 · <span data-es>Itinerarios 2-días</span><span data-en>2-day itineraries</span></a>
+      <a class="toc-link" href="#invitados">09 · <span data-es>Invitados</span><span data-en>Guests</span></a>
+      <a class="toc-link" href="#precauciones">10 · <span data-es>Precauciones</span><span data-en>Precautions</span></a>
+      <a class="toc-link" href="#operaciones">11 · <span data-es>Operaciones</span><span data-en>Operations</span></a>
+      <a class="toc-link" href="#calendario">12 · <span data-es>Calendario</span><span data-en>Calendar</span></a>
+    </div>
+  </div>
+</nav>
+
+<!-- 01 · PHILOSOPHY -->
+<section id="filosofia">
+  <div class="container">
+    <div class="sec-num">01</div>
+    <h2 class="sec-title">
+      <span data-es>Filosofía · <em>fines de semana memorables</em>, no fiestas genéricas.</span>
+      <span data-en>Philosophy · <em>memorable weekends</em>, not generic parties.</span>
+    </h2>
+    <p class="sec-sub">
+      <span data-es>Sora no organiza "fiestas." Sora orquesta <strong>experiencias de 36-72 horas</strong> con curaduría obsesiva — locación, talento, comida, bebida, música, transiciones de horario, e invitados — diseñadas para que cada participante vuelva a casa con tres o cuatro recuerdos vivos. La inspiración: yacht weekends del Mediterráneo, Mykonos sunset rituals, finca rentals de la Toscana. La diferencia: somos Panamá, somos auténticos, no copiamos — usamos lo mejor de nuestras montañas y nuestro Caribe.</span>
+      <span data-en>Sora doesn't run "parties." Sora orchestrates <strong>36-72 hour experiences</strong> with obsessive curation — location, talent, food, drink, music, time transitions, and guests — designed so every participant leaves with three or four vivid memories. Inspiration: Mediterranean yacht weekends, Mykonos sunset rituals, Tuscan finca rentals. Difference: we're Panama, we're authentic, we don't copy — we use the best of our mountains and Caribbean.</span>
+    </p>
+
+    <div class="syn">
+      <h3>
+        <span data-es>Los <em>cinco principios</em> Sora.</span>
+        <span data-en>The <em>five Sora principles</em>.</span>
+      </h3>
+      <div class="syn-grid">
+        <div class="syn-item">
+          <div class="label">01</div>
+          <h4><span data-es>Curaduría sobre escala</span><span data-en>Curation over scale</span></h4>
+          <p><span data-es>12-30 invitados por evento, nunca más. La densidad de relación se rompe pasando de 35. Mejor 6 eventos perfectos al año que 30 mediocres.</span><span data-en>12-30 guests per event, never more. Relationship density breaks past 35. Better 6 perfect events per year than 30 mediocre ones.</span></p>
+        </div>
+        <div class="syn-item">
+          <div class="label">02</div>
+          <h4><span data-es>Solo invitación</span><span data-en>Invitation only</span></h4>
+          <p><span data-es>Cero ticket sales. Cero promoción pública. Lista de invitados firmada por todos los socios La Compañía 7 días antes. Cada invitado entra por referencia personal de un miembro del equipo.</span><span data-en>Zero ticket sales. Zero public promotion. Guest list signed by all La Compañía partners 7 days before. Each guest enters via personal referral from a team member.</span></p>
+        </div>
+        <div class="syn-item">
+          <div class="label">03</div>
+          <h4><span data-es>Locación es 50% del producto</span><span data-en>Location = 50% of product</span></h4>
+          <p><span data-es>La cascada privada, la villa sobre el mar, el café finca al amanecer. Sora paga premium por venues que son ya en sí experiencias — no rentamos salones genéricos.</span><span data-en>Private waterfall, over-the-sea villa, sunrise coffee finca. Sora pays premium for venues that are experiences themselves — we don't rent generic ballrooms.</span></p>
+        </div>
+        <div class="syn-item">
+          <div class="label">04</div>
+          <h4><span data-es>Cero fricción operativa</span><span data-en>Zero operational friction</span></h4>
+          <p><span data-es>Transporte, check-in, equipaje, alimentación, ID verification — todo invisible. El invitado solo experimenta el evento. Equipo Sora preparó cada detalle 30 días antes.</span><span data-en>Transport, check-in, luggage, food, ID verification — all invisible. The guest only experiences the event. Sora team prepped every detail 30 days prior.</span></p>
+        </div>
+        <div class="syn-item">
+          <div class="label">05</div>
+          <h4><span data-es>Cultura local auténtica</span><span data-en>Authentic local culture</span></h4>
+          <p><span data-es>Seco Herrerano (no vodka importado). Música panameña + DJs internacionales. Cacao Ngäbe ceremonial. Café Geisha de Boquete. El evento es Panamá, no LA-en-PA.</span><span data-en>Seco Herrerano (not imported vodka). Panamanian music + international DJs. Ngäbe ceremonial cacao. Geisha coffee from Boquete. The event is Panama, not LA-in-PA.</span></p>
+        </div>
+        <div class="syn-item" style="border-left-color: var(--rose);">
+          <div class="label" style="color: var(--rose-soft);">★</div>
+          <h4><span data-es>La regla de oro</span><span data-en>The golden rule</span></h4>
+          <p><span data-es>Cada invitado es responsabilidad personal de quien lo trajo. Si trae caos, ese socio es responsable. Si trae belleza, ese socio recibe el crédito. Skin in the game.</span><span data-en>Every guest is the personal responsibility of who brought them. If they bring chaos, that partner owns it. If they bring beauty, that partner gets credit. Skin in the game.</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 · EVENT TYPES -->
+<section class="alt" id="tipos">
+  <div class="container">
+    <div class="sec-num">02</div>
+    <h2 class="sec-title">
+      <span data-es>Tipos de evento · <em>cinco formatos Sora</em>.</span>
+      <span data-en>Event types · <em>five Sora formats</em>.</span>
+    </h2>
+    <p class="sec-sub">
+      <span data-es>Cinco formatos pre-diseñados que cubren 90% de los eventos que Sora producirá. Cada uno con su DNA, su mezcla de invitados, su locación natural, y su precio. El sexto formato — eventos abiertos al público — no existe en Sora.</span>
+      <span data-en>Five pre-designed formats covering 90% of events Sora will produce. Each with its DNA, guest mix, natural location, and price. The sixth format — public-open events — doesn't exist at Sora.</span>
+    </p>
+
+    <div class="party-type">
+      <h4><span data-es>01 · <em>The Hosted Weekend</em></span><span data-en>01 · <em>The Hosted Weekend</em></span></h4>
+      <div class="who"><span data-es>Format core · los 4-6 socios La Compañía + 12-20 invitadas curadas</span><span data-en>Core format · the 4-6 La Compañía partners + 12-20 curated female guests</span></div>
+      <p><span data-es>El formato signature de Sora. Una villa o finca tomada en exclusividad para 48 horas. Los socios de La Compañía como anfitriones — invitan personalmente a sus referencias (mujeres profesionales, internacionales, locales, todas mayores de 21, todas verificadas). Cada invitada conoce el contexto antes de llegar: networking + ocio + cultura, no transaccional. Llegada viernes pm, partida domingo am. Una sola fiesta principal el sábado noche, todo lo demás es vida — desayunos lentos, paseos, cocina compartida, sunset cocktails, conversaciones largas. Es el formato que define el brand.</span><span data-en>Sora's signature format. A villa or finca taken exclusively for 48 hours. La Compañía partners as hosts — they personally invite their referrals (professional women, international and local, all over 21, all verified). Each guest knows the context before arriving: networking + leisure + culture, non-transactional. Arrival Friday PM, departure Sunday AM. One main party on Saturday night, everything else is life — slow breakfasts, walks, shared cooking, sunset cocktails, long conversations. The format that defines the brand.</span></p>
+      <div class="details">
+        <div class="detail"><strong><span data-es>Tamaño</span><span data-en>Size</span></strong><span>16-26 <span data-es>personas</span><span data-en>people</span></span></div>
+        <div class="detail"><strong><span data-es>Duración</span><span data-en>Duration</span></strong><span>48-60h</span></div>
+        <div class="detail"><strong><span data-es>Locación ideal</span><span data-en>Ideal location</span></strong><span><span data-es>Villa Boquete o casa-isla Bocas</span><span data-en>Boquete villa or Bocas island house</span></span></div>
+        <div class="detail"><strong><span data-es>Frecuencia</span><span data-en>Frequency</span></strong><span><span data-es>Trimestral</span><span data-en>Quarterly</span></span></div>
+        <div class="detail"><strong><span data-es>Costo all-in</span><span data-en>All-in cost</span></strong><span>$28-45K</span></div>
+      </div>
+    </div>
+
+    <div class="party-type">
+      <h4><span data-es>02 · <em>The Festival</em></span><span data-en>02 · <em>The Festival</em></span></h4>
+      <div class="who"><span data-es>Mixed crowd · 30-50 invitados · una noche legendaria</span><span data-en>Mixed crowd · 30-50 guests · one legendary night</span></div>
+      <p><span data-es>El formato más grande de Sora. Una sola noche bien producida — sunset → cena → DJ set → afterhours. Locación dramática (rooftop, playa privada, finca). Talent de afuera (DJ internacional o artista panameño top). Vestido smart-casual. Photographer + videographer. Las invitadas son una mezcla más amplia: amigos de socios, contactos de negocios, parejas, peers internacionales. El Hosted Weekend genera relación; el Festival genera mítica + visibilidad.</span><span data-en>Sora's largest format. One well-produced night — sunset → dinner → DJ set → afterhours. Dramatic location (rooftop, private beach, finca). Outside talent (international DJ or top Panamanian artist). Smart-casual dress. Photographer + videographer. Guests are a broader mix: partners' friends, business contacts, couples, international peers. The Hosted Weekend builds relationships; the Festival builds mythology + visibility.</span></p>
+      <div class="details">
+        <div class="detail"><strong><span data-es>Tamaño</span><span data-en>Size</span></strong><span>30-50</span></div>
+        <div class="detail"><strong><span data-es>Duración</span><span data-en>Duration</span></strong><span>8-12h</span></div>
+        <div class="detail"><strong><span data-es>Locación ideal</span><span data-en>Ideal location</span></strong><span><span data-es>Rooftop Casco Viejo o playa Bocas</span><span data-en>Casco Viejo rooftop or Bocas beach</span></span></div>
+        <div class="detail"><strong><span data-es>Frecuencia</span><span data-en>Frequency</span></strong><span>2x/<span data-es>año</span><span data-en>yr</span></span></div>
+        <div class="detail"><strong><span data-es>Costo all-in</span><span data-en>All-in cost</span></strong><span>$22-38K</span></div>
+      </div>
+    </div>
+
+    <div class="party-type">
+      <h4><span data-es>03 · <em>The Retreat</em></span><span data-en>03 · <em>The Retreat</em></span></h4>
+      <div class="who"><span data-es>Wellness · 12-18 invitadas · 3 días en montaña</span><span data-en>Wellness · 12-18 guests · 3 mountain days</span></div>
+      <p><span data-es>Mismo footprint que The Hosted Weekend pero con foco wellness/transformacional: yoga matutino, sound healing dome, cacao ceremony con sabia Ngäbe, hike a las cascadas Bajo Mono, masajes outcalls, comida plant-forward. Una fiesta sábado noche pero más tranquila, prendida pero no rave. Para invitadas que buscan transformación + experiencia, no solo party. Complementa perfectamente con el compound Bajo Mono cuando esté construido.</span><span data-en>Same footprint as The Hosted Weekend but wellness/transformational focus: morning yoga, sound healing dome, cacao ceremony with Ngäbe elder, Bajo Mono waterfall hike, outcall massages, plant-forward food. One Saturday-night party but quieter, lit but not rave. For guests seeking transformation + experience, not just party. Pairs perfectly with the Bajo Mono compound once built.</span></p>
+      <div class="details">
+        <div class="detail"><strong><span data-es>Tamaño</span><span data-en>Size</span></strong><span>12-18</span></div>
+        <div class="detail"><strong><span data-es>Duración</span><span data-en>Duration</span></strong><span>72h</span></div>
+        <div class="detail"><strong><span data-es>Locación ideal</span><span data-en>Ideal location</span></strong><span><span data-es>Boquete · Finca Lerida o Hacienda Los Molinos</span><span data-en>Boquete · Finca Lerida or Hacienda Los Molinos</span></span></div>
+        <div class="detail"><strong><span data-es>Frecuencia</span><span data-en>Frequency</span></strong><span>3x/<span data-es>año</span><span data-en>yr</span></span></div>
+        <div class="detail"><strong><span data-es>Costo all-in</span><span data-en>All-in cost</span></strong><span>$18-32K</span></div>
+      </div>
+    </div>
+
+    <div class="party-type">
+      <h4><span data-es>04 · <em>The Voyage</em></span><span data-en>04 · <em>The Voyage</em></span></h4>
+      <div class="who"><span data-es>Lancha + isla · 8-14 invitados · Bocas + Golfo Chiriquí</span><span data-en>Lancha + island · 8-14 guests · Bocas + Gulf of Chiriquí</span></div>
+      <p><span data-es>Charter lancha por 36-48 horas saltando entre islas. Bocas del Toro: Cayo Zapatilla, Crawl Cay, Hospital Point, Red Frog. Golfo de Chiriquí: Isla Boca Brava, Isla Gámez, archipiélago de las Perlas si vamos lejos. Almuerzos en playas vacías, snorkel, sunset cocktails en cubierta, una noche en lodge isleño. El más caro per cápita pero el más memorable. Aliado natural: familia Julián en Bocas (lancha network) + capitanes de su family-in-law.</span><span data-en>Lancha charter for 36-48 hours hopping between islands. Bocas del Toro: Cayo Zapatilla, Crawl Cay, Hospital Point, Red Frog. Gulf of Chiriquí: Boca Brava Island, Gámez Island, Pearl Islands archipelago if going far. Lunches on empty beaches, snorkel, sunset deck cocktails, one night at island lodge. Most expensive per capita but most memorable. Natural ally: Julián's family in Bocas (lancha network) + his in-laws' captains.</span></p>
+      <div class="details">
+        <div class="detail"><strong><span data-es>Tamaño</span><span data-en>Size</span></strong><span>8-14</span></div>
+        <div class="detail"><strong><span data-es>Duración</span><span data-en>Duration</span></strong><span>36-48h</span></div>
+        <div class="detail"><strong><span data-es>Locación ideal</span><span data-en>Ideal location</span></strong><span><span data-es>Bocas archipiélago o Golfo Chiriquí</span><span data-en>Bocas archipelago or Gulf of Chiriquí</span></span></div>
+        <div class="detail"><strong><span data-es>Frecuencia</span><span data-en>Frequency</span></strong><span>2x/<span data-es>año</span><span data-en>yr</span></span></div>
+        <div class="detail"><strong><span data-es>Costo all-in</span><span data-en>All-in cost</span></strong><span>$35-58K</span></div>
+      </div>
+    </div>
+
+    <div class="party-type">
+      <h4><span data-es>05 · <em>The Pop-up</em></span><span data-en>05 · <em>The Pop-up</em></span></h4>
+      <div class="who"><span data-es>Una sola noche · Casco Viejo o David · 25-35 invitados</span><span data-en>One night · Casco Viejo or David · 25-35 guests</span></div>
+      <p><span data-es>El formato urbano. Un rooftop tomado (Tantalo, Sama, Casa Casco) o un restaurante en exclusividad. 6 horas: cena + cocktails + DJ set. Útil para "tap and refresh" del network entre eventos largos, lanzamientos de productos (Llegale, Yendri ropa, La Compañía SA), recibir VIPs internacionales en escala corta. Más barato + más fácil que los otros formatos pero también menos memorable por sí solo — funciona como "glue" entre formatos largos.</span><span data-en>The urban format. A rooftop taken over (Tantalo, Sama, Casa Casco) or a restaurant exclusively. 6 hours: dinner + cocktails + DJ set. Useful for "tap and refresh" of the network between long events, product launches (Llegale, Yendri clothing, La Compañía SA), short-stop VIP receptions. Cheaper + easier than other formats but also less memorable alone — works as glue between long formats.</span></p>
+      <div class="details">
+        <div class="detail"><strong><span data-es>Tamaño</span><span data-en>Size</span></strong><span>25-35</span></div>
+        <div class="detail"><strong><span data-es>Duración</span><span data-en>Duration</span></strong><span>6h</span></div>
+        <div class="detail"><strong><span data-es>Locación ideal</span><span data-en>Ideal location</span></strong><span>Casco Viejo rooftop</span></div>
+        <div class="detail"><strong><span data-es>Frecuencia</span><span data-en>Frequency</span></strong><span>6x/<span data-es>año</span><span data-en>yr</span></span></div>
+        <div class="detail"><strong><span data-es>Costo all-in</span><span data-en>All-in cost</span></strong><span>$8-15K</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 · VENUES CHIRIQUI -->
+<section id="venues-chiriqui">
+  <div class="container">
+    <div class="sec-num">03</div>
+    <h2 class="sec-title">
+      <span data-es>Venues Chiriquí · <em>montañas, café, cascadas</em>.</span>
+      <span data-en>Chiriquí venues · <em>mountains, coffee, waterfalls</em>.</span>
+    </h2>
+    <p class="sec-sub">
+      <span data-es>Chiriquí ofrece tres ecosistemas para Sora: <strong>(a)</strong> cloud forest Boquete (1,200-1,700m elevación, café Geisha, cascadas, clima fresco) · <strong>(b)</strong> Volcán/Cerro Punta (1,800-2,400m, agricultura intensiva, lago Volcán, vistas Volcán Barú) · <strong>(c)</strong> Golfo de Chiriquí (islas vírgenes, Boca Brava, Gámez). Lista priorizada de venues confirmados.</span>
+      <span data-en>Chiriquí offers three ecosystems for Sora: <strong>(a)</strong> Boquete cloud forest (1,200-1,700m elevation, Geisha coffee, waterfalls, cool climate) · <strong>(b)</strong> Volcán/Cerro Punta (1,800-2,400m, intensive agriculture, Lake Volcán, Volcán Barú views) · <strong>(c)</strong> Gulf of Chiriquí (virgin islands, Boca Brava, Gámez). Prioritized list of confirmed venues.</span>
+    </p>
+
+    <div class="grid">
+
+      <div class="venue-card bg-moss">
+        <div class="venue-img">
+          <div class="region">Boquete</div>
+          <div class="capacity">12-30 pax</div>
+          <div class="glyph">F</div>
+        </div>
+        <div class="venue-body">
+          <h4>Hotel Finca Lerida</h4>
+          <div class="loc"><span data-es>Alto Quiel · café Geisha · cloud forest</span><span data-en>Alto Quiel · Geisha coffee · cloud forest</span></div>
+          <p><span data-es>El espacio de reuniones más grande de Boquete. 20 rooms + 4 cabañas Scandinavian. Café estate desde 1922 (producen Geisha export USA/Europa/Asia). Bird watching + hiking + coffee tours. Eventos: rentar finca completa para Hosted Weekend o Retreat. Vistas espectaculares + gourmet restaurant on-site.</span><span data-en>Boquete's largest meeting venue. 20 rooms + 4 Scandinavian cabins. Coffee estate since 1922 (export Geisha to US/Europe/Asia). Bird watching + hiking + coffee tours. Events: full finca rental for Hosted Weekend or Retreat. Spectacular views + on-site gourmet restaurant.</span></p>
+          <div class="contact">hotelfincalerida.com · +507 720 1111</div>
+        </div>
+      </div>
+
+      <div class="venue-card bg-gold">
+        <div class="venue-img">
+          <div class="region">Boquete</div>
+          <div class="capacity">10-20 pax</div>
+          <div class="glyph">P</div>
+        </div>
+        <div class="venue-body">
+          <h4>Finca Panda</h4>
+          <div class="loc"><span data-es>Highlands · 5 luxury casitas</span><span data-en>Highlands · 5 luxury casitas</span></div>
+          <p><span data-es>Diseñadas para mezclar naturaleza + diseño + confort. Cada casita: jacuzzi privado, gas fire pit, A/C, cocina completa. Coffee farm working con tours. Ideal Hosted Weekend pequeño-mediano. Mood: design-forward, Pinterest-worthy, perfecto para photo content.</span><span data-en>Designed to blend nature + design + comfort. Each casita: private jacuzzi, gas fire pit, A/C, full kitchen. Working coffee farm with tours. Ideal for small-mid Hosted Weekend. Mood: design-forward, Pinterest-worthy, perfect for photo content.</span></p>
+          <div class="contact">fincapanda.com</div>
+        </div>
+      </div>
+
+      <div class="venue-card bg-moss">
+        <div class="venue-img">
+          <div class="region">Boquete</div>
+          <div class="capacity">20-40 pax</div>
+          <div class="glyph">M</div>
+        </div>
+        <div class="venue-body">
+          <h4>Hacienda Los Molinos Boutique Hotel</h4>
+          <div class="loc"><span data-es>Boquete · diseña fiestas temáticas</span><span data-en>Boquete · themed party design</span></div>
+          <p><span data-es>Boutique hotel que ya ofrece "themed party design" como servicio explícito — son partners listos. Climate amazing, surrounded by nature. Mejor para grupos un poco más grandes (Festival format).</span><span data-en>Boutique hotel that already offers "themed party design" as explicit service — ready-made partners. Amazing climate, nature surroundings. Best for slightly larger groups (Festival format).</span></p>
+          <div class="contact">losmolinoshotel.com</div>
+        </div>
+      </div>
+
+      <div class="venue-card bg-blue">
+        <div class="venue-img">
+          <div class="region">Valle Escondido</div>
+          <div class="capacity">8-16 pax</div>
+          <div class="glyph">V</div>
+        </div>
+        <div class="venue-body">
+          <h4>Villa Imperial · Santuario de los Naranjos</h4>
+          <div class="loc"><span data-es>Boquete · exclusiva · minutos del centro</span><span data-en>Boquete · exclusive · minutes from downtown</span></div>
+          <p><span data-es>Villa de lujo en zona Santuario de los Naranjos (Valle Escondido), una de las áreas más exclusivas de Boquete. Climate fresco, supermarkets/cafés cercanos. Acceso a Sendero de los Quetzales + tours café. Footprint perfecto Hosted Weekend pequeño.</span><span data-en>Luxury villa in Santuario de los Naranjos (Valle Escondido), one of Boquete's most exclusive areas. Cool climate, supermarkets/cafés nearby. Access to Quetzal Trail + coffee tours. Perfect footprint for small Hosted Weekend.</span></p>
+          <div class="contact">Airbnb · <span data-es>verificar listing 2026</span><span data-en>verify listing 2026</span></div>
+        </div>
+      </div>
+
+      <div class="venue-card bg-gold">
+        <div class="venue-img">
+          <div class="region">Caldera</div>
+          <div class="capacity">15-25 pax</div>
+          <div class="glyph">H</div>
+        </div>
+        <div class="venue-body">
+          <h4><span data-es>Aguas Termales de Caldera</span><span data-en>Caldera Hot Springs</span></h4>
+          <div class="loc"><span data-es>15 min de Boquete · privatizable</span><span data-en>15 min from Boquete · privatizable</span></div>
+          <p><span data-es>Hot springs naturales rodeados de jungla. Pueden privatizarse por evento (negociar con community owners). Combinación insuperable: día en hot springs → cena en Boquete → fiesta finca. Sunset óptimo para photo content.</span><span data-en>Natural hot springs surrounded by jungle. Can be privatized for an event (negotiate with community owners). Unbeatable combo: day at hot springs → dinner in Boquete → finca party. Optimal sunset for photo content.</span></p>
+          <div class="contact"><span data-es>Vía Belgico</span><span data-en>Via Belgico</span></div>
+        </div>
+      </div>
+
+      <div class="venue-card bg-blue">
+        <div class="venue-img">
+          <div class="region">Volcán</div>
+          <div class="capacity">12-22 pax</div>
+          <div class="glyph">L</div>
+        </div>
+        <div class="venue-body">
+          <h4><span data-es>Lago Volcán + Las Lagunas</span><span data-en>Lake Volcán + Lagunas</span></h4>
+          <div class="loc"><span data-es>Volcán · 2,000m · lake-front cabins</span><span data-en>Volcán · 2,000m · lake-front cabins</span></div>
+          <p><span data-es>Más alto, más fresco, más remoto que Boquete. Lago natural + cabins de madera + vistas al Volcán Barú. Más quetzal sighting, menos turistas. Ideal para Retreats centered en naturaleza/sound-healing/silencio. Acceso vía David 1h.</span><span data-en>Higher, cooler, more remote than Boquete. Natural lake + wooden cabins + Volcán Barú views. More quetzal sightings, fewer tourists. Ideal for nature/sound-healing/silence Retreats. Access via David 1h.</span></p>
+          <div class="contact"><span data-es>Múltiples propiedades vía Belgico</span><span data-en>Multiple properties via Belgico</span></div>
+        </div>
+      </div>
+
+      <div class="venue-card bg-moss">
+        <div class="venue-img">
+          <div class="region">Golfo Chiriquí</div>
+          <div class="capacity">10-18 pax</div>
+          <div class="glyph">B</div>
+        </div>
+        <div class="venue-body">
+          <h4>Isla Boca Brava · Cala Mia</h4>
+          <div class="loc"><span data-es>Golfo Chiriquí · 25 min lancha desde Boca Chica</span><span data-en>Gulf of Chiriquí · 25 min boat from Boca Chica</span></div>
+          <p><span data-es>Isla más visitada del Golfo. Cala Mia es boutique lodge con cabins eco. Caribbean-Pacific feel híbrido. Perfecto para Voyage format de 2 días: noche en Boca Brava + día snorkel Isla Gámez + sunset return.</span><span data-en>Most-visited island in the Gulf. Cala Mia is eco-cabin boutique lodge. Hybrid Caribbean-Pacific feel. Perfect for 2-day Voyage format: night at Boca Brava + snorkel day at Gámez Island + sunset return.</span></p>
+          <div class="contact"><span data-es>Familia Quintero CRM #21</span><span data-en>Quintero family CRM #21</span></div>
+        </div>
+      </div>
+
+      <div class="venue-card bg-gold">
+        <div class="venue-img">
+          <div class="region">David</div>
+          <div class="capacity">25-40 pax</div>
+          <div class="glyph">U</div>
+        </div>
+        <div class="venue-body">
+          <h4><span data-es>Hotel privado urbano David</span><span data-en>David urban private hotel</span></h4>
+          <div class="loc"><span data-es>David · capital comercial Chiriquí</span><span data-en>David · Chiriquí commercial capital</span></div>
+          <p><span data-es>Para Pop-ups urbanos en Chiriquí. Mejor base de talento + bartenders + production locals. Aeropuerto Enrique Malek (DAV) recibe vuelos domesticos Copa daily. Para post-evento landing antes de subir a Boquete.</span><span data-en>For urban Pop-ups in Chiriquí. Best local talent + bartenders + production base. Enrique Malek Airport (DAV) receives daily Copa domestic flights. For post-event landing before going up to Boquete.</span></p>
+          <div class="contact"><span data-es>Múltiples opciones · Hotel Ciudad de David, etc.</span><span data-en>Multiple options · Hotel Ciudad de David, etc.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 · VENUES BOCAS -->
+<section class="alt" id="venues-bocas">
+  <div class="container">
+    <div class="sec-num">04</div>
+    <h2 class="sec-title">
+      <span data-es>Venues Bocas del Toro · <em>Caribe, sobre el mar</em>.</span>
+      <span data-en>Bocas del Toro venues · <em>Caribbean, over the sea</em>.</span>
+    </h2>
+    <p class="sec-sub">
+      <span data-es>Bocas tiene 9 islas principales — solo nos importan 3 para Sora: <strong>Isla Colón</strong> (Bocas Town, aeropuerto, vida nocturna), <strong>Isla Bastimentos</strong> (Red Frog Beach, Wizard Beach, surf), <strong>Isla Carenero</strong> (cerca de Bocas Town, fácil acceso lancha). El secreto del éxito en Bocas es la lancha logistics — todos los movimientos son agua. Aliado clave: Julián (CRM) + su familia de capitanes de lanchas.</span>
+      <span data-en>Bocas has 9 main islands — only 3 matter for Sora: <strong>Isla Colón</strong> (Bocas Town, airport, nightlife), <strong>Isla Bastimentos</strong> (Red Frog Beach, Wizard Beach, surf), <strong>Isla Carenero</strong> (near Bocas Town, easy lancha access). Success in Bocas is all about lancha logistics — every movement is by water. Key ally: Julián (CRM) + his family of lancha captains.</span>
+    </p>
+
+    <div class="grid">
+
+      <div class="venue-card bg-rose">
+        <div class="venue-img">
+          <div class="region">Isla Bastimentos</div>
+          <div class="capacity">20-50 pax</div>
+          <div class="glyph">R</div>
+        </div>
+        <div class="venue-body">
+          <h4>Red Frog Beach Island Resort</h4>
+          <div class="loc"><span data-es>Bastimentos · 10 min lancha Bocas Town</span><span data-en>Bastimentos · 10 min boat from Bocas Town</span></div>
+          <p><span data-es>El destino #1 luxury de Bocas. Villas + jungle village + private beach + marina + watersports. <strong>La Rosa Beach Club</strong> (Turtle Beach views) y <strong>The Point Restaurant</strong> (en Red Frog Beach) son ambos privatizables. Marina hurricane-free. Ideal para Festival format o multi-noche Hosted Weekend grande.</span><span data-en>Bocas's #1 luxury destination. Villas + jungle village + private beach + marina + watersports. <strong>La Rosa Beach Club</strong> (Turtle Beach views) and <strong>The Point Restaurant</strong> (on Red Frog Beach) both privatizable. Hurricane-free marina. Ideal for Festival format or larger multi-night Hosted Weekend.</span></p>
+          <div class="contact">+507 6347-5252 · reservations@redfrogbeach.com</div>
+        </div>
+      </div>
+
+      <div class="venue-card bg-gold">
+        <div class="venue-img">
+          <div class="region">Isla Bastimentos</div>
+          <div class="capacity">8-18 pax</div>
+          <div class="glyph">J</div>
+        </div>
+        <div class="venue-body">
+          <h4>Jungle Village (Red Frog)</h4>
+          <div class="loc"><span data-es>Bastimentos · Balinese-style hilltop</span><span data-en>Bastimentos · Balinese-style hilltop</span></div>
+          <p><span data-es>One/two-bedroom units estilo Bali en colina con vistas Caribe. Pool privado + palapa. Monos colgando ocasionalmente. Diseño IBUKU-influenced (los mismos arquitectos detrás de Bocas Bali). Perfecto para Hosted Weekend pequeño-mediano con vibe tropical-spiritual.</span><span data-en>Bali-style one/two-bedroom units on a hill with Caribbean views. Private pool + palapa. Occasional monkeys swinging by. IBUKU-influenced design (same architects behind Bocas Bali). Perfect for small-mid Hosted Weekend with tropical-spiritual vibe.</span></p>
+          <div class="contact">redfrogbungalows.com</div>
+        </div>
+      </div>
+
+      <div class="venue-card bg-rose">
+        <div class="venue-img">
+          <div class="region">Isla Colón</div>
+          <div class="capacity">12-24 pax</div>
+          <div class="glyph">C</div>
+        </div>
+        <div class="venue-body">
+          <h4>La Coralina Island House</h4>
+          <div class="loc"><span data-es>Isla Colón · frente a Paunch Beach surf spot</span><span data-en>Isla Colón · facing Paunch Beach surf spot</span></div>
+          <p><span data-es>Resort de lujo Balinese-style. Pool grande con vista al surf de Paunch. Rooms privadas + casas individuales en renta. Diseño espectacular, photogenic. Ideal para Festival una noche o Hosted Weekend que quiere vibe Bali-pero-Panamá.</span><span data-en>Balinese-style luxury resort. Large pool overlooking Paunch surf. Private rooms + individual homes available. Spectacular, photogenic design. Ideal for one-night Festival or Hosted Weekend wanting Bali-but-Panama vibe.</span></p>
+          <div class="contact">lacoralinabocas.com</div>
+        </div>
+      </div>
+
+      <div class="venue-card bg-moss">
+        <div class="venue-img">
+          <div class="region">Isla Colón</div>
+          <div class="capacity">8-12 pax</div>
+          <div class="glyph">S</div>
+        </div>
+        <div class="venue-body">
+          <h4>Saigon Bay Bed &amp; Breakfast</h4>
+          <div class="loc"><span data-es>Saigon Bay · over-the-sea · 4 bedrooms</span><span data-en>Saigon Bay · over-the-sea · 4 bedrooms</span></div>
+          <p><span data-es>4 bedroom hotel sobre el mar. Authentic Caribbean. Mezcla cultural con población local (música en fines de semana, especialmente Feria del Mar en septiembre). Perfecto para Voyage stop o Pop-up íntimo. Acceso muy fácil a Bocas Town centro.</span><span data-en>4-bedroom over-the-sea hotel. Authentic Caribbean. Cultural blend with local population (music on weekends, especially Feria del Mar in September). Perfect for Voyage stop or intimate Pop-up. Very easy access to downtown Bocas Town.</span></p>
+          <div class="contact">saigonbaybnb.com</div>
+        </div>
+      </div>
+
+      <div class="venue-card bg-blue">
+        <div class="venue-img">
+          <div class="region">Isla Colón</div>
+          <div class="capacity">25-50 pax</div>
+          <div class="glyph">P</div>
+        </div>
+        <div class="venue-body">
+          <h4>Paunch Beach Club</h4>
+          <div class="loc"><span data-es>Paunch · surf beachside venue</span><span data-en>Paunch · surf beachside venue</span></div>
+          <p><span data-es>Beach club hidden gem cerca de Paunch surf spot. Espacio outdoor + restaurante cubierto. Live music + post-surf cocktails. Privatizable para Festivals. Es el "cool" lugar de Isla Colón sin ser pretentious.</span><span data-en>Hidden-gem beach club near Paunch surf spot. Outdoor space + covered restaurant. Live music + post-surf cocktails. Privatizable for Festivals. The "cool" Isla Colón place without being pretentious.</span></p>
+          <div class="contact"><span data-es>Vía Saigon Bay network</span><span data-en>Via Saigon Bay network</span></div>
+        </div>
+      </div>
+
+      <div class="venue-card bg-rose">
+        <div class="venue-img">
+          <div class="region">Bocas Bali</div>
+          <div class="capacity">12-30 pax</div>
+          <div class="glyph">B</div>
+        </div>
+        <div class="venue-body">
+          <h4>Bocas Bali (IBUKU design)</h4>
+          <div class="loc"><span data-es>Isla Solarte · treehouses sobre mar</span><span data-en>Solarte Island · over-water treehouses</span></div>
+          <p><span data-es>El boutique resort más photogenic del Caribe panameño. Diseñado por IBUKU (los mismos de Bali). Treehouses sobre el mar + jungle. Premium pricing pero el venue solo justifica todo el costo del evento. Ideal para Festival o Hosted Weekend signature de alto nivel.</span><span data-en>Panama Caribbean's most photogenic boutique resort. Designed by IBUKU (same as Bali). Over-water treehouses + jungle. Premium pricing but the venue alone justifies the whole event cost. Ideal for signature high-tier Festival or Hosted Weekend.</span></p>
+          <div class="contact">bocasbali.com</div>
+        </div>
+      </div>
+
+      <div class="venue-card bg-gold">
+        <div class="venue-img">
+          <div class="region">Lancha</div>
+          <div class="capacity">8-14 pax</div>
+          <div class="glyph">L</div>
+        </div>
+        <div class="venue-body">
+          <h4>Red Frog Watersports · charter fleet</h4>
+          <div class="loc"><span data-es>IGY Marina Red Frog · fleet completa</span><span data-en>IGY Marina Red Frog · full fleet</span></div>
+          <p><span data-es>Para Voyage format. Boats charter, jet skis, sailing, snorkeling, fishing, sunset cruises. Salidas privadas desde marina protegida. Operación profesional + seguros + capitanes licenciados. Aliado obligado para cualquier evento Voyage en Bocas.</span><span data-en>For Voyage format. Boat charters, jet skis, sailing, snorkeling, fishing, sunset cruises. Private departures from protected marina. Professional operation + insurance + licensed captains. Obligatory ally for any Bocas Voyage.</span></p>
+          <div class="contact">redfrogwatersports.com</div>
+        </div>
+      </div>
+
+      <div class="venue-card bg-moss">
+        <div class="venue-img">
+          <div class="region">Cayo Zapatilla</div>
+          <div class="capacity">10-30 pax</div>
+          <div class="glyph">Z</div>
+        </div>
+        <div class="venue-body">
+          <h4>Cayo Zapatilla · isla pública</span></h4>
+          <div class="loc"><span data-es>Parque Nacional Isla Bastimentos · daytime only</span><span data-en>Bastimentos National Park · daytime only</span></div>
+          <p><span data-es>Las dos islas más fotogénicas del Caribe panameño. Pertenecen al Parque Nacional — no se puede pernoctar, pero para almuerzo-snorkel-sunset de Voyage es insuperable. Coordinación con MiAmbiente para permits + lancha logistics + catering carry-in. White sand, water perfecto, palmeras.</span><span data-en>The two most photogenic islands in Panamanian Caribbean. National Park property — no overnight, but for a Voyage lunch-snorkel-sunset it's unbeatable. Coordinate with MiAmbiente for permits + lancha logistics + carry-in catering. White sand, perfect water, palm trees.</span></p>
+          <div class="contact"><span data-es>Permits MiAmbiente · Julián network</span><span data-en>MiAmbiente permits · Julián network</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 · PARTNERSHIPS -->
+<section id="alianzas">
+  <div class="container">
+    <div class="sec-num">05</div>
+    <h2 class="sec-title">
+      <span data-es>Alianzas · <em>partners, promoters, canales</em>.</span>
+      <span data-en>Partnerships · <em>partners, promoters, channels</em>.</span>
+    </h2>
+    <p class="sec-sub">
+      <span data-es>Sora no opera solo — depende de un network de partners locales (venues, fixers, capitanes), promoters/concierge para invitaciones cuando expandimos guest pool, y "amplificadores" con audiencias propias (influencers Panamá, agencies internacionales, hoteles boutique). Aquí los nombres concretos para empezar.</span>
+      <span data-en>Sora doesn't operate alone — it depends on a network of local partners (venues, fixers, captains), promoters/concierge for invitations when we expand guest pool, and "amplifiers" with their own audiences (Panama influencers, international agencies, boutique hotels). Concrete names to start with below.</span>
+    </p>
+
+    <h3 class="sub-title"><span data-es>Promoters / VIP concierge — Panama City</span><span data-en>Promoters / VIP concierge — Panama City</span></h3>
+
+    <div class="grid">
+      <div class="card">
+        <span class="badge gold"><span data-es>Promoter VIP</span><span data-en>VIP promoter</span></span>
+        <h4>Highlife Panama</h4>
+        <div class="role"><span data-es>Tantalo Grey Goose VIP section · fixer master</span><span data-en>Tantalo Grey Goose VIP section · master fixer</span></div>
+        <p><span data-es>El operador VIP más activo del Casco Viejo. Toman over la Grey Goose section en Tantalo + tienen líneas con todos los rooftops. Para Pop-ups en PA City son aliados obligados — pueden conseguir tables, mesas reservadas, DJ slots last-minute. Comisión estándar ~10-15% del bar.</span><span data-en>Most active VIP operator in Casco Viejo. They take over the Grey Goose section at Tantalo + have lines with every rooftop. Obligatory ally for PA City Pop-ups — can secure tables, reservations, last-minute DJ slots. Standard commission ~10-15% of bar.</span></p>
+        <div class="meta"><strong>highlifepanama.com</strong></div>
+      </div>
+
+      <div class="card">
+        <span class="badge"><span data-es>Concierge</span><span data-en>Concierge</span></span>
+        <h4>Your Concierge in Panama</h4>
+        <div class="role"><span data-es>VIP transport + tables + chauffeur + customización completa</span><span data-en>VIP transport + tables + chauffeur + full customization</span></div>
+        <p><span data-es>Concierge ejecutivo de PA. Útil para los socios cuando vienen invitados internacionales que requieren end-to-end fixer (no solo evento sino transport, hotel, restaurant bookings, day activities). Backup a Highlife.</span><span data-en>PA's executive concierge. Useful for international guests requiring end-to-end fixer (not just event but transport, hotel, restaurant bookings, day activities). Highlife backup.</span></p>
+        <div class="meta"><strong>yourconciergeinpanama.com</strong></div>
+      </div>
+
+      <div class="card">
+        <span class="badge"><span data-es>Rooftop líder</span><span data-en>Top rooftop</span></span>
+        <h4>Tantalo Hotel</h4>
+        <div class="role"><span data-es>El rooftop que define Casco Viejo · weekly programming</span><span data-en>The rooftop defining Casco Viejo · weekly programming</span></div>
+        <p><span data-es>Martes Artes Martes · Miércoles Latin Night · Jueves Ladies Night · Vie-Sáb-Dom DJ mixes. Para Pop-ups es el venue #1 — más visible, más diversidad de crowd. Reservas con anticipación. Pueden privatizar la rooftop entera por noche premium.</span><span data-en>Tue Artes Martes · Wed Latin Night · Thu Ladies Night · Fri-Sat-Sun DJ mixes. For Pop-ups it's the #1 venue — most visible, most diverse crowd. Book in advance. They privatize the full rooftop for a premium night.</span></p>
+      </div>
+
+      <div class="card">
+        <span class="badge"><span data-es>Rooftop · vista 360°</span><span data-en>Rooftop · 360° view</span></span>
+        <h4>Sama Sky Lounge</h4>
+        <div class="role"><span data-es>Vistas panorámicas más espectaculares del Casco</span><span data-en>Most spectacular panoramic views of Casco</span></div>
+        <p><span data-es>El rooftop con la mejor "golden hour" del Casco. Vista 360° de la bahía. Crowd mix turistas + locales bien. Tabla + bottle service estándar. Para Pop-up con foco sunset/photo content es la elección.</span><span data-en>Casco's best "golden hour" rooftop. 360° bay view. Good tourist + local crowd mix. Standard table + bottle service. For sunset/photo-content Pop-ups, the choice.</span></p>
+      </div>
+
+      <div class="card">
+        <span class="badge gold"><span data-es>Casa Casco</span><span data-en>Casa Casco</span></span>
+        <h4>Casa Casco</h4>
+        <div class="role"><span data-es>Rooftop exclusivo · "who's who" Panamá</span><span data-en>Exclusive rooftop · Panama's "who's who"</span></div>
+        <p><span data-es>El más high-class del Casco. Old-world elegance + modern style. Bottle service de alto nivel. Aquí se encuentra la oligarquía joven + ejecutivos. Para signature Pop-ups de Sora apuntando al cluster oligárquico = first choice.</span><span data-en>The Casco's most high-class. Old-world elegance + modern style. High-end bottle service. Young oligarchy + executives gather here. For Sora signature Pop-ups targeting the oligarchic cluster = first choice.</span></p>
+      </div>
+
+      <div class="card">
+        <span class="badge"><span data-es>Techno</span><span data-en>Techno</span></span>
+        <h4>Biergarten Panama</h4>
+        <div class="role"><span data-es>Open-air · cervezas artesanales · international DJs techno</span><span data-en>Open-air · craft beers · international techno DJs</span></div>
+        <p><span data-es>Para fans de techno. Open-air pub que en noches/weekends transforma a club con DJs internacionales. Vibe alternativo al Casco-rooftop standard. Útil cuando queremos algo "underground" pero seguro.</span><span data-en>For techno fans. Open-air pub that transforms to a club with international DJs on nights/weekends. Alternative vibe to standard Casco-rooftop. Useful when we want "underground" but safe.</span></p>
+      </div>
+    </div>
+
+    <h3 class="sub-title"><span data-es>Fixers locales Chiriquí + Bocas</span><span data-en>Local fixers Chiriquí + Bocas</span></h3>
+
+    <div class="grid">
+      <div class="card">
+        <span class="badge gold"><span data-es>★ CRM #1</span><span data-en>★ CRM #1</span></span>
+        <h4>Belgico</h4>
+        <div class="role"><span data-es>Real estate + venue access · Chiriquí + Bocas</span><span data-en>Real estate + venue access · Chiriquí + Bocas</span></div>
+        <p><span data-es>Cubre real estate de Chiriquí + Bocas. Conoce dueños de villas + finca owners + hot springs operators. Es el primer punto para cualquier venue off-market. Comisión finder estándar 5-8% del rental.</span><span data-en>Covers Chiriquí + Bocas real estate. Knows villa owners + finca owners + hot springs operators. First point for any off-market venue. Standard finder commission 5-8% of rental.</span></p>
+      </div>
+
+      <div class="card">
+        <span class="badge gold"><span data-es>★ Bocas</span><span data-en>★ Bocas</span></span>
+        <h4>Julián + familia</h4>
+        <div class="role"><span data-es>Bocas del Toro · 5 captains · real estate + business</span><span data-en>Bocas del Toro · 5 captains · real estate + business</span></div>
+        <p><span data-es>Nuestro hombre clave en Bocas. Real estate + otros negocios. Su esposa tiene familia de 5 capitanes de lanchas — esto resuelve TODA la logística Voyage en Bocas. Comisión negociable, partnership de largo plazo.</span><span data-en>Our key Bocas man. Real estate + other businesses. His wife has a family of 5 lancha captains — this solves ALL Bocas Voyage logistics. Negotiable commission, long-term partnership.</span></p>
+      </div>
+
+      <div class="card">
+        <span class="badge"><span data-es>Charter pesado</span><span data-en>Heavy charter</span></span>
+        <h4>Red Frog Watersports</h4>
+        <div class="role">IGY Marina · <span data-es>profesional · licenciado</span><span data-en>professional · licensed</span></div>
+        <p><span data-es>Cuando necesitamos boats de mayor capacidad o un trato más formal (insurance documented, captain pro). Más caro que red Julián pero perfecto para eventos con invitadas internacionales que esperan vibe Mediterranean.</span><span data-en>When we need larger-capacity boats or more formal arrangement (insurance documented, pro captain). Pricier than Julián's network but perfect for events with international guests expecting Mediterranean vibe.</span></p>
+      </div>
+
+      <div class="card">
+        <span class="badge"><span data-es>Boquete</span><span data-en>Boquete</span></span>
+        <h4>Vallejos + Mainor</h4>
+        <div class="role"><span data-es>5 hermanos + 1 amigo · construcción + producción</span><span data-en>5 brothers + 1 friend · construction + production</span></div>
+        <p><span data-es>Equipo La Compañía en Boquete. Mismos hermanos que harán Bajo Mono compound. Para eventos pueden manejar instalación temporal (escenarios, lighting, deck building, decor), mantenimiento de la venue, troubleshooting. Trusted, in-house.</span><span data-en>La Compañía's Boquete team. Same brothers who'll build the Bajo Mono compound. For events they can handle temporary install (stages, lighting, deck building, decor), venue maintenance, troubleshooting. Trusted, in-house.</span></p>
+      </div>
+
+      <div class="card">
+        <span class="badge"><span data-es>Boquete</span><span data-en>Boquete</span></span>
+        <h4>Fátima Rosas</h4>
+        <div class="role"><span data-es>Boquete office · general fixer</span><span data-en>Boquete office · general fixer</span></div>
+        <p><span data-es>Su oficina en Boquete maneja todo lo logístico-administrativo local. Útil para coordinar suppliers, permits municipales, paperwork rapido.</span><span data-en>Her Boquete office handles all local logistics-admin. Useful for coordinating suppliers, municipal permits, rapid paperwork.</span></p>
+      </div>
+
+      <div class="card">
+        <span class="badge"><span data-es>Real estate sourcing</span><span data-en>Real estate sourcing</span></span>
+        <h4>Plinio Montenegro + <span data-es>madre</span><span data-en>mother</span></h4>
+        <div class="role"><span data-es>Off-market venues · connections owner-direct</span><span data-en>Off-market venues · owner-direct connections</span></div>
+        <p><span data-es>Para venues no-listadas (casa de familia, finca privada, casa de playa privada). Acceso a inventario que ni Airbnb ni Belgico tienen. Ideal para Hosted Weekend exclusivo donde nadie ha hecho un evento antes.</span><span data-en>For unlisted venues (family home, private finca, private beach house). Access to inventory neither Airbnb nor Belgico has. Ideal for exclusive Hosted Weekend where nobody has done an event before.</span></p>
+      </div>
+    </div>
+
+    <h3 class="sub-title"><span data-es>Amplificadores · canales con audiencia propia</span><span data-en>Amplifiers · channels with their own audiences</span></h3>
+
+    <div class="grid">
+      <div class="card">
+        <span class="badge gold"><span data-es>Influencers PA</span><span data-en>PA influencers</span></span>
+        <h4><span data-es>Influencers turismo Panamá</span><span data-en>Panama tourism influencers</span></h4>
+        <div class="role">@visitpanama · @descubrepanama · @boquetepanama</div>
+        <p><span data-es>Para Festival format que queremos amplificar. Invitar 2-3 influencers panameños con 50K+ seguidores. Trade: experiencia gratis + photo/video access. No mention transactional — orgánico. Ellos hacen 3-5 posts orgánicos durante el weekend.</span><span data-en>For Festival format we want to amplify. Invite 2-3 Panamanian influencers with 50K+ followers. Trade: free experience + photo/video access. No transactional mention — organic. They produce 3-5 organic posts during the weekend.</span></p>
+      </div>
+
+      <div class="card">
+        <span class="badge"><span data-es>Hoteles boutique partners</span><span data-en>Boutique hotel partners</span></span>
+        <h4>Bocas Bali · The Haven · Finca Lerida</h4>
+        <div class="role"><span data-es>Sus listas de huéspedes son perfect audience</span><span data-en>Their guest lists are perfect audience</span></div>
+        <p><span data-es>Estos hoteles tienen guest databases con perfil ideal Sora (luxury, wellness, international). Partnership: co-eventos donde sus huéspedes son invitados, ellos promueven internamente. Win-win cross-promotion.</span><span data-en>These hotels have guest databases with ideal Sora profile (luxury, wellness, international). Partnership: co-events where their guests are invited, they promote internally. Win-win cross-promotion.</span></p>
+      </div>
+
+      <div class="card">
+        <span class="badge"><span data-es>Press internacional</span><span data-en>International press</span></span>
+        <h4>Condé Nast Traveler · AFAR · T+L</h4>
+        <div class="role"><span data-es>Para Festivals signature · prensa especializada lifestyle</span><span data-en>For signature Festivals · specialized lifestyle press</span></div>
+        <p><span data-es>1 Festival al año debe ser cubierto por press internacional. Invitar un journalist + producir con calidad de spread editorial. ROI inmediato (no) — el ROI es brand equity multi-año.</span><span data-en>1 Festival/year should get international press coverage. Invite a journalist + produce with editorial-spread quality. Immediate ROI: no — the ROI is multi-year brand equity.</span></p>
+      </div>
+
+      <div class="card">
+        <span class="badge"><span data-es>Newsroom Panama</span><span data-en>Newsroom Panama</span></span>
+        <h4>Newsroom Panama (EN)</h4>
+        <div class="role"><span data-es>Audiencia expat internacional · english-first</span><span data-en>Expat international audience · English-first</span></div>
+        <p><span data-es>Para Festival + Pop-up coverage de tipo "event happened, mythology generated." Su audiencia es exactamente el demográfico que queremos atraer a Sora future events.</span><span data-en>For Festival + Pop-up coverage of the "event happened, mythology generated" type. Their audience is exactly the demographic we want to attract to future Sora events.</span></p>
+      </div>
+
+      <div class="card">
+        <span class="badge"><span data-es>Yendri network</span><span data-en>Yendri network</span></span>
+        <h4>Yendri Zamora · <span data-es>moda</span><span data-en>fashion</span></h4>
+        <div class="role"><span data-es>Yendri Zamora moda · style guide Sora</span><span data-en>Yendri Zamora fashion · Sora style guide</span></div>
+        <p><span data-es>Yendri lidera el aspecto de moda/estilo de Sora. Dress code curation, looks signature por evento, lookbook fotográfico. Su network de modelos y estilistas en Boquete + David se activa para cada evento.</span><span data-en>Yendri leads the fashion/style aspect of Sora. Dress code curation, signature looks per event, photographic lookbook. Her network of models and stylists in Boquete + David activates for every event.</span></p>
+      </div>
+
+      <div class="card">
+        <span class="badge"><span data-es>Internacional</span><span data-en>International</span></span>
+        <h4>Surf Camp + Yoga Retreat operators</h4>
+        <div class="role"><span data-es>USA · México · Costa Rica</span><span data-en>USA · México · Costa Rica</span></div>
+        <p><span data-es>Operadores que ya envían crowds de mujeres internacionales a CR. Approach: Sora como add-on a sus paquetes (Costa Rica retreat + Panama weekend extension). Comisión por referral. Plug-and-play distribución internacional.</span><span data-en>Operators already sending international female crowds to CR. Approach: Sora as add-on to their packages (Costa Rica retreat + Panama weekend extension). Referral commission. Plug-and-play international distribution.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 · TALENT -->
+<section class="alt" id="talento">
+  <div class="container">
+    <div class="sec-num">06</div>
+    <h2 class="sec-title">
+      <span data-es>Talento · <em>música, performance, hosts</em>.</span>
+      <span data-en>Talent · <em>music, performance, hosts</em>.</span>
+    </h2>
+    <p class="sec-sub">
+      <span data-es>La música hace o rompe un evento. Sora opera con un roster fijo de 8-12 DJs + músicos + performers para variar el feel evento-por-evento sin perder consistencia. Importante: en Panamá los mejores DJs no tienen residencias fijas — operan por evento. Tener una relación pre-pago con 3-4 DJs garantiza acceso priority.</span>
+      <span data-en>Music makes or breaks an event. Sora operates with a fixed roster of 8-12 DJs + musicians + performers to vary the feel event-to-event without losing consistency. Important: in Panama the best DJs don't have fixed residencies — they operate per-event. Pre-paid relationships with 3-4 DJs guarantee priority access.</span>
+    </p>
+
+    <div class="grid">
+      <div class="card">
+        <span class="badge gold"><span data-es>DJ tier internacional</span><span data-en>International tier DJ</span></span>
+        <h4><span data-es>1-2 DJs internacionales fly-in</span><span data-en>1-2 international fly-in DJs</span></h4>
+        <div class="role">House · Afro · Melodic Techno</div>
+        <p><span data-es>Para Festivals signature: traer 1 DJ tier internacional (Damian Lazarus, Black Coffee circles, Tale of Us level). Costos: $15-40K + travel + acomodación. Solo 1-2 veces al año, pero genera el mythology que sustenta los Pop-ups locales.</span><span data-en>For signature Festivals: bring 1 international tier DJ (Damian Lazarus, Black Coffee circles, Tale of Us level). Cost: $15-40K + travel + lodging. Only 1-2 times/year, but generates mythology sustaining local Pop-ups.</span></p>
+      </div>
+
+      <div class="card">
+        <span class="badge"><span data-es>DJs Panamá top</span><span data-en>Panama top DJs</span></span>
+        <h4><span data-es>Roster DJs locales</span><span data-en>Local DJ roster</span></h4>
+        <div class="role"><span data-es>Identificar via Instagram Tantalo/Selina/Euforia</span><span data-en>Identify via Instagram Tantalo/Selina/Euforia</span></div>
+        <p><span data-es>Los DJs locales top circulan event-by-event. Mejor approach: ir a 4-5 noches de Casco en 2 meses, identificar 3-4 que resuenan con Sora vibe, propuesta de retainer mensual + bookings prioritarios. ~$1.5-3K por set local.</span><span data-en>Top local DJs circulate event-by-event. Best approach: attend 4-5 Casco nights over 2 months, identify 3-4 resonating with Sora vibe, propose monthly retainer + priority bookings. ~$1.5-3K per local set.</span></p>
+      </div>
+
+      <div class="card">
+        <span class="badge"><span data-es>Live music acústica</span><span data-en>Live acoustic music</span></span>
+        <h4><span data-es>Trio acústico · sunset</span><span data-en>Acoustic trio · sunset</span></h4>
+        <div class="role"><span data-es>Guitarra + cajón + voz</span><span data-en>Guitar + cajón + vocals</span></div>
+        <p><span data-es>Para sunset cocktails / cena. Soft music, jazz-bossa-flamenco mix, voz femenina. $400-800/set 2-3 horas. Boquete + David tienen 5-6 trios activos — Yendri network identifica los mejores.</span><span data-en>For sunset cocktails / dinner. Soft music, jazz-bossa-flamenco mix, female vocal. $400-800/set 2-3 hours. Boquete + David have 5-6 active trios — Yendri's network identifies the best.</span></p>
+      </div>
+
+      <div class="card">
+        <span class="badge"><span data-es>Sound healing</span><span data-en>Sound healing</span></span>
+        <h4><span data-es>Sound bath practitioner</span><span data-en>Sound bath practitioner</span></h4>
+        <div class="role"><span data-es>Crystal bowls · gong · voz</span><span data-en>Crystal bowls · gong · vocals</span></div>
+        <p><span data-es>Para Retreat morning sessions. Identificar 2-3 practitioners en Boquete + David. $300-500/session 1 hora. Diferenciador para Sora Retreat format.</span><span data-en>For Retreat morning sessions. Identify 2-3 practitioners in Boquete + David. $300-500/session 1 hour. Differentiator for Sora Retreat format.</span></p>
+      </div>
+
+      <div class="card">
+        <span class="badge"><span data-es>Cacao ceremony</span><span data-en>Cacao ceremony</span></span>
+        <h4><span data-es>Sabia Ngäbe-Buglé</span><span data-en>Ngäbe-Buglé elder</span></h4>
+        <div class="role"><span data-es>Ceremonia auténtica · cacao Comarca direct</span><span data-en>Authentic ceremony · cacao direct from Comarca</span></div>
+        <p><span data-es>Para Retreat format más profundo. Sabia tradicional Ngäbe (mujer mayor 50+) que lidera ceremonia con cacao ceremonial de la Comarca. Compensación fair + invitación a quedarse el weekend. La autenticidad de esto es invaluable — no confundir con "cacao ceremony" stylized de Tulum.</span><span data-en>For deeper Retreat format. Traditional Ngäbe elder (woman 50+) leads ceremony with Comarca ceremonial cacao. Fair compensation + invitation to stay the weekend. The authenticity is invaluable — don't confuse with stylized Tulum "cacao ceremony."</span></p>
+      </div>
+
+      <div class="card">
+        <span class="badge"><span data-es>Performer</span><span data-en>Performer</span></span>
+        <h4><span data-es>Aerial silk / fire performer</span><span data-en>Aerial silk / fire performer</span></h4>
+        <div class="role"><span data-es>Para Festival peak moment</span><span data-en>For Festival peak moment</span></div>
+        <p><span data-es>Performance breve (15 min) en el peak del Festival night. Aerial silk si hay altura, fire performer si hay outdoor space + sand/grass. Wow-moment para photo content. PA City + David tienen 3-4 performers profesionales licenciados con insurance propio.</span><span data-en>Brief performance (15 min) at Festival night peak. Aerial silk if there's height, fire performer if outdoor space + sand/grass. Wow moment for photo content. PA City + David have 3-4 pro performers with their own insurance.</span></p>
+      </div>
+
+      <div class="card">
+        <span class="badge"><span data-es>Hosts internos</span><span data-en>Internal hosts</span></span>
+        <h4><span data-es>4-6 socios La Compañía</span><span data-en>4-6 La Compañía partners</span></h4>
+        <div class="role"><span data-es>El "talento" más importante</span><span data-en>The most important "talent"</span></div>
+        <p><span data-es>Los socios mismos son el talento principal. La calidad de hosting (warmth, presence, attention to each guest, conversation skill) define si el evento es legendario o "estuvo ok." Pre-event briefing 2 horas el viernes pm es OBLIGATORIO antes de cada Hosted Weekend.</span><span data-en>The partners themselves are the main talent. Hosting quality (warmth, presence, attention to each guest, conversation skill) decides if the event is legendary or "was ok." 2-hour Friday-PM pre-event briefing is MANDATORY before each Hosted Weekend.</span></p>
+      </div>
+
+      <div class="card">
+        <span class="badge"><span data-es>Photo + video</span><span data-en>Photo + video</span></span>
+        <h4><span data-es>Photographer + videographer</span><span data-en>Photographer + videographer</span></h4>
+        <div class="role"><span data-es>2 personas · documentary style</span><span data-en>2 people · documentary style</span></div>
+        <p><span data-es>Photographer (still) + videographer (motion) durante todo el evento. Style documentary, no posed. Trabajan con consent forms firmados. Deliver: 200-400 photos + 1 video 3-min editado en 14 días. $1.5-3K por evento.</span><span data-en>Photographer (stills) + videographer (motion) throughout event. Documentary style, no posed shots. Work with signed consent forms. Deliver: 200-400 photos + 1 edited 3-min video in 14 days. $1.5-3K per event.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 · F&B -->
+<section id="fyb">
+  <div class="container">
+    <div class="sec-num">07</div>
+    <h2 class="sec-title">
+      <span data-es>Food &amp; Beverage · <em>la firma Sora</em>.</span>
+      <span data-en>Food &amp; Beverage · <em>the Sora signature</em>.</span>
+    </h2>
+    <p class="sec-sub">
+      <span data-es>F&amp;B es donde Sora se diferencia más claramente. Cero buffets genéricos. Cero "international cuisine." Cada evento tiene cocina diseñada por chef partner + bebidas con identidad panameña. La idea: convertir las tradiciones líquidas y culinarias de PA en experiencias premium memorable.</span>
+      <span data-en>F&amp;B is where Sora differentiates most clearly. Zero generic buffets. Zero "international cuisine." Every event has cuisine designed by a chef partner + drinks with Panamanian identity. The idea: turn PA's liquid and culinary traditions into memorable premium experiences.</span>
+    </p>
+
+    <h3 class="sub-title"><span data-es>Cócteles signature Sora · base Seco Herrerano</span><span data-en>Sora signature cocktails · Seco Herrerano base</span></h3>
+    <p style="color: var(--ink-2); font-size: 14px; line-height: 1.6; max-width: 760px; margin-bottom: 14px;">
+      <span data-es>Seco Herrerano (Varela Hermanos, Pesé, fundado 1908) es el espíritu nacional de Panamá — triple-destilado de caña, 80 proof, perfil neutro con notas vainilla/coco. Sora abraza Seco como base de toda su línea de cocteles. Ningún Bombay ni Tito's — solo lo nuestro, elevado.</span>
+      <span data-en>Seco Herrerano (Varela Hermanos, Pesé, founded 1908) is Panama's national spirit — triple-distilled cane, 80 proof, neutral profile with vanilla/coconut notes. Sora embraces Seco as the base of its entire cocktail line. No Bombay, no Tito's — only ours, elevated.</span>
+    </p>
+
+    <div class="grid">
+
+      <div class="cocktail">
+        <div class="glass">🥃</div>
+        <h5>Chichita Panamá</h5>
+        <div class="roots"><span data-es>Tradicional · oeste de Panamá</span><span data-en>Traditional · western Panama</span></div>
+        <div class="ingredients">Seco Herrerano · <span data-es>jugo de toronja</span><span data-en>grapefruit juice</span> · <span data-es>jugo de piña</span><span data-en>pineapple juice</span> · <span data-es>hielo</span><span data-en>ice</span></div>
+        <p><span data-es>El cóctel-padre de la región Chiriquí. Refrescante, tropical, perfecto para arrival drinks. Partes iguales toronja + piña + 1 shot Seco.</span><span data-en>The grandfather cocktail of Chiriquí region. Refreshing, tropical, perfect for arrival drinks. Equal parts grapefruit + pineapple + 1 shot Seco.</span></p>
+      </div>
+
+      <div class="cocktail">
+        <div class="glass">🥃</div>
+        <h5>Chombolin</h5>
+        <div class="roots"><span data-es>Moderno · Hooch Panama</span><span data-en>Modern · Hooch Panama</span></div>
+        <div class="ingredients">Seco <span data-es>infusionado con</span><span data-en>infused with</span> ají chombo · <span data-es>hibisco · lima · toronja</span><span data-en>hibiscus · lime · grapefruit</span></div>
+        <p><span data-es>El cóctel signature moderno. Picante + floral + cítrico. Seco infusionado por una semana con ají chombo (chile panameño endémico). Statement drink para Festival.</span><span data-en>The modern signature cocktail. Spicy + floral + citrus. Seco infused for one week with ají chombo (endemic Panamanian pepper). Statement drink for Festival.</span></p>
+      </div>
+
+      <div class="cocktail">
+        <div class="glass">🥃</div>
+        <h5>Seco Sour</h5>
+        <div class="roots"><span data-es>Modern classic</span><span data-en>Modern classic</span></div>
+        <div class="ingredients">Seco · sour mix · angostura · <span data-es>clara de huevo opcional</span><span data-en>optional egg white</span></div>
+        <p><span data-es>Versión panameña del Pisco Sour. Tangy, balanced, perfecto antes de cena. La clara de huevo le da textura silky para foto.</span><span data-en>Panamanian version of Pisco Sour. Tangy, balanced, perfect before dinner. Egg white gives silky texture for photo.</span></p>
+      </div>
+
+      <div class="cocktail">
+        <div class="glass">🥃</div>
+        <h5>Seco con Coco</h5>
+        <div class="roots"><span data-es>Tradicional</span><span data-en>Traditional</span></div>
+        <div class="ingredients">Seco · <span data-es>leche de coco fresca</span><span data-en>fresh coconut milk</span> · <span data-es>hielo · canela</span><span data-en>ice · cinnamon</span></div>
+        <p><span data-es>Variante de Seco con Vaca pero con leche de coco. Sweet, creamy, postre líquido. Perfecto para final de cena o post-fiesta.</span><span data-en>Variant of Seco con Vaca with coconut milk. Sweet, creamy, liquid dessert. Perfect after dinner or post-party.</span></p>
+      </div>
+
+      <div class="cocktail">
+        <div class="glass">🥃</div>
+        <h5>Boquete Sunset</h5>
+        <div class="roots"><span data-es>Original Sora</span><span data-en>Sora original</span></div>
+        <div class="ingredients">Seco · <span data-es>café Geisha frío</span><span data-en>cold Geisha coffee</span> · <span data-es>vainilla · espuma de leche</span><span data-en>vanilla · milk foam</span></div>
+        <p><span data-es>Cóctel signature Sora. Mezcla Seco con cold-brew Geisha de finca local + vainilla + espuma. Single-origin coffee + national spirit + bosque nuboso aesthetic. Photo-perfect.</span><span data-en>Sora signature cocktail. Blends Seco with cold-brew Geisha from local finca + vanilla + foam. Single-origin coffee + national spirit + cloud-forest aesthetic. Photo-perfect.</span></p>
+      </div>
+
+      <div class="cocktail">
+        <div class="glass">🥃</div>
+        <h5>Bocas Breeze</h5>
+        <div class="roots"><span data-es>Original Sora · Caribe</span><span data-en>Sora original · Caribbean</span></div>
+        <div class="ingredients">Seco · <span data-es>maracuyá fresco</span><span data-en>fresh passionfruit</span> · <span data-es>lima · menta · sal de mar</span><span data-en>lime · mint · sea salt</span></div>
+        <p><span data-es>Cóctel para Voyage en Bocas. Maracuyá local + sal de mar Sambolan + menta del jardín. Tropical pero con balance — no over-sweet como un piña colada.</span><span data-en>Cocktail for Bocas Voyage. Local passionfruit + Sambolan sea salt + garden mint. Tropical but balanced — not over-sweet like a piña colada.</span></p>
+      </div>
+
+      <div class="cocktail">
+        <div class="glass">🥃</div>
+        <h5>Ron Ponche (<span data-es>diciembre</span><span data-en>December</span>)</h5>
+        <div class="roots"><span data-es>Tradicional · Navidad PA</span><span data-en>Traditional · PA Christmas</span></div>
+        <div class="ingredients"><span data-es>Leche condensada · leche evaporada · nuez moscada · vainilla · ron</span><span data-en>Condensed milk · evaporated milk · nutmeg · vanilla · rum</span></div>
+        <p><span data-es>Para eventos en diciembre. Bebida cultural de Navidad/Año Nuevo en PA. Cremoso, especiado, con un toque de huevo si se hace tradicional. Postre-cóctel.</span><span data-en>For December events. Cultural Christmas/New Year drink in PA. Creamy, spiced, with a touch of egg if made traditionally. Dessert-cocktail.</span></p>
+      </div>
+
+      <div class="cocktail">
+        <div class="glass">🍷</div>
+        <h5><span data-es>Carta de vinos</span><span data-en>Wine list</span></h5>
+        <div class="roots"><span data-es>Selectiva · Argentina · Chile · España</span><span data-en>Curated · Argentina · Chile · Spain</span></div>
+        <div class="ingredients">Catena Zapata · Concha y Toro · <span data-es>vinos boutique LatAm</span><span data-en>boutique LatAm wines</span></div>
+        <p><span data-es>Cero vinos USA/Australia (alineamiento LatAm). 6 botellas curadas por evento: 2 blancos, 2 tintos, 1 rosé, 1 espumoso. Importador via Casa Blanca o equivalente PA.</span><span data-en>Zero US/Australian wines (LatAm alignment). 6 curated bottles per event: 2 whites, 2 reds, 1 rosé, 1 sparkling. Importer via Casa Blanca or PA equivalent.</span></p>
+      </div>
+    </div>
+
+    <h3 class="sub-title" style="margin-top: 30px;"><span data-es>Comida · estilos curados por evento</span><span data-en>Food · styles curated per event</span></h3>
+
+    <div class="grid">
+      <div class="card">
+        <span class="badge moss"><span data-es>Hosted Weekend</span><span data-en>Hosted Weekend</span></span>
+        <h4><span data-es>Cocina de finca</span><span data-en>Farm-to-table</span></h4>
+        <p><span data-es>Chef local + ingredients de fincas circundantes. Cena formal sábado: 5 cursos paired con vinos. Brunch dominical relajado en exterior. Snacks durante el día (tablas de queso panameño, frutas tropicales, panes artesanales).</span><span data-en>Local chef + ingredients from surrounding farms. Formal Saturday dinner: 5 courses paired with wines. Relaxed outdoor Sunday brunch. Daytime snacks (Panamanian cheese boards, tropical fruits, artisan breads).</span></p>
+      </div>
+      <div class="card">
+        <span class="badge moss">Festival</span>
+        <h4><span data-es>Street food premium</span><span data-en>Premium street food</span></h4>
+        <p><span data-es>Estaciones de comida con identidad panameña pero elevadas: ceviche stations (corvina + camarón), carimañolas gourmet, tamales chiricanos, sushi station si hay budget. Cero plated dinners en Festival — todo es grazing.</span><span data-en>Food stations with Panamanian identity but elevated: ceviche stations (corvina + shrimp), gourmet carimañolas, Chiricano tamales, sushi station if budget allows. No plated dinners at Festival — everything is grazing.</span></p>
+      </div>
+      <div class="card">
+        <span class="badge moss">Retreat</span>
+        <h4><span data-es>Plant-forward · biodinámico</span><span data-en>Plant-forward · biodynamic</span></h4>
+        <p><span data-es>80% vegetal + 20% pescado local + huevos finca + queso fresco. Cero industrial. Café Geisha siempre. Cacao Ngäbe ceremonial mañanas. Pan de sourdough horneado on-site.</span><span data-en>80% plant + 20% local fish + farm eggs + fresh cheese. Zero industrial. Always Geisha coffee. Ngäbe ceremonial cacao mornings. Sourdough bread baked on-site.</span></p>
+      </div>
+      <div class="card">
+        <span class="badge moss">Voyage</span>
+        <h4><span data-es>Seafood Caribe</span><span data-en>Caribbean seafood</span></h4>
+        <p><span data-es>Pescado fresco del día, langosta si es temporada, octopus, ceviche on-the-go. Rice and beans coco style (técnica afro-Caribe). Plantains. Cocina abierta en deck del barco para presentación. Whisky + cerveza fría como complement.</span><span data-en>Fresh fish of the day, lobster in season, octopus, ceviche on-the-go. Coconut rice and beans (Afro-Caribbean technique). Plantains. Open kitchen on boat deck for presentation. Whisky + cold beer as complement.</span></p>
+      </div>
+      <div class="card">
+        <span class="badge moss">Pop-up</span>
+        <h4><span data-es>Tapas + sharing plates</span><span data-en>Tapas + sharing plates</span></h4>
+        <p><span data-es>Para Pop-ups en rooftops. Sharing plates que pasan circulando. Croquetas, empanadas, mini-arepas, brochetas. No sit-down dinner — mantener movimiento.</span><span data-en>For rooftop Pop-ups. Circulating sharing plates. Croquetas, empanadas, mini-arepas, brochettes. No sit-down dinner — keep movement.</span></p>
+      </div>
+      <div class="card">
+        <span class="badge gold"><span data-es>Chef en residencia</span><span data-en>Chef in residence</span></span>
+        <h4><span data-es>Reclutar 2 chefs partner</span><span data-en>Recruit 2 partner chefs</span></h4>
+        <p><span data-es>1 chef en Boquete (focus farm-to-table) + 1 chef en Bocas (focus Caribbean seafood). Retainer mensual + bookings prioritarios. Permite consistencia de menu Sora + escalar producción. Identificar via Slow Food Panamá network o restaurantes premium PA City con chefs de provincia.</span><span data-en>1 chef in Boquete (farm-to-table focus) + 1 chef in Bocas (Caribbean seafood focus). Monthly retainer + priority bookings. Enables Sora menu consistency + scaled production. Identify via Slow Food Panama network or PA City premium restaurants with provincial chefs.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 · ITINERARIES -->
+<section class="alt" id="itinerarios">
+  <div class="container">
+    <div class="sec-num">08</div>
+    <h2 class="sec-title">
+      <span data-es>Itinerarios 2-días · <em>tres ejemplos vivos</em>.</span>
+      <span data-en>2-day itineraries · <em>three live examples</em>.</span>
+    </h2>
+    <p class="sec-sub">
+      <span data-es>Tres itinerarios reales pre-diseñados — un Hosted Weekend en Boquete, un Voyage en Bocas, un Retreat en Volcán. Cada uno especifica timing minuto-a-minuto, locación, persona responsable. La diferencia entre evento legendario y caos es exactamente este nivel de planificación.</span>
+      <span data-en>Three real pre-designed itineraries — a Hosted Weekend in Boquete, a Voyage in Bocas, a Retreat in Volcán. Each specifies minute-by-minute timing, location, responsible person. The difference between legendary event and chaos is exactly this level of planning.</span>
+    </p>
+
+    <div class="itinerary">
+      <div class="itin-name">Itinerario A · <em>Hosted Weekend · Boquete</em></div>
+      <div class="itin-tag"><span data-es>Villa privada · 4 socios + 18 invitadas · 48h</span><span data-en>Private villa · 4 partners + 18 guests · 48h</span></div>
+
+      <div class="itin-day">
+        <h5><span data-es>Viernes · arrival + grounding</span><span data-en>Friday · arrival + grounding</span></h5>
+        <div class="itin-row"><div class="time">12:00</div><div class="desc"><strong>Equipo Sora</strong> <span data-es>llega a la villa. Setup decor, music check, F&amp;B prep, welcome bags por cuarto.</span><span data-en>arrives at villa. Decor setup, music check, F&amp;B prep, welcome bags per room.</span></div></div>
+        <div class="itin-row"><div class="time">14:00</div><div class="desc"><strong><span data-es>Socios</span><span data-en>Partners</span></strong> <span data-es>arrive. Pre-event briefing 2 horas: guest list review, hosting roles, sensitive topics, emergency protocols.</span><span data-en>arrive. 2-hour pre-event briefing: guest list review, hosting roles, sensitive topics, emergency protocols.</span></div></div>
+        <div class="itin-row"><div class="time">16:30</div><div class="desc"><strong><span data-es>Invitadas</span><span data-en>Guests</span></strong> <span data-es>llegan en oleadas (David airport pickup organizado). Check-in personal en porch, welcome cocktail (Chichita), tour rápido de la villa.</span><span data-en>arrive in waves (David airport pickup organized). Personal check-in on porch, welcome cocktail (Chichita), quick villa tour.</span></div></div>
+        <div class="itin-row"><div class="time">19:00</div><div class="desc"><strong>Sunset cocktails</strong> <span data-es>en deck. Cocteles signature + tabla de quesos + acoustic trio en soft.</span><span data-en>on deck. Signature cocktails + cheese board + soft acoustic trio.</span></div></div>
+        <div class="itin-row"><div class="time">20:30</div><div class="desc"><strong><span data-es>Cena familiar</span><span data-en>Family dinner</span></strong> <span data-es>· 4 cursos chef-driven, mesas redondas mixed (no boys vs girls). Charlas curadas, no toasts formales.</span><span data-en>· 4-course chef-driven, mixed round tables (not boys vs girls). Curated conversation, no formal toasts.</span></div></div>
+        <div class="itin-row"><div class="time">23:00</div><div class="desc"><strong>DJ set</strong> <span data-es>en deck (soft-medium volume). Mood: house-melodic. Fire pit afuera para conversación off-music.</span><span data-en>on deck (soft-medium volume). Mood: house-melodic. Outdoor fire pit for off-music conversation.</span></div></div>
+        <div class="itin-row"><div class="time">02:00</div><div class="desc"><strong><span data-es>Wind-down</span><span data-en>Wind-down</span></strong> <span data-es>· música acústica suave, snacks late-night, opción de wind-down en hot tub.</span><span data-en>· soft acoustic music, late-night snacks, optional hot tub wind-down.</span></div></div>
+      </div>
+
+      <div class="itin-day">
+        <h5><span data-es>Sábado · adventure day + signature night</span><span data-en>Saturday · adventure day + signature night</span></h5>
+        <div class="itin-row"><div class="time">09:00</div><div class="desc"><strong>Brunch</strong> <span data-es>· buffet de finca al aire libre. Café Geisha. Eggs, frutas, panes, ceviche brunch-style.</span><span data-en>· outdoor finca buffet. Geisha coffee. Eggs, fruits, breads, brunch-style ceviche.</span></div></div>
+        <div class="itin-row"><div class="time">11:00</div><div class="desc"><strong><span data-es>Excursión Bajo Mono</span><span data-en>Bajo Mono excursion</span></strong> <span data-es>· caminata Pipeline Trail (3h round-trip) o hot springs Caldera (relax option). Self-selecting.</span><span data-en>· Pipeline Trail hike (3h round-trip) or Caldera hot springs (relax option). Self-selecting.</span></div></div>
+        <div class="itin-row"><div class="time">15:00</div><div class="desc"><strong><span data-es>Regreso villa</span><span data-en>Return to villa</span></strong> <span data-es>· duchas, siesta opcional, snacks ligeros.</span><span data-en>· showers, optional nap, light snacks.</span></div></div>
+        <div class="itin-row"><div class="time">17:30</div><div class="desc"><strong><span data-es>Sunset golden hour</span><span data-en>Sunset golden hour</span></strong> <span data-es>· cocktails on deck. Photo session opcional con photographer.</span><span data-en>· deck cocktails. Optional photo session with photographer.</span></div></div>
+        <div class="itin-row"><div class="time">19:30</div><div class="desc"><strong><span data-es>Cena signature</span><span data-en>Signature dinner</span></strong> <span data-es>· 5 cursos paired. Dress code "elegant casual." Es la cena que define el weekend.</span><span data-en>· 5-course paired. "Elegant casual" dress code. The dinner defining the weekend.</span></div></div>
+        <div class="itin-row"><div class="time">22:00</div><div class="desc"><strong><span data-es>★ Fiesta principal</span><span data-en>★ Main party</span></strong> <span data-es>· DJ headliner set 4 horas. Performance breve (aerial silk o fire) en mid-set. Bar 100% open. Performance ends → DJ continues.</span><span data-en>· DJ headliner 4-hour set. Brief performance (aerial silk or fire) mid-set. Bar 100% open. Performance ends → DJ continues.</span></div></div>
+        <div class="itin-row"><div class="time">03:00</div><div class="desc"><strong>Afterhours</strong> <span data-es>· música suave, candle-lit, conversaciones largas. Equipo Sora monitorea hidratación + transport readiness.</span><span data-en>· soft music, candle-lit, long conversations. Sora team monitors hydration + transport readiness.</span></div></div>
+      </div>
+
+      <div class="itin-day">
+        <h5><span data-es>Domingo · slow morning + farewell</span><span data-en>Sunday · slow morning + farewell</span></h5>
+        <div class="itin-row"><div class="time">10:00</div><div class="desc"><strong>Brunch slow</strong> <span data-es>· no-rush, hangover-friendly. Bloody Marys + huevos. Conversación reflexiva sobre el weekend.</span><span data-en>· no-rush, hangover-friendly. Bloody Marys + eggs. Reflective conversation about the weekend.</span></div></div>
+        <div class="itin-row"><div class="time">12:30</div><div class="desc"><strong>Farewell ceremony</strong> <span data-es>· cacao circle 30 min, círculo grupal, una palabra de cada persona. Photos grupales final.</span><span data-en>· 30-min cacao circle, group circle, one word per person. Final group photos.</span></div></div>
+        <div class="itin-row"><div class="time">13:30</div><div class="desc"><strong>Departure</strong> <span data-es>· transport organizado a David airport en oleadas escalonadas. Gift bag per invitada.</span><span data-en>· organized transport to David airport in staggered waves. Gift bag per guest.</span></div></div>
+      </div>
+    </div>
+
+    <div class="itinerary">
+      <div class="itin-name">Itinerario B · <em>Voyage · Bocas archipelago</em></div>
+      <div class="itin-tag"><span data-es>Lancha + isla · 5 socios + 9 invitadas · 36h</span><span data-en>Lancha + island · 5 partners + 9 guests · 36h</span></div>
+
+      <div class="itin-day">
+        <h5><span data-es>Sábado · open water + island lodge</span><span data-en>Saturday · open water + island lodge</span></h5>
+        <div class="itin-row"><div class="time">09:00</div><div class="desc"><strong><span data-es>Bocas Town marina</span><span data-en>Bocas Town marina</span></strong> <span data-es>· check-in + safety briefing por capitán + life jacket fitting + welcome cocktails (Bocas Breeze).</span><span data-en>· check-in + captain safety briefing + life jacket fitting + welcome cocktails (Bocas Breeze).</span></div></div>
+        <div class="itin-row"><div class="time">10:00</div><div class="desc"><strong>Salida</strong> <span data-es>· hacia Hospital Point (snorkel coral spot). Música, drinks, sunscreen rounds.</span><span data-en>· toward Hospital Point (coral snorkel spot). Music, drinks, sunscreen rounds.</span></div></div>
+        <div class="itin-row"><div class="time">11:30</div><div class="desc"><strong>Snorkel</strong> <span data-es>· 90 min en Hospital Point. Pez tropical + corales. Guías + insurance dive masters.</span><span data-en>· 90 min at Hospital Point. Tropical fish + corals. Guides + insured dive masters.</span></div></div>
+        <div class="itin-row"><div class="time">13:30</div><div class="desc"><strong>Almuerzo</strong> <span data-es>· playa privada Crawl Cay. Mesa montada en arena. Pescado fresco asado + ceviche + rice and beans.</span><span data-en>· Crawl Cay private beach. Table set up in the sand. Grilled fresh fish + ceviche + rice and beans.</span></div></div>
+        <div class="itin-row"><div class="time">15:30</div><div class="desc"><strong>Cayo Zapatilla</strong> <span data-es>· la playa más fotogénica. Photo session. Drinks + relax. Music underwater speaker via float.</span><span data-en>· most photogenic beach. Photo session. Drinks + relax. Music via floating underwater speaker.</span></div></div>
+        <div class="itin-row"><div class="time">17:30</div><div class="desc"><strong>Sunset cruise</strong> <span data-es>· hacia Isla Bastimentos. Cocktails + acoustic playlist + chill mood. Photo dorado opportunity.</span><span data-en>· toward Bastimentos Island. Cocktails + acoustic playlist + chill mood. Golden-photo opportunity.</span></div></div>
+        <div class="itin-row"><div class="time">18:30</div><div class="desc"><strong>Llegada Red Frog</strong> <span data-es>· check-in en Jungle Village (Bali-style hilltop). Duchas, change, time off.</span><span data-en>· check-in at Jungle Village (Bali-style hilltop). Showers, change, downtime.</span></div></div>
+        <div class="itin-row"><div class="time">20:30</div><div class="desc"><strong><span data-es>Cena en La Rosa Beach Club</span><span data-en>Dinner at La Rosa Beach Club</span></strong> <span data-es>· vista Turtle Beach. 4 cursos seafood-forward. DJ acústico soft.</span><span data-en>· Turtle Beach view. 4 courses seafood-forward. Soft acoustic DJ.</span></div></div>
+        <div class="itin-row"><div class="time">23:00</div><div class="desc"><strong><span data-es>Party en The Point Restaurant</span><span data-en>Party at The Point Restaurant</span></strong> <span data-es>· DJ set 4 horas. Bonfire en playa adjacente.</span><span data-en>· 4-hour DJ set. Bonfire on adjacent beach.</span></div></div>
+      </div>
+
+      <div class="itin-day">
+        <h5><span data-es>Domingo · slow morning + return</span><span data-en>Sunday · slow morning + return</span></h5>
+        <div class="itin-row"><div class="time">09:30</div><div class="desc"><strong>Brunch</strong> <span data-es>· en deck del Jungle Village. Monos visitando.</span><span data-en>· on Jungle Village deck. Monkeys visiting.</span></div></div>
+        <div class="itin-row"><div class="time">11:00</div><div class="desc"><strong><span data-es>Optional: surf lesson o yoga</span><span data-en>Optional: surf lesson or yoga</span></strong> <span data-es>· Wizard Beach o Red Frog Beach.</span><span data-en>· Wizard Beach or Red Frog Beach.</span></div></div>
+        <div class="itin-row"><div class="time">13:00</div><div class="desc"><strong><span data-es>Lancha back</span><span data-en>Lancha back</span></strong> <span data-es>a Bocas Town. Last cocktail.</span><span data-en>to Bocas Town. Last cocktail.</span></div></div>
+        <div class="itin-row"><div class="time">14:30</div><div class="desc"><strong>Departure</strong> <span data-es>· Bocas airport (BOC) o terrestre a Almirante + bus a David.</span><span data-en>· Bocas airport (BOC) or land to Almirante + bus to David.</span></div></div>
+      </div>
+    </div>
+
+    <div class="itinerary">
+      <div class="itin-name">Itinerario C · <em>Retreat · Volcán/Cerro Punta</em></div>
+      <div class="itin-tag"><span data-es>Wellness · 4 socios + 14 invitadas · 72h</span><span data-en>Wellness · 4 partners + 14 guests · 72h</span></div>
+
+      <div class="itin-day">
+        <h5><span data-es>Viernes · arrival + sunset cacao</span><span data-en>Friday · arrival + sunset cacao</span></h5>
+        <div class="itin-row"><div class="time">15:00-17:00</div><div class="desc"><strong>Arrival</strong> <span data-es>· bienvenida con elixir de bienvenida (no alcohol day 1).</span><span data-en>· welcome elixir (no alcohol day 1).</span></div></div>
+        <div class="itin-row"><div class="time">18:00</div><div class="desc"><strong>Cacao ceremony</strong> <span data-es>· liderada por sabia Ngäbe en círculo. 90 min. Intención del weekend grupal.</span><span data-en>· led by Ngäbe elder in circle. 90 min. Group weekend intention.</span></div></div>
+        <div class="itin-row"><div class="time">20:00</div><div class="desc"><strong><span data-es>Cena ligera plant-forward</span><span data-en>Light plant-forward dinner</span></strong> <span data-es>· 3 cursos, sin alcohol. Té de hierbas. Bed early.</span><span data-en>· 3 courses, no alcohol. Herbal tea. Bed early.</span></div></div>
+      </div>
+
+      <div class="itin-day">
+        <h5><span data-es>Sábado · deep work + signature evening</span><span data-en>Saturday · deep work + signature evening</span></h5>
+        <div class="itin-row"><div class="time">07:00</div><div class="desc"><strong>Yoga</strong> <span data-es>· vinyasa morning practice 75 min. Outdoor con vista Volcán Barú.</span><span data-en>· morning vinyasa practice 75 min. Outdoor with Volcán Barú view.</span></div></div>
+        <div class="itin-row"><div class="time">08:30</div><div class="desc"><strong>Breakfast</strong> <span data-es>· slow buffet plant-based + café Geisha + journal time.</span><span data-en>· slow plant-based buffet + Geisha coffee + journal time.</span></div></div>
+        <div class="itin-row"><div class="time">10:00</div><div class="desc"><strong>Hike</strong> <span data-es>· cascadas Bajo Mono o sendero Los Quetzales. 3h moderate.</span><span data-en>· Bajo Mono waterfalls or Los Quetzales trail. 3h moderate.</span></div></div>
+        <div class="itin-row"><div class="time">14:00</div><div class="desc"><strong>Almuerzo</strong> <span data-es>· outdoor, comida finca, lenta.</span><span data-en>· outdoor, farm food, slow.</span></div></div>
+        <div class="itin-row"><div class="time">16:00</div><div class="desc"><strong>Sound bath</strong> <span data-es>· 75 min sound healing con crystal bowls + gong. Mantas + almohadas.</span><span data-en>· 75 min sound healing with crystal bowls + gong. Blankets + pillows.</span></div></div>
+        <div class="itin-row"><div class="time">18:30</div><div class="desc"><strong>Sunset cocktails</strong> <span data-es>· primer cóctel del weekend. Acoustic trio.</span><span data-en>· first cocktail of the weekend. Acoustic trio.</span></div></div>
+        <div class="itin-row"><div class="time">20:00</div><div class="desc"><strong><span data-es>Cena signature</span><span data-en>Signature dinner</span></strong> <span data-es>· 5 cursos paired. Conversación profunda.</span><span data-en>· 5 paired courses. Deep conversation.</span></div></div>
+        <div class="itin-row"><div class="time">22:30</div><div class="desc"><strong><span data-es>DJ set acústico-melódico</span><span data-en>Acoustic-melodic DJ set</span></strong> <span data-es>· 3 horas. Más Bonobo que Solomun. Vibe es elegante, no rave.</span><span data-en>· 3 hours. More Bonobo than Solomun. Vibe is elegant, not rave.</span></div></div>
+      </div>
+
+      <div class="itin-day">
+        <h5><span data-es>Domingo · integration + farewell</span><span data-en>Sunday · integration + farewell</span></h5>
+        <div class="itin-row"><div class="time">09:00</div><div class="desc"><strong>Slow brunch</strong> <span data-es>· conversación reflexiva grupal facilitada.</span><span data-en>· facilitated reflective group conversation.</span></div></div>
+        <div class="itin-row"><div class="time">11:00</div><div class="desc"><strong>Closing circle</strong> <span data-es>· cada participante comparte un takeaway. Gift bags + farewell.</span><span data-en>· each participant shares one takeaway. Gift bags + farewell.</span></div></div>
+        <div class="itin-row"><div class="time">12:30</div><div class="desc"><strong>Departure</strong></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 09 · GUESTS -->
+<section id="invitados">
+  <div class="container">
+    <div class="sec-num">09</div>
+    <h2 class="sec-title">
+      <span data-es>Invitados · <em>curaduría es todo</em>.</span>
+      <span data-en>Guests · <em>curation is everything</em>.</span>
+    </h2>
+    <p class="sec-sub">
+      <span data-es>La diferencia entre un evento legendario y uno olvidable es 80% la lista de invitados. Sora es selectivo deliberadamente — no por exclusión clasista, sino por densidad de relación. Cada invitada está allí por una razón clara: una conversación que enriquecerá al grupo, una vibe que complementará el formato, una historia que vale la pena escuchar. Aquí los criterios y el proceso.</span>
+      <span data-en>The difference between a legendary and forgettable event is 80% the guest list. Sora is deliberately selective — not by class exclusion, but by relationship density. Each guest is there for a clear reason: a conversation that will enrich the group, a vibe that complements the format, a story worth hearing. Here are the criteria and process.</span>
+    </p>
+
+    <h3 class="sub-title"><span data-es>El modelo de hosting · cómo funciona</span><span data-en>The hosting model · how it works</span></h3>
+    <p style="color: var(--ink-2); font-size: 14.5px; line-height: 1.65; max-width: 880px; margin-bottom: 20px;">
+      <span data-es>Sora opera con un modelo de hosting <strong>invitation-only, curado, no-transaccional</strong>. Los 4-6 socios de La Compañía son los anfitriones permanentes. Las invitadas son su círculo extendido (referencia personal directa) más, opcionalmente, invitadas vía hoteles partners o canales de amplificadores. Todas las invitadas son mayores de 21 (edad legal alcohol PA), todas conocen el contexto antes de aceptar, todas firman un guest agreement. <strong>Cero exchange financiero entre anfitriones e invitadas.</strong> Cero implicación transaccional. El modelo es: networking de calidad + experiencia inolvidable + hospitalidad de excelencia. Análogos legítimos: yacht weekends de Mediterranean, finca rentals de Tuscany, soho house guest events. Es hospitalidad privada, no club nocturno.</span>
+      <span data-en>Sora operates an <strong>invitation-only, curated, non-transactional</strong> hosting model. The 4-6 La Compañía partners are permanent hosts. Guests are their extended circle (direct personal referral), plus optionally invitees via partner hotels or amplifier channels. All guests are 21+ (PA legal alcohol age), all know the context before accepting, all sign a guest agreement. <strong>Zero financial exchange between hosts and guests.</strong> Zero transactional implication. The model is: quality networking + unforgettable experience + excellence hospitality. Legitimate analogues: Mediterranean yacht weekends, Tuscan finca rentals, Soho House guest events. It's private hospitality, not a nightclub.</span>
+    </p>
+
+    <div class="grid">
+      <div class="card">
+        <span class="badge gold"><span data-es>Criterio core</span><span data-en>Core criterion</span></span>
+        <h4><span data-es>Calidad de conversación</span><span data-en>Quality of conversation</span></h4>
+        <p><span data-es>¿Esta persona traerá una historia interesante, opinión sustantiva, o nueva perspectiva al grupo? Si la respuesta no es clara, no entra. Ser hermosa no es suficiente — ser hermosa + ser interesante es la barra.</span><span data-en>Will this person bring an interesting story, substantive opinion, or new perspective to the group? If the answer isn't clear, they don't make it. Beautiful is not enough — beautiful + interesting is the bar.</span></p>
+      </div>
+      <div class="card">
+        <span class="badge"><span data-es>Diversidad</span><span data-en>Diversity</span></span>
+        <h4><span data-es>Mix internacional + local</span><span data-en>International + local mix</span></h4>
+        <p><span data-es>Cada evento debe tener 50-60% locales (PA City, David, Boquete, Bocas) + 40-50% internacionales (USA, EU, otros LatAm). Esto evita monocultura y crea cross-pollination genuina.</span><span data-en>Each event should be 50-60% locals (PA City, David, Boquete, Bocas) + 40-50% international (US, EU, other LatAm). Avoids monoculture and creates genuine cross-pollination.</span></p>
+      </div>
+      <div class="card">
+        <span class="badge"><span data-es>Edad + vida fase</span><span data-en>Age + life stage</span></span>
+        <h4>25-42 <span data-es>años</span><span data-en>years</span></h4>
+        <p><span data-es>Sweet spot: mid-20s to early-40s. Profesionales con autonomía, sin obligaciones que les imposibiliten viajar un weekend. Mixed life phases (algunas solteras, algunas en relaciones, algunas madres jóvenes) crea conversaciones más ricas.</span><span data-en>Sweet spot: mid-20s to early-40s. Professionals with autonomy, no obligations preventing weekend travel. Mixed life phases (some single, some in relationships, some young mothers) creates richer conversations.</span></p>
+      </div>
+      <div class="card">
+        <span class="badge"><span data-es>Profesiones favorables</span><span data-en>Favorable professions</span></span>
+        <h4><span data-es>Founders · creativas · profesionales</span><span data-en>Founders · creatives · professionals</span></h4>
+        <p><span data-es>Founders de startups, artistas, escritoras, doctoras, lawyers, profesoras universitarias, consultoras, periodistas. Influencers OK con criterio (no Instagram-only). Modelos OK si tienen otra vida (modeling no es identidad única).</span><span data-en>Startup founders, artists, writers, doctors, lawyers, university professors, consultants, journalists. Influencers OK with discretion (no Instagram-only). Models OK if they have another life (modeling isn't sole identity).</span></p>
+      </div>
+      <div class="card">
+        <span class="badge red"><span data-es>Filtros obligatorios</span><span data-en>Required filters</span></span>
+        <h4><span data-es>Edad legal 21+ verificada</span><span data-en>Legal age 21+ verified</span></h4>
+        <p><span data-es>Ningún excepto. ID check al RSVP. Esto protege legalmente a Sora + La Compañía + venues. La diferencia entre "evento elegante" y "problema legal" es exactamente esta verificación.</span><span data-en>No exceptions. ID check at RSVP. Legally protects Sora + La Compañía + venues. The difference between "elegant event" and "legal problem" is exactly this verification.</span></p>
+      </div>
+      <div class="card">
+        <span class="badge red"><span data-es>Filtros obligatorios</span><span data-en>Required filters</span></span>
+        <h4><span data-es>Sin antecedentes públicos negativos</span><span data-en>No public negative record</span></h4>
+        <p><span data-es>Quick search público (LinkedIn + Google + Instagram). Filtros: no implicación documentada en disputas violentas, no escándalos públicos recientes, no perfil completamente vacío (zero footprint digital = red flag).</span><span data-en>Quick public search (LinkedIn + Google + Instagram). Filters: no documented violent disputes, no recent public scandals, no completely empty profile (zero digital footprint = red flag).</span></p>
+      </div>
+    </div>
+
+    <h3 class="sub-title" style="margin-top: 36px;"><span data-es>Proceso de invitación · 7 pasos</span><span data-en>Invitation process · 7 steps</span></h3>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th><span data-es>Paso</span><span data-en>Step</span></th>
+            <th><span data-es>Quién</span><span data-en>Who</span></th>
+            <th><span data-es>Timing</span><span data-en>Timing</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="gold">01</td><td><span data-es>Socio propone nombre a equipo Sora</span><span data-en>Partner proposes name to Sora team</span></td><td><span data-es>Cualquier socio</span><span data-en>Any partner</span></td><td>D-30</td></tr>
+          <tr><td class="gold">02</td><td><span data-es>Quick verification público (LinkedIn + Google + IG)</span><span data-en>Quick public verification (LinkedIn + Google + IG)</span></td><td>Sora ops</td><td>D-28</td></tr>
+          <tr><td class="gold">03</td><td><span data-es>Aprobación o veto por consenso socios</span><span data-en>Approval or veto by partner consensus</span></td><td><span data-es>Todos socios</span><span data-en>All partners</span></td><td>D-25</td></tr>
+          <tr><td class="gold">04</td><td><span data-es>Invitación personal por el socio referente (no por Sora directo)</span><span data-en>Personal invite by referring partner (not by Sora directly)</span></td><td><span data-es>Socio referente</span><span data-en>Referring partner</span></td><td>D-21</td></tr>
+          <tr><td class="gold">05</td><td><span data-es>Si acepta · ella recibe Welcome Pack Sora (logística + agreement)</span><span data-en>If yes · she receives Sora Welcome Pack (logistics + agreement)</span></td><td>Sora ops</td><td>D-14</td></tr>
+          <tr><td class="gold">06</td><td><span data-es>Guest Agreement firmado + ID upload + emergency contact</span><span data-en>Signed Guest Agreement + ID upload + emergency contact</span></td><td><span data-es>Invitada</span><span data-en>Guest</span></td><td>D-10</td></tr>
+          <tr><td class="gold">07</td><td><span data-es>Final RSVP confirmation + travel detail finalize</span><span data-en>Final RSVP confirmation + travel detail finalize</span></td><td>Sora ops</td><td>D-7</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p style="color: var(--ink-3); font-size: 13px; line-height: 1.6; margin-top: 18px; font-style: italic;">
+      <span data-es>* "D" = día del evento. El proceso de 30 días puede comprimirse a 14 días para repeat guests (perfil ya verificado), o extenderse a 60 días para invitadas internacionales que necesitan flights + visa coordination.</span>
+      <span data-en>* "D" = event day. The 30-day process can compress to 14 days for repeat guests (profile already verified), or extend to 60 days for international guests needing flights + visa coordination.</span>
+    </p>
+  </div>
+</section>
+
+<!-- 10 · PRECAUTIONS -->
+<section class="dark" id="precauciones">
+  <div class="container">
+    <div class="sec-num">10</div>
+    <h2 class="sec-title">
+      <span data-es>Precauciones · <em>lo no negociable</em>.</span>
+      <span data-en>Precautions · <em>the non-negotiables</em>.</span>
+    </h2>
+    <p class="sec-sub">
+      <span data-es>Sora opera con un nivel de cuidado legal/ético/operativo que rara vez se ve en eventos privados en Panamá. La razón es simple: un solo incidente mal manejado destruye la marca completa + a La Compañía + a todas las verticales asociadas. Estas precauciones no son sugerencias — son condiciones de existencia.</span>
+      <span data-en>Sora operates with a level of legal/ethical/operational care rarely seen in Panamanian private events. The reason is simple: one mishandled incident destroys the entire brand + La Compañía + all associated verticals. These precautions aren't suggestions — they're conditions of existence.</span>
+    </p>
+
+    <div class="precaution">
+      <h4><span data-es>Verificación de edad 21+</span><span data-en>21+ age verification</span> <small>LEGAL</small></h4>
+      <p><span data-es>Cada invitada presenta ID oficial al RSVP. Cero excepciones. La edad legal de alcohol en PA es 18, pero Sora opera con 21+ para alinear con expectativa de standard internacional + reducir liability. Esto se verifica antes del evento + se re-verifica si hay duda al check-in.</span><span data-en>Each guest presents official ID at RSVP. Zero exceptions. PA's legal alcohol age is 18, but Sora operates 21+ to align with international standard expectations + reduce liability. Verified pre-event + re-verified at check-in if doubt.</span></p>
+    </div>
+
+    <div class="precaution">
+      <h4><span data-es>Cero sustancias ilegales</span><span data-en>Zero illegal substances</span> <small>LEGAL</small></h4>
+      <p><span data-es>Solo alcohol (licenciado) y cannabis medicinal con prescripción (Ley 242/2021). Cero psilocibina, ayahuasca, MDMA, cocaína, etc — todas ilegales en PA. Política pública explícita en Guest Agreement. Staff Sora hace check de espacios pre + post evento. Una sola excepción puede destruir el negocio.</span><span data-en>Alcohol only (licensed) and medical cannabis with prescription (Law 242/2021). Zero psilocybin, ayahuasca, MDMA, cocaine, etc — all illegal in PA. Explicit public policy in Guest Agreement. Sora staff checks spaces pre + post event. One exception can destroy the business.</span></p>
+    </div>
+
+    <div class="precaution">
+      <h4><span data-es>Servicio de alcohol responsable</span><span data-en>Responsible alcohol service</span> <small>OPERACIONAL</small></h4>
+      <p><span data-es>Bartenders licenciados profesionales (no improvisados). Política "cut off" si invitada exhibe intoxicación severa. Agua + snacks disponibles permanentemente. Designated drivers / transport organizado para todos al final — nadie maneja. Naloxone kit on-site con staff entrenado.</span><span data-en>Licensed professional bartenders (no improvising). "Cut off" policy if guest shows severe intoxication. Water + snacks permanently available. Designated drivers / organized transport for everyone at end — nobody drives. On-site Naloxone kit with trained staff.</span></p>
+    </div>
+
+    <div class="precaution">
+      <h4><span data-es>Photo + video consent</span><span data-en>Photo + video consent</span> <small>LEGAL</small></h4>
+      <p><span data-es>Guest Agreement incluye consent específico photo/video + uso para portfolio Sora + redes sociales. Opción "no-public" para invitadas que prefieren privacidad — sus fotos solo en archivo privado, nunca en social. Photographer/videographer firma NDA + asignación de derechos.</span><span data-en>Guest Agreement includes specific photo/video consent + use for Sora portfolio + social media. "No-public" option for guests preferring privacy — their photos archived privately, never on social. Photographer/videographer signs NDA + rights assignment.</span></p>
+    </div>
+
+    <div class="precaution">
+      <h4><span data-es>Anti-trafficking policy explícita</span><span data-en>Explicit anti-trafficking policy</span> <small>LEGAL · ETICO</small></h4>
+      <p><span data-es>Política pública en website Sora + en Guest Agreement: Sora condena human trafficking en todas formas; reporta inmediatamente a autoridades cualquier sospecha; coopera con organizaciones internacionales anti-trafficking. Este statement protege a invitadas, a la marca, y deja claro el modelo (legitimate hospitality, not pretextual cover).</span><span data-en>Public policy on Sora website + Guest Agreement: Sora condemns human trafficking in all forms; immediately reports any suspicion to authorities; cooperates with international anti-trafficking organizations. This statement protects guests, the brand, and clarifies the model (legitimate hospitality, not pretextual cover).</span></p>
+    </div>
+
+    <div class="precaution">
+      <h4><span data-es>Code of Conduct para socios + staff</span><span data-en>Code of Conduct for partners + staff</span> <small>ETICO</small></h4>
+      <p><span data-es>Socios La Compañía y staff Sora siguen Code of Conduct firmado: no romantic/sexual approach a invitadas a menos que sea mutuo, gradual, y fuera del frame del evento; cero presión; respeto absoluto a "no"; cero comportamiento que pueda generar reclamo de hostigamiento. Violación = exclusión inmediata de Sora + posible expulsión La Compañía.</span><span data-en>La Compañía partners and Sora staff follow signed Code of Conduct: no romantic/sexual approach to guests unless mutual, gradual, and outside the event frame; zero pressure; absolute respect for "no"; zero behavior that could trigger harassment claims. Violation = immediate Sora exclusion + possible La Compañía expulsion.</span></p>
+    </div>
+
+    <div class="precaution">
+      <h4><span data-es>Insurance comprehensive</span><span data-en>Comprehensive insurance</span> <small>LEGAL · OPERACIONAL</small></h4>
+      <p><span data-es>Sora SA mantiene: <strong>(a)</strong> general liability $2M cobertura · <strong>(b)</strong> liquor liability $1M · <strong>(c)</strong> property damage hasta $500K · <strong>(d)</strong> event cancellation insurance · <strong>(e)</strong> medical/accident para todos los invitados durante el evento. Vía brokers locales conectados con CONEP network (Jaime Fernández conexión).</span><span data-en>Sora SA maintains: <strong>(a)</strong> $2M general liability · <strong>(b)</strong> $1M liquor liability · <strong>(c)</strong> property damage up to $500K · <strong>(d)</strong> event cancellation insurance · <strong>(e)</strong> medical/accident for all guests during event. Via local brokers connected to CONEP network (Jaime Fernández connection).</span></p>
+    </div>
+
+    <div class="precaution">
+      <h4><span data-es>Security on-site discreta pero presente</span><span data-en>Discreet but present on-site security</span> <small>OPERACIONAL</small></h4>
+      <p><span data-es>2-3 security profesionales en cada evento (más para Festival). NO visible-uniform style. NO armed. Background-checked. Coordinados con director PN local. Funciones: monitoring perimeter, transport coordination, medical first response, conflict de-escalation. Empresa: Stratos Security o equivalent.</span><span data-en>2-3 professional security at every event (more for Festival). NOT uniform-visible style. NOT armed. Background-checked. Coordinated with local PN director. Functions: perimeter monitoring, transport coordination, medical first response, conflict de-escalation. Provider: Stratos Security or equivalent.</span></p>
+    </div>
+
+    <div class="precaution">
+      <h4><span data-es>Medical kit + first responder en standby</span><span data-en>Medical kit + first responder on standby</span> <small>OPERACIONAL</small></h4>
+      <p><span data-es>Cada evento tiene: medical kit completo, EpiPens, Naloxone, AED (defibrillator portable), número directo de paramédico licenciado on-call. Si evento es en Bocas/remoto: paramédico físicamente on-site. Coordinación con Hospital Chiriquí (David) o Hospital Mae Lewis para escalation.</span><span data-en>Every event has: complete medical kit, EpiPens, Naloxone, AED (portable defibrillator), direct line to licensed paramedic on-call. If event in Bocas/remote: paramedic physically on-site. Coordinated with Hospital Chiriquí (David) or Mae Lewis for escalation.</span></p>
+    </div>
+
+    <div class="precaution">
+      <h4><span data-es>Background check de staff</span><span data-en>Staff background check</span> <small>OPERACIONAL</small></h4>
+      <p><span data-es>Toda persona contratada para evento (bartenders, chef helpers, drivers, security, cleaners) pasa background check via servicio profesional. Records de cada evento archivados 7 años. Esto previene problemas + simplifica investigación si surge incidente.</span><span data-en>Every person hired for an event (bartenders, chef helpers, drivers, security, cleaners) passes background check via professional service. Records archived 7 years per event. Prevents problems + simplifies investigation if incident arises.</span></p>
+    </div>
+
+    <div class="precaution">
+      <h4><span data-es>NDA + confidentialidad de invitados</span><span data-en>NDA + guest confidentiality</span> <small>LEGAL</small></h4>
+      <p><span data-es>Staff Sora + photographers + chefs + security firman NDA. Lista de invitadas nunca shared externamente. Photos sin consent específico nunca leaked. Confianza de invitadas en Sora viene de saber que su experiencia es completamente privada.</span><span data-en>Sora staff + photographers + chefs + security sign NDA. Guest list never shared externally. Photos without specific consent never leaked. Guest trust in Sora comes from knowing their experience is completely private.</span></p>
+    </div>
+
+    <div class="precaution">
+      <h4><span data-es>Permisos municipales + ATP + ANATI</span><span data-en>Municipal + ATP + ANATI permits</span> <small>LEGAL</small></h4>
+      <p><span data-es>Cada evento &gt;30 personas en venue privado fuera de hotel registrado: notificar alcaldía local 30 días antes. Eventos en parques nacionales (Cayo Zapatilla, Volcán Barú): permits MiAmbiente. Eventos vendidos como turismo: registro ATP. Bartender service: licencia Bar 1A.</span><span data-en>Every event &gt;30 people in private venue outside registered hotel: notify local mayor 30 days prior. National park events (Cayo Zapatilla, Volcán Barú): MiAmbiente permits. Tourism-sold events: ATP registration. Bartender service: 1A Bar license.</span></p>
+    </div>
+
+    <div class="precaution">
+      <h4><span data-es>Noise ordinance compliance</span><span data-en>Noise ordinance compliance</span> <small>OPERACIONAL</small></h4>
+      <p><span data-es>Boquete: música amplificada termina 2:00 AM por ordenanza municipal. Bocas: más relajado pero respect community (Saigon Bay area tiene población local cercana). En Festival/Hosted Weekend que requiere extender: notify alcaldía 7 días antes + acuerdo con vecinos cercanos (caso de queja, ya hay relación).</span><span data-en>Boquete: amplified music ends 2:00 AM per municipal ordinance. Bocas: more relaxed but respect community (Saigon Bay area has nearby local population). For Festival/Hosted Weekend requiring extension: notify mayor 7 days prior + agreement with close neighbors (in case of complaint, relationship already exists).</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- 11 · OPERATIONS -->
+<section id="operaciones">
+  <div class="container">
+    <div class="sec-num">11</div>
+    <h2 class="sec-title">
+      <span data-es>Operaciones · <em>el motor invisible</em>.</span>
+      <span data-en>Operations · <em>the invisible engine</em>.</span>
+    </h2>
+    <p class="sec-sub">
+      <span data-es>Lo que el invitado nunca ve. Sora opera con un team core de 4-5 personas full-time + extended network de freelancers por evento. La regla: por cada invitado visible, hay un staff person invisible. Aquí el organigrama operativo + checklists pre-evento.</span>
+      <span data-en>What the guest never sees. Sora operates with a 4-5 person full-time core team + extended freelancer network per event. The rule: for every visible guest, one invisible staff person. Operational org chart + pre-event checklists below.</span>
+    </p>
+
+    <h3 class="sub-title"><span data-es>Equipo core Sora · 5 roles</span><span data-en>Sora core team · 5 roles</span></h3>
+
+    <div class="grid">
+      <div class="card">
+        <span class="badge gold">01</span>
+        <h4><span data-es>Event Director</span><span data-en>Event Director</span></h4>
+        <p><span data-es>Lidera cada evento end-to-end. Conoce a cada invitada por nombre antes de llegar. Decide en tiempo real ajustes de programa. Final responsable de todo. Salario $50-80K + equity Sora.</span><span data-en>Leads each event end-to-end. Knows every guest by name before arrival. Real-time program decisions. Final responsibility. $50-80K + Sora equity.</span></p>
+      </div>
+      <div class="card">
+        <span class="badge gold">02</span>
+        <h4><span data-es>Producer / Logistics</span><span data-en>Producer / Logistics</span></h4>
+        <p><span data-es>Maneja todo el operativo: venue contracts, vendor coordination, transport, equipment, supplies. Es quien dice "yes" o "no" a cada gasto. $40-65K + equity.</span><span data-en>Handles all operations: venue contracts, vendor coordination, transport, equipment, supplies. The "yes" or "no" on every expense. $40-65K + equity.</span></p>
+      </div>
+      <div class="card">
+        <span class="badge gold">03</span>
+        <h4><span data-es>Guest Experience Lead</span><span data-en>Guest Experience Lead</span></h4>
+        <p><span data-es>Owner del journey de cada invitada desde RSVP hasta follow-up post-evento. Welcome Packs, agreement processing, ID verification, special requests (dietary, allergies, etc.). $35-55K + equity.</span><span data-en>Owns each guest's journey from RSVP to post-event follow-up. Welcome Packs, agreement processing, ID verification, special requests (dietary, allergies). $35-55K + equity.</span></p>
+      </div>
+      <div class="card">
+        <span class="badge gold">04</span>
+        <h4><span data-es>Brand + Content</span><span data-en>Brand + Content</span></h4>
+        <p><span data-es>Maneja branding Sora, social media (limitado y curado), photo/video direction, partnerships con press/influencers. Yendri Zamora puede liderar inicialmente. $40-60K + equity.</span><span data-en>Manages Sora branding, social media (limited and curated), photo/video direction, partnerships with press/influencers. Yendri Zamora can lead initially. $40-60K + equity.</span></p>
+      </div>
+      <div class="card">
+        <span class="badge gold">05</span>
+        <h4>F&amp;B + Cultural Director</h4>
+        <p><span data-es>Owner de menús, cocktail program, partnerships con chefs, sourcing de ingredients premium locales, cultural elements (Ngäbe ceremony, cacao sourcing). Part-time inicialmente. $30-50K + equity.</span><span data-en>Owner of menus, cocktail program, chef partnerships, premium local ingredient sourcing, cultural elements (Ngäbe ceremony, cacao sourcing). Part-time initially. $30-50K + equity.</span></p>
+      </div>
+      <div class="card">
+        <span class="badge">Network</span>
+        <h4><span data-es>+ Freelancers por evento</span><span data-en>+ Per-event freelancers</span></h4>
+        <p><span data-es>Por cada evento: 2 bartenders, 3 servers, 1 chef + 2 cooks, 1 photographer + 1 videographer, 2-3 security, 1 paramédico, 2 drivers, 1 sound technician. Total ~15-20 personas. Rotación de roster verificado.</span><span data-en>Per event: 2 bartenders, 3 servers, 1 chef + 2 cooks, 1 photographer + 1 videographer, 2-3 security, 1 paramedic, 2 drivers, 1 sound technician. Total ~15-20 people. Rotation from verified roster.</span></p>
+      </div>
+    </div>
+
+    <h3 class="sub-title" style="margin-top: 36px;"><span data-es>Checklist pre-evento · 30 días countdown</span><span data-en>Pre-event checklist · 30-day countdown</span></h3>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>D-</th>
+            <th><span data-es>Acción</span><span data-en>Action</span></th>
+            <th><span data-es>Responsable</span><span data-en>Owner</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="section"><td colspan="3">D-30 to D-21 · Setup</td></tr>
+          <tr><td class="gold">D-30</td><td><span data-es>Venue contract firmado + 50% deposit</span><span data-en>Venue contract signed + 50% deposit</span></td><td>Producer</td></tr>
+          <tr><td class="gold">D-30</td><td><span data-es>Guest list propuesta inicial</span><span data-en>Initial proposed guest list</span></td><td>Event Director</td></tr>
+          <tr><td class="gold">D-28</td><td><span data-es>Verificación + aprobación guest list</span><span data-en>Guest list verification + approval</span></td><td>All partners</td></tr>
+          <tr><td class="gold">D-25</td><td><span data-es>Vendor contracts (chef, DJ, bartenders, security, photographers)</span><span data-en>Vendor contracts (chef, DJ, bartenders, security, photographers)</span></td><td>Producer</td></tr>
+          <tr><td class="gold">D-21</td><td><span data-es>Invitations sent personally por cada socio</span><span data-en>Invitations sent personally by each partner</span></td><td>Partners</td></tr>
+          <tr class="section"><td colspan="3">D-20 to D-11 · Confirmations</td></tr>
+          <tr><td class="gold">D-20</td><td><span data-es>Permits municipales aplicados</span><span data-en>Municipal permits applied</span></td><td>Producer</td></tr>
+          <tr><td class="gold">D-14</td><td><span data-es>Welcome Packs sent (logistics + agreement)</span><span data-en>Welcome Packs sent (logistics + agreement)</span></td><td>Guest Experience</td></tr>
+          <tr><td class="gold">D-12</td><td><span data-es>Menu finalizado + sourcing lista</span><span data-en>Menu finalized + sourcing list</span></td><td>F&amp;B Director</td></tr>
+          <tr><td class="gold">D-10</td><td><span data-es>Guest Agreements firmados + ID verification</span><span data-en>Guest Agreements signed + ID verification</span></td><td>Guest Experience</td></tr>
+          <tr class="section"><td colspan="3">D-10 to D-1 · Final prep</td></tr>
+          <tr><td class="gold">D-7</td><td><span data-es>Final RSVP confirmed · travel detail locked</span><span data-en>Final RSVP confirmed · travel detail locked</span></td><td>Guest Experience</td></tr>
+          <tr><td class="gold">D-5</td><td><span data-es>Insurance certificates issued para evento</span><span data-en>Insurance certificates issued for event</span></td><td>Producer</td></tr>
+          <tr><td class="gold">D-3</td><td><span data-es>F&amp;B sourcing completo</span><span data-en>F&amp;B sourcing complete</span></td><td>F&amp;B Director</td></tr>
+          <tr><td class="gold">D-2</td><td><span data-es>Walkthrough venue + tech check</span><span data-en>Venue walkthrough + tech check</span></td><td>Event Director + Producer</td></tr>
+          <tr><td class="gold">D-1</td><td><span data-es>Pre-event briefing all-team 2 horas</span><span data-en>2-hour all-team pre-event briefing</span></td><td>Event Director</td></tr>
+          <tr><td class="gold">D-1</td><td><span data-es>Setup begins · F&amp;B prep starts</span><span data-en>Setup begins · F&amp;B prep starts</span></td><td>All</td></tr>
+          <tr class="section"><td colspan="3">D-day · execute</td></tr>
+          <tr><td class="gold">D</td><td><span data-es>Event live · invisible operations</span><span data-en>Event live · invisible operations</span></td><td>All</td></tr>
+          <tr class="section"><td colspan="3">D+1 to D+14 · close out</td></tr>
+          <tr><td class="gold">D+1</td><td><span data-es>Cleanup + breakdown · vendor payments initiated</span><span data-en>Cleanup + breakdown · vendor payments initiated</span></td><td>Producer</td></tr>
+          <tr><td class="gold">D+3</td><td><span data-es>Personal thank-you por cada socio a cada invitada</span><span data-en>Personal thank-you from each partner to each guest</span></td><td>Partners</td></tr>
+          <tr><td class="gold">D+7</td><td><span data-es>Photo + video selection + delivery a invitadas</span><span data-en>Photo + video selection + delivery to guests</span></td><td>Brand + Content</td></tr>
+          <tr><td class="gold">D+14</td><td><span data-es>Post-event review + improvements list para next event</span><span data-en>Post-event review + improvements list for next event</span></td><td>Event Director + all partners</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 12 · CALENDAR -->
+<section class="alt" id="calendario">
+  <div class="container">
+    <div class="sec-num">12</div>
+    <h2 class="sec-title">
+      <span data-es>Calendario 2026 · <em>6 eventos piloto</em>.</span>
+      <span data-en>2026 calendar · <em>6 pilot events</em>.</span>
+    </h2>
+    <p class="sec-sub">
+      <span data-es>Sora arranca con 6 eventos en 2026 — una mezcla deliberada de formatos para probar cada uno antes de escalar. Año 1 es aprendizaje: qué formatos resuenan, qué venues funcionan, qué proporción de mix internacional vs local genera la mejor energía. Año 2: 12-15 eventos. Año 3: operación continua con calendario público (para repeat guests).</span>
+      <span data-en>Sora launches with 6 events in 2026 — a deliberate format mix to test each before scaling. Year 1 is learning: which formats resonate, which venues work, what international vs local mix generates best energy. Year 2: 12-15 events. Year 3: continuous operation with public calendar (for repeat guests).</span>
+    </p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th><span data-es>Mes</span><span data-en>Month</span></th>
+            <th><span data-es>Formato</span><span data-en>Format</span></th>
+            <th><span data-es>Locación</span><span data-en>Location</span></th>
+            <th><span data-es>Tamaño</span><span data-en>Size</span></th>
+            <th><span data-es>Budget</span><span data-en>Budget</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="gold">01</td><td>Jun 2026</td><td><strong>Pop-up</strong> · <span data-es>lanzamiento Sora</span><span data-en>Sora launch</span></td><td>Casa Casco · Casco Viejo</td><td>30 pax · 1 noche</td><td>$12-15K</td></tr>
+          <tr><td class="gold">02</td><td>Jul 2026</td><td><strong>Hosted Weekend</strong></td><td><span data-es>Villa Boquete (Finca Lerida o Finca Panda)</span><span data-en>Boquete villa (Finca Lerida or Finca Panda)</span></td><td>20 pax · 48h</td><td>$30-38K</td></tr>
+          <tr><td class="gold">03</td><td>Sep 2026</td><td><strong>Voyage</strong></td><td><span data-es>Bocas archipiélago (Red Frog + Cayo Zapatilla)</span><span data-en>Bocas archipelago (Red Frog + Cayo Zapatilla)</span></td><td>12 pax · 36h</td><td>$40-48K</td></tr>
+          <tr><td class="gold">04</td><td>Oct 2026</td><td><strong>Festival</strong> · <span data-es>signature noche</span><span data-en>signature night</span></td><td>Bocas Bali (Isla Solarte)</td><td>45 pax · 1 noche</td><td>$28-35K</td></tr>
+          <tr><td class="gold">05</td><td>Nov 2026</td><td><strong>Retreat</strong> · wellness</td><td>Volcán/Cerro Punta · lake-front cabins</td><td>16 pax · 72h</td><td>$22-28K</td></tr>
+          <tr><td class="gold">06</td><td>Dec 2026</td><td><strong>Hosted Weekend</strong> · <span data-es>year-end signature</span><span data-en>year-end signature</span></td><td><span data-es>Villa Boquete + sunset Caldera hot springs</span><span data-en>Boquete villa + Caldera hot springs sunset</span></td><td>24 pax · 48h</td><td>$35-42K</td></tr>
+          <tr class="section"><td colspan="6">Total 2026</td></tr>
+          <tr><td class="gold">—</td><td>6 events</td><td>5 formatos × 1-2 events cada</td><td>3 regiones (Casco · Boquete · Bocas · Volcán)</td><td>147 pax total</td><td>$167-206K total</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="syn" style="margin-top: 28px;">
+      <h3>
+        <span data-es>Año 2 +: <em>escalar selectivamente</em>.</span>
+        <span data-en>Year 2+: <em>scale selectively</em>.</span>
+      </h3>
+      <p>
+        <span data-es>Tras el año 1 piloto, Sora identifica los 2-3 formatos que mejor resuenan. Año 2: aumentar a 12-15 eventos, formalizar partnerships con venues recurrentes (deposits anuales para acceso priority), contratar el equipo core full-time. Año 3+: 20-30 eventos al año, operación continua, marca conocida en circuit internacional luxury hospitality. Margin operativo target: 25-35% sobre cost, reinvertido en infrastructure (eventualmente comprar venues propios, especialmente en Boquete + Bocas).</span>
+        <span data-en>After year 1 pilot, Sora identifies the 2-3 best-resonating formats. Year 2: scale to 12-15 events, formalize recurring venue partnerships (annual deposits for priority access), hire full-time core team. Year 3+: 20-30 events/year, continuous operation, brand known on the international luxury hospitality circuit. Target operating margin: 25-35% over cost, reinvested in infrastructure (eventually owning venues, especially in Boquete + Bocas).</span>
+      </p>
+      <div class="syn-grid">
+        <div class="syn-item">
+          <div class="label"><span data-es>Año 2</span><span data-en>Year 2</span></div>
+          <h4>12-15 events</h4>
+          <p><span data-es>Equipo full-time. 2-3 formatos dominantes. Recurring venues con deposits anuales.</span><span data-en>Full-time team. 2-3 dominant formats. Recurring venues with annual deposits.</span></p>
+        </div>
+        <div class="syn-item">
+          <div class="label"><span data-es>Año 3</span><span data-en>Year 3</span></div>
+          <h4>20-30 events</h4>
+          <p><span data-es>Operación continua. Calendario semi-público para repeat guests. International press coverage cada Q.</span><span data-en>Continuous operation. Semi-public calendar for repeat guests. Quarterly international press coverage.</span></p>
+        </div>
+        <div class="syn-item">
+          <div class="label"><span data-es>Año 5</span><span data-en>Year 5</span></div>
+          <h4><span data-es>Sora venues propios</span><span data-en>Sora-owned venues</span></h4>
+          <p><span data-es>1 villa Boquete + 1 isla Bocas owned. Mejora margins, control total de experiencia, capex amortizable en 5-7 años.</span><span data-en>1 Boquete villa + 1 Bocas island owned. Improves margins, full experience control, capex amortizable in 5-7 years.</span></p>
+        </div>
+        <div class="syn-item" style="border-left-color: var(--rose);">
+          <div class="label" style="color: var(--rose-soft);"><span data-es>Año 7+</span><span data-en>Year 7+</span></div>
+          <h4><span data-es>Internacional</span><span data-en>International</span></h4>
+          <p><span data-es>Sora se exporta — Cartagena, Tulum, Lisboa, Mykonos. Marca panameña con presencia global. La Compañía como holding owner.</span><span data-en>Sora exports — Cartagena, Tulum, Lisbon, Mykonos. Panamanian brand with global presence. La Compañía as holding owner.</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <span data-es>La Compañía · Sora · Events Playbook · v1 mayo 2026 · /lacompania/sora/events-playbook.html</span>
+    <span data-en>La Compañía · Sora · Events Playbook · v1 May 2026 · /lacompania/sora/events-playbook.html</span>
+  </div>
+</footer>
+
+<script>
+  const body = document.body;
+  const btns = document.querySelectorAll('[data-set-lang]');
+  const stored = localStorage.getItem('lacompania-lang') || 'es';
+  setLang(stored);
+  btns.forEach(btn => btn.addEventListener('click', () => {
+    setLang(btn.dataset.setLang);
+    localStorage.setItem('lacompania-lang', btn.dataset.setLang);
+  }));
+  function setLang(lang) {
+    body.setAttribute('data-lang', lang);
+    document.documentElement.lang = lang;
+    btns.forEach(b => b.classList.toggle('active', b.dataset.setLang === lang));
+  }
+</script>
+
+</body>
+</html>
