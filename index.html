@@ -2,17 +2,1621 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>SORA Travel Agency</title>
-<meta http-equiv="refresh" content="0; url=sora/web/index.html">
-<link rel="canonical" href="sora/web/index.html">
-<meta name="description" content="SORA Travel Agency · La Compañía — Latinoamérica.">
-<style>body{font-family:Georgia,serif;background:#f7f0df;color:#1c140c;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;text-align:center;padding:20px}a{color:#b85439}</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SORA HQ · Command Center · La Compañía</title>
+<meta name="description" content="Sora Travel Agency operations center. One brand, fifteen LATAM chapters, one continent. La Compañía.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23f7f0df'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Georgia,serif' font-size='20' font-weight='400' fill='%23e07a5f'%3ES%3C/text%3E%3C/svg%3E">
+<meta property="og:title" content="SORA HQ · Command Center">
+<meta property="og:description" content="One brand, fifteen LATAM chapters, one continent. La Compañía's operations center.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="sora/og-image.svg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SORA HQ · Command Center">
+<meta name="twitter:description" content="One brand, fifteen LATAM chapters, one continent.">
+<meta name="twitter:image" content="sora/og-image.svg">
+<meta name="theme-color" content="#1d3a2c">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f7f0df;
+    --paper-2: #fcf6e6;
+    --paper-3: #ede4ca;
+    --paper-deep: #e3d9c2;
+    --ink: #14110c;
+    --ink-2: #2a251d;
+    --ink-soft: #4a4337;
+    --ink-faint: #807761;
+    --ink-ghost: #b0a78e;
+    --line: rgba(20, 17, 12, 0.10);
+    --line-2: rgba(20, 17, 12, 0.18);
+    --line-strong: rgba(20, 17, 12, 0.40);
+    --green: #1d3a2c;
+    --green-2: #2a5440;
+    --green-deep: #0f2218;
+    --coral: #e07a5f;
+    --coral-deep: #b85439;
+    --mango: #f4b942;
+    --mango-deep: #b88a16;
+    --teal: #2e8a96;
+    --teal-deep: #1b6671;
+    --bronze: #a07b3e;
+    --gold: #d4b87a;
+    --gold-deep: #b39656;
+    --rose: #c64a5e;
+    --serif: "Fraunces", Georgia, serif;
+    --sans: "Inter", -apple-system, sans-serif;
+    --mono: "JetBrains Mono", Menlo, monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans); font-size: 14.5px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    background-image:
+      radial-gradient(ellipse at 12% 4%, rgba(160,123,62,0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 88% 96%, rgba(31,58,44,0.05) 0%, transparent 55%);
+  }
+  ::selection { background: var(--ink); color: var(--paper); }
+  a { color: inherit; text-decoration: none; }
+
+  .wrap { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+
+  /* ============ HEADER ============ */
+  header.top {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(247, 240, 223, 0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--line);
+    padding: 14px 32px;
+  }
+  .top-row {
+    max-width: 1280px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  }
+  .brand {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .brand .word {
+    font-family: var(--serif);
+    font-size: 22px; font-weight: 500;
+    letter-spacing: 0.18em; color: var(--ink);
+  }
+  .brand .sub {
+    font-family: var(--mono); font-size: 9.5px;
+    color: var(--gold-deep);
+    background: rgba(212,184,122,0.14);
+    border: 1px solid rgba(212,184,122,0.35);
+    padding: 4px 8px; border-radius: 6px;
+    letter-spacing: 1.5px; font-weight: 700;
+    text-transform: uppercase;
+  }
+  .top-right { display: flex; align-items: center; gap: 12px; }
+  .lang-toggle {
+    display: flex; gap: 0;
+    background: rgba(20,17,12,0.04);
+    border: 1px solid var(--line);
+    border-radius: 100px;
+    padding: 3px;
+  }
+  .lang-btn {
+    background: none; border: none;
+    padding: 6px 12px;
+    border-radius: 100px;
+    font-family: var(--sans);
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--ink-faint);
+    cursor: pointer;
+    transition: all .15s;
+  }
+  .lang-btn.active { background: var(--ink); color: var(--paper); }
+  .top-meta {
+    font-family: var(--mono);
+    font-size: 9.5px;
+    color: var(--ink-faint);
+    letter-spacing: 1.2px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .top-meta .dot {
+    width: 6px; height: 6px;
+    background: var(--coral); border-radius: 50%;
+    animation: pulse 1.8s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+  /* ============ HERO ============ */
+  .hero {
+    padding: 64px 0 28px;
+  }
+  .hero h1 {
+    font-family: var(--serif); font-weight: 300;
+    font-size: clamp(48px, 7vw, 84px);
+    line-height: 0.95;
+    letter-spacing: -0.025em;
+    margin-bottom: 14px;
+  }
+  .hero h1 em {
+    font-style: italic; font-weight: 400;
+    color: var(--coral);
+  }
+  .hero .lede {
+    font-size: 18px; line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 720px;
+    font-weight: 400;
+  }
+  .hero .meta-row {
+    margin-top: 24px;
+    display: flex; gap: 24px; flex-wrap: wrap;
+    font-family: var(--mono); font-size: 10.5px;
+    color: var(--ink-faint); letter-spacing: 1.4px;
+  }
+
+  /* ============ NOW PLAYING ============ */
+  .now-card {
+    background: linear-gradient(135deg, rgba(244,185,66,0.12), rgba(212,184,122,0.06));
+    border: 1px solid rgba(212,184,122,0.4);
+    border-left: 3px solid var(--coral);
+    border-radius: 18px;
+    padding: 28px 30px;
+    margin-top: 32px;
+  }
+  .now-card .now-label {
+    font-family: var(--mono); font-size: 10.5px;
+    color: var(--coral-deep); font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    margin-bottom: 14px;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .now-card .now-label::before {
+    content: ''; width: 6px; height: 6px;
+    background: var(--coral); border-radius: 50%;
+    animation: pulse 1.8s ease-in-out infinite;
+  }
+  .now-card h2 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: 28px; line-height: 1.15;
+    margin-bottom: 20px; letter-spacing: -0.01em;
+  }
+  .now-card h2 em { color: var(--coral-deep); font-style: italic; }
+  .now-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+  }
+  @media (max-width: 880px) { .now-grid { grid-template-columns: repeat(2, 1fr); } }
+  .now-stat .k {
+    font-family: var(--mono); font-size: 9.5px;
+    letter-spacing: 1.6px; text-transform: uppercase;
+    color: var(--ink-faint); margin-bottom: 6px;
+  }
+  .now-stat .v {
+    font-family: var(--serif); font-size: 22px; font-weight: 500;
+    color: var(--ink); line-height: 1;
+  }
+  .now-stat .s {
+    font-size: 12px; color: var(--ink-soft);
+    margin-top: 4px; line-height: 1.4;
+  }
+
+  /* ============ SECTION ============ */
+  section { padding: 60px 0; border-bottom: 1px solid var(--line); }
+  .sec-head {
+    margin-bottom: 32px;
+    display: flex; align-items: baseline; justify-content: space-between;
+    flex-wrap: wrap; gap: 12px;
+  }
+  .sec-head .sec-eyebrow {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--coral-deep); font-weight: 700;
+  }
+  .sec-head h3 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(28px, 4vw, 40px);
+    line-height: 1.05; letter-spacing: -0.02em;
+    margin-top: 8px;
+  }
+  .sec-head h3 em { font-style: italic; color: var(--coral); font-weight: 300; }
+  .sec-head .sec-sub {
+    font-size: 14.5px; color: var(--ink-soft);
+    margin-top: 6px; max-width: 520px;
+  }
+  .sec-head .sec-action {
+    align-self: flex-end;
+    font-family: var(--mono); font-size: 10.5px;
+    letter-spacing: 1.3px;
+    color: var(--ink-faint); font-weight: 600;
+  }
+
+  /* ============ SURFACES GRID ============ */
+  .surfaces {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  @media (max-width: 960px) { .surfaces { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .surfaces { grid-template-columns: 1fr; } }
+  .surface {
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 24px;
+    cursor: pointer;
+    transition: all .2s cubic-bezier(0.25, 1, 0.5, 1);
+    text-decoration: none; color: inherit;
+    display: flex; flex-direction: column;
+    min-height: 220px;
+  }
+  .surface:hover {
+    transform: translateY(-3px);
+    border-color: var(--line-strong);
+    box-shadow: 0 22px 50px -28px rgba(31,27,23,0.25);
+  }
+  .surface .label {
+    font-family: var(--mono); font-size: 10px;
+    color: var(--coral-deep); font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .surface h4 {
+    font-family: var(--serif); font-weight: 500;
+    font-size: 26px; line-height: 1.1; letter-spacing: -0.015em;
+    margin-bottom: 8px;
+  }
+  .surface h4 em { color: var(--coral); font-style: italic; font-weight: 400; }
+  .surface p {
+    font-size: 13.5px; color: var(--ink-soft);
+    line-height: 1.55;
+    flex: 1; margin-bottom: 16px;
+  }
+  .surface .foot {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-top: 12px;
+    border-top: 1px solid var(--line);
+    font-family: var(--mono); font-size: 10.5px;
+    color: var(--ink-faint); letter-spacing: 0.5px;
+  }
+  .surface .foot .open { color: var(--coral-deep); font-weight: 700; letter-spacing: 1.2px; }
+
+  /* ============ CHAPTERS GRID ============ */
+  .chapter-filter {
+    display: flex; gap: 8px;
+    margin-bottom: 22px;
+    flex-wrap: wrap;
+  }
+  .chapter-filter button {
+    background: rgba(20,17,12,0.04);
+    border: 1px solid var(--line);
+    color: var(--ink-soft);
+    padding: 7px 14px;
+    border-radius: 100px;
+    font-family: var(--mono); font-size: 10.5px;
+    letter-spacing: 1px;
+    cursor: pointer; transition: all .15s;
+    font-weight: 600;
+  }
+  .chapter-filter button:hover { color: var(--ink); border-color: var(--line-2); }
+  .chapter-filter button.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+  .chapters {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+  }
+  @media (max-width: 1080px) { .chapters { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 600px) { .chapters { grid-template-columns: repeat(2, 1fr); } }
+
+  .chapter {
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 18px 16px 16px;
+    cursor: pointer;
+    transition: all .2s;
+    text-decoration: none; color: inherit;
+    display: block;
+  }
+  .chapter:hover {
+    transform: translateY(-2px);
+    border-color: var(--line-strong);
+  }
+  .chapter .top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+  .chapter .flag { font-size: 28px; line-height: 1; }
+  .chapter .pill {
+    font-family: var(--mono); font-size: 8.5px;
+    padding: 3px 8px; border-radius: 100px;
+    letter-spacing: 1.4px; text-transform: uppercase;
+    font-weight: 700;
+  }
+  .pill.live      { background: rgba(74,125,99,0.18); color: var(--green); }
+  .pill.launching { background: rgba(244,185,66,0.20); color: var(--mango-deep); }
+  .pill.soon      { background: rgba(20,17,12,0.06); color: var(--ink-faint); }
+  .pill.gated     { background: rgba(198,74,94,0.16); color: var(--rose); }
+  .chapter .name {
+    font-family: var(--serif); font-size: 17px; font-weight: 500;
+    color: var(--ink); margin-bottom: 4px; letter-spacing: -0.005em;
+  }
+  .chapter .hero {
+    font-size: 11px; color: var(--ink-faint);
+    line-height: 1.4; min-height: 30px;
+  }
+  .chapter .tier {
+    font-family: var(--mono); font-size: 9.5px;
+    color: var(--ink-faint); letter-spacing: 1px;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--line);
+    display: flex; justify-content: space-between;
+  }
+
+  /* ============ OUTREACH PIPELINE ============ */
+  .outreach {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+  @media (max-width: 900px) { .outreach { grid-template-columns: 1fr; } }
+  .outreach-card {
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 22px;
+  }
+  .outreach-card .head {
+    display: flex; align-items: baseline; justify-content: space-between;
+    margin-bottom: 18px; padding-bottom: 12px;
+    border-bottom: 1px solid var(--line);
+  }
+  .outreach-card .head h4 {
+    font-family: var(--serif); font-weight: 500; font-size: 20px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .outreach-card .head .when {
+    font-family: var(--mono); font-size: 10px;
+    color: var(--coral-deep); letter-spacing: 1.4px;
+    font-weight: 700;
+  }
+  .outreach-step {
+    display: flex; align-items: center; gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px dotted var(--line);
+  }
+  .outreach-step:last-child { border-bottom: none; }
+  .outreach-step .check {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    border: 1.5px solid var(--line-2);
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; color: var(--ink-faint);
+    background: var(--paper);
+    cursor: pointer;
+  }
+  .outreach-step.done .check {
+    background: var(--green); color: var(--paper);
+    border-color: var(--green);
+  }
+  .outreach-step .body { flex: 1; }
+  .outreach-step .body .step-name {
+    font-family: var(--sans); font-size: 13px; font-weight: 600;
+    color: var(--ink); line-height: 1.3;
+  }
+  .outreach-step .body .step-sub {
+    font-size: 11.5px; color: var(--ink-faint);
+    margin-top: 2px;
+  }
+  .outreach-step .body .step-sub a {
+    color: var(--coral-deep); border-bottom: 1px dotted var(--coral);
+  }
+  .outreach-step.done .body .step-name { color: var(--ink-faint); text-decoration: line-through; }
+
+  /* ============ KNOWLEDGE BASE ============ */
+  .kb {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+  @media (max-width: 760px) { .kb { grid-template-columns: 1fr; } }
+  .kb-group {
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 24px;
+  }
+  .kb-group h4 {
+    font-family: var(--mono); font-size: 10px;
+    color: var(--coral-deep); font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    margin-bottom: 16px; padding-bottom: 12px;
+    border-bottom: 1px solid var(--line);
+  }
+  .kb-list { list-style: none; }
+  .kb-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .kb-list li:last-child { border-bottom: none; }
+  .kb-list a {
+    display: flex; align-items: center; justify-content: space-between;
+    color: var(--ink); font-size: 14px; font-weight: 500;
+    transition: color .15s;
+  }
+  .kb-list a:hover { color: var(--coral-deep); }
+  .kb-list a .desc {
+    font-size: 12px; color: var(--ink-faint);
+    margin-top: 3px; font-weight: 400;
+    display: block;
+  }
+  .kb-list a .arr {
+    font-family: var(--mono); font-size: 11px;
+    color: var(--ink-faint); flex-shrink: 0; margin-left: 12px;
+  }
+  .kb-list a:hover .arr { color: var(--coral-deep); }
+  .kb-list .row-content {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .kb-list .ico {
+    width: 32px; height: 32px;
+    background: rgba(20,17,12,0.04);
+    border: 1px solid var(--line);
+    border-radius: 9px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--mono); font-size: 12px;
+    color: var(--coral-deep); font-weight: 700;
+    flex-shrink: 0;
+  }
+  .kb-list .row-body { flex: 1; min-width: 0; }
+  .kb-list .row-body .name { font-size: 14px; font-weight: 600; }
+
+  /* ============ TASKS ============ */
+  .tasks {
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 24px 28px;
+  }
+  .tasks-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 18px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--line);
+  }
+  .tasks-head h4 {
+    font-family: var(--serif); font-weight: 500;
+    font-size: 20px;
+  }
+  .tasks-head .count {
+    font-family: var(--mono); font-size: 11px;
+    color: var(--ink-faint); letter-spacing: 1px;
+  }
+  .tasks-head .count strong { color: var(--coral-deep); }
+  #task-list { list-style: none; }
+  #task-list li {
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  #task-list li:last-child { border-bottom: none; }
+  #task-list .chk {
+    width: 22px; height: 22px;
+    border-radius: 6px;
+    border: 1.5px solid var(--line-2);
+    flex-shrink: 0;
+    background: var(--paper); cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    margin-top: 2px;
+    transition: all .15s;
+  }
+  #task-list li.done .chk {
+    background: var(--coral); color: #fff;
+    border-color: var(--coral);
+  }
+  #task-list li.done .chk::after { content: '✓'; font-size: 13px; font-weight: 700; }
+  #task-list .text {
+    flex: 1; font-size: 14px;
+    color: var(--ink); line-height: 1.5;
+  }
+  #task-list li.done .text { text-decoration: line-through; color: var(--ink-faint); }
+  #task-list .text .sub {
+    display: block; font-size: 12px; color: var(--ink-faint);
+    margin-top: 2px;
+  }
+  #task-list .del {
+    background: none; border: none; cursor: pointer;
+    color: var(--ink-ghost); font-family: var(--mono);
+    font-size: 14px; padding: 0 8px;
+    opacity: 0.4;
+    transition: opacity .15s, color .15s;
+  }
+  #task-list li:hover .del, #task-list .del:focus { opacity: 1; }
+  #task-list .del:hover { color: var(--rose); }
+  @media (hover: none) { #task-list .del { opacity: 0.6; } }
+  .task-add {
+    display: flex; gap: 10px;
+    margin-top: 16px;
+  }
+  .task-add input {
+    flex: 1;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 100px;
+    padding: 11px 18px;
+    font-family: var(--sans); font-size: 13.5px;
+    color: var(--ink); outline: none;
+  }
+  .task-add input:focus { border-color: var(--coral); }
+  .task-add button {
+    background: var(--coral); color: #fff;
+    border: none; padding: 11px 22px;
+    border-radius: 100px;
+    font-family: var(--sans); font-size: 12.5px;
+    font-weight: 700; letter-spacing: 0.04em;
+    cursor: pointer; transition: all .15s;
+  }
+  .task-add button:hover { background: var(--coral-deep); transform: translateY(-1px); }
+
+  /* ============ FOOTER ============ */
+  footer {
+    padding: 48px 0 80px;
+    background: var(--green-deep);
+    color: rgba(247,240,223,0.65);
+    margin-top: 60px;
+  }
+  footer h5 {
+    font-family: var(--mono); font-size: 10px;
+    color: var(--gold); font-weight: 700;
+    letter-spacing: 2.4px; text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .footer-grid {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 36px;
+    margin-bottom: 36px;
+  }
+  @media (max-width: 720px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; } }
+  .footer-grid .wordmark {
+    font-family: var(--serif); font-size: 28px;
+    color: var(--paper); font-weight: 400;
+    letter-spacing: 0.22em; margin-bottom: 8px;
+  }
+  .footer-grid .tagline {
+    font-family: var(--serif); font-style: italic;
+    font-size: 14px; line-height: 1.5;
+    color: rgba(247,240,223,0.7);
+    max-width: 280px;
+  }
+  .footer-grid ul { list-style: none; }
+  .footer-grid li { margin-bottom: 8px; font-size: 13px; }
+  .footer-grid a { color: rgba(247,240,223,0.7); transition: color .15s; }
+  .footer-grid a:hover { color: var(--mango); }
+  .footer-bottom {
+    padding-top: 24px;
+    border-top: 1px solid rgba(247,240,223,0.10);
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 16px;
+    font-family: var(--mono); font-size: 11px;
+    color: rgba(247,240,223,0.45);
+    letter-spacing: 0.06em;
+  }
+</style>
 </head>
 <body>
-<div>
-  <h1 style="font-weight:300;letter-spacing:0.18em;font-size:48px;margin:0 0 10px">SORA</h1>
-  <p style="font-style:italic;color:rgba(28,20,12,0.6)">Travel Agency · La Compañía</p>
-  <p style="margin-top:30px"><a href="sora/web/index.html">Continuar al sitio →</a></p>
+
+<!-- ============ HEADER ============ -->
+<header class="top">
+  <div class="top-row">
+    <div class="brand">
+      <span class="word">SORA</span>
+      <span class="sub">HQ · Command Center</span>
+    </div>
+    <div class="top-right">
+      <div class="top-meta">
+        <span class="dot"></span>
+        <span data-es="Actualizado" data-en="Updated">Updated</span>
+        <span id="updated-stamp">just now</span>
+      </div>
+      <div class="lang-toggle">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="es">ES</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <h1 data-es-html="Un comando. <em>Quince capítulos</em>." data-en-html="One command. <em>Fifteen chapters</em>.">One command. <em>Fifteen chapters</em>.</h1>
+  <p class="lede" data-es="El centro de operaciones de SORA Travel Agency. Desde acá saltás a cualquier superficie del producto, abrís cualquier capítulo de LATAM, gestionás reservas, planificás la próxima semana." data-en="The Sora Travel Agency operations center. From here jump to any product surface, open any LATAM chapter, manage reservations, plan the next week.">The Sora Travel Agency operations center. From here jump to any product surface, open any LATAM chapter, manage reservations, plan the next week.</p>
+  <div class="meta-row">
+    <span data-es="LA COMPAÑÍA · MMXXVI" data-en="LA COMPAÑÍA · MMXXVI">LA COMPAÑÍA · MMXXVI</span>
+    <span data-es="ABRAHAM · ABDIEL" data-en="ABRAHAM · ABDIEL">ABRAHAM · ABDIEL</span>
+    <span data-es="PANAMÁ · LATAM" data-en="PANAMÁ · LATAM">PANAMÁ · LATAM</span>
+  </div>
 </div>
+
+<!-- ============ MONDAY · TOP TASK ============ -->
+<style>
+  .monday-card{background:#0f0c0a;border:1px solid var(--coral);border-radius:12px;padding:28px 32px;margin-bottom:20px;position:relative;overflow:hidden}
+  .monday-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--coral),var(--mango),var(--coral))}
+  .monday-card .m-label{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--mango);font-weight:600;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+  .monday-card .m-label::before{content:'';display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--coral);box-shadow:0 0 0 4px rgba(217,87,59,.25)}
+  .monday-card .m-title{font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:30px;line-height:1.18;color:#F8F3EA !important;letter-spacing:-.01em;margin-bottom:24px}
+  .monday-card .m-title em{font-style:italic;color:var(--coral) !important;font-weight:500}
+  .monday-card .m-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .monday-card .m-step{background:rgba(255,255,255,.04);border:0.5px solid rgba(255,255,255,.10);border-radius:8px;padding:16px 18px}
+  .monday-card .m-step .ms-k{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:9.5px;letter-spacing:.18em;color:rgba(248,243,234,.5);text-transform:uppercase;font-weight:600;margin-bottom:8px}
+  .monday-card .m-step .ms-v{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;color:#F8F3EA;line-height:1.4;margin-bottom:6px;word-break:break-all}
+  .monday-card .m-step .ms-s{font-family:'Fraunces',serif;font-size:12px;color:rgba(248,243,234,.6);line-height:1.45;font-style:italic}
+  @media (max-width:720px){ .monday-card .m-steps{grid-template-columns:1fr} }
+</style>
+<div class="monday-card">
+  <div class="m-label" data-es="LUNES 25 MAYO · PRIMERA TAREA DEL DÍA" data-en="MONDAY MAY 25 · FIRST TASK OF THE DAY">MONDAY MAY 25 · FIRST TASK OF THE DAY</div>
+  <div class="m-title" data-es-html="Crear cuenta <em>Apify</em> · 90 segundos · desbloquea minado IG completo" data-en-html="Create <em>Apify</em> account · 90 seconds · unlocks full IG mining">Create <em>Apify</em> account · 90 seconds · unlocks full IG mining</div>
+  <div class="m-steps">
+    <div class="m-step">
+      <div class="ms-k" data-es="PASO 1" data-en="STEP 1">STEP 1</div>
+      <div class="ms-v">console.apify.com/sign-up</div>
+      <div class="ms-s" data-es="Email + password. Sin tarjeta. $5/mo crédito gratis." data-en="Email + password. No card. $5/mo free credit.">Email + password. No card. $5/mo free credit.</div>
+    </div>
+    <div class="m-step">
+      <div class="ms-k" data-es="PASO 2" data-en="STEP 2">STEP 2</div>
+      <div class="ms-v">Settings → API tokens → Create</div>
+      <div class="ms-s" data-es="Copiar token apify_api_..." data-en="Copy token apify_api_...">Copy token apify_api_...</div>
+    </div>
+    <div class="m-step">
+      <div class="ms-k" data-es="PASO 3" data-en="STEP 3">STEP 3</div>
+      <div class="ms-v">echo 'APIFY_TOKEN=...' &gt; .env</div>
+      <div class="ms-s" data-es="En /Users/jacobeid/sora-instagram-mcp/" data-en="In /Users/jacobeid/sora-instagram-mcp/">In /Users/jacobeid/sora-instagram-mcp/</div>
+    </div>
+    <div class="m-step">
+      <div class="ms-k" data-es="PASO 4" data-en="STEP 4">STEP 4</div>
+      <div class="ms-v">node run-end-to-end.js</div>
+      <div class="ms-s" data-es="Verificar: full bios + engagement por seed" data-en="Verify: full bios + engagement per seed">Verify: full bios + engagement per seed</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ NOW PLAYING ============ -->
+<div class="now-card">
+  <div class="now-label" data-es="EN VIVO · ESTA SEMANA" data-en="LIVE · THIS WEEK">LIVE · THIS WEEK</div>
+  <h2 data-es-html="Fase: <em>preparación México</em>. Apertura del segundo capítulo." data-en-html="Phase: <em>Mexico setup</em>. Opening of the second chapter.">Phase: <em>Mexico setup</em>. Opening of the second chapter.</h2>
+  <div class="now-grid">
+    <div class="now-stat">
+      <div class="k" data-es="Capítulos en vivo" data-en="Live chapters">Live chapters</div>
+      <div class="v">1</div>
+      <div class="s">🇵🇦 Panamá</div>
+    </div>
+    <div class="now-stat">
+      <div class="k" data-es="Lanzando 2026" data-en="Launching 2026">Launching 2026</div>
+      <div class="v">3</div>
+      <div class="s">🇲🇽 MX · 🇨🇴 CO · 🇻🇪 VE</div>
+    </div>
+    <div class="now-stat">
+      <div class="k" data-es="Outreach activo" data-en="Active outreach">Active outreach</div>
+      <div class="v">MX</div>
+      <div class="s" data-es="13 borradores listos en /outreach/MX/" data-en="13 drafts ready in /outreach/MX/">13 drafts ready in /outreach/MX/</div>
+    </div>
+    <div class="now-stat">
+      <div class="k" data-es="Próximo evento" data-en="Next event">Next event</div>
+      <div class="v">14 Jun</div>
+      <div class="s">Mirador Barú · Volcán</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ WHAT'S NEW · DIGEST ============ -->
+<section>
+  <div class="sec-head">
+    <div>
+      <div class="sec-eyebrow" data-es="Qué hay de nuevo" data-en="What's new">What's new</div>
+      <h3 data-es-html="<em>Cambios</em> recientes en el sistema." data-en-html="Recent <em>changes</em> in the system.">Recent <em>changes</em> in the system.</h3>
+      <p class="sec-sub" data-es="Resumen de lo que se construyó, ordenado por fecha. La lista crece automáticamente." data-en="Summary of what was built, by date. The list grows automatically.">Summary of what was built, by date. The list grows automatically.</p>
+    </div>
+  </div>
+  <div class="kb">
+    <div class="kb-group" id="changelog-card">
+      <h4 data-es="Changelog · últimos 30 días" data-en="Changelog · last 30 days">Changelog · last 30 days</h4>
+      <ul class="kb-list" id="changelog-list"></ul>
+    </div>
+    <div class="kb-group">
+      <h4 data-es="Estado del sistema" data-en="System status">System status</h4>
+      <ul class="kb-list">
+        <li><div class="row-content"><div class="ico" style="color:var(--green)">●</div><div class="row-body"><div class="name" data-es="data.js" data-en="data.js">data.js</div><div class="desc" data-es="15 países · 14 eventos · 18 experiencias · 10 propiedades" data-en="15 countries · 14 events · 18 experiences · 10 properties">15 countries · 14 events · 18 experiences · 10 properties</div></div></div><span class="arr">v0.4</span></li>
+        <li><div class="row-content"><div class="ico" style="color:var(--green)">●</div><div class="row-body"><div class="name" data-es="Outreach Mexico" data-en="Mexico outreach">Mexico outreach</div><div class="desc" data-es="13 borradores listos para enviar" data-en="13 drafts ready to send">13 drafts ready to send</div></div></div><span class="arr">/MX/</span></li>
+        <li><div class="row-content"><div class="ico" style="color:var(--green)">●</div><div class="row-body"><div class="name" data-es="Outreach Colombia" data-en="Colombia outreach">Colombia outreach</div><div class="desc" data-es="12 borradores listos · Cartagena Nov 20-23" data-en="12 drafts ready · Cartagena Nov 20-23">12 drafts ready · Cartagena Nov 20-23</div></div></div><span class="arr">/CO/</span></li>
+        <li><div class="row-content"><div class="ico" style="color:var(--green)">●</div><div class="row-body"><div class="name" data-es="Dashboard noticias en vivo" data-en="Live news dashboard">Live news dashboard</div><div class="desc" data-es="15 países · Google News + tasas de cambio en vivo" data-en="15 countries · Google News + live currency rates">15 countries · Google News + live currency rates</div></div></div><span class="arr">↗</span></li>
+        <li><div class="row-content"><div class="ico" style="color:var(--green)">●</div><div class="row-body"><div class="name" data-es="Brand Kit" data-en="Brand Kit">Brand Kit</div><div class="desc" data-es="Wordmark · paleta · tipografía · voz · fotografía" data-en="Wordmark · palette · typography · voice · photography">Wordmark · palette · typography · voice · photography</div></div></div><span class="arr">v1.0</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRODUCT SURFACES ============ -->
+<section>
+  <div class="sec-head">
+    <div>
+      <div class="sec-eyebrow" data-es="Las cuatro superficies" data-en="The four surfaces">The four surfaces</div>
+      <h3 data-es-html="Cómo el mundo <em>toca</em> Sora." data-en-html="How the world <em>touches</em> Sora.">How the world <em>touches</em> Sora.</h3>
+      <p class="sec-sub" data-es="Cada superficie hace una cosa. Todas comparten data.js, el idioma elegido, y el país seleccionado." data-en="Each surface does one thing. They all share data.js, the selected language, and the selected country.">Each surface does one thing. They all share data.js, the selected language, and the selected country.</p>
+    </div>
+  </div>
+  <div class="surfaces">
+
+    <a href="sora/web/index.html" class="surface" target="_blank">
+      <div class="label" data-es="Público" data-en="Public">Public</div>
+      <h4 data-es-html="Sitio <em>marketing</em>" data-en-html="Marketing <em>site</em>">Marketing <em>site</em></h4>
+      <p data-es="La página pública. ES/EN, selector de país, WhatsApp flotante, registro de usuarios, sección de bienes raíces." data-en="The public front door. ES/EN, country picker, WhatsApp float, user registration, real estate section.">The public front door. ES/EN, country picker, WhatsApp float, user registration, real estate section.</p>
+      <div class="foot">
+        <span>/sora/web/index.html</span>
+        <span class="open">OPEN →</span>
+      </div>
+    </a>
+
+    <a href="sora/app/index.html" class="surface" target="_blank">
+      <div class="label">PWA</div>
+      <h4 data-es-html="App <em>móvil</em>" data-en-html="Mobile <em>app</em>">Mobile <em>app</em></h4>
+      <p data-es="Para invitados con código. 12 pantallas, Cerca + Conecta swipe, calendario, perfil, mensajes. Country switcher en home." data-en="For invited guests. 12 screens, Cerca + Conecta swipe, calendar, profile, messages. Country switcher in the home top bar.">For invited guests. 12 screens, Cerca + Conecta swipe, calendar, profile, messages. Country switcher in the home top bar.</p>
+      <div class="foot">
+        <span>/sora/app/index.html</span>
+        <span class="open">OPEN →</span>
+      </div>
+    </a>
+
+    <a href="sora/web/admin.html" class="surface" target="_blank">
+      <div class="label" data-es="Privado" data-en="Private">Private</div>
+      <h4 data-es-html="Panel <em>admin</em>" data-en-html="Admin <em>panel</em>">Admin <em>panel</em></h4>
+      <p data-es="Solo el administrador entra. Login con usuario + contraseña. Gestiona propiedades, reservas, configuración por país." data-en="Admin-only. User + password login. Manage properties, reservations, per-country config across 15 chapters.">Admin-only. User + password login. Manage properties, reservations, per-country config across 15 chapters.</p>
+      <div class="foot">
+        <span>/sora/web/admin.html</span>
+        <span class="open">OPEN →</span>
+      </div>
+    </a>
+
+    <a href="sora/app/preview.html" class="surface" target="_blank">
+      <div class="label">QA</div>
+      <h4 data-es-html="Preview &amp; <em>flujos</em>" data-en-html="Preview &amp; <em>flows</em>">Preview &amp; <em>flows</em></h4>
+      <p data-es="Herramienta de demo. 3 modos: flujos guiados, interactivo (24 pantallas), galería (todas a la vez)." data-en="Demo tool. 3 modes: guided flows, interactive (24 screens), gallery (all at once).">Demo tool. 3 modes: guided flows, interactive (24 screens), gallery (all at once).</p>
+      <div class="foot">
+        <span>/sora/app/preview.html</span>
+        <span class="open">OPEN →</span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- ============ A · HOST & TALENT SOURCING ============ -->
+<section>
+  <div class="sec-head">
+    <div>
+      <div class="sec-eyebrow" data-es="Sourcing de anfitriones · Talento" data-en="Host sourcing · Talent">Host sourcing · Talent</div>
+      <h3 data-es-html="Cómo <em>encontrar</em> al anfitrión." data-en-html="How to <em>find</em> the host.">Cómo <em>encontrar</em> al anfitrión.</h3>
+      <p class="sec-sub" data-es="El sistema completo de reclutamiento — desde la estrategia maestra de 6 meses, el embudo de 3 entrevistas, hasta los cinco canales tácticos de búsqueda (IG · bolsas · LinkedIn · Facebook · referencias)." data-en="The complete recruitment system — from the 6-month master strategy, the 3-stage interview funnel, down to the five tactical sourcing channels (IG · job boards · LinkedIn · Facebook · referrals).">The complete recruitment system — from the 6-month master strategy, the 3-stage interview funnel, down to the five tactical sourcing channels (IG · job boards · LinkedIn · Facebook · referrals).</p>
+    </div>
+  </div>
+  <div class="surfaces">
+
+    <a href="latam-expansion-system.html" class="surface" target="_blank" style="grid-column: span 4;border:2px solid var(--coral);background:linear-gradient(135deg,rgba(217,87,59,.04),transparent)">
+      <div class="label" style="color:var(--coral);font-weight:700" data-es="★ SISTEMA MAESTRO · ANFITRIONES" data-en="★ MASTER SYSTEM · HOSTS">★ MASTER SYSTEM · HOSTS</div>
+      <h4 data-es-html="Sistema de <em>expansión LATAM</em> · 6 meses" data-en-html="LATAM <em>expansion system</em> · 6 months">LATAM <em>expansion system</em> · 6 months</h4>
+      <p data-es="Plan maestro para tener anfitrión firmado en los 19 países antes del 30 de noviembre 2026. Cinco olas secuenciales (Jun→Nov). Cuatro pilares: reclutamiento de talento · botas en el suelo · eventos como aceleradores · cosecha de segundo grado. Perfil del anfitrión ideal · 5 canales de sourcing · embudo de entrevista · cadencia operativa · compensación por fase · KPIs · riesgos." data-en="Master plan to have signed hosts in all 19 LATAM countries by November 30, 2026. Five sequential waves (Jun→Nov). Four pillars: talent recruitment · boots on the ground · events as accelerators · second-degree harvest. Ideal host profile · 5 sourcing channels · interview funnel · operating cadence · phased compensation · KPIs · risks.">Master plan to have signed hosts in all 19 LATAM countries by November 30, 2026. Five sequential waves (Jun→Nov). Four pillars: talent recruitment · boots on the ground · events as accelerators · second-degree harvest. Ideal host profile · 5 sourcing channels · interview funnel · operating cadence · phased compensation · KPIs · risks.</p>
+      <div class="foot">
+        <span>/latam-expansion-system.html</span>
+        <span class="open" style="color:var(--coral)">OPEN →</span>
+      </div>
+    </a>
+
+    <a href="interview-process.html" class="surface" target="_blank" style="grid-column: span 2">
+      <div class="label" data-es="Proceso de entrevista · 3 etapas" data-en="Interview process · 3 stages">Interview process · 3 stages</div>
+      <h4 data-es-html="Embudo de <em>entrevistas</em>" data-en-html="Interview <em>funnel</em>">Interview <em>funnel</em></h4>
+      <p data-es="Tres entrevistas obligatorias antes de la oferta. Etapa 1 Minor (screening, 30 min, mixto). Etapa 2 prueba de inglés con Michelle (45 min, full English). Etapa 3 cierre con Abraham (45 min, visión + términos). Rúbricas por etapa, guiones, criterios pass/fail, ejemplo de oferta firmada." data-en="Three mandatory interviews before offer. Stage 1 Minor (screening, 30 min, mixed). Stage 2 English test with Michelle (45 min, full English). Stage 3 close with Abraham (45 min, vision + terms). Per-stage rubrics, scripts, pass/fail criteria, signed offer template.">Three mandatory interviews before offer. Stage 1 Minor (screening, 30 min, mixed). Stage 2 English test with Michelle (45 min, full English). Stage 3 close with Abraham (45 min, vision + terms). Per-stage rubrics, scripts, pass/fail criteria, signed offer template.</p>
+      <div class="foot">
+        <span>/interview-process.html</span>
+        <span class="open">OPEN →</span>
+      </div>
+    </a>
+
+    <a href="LATAM/insta-playbook.html" class="surface" target="_blank" style="grid-column: span 2">
+      <div class="label" data-es="Canal 01 · Instagram + TikTok" data-en="Channel 01 · Instagram + TikTok">Channel 01 · Instagram</div>
+      <h4 data-es-html="Minar <em>Instagram</em>" data-en-html="Mining <em>Instagram</em>">Mining <em>Instagram</em></h4>
+      <p data-es="Las 6 rutas que funcionan (sin scraper) · stack de herramientas con precios · kits clickables de cuentas semilla + hashtags + venues por país · rúbrica de scoring 0-20 · workflow semanal de scroll-a-host · plantillas de DM · cadencia de follow-up · 19 países cubiertos." data-en="The 6 routes that work (no scraper) · tool stack with pricing · clickable per-country starter kits (seed accounts + hashtags + venues) · 0-20 scoring rubric · weekly scroll-to-host workflow · DM templates · follow-up cadence · 19 countries covered.">The 6 routes that work (no scraper) · tool stack with pricing · clickable per-country starter kits (seed accounts + hashtags + venues) · 0-20 scoring rubric · weekly scroll-to-host workflow · DM templates · follow-up cadence · 19 countries covered.</p>
+      <div class="foot">
+        <span>/LATAM/insta-playbook.html</span>
+        <span class="open">OPEN →</span>
+      </div>
+    </a>
+
+    <a href="sourcing-jobboards.html" class="surface" target="_blank" style="grid-column: span 2">
+      <div class="label" data-es="Canal 02 · bolsas de empleo" data-en="Channel 02 · job boards">Channel 02 · job boards</div>
+      <h4 data-es-html="Bolsas de <em>empleo</em> · 19 países" data-en-html="Job <em>boards</em> · 19 countries">Job <em>boards</em> · 19 countries</h4>
+      <p data-es="Mapeo de Computrabajo, Bumeran, Encuentra24, OCC Mundial, Catho, Trabajando, Konzerta y otras 7 plataformas por país. Plantillas de anuncio Sora · cómo filtrar candidatos · precios de publicación premium vs gratis · cuál usar primero por país. Sin spam, con criterio." data-en="Mapping of Computrabajo, Bumeran, Encuentra24, OCC Mundial, Catho, Trabajando, Konzerta and 7 more platforms by country. Sora ad templates · how to filter candidates · premium vs free posting prices · which to use first per country. No spam, with judgment.">Mapping of Computrabajo, Bumeran, Encuentra24, OCC Mundial, Catho, Trabajando, Konzerta and 7 more platforms by country. Sora ad templates · how to filter candidates · premium vs free posting prices · which to use first per country. No spam, with judgment.</p>
+      <div class="foot">
+        <span>/sourcing-jobboards.html</span>
+        <span class="open">OPEN →</span>
+      </div>
+    </a>
+
+    <a href="sourcing-linkedin.html" class="surface" target="_blank" style="grid-column: span 2">
+      <div class="label" data-es="Canal 03 · LinkedIn silencioso" data-en="Channel 03 · quiet LinkedIn">Channel 03 · LinkedIn</div>
+      <h4 data-es-html="LinkedIn <em>sin broadcast</em>" data-en-html="LinkedIn <em>without broadcast</em>">LinkedIn <em>without broadcast</em></h4>
+      <p data-es="Cómo postear posiciones de anfitrión sin que aparezca en el feed de tu red personal. Cómo usar Recruiter Lite, Sales Navigator, búsquedas booleanas, y mensajes InMail templates por país. Filtros exactos por título, idioma, ubicación, antigüedad. Cuándo conectar vs InMail vs LinkedIn Jobs Ad." data-en="How to post host roles without showing up in your personal feed. How to use Recruiter Lite, Sales Navigator, boolean searches, and InMail templates per country. Exact filters by title, language, location, seniority. When to connect vs InMail vs LinkedIn Jobs Ad.">How to post host roles without showing up in your personal feed. How to use Recruiter Lite, Sales Navigator, boolean searches, and InMail templates per country. Exact filters by title, language, location, seniority. When to connect vs InMail vs LinkedIn Jobs Ad.</p>
+      <div class="foot">
+        <span>/sourcing-linkedin.html</span>
+        <span class="open">OPEN →</span>
+      </div>
+    </a>
+
+    <a href="sourcing-facebook.html" class="surface" target="_blank" style="grid-column: span 2">
+      <div class="label" data-es="Canal 04 · Facebook + grupos" data-en="Channel 04 · Facebook + groups">Channel 04 · Facebook</div>
+      <h4 data-es-html="Grupos de <em>Facebook</em>" data-en-html="<em>Facebook</em> groups">Grupos de <em>Facebook</em></h4>
+      <p data-es="Mapa de grupos de hospitalidad, emprendedores, expats y eventos por ciudad (50+ grupos identificados). Cómo entrar sin parecer spam · plantillas de post · Marketplace Jobs (MX, BR) · Facebook Ads targeting hyper-local. El canal más infravalorado en LATAM." data-en="Map of hospitality, entrepreneur, expat, and event groups by city (50+ groups identified). How to enter without looking spammy · post templates · Marketplace Jobs (MX, BR) · hyper-local Facebook Ads targeting. The most underrated channel in LATAM.">Map of hospitality, entrepreneur, expat, and event groups by city (50+ groups identified). How to enter without looking spammy · post templates · Marketplace Jobs (MX, BR) · hyper-local Facebook Ads targeting. The most underrated channel in LATAM.</p>
+      <div class="foot">
+        <span>/sourcing-facebook.html</span>
+        <span class="open">OPEN →</span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- ============ B · OPERATING INTELLIGENCE ============ -->
+<section>
+  <div class="sec-head">
+    <div>
+      <div class="sec-eyebrow" data-es="Inteligencia operativa · Datos de campo" data-en="Operating intelligence · Field data">Operating intelligence · Field data</div>
+      <h3 data-es-html="Las <em>bases de datos</em> que te dan ventaja." data-en-html="The <em>databases</em> that give you an edge.">The <em>databases</em> that give you an edge.</h3>
+      <p class="sec-sub" data-es="Inventario completo: cada venue donde Sora hospeda, cada persona en CRM, cada propiedad disponible y cada registro público que revela al dueño real. Datos compartidos entre superficies — guardan estado en localStorage." data-en="Complete inventory: every venue Sora hosts at, every CRM contact, every available property, and every public registry that reveals the actual owner. Data shared across surfaces — state stored in localStorage.">Complete inventory: every venue Sora hosts at, every CRM contact, every available property, and every public registry that reveals the actual owner. Data shared across surfaces — state stored in localStorage.</p>
+    </div>
+  </div>
+  <div class="surfaces">
+
+    <a href="land-registries.html" class="surface" target="_blank" style="grid-column: span 4;border:2px solid var(--coral);background:linear-gradient(135deg,rgba(217,87,59,.04),transparent)">
+      <div class="label" style="color:var(--coral);font-weight:700" data-es="★ NUEVO · INTELIGENCIA INMOBILIARIA" data-en="★ NEW · REAL ESTATE INTELLIGENCE">★ NEW · REAL ESTATE INTELLIGENCE</div>
+      <h4 data-es-html="Registros de <em>propiedad</em> · 19 países" data-en-html="Property <em>registries</em> · 19 countries">Property <em>registries</em> · 19 countries</h4>
+      <p data-es="Cómo encontrar al dueño real de cualquier propiedad LATAM. Por país: registro público oficial (URL + cómo consultar) · sistema catastral · agregadores MLS-like · restricciones a extranjeros (zona restringida, frontera, costa) · 60+ despachos especializados nombrados · brokers premium · nodos institucionales (Lonja, AMPI, ACOBIR, CRECI, etc.). Más los 5 roles a contratar, la ruta off-market (donde está el 60-80% del inventario premium), y un checklist de due diligence de 15 puntos para no perder un dólar." data-en="How to find the actual owner of any LATAM property. Per country: official public registry (URL + how to query) · cadastral system · MLS-like aggregators · foreign-ownership restrictions (restricted zone, border, coast) · 60+ named specialist law firms · premium brokers · institutional nodes (Lonja, AMPI, ACOBIR, CRECI, etc.). Plus the 5 roles to retain, the off-market route (where 60-80% of premium inventory lives), and a 15-point due-diligence checklist to not lose a dollar.">How to find the actual owner of any LATAM property. Per country: official public registry (URL + how to query) · cadastral system · MLS-like aggregators · foreign-ownership restrictions (restricted zone, border, coast) · 60+ named specialist law firms · premium brokers · institutional nodes (Lonja, AMPI, ACOBIR, CRECI, etc.). Plus the 5 roles to retain, the off-market route (where 60-80% of premium inventory lives), and a 15-point due-diligence checklist to not lose a dollar.</p>
+      <div class="foot">
+        <span>/land-registries.html</span>
+        <span class="open" style="color:var(--coral)">OPEN →</span>
+      </div>
+    </a>
+
+    <a href="LATAM/land.html" class="surface" target="_blank" style="grid-column: span 2">
+      <div class="label" data-es="Tierras & propiedades · 3 modos" data-en="Land & property · 3 modes">Land &amp; property · 3 modes</div>
+      <h4 data-es-html="Base de <em>tierras</em>" data-en-html="<em>Land</em> database">Base de <em>tierras</em></h4>
+      <p data-es="3 modos: PREMIUM (47 listings verificados Sotheby's/LuxuryEstate $1M+) · ENTRY/MID (27 portales pre-filtrados Computrabajo/Inmuebles24/Fincaraíz/Encuentra24 con búsquedas $50K-$500K por país y tier) · ADMIN (32 contactos legales por país: registro público, catastro, notario, planificación). Filtro país/tipo + búsqueda. Status pendiente/disponible." data-en="3 modes: PREMIUM (47 verified Sotheby's/LuxuryEstate $1M+ listings) · ENTRY/MID (27 pre-filtered portals Computrabajo/Inmuebles24/Fincaraíz/Encuentra24 with $50K-$500K searches per country and tier) · ADMIN (32 per-country legal contacts: public registry, cadastre, notary, planning). Filter country/type + search. Available/pending status.">3 modes: PREMIUM (47 verified Sotheby's/LuxuryEstate $1M+ listings) · ENTRY/MID (27 pre-filtered portals Computrabajo/Inmuebles24/Fincaraíz/Encuentra24 with $50K-$500K searches per country and tier) · ADMIN (32 per-country legal contacts: public registry, cadastre, notary, planning). Filter country/type + search. Available/pending status.</p>
+      <div class="foot">
+        <span>/LATAM/land.html</span>
+        <span class="open">OPEN →</span>
+      </div>
+    </a>
+
+    <a href="event-venues.html" class="surface" target="_blank" style="grid-column: span 2">
+      <div class="label" data-es="Venues para eventos · rentar" data-en="Event venues · rent">Event venues · rent</div>
+      <h4 data-es-html="Venues para <em>eventos</em>" data-en-html="<em>Event</em> venues">Venues para <em>eventos</em></h4>
+      <p data-es="Curaduría de 75+ venues premium para RENTAR (no comprar) y producir eventos Sora. 15 países, 4 formatos (cena curada · asado · cata · brunch). Por venue: capacidad, rango de precio USD, vibe, contacto IG + web. De Casa Malca a Hotel Fasano a Estancia Vik. Para que el productor de evento sepa exactamente dónde reservar." data-en="Curation of 75+ premium venues to RENT (not buy) for producing Sora events. 15 countries, 4 formats (curated dinner · asado · tasting · brunch). Per venue: capacity, USD price range, vibe, IG + web contact. From Casa Malca to Hotel Fasano to Estancia Vik. So the event producer knows exactly where to book.">Curation of 75+ premium venues to RENT (not buy) for producing Sora events. 15 countries, 4 formats (curated dinner · asado · tasting · brunch). Per venue: capacity, USD price range, vibe, IG + web contact. From Casa Malca to Hotel Fasano to Estancia Vik. So the event producer knows exactly where to book.</p>
+      <div class="foot">
+        <span>/event-venues.html</span>
+        <span class="open">OPEN →</span>
+      </div>
+    </a>
+
+    <a href="LATAM/atlas.html" class="surface" target="_blank" style="grid-column: span 2">
+      <div class="label" data-es="Atlas de locaciones" data-en="Locations atlas">Locations atlas</div>
+      <h4 data-es-html="Todos los <em>venues</em>" data-en-html="Every <em>venue</em>">Every <em>venue</em></h4>
+      <p data-es="Cada hotel, restaurante, finca, playa y locación donde Sora hospeda o quiere hospedar. Filtrar por país (15), tipo (11 categorías), estado de la relación (partnered/pursuing/target). Tier de precio + capacidad + contacto + dirección por cada uno." data-en="Every hotel, restaurant, finca, beach and venue Sora hosts at or wants to. Filter by country (15), type (11 categories), relationship status (partnered/pursuing/target). Price tier + capacity + contact + address each.">Every hotel, restaurant, finca, beach and venue Sora hosts at or wants to. Filter by country (15), type (11 categories), relationship status (partnered/pursuing/target). Price tier + capacity + contact + address each.</p>
+      <div class="foot">
+        <span>/LATAM/atlas.html</span>
+        <span class="open">OPEN →</span>
+      </div>
+    </a>
+
+    <a href="LATAM/contacts.html" class="surface" target="_blank" style="grid-column: span 2">
+      <div class="label" data-es="CRM · contactos" data-en="CRM · contacts">CRM · contacts</div>
+      <h4 data-es-html="Quién <em>tocar</em>" data-en-html="Who to <em>reach</em>">Who to <em>reach</em></h4>
+      <p data-es="Cada persona a perseguir: chefs, hoteleros, abogados, brokers, banca cripto, talento, anfitriones. Email · WhatsApp · Instagram directo. Estado + último toque + owner editable — guarda en localStorage. Click en fila → panel detalle." data-en="Every person to chase: chefs, hoteliers, lawyers, brokers, crypto banking, talent, hosts. Direct email · WhatsApp · Instagram. Status + last-touched + owner editable — saved in localStorage. Click any row → detail panel.">Every person to chase: chefs, hoteliers, lawyers, brokers, crypto banking, talent, hosts. Direct email · WhatsApp · Instagram. Status + last-touched + owner editable — saved in localStorage. Click any row → detail panel.</p>
+      <div class="foot">
+        <span>/LATAM/contacts.html</span>
+        <span class="open">OPEN →</span>
+      </div>
+    </a>
+
+    <a href="LATAM/audience.html" class="surface" target="_blank" style="grid-column: span 2">
+      <div class="label" data-es="Audiencia & estadísticas de turismo" data-en="Audience & tourism stats">Audience &amp; tourism stats</div>
+      <h4 data-es-html="¿Para <em>quién</em> existe?" data-en-html="<em>Who</em> is the market?">¿Para <em>quién</em> existe?</h4>
+      <p data-es="Línea base 2024-2025 por país: llegadas internacionales, top 5 mercados origen con share/premium-flag/notas, segmento premium dimensionado, ocupación hotelera, ticket promedio, estacionalidad mes-por-mes, demografía (edad, solo/pareja/grupo/familia), LGBTQ+ tolerancia, idioma operativo. Bullseye Sora + saturación + competencia + ángulo diferenciador por país. Plus portfolio-level insight cross-país. Fuentes: UNWTO + STR Hotels + autoridades nacionales." data-en="2024-2025 baseline per country: international arrivals, top 5 origin markets with share/premium-flag/notes, sized premium segment, hotel occupancy, avg ticket, month-by-month seasonality, demographics (age, solo/couple/group/family), LGBTQ+ tolerance, operational language. Sora bullseye + saturation + competition + differentiation angle per country. Plus cross-country portfolio insight. Sources: UNWTO + STR Hotels + national authorities.">2024-2025 baseline per country: international arrivals, top 5 origin markets with share/premium-flag/notes, sized premium segment, hotel occupancy, avg ticket, month-by-month seasonality, demographics (age, solo/couple/group/family), LGBTQ+ tolerance, operational language. Sora bullseye + saturation + competition + differentiation angle per country. Plus cross-country portfolio insight. Sources: UNWTO + STR Hotels + national authorities.</p>
+      <div class="foot">
+        <span>/LATAM/audience.html</span>
+        <span class="open">OPEN →</span>
+      </div>
+    </a>
+
+    <a href="LATAM/chapter.html" class="surface" target="_blank" style="grid-column: span 2">
+      <div class="label" data-es="Capítulos interactivos" data-en="Interactive chapters">Interactive chapters</div>
+      <h4 data-es-html="Los 10 <em>capítulos</em> en vivo" data-en-html="The 10 <em>chapters</em> live">The 10 <em>chapters</em> live</h4>
+      <p data-es="MX, CO, BR, AR, CR, PE, CL, UY, PA, VE — cada uno con tesis, regiones ancla, weekends curados, experiencias de día, estrategia inmobiliaria, setup legal, economics y riesgos. Bilingüe ES/EN. Hash routing #MX #CO etc." data-en="MX, CO, BR, AR, CR, PE, CL, UY, PA, VE — each with thesis, anchor regions, curated weekends, day experiences, real estate strategy, legal setup, economics and risks. Bilingual ES/EN. Hash routing #MX #CO etc.">MX, CO, BR, AR, CR, PE, CL, UY, PA, VE — each with thesis, anchor regions, curated weekends, day experiences, real estate strategy, legal setup, economics and risks. Bilingual ES/EN. Hash routing #MX #CO etc.</p>
+      <div class="foot">
+        <span>/LATAM/chapter.html</span>
+        <span class="open">OPEN →</span>
+      </div>
+    </a>
+
+    <a href="field-manuals.html" class="surface" target="_blank" style="grid-column: span 2">
+      <div class="label" data-es="Field manuals · país por país" data-en="Field manuals · country by country">Field manuals · country by country</div>
+      <h4 data-es-html="Cómo <em>vivir</em> allá" data-en-html="How to <em>actually live</em> there">How to <em>actually live</em> there</h4>
+      <p data-es="Cuatro dossiers de relocation 1,500–2,200 palabras: Venezuela, México (CDMX), Medellín, Buenos Aires. Cada uno con 12 capítulos — barrios, costos, real estate, coworking, setup legal, visa, banca/cripto, taxes, lifestyle, protocolos diarios, primeros 90 días. Para el operador en el terreno." data-en="Four 1,500–2,200-word relocation dossiers: Venezuela, Mexico City, Medellín, Buenos Aires. Each one 12 chapters — neighborhoods, costs, real estate, coworking, legal setup, visas, banking/crypto, taxes, lifestyle, daily protocols, first 90 days. For the operator on the ground.">Four 1,500–2,200-word relocation dossiers: Venezuela, Mexico City, Medellín, Buenos Aires. Each one 12 chapters — neighborhoods, costs, real estate, coworking, legal setup, visas, banking/crypto, taxes, lifestyle, daily protocols, first 90 days. For the operator on the ground.</p>
+      <div class="foot">
+        <span>/field-manuals.html</span>
+        <span class="open">OPEN →</span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- ============ C · TOOLING & DESIGN ============ -->
+<section>
+  <div class="sec-head">
+    <div>
+      <div class="sec-eyebrow" data-es="Tooling interno · Diseño & aplicaciones" data-en="Internal tooling · Design & applications">Internal tooling · Design & applications</div>
+      <h3 data-es-html="Cómo el <em>equipo se apalanca</em>." data-en-html="How the <em>team leverages itself</em>.">How the <em>team leverages itself</em>.</h3>
+      <p class="sec-sub" data-es="Las herramientas multiplican personas. MCP scrapers, generadores de copy, AI design stack con prompts brand-locked. Un equipo de 4 personas opera como 30 cuando el tooling es correcto." data-en="Tools multiply people. MCP scrapers, copy generators, AI design stack with brand-locked prompts. A 4-person team operates like 30 when the tooling is right.">Tools multiply people. MCP scrapers, copy generators, AI design stack with brand-locked prompts. A 4-person team operates like 30 when the tooling is right.</p>
+    </div>
+  </div>
+  <div class="surfaces">
+
+    <a href="sora-apps.html" class="surface" target="_blank" style="grid-column: span 2;border:2px solid var(--coral);background:linear-gradient(135deg,rgba(217,87,59,.04),transparent)">
+      <div class="label" style="color:var(--coral);font-weight:700" data-es="★ APLICACIONES · TOOLING INTERNO" data-en="★ APPLICATIONS · INTERNAL TOOLING">★ APPLICATIONS · INTERNAL TOOLING</div>
+      <h4 data-es-html="Las <em>herramientas</em> internas" data-en-html="The <em>internal</em> tools">The <em>internal</em> tools</h4>
+      <p data-es="Hub de aplicaciones Sora. Documenta cada herramienta construida (LIVE), en beta (BETA), o en roadmap. MCP server multi-platform (IG/TikTok/Twitter/Facebook) con 13 herramientas para minar talento + datos. CRM interno con localStorage. Base de tierras con 3 modos. Plus: Sora copy generator, event brief generator, host performance dashboard, WhatsApp bot, P&L en vivo. Cómo conectar Claude Code al MCP en 30 segundos." data-en="Sora applications hub. Documents every built tool (LIVE), beta (BETA), or roadmap. Multi-platform MCP server (IG/TikTok/Twitter/Facebook) with 13 tools for mining talent + data. Internal CRM with localStorage. Land database with 3 modes. Plus: Sora copy generator, event brief generator, host performance dashboard, WhatsApp bot, live P&L. How to connect Claude Code to MCP in 30 seconds.">Sora applications hub. Documents every built tool (LIVE), beta (BETA), or roadmap. Multi-platform MCP server (IG/TikTok/Twitter/Facebook) with 13 tools for mining talent + data. Internal CRM with localStorage. Land database with 3 modes. Plus: Sora copy generator, event brief generator, host performance dashboard, WhatsApp bot, live P&L. How to connect Claude Code to MCP in 30 seconds.</p>
+      <div class="foot">
+        <span>/sora-apps.html</span>
+        <span class="open" style="color:var(--coral)">OPEN →</span>
+      </div>
+    </a>
+
+    <a href="sora-design.html" class="surface" target="_blank" style="grid-column: span 2;border:2px solid var(--coral);background:linear-gradient(135deg,rgba(217,87,59,.04),transparent)">
+      <div class="label" style="color:var(--coral);font-weight:700" data-es="★ DESIGN · BRAND & AI GENERATION" data-en="★ DESIGN · BRAND & AI GENERATION">★ DESIGN · BRAND & AI GENERATION</div>
+      <h4 data-es-html="<em>Brand foundation</em> + AI prompts" data-en-html="<em>Brand foundation</em> + AI prompts"><em>Brand foundation</em> + AI prompts</h4>
+      <p data-es="Hub de diseño Sora. Brand foundation completo: paleta de 8 colores con uso por contexto, 4 familias tipográficas con roles, 6 principios de DNA visual, 4 reglas de voz. Plus AI stack curado (Midjourney/Ideogram/Sora-OpenAI/Runway/Pika/ElevenLabs/Suno/CapCut) con precios. Plus 25+ prompts brand-locked listos para copy/paste — logos, IG square promos, stories, reels, voiceovers. Plus 2 workflows end-to-end (anuncio IG en 45 min, reel completo en 2 horas). $63-154/mes stack total." data-en="Sora design hub. Complete brand foundation: 8-color palette with context usage, 4 type families with roles, 6 visual DNA principles, 4 voice rules. Plus curated AI stack (Midjourney/Ideogram/Sora-OpenAI/Runway/Pika/ElevenLabs/Suno/CapCut) with pricing. Plus 25+ brand-locked copy/paste prompts — logos, IG square promos, stories, reels, voiceovers. Plus 2 end-to-end workflows (IG announcement in 45 min, full reel in 2 hours). $63-154/mo total stack.">Sora design hub. Complete brand foundation: 8-color palette with context usage, 4 type families with roles, 6 visual DNA principles, 4 voice rules. Plus curated AI stack (Midjourney/Ideogram/Sora-OpenAI/Runway/Pika/ElevenLabs/Suno/CapCut) with pricing. Plus 25+ brand-locked copy/paste prompts — logos, IG square promos, stories, reels, voiceovers. Plus 2 end-to-end workflows (IG announcement in 45 min, full reel in 2 hours). $63-154/mo total stack.</p>
+      <div class="foot">
+        <span>/sora-design.html</span>
+        <span class="open" style="color:var(--coral)">OPEN →</span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- ============ D · APOTECARIO · 4 DOCS SEPARADOS ============ -->
+<section>
+  <div class="sec-head">
+    <div>
+      <div class="sec-eyebrow" data-es="Apotecario · 4 secciones separadas" data-en="Apothecary · 4 separate sections">Apothecary · 4 separate sections</div>
+      <h3 data-es-html="El <em>cuerpo</em> y la <em>conciencia</em>." data-en-html="The <em>body</em> and <em>consciousness</em>.">The <em>body</em> and <em>consciousness</em>.</h3>
+      <p class="sec-sub" data-es="Cuatro categorías distintas, cuatro documentos. Bebidas (líquidos), péptidos (proteínas inyectables), químicos (linaje Shulgin — psicodélicos), medicinas modernas (Rx + nootrópicos + terapias clínicas). Cada uno con su propia estética, color, y sourcing específico." data-en="Four distinct categories, four documents. Drinks (liquids), peptides (injectable proteins), chemicals (Shulgin lineage — psychedelics), modern medicines (Rx + nootropics + clinical therapies). Each with its own aesthetic, color, and specific sourcing.">Four distinct categories, four documents. Drinks (liquids), peptides (injectable proteins), chemicals (Shulgin lineage — psychedelics), modern medicines (Rx + nootropics + clinical therapies). Each with its own aesthetic, color, and specific sourcing.</p>
+    </div>
+  </div>
+  <div class="surfaces">
+
+    <a href="sora-elixirs.html" class="surface" target="_blank" style="grid-column: span 2;border:0.5px solid var(--coral);background:linear-gradient(135deg,rgba(217,87,59,.03),transparent)">
+      <div class="label" style="color:var(--coral);font-weight:700" data-es="01 · BEBIDAS · LÍQUIDOS" data-en="01 · DRINKS · LIQUIDS">01 · DRINKS · LIQUIDS</div>
+      <h4 data-es-html="<em>Elixires</em> para el superhumano" data-en-html="<em>Elixirs</em> for the superhuman"><em>Elixirs</em> for the superhuman</h4>
+      <p data-es="30 líquidos curados de 12,000 años de canon humano. 6 categorías: energía, cognición, anti-inflamación, hormonal, bioeléctrica, espíritu. De Soma védico a Cacao maya a Kava polinesia a agua EZ de Pollack. Interactive potion-shelf scroll horizontal + modal con receta paso-a-paso + sourcing David/Boquete + internacional ordenado por velocidad." data-en="30 liquids curated from 12,000 years of human canon. 6 categories: energy, cognition, anti-inflammation, hormonal, bioelectric, spirit. From Vedic Soma to Maya Cacao to Polynesian Kava to Pollack's EZ water. Interactive horizontal potion-shelf scroll + modal with step-by-step recipe + David/Boquete sourcing + international sorted by speed.">30 liquids curated from 12,000 years of human canon. 6 categories: energy, cognition, anti-inflammation, hormonal, bioelectric, spirit. From Vedic Soma to Maya Cacao to Polynesian Kava to Pollack's EZ water. Interactive horizontal potion-shelf scroll + modal with step-by-step recipe + David/Boquete sourcing + international sorted by speed.</p>
+      <div class="foot">
+        <span>/sora-elixirs.html</span>
+        <span class="open" style="color:var(--coral)">OPEN →</span>
+      </div>
+    </a>
+
+    <a href="sora-peptides.html" class="surface" target="_blank" style="grid-column: span 2;border:0.5px solid #3D5A75;background:linear-gradient(135deg,rgba(61,90,117,.03),transparent)">
+      <div class="label" style="color:#3D5A75;font-weight:700" data-es="02 · PÉPTIDOS · RESEARCH" data-en="02 · PEPTIDES · RESEARCH">02 · PEPTIDES · RESEARCH</div>
+      <h4 data-es-html="<em>Péptidos</em> · fragmentos moleculares" data-en-html="<em>Peptides</em> · molecular fragments"><em>Peptides</em> · molecular fragments</h4>
+      <p data-es="16 péptidos research-grade en 6 categorías · regeneración (BPC-157, TB-500, GHK-Cu, KPV) · cognición/plasticidad (Selank, Semax, DSIP, Cerebrolysin) · crecimiento + IGF (Tesamorelin, Ipamorelin, CJC-1295) · longevidad mitocondrial (Epitalon, MOTS-c, SS-31) · hormonal (PT-141 · libido) · inmune (Thymosin Alpha-1). Linaje Sikiric · Khavinson · Knoll · Pickart · Academia Rusa. Inyectables subcutáneos + sprays nasales. Vial-aesthetic medical bottles. Sourcing Core Peptides + Swiss Chems + Verified Peptides + Marek Health telehealth USA." data-en="16 research-grade peptides in 6 categories · regeneration (BPC-157, TB-500, GHK-Cu, KPV) · cognition/plasticity (Selank, Semax, DSIP, Cerebrolysin) · growth + IGF (Tesamorelin, Ipamorelin, CJC-1295) · mitochondrial longevity (Epitalon, MOTS-c, SS-31) · hormonal (PT-141 · libido) · immune (Thymosin Alpha-1). Sikiric · Khavinson · Knoll · Pickart · Russian Academy lineage. Subcutaneous injectables + nasal sprays. Vial-aesthetic medical bottles. Sourcing Core Peptides + Swiss Chems + Verified Peptides + Marek Health US telehealth.">16 research-grade peptides in 6 categories · regeneration (BPC-157, TB-500, GHK-Cu, KPV) · cognition/plasticity (Selank, Semax, DSIP, Cerebrolysin) · growth + IGF (Tesamorelin, Ipamorelin, CJC-1295) · mitochondrial longevity (Epitalon, MOTS-c, SS-31) · hormonal (PT-141 · libido) · immune (Thymosin Alpha-1). Sikiric · Khavinson · Knoll · Pickart · Russian Academy lineage. Subcutaneous injectables + nasal sprays. Vial-aesthetic medical bottles. Sourcing Core Peptides + Swiss Chems + Verified Peptides + Marek Health US telehealth.</p>
+      <div class="foot">
+        <span>/sora-peptides.html</span>
+        <span class="open" style="color:#3D5A75">OPEN →</span>
+      </div>
+    </a>
+
+    <a href="sora-chemicals.html" class="surface" target="_blank" style="grid-column: span 2;border:0.5px solid #6E4A8A;background:linear-gradient(135deg,rgba(110,74,138,.03),transparent)">
+      <div class="label" style="color:#6E4A8A;font-weight:700" data-es="03 · QUÍMICOS · LINAJE SHULGIN" data-en="03 · CHEMICALS · SHULGIN LINEAGE">03 · CHEMICALS · SHULGIN LINEAGE</div>
+      <h4 data-es-html="<em>Químicos</em> · educacional + research clínica" data-en-html="<em>Chemicals</em> · educational + clinical research"><em>Chemicals</em> · educational + clinical research</h4>
+      <p data-es="16 compuestos del linaje Shulgin/Hofmann/Strassman en 3 clases · Fenetilaminas (MDMA · MAPS Fase 3 PTSD 67% remisión, Mescalina · NAC + retiros San Pedro Perú, 2C-B Shulgin 1974, 2C-I, 2C-E, DOI · long-acting investigación, MDA · sassafras precursor) · Triptaminas (Psilocibina · COMPASS Fase 3 depresión TR, LSD-25 Hofmann 1943, DMT/Ayahuasca · Strassman + Soltara, 5-MeO-DMT · Tandava Mexico legal, Ibogaína · IbogaQuest adicciones, Salvinorina A · Wasson + Mazatec, 4-AcO-DMT, LSA · semillas ipomea) · Arilciclohexilaminas (Ketamina-base · disociativo, MXE · análogo). Educacional + acceso clínico legal: MAPS/Lykos, COMPASS, MindMed, Beckley Psytech, Oregon Psilocybin Services. Lab-flask erlenmeyer aesthetic." data-en="16 compounds from Shulgin/Hofmann/Strassman lineage in 3 classes · Phenethylamines (MDMA · MAPS Phase 3 PTSD 67% remission, Mescaline · NAC + Peru San Pedro retreats, 2C-B Shulgin 1974, 2C-I, 2C-E, DOI · long-acting research, MDA · sassafras precursor) · Tryptamines (Psilocybin · COMPASS Phase 3 TR depression, LSD-25 Hofmann 1943, DMT/Ayahuasca · Strassman + Soltara, 5-MeO-DMT · Tandava Mexico legal, Ibogaine · IbogaQuest addictions, Salvinorin A · Wasson + Mazatec, 4-AcO-DMT, LSA · ipomoea seeds) · Arylcyclohexylamines (Ketamine-base · dissociative, MXE · analog). Educational + legal clinical access: MAPS/Lykos, COMPASS, MindMed, Beckley Psytech, Oregon Psilocybin Services. Lab-flask erlenmeyer aesthetic.">16 compounds from Shulgin/Hofmann/Strassman lineage in 3 classes · Phenethylamines (MDMA · MAPS Phase 3 PTSD 67% remission, Mescaline · NAC + Peru San Pedro retreats, 2C-B Shulgin 1974, 2C-I, 2C-E, DOI · long-acting research, MDA · sassafras precursor) · Tryptamines (Psilocybin · COMPASS Phase 3 TR depression, LSD-25 Hofmann 1943, DMT/Ayahuasca · Strassman + Soltara, 5-MeO-DMT · Tandava Mexico legal, Ibogaine · IbogaQuest addictions, Salvinorin A · Wasson + Mazatec, 4-AcO-DMT, LSA · ipomoea seeds) · Arylcyclohexylamines (Ketamine-base · dissociative, MXE · analog). Educational + legal clinical access: MAPS/Lykos, COMPASS, MindMed, Beckley Psytech, Oregon Psilocybin Services. Lab-flask erlenmeyer aesthetic.</p>
+      <div class="foot">
+        <span>/sora-chemicals.html</span>
+        <span class="open" style="color:#6E4A8A">OPEN →</span>
+      </div>
+    </a>
+
+    <a href="sora-medicines.html" class="surface" target="_blank" style="grid-column: span 2;border:0.5px solid var(--gold);background:linear-gradient(135deg,rgba(181,143,77,.03),transparent)">
+      <div class="label" style="color:var(--gold);font-weight:700" data-es="04 · MEDICINAS · CLÍNICA + RX" data-en="04 · MEDICINES · CLINICAL + RX">04 · MEDICINES · CLINICAL + RX</div>
+      <h4 data-es-html="<em>Medicinas</em> modernas + nootrópicos" data-en-html="Modern <em>medicines</em> + nootropics"><em>Medicines</em> modernas + nootropics</h4>
+      <p data-es="16 fármacos modernos con evidencia clínica en 4 categorías · Mitocondrial (Azul de Metileno · Ehrlich 1891 + Szent-Györgyi, Tirzepatida · Lilly SURMOUNT-5 NEJM 2025 20% peso, HBOT · Efrati protocolo 60 sesiones inversión telómeros) · Longevidad (NMN Sinclair, Rapamicina · PEARL trial AgelessRx 2025, Espermidina · Madeo autofagia, Fisetina · Mayo Clinic senolítico 20mg/kg, Metformina · TAME Einstein, Berberina · HTD1801 Fase 3) · Cognitivo (Modafinil eugeroico telehealth, Aniracetam · familia racetam Giurgea 1964, Selegilina · Knoll Hungría MAO-B, Tianeptina · Servier μ-opioid atípico, NSI-189 · Neuralstem neurogénesis hipocampal) · Terapia (Ketamina Mindbloom/Field Trip, LDN · Bihari NYC 1985 autoinmune). Prescription pill-bottle aesthetic. Sourcing AgelessRx + Lifeforce + Marek Health + Henry Meds + Mochi + iHerb + Aviv Clinics HBOT." data-en="16 modern drugs with clinical evidence in 4 categories · Mitochondrial (Methylene Blue · Ehrlich 1891 + Szent-Györgyi, Tirzepatide · Lilly SURMOUNT-5 NEJM 2025 20% weight, HBOT · Efrati 60-session telomere reversal protocol) · Longevity (NMN Sinclair, Rapamycin · PEARL trial AgelessRx 2025, Spermidine · Madeo autophagy, Fisetin · Mayo Clinic senolytic 20mg/kg, Metformin · TAME Einstein, Berberine · HTD1801 Phase 3) · Cognitive (Modafinil eugeroic telehealth, Aniracetam · Giurgea 1964 racetam family, Selegiline · Knoll Hungary MAO-B, Tianeptine · Servier atypical μ-opioid, NSI-189 · Neuralstem hippocampal neurogenesis) · Therapy (Ketamine Mindbloom/Field Trip, LDN · Bihari NYC 1985 autoimmune). Prescription pill-bottle aesthetic. Sourcing AgelessRx + Lifeforce + Marek Health + Henry Meds + Mochi + iHerb + Aviv Clinics HBOT.">16 modern drugs with clinical evidence in 4 categories · Mitochondrial (Methylene Blue · Ehrlich 1891 + Szent-Györgyi, Tirzepatide · Lilly SURMOUNT-5 NEJM 2025 20% weight, HBOT · Efrati 60-session telomere reversal protocol) · Longevity (NMN Sinclair, Rapamycin · PEARL trial AgelessRx 2025, Spermidine · Madeo autophagy, Fisetin · Mayo Clinic senolytic 20mg/kg, Metformin · TAME Einstein, Berberine · HTD1801 Phase 3) · Cognitive (Modafinil eugeroic telehealth, Aniracetam · Giurgea 1964 racetam family, Selegiline · Knoll Hungary MAO-B, Tianeptine · Servier atypical μ-opioid, NSI-189 · Neuralstem hippocampal neurogenesis) · Therapy (Ketamine Mindbloom/Field Trip, LDN · Bihari NYC 1985 autoimmune). Prescription pill-bottle aesthetic. Sourcing AgelessRx + Lifeforce + Marek Health + Henry Meds + Mochi + iHerb + Aviv Clinics HBOT.</p>
+      <div class="foot">
+        <span>/sora-medicines.html</span>
+        <span class="open" style="color:var(--gold)">OPEN →</span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- ============ STRATEGY LAYER ============ -->
+<section>
+  <div class="sec-head">
+    <div>
+      <div class="sec-eyebrow" data-es="Estrategia LATAM" data-en="LATAM strategy">LATAM strategy</div>
+      <h3 data-es-html="La <em>visión global</em>." data-en-html="The <em>global view</em>.">The <em>global view</em>.</h3>
+      <p class="sec-sub" data-es="Documento maestro de expansión, dashboard en vivo con noticias por país, y 15 archivos de capítulo." data-en="Master expansion doc, live news dashboard per country, and 15 chapter files.">Master expansion doc, live news dashboard per country, and 15 chapter files.</p>
+    </div>
+  </div>
+  <div class="surfaces">
+
+    <a href="LATAM/_OVERVIEW.md" class="surface" target="_blank" style="grid-column: span 2">
+      <div class="label" data-es="Documento maestro" data-en="Master doc">Master doc</div>
+      <h4 data-es-html="Atlas de <em>expansión</em>" data-en-html="Expansion <em>atlas</em>">Expansion <em>atlas</em></h4>
+      <p data-es="15 países en 3 tiers. Top-5 prioritarios. Playbook común. Capital + timing por chapter. Cómo el break-even funciona en cada uno. El moat: guest LTV cross-country." data-en="15 countries in 3 tiers. Top-5 priority. Common playbook. Capital + timing per chapter. How break-even works at each. The moat: cross-country guest LTV.">15 countries in 3 tiers. Top-5 priority. Common playbook. Capital + timing per chapter. How break-even works at each. The moat: cross-country guest LTV.</p>
+      <div class="foot">
+        <span>/LATAM/_OVERVIEW.md</span>
+        <span class="open">OPEN →</span>
+      </div>
+    </a>
+
+    <a href="LATAM/dashboard.html" class="surface" target="_blank" style="grid-column: span 2">
+      <div class="label" data-es="Tablero en vivo" data-en="Live dashboard">Live dashboard</div>
+      <h4 data-es-html="LATAM Atlas · <em>live</em>" data-en-html="LATAM Atlas · <em>live</em>">LATAM Atlas · <em>live</em></h4>
+      <p data-es="Comparativa de 15 países: setup, burn, BE, moneda, advisory, GDP. Click para expandir → noticias en vivo de Google News + 8 deep links autoritativos por país." data-en="15-country comparison: setup, burn, BE, currency, advisory, GDP. Click to expand → live Google News across 5 categories + 8 authoritative deep links per country.">15-country comparison: setup, burn, BE, currency, advisory, GDP. Click to expand → live Google News across 5 categories + 8 authoritative deep links per country.</p>
+      <div class="foot">
+        <span>/LATAM/dashboard.html</span>
+        <span class="open">OPEN →</span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- ============ THE 15 CHAPTERS ============ -->
+<section>
+  <div class="sec-head">
+    <div>
+      <div class="sec-eyebrow" data-es="Los quince capítulos" data-en="The fifteen chapters">The fifteen chapters</div>
+      <h3 data-es-html="Toda <em>Latinoamérica</em>." data-en-html="All <em>Latin America</em>.">All <em>Latin America</em>.</h3>
+    </div>
+    <div class="sec-action" data-es="CLICK PARA ABRIR" data-en="CLICK TO OPEN">CLICK TO OPEN</div>
+  </div>
+
+  <div class="chapter-filter">
+    <button class="active" onclick="filterChapters('all', this)">ALL · 15</button>
+    <button onclick="filterChapters('tier1', this)">TIER 1 · 5</button>
+    <button onclick="filterChapters('tier2', this)">TIER 2 · 5</button>
+    <button onclick="filterChapters('tier3', this)">TIER 3 · 5</button>
+    <button onclick="filterChapters('live', this)">LIVE / LAUNCHING · 4</button>
+  </div>
+
+  <div class="chapters" id="chapters-grid"></div>
+</section>
+
+<!-- ============ OUTREACH PIPELINE ============ -->
+<section>
+  <div class="sec-head">
+    <div>
+      <div class="sec-eyebrow" data-es="Pipeline de outreach" data-en="Outreach pipeline">Outreach pipeline</div>
+      <h3 data-es-html="Quién toca a <em>quién</em>." data-en-html="Who reaches <em>whom</em>.">Who reaches <em>whom</em>.</h3>
+      <p class="sec-sub" data-es="Cada capítulo en arranque sigue el mismo playbook de 4 pasos. Marcá las casillas a medida que avanzás." data-en="Every chapter in setup follows the same 4-step playbook. Check the boxes as you move.">Every chapter in setup follows the same 4-step playbook. Check the boxes as you move.</p>
+    </div>
+  </div>
+
+  <div class="outreach">
+
+    <div class="outreach-card">
+      <div class="head">
+        <h4>🇲🇽 México</h4>
+        <span class="when" data-es="Q3 2026 · ACTIVO" data-en="Q3 2026 · ACTIVE">Q3 2026 · ACTIVE</span>
+      </div>
+      <div class="outreach-step" data-key="mx-lawyers" onclick="toggleStep(this)">
+        <div class="check">1</div>
+        <div class="body">
+          <div class="step-name" data-es="Bufete legal contratado" data-en="Law firm engaged">Law firm engaged</div>
+          <div class="step-sub">Mijares / Galicia / De la Vega · <a href="LATAM/outreach/MX/_README.md" target="_blank">drafts</a></div>
+        </div>
+      </div>
+      <div class="outreach-step" data-key="mx-hosts" onclick="toggleStep(this)">
+        <div class="check">2</div>
+        <div class="body">
+          <div class="step-name" data-es="2 hosts contratados" data-en="2 hosts hired">2 hosts hired</div>
+          <div class="step-sub">CDMX + Tulum · <a href="LATAM/outreach/MX/hosts-cdmx-jobpost.md" target="_blank">job posts</a></div>
+        </div>
+      </div>
+      <div class="outreach-step" data-key="mx-lodging" onclick="toggleStep(this)">
+        <div class="check">3</div>
+        <div class="body">
+          <div class="step-name" data-es="5 lodgings confirmados" data-en="5 lodging partners signed">5 lodging partners signed</div>
+          <div class="step-sub">Casa Polanco · Habitas · Matilda · Sin Nombre · Bruma</div>
+        </div>
+      </div>
+      <div class="outreach-step" data-key="mx-talent" onclick="toggleStep(this)">
+        <div class="check">4</div>
+        <div class="body">
+          <div class="step-name" data-es="Talento + brokers" data-en="Talent + brokers">Talent + brokers</div>
+          <div class="step-sub" data-es="Chefs y brokers de bienes raíces" data-en="Chefs and real estate brokers">Chefs and real estate brokers</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="outreach-card">
+      <div class="head">
+        <h4>🇨🇴 Colombia</h4>
+        <span class="when" data-es="Q4 2026 · PRÓXIMO" data-en="Q4 2026 · NEXT">Q4 2026 · NEXT</span>
+      </div>
+      <div class="outreach-step" data-key="co-lawyers" onclick="toggleStep(this)">
+        <div class="check">1</div>
+        <div class="body">
+          <div class="step-name" data-es="SAS Brigard Urrutia" data-en="SAS via Brigard Urrutia">SAS via Brigard Urrutia</div>
+          <div class="step-sub"><a href="LATAM/outreach/CO/_README.md" target="_blank">drafts</a> · use MX template as base</div>
+        </div>
+      </div>
+      <div class="outreach-step" data-key="co-hosts" onclick="toggleStep(this)">
+        <div class="check">2</div>
+        <div class="body">
+          <div class="step-name" data-es="Hosts Medellín + Cartagena" data-en="Hosts Medellín + Cartagena">Hosts Medellín + Cartagena</div>
+          <div class="step-sub"><a href="LATAM/outreach/CO/hosts-medellin-jobpost.md" target="_blank">job posts</a></div>
+        </div>
+      </div>
+      <div class="outreach-step" data-key="co-lodging" onclick="toggleStep(this)">
+        <div class="check">3</div>
+        <div class="body">
+          <div class="step-name" data-es="Lodging Casa San Agustín + The Charlee + Bio Habitat" data-en="Lodging Casa San Agustín + The Charlee + Bio Habitat">Lodging Casa San Agustín + The Charlee + Bio Habitat</div>
+          <div class="step-sub" data-es="Pendiente" data-en="Pending">Pending</div>
+        </div>
+      </div>
+      <div class="outreach-step" data-key="co-brokers" onclick="toggleStep(this)">
+        <div class="check">4</div>
+        <div class="body">
+          <div class="step-name" data-es="Brokers Casacol + Hudson 32" data-en="Brokers Casacol + Hudson 32">Brokers Casacol + Hudson 32</div>
+          <div class="step-sub" data-es="Pendiente" data-en="Pending">Pending</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="outreach-card">
+      <div class="head">
+        <h4>🇻🇪 Venezuela</h4>
+        <span class="when" data-es="Q4 2026 · ABRAHAM" data-en="Q4 2026 · ABRAHAM">Q4 2026 · ABRAHAM</span>
+      </div>
+      <div class="outreach-step" data-key="ve-lawyers" onclick="toggleStep(this)">
+        <div class="check">1</div>
+        <div class="body">
+          <div class="step-name" data-es="C.A. con D'Empaire" data-en="C.A. with D'Empaire">C.A. with D'Empaire</div>
+          <div class="step-sub" data-es="Tras llegada de Abraham · OFAC counsel obligatorio" data-en="After Abraham arrives · OFAC counsel mandatory">After Abraham arrives · OFAC counsel mandatory</div>
+        </div>
+      </div>
+      <div class="outreach-step" data-key="ve-hosts" onclick="toggleStep(this)">
+        <div class="check">2</div>
+        <div class="body">
+          <div class="step-name" data-es="Anfitrión local Caracas" data-en="Local Caracas host">Local Caracas host</div>
+          <div class="step-sub" data-es="Vía AmCham VE / network local" data-en="Via AmCham VE / local network">Via AmCham VE / local network</div>
+        </div>
+      </div>
+      <div class="outreach-step" data-key="ve-lodging" onclick="toggleStep(this)">
+        <div class="check">3</div>
+        <div class="body">
+          <div class="step-name" data-es="Volcán Lodge + posada Los Roques + Mérida hostería" data-en="Volcán Lodge + Los Roques posada + Mérida hostería">Volcán Lodge + Los Roques posada + Mérida hostería</div>
+          <div class="step-sub" data-es="Pendiente" data-en="Pending">Pending</div>
+        </div>
+      </div>
+      <div class="outreach-step" data-key="ve-talent" onclick="toggleStep(this)">
+        <div class="check">4</div>
+        <div class="body">
+          <div class="step-name" data-es="Chef Carlos García (Alto) + brokers Las Mercedes" data-en="Chef Carlos García (Alto) + Las Mercedes brokers">Chef Carlos García (Alto) + Las Mercedes brokers</div>
+          <div class="step-sub" data-es="Real estate es prioridad alta" data-en="Real estate is high priority">Real estate is high priority</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ KNOWLEDGE BASE ============ -->
+<section>
+  <div class="sec-head">
+    <div>
+      <div class="sec-eyebrow" data-es="Base de conocimiento" data-en="Knowledge base">Knowledge base</div>
+      <h3 data-es-html="Todo lo <em>escrito</em>." data-en-html="Everything <em>written</em>.">Everything <em>written</em>.</h3>
+    </div>
+  </div>
+
+  <div class="kb">
+
+    <div class="kb-group">
+      <h4 data-es="Estrategia · Documentos maestros" data-en="Strategy · Master documents">Strategy · Master documents</h4>
+      <ul class="kb-list">
+        <li><a href="LATAM/_OVERVIEW.md" target="_blank">
+          <div class="row-content">
+            <div class="ico">★</div>
+            <div class="row-body">
+              <div class="name">LATAM Expansion Atlas</div>
+              <div class="desc" data-es="15 capítulos · top 5 prioridad · playbook común · capital + timing" data-en="15 chapters · top 5 priority · common playbook · capital + timing">15 chapters · top 5 priority · common playbook · capital + timing</div>
+            </div>
+          </div>
+          <span class="arr">↗</span>
+        </a></li>
+        <li><a href="SORA-ARCHITECTURE.md" target="_blank">
+          <div class="row-content">
+            <div class="ico">◇</div>
+            <div class="row-body">
+              <div class="name">System Architecture</div>
+              <div class="desc" data-es="Cómo funciona todo el sistema · superficies · data · operaciones" data-en="How the whole system works · surfaces · data · operations">How the whole system works · surfaces · data · operations</div>
+            </div>
+          </div>
+          <span class="arr">↗</span>
+        </a></li>
+        <li><a href="sora/events-playbook.html" target="_blank">
+          <div class="row-content">
+            <div class="ico">P</div>
+            <div class="row-body">
+              <div class="name">Events Playbook</div>
+              <div class="desc" data-es="Cómo se opera un fin de semana SORA paso a paso" data-en="How to operate a SORA weekend, step by step">How to operate a SORA weekend, step by step</div>
+            </div>
+          </div>
+          <span class="arr">↗</span>
+        </a></li>
+        <li><a href="sora/brand-kit.html" target="_blank">
+          <div class="row-content">
+            <div class="ico">B</div>
+            <div class="row-body">
+              <div class="name">Brand Kit</div>
+              <div class="desc" data-es="Wordmark · paleta · tipografía · voz · dirección de fotografía" data-en="Wordmark · palette · typography · voice · photography direction">Wordmark · palette · typography · voice · photography direction</div>
+            </div>
+          </div>
+          <span class="arr">↗</span>
+        </a></li>
+      </ul>
+    </div>
+
+    <div class="kb-group">
+      <h4 data-es="Operaciones · Deploy y onboarding" data-en="Operations · Deploy and onboarding">Operations · Deploy and onboarding</h4>
+      <ul class="kb-list">
+        <li><a href="sora/app/DEPLOY.md" target="_blank">
+          <div class="row-content">
+            <div class="ico">⤴</div>
+            <div class="row-body">
+              <div class="name">Deploy Guide</div>
+              <div class="desc" data-es="Netlify drag-drop · dominio propio · Capacitor a App Store" data-en="Netlify drag-drop · custom domain · Capacitor to App Store">Netlify drag-drop · custom domain · Capacitor to App Store</div>
+            </div>
+          </div>
+          <span class="arr">↗</span>
+        </a></li>
+        <li><a href="LATAM/outreach/MX/_README.md" target="_blank">
+          <div class="row-content">
+            <div class="ico">📩</div>
+            <div class="row-body">
+              <div class="name">MX Outreach · 13 drafts</div>
+              <div class="desc" data-es="Lawyers · hosts · lodging · talento · brokers — listos para enviar" data-en="Lawyers · hosts · lodging · talent · brokers — ready to send">Lawyers · hosts · lodging · talent · brokers — ready to send</div>
+            </div>
+          </div>
+          <span class="arr">↗</span>
+        </a></li>
+        <li><a href="../venezuela-2026.html" target="_blank">
+          <div class="row-content">
+            <div class="ico">⛰</div>
+            <div class="row-body">
+              <div class="name">Venezuela 2026 Field Manual</div>
+              <div class="desc" data-es="Manual de campo para la mudanza de Abraham · neighborhoods · OFAC · taxes" data-en="Field manual for Abraham's move · neighborhoods · OFAC · taxes">Field manual for Abraham's move · neighborhoods · OFAC · taxes</div>
+            </div>
+          </div>
+          <span class="arr">↗</span>
+        </a></li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ NEXT 7 DAYS ============ -->
+<section>
+  <div class="sec-head">
+    <div>
+      <div class="sec-eyebrow" data-es="Próximos 7 días" data-en="Next 7 days">Next 7 days</div>
+      <h3 data-es-html="Lo <em>concreto</em>." data-en-html="The <em>concrete</em>.">The <em>concrete</em>.</h3>
+      <p class="sec-sub" data-es="Tu lista de tareas. Se guarda en este navegador. Marcá lo hecho." data-en="Your task list. Saved in this browser. Check what's done.">Your task list. Saved in this browser. Check what's done.</p>
+    </div>
+  </div>
+
+  <div class="tasks">
+    <div class="tasks-head">
+      <h4 data-es="Lista de hoy" data-en="Today's list">Today's list</h4>
+      <div class="count"><strong id="task-done-ct">0</strong> / <span id="task-total-ct">0</span> <span data-es="completadas" data-en="done">done</span></div>
+    </div>
+    <ul id="task-list"></ul>
+    <div class="task-add">
+      <input id="task-input" placeholder="Add a task… (Enter to add)" data-placeholder-es="Agregar una tarea… (Enter para agregar)" data-placeholder-en="Add a task… (Enter to add)">
+      <button onclick="addTask()" data-es="Agregar" data-en="Add">Add</button>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="wordmark">SORA</div>
+        <div class="tagline" data-es="Fines de semana, experiencias y bienes raíces curados en Latinoamérica. Una colección de La Compañía." data-en="Curated weekends, experiences and real estate in Latin America. A La Compañía collection.">Curated weekends, experiences and real estate in Latin America. A La Compañía collection.</div>
+      </div>
+      <div>
+        <h5 data-es="Producto" data-en="Product">Product</h5>
+        <ul>
+          <li><a href="sora/web/index.html" target="_blank" data-es="Sitio público" data-en="Public site">Public site</a></li>
+          <li><a href="sora/app/index.html" target="_blank" data-es="App PWA" data-en="PWA app">PWA app</a></li>
+          <li><a href="sora/web/admin.html" target="_blank" data-es="Admin" data-en="Admin">Admin</a></li>
+          <li><a href="sora/app/preview.html" target="_blank">Preview</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5 data-es="Estrategia" data-en="Strategy">Strategy</h5>
+        <ul>
+          <li><a href="LATAM/_OVERVIEW.md" target="_blank">Atlas</a></li>
+          <li><a href="LATAM/dashboard.html" target="_blank">Dashboard</a></li>
+          <li><a href="SORA-ARCHITECTURE.md" target="_blank">Architecture</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5 data-es="Operaciones" data-en="Operations">Operations</h5>
+        <ul>
+          <li><a href="sora/app/DEPLOY.md" target="_blank">Deploy guide</a></li>
+          <li><a href="LATAM/outreach/MX/_README.md" target="_blank">MX outreach</a></li>
+          <li><a href="sora/events-playbook.html" target="_blank">Playbook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>SORA HQ · La Compañía 2026 · <span id="version-pill">v 0.4 · build 24 May</span></span>
+      <span data-es="HECHO EN BOQUETE · CARACAS PRÓXIMAMENTE" data-en="MADE IN BOQUETE · CARACAS COMING SOON">MADE IN BOQUETE · CARACAS COMING SOON</span>
+    </div>
+  </div>
+</footer>
+
+<script src="sora/data.js"></script>
+<script>
+// ============================================================
+//  i18n
+// ============================================================
+function getLang() { return localStorage.getItem('sora.lang') || 'en'; }
+function applyLang(lang) {
+  document.querySelectorAll('[data-es]').forEach(el => {
+    const v = el.getAttribute('data-' + lang);
+    if (v != null) el.textContent = v;
+  });
+  document.querySelectorAll('[data-es-html]').forEach(el => {
+    const v = el.getAttribute('data-' + lang + '-html');
+    if (v != null) el.innerHTML = v;
+  });
+  document.querySelectorAll('[data-placeholder-es]').forEach(el => {
+    const v = el.getAttribute('data-placeholder-' + lang);
+    if (v != null) el.placeholder = v;
+  });
+  document.documentElement.lang = lang;
+  localStorage.setItem('sora.lang', lang);
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+}
+document.querySelectorAll('.lang-btn').forEach(b => b.addEventListener('click', () => { applyLang(b.dataset.lang); renderChangelog(); renderChapters(); }));
+
+// ============================================================
+//  CHAPTERS GRID
+// ============================================================
+let chapterFilter = 'all';
+function filterChapters(f, btn) {
+  chapterFilter = f;
+  document.querySelectorAll('.chapter-filter button').forEach(x => x.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  renderChapters();
+}
+function renderChapters() {
+  if (!window.SORA_DATA) return;
+  const lang = getLang();
+  let list = [...window.SORA_DATA.countries];
+  if (chapterFilter === 'tier1') list = list.filter(c => c.tier === 1);
+  if (chapterFilter === 'tier2') list = list.filter(c => c.tier === 2);
+  if (chapterFilter === 'tier3') list = list.filter(c => c.tier === 3);
+  if (chapterFilter === 'live')  list = list.filter(c => c.status === 'live' || c.status === 'launching');
+  // Sort: live > launching > soon > gated, then by name
+  const statusOrder = { live: 0, launching: 1, soon: 2, gated: 3 };
+  list.sort((a, b) => statusOrder[a.status] - statusOrder[b.status] || a.name.es.localeCompare(b.name.es));
+  const statusLabels = {
+    live:      lang === 'es' ? 'En vivo'   : 'Live',
+    launching: lang === 'es' ? 'Lanzando'  : 'Launching',
+    soon:      lang === 'es' ? 'Pronto'    : 'Soon',
+    gated:     lang === 'es' ? 'Gated'     : 'Gated'
+  };
+  const file = c => `LATAM/${c.code}-${({
+    PA:'panama', MX:'mexico', CO:'colombia', BR:'brazil', AR:'argentina',
+    CR:'costa-rica', PE:'peru', CL:'chile', UY:'uruguay', VE:'venezuela',
+    DO:'dominican-republic', GT:'guatemala', EC:'ecuador', PR:'puerto-rico', CU:'cuba'
+  })[c.code]}.md`;
+  const grid = document.getElementById('chapters-grid');
+  grid.innerHTML = list.map(c => `
+    <a class="chapter" href="${file(c)}" target="_blank">
+      <div class="top">
+        <span class="flag">${c.flag}</span>
+        <span class="pill ${c.status}">${statusLabels[c.status]}</span>
+      </div>
+      <div class="name">${c.name[lang] || c.name.es}</div>
+      <div class="hero">${c.hero}</div>
+      <div class="tier">
+        <span>TIER ${c.tier}</span>
+        <span>${c.code}</span>
+      </div>
+    </a>
+  `).join('');
+}
+
+// ============================================================
+//  OUTREACH STEP TOGGLE (persisted)
+// ============================================================
+function loadStepsState() {
+  try { return JSON.parse(localStorage.getItem('sora.hq.steps') || '{}'); }
+  catch (e) { return {}; }
+}
+function saveStepsState(s) { localStorage.setItem('sora.hq.steps', JSON.stringify(s)); }
+// Save original step number on each .check so we can restore cleanly after toggle
+function initStepNumbers() {
+  document.querySelectorAll('.outreach-step .check').forEach(el => {
+    if (!el.dataset.num) el.dataset.num = el.textContent.trim();
+  });
+}
+function applyStepsState() {
+  const s = loadStepsState();
+  document.querySelectorAll('.outreach-step').forEach(el => {
+    const key = el.dataset.key;
+    const check = el.querySelector('.check');
+    const done = key && !!s[key];
+    el.classList.toggle('done', done);
+    check.textContent = done ? '✓' : (check.dataset.num || '');
+  });
+}
+function toggleStep(el) {
+  const key = el.dataset.key;
+  if (!key) return;
+  const s = loadStepsState();
+  s[key] = !s[key];
+  saveStepsState(s);
+  applyStepsState();
+}
+
+// ============================================================
+//  TASK LIST (persisted)
+// ============================================================
+const DEFAULT_TASKS = [
+  { text: 'Send Hotel Matilda outreach for San Miguel DDM block (inaugural MX event)', sub: 'lodging-hotel-matilda.md', done: false },
+  { text: 'Send Mijares + Galicia legal outreach in parallel', sub: '/LATAM/outreach/MX/', done: false },
+  { text: 'Post CDMX + Tulum host job postings to 8 channels', sub: 'hosts-cdmx-jobpost.md + hosts-tulum-jobpost.md', done: false },
+  { text: 'Buy Sora domain (Cloudflare Registrar)', sub: 'sorapanama.com / sora.travel / sora.la', done: false },
+  { text: 'Deploy /sora/web/ to Netlify (drag-drop)', sub: 'See DEPLOY.md', done: false },
+  { text: 'Add real Instagram + TikTok + Facebook URLs to admin Config', sub: 'admin.html → Configuración tab', done: false },
+  { text: 'Change admin password from default to permanent', sub: 'admin.html → Configuración → Cambiar usuario y contraseña', done: false }
+];
+function loadTasks() {
+  try {
+    const v = JSON.parse(localStorage.getItem('sora.hq.tasks') || 'null');
+    return Array.isArray(v) ? v : DEFAULT_TASKS;
+  } catch (e) { return DEFAULT_TASKS; }
+}
+function saveTasks(t) { localStorage.setItem('sora.hq.tasks', JSON.stringify(t)); }
+function renderTasks() {
+  const tasks = loadTasks();
+  const list = document.getElementById('task-list');
+  list.innerHTML = tasks.map((t, i) => `
+    <li class="${t.done ? 'done' : ''}">
+      <div class="chk" onclick="toggleTask(${i})"></div>
+      <div class="text">
+        ${escapeHtml(t.text)}
+        ${t.sub ? `<span class="sub">${escapeHtml(t.sub)}</span>` : ''}
+      </div>
+      <button class="del" onclick="deleteTask(${i})" title="Delete">×</button>
+    </li>
+  `).join('');
+  const done = tasks.filter(t => t.done).length;
+  document.getElementById('task-done-ct').textContent = done;
+  document.getElementById('task-total-ct').textContent = tasks.length;
+}
+function toggleTask(i) {
+  const t = loadTasks();
+  t[i].done = !t[i].done;
+  saveTasks(t);
+  renderTasks();
+}
+function deleteTask(i) {
+  const t = loadTasks();
+  t.splice(i, 1);
+  saveTasks(t);
+  renderTasks();
+}
+function addTask() {
+  const input = document.getElementById('task-input');
+  const text = input.value.trim();
+  if (!text) return;
+  const t = loadTasks();
+  t.push({ text, sub: '', done: false });
+  saveTasks(t);
+  input.value = '';
+  renderTasks();
+}
+document.getElementById('task-input').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') addTask();
+});
+function escapeHtml(s) { return String(s || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+// ============================================================
+//  CHANGELOG (manually curated, but easy to extend)
+//  When you ship something, add an entry at the top.
+// ============================================================
+const CHANGELOG = [
+  { date: '2026-05-24', ico: '◆', title: { es: 'Brand Kit publicado', en: 'Brand Kit published' }, desc: { es: 'Wordmark, paleta, tipografía, voz, fotografía — todo en un solo lugar', en: 'Wordmark, palette, typography, voice, photography — all in one place' }, href: 'sora/brand-kit.html' },
+  { date: '2026-05-24', ico: '◇', title: { es: 'Outreach Colombia (12 borradores)', en: 'Colombia outreach (12 drafts)' }, desc: { es: 'Lawyers · hosts · lodging · talent · brokers · listos para enviar', en: 'Lawyers · hosts · lodging · talent · brokers · ready to send' }, href: 'LATAM/outreach/CO/_README.md' },
+  { date: '2026-05-24', ico: '$', title: { es: 'Tasas de cambio en vivo en el dashboard', en: 'Live currency rates in dashboard' }, desc: { es: 'COP · MXN · BRL · ARS · CRC · todos los demás · auto-refresh cada 4h', en: 'COP · MXN · BRL · ARS · CRC · all others · auto-refresh every 4h' }, href: 'LATAM/dashboard.html' },
+  { date: '2026-05-24', ico: '⚐', title: { es: 'Open Graph + favicon + 404', en: 'Open Graph + favicon + 404' }, desc: { es: 'Vista previa al compartir en redes · favicon en todas las páginas · página 404 con Sora aesthetic', en: 'Share previews · favicons on all pages · branded 404 page' }, href: 'sora/web/404.html' },
+  { date: '2026-05-24', ico: '★', title: { es: 'HQ Command Center', en: 'HQ Command Center' }, desc: { es: 'Un solo punto de entrada para todo el sistema Sora', en: 'Single entry point for the whole Sora system' }, href: 'sora-hq.html' },
+  { date: '2026-05-24', ico: '◐', title: { es: 'Switcher de país en web + admin + PWA', en: 'Country switcher in web + admin + PWA' }, desc: { es: 'Mismo data.js · 15 países · localStorage compartido', en: 'Same data.js · 15 countries · shared localStorage' }, href: 'sora/web/index.html' },
+  { date: '2026-05-24', ico: '⤴', title: { es: 'Outreach México (13 borradores)', en: 'Mexico outreach (13 drafts)' }, desc: { es: 'Primer paquete completo · listo para enviar', en: 'First complete package · ready to send' }, href: 'LATAM/outreach/MX/_README.md' },
+  { date: '2026-05-24', ico: '⊛', title: { es: 'Dashboard LATAM live', en: 'LATAM live dashboard' }, desc: { es: '15 países · noticias de Google News · 8 deep links por país', en: '15 countries · Google News headlines · 8 deep links per country' }, href: 'LATAM/dashboard.html' },
+  { date: '2026-05-24', ico: '⌘', title: { es: '15 capítulos LATAM', en: '15 LATAM chapters' }, desc: { es: 'MX · CO · BR · AR · CR · PE · CL · UY · PA · VE · DO · GT · EC · PR · CU', en: 'MX · CO · BR · AR · CR · PE · CL · UY · PA · VE · DO · GT · EC · PR · CU' }, href: 'LATAM/_OVERVIEW.md' },
+  { date: '2026-05-23', ico: '◆', title: { es: 'SORA Travel Agency rebrand', en: 'SORA Travel Agency rebrand' }, desc: { es: 'Sub-tagline en wordmark · admin renombrado · página pública updated', en: 'Sub-tagline on wordmark · admin renamed · public page updated' }, href: 'sora/web/index.html' },
+  { date: '2026-05-23', ico: '⚭', title: { es: 'Admin con login (user + password)', en: 'Admin with login (user + password)' }, desc: { es: 'AEDMsora / AEDMempresa2026 default · cambiable en Configuración', en: 'AEDMsora / AEDMempresa2026 default · changeable in Configuración' }, href: 'sora/web/admin.html' },
+  { date: '2026-05-23', ico: '◑', title: { es: 'Registro de usuarios + sección bienes raíces', en: 'User registration + real estate section' }, desc: { es: 'Marketing site agregó formulario "Registrarse" + 3 listings demo en RE', en: 'Marketing site added "Registrarse" form + 3 demo RE listings' }, href: 'sora/web/index.html' },
+  { date: '2026-05-23', ico: 'P', title: { es: 'Marketing site v1', en: 'Marketing site v1' }, desc: { es: 'ES/EN · WhatsApp flotante · todo el ecosistema Sora público', en: 'ES/EN · floating WhatsApp · full public Sora ecosystem' }, href: 'sora/web/index.html' }
+];
+function renderChangelog() {
+  const lang = getLang();
+  const list = document.getElementById('changelog-list');
+  if (!list) return;
+  list.innerHTML = CHANGELOG.slice(0, 8).map(c => `
+    <li><a href="${c.href}" target="_blank">
+      <div class="row-content">
+        <div class="ico">${c.ico}</div>
+        <div class="row-body">
+          <div class="name">${c.title[lang] || c.title.es}</div>
+          <div class="desc"><span style="font-family: var(--mono); font-size: 10px; color: var(--coral-deep); margin-right: 6px; letter-spacing: 0.5px">${c.date}</span> · ${c.desc[lang] || c.desc.es}</div>
+        </div>
+      </div>
+      <span class="arr">↗</span>
+    </a></li>
+  `).join('');
+}
+
+// ============================================================
+//  TIMESTAMP
+// ============================================================
+function updateStamp() {
+  document.getElementById('updated-stamp').textContent = new Date().toLocaleString();
+}
+
+// ============================================================
+//  INIT
+// ============================================================
+applyLang(getLang());
+renderChapters();
+renderChangelog();
+initStepNumbers();
+applyStepsState();
+renderTasks();
+updateStamp();
+setInterval(updateStamp, 30000);
+</script>
+
 </body>
 </html>
