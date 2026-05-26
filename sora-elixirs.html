@@ -1,0 +1,911 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SORA · Bebidas · Elixires para el Superhumano</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Instrument+Serif&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F8F3EA; --cream-2:#F2EBDD; --cream-3:#E9DFCA;
+    --ink:#1B1A17; --ink-2:#3A352D; --ink-3:#5C5346; --faint:#9A8E7A;
+    --line:rgba(27,26,23,.10); --line-2:rgba(27,26,23,.06);
+    --coral:#D9573B; --gold:#B58F4D; --mango:#E2A24A; --green:#3F5F45; --rose:#B8616B; --teal:#2C6E7F;
+    --serif:'Fraunces',Georgia,serif; --display:'Instrument Serif',Georgia,serif;
+    --sans:'Inter',-apple-system,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--cream);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;font-size:15px;line-height:1.55;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.08  0 0 0 0 0.07  0 0 0 0 0.05  0 0 0 0.020 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--coral);color:var(--cream)}
+  [data-en]{display:none}
+  html[lang="en"] [data-es]{display:none}
+  html[lang="en"] [data-en]{display:inline}
+
+  .top{position:sticky;top:0;z-index:50;background:rgba(248,243,234,.92);backdrop-filter:blur(14px);border-bottom:0.5px solid var(--line)}
+  .top-in{max-width:1180px;margin:0 auto;padding:14px 28px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .brand{font-family:var(--serif);font-weight:600;font-size:16px;letter-spacing:.16em;color:var(--ink)}
+  .brand em{font-style:italic;color:var(--coral)}
+  .top-tag{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--rose);text-transform:uppercase;padding:4px 10px;background:rgba(184,97,107,.10);border-radius:4px}
+  .top-link{font-family:var(--sans);font-size:12px;color:var(--ink-2);padding:7px 12px;border:0.5px solid var(--line);border-radius:5px}
+  .top-link:hover{background:var(--cream-2)}
+  .spacer{flex:1}
+  .lang{display:inline-flex;border:0.5px solid var(--line);border-radius:5px;overflow:hidden}
+  .lang button{padding:6px 11px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;background:transparent;border:0;color:var(--faint);cursor:pointer;font-weight:500}
+  .lang button.active{background:var(--ink);color:var(--cream)}
+
+  .hero{padding:80px 32px 56px;max-width:1180px;margin:0 auto;text-align:center}
+  .hero-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--coral);font-weight:600;margin-bottom:24px}
+  .hero h1{font-family:var(--display);font-weight:400;font-size:clamp(52px,9vw,108px);line-height:.94;letter-spacing:-.025em;color:var(--ink);margin-bottom:18px}
+  .hero h1 em{font-style:italic;color:var(--coral)}
+  .hero-lede{font-family:var(--serif);font-size:19px;color:var(--ink-2);font-weight:300;max-width:780px;margin:0 auto;line-height:1.55}
+  .hero-lede strong{color:var(--ink);font-weight:500}
+
+  .strip{max-width:1180px;margin:32px auto 0;padding:0 32px;display:grid;grid-template-columns:repeat(5,1fr);border-top:0.5px solid var(--line);border-bottom:0.5px solid var(--line)}
+  .strip > div{padding:22px 18px;text-align:center;border-right:0.5px solid var(--line)}
+  .strip > div:last-child{border-right:0}
+  .strip .n{font-family:var(--display);font-size:34px;color:var(--coral);line-height:1;margin-bottom:6px}
+  .strip .l{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
+
+  section{max-width:1180px;margin:0 auto;padding:48px 32px 40px}
+  .sec-head{margin-bottom:24px;text-align:center}
+  .sec-num{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--coral);font-weight:600;margin-bottom:10px}
+  .sec-head h2{font-family:var(--display);font-weight:400;font-size:clamp(22px,3vw,32px);line-height:1.15;letter-spacing:-.01em;color:var(--ink);margin-bottom:10px}
+  .sec-head h2 em{font-style:italic;color:var(--coral)}
+  .sec-sub{font-family:var(--serif);font-size:15px;color:var(--ink-3);font-weight:300;max-width:680px;margin:0 auto;line-height:1.55}
+
+  /* Lineage cards */
+  .lineage{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:24px}
+  .li{background:var(--cream);border:0.5px solid var(--line);border-radius:10px;padding:22px 24px;border-top:3px solid var(--coral)}
+  .li:nth-child(2){border-top-color:var(--gold)}
+  .li:nth-child(3){border-top-color:var(--teal)}
+  .li:nth-child(4){border-top-color:var(--green)}
+  .li:nth-child(5){border-top-color:var(--rose)}
+  .li:nth-child(6){border-top-color:var(--mango)}
+  .li:nth-child(7){border-top-color:var(--coral)}
+  .li:nth-child(8){border-top-color:var(--teal)}
+  .li .who{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;color:var(--coral);font-weight:600;margin-bottom:6px;text-transform:uppercase}
+  .li:nth-child(2) .who{color:var(--gold)}
+  .li:nth-child(3) .who{color:var(--teal)}
+  .li:nth-child(4) .who{color:var(--green)}
+  .li:nth-child(5) .who{color:var(--rose)}
+  .li:nth-child(6) .who{color:var(--mango)}
+  .li:nth-child(7) .who{color:var(--coral)}
+  .li:nth-child(8) .who{color:var(--teal)}
+  .li h4{font-family:var(--display);font-size:21px;font-weight:400;color:var(--ink);margin-bottom:6px;line-height:1.2;font-style:italic}
+  .li .yr{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);margin-bottom:10px}
+  .li p{font-family:var(--serif);font-size:13.5px;color:var(--ink-2);line-height:1.55;margin:0}
+
+  /* Filter bar */
+  .filter{position:sticky;top:62px;z-index:40;background:rgba(248,243,234,.92);backdrop-filter:blur(14px);padding:14px 32px;border-bottom:0.5px solid var(--line);margin:32px 0 0}
+  .filter-in{max-width:1180px;margin:0 auto;display:flex;flex-wrap:wrap;gap:6px;align-items:center;justify-content:center}
+  .fl{font-family:var(--mono);font-size:11px;letter-spacing:.10em;padding:7px 13px;background:var(--cream);border:0.5px solid var(--line);border-radius:5px;color:var(--ink-2);cursor:pointer;text-transform:uppercase;font-weight:500;transition:all .14s}
+  .fl:hover{background:var(--cream-2)}
+  .fl.on{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+
+  /* ===== APOTHECARY · POTION SHELF (character-select) ===== */
+  .apothecary{position:relative;max-width:1400px;margin:24px auto 0;padding:0 8px}
+  .shelf{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;
+    padding:40px 56px 32px;
+    -webkit-mask:linear-gradient(90deg,transparent 0,#000 4%,#000 96%,transparent 100%);
+    mask:linear-gradient(90deg,transparent 0,#000 4%,#000 96%,transparent 100%);
+    scrollbar-color:var(--coral) transparent;scrollbar-width:thin}
+  .shelf::-webkit-scrollbar{height:8px}
+  .shelf::-webkit-scrollbar-track{background:transparent}
+  .shelf::-webkit-scrollbar-thumb{background:rgba(217,87,59,.40);border-radius:4px}
+  .shelf::-webkit-scrollbar-thumb:hover{background:var(--coral)}
+
+  .potion{flex:0 0 248px;min-height:460px;scroll-snap-align:start;
+    background:linear-gradient(180deg,var(--cream) 0%,var(--cream-2) 100%);
+    border:0.5px solid var(--line);border-radius:14px;padding:18px 16px 22px;
+    display:flex;flex-direction:column;align-items:center;
+    cursor:pointer;position:relative;
+    transition:all .26s cubic-bezier(0.25,1,0.5,1);
+    box-shadow:0 1px 2px rgba(27,26,23,.03)}
+  .potion::before{content:'';position:absolute;top:0;left:18px;right:18px;height:3px;background:var(--coral);border-radius:0 0 4px 4px}
+  .potion.cat-energy::before{background:var(--coral)}
+  .potion.cat-cognitive::before{background:var(--teal)}
+  .potion.cat-anti::before{background:var(--green)}
+  .potion.cat-hormonal::before{background:var(--rose)}
+  .potion.cat-bioelectric::before{background:var(--gold)}
+  .potion.cat-spirit::before{background:linear-gradient(90deg,var(--coral),var(--gold),var(--rose))}
+  .potion.cat-modern::before{background:linear-gradient(90deg,#3E5BAA,#A8B5C2,#E0C25E)}
+  .potion.cat-modern .potion-cat{color:#3E5BAA}
+  .potion:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 12px 40px rgba(27,26,23,.12),0 0 0 0.5px var(--coral);border-color:var(--coral);background:linear-gradient(180deg,var(--cream) 0%,#FFFAF0 100%)}
+  .potion:active{transform:translateY(-2px) scale(1.01)}
+
+  .potion-cat{font-family:var(--mono);font-size:9px;letter-spacing:.18em;color:var(--coral);text-transform:uppercase;font-weight:700;margin-top:8px;text-align:center}
+  .potion.cat-cognitive .potion-cat{color:var(--teal)}
+  .potion.cat-anti .potion-cat{color:var(--green)}
+  .potion.cat-hormonal .potion-cat{color:var(--rose)}
+  .potion.cat-bioelectric .potion-cat{color:var(--gold)}
+  .potion.cat-spirit .potion-cat{color:var(--coral)}
+
+  .potion-bottle{flex:1;display:flex;align-items:center;justify-content:center;width:100%;padding:8px 0;position:relative;min-height:220px}
+  .potion-bottle svg{width:140px;height:auto;filter:drop-shadow(0 6px 12px rgba(27,26,23,.18))}
+  .potion:hover .potion-bottle svg{animation:potion-glow 1.4s ease-in-out infinite alternate}
+  @keyframes potion-glow{from{filter:drop-shadow(0 6px 12px rgba(27,26,23,.18))}to{filter:drop-shadow(0 8px 22px rgba(217,87,59,.32))}}
+
+  .potion-meta{text-align:center;width:100%;padding:0 4px}
+  .potion h3{font-family:var(--display);font-size:21px;font-weight:400;color:var(--ink);line-height:1.1;letter-spacing:-.01em;margin-bottom:6px;min-height:46px;display:flex;align-items:center;justify-content:center}
+  .potion h3 em{font-style:italic;color:var(--coral)}
+  .potion-origin{font-family:var(--mono);font-size:9.5px;color:var(--ink-3);letter-spacing:.06em;text-transform:uppercase;line-height:1.4;margin-bottom:10px;opacity:.85}
+  .potion-one{font-family:var(--serif);font-style:italic;font-size:12.5px;color:var(--ink-2);line-height:1.45;margin-bottom:8px;min-height:36px}
+  .potion-tap{font-family:var(--mono);font-size:9px;letter-spacing:.18em;color:var(--coral);font-weight:700;padding-top:10px;border-top:0.5px solid var(--line-2);width:100%;text-align:center;opacity:.5;transition:opacity .2s}
+  .potion:hover .potion-tap{opacity:1}
+
+  /* Navigation arrows */
+  .shelf-nav{position:absolute;top:50%;transform:translateY(-50%);z-index:5;
+    width:48px;height:48px;border-radius:50%;background:var(--ink);color:var(--cream);
+    border:0;cursor:pointer;font-size:22px;font-family:var(--serif);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 4px 16px rgba(27,26,23,.20);transition:all .18s}
+  .shelf-nav:hover{background:var(--coral);transform:translateY(-50%) scale(1.08)}
+  .shelf-nav:active{transform:translateY(-50%) scale(0.95)}
+  .shelf-nav.prev{left:12px}
+  .shelf-nav.next{right:12px}
+  .shelf-nav:disabled{opacity:0.25;cursor:not-allowed;background:var(--faint)}
+
+  /* Counter pill */
+  .shelf-counter{text-align:center;font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;color:var(--ink-3);text-transform:uppercase;margin-top:8px}
+  .shelf-counter .now{color:var(--coral);font-weight:700;font-size:13px}
+
+  /* Recipe steps in modal · higher specificity to override .m-block li */
+  ol.step-list{counter-reset:step;list-style:none;padding:0;margin:10px 0 0}
+  ol.step-list > li{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start;padding:14px 18px;margin-bottom:8px;background:var(--cream);border:0.5px solid var(--line-2);border-radius:10px;font-family:var(--serif);font-size:15px;line-height:1.6;color:var(--ink-2);counter-increment:step;transition:all .14s;position:relative}
+  ol.step-list > li:hover{border-color:rgba(217,87,59,.30);background:var(--cream-2)}
+  ol.step-list > li::before{content:counter(step,decimal-leading-zero);position:static;width:auto;height:auto;top:auto;left:auto;font-family:var(--mono);font-size:12px;font-weight:700;color:var(--cream)!important;background:var(--coral);padding:5px 4px;border-radius:5px;text-align:center;letter-spacing:.04em;box-shadow:0 1px 3px rgba(217,86,59,.30);align-self:start;margin-top:1px;display:block}
+  .modal.cat-cognitive ol.step-list > li::before{background:var(--teal);box-shadow:0 1px 3px rgba(44,110,127,.30)}
+  .modal.cat-anti ol.step-list > li::before{background:var(--green);box-shadow:0 1px 3px rgba(63,95,69,.30)}
+  .modal.cat-hormonal ol.step-list > li::before{background:var(--rose);box-shadow:0 1px 3px rgba(184,97,107,.30)}
+  .modal.cat-bioelectric ol.step-list > li::before{background:var(--gold);box-shadow:0 1px 3px rgba(181,143,77,.30)}
+
+  /* Sourcing rows sorted by ETA */
+  .src-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:6px}
+  .src-row{display:grid;grid-template-columns:80px 1fr;gap:12px;align-items:start;padding:11px 14px;background:var(--cream);border:0.5px solid var(--line-2);border-radius:8px;border-left:3px solid var(--green);transition:all .14s}
+  .src-row.eta-local{border-left-color:var(--green)}
+  .src-row.eta-pa{border-left-color:var(--gold)}
+  .src-row.eta-mid{border-left-color:var(--teal)}
+  .src-row.eta-slow{border-left-color:var(--faint)}
+  .src-row:hover{background:var(--cream-2);border-color:rgba(27,26,23,.16)}
+  .src-eta{font-family:var(--mono);font-size:9.5px;letter-spacing:.10em;text-transform:uppercase;color:var(--green);font-weight:700;padding-top:2px}
+  .src-row.eta-pa .src-eta{color:var(--gold)}
+  .src-row.eta-mid .src-eta{color:var(--teal)}
+  .src-row.eta-slow .src-eta{color:var(--faint)}
+  .src-main a{font-family:var(--sans);font-size:13.5px;color:var(--ink);font-weight:600;border-bottom:0.5px dashed var(--ink-3);padding-bottom:1px}
+  .src-main a:hover{color:var(--coral);border-color:var(--coral)}
+  .src-main .src-note{display:block;font-family:var(--serif);font-style:italic;font-size:12.5px;color:var(--ink-3);margin-top:3px;line-height:1.4}
+
+  /* Modal */
+  .modal-bg{position:fixed;inset:0;background:rgba(27,26,23,.78);backdrop-filter:blur(6px);z-index:100;display:none;align-items:flex-start;justify-content:center;padding:32px 16px;overflow-y:auto}
+  .modal-bg.on{display:flex}
+  .modal{background:var(--cream);border-radius:14px;width:100%;max-width:880px;border:0.5px solid var(--line);overflow:hidden;position:relative;animation:popup .26s cubic-bezier(0.25,1,0.5,1)}
+  @keyframes popup{from{opacity:0;transform:translateY(20px) scale(.98)}to{opacity:1;transform:none}}
+  .m-band{height:8px;background:var(--coral)}
+  .modal.cat-energy .m-band{background:var(--coral)}
+  .modal.cat-cognitive .m-band{background:var(--teal)}
+  .modal.cat-anti .m-band{background:var(--green)}
+  .modal.cat-hormonal .m-band{background:var(--rose)}
+  .modal.cat-bioelectric .m-band{background:var(--gold)}
+  .modal.cat-spirit .m-band{background:linear-gradient(90deg,var(--coral),var(--gold),var(--rose))}
+  .m-close{position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:50%;background:rgba(27,26,23,.06);border:0;cursor:pointer;font-size:18px;color:var(--ink);display:flex;align-items:center;justify-content:center;font-family:var(--mono);z-index:10}
+  .m-close:hover{background:var(--coral);color:var(--cream)}
+  .m-body{padding:36px 40px 40px}
+  .m-cat{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);font-weight:700;margin-bottom:8px}
+  .modal.cat-cognitive .m-cat{color:var(--teal)}
+  .modal.cat-anti .m-cat{color:var(--green)}
+  .modal.cat-hormonal .m-cat{color:var(--rose)}
+  .modal.cat-bioelectric .m-cat{color:var(--gold)}
+  .modal.cat-spirit .m-cat{color:var(--coral)}
+  .m-title{font-family:var(--display);font-size:48px;font-weight:400;color:var(--ink);margin-bottom:8px;line-height:1;letter-spacing:-.02em}
+  .m-title em{font-style:italic;color:var(--coral)}
+  .m-origin{font-family:var(--mono);font-size:11.5px;letter-spacing:.10em;color:var(--ink-3);margin-bottom:18px}
+  .m-one{font-family:var(--serif);font-style:italic;font-size:18px;color:var(--ink-2);line-height:1.5;margin-bottom:24px;padding-bottom:22px;border-bottom:0.5px solid var(--line-2)}
+
+  .m-block{margin-bottom:24px}
+  .m-label{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);font-weight:700;margin-bottom:10px}
+  .modal.cat-cognitive .m-label{color:var(--teal)}
+  .modal.cat-anti .m-label{color:var(--green)}
+  .modal.cat-hormonal .m-label{color:var(--rose)}
+  .modal.cat-bioelectric .m-label{color:var(--gold)}
+  .m-block p{font-family:var(--serif);font-size:15px;line-height:1.7;color:var(--ink-2);margin-bottom:10px}
+  .m-block p strong{color:var(--ink);font-weight:600}
+  .m-compounds{font-family:var(--mono);font-size:12.5px;line-height:1.7;color:var(--ink-2);background:var(--cream-2);padding:14px 18px;border-radius:8px;border:0.5px solid var(--line-2)}
+  .m-block ul{list-style:none;padding:0;margin-top:6px}
+  .m-block li{font-family:var(--sans);font-size:14px;color:var(--ink-2);padding:5px 0 5px 18px;position:relative;line-height:1.5}
+  .m-block li::before{content:'';position:absolute;left:0;top:13px;width:8px;height:1px;background:var(--coral)}
+  .m-block li strong{color:var(--ink);font-weight:600}
+
+  .m-sourcing{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px}
+  .m-source{background:var(--cream-2);border:0.5px solid var(--line);border-radius:8px;padding:16px 18px}
+  .m-source.local{border-left:3px solid var(--green)}
+  .m-source.intl{border-left:3px solid var(--teal)}
+  .m-source h5{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--green);font-weight:700;margin-bottom:10px}
+  .m-source.intl h5{color:var(--teal)}
+  .m-source ul{list-style:none;padding:0}
+  .m-source li{font-family:var(--sans);font-size:13px;padding:4px 0 4px 14px;position:relative;line-height:1.5;color:var(--ink-2)}
+  .m-source li::before{content:'›';position:absolute;left:0;top:3px;color:var(--coral);font-weight:600}
+  .m-source li a{color:var(--ink);font-weight:500;border-bottom:0.5px dashed var(--ink-3);padding-bottom:1px}
+  .m-source li a:hover{color:var(--coral);border-color:var(--coral)}
+  .m-source li .note{display:block;font-size:11.5px;color:var(--ink-3);font-style:italic;margin-top:2px;padding-left:0}
+
+  /* Local Panama section · single column with location tags */
+  .panama-box{background:linear-gradient(135deg,var(--cream-2),var(--cream-3));border:0.5px solid var(--line);border-left:3px solid var(--green);border-radius:12px;padding:28px 32px 30px;margin-top:20px;max-width:780px;margin-left:auto;margin-right:auto}
+  .panama-box h3{font-family:var(--display);font-size:22px;font-weight:400;color:var(--ink);margin-bottom:14px;font-style:italic;line-height:1.2}
+  .panama-box h3 em{color:var(--green);font-style:normal;font-family:var(--serif);font-weight:500}
+  .panama-stack{display:flex;flex-direction:column;gap:10px;margin-top:14px}
+  .panama-item{background:var(--cream);border:0.5px solid var(--line);border-radius:8px;padding:16px 20px;display:grid;grid-template-columns:110px 1fr;gap:14px;align-items:start;transition:all .14s}
+  .panama-item:hover{border-color:rgba(63,95,69,.30);background:#FBF6EA}
+  .panama-tag{font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;padding:5px 8px;border-radius:4px;text-align:center;height:fit-content;line-height:1.3}
+  .panama-tag.boquete{background:var(--green);color:var(--cream)}
+  .panama-tag.david{background:var(--teal);color:var(--cream)}
+  .panama-tag.intl{background:var(--gold);color:var(--cream)}
+  .panama-main h5{font-family:var(--serif);font-size:15.5px;font-weight:600;color:var(--ink);margin-bottom:4px;line-height:1.3}
+  .panama-main p{font-family:var(--serif);font-size:13.5px;color:var(--ink-2);line-height:1.5;margin-bottom:6px}
+  .panama-main ul{list-style:none;padding:0;margin:0}
+  .panama-main li{font-family:var(--sans);font-size:12.5px;padding:2px 0 2px 12px;position:relative;line-height:1.5;color:var(--ink-2)}
+  .panama-main li::before{content:'';position:absolute;left:0;top:11px;width:6px;height:1px;background:var(--coral)}
+  .panama-main li a{color:var(--teal);border-bottom:0.5px dashed rgba(44,110,127,.30);font-weight:500}
+  .panama-main li a:hover{color:var(--coral);border-color:var(--coral)}
+  .panama-main li .note{display:block;font-family:var(--serif);font-style:italic;font-size:11.5px;color:var(--ink-3);padding-left:0;margin-top:1px}
+
+  /* CTA */
+  .cta{max-width:780px;margin:56px auto 40px;padding:42px 38px;text-align:center;background:var(--cream-2);border:0.5px solid var(--line);border-radius:14px}
+  .cta h2{font-family:var(--display);font-weight:400;font-size:clamp(30px,4.5vw,46px);line-height:1.1;color:var(--ink);margin-bottom:14px}
+  .cta h2 em{font-style:italic;color:var(--coral)}
+  .cta p{font-family:var(--serif);font-size:16px;color:var(--ink-2);line-height:1.55;margin-bottom:22px}
+  .cta-btn{display:inline-block;padding:12px 26px;background:var(--ink);color:var(--cream);font-family:var(--mono);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;border-radius:6px;font-weight:600;margin:0 4px}
+  .cta-btn:hover{background:var(--coral)}
+
+  footer{max-width:1180px;margin:24px auto 0;padding:28px 32px;border-top:0.5px solid var(--line);text-align:center}
+  footer p{font-family:var(--mono);font-size:11px;letter-spacing:.10em;color:var(--ink-3)}
+
+  @media (max-width:760px){
+    .strip{grid-template-columns:repeat(2,1fr)}
+    .strip > div:nth-child(2n){border-right:0}
+    .strip > div{border-bottom:0.5px solid var(--line)}
+    .m-sourcing{grid-template-columns:1fr}
+    .m-body{padding:28px 22px}
+    .m-title{font-size:36px}
+  }
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="top-in">
+    <a class="brand" href="sora-hq.html">SORA<em>°</em></a>
+    <span class="top-tag" data-es>BEBIDAS · ELIXIRES PARA EL SUPERHUMANO</span>
+    <span class="top-tag" data-en>DRINKS · ELIXIRS FOR THE SUPERHUMAN</span>
+    <a class="top-link" href="sora-design.html" data-es>↗ Diseño</a>
+    <a class="top-link" href="sora-design.html" data-en>↗ Design</a>
+    <a class="top-link" href="sora-apps.html" data-es>↗ Apps</a>
+    <a class="top-link" href="sora-apps.html" data-en>↗ Apps</a>
+    <span class="spacer"></span>
+    <div class="lang">
+      <button class="active" onclick="setLang('es')">ES</button>
+      <button onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="hero-eyebrow" data-es>BEBIDAS · INVESTIGACIÓN PARA FERCHO · 30 ELIXIRES</div>
+  <div class="hero-eyebrow" data-en>DRINKS · RESEARCH FOR FERCHO · 30 ELIXIRS</div>
+  <h1 data-es>Las bebidas<br>del <em>superhumano</em>.</h1>
+  <h1 data-en>The drinks<br>of the <em>superhuman</em>.</h1>
+  <p class="hero-lede" data-es>Doce mil años de conocimiento humano sobre qué se puede beber para encender el cuerpo eléctrico, calmar el sistema nervioso, agudizar el intelecto, equilibrar las hormonas, alargar la vida, y abrir la conciencia. <strong>Treinta líquidos</strong> curados — de Soma védico a Cacao maya a Kava polinesia a agua estructurada de Pollack. Click cada uno para origen, historia, compuestos activos, receta, y dónde comprar en David / Boquete + envío internacional ordenado por velocidad. <em>Péptidos · químicos · medicinas modernas en docs separados</em>.</p>
+  <p class="hero-lede" data-en>Twelve thousand years of human knowledge on what you can drink to ignite the electric body, calm the nervous system, sharpen intellect, balance hormones, extend life, and open consciousness. <strong>Thirty liquids</strong> curated — from Vedic Soma to Maya Cacao to Polynesian Kava to Pollack structured water. Click each for origin, story, active compounds, recipe, and where to buy in David / Boquete + international shipping sorted by speed. <em>Peptides · chemicals · modern medicines in separate docs</em>.</p>
+</header>
+
+<div class="strip">
+  <div><div class="n">30</div><div class="l" data-es>Elixires líquidos</div><div class="l" data-en>Liquid elixirs</div></div>
+  <div><div class="n">12K</div><div class="l" data-es>Años de canon</div><div class="l" data-en>Years of canon</div></div>
+  <div><div class="n">6</div><div class="l" data-es>Categorías</div><div class="l" data-en>Categories</div></div>
+  <div><div class="n">14</div><div class="l" data-es>Culturas</div><div class="l" data-en>Cultures</div></div>
+  <div><div class="n">PA</div><div class="l" data-es>Sourcing local</div><div class="l" data-en>Local sourcing</div></div>
+</div>
+
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es>01 · LA TESIS BIOELÉCTRICA</div>
+    <div class="sec-num" data-en>01 · THE BIOELECTRIC THESIS</div>
+    <h2 data-es>El cuerpo es <em>una batería</em>.</h2>
+    <h2 data-en>The body is <em>a battery</em>.</h2>
+    <p class="sec-sub" data-es>Lo que llamamos "salud" es voltaje celular adecuado, agua estructurada en el citoplasma, y flujo de electrones a través del colágeno como un semiconductor. Las bebidas correctas son combustible eléctrico, no calorías.</p>
+    <p class="sec-sub" data-en>What we call "health" is correct cellular voltage, structured water in cytoplasm, and electron flow through collagen like a semiconductor. The right drinks are electric fuel, not calories.</p>
+  </div>
+
+  <div class="lineage">
+    <div class="li">
+      <div class="who">LINAJE 01 · HÚNGAROS</div>
+      <h4>Albert <em>Szent-Györgyi</em></h4>
+      <div class="yr">Hungría · 1893-1986 · Nobel 1937</div>
+      <p data-es>Aisló la vitamina C del pimentón húngaro. Fundó la bioelectrónica: las proteínas son <em>semiconductores</em>. La vida es flujo de electrones — no química. Ascorbato, glicina y agua estructurada son sus drogas.</p>
+      <p data-en>Isolated vitamin C from Hungarian paprika. Founded bioelectronics: proteins are <em>semiconductors</em>. Life is electron flow — not chemistry. Ascorbate, glycine, and structured water are his drugs.</p>
+    </div>
+    <div class="li">
+      <div class="who">LINAJE 02 · TESLA</div>
+      <h4><em>Nikola</em> Tesla</h4>
+      <div class="yr">Serbia/USA · 1856-1943</div>
+      <p data-es>El cuerpo responde a frecuencias específicas. Campos magnéticos pulsados curan. Agua "viva" cargada eléctricamente difiere de agua común. Toda bebida sagrada antigua incorporó algún proceso eléctrico — fermentación, mineralización, exposición solar.</p>
+      <p data-en>The body responds to specific frequencies. Pulsed magnetic fields heal. Electrically charged "living" water differs from common water. Every ancient sacred drink incorporated some electrical process — fermentation, mineralization, sun exposure.</p>
+    </div>
+    <div class="li">
+      <div class="who">LINAJE 03 · POLLACK</div>
+      <h4>Gerald <em>Pollack</em></h4>
+      <div class="yr">USA · contemporáneo</div>
+      <p data-es>Descubrió la "Zona de Exclusión" (EZ Water) — el cuarto estado del agua, gel cristalino dentro de las células. Se expande con luz infrarroja, minerales correctos, y exposición al sol. Agua biológicamente activa.</p>
+      <p data-en>Discovered the "Exclusion Zone" (EZ Water) — water's fourth state, crystalline gel inside cells. Expands with infrared light, correct minerals, and sun exposure. Biologically active water.</p>
+    </div>
+    <div class="li">
+      <div class="who">LINAJE 04 · MARTIANS</div>
+      <h4>Los <em>marcianos</em> húngaros</h4>
+      <div class="yr">Hungría/USA · S.XX</div>
+      <p data-es>Von Neumann · Wigner · Teller · Szilard · Selye · Lanczos. Una generación de genios de Budapest cuyo entrenamiento incluía música, paganismo greco-romano, ascorbato, y agua mineral de Karlovy Vary. La cultura del cuerpo era inseparable de la del intelecto.</p>
+      <p data-en>Von Neumann · Wigner · Teller · Szilard · Selye · Lanczos. A generation of Budapest geniuses whose training included music, Greco-Roman paganism, ascorbate, and Karlovy Vary mineral water. Body culture was inseparable from intellectual culture.</p>
+    </div>
+    <div class="li">
+      <div class="who">LINAJE 05 · PARACELSO</div>
+      <h4><em>Paracelso</em></h4>
+      <div class="yr">Suiza · 1493-1541</div>
+      <p data-es>Theophrastus von Hohenheim. "Dosis sola facit venenum" — la dosis sola hace al veneno. Padre de la toxicología y de la medicina mineral. Quemó los textos de Galeno en plaza pública e introdujo el zinc, el mercurio y el laudano. La química al servicio del cuerpo.</p>
+      <p data-en>Theophrastus von Hohenheim. "Dosis sola facit venenum" — only the dose makes the poison. Father of toxicology and mineral medicine. Publicly burned Galen's texts and introduced zinc, mercury, and laudanum. Chemistry in service of the body.</p>
+    </div>
+    <div class="li">
+      <div class="who">LINAJE 06 · AVICENNA</div>
+      <h4>Ibn <em>Sina</em></h4>
+      <div class="yr">Persia · 980-1037 d.C.</div>
+      <p data-es>El <em>Canon de Medicina</em> (1025) fue el manual médico dominante en Europa y el mundo islámico por <strong>600 años</strong>. Sintetizó Hipócrates, Galeno, Áyurveda india, y medicina china. Catalogó 760 compuestos. Prescribió gulkand (conserva de rosas) para el "corazón roto" — psicofarmacología 900 años antes que SSRI.</p>
+      <p data-en>His <em>Canon of Medicine</em> (1025) was Europe's and the Islamic world's dominant medical text for <strong>600 years</strong>. Synthesized Hippocrates, Galen, Indian Ayurveda, and Chinese medicine. Cataloged 760 compounds. Prescribed gulkand (rose conserve) for "broken heart" — psychopharmacology 900 years before SSRIs.</p>
+    </div>
+    <div class="li">
+      <div class="who">LINAJE 07 · SHULGIN</div>
+      <h4>Alexander <em>Shulgin</em></h4>
+      <div class="yr">USA · 1925-2014</div>
+      <p data-es>El más prolífico psicoquímico de la historia. Sintetizó y autotestó <strong>230+ moléculas</strong> nuevas — phenetilaminas y triptaminas — documentadas en <em>PIHKAL</em> y <em>TIHKAL</em> con dosis, duración, y efecto. Re-introdujo el MDMA al uso terapéutico (1976). Su tesis: cada molécula es una llave que abre una habitación específica de la consciencia.</p>
+      <p data-en>History's most prolific psychochemist. Synthesized and self-tested <strong>230+ new molecules</strong> — phenethylamines and tryptamines — documented in <em>PIHKAL</em> and <em>TIHKAL</em> with dose, duration, and effect. Re-introduced MDMA to therapeutic use (1976). His thesis: each molecule is a key that opens a specific room in consciousness.</p>
+    </div>
+    <div class="li">
+      <div class="who">LINAJE 08 · HOFMANN</div>
+      <h4>Albert <em>Hofmann</em></h4>
+      <div class="yr">Suiza · 1906-2008 · 102 años</div>
+      <p data-es>Químico de Sandoz. Sintetizó <strong>LSD-25</strong> en 1938 — ergotamina del cornezuelo del centeno + dietilamida. Aisló psilocibina (1958) y psilocina (1959) de hongos mazatecos. Su libro <em>LSD: My Problem Child</em>. Hipótesis: el <em>Soma</em> védico fue ergot — la misma molécula del Kykeon de Eleusis.</p>
+      <p data-en>Sandoz chemist. Synthesized <strong>LSD-25</strong> in 1938 — ergot rye fungus alkaloid + diethylamide. Isolated psilocybin (1958) and psilocin (1959) from Mazatec mushrooms. Book: <em>LSD: My Problem Child</em>. Hypothesis: Vedic <em>Soma</em> was ergot — same molecule as the Eleusinian Kykeon.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es>02 · EL CANON DE 12,000 AÑOS</div>
+    <div class="sec-num" data-en>02 · THE 12,000-YEAR CANON</div>
+    <h2 data-es>Catorce <em>culturas</em>, una conclusión.</h2>
+    <h2 data-en>Fourteen <em>cultures</em>, one conclusion.</h2>
+    <p class="sec-sub" data-es>Todas identificaron las mismas familias de plantas y procesos. Donde había templos, había bebida sagrada. Cacao en Mesoamérica. Soma en India. Kykeon en Grecia. Reishi en China. Kava en Polinesia. Cada cultura llegó al mismo conjunto de moléculas — diferentes nombres, mismo objetivo.</p>
+    <p class="sec-sub" data-en>All identified the same plant families and processes. Where there were temples, there was sacred drink. Cacao in Mesoamerica. Soma in India. Kykeon in Greece. Reishi in China. Kava in Polynesia. Every culture reached the same set of molecules — different names, same goal.</p>
+  </div>
+</section>
+
+<div class="filter">
+  <div class="filter-in">
+    <button class="fl on" data-cat="all" data-es>★ Todas (30)</button>
+    <button class="fl on" data-cat="all" data-en>★ All (30)</button>
+    <button class="fl" data-cat="energy" data-es>Energía · 6</button>
+    <button class="fl" data-cat="energy" data-en>Energy · 6</button>
+    <button class="fl" data-cat="cognitive" data-es>Cognitiva · 5</button>
+    <button class="fl" data-cat="cognitive" data-en>Cognitive · 5</button>
+    <button class="fl" data-cat="anti" data-es>Anti-inflama · 5</button>
+    <button class="fl" data-cat="anti" data-en>Anti-inflam · 5</button>
+    <button class="fl" data-cat="hormonal" data-es>Hormonal · 5</button>
+    <button class="fl" data-cat="hormonal" data-en>Hormonal · 5</button>
+    <button class="fl" data-cat="bioelectric" data-es>Bioeléctrica · 4</button>
+    <button class="fl" data-cat="bioelectric" data-en>Bioelectric · 4</button>
+    <button class="fl" data-cat="spirit" data-es>Espíritu · 5</button>
+    <button class="fl" data-cat="spirit" data-en>Spirit · 5</button>
+  </div>
+</div>
+
+<div class="apothecary" style="padding-top:8px">
+  <button class="shelf-nav prev" onclick="scrollShelf(-1)" aria-label="Previous">‹</button>
+  <button class="shelf-nav next" onclick="scrollShelf(1)" aria-label="Next">›</button>
+  <div class="shelf" id="shelf"></div>
+  <div class="shelf-counter"><span data-es>Mostrando</span><span data-en>Showing</span> <span class="now" id="shelf-now">30</span> <span data-es>de</span><span data-en>of</span> <span id="shelf-total">30</span> <span data-es>elixires · scroll horizontal o usa flechas · click para abrir</span><span data-en>elixirs · horizontal scroll or use arrows · click to open</span></div>
+</div>
+
+<section id="panama">
+  <div class="sec-head">
+    <div class="sec-num" data-es>04 · SOURCING · DAVID / BOQUETE / PANAMÁ</div>
+    <div class="sec-num" data-en>04 · SOURCING · DAVID / BOQUETE / PANAMA</div>
+    <h2 data-es>Comprar <em>esta semana</em> en Chiriquí.</h2>
+    <h2 data-en>Buy <em>this week</em> in Chiriquí.</h2>
+    <p class="sec-sub" data-es>Cada elixir tiene su sourcing específico arriba. Esta sección agrega las tiendas físicas y plataformas regulares que cubren múltiples.</p>
+    <p class="sec-sub" data-en>Each elixir has its specific sourcing above. This section aggregates physical stores and regular platforms that cover multiple.</p>
+  </div>
+
+  <div class="panama-box">
+    <h3 data-es>Compra <em>local</em> · Chiriquí + internacional</h3>
+    <h3 data-en><em>Local</em> buy · Chiriquí + international</h3>
+    <div class="panama-stack">
+
+      <div class="panama-item">
+        <div class="panama-tag boquete">BOQUETE</div>
+        <div class="panama-main">
+          <h5 data-es>Punto Verde · Naturista</h5>
+          <h5 data-en>Punto Verde · Health store</h5>
+          <p data-es>Av. Central. Jengibre, cúrcuma, hierbas locales, vinagre de manzana con madre.</p>
+          <p data-en>Av. Central. Ginger, turmeric, local herbs, apple cider vinegar with mother.</p>
+          <ul><li><a href="https://www.facebook.com/Punto-Verde-Boquete" target="_blank">Página FB</a></li></ul>
+        </div>
+      </div>
+
+      <div class="panama-item">
+        <div class="panama-tag boquete">BOQUETE</div>
+        <div class="panama-main">
+          <h5 data-es>Mama Mia Organic Market</h5>
+          <h5 data-en>Mama Mia Organic Market</h5>
+          <p data-es>Sábados 8am-12pm · Plaza Boquete. Productores directos de Chiriquí — cúrcuma fresca, miel, hierbas.</p>
+          <p data-en>Saturdays 8am-12pm · Plaza Boquete. Direct Chiriquí growers — fresh turmeric, honey, herbs.</p>
+          <ul><li><a href="https://www.facebook.com/groups/BoqueteOrganicMarket" target="_blank">Grupo FB</a></li></ul>
+        </div>
+      </div>
+
+      <div class="panama-item">
+        <div class="panama-tag boquete">BOQUETE</div>
+        <div class="panama-main">
+          <h5 data-es>Boquete Bees · Apicultura</h5>
+          <h5 data-en>Boquete Bees · Apiary</h5>
+          <p data-es>Miel cruda de altura, polen, propóleo, jalea real. El propóleo es bioelectric premium. WhatsApp directo.</p>
+          <p data-en>Raw highland honey, pollen, propolis, royal jelly. Propolis is premium bioelectric. Direct WhatsApp.</p>
+          <ul><li><a href="https://www.facebook.com/BoqueteBees" target="_blank">Página FB</a></li></ul>
+        </div>
+      </div>
+
+      <div class="panama-item">
+        <div class="panama-tag boquete">BOQUETE</div>
+        <div class="panama-main">
+          <h5 data-es>Café Ruiz + Café Kotowa</h5>
+          <h5 data-en>Café Ruiz + Café Kotowa</h5>
+          <p data-es>Geisha, Catuai, café ceremonial de altura. Fincas centenarias tour disponible.</p>
+          <p data-en>Geisha, Catuai, ceremonial highland coffee. Century-old finca tours available.</p>
+          <ul>
+            <li><a href="https://www.caferuiz.com" target="_blank">caferuiz.com</a></li>
+            <li><a href="https://kotowa.com" target="_blank">kotowa.com</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="panama-item">
+        <div class="panama-tag david">DAVID</div>
+        <div class="panama-main">
+          <h5 data-es>Mercado Público de David</h5>
+          <h5 data-en>David Public Market</h5>
+          <p data-es>Av. 4ª este. Lun-sáb 6am-2pm. Hierbas frescas, jengibre raíz, cúrcuma fresca, plantas medicinales de Chiriquí — más barato y más fresco que cualquier supermercado.</p>
+          <p data-en>Av. 4 east. Mon-Sat 6am-2pm. Fresh herbs, ginger root, fresh turmeric, Chiriquí medicinal plants — cheaper and fresher than any supermarket.</p>
+        </div>
+      </div>
+
+      <div class="panama-item">
+        <div class="panama-tag david">DAVID</div>
+        <div class="panama-main">
+          <h5 data-es>PriceSmart David</h5>
+          <h5 data-en>PriceSmart David</h5>
+          <p data-es>Membresía $35/año. Sal del Himalaya en cristal grande, MCT oil, ghee, vinagre Bragg con madre, café grande.</p>
+          <p data-en>$35/year membership. Himalayan salt large crystal, MCT oil, ghee, Bragg apple cider vinegar with mother, bulk coffee.</p>
+          <ul><li><a href="https://www.pricesmart.com/site/pa/es" target="_blank">pricesmart.com</a></li></ul>
+        </div>
+      </div>
+
+      <div class="panama-item">
+        <div class="panama-tag david">DAVID</div>
+        <div class="panama-main">
+          <h5 data-es>Super 99 · El Rey · Romero</h5>
+          <h5 data-en>Super 99 · El Rey · Romero</h5>
+          <p data-es>Supermercados con sección orgánica para básicos: agua mineral, coco, jengibre, cúrcuma, miel comercial.</p>
+          <p data-en>Supermarkets with organic sections for basics: mineral water, coconut, ginger, turmeric, commercial honey.</p>
+          <ul>
+            <li><a href="https://www.super99.com" target="_blank">super99.com</a><span class="note">3 ubicaciones · algunas 24h</span></li>
+            <li><a href="https://www.elrey.com.pa" target="_blank">elrey.com.pa</a></li>
+            <li><a href="https://www.romero.com.pa" target="_blank">romero.com.pa</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="panama-item">
+        <div class="panama-tag david">DAVID</div>
+        <div class="panama-main">
+          <h5 data-es>Farmacia Naturista + GNC Multicentro</h5>
+          <h5 data-en>Naturista pharmacy + GNC Multicentro</h5>
+          <p data-es>Av. Obaldía. Ashwagandha, maca, colágeno, magnesio, vit-C básicos. Para adaptógenos premium, mejor importar.</p>
+          <p data-en>Av. Obaldía. Ashwagandha, maca, collagen, magnesium, basic vit-C. For premium adaptogens, better to import.</p>
+          <ul>
+            <li><a href="https://www.facebook.com/farmacianaturistadavid" target="_blank">Farmacia Naturista</a></li>
+            <li><a href="https://www.gnc.com.pa" target="_blank">GNC Multicentro</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="panama-item">
+        <div class="panama-tag intl">INTL → PA</div>
+        <div class="panama-main">
+          <h5 data-es>iHerb · envío directo</h5>
+          <h5 data-en>iHerb · direct shipping</h5>
+          <p data-es>El proveedor #1 internacional. Envía DIRECTO a David. 7-14 días. Catálogo completo de adaptógenos, peptides, vitaminas premium.</p>
+          <p data-en>The #1 international supplier. Ships DIRECT to David. 7-14 days. Full catalog of adaptogens, peptides, premium vitamins.</p>
+          <ul><li><a href="https://www.iherb.com" target="_blank">iherb.com</a></li></ul>
+        </div>
+      </div>
+
+      <div class="panama-item">
+        <div class="panama-tag intl">INTL → PA</div>
+        <div class="panama-main">
+          <h5 data-es>Aeropost + Casillero Express</h5>
+          <h5 data-en>Aeropost + Casillero Express</h5>
+          <p data-es>Reshipper Miami → David. Para Amazon, Sun Potion, Dragon Herbs, Banyan — todo lo que no envía directo. 5-10 días.</p>
+          <p data-en>Reshipper Miami → David. For Amazon, Sun Potion, Dragon Herbs, Banyan — everything that doesn't ship direct. 5-10 days.</p>
+          <ul>
+            <li><a href="https://www.aeropost.com/pa" target="_blank">aeropost.com/pa</a></li>
+            <li><a href="https://www.casilleroexpress.com" target="_blank">casilleroexpress.com</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="panama-item">
+        <div class="panama-tag intl">INTL → PA</div>
+        <div class="panama-main">
+          <h5 data-es>MercadoLibre Panamá</h5>
+          <h5 data-en>MercadoLibre Panama</h5>
+          <p data-es>Para productos panameños/regionales — 3-7 días dentro del país. Revisar reputación del vendedor antes de comprar.</p>
+          <p data-en>For Panamanian/regional products — 3-7 days in-country. Check seller reputation before buying.</p>
+          <ul><li><a href="https://listado.mercadolibre.com.pa/salud" target="_blank">listado.mercadolibre.com.pa</a></li></ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="cta">
+  <h2 data-es>De aquí <em>nacen</em> las Bebidas Sora.</h2>
+  <h2 data-en>From here <em>are born</em> the Sora Drinks.</h2>
+  <p data-es>Esta investigación es la base para producir 3-5 elixires firma de la marca Sora — embotellados o servidos en eventos. Cuando Fercho aterriza el primer evento en Boquete, estos son los candidatos para el menú de welcome.</p>
+  <p data-en>This research is the foundation for producing 3-5 Sora signature elixirs — bottled or served at events. When Fercho lands the first Boquete event, these are the welcome menu candidates.</p>
+  <a href="event-venues.html" class="cta-btn" data-es>VENUES PARA EVENTO →</a>
+  <a href="event-venues.html" class="cta-btn" data-en>EVENT VENUES →</a>
+  <a href="sora-design.html" class="cta-btn" data-es>DISEÑO BRAND →</a>
+  <a href="sora-design.html" class="cta-btn" data-en>BRAND DESIGN →</a>
+  <a href="sora-hq.html" class="cta-btn">HQ</a>
+</div>
+
+<footer>
+  <p data-es>Investigación bebidas/elixires · v1.0 · La Compañía / Sora MMXXVI · para Fercho</p>
+  <p data-en>Drinks/elixirs research · v1.0 · La Compañía / Sora MMXXVI · for Fercho</p>
+</footer>
+
+<!-- Modal -->
+<div class="modal-bg" id="modal-bg" onclick="if(event.target===this)closeModal()">
+  <div class="modal" id="modal">
+    <div class="m-band"></div>
+    <button class="m-close" onclick="closeModal()">×</button>
+    <div class="m-body" id="m-body"></div>
+  </div>
+</div>
+
+<script src="elixirs-data.js"></script>
+<script>
+  const CATS = {
+    energy:{es:'Energía + Vitalidad',en:'Energy + Vitality'},
+    cognitive:{es:'Cognición + Inteligencia',en:'Cognition + Intelligence'},
+    anti:{es:'Anti-inflamación + Longevidad',en:'Anti-inflammation + Longevity'},
+    hormonal:{es:'Hormonal + Emocional',en:'Hormonal + Emotional'},
+    bioelectric:{es:'Bioeléctrica + Agua estructurada',en:'Bioelectric + Structured Water'},
+    spirit:{es:'Espíritu + Consciencia',en:'Spirit + Consciousness'},
+    modern:{es:'Frontera Moderna · Péptidos + Química',en:'Modern Frontier · Peptides + Chemistry'}
+  };
+  let currentFilter = 'all';
+
+  /* Per-elixir bottle color variants (within category shade) */
+  const BOTTLE_VARIANTS = {
+    /* ENERGY · coral spectrum: bright→deep→amber→burgundy */
+    energy: [
+      ['#E0623F','#A8412C','#6E2618'], /* yerba mate · bright coral */
+      ['#B84A2E','#7E3320','#4A1F12'], /* chyawanprash · deep brick */
+      ['#E68542','#A85F2A','#6E3D18'], /* maca · golden coral */
+      ['#9F4530','#6E3220','#3E1C10'], /* reishi · dark amber */
+      ['#C44E3A','#8F3826','#5C2418'], /* ginseng · burgundy coral */
+      ['#E27556','#A4533E','#6F352A']  /* sbiten · rose coral */
+    ],
+    /* COGNITIVE · teal spectrum: bright→deep */
+    cognitive: [
+      ['#3D8FA3','#1F5664','#0F3540'], /* brahmi · ocean teal */
+      ['#4FA8B8','#2A6D7B','#143F4A'], /* gotu kola · brighter teal */
+      ['#2D7E94','#1A4E5E','#0A2D3A'], /* lions mane · deep teal */
+      ['#56B095','#326E5C','#1A4233'], /* matcha · green-teal */
+      ['#3F8FA8','#22596C','#0F3641']  /* ginkgo · steel teal */
+    ],
+    /* ANTI · green spectrum */
+    anti: [
+      ['#C9A04E','#9B7B3A','#6C5424'], /* golden milk · amber-gold */
+      ['#A66F3C','#7A4E26','#4A2D14'], /* fire cider · burnt orange */
+      ['#A89065','#7A6648','#4E3F2A'], /* bone broth · bone */
+      ['#5A8862','#3F5F45','#27412F'], /* sea moss · ocean green */
+      ['#8A5A38','#5C3D24','#382514']  /* schisandra · dark berry */
+    ],
+    /* HORMONAL · rose spectrum */
+    hormonal: [
+      ['#C97783','#9C525E','#6E3B45'], /* ashwagandha · classic rose */
+      ['#D8939E','#A86C76','#7A4A52'], /* shatavari · pale rose */
+      ['#A85968','#7A3E48','#4E2730'], /* damiana · deep rose */
+      ['#B86C7A','#8A4854','#5C2E37'], /* tulsi · rose-purple */
+      ['#D87F8E','#A85461','#7E394A']  /* gulkand · pink rose */
+    ],
+    /* BIOELECTRIC · gold/amber spectrum */
+    bioelectric: [
+      ['#E5C28A','#B58F4D','#7E5F32'], /* sole · clear amber */
+      ['#F2E6C5','#C9B383','#8E7A4E'], /* coconut · pale gold */
+      ['#A0A8B5','#6E7785','#3F4855'], /* glycine·mag · silver */
+      ['#EAE8DC','#B5B3A6','#7A786E']  /* ez water · crystal white */
+    ],
+    /* SPIRIT · mixed transcendent spectrum */
+    spirit: [
+      ['#4A2E1A','#311E10','#1A0F06'], /* cacao · dark chocolate */
+      ['#9A8868','#6E5E44','#42372A'], /* kava · earthy mud */
+      ['#D9A04E','#A87838','#6E4E22'], /* mead · honey gold */
+      ['#A5723E','#7A5226','#4A3014'], /* kombucha · amber tea */
+      ['#A82E3A','#6E1E26','#3E1018']  /* hibiscus · deep magenta */
+    ],
+    /* MODERN · medical/research aesthetic: silvery, clear, lab vials */
+    modern: [
+      ['#C8D2DC','#8A95A1','#525C68'], /* BPC-157 · silver-blue */
+      ['#A8B5C2','#75818E','#444F5C'], /* TB-500 · platinum */
+      ['#D8DBE0','#9598A2','#5E6068'], /* Epitalon · clear glass */
+      ['#9DABBC','#6A7886','#3F4C58'], /* Selank · cool steel */
+      ['#B8B5C5','#7E7B92','#4D4A5E'], /* Semax · titanium violet */
+      ['#C58A6E','#8E5A42','#5A3522'], /* GHK-Cu · copper */
+      ['#3E5BAA','#1E3B80','#0A1F4E'], /* Methylene Blue · cobalt */
+      ['#E0C25E','#A88C38','#6E5A1E']  /* NMN/NAD · gold molecule */
+    ]
+  };
+
+  /* Track index-within-category to pick the right variant */
+  const _catCounters = {};
+  function pickVariant(elixir){
+    const cat = elixir.category;
+    const variants = BOTTLE_VARIANTS[cat] || BOTTLE_VARIANTS.energy;
+    /* Use ID-based deterministic hash so order doesn't shift on filter */
+    const hash = [...elixir.id].reduce((a,c) => a + c.charCodeAt(0), 0);
+    return variants[hash % variants.length];
+  }
+
+  function bottleSVG(e, num){
+    const [c1,c2,c3] = pickVariant(e);
+    const id3 = (e.id||'').replace(/-/g,'').slice(0,3).toUpperCase();
+    return `
+      <svg class="bottle-svg" viewBox="0 0 140 240" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="liq-${e.id}" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="${c1}" stop-opacity="0.92"/>
+            <stop offset="0.55" stop-color="${c2}"/>
+            <stop offset="1" stop-color="${c3}"/>
+          </linearGradient>
+          <linearGradient id="glass-${e.id}" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="rgba(255,255,255,0.5)"/>
+            <stop offset="0.3" stop-color="rgba(255,255,255,0)"/>
+            <stop offset="0.7" stop-color="rgba(255,255,255,0)"/>
+            <stop offset="1" stop-color="rgba(0,0,0,0.18)"/>
+          </linearGradient>
+        </defs>
+        <!-- cork stack -->
+        <rect x="56" y="4" width="28" height="14" rx="2" fill="#5C5346"/>
+        <rect x="54" y="16" width="32" height="6" rx="1" fill="#3A352D"/>
+        <rect x="59" y="22" width="22" height="10" rx="0" fill="#241F19"/>
+        <!-- bottle body -->
+        <path d="M 59 32 L 59 56 L 26 86 Q 18 94 18 110 L 18 200 Q 18 232 70 232 Q 122 232 122 200 L 122 110 Q 122 94 114 86 L 81 56 L 81 32 Z"
+              fill="url(#liq-${e.id})"/>
+        <!-- glass refraction overlay -->
+        <path d="M 59 32 L 59 56 L 26 86 Q 18 94 18 110 L 18 200 Q 18 232 70 232 Q 122 232 122 200 L 122 110 Q 122 94 114 86 L 81 56 L 81 32 Z"
+              fill="url(#glass-${e.id})"/>
+        <!-- liquid surface ellipse (just under neck) -->
+        <ellipse cx="70" cy="76" rx="42" ry="5" fill="rgba(255,255,255,0.18)"/>
+        <!-- shine streak -->
+        <path d="M 30 110 Q 25 110 25 124 L 25 196 Q 25 212 36 218" fill="none" stroke="rgba(255,255,255,0.32)" stroke-width="5" stroke-linecap="round"/>
+        <!-- glass outline -->
+        <path d="M 59 32 L 59 56 L 26 86 Q 18 94 18 110 L 18 200 Q 18 232 70 232 Q 122 232 122 200 L 122 110 Q 122 94 114 86 L 81 56 L 81 32"
+              fill="none" stroke="#1B1A17" stroke-opacity="0.22" stroke-width="1.5"/>
+        <!-- label card -->
+        <rect x="30" y="135" width="80" height="62" rx="3" fill="rgba(248,243,234,0.94)" stroke="rgba(27,26,23,0.12)" stroke-width="0.5"/>
+        <line x1="36" y1="148" x2="104" y2="148" stroke="${c2}" stroke-width="0.5" stroke-opacity="0.4"/>
+        <line x1="36" y1="186" x2="104" y2="186" stroke="${c2}" stroke-width="0.5" stroke-opacity="0.4"/>
+        <text x="70" y="158" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7" letter-spacing="2.5" fill="#5C5346" font-weight="600">SORA · ${id3}</text>
+        <text x="70" y="178" text-anchor="middle" font-family="Instrument Serif, Georgia, serif" font-size="20" font-style="italic" fill="${c2}">№ ${String(num).padStart(2,'0')}</text>
+      </svg>`;
+  }
+
+  /* Parse recipe string into ordered steps */
+  function parseSteps(recipe){
+    if(!recipe) return [];
+    // Split on sentence boundary, keeping each sentence
+    const sentences = recipe.split(/(?<=[.!?])\s+(?=[A-ZÁÉÍÓÚÑÜ])/g);
+    return sentences.map(s => s.trim()).filter(s => s.length >= 12).slice(0, 10);
+  }
+
+  /* Infer delivery ETA from a sourcing item (URL + note) */
+  function getEta(item, lang){
+    const u = (item.url||'').toLowerCase();
+    const noteRaw = item.note;
+    const noteStr = typeof noteRaw === 'string' ? noteRaw : (noteRaw && (noteRaw.es || noteRaw.en)) || '';
+    const nameStr = (item.name||'').toLowerCase();
+    const blob = (u+' '+noteStr+' '+nameStr).toLowerCase();
+    // Try explicit "X-Y d" pattern in note
+    const m = noteStr.match(/(\d+)\s*-\s*(\d+)\s*d(ays|ías)?/i);
+
+    // Local Boquete/David physical (URL match OR name contains Boquete/David/Bocas)
+    const urlLocal = /super99|pricesmart\.com\/site\/pa|gnc\.com\.pa|encuentra24\.com\/panama|farmacianaturistadavid|punto-verde-boquete|boquetebees|boqueteorganicmarket|caferuiz|kotowacoffee|oroverdecacao|cacaoverdebocas|elrey\.com\.pa|romero\.com\.pa/.test(blob);
+    const nameLocal = /\bboquete\b|\bdavid\b|\bbocas\b|chiriquí|cerro punta|cacaofé|mama mia|mercado público|mercado publico|hongos panamá|comunidad bocas|carnicería|granja cerro|tunco|tienda mexicana|comunidad orgánica|manantiales|río caldera|vendedores callejeros|cultivadores/.test(blob);
+    if(urlLocal || nameLocal){
+      return { days:0, label: lang==='es'?'HOY · LOCAL':'TODAY · LOCAL', tier:'local' };
+    }
+    if(/mercadolibre\.com\.pa|listado\.mercadolibre/.test(u)){
+      if(m) return { days:parseInt(m[1]), label:`${m[1]}-${m[2]}d`, tier:'pa' };
+      return { days:5, label:'3-7d · PA', tier:'pa' };
+    }
+    if(/aeropost|casilleroexpress|myshipper/.test(u)){
+      return { days:7, label:'5-10d', tier:'mid' };
+    }
+    if(/iherb\.com/.test(u)){
+      return { days:10, label:'7-14d', tier:'mid' };
+    }
+    if(/amazon\.com\b/.test(u)){
+      return { days:16, label:'14-21d', tier:'slow' };
+    }
+    if(/patanjaliayurved|organicindia|kgc\.co\.kr|cbse\.com\.ar|ippodo|marukyu|persianbasket|yerbamateargentina/.test(u)){
+      return { days:18, label:'14-21d INTL', tier:'slow' };
+    }
+    if(m){
+      const d = parseInt(m[1]);
+      return { days:d, label:`${m[1]}-${m[2]}d`, tier: d<=2?'local': d<=7?'pa': d<=14?'mid':'slow' };
+    }
+    // default: USA brand standard intl shipping
+    return { days:14, label: lang==='es'?'~10-21d':'~10-21d', tier:'mid' };
+  }
+
+  function setLang(lang){
+    document.documentElement.lang = lang;
+    document.querySelectorAll('.lang button').forEach(b => b.classList.remove('active'));
+    document.querySelector(`.lang button[onclick="setLang('${lang}')"]`).classList.add('active');
+    try { localStorage.setItem('sora.lang', lang); } catch(e){}
+    render();
+  }
+  try { const saved = localStorage.getItem('sora.lang'); if (saved) document.documentElement.lang = saved; document.querySelector(`.lang button[onclick="setLang('${saved}')"]`)?.classList.add('active'); } catch(e){}
+
+  document.querySelectorAll('.fl').forEach(b=>b.addEventListener('click',()=>{
+    currentFilter = b.dataset.cat;
+    document.querySelectorAll('.fl').forEach(x=>x.classList.toggle('on', x.dataset.cat===currentFilter));
+    render();
+  }));
+
+  function render(){
+    const lang = document.documentElement.lang || 'es';
+    const shelf = document.getElementById('shelf');
+    const all = window.ELIXIRS || [];
+    const items = all.filter(e => currentFilter==='all' || e.category===currentFilter);
+    document.getElementById('shelf-now').textContent = items.length;
+    document.getElementById('shelf-total').textContent = all.length;
+    shelf.innerHTML = items.map(e => {
+      const idx = all.indexOf(e);
+      return `<button class="potion cat-${e.category}" onclick="openModal(${idx})" aria-label="${e.name[lang]}">
+        <div class="potion-cat">${CATS[e.category][lang]}</div>
+        <div class="potion-bottle">${bottleSVG(e, idx+1)}</div>
+        <div class="potion-meta">
+          <h3>${e.name[lang]}</h3>
+          <div class="potion-origin">${e.origin[lang]}</div>
+          <p class="potion-one">${e.one[lang]}</p>
+          <div class="potion-tap">${lang==='es'?'TAP PARA RECETA →':'TAP FOR RECIPE →'}</div>
+        </div>
+      </button>`;
+    }).join('');
+    updateShelfNav();
+  }
+
+  function scrollShelf(dir){
+    const shelf = document.getElementById('shelf');
+    const cardW = 248 + 18; // potion width + gap
+    shelf.scrollBy({ left: dir * cardW * 2, behavior: 'smooth' });
+  }
+  function updateShelfNav(){
+    const shelf = document.getElementById('shelf');
+    const prev = document.querySelector('.shelf-nav.prev');
+    const next = document.querySelector('.shelf-nav.next');
+    if(!shelf || !prev || !next) return;
+    const update = () => {
+      prev.disabled = shelf.scrollLeft <= 4;
+      next.disabled = shelf.scrollLeft >= shelf.scrollWidth - shelf.clientWidth - 4;
+    };
+    shelf.addEventListener('scroll', update, { passive: true });
+    setTimeout(update, 100);
+  }
+
+  function openModal(idx){
+    const lang = document.documentElement.lang || 'es';
+    const e = window.ELIXIRS[idx];
+    if(!e) return;
+    const m = document.getElementById('modal');
+    m.className = 'modal cat-' + e.category;
+    const body = document.getElementById('m-body');
+
+    const steps = parseSteps(e.recipe[lang]);
+
+    // Merge + sort sources by ETA
+    const localSrc = (e.sourcing.local || []).map(s => ({...s, _eta: getEta(s, lang)}));
+    const intlSrc = (e.sourcing.intl || []).map(s => ({...s, _eta: getEta(s, lang)}));
+    const allSources = [...localSrc, ...intlSrc].sort((a,b) => a._eta.days - b._eta.days);
+
+    body.innerHTML = `
+      <div class="m-cat">${CATS[e.category][lang]}</div>
+      <h2 class="m-title">${e.name[lang]}</h2>
+      <div class="m-origin">${e.origin[lang]}</div>
+      <p class="m-one">${e.one[lang]}</p>
+
+      <div class="m-block">
+        <div class="m-label">${lang==='es'?'01 · HISTORIA · ORIGEN':'01 · HISTORY · ORIGIN'}</div>
+        <p>${e.story[lang]}</p>
+      </div>
+
+      <div class="m-block">
+        <div class="m-label">${lang==='es'?'02 · COMPUESTOS ACTIVOS + EFECTO BIOELÉCTRICO':'02 · ACTIVE COMPOUNDS + BIOELECTRIC EFFECT'}</div>
+        <div class="m-compounds">${e.compounds}</div>
+        <p style="margin-top:10px">${e.effect[lang]}</p>
+      </div>
+
+      <div class="m-block">
+        <div class="m-label">${lang==='es'?'03 · INGREDIENTES':'03 · INGREDIENTS'}</div>
+        <ul>${e.ingredients[lang].map(i=>`<li>${i}</li>`).join('')}</ul>
+      </div>
+
+      <div class="m-block">
+        <div class="m-label">${lang==='es'?'04 · PREPARACIÓN · PASO A PASO':'04 · PREPARATION · STEP BY STEP'}</div>
+        <ol class="step-list">${steps.map(s=>`<li>${s}</li>`).join('')}</ol>
+      </div>
+
+      <div class="m-block">
+        <div class="m-label">${lang==='es'?'05 · DÓNDE COMPRAR · ORDENADO POR VELOCIDAD':'05 · WHERE TO BUY · SORTED BY SPEED'}</div>
+        <ul class="src-list">
+          ${allSources.map(s => {
+            const t = s._eta.tier;
+            const noteTxt = (typeof s.note === 'string') ? s.note : ((s.note && (s.note[lang] || s.note.es || s.note.en)) || '');
+            return `<li class="src-row eta-${t}">
+              <div class="src-eta">${s._eta.label}</div>
+              <div class="src-main">
+                <a href="${s.url}" target="_blank" rel="noopener">${s.name}</a>
+                ${noteTxt ? `<span class="src-note">${noteTxt}</span>`:''}
+              </div>
+            </li>`;
+          }).join('')}
+        </ul>
+      </div>
+    `;
+    document.getElementById('modal-bg').classList.add('on');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal(){
+    document.getElementById('modal-bg').classList.remove('on');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => {
+    if(e.key==='Escape') closeModal();
+    if(e.key==='ArrowRight' && !document.getElementById('modal-bg').classList.contains('on')) scrollShelf(1);
+    if(e.key==='ArrowLeft' && !document.getElementById('modal-bg').classList.contains('on')) scrollShelf(-1);
+  });
+
+  // wait for data file
+  function init(){ if(window.ELIXIRS && window.ELIXIRS.length){ render(); } else { setTimeout(init,80); } }
+  init();
+</script>
+
+</body>
+</html>

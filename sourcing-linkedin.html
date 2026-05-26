@@ -1,0 +1,766 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SORA · Sourcing · LinkedIn (sin broadcast)</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Instrument+Serif&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F8F3EA; --cream-2:#F2EBDD; --cream-3:#E9DFCA;
+    --ink:#1B1A17; --ink-2:#3A352D; --ink-3:#5C5346; --faint:#9A8E7A;
+    --line:rgba(27,26,23,.10); --line-2:rgba(27,26,23,.06);
+    --coral:#D9573B; --gold:#B58F4D; --mango:#E2A24A; --green:#3F5F45; --rose:#B8616B; --teal:#2C6E7F;
+    --linkedin:#0A66C2;
+    --serif:'Fraunces',Georgia,serif; --display:'Instrument Serif',Georgia,serif;
+    --sans:'Inter',-apple-system,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--cream);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;font-size:15px;line-height:1.55}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--coral);color:var(--cream)}
+
+  [data-en]{display:none}
+  html[lang="en"] [data-es]{display:none}
+  html[lang="en"] [data-en]{display:inline}
+  html[lang="en"] li[data-en],html[lang="en"] p[data-en],html[lang="en"] div[data-en],html[lang="en"] h1[data-en],html[lang="en"] h2[data-en],html[lang="en"] h3[data-en],html[lang="en"] td[data-en],html[lang="en"] th[data-en]{display:block}
+  html[lang="en"] td[data-en],html[lang="en"] th[data-en]{display:table-cell}
+
+  .top{position:sticky;top:0;z-index:50;background:rgba(248,243,234,.92);backdrop-filter:blur(14px);border-bottom:0.5px solid var(--line)}
+  .top-in{max-width:1180px;margin:0 auto;padding:14px 28px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .brand{font-family:var(--serif);font-weight:600;font-size:16px;letter-spacing:.16em;color:var(--ink)}
+  .brand em{font-style:italic;color:var(--coral)}
+  .top-tag{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--rose);text-transform:uppercase;padding:4px 10px;background:rgba(184,97,107,.10);border-radius:4px}
+  .top-link{font-family:var(--sans);font-size:12px;color:var(--ink-2);padding:7px 12px;border:0.5px solid var(--line);border-radius:5px}
+  .top-link:hover{background:var(--cream-2)}
+  .spacer{flex:1}
+  .lang{display:inline-flex;border:0.5px solid var(--line);border-radius:5px;overflow:hidden}
+  .lang button{padding:6px 11px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;background:transparent;border:0;color:var(--faint);cursor:pointer;font-weight:500}
+  .lang button.active{background:var(--ink);color:var(--cream)}
+
+  .hero{padding:72px 32px 48px;max-width:1180px;margin:0 auto;text-align:center}
+  .hero-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--coral);font-weight:600;margin-bottom:22px}
+  .hero h1{font-family:var(--display);font-weight:400;font-size:clamp(48px,8vw,96px);line-height:.96;letter-spacing:-.025em;color:var(--ink);margin-bottom:18px}
+  .hero h1 em{font-style:italic;color:var(--coral)}
+  .hero-lede{font-family:var(--serif);font-size:19px;color:var(--ink-2);font-weight:300;max-width:780px;margin:0 auto;line-height:1.5}
+  .hero-lede strong{color:var(--ink);font-weight:500}
+
+  .strip{max-width:1180px;margin:32px auto 0;padding:0 32px;display:grid;grid-template-columns:repeat(5,1fr);border-top:0.5px solid var(--line);border-bottom:0.5px solid var(--line)}
+  .strip > div{padding:22px 18px;text-align:center;border-right:0.5px solid var(--line)}
+  .strip > div:last-child{border-right:0}
+  .strip .n{font-family:var(--display);font-size:34px;color:var(--coral);line-height:1;margin-bottom:6px}
+  .strip .l{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
+
+  section{max-width:1180px;margin:0 auto;padding:56px 32px}
+  .sec-head{margin-bottom:32px;text-align:center}
+  .sec-num{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--coral);font-weight:600;margin-bottom:14px}
+  .sec-num em{font-style:normal;color:var(--ink-3)}
+  .sec-head h2{font-family:var(--display);font-weight:400;font-size:clamp(34px,5vw,52px);line-height:1.04;letter-spacing:-.02em;color:var(--ink);margin-bottom:14px}
+  .sec-head h2 em{font-style:italic;color:var(--coral)}
+  .sec-sub{font-family:var(--serif);font-size:17px;color:var(--ink-3);font-weight:300;max-width:680px;margin:0 auto;line-height:1.55}
+
+  /* Warning banner */
+  .warn{max-width:1080px;margin:32px auto 0;padding:24px 28px;background:linear-gradient(135deg,var(--cream-2),var(--cream-3));border:0.5px solid var(--line);border-radius:10px;border-left:3px solid var(--coral)}
+  .warn .wl{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);font-weight:700;margin-bottom:10px}
+  .warn h3{font-family:var(--display);font-size:24px;color:var(--ink);font-weight:400;margin-bottom:8px;line-height:1.2}
+  .warn h3 em{font-style:italic;color:var(--coral)}
+  .warn p{font-family:var(--serif);font-size:15.5px;line-height:1.6;color:var(--ink-2);margin-bottom:10px}
+  .warn p:last-child{margin-bottom:0}
+  .warn strong{color:var(--ink);font-weight:600}
+
+  /* Path cards */
+  .paths{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:24px}
+  .path{background:var(--cream);border:0.5px solid var(--line);border-radius:10px;padding:24px 26px}
+  .path .pl{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--coral);font-weight:600;margin-bottom:8px}
+  .path h3{font-family:var(--display);font-size:22px;font-weight:400;color:var(--ink);margin-bottom:8px;line-height:1.2}
+  .path h3 em{font-style:italic;color:var(--coral)}
+  .path p{font-family:var(--serif);font-size:14px;line-height:1.55;color:var(--ink-2);margin-bottom:10px}
+  .path ul{list-style:none;padding:0;margin-top:10px}
+  .path li{font-family:var(--sans);font-size:13px;color:var(--ink-2);padding:6px 0 6px 16px;position:relative;line-height:1.45}
+  .path li::before{content:'';position:absolute;left:0;top:13px;width:6px;height:1px;background:var(--coral)}
+  .path .when{font-family:var(--mono);font-size:11px;color:var(--green);font-weight:600;padding-top:12px;border-top:0.5px solid var(--line-2);margin-top:12px}
+  .path .when.warn{color:var(--coral)}
+
+  /* Step-by-step / how-to */
+  .howto{margin-top:24px;background:var(--cream);border:0.5px solid var(--line);border-radius:10px;overflow:hidden}
+  .howto-step{padding:22px 28px;border-bottom:0.5px solid var(--line-2);display:grid;grid-template-columns:48px 1fr;gap:18px;align-items:start}
+  .howto-step:last-child{border-bottom:0}
+  .howto-num{font-family:var(--display);font-size:32px;color:var(--coral);line-height:1;font-style:italic}
+  .howto-step h4{font-family:var(--serif);font-size:18px;font-weight:600;color:var(--ink);margin-bottom:6px;line-height:1.3}
+  .howto-step p{font-family:var(--serif);font-size:14.5px;line-height:1.55;color:var(--ink-2);margin-bottom:8px}
+  .howto-step .kbd{font-family:var(--mono);font-size:11.5px;background:var(--cream-2);padding:2px 8px;border-radius:4px;color:var(--ink);border:0.5px solid var(--line-2)}
+
+  /* Boolean query */
+  pre.q{background:var(--ink);color:var(--cream);padding:18px 22px;border-radius:8px;font-family:var(--mono);font-size:12.5px;line-height:1.7;margin:12px 0;overflow-x:auto;white-space:pre-wrap}
+  pre.q .h{color:var(--mango);font-weight:600}
+  pre.q .c{color:var(--faint);font-style:italic}
+  pre.q .o{color:#7CA9D6}
+
+  /* InMail mockup */
+  .inmail{background:var(--ink);color:var(--cream);border-radius:10px;padding:28px 32px;margin-top:24px}
+  .inmail .il{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--mango);font-weight:600;margin-bottom:14px}
+  .inmail .subj{font-family:var(--serif);font-size:15px;color:var(--mango);font-weight:600;margin-bottom:10px;padding-bottom:10px;border-bottom:0.5px solid rgba(248,243,234,.20)}
+  .inmail .body{font-family:var(--serif);font-size:14.5px;color:var(--cream);line-height:1.65;white-space:pre-wrap}
+
+  /* Tables */
+  .tbl-wrap{overflow-x:auto;border-radius:10px;margin-top:24px}
+  table{width:100%;border-collapse:collapse;background:var(--cream);border:0.5px solid var(--line);border-radius:10px;overflow:hidden;min-width:720px}
+  th{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);font-weight:600;text-align:left;padding:14px 18px;background:var(--cream-2);border-bottom:0.5px solid var(--line)}
+  td{padding:14px 18px;font-size:14px;color:var(--ink-2);border-bottom:0.5px solid var(--line-2);font-family:var(--sans);vertical-align:top}
+  tr:last-child td{border-bottom:0}
+  td.country{font-family:var(--display);font-style:italic;font-size:17px;color:var(--ink);white-space:nowrap}
+  td.tier{font-family:var(--mono);font-size:11px;font-weight:600}
+  td.tier.a{color:var(--coral)}
+  td.tier.b{color:var(--gold)}
+  td.tier.c{color:var(--faint)}
+
+  /* Callout */
+  .callout{background:var(--cream-2);border:0.5px solid var(--line);border-left:3px solid var(--green);border-radius:8px;padding:20px 24px;margin:24px 0;font-family:var(--serif);font-size:15.5px;line-height:1.6;color:var(--ink-2)}
+  .callout.warn{border-left-color:var(--coral)}
+  .callout strong{color:var(--ink)}
+  .callout .cl-label{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--green);text-transform:uppercase;font-weight:600;margin-bottom:8px;display:block}
+  .callout.warn .cl-label{color:var(--coral)}
+
+  /* CTA */
+  .cta{max-width:780px;margin:64px auto 48px;padding:42px 38px;text-align:center;background:var(--cream-2);border:0.5px solid var(--line);border-radius:14px}
+  .cta h2{font-family:var(--display);font-weight:400;font-size:clamp(30px,4.5vw,46px);line-height:1.04;color:var(--ink);margin-bottom:14px;letter-spacing:-.02em}
+  .cta h2 em{font-style:italic;color:var(--coral)}
+  .cta p{font-family:var(--serif);font-size:16px;color:var(--ink-2);line-height:1.55;margin-bottom:22px}
+  .cta-btn{display:inline-block;padding:12px 26px;background:var(--ink);color:var(--cream);font-family:var(--mono);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;border-radius:6px;font-weight:600;margin:0 4px}
+  .cta-btn:hover{background:var(--coral)}
+
+  footer{max-width:1180px;margin:32px auto 0;padding:32px;border-top:0.5px solid var(--line);text-align:center}
+  footer p{font-family:var(--mono);font-size:11px;letter-spacing:.10em;color:var(--ink-3)}
+
+  @media (max-width:760px){
+    .strip{grid-template-columns:repeat(2,1fr)}
+    .strip > div:nth-child(2n){border-right:0}
+    .strip > div{border-bottom:0.5px solid var(--line)}
+  }
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="top-in">
+    <a class="brand" href="sora-hq.html">SORA<em>°</em></a>
+    <span class="top-tag" data-es>SOURCING · LINKEDIN</span>
+    <span class="top-tag" data-en>SOURCING · LINKEDIN</span>
+    <a class="top-link" href="latam-expansion-system.html" data-es>↑ Sistema maestro</a>
+    <a class="top-link" href="latam-expansion-system.html" data-en>↑ Master system</a>
+    <a class="top-link" href="interview-process.html" data-es>↑ Entrevistas</a>
+    <a class="top-link" href="interview-process.html" data-en>↑ Interviews</a>
+    <span class="spacer"></span>
+    <div class="lang">
+      <button class="active" onclick="setLang('es')">ES</button>
+      <button onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="hero-eyebrow" data-es>SOURCING · CANAL 03 · LINKEDIN SILENCIOSO</div>
+  <div class="hero-eyebrow" data-en>SOURCING · CHANNEL 03 · QUIET LINKEDIN</div>
+  <h1 data-es>LinkedIn.<br>Sin <em>broadcast</em>.</h1>
+  <h1 data-en>LinkedIn.<br>No <em>broadcast</em>.</h1>
+  <p class="hero-lede" data-es>Cómo encontrar anfitriones top-tier en LinkedIn <strong>sin que tu red personal se entere de que estás contratando</strong>. Tres rutas silenciosas: búsqueda booleana + connect, InMail desde Sora Page, y LinkedIn Jobs Ads. Cero posts orgánicos en tu feed.</p>
+  <p class="hero-lede" data-en>How to find top-tier hosts on LinkedIn <strong>without your personal network knowing you're hiring</strong>. Three quiet routes: boolean search + connect, InMail from Sora Page, and LinkedIn Jobs Ads. Zero organic posts on your feed.</p>
+</header>
+
+<div class="strip">
+  <div><div class="n">3</div><div class="l" data-es>Rutas silenciosas</div><div class="l" data-en>Quiet routes</div></div>
+  <div><div class="n">$0–170</div><div class="l" data-es>USD/mes</div><div class="l" data-en>USD/mo</div></div>
+  <div><div class="n">5</div><div class="l" data-es>Países top</div><div class="l" data-en>Top countries</div></div>
+  <div><div class="n">25%</div><div class="l" data-es>Tasa de respuesta esperada</div><div class="l" data-en>Expected reply rate</div></div>
+  <div><div class="n">0</div><div class="l" data-es>Posts en tu feed</div><div class="l" data-en>Posts on your feed</div></div>
+</div>
+
+<!-- 01 · THE NO-BROADCAST RULE -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es>01 · LA REGLA DE NO-BROADCAST</div>
+    <div class="sec-num" data-en>01 · THE NO-BROADCAST RULE</div>
+    <h2 data-es>Tu red <em>no se entera</em>.</h2>
+    <h2 data-en>Your network <em>doesn't find out</em>.</h2>
+    <p class="sec-sub" data-es>El reflejo de LinkedIn es transmitir todo. Eso es exactamente lo que NO queremos. Estas son las tres formas de operar invisible.</p>
+    <p class="sec-sub" data-en>LinkedIn's reflex is to broadcast everything. That's exactly what we do NOT want. Three ways to operate invisible.</p>
+  </div>
+
+  <div class="warn">
+    <div class="wl" data-es>EVITAR · ESTO BROADCAST A TU RED</div>
+    <div class="wl" data-en>AVOID · THESE BROADCAST TO YOUR NETWORK</div>
+    <h3 data-es>Lo que <em>no</em> hacer en LinkedIn</h3>
+    <h3 data-en>What <em>not</em> to do on LinkedIn</h3>
+    <p data-es><strong>(1) Postear el anuncio desde tu perfil personal</strong> — aparece en el feed de tus 500–5,000 conexiones. Todos saben que estás contratando.</p>
+    <p data-en><strong>(1) Post the ad from your personal profile</strong> — appears in the feed of your 500–5,000 connections. Everyone knows you're hiring.</p>
+    <p data-es><strong>(2) "Compartir" desde la página de Sora a tu perfil personal</strong> — mismo problema, redirige el broadcast a tu red.</p>
+    <p data-en><strong>(2) "Share" from Sora Page to your personal profile</strong> — same problem, redirects the broadcast to your network.</p>
+    <p data-es><strong>(3) Activar "Open to work"</strong> — irrelevante (esto es para job-seekers). Pero el equivalente que sí broadcast es activar "Hiring" en tu perfil, lo cual notifica a tu red.</p>
+    <p data-en><strong>(3) Turn on "Open to work"</strong> — irrelevant (this is for job-seekers). But the equivalent that does broadcast is activating "Hiring" on your profile, which notifies your network.</p>
+  </div>
+
+  <div class="paths">
+    <div class="path">
+      <div class="pl" data-es>RUTA 01 · OUTBOUND PERSONAL</div>
+      <div class="pl" data-en>ROUTE 01 · PERSONAL OUTBOUND</div>
+      <h3 data-es>Búsqueda + <em>conectar</em> en silencio</h3>
+      <h3 data-en>Search + <em>connect</em> quietly</h3>
+      <p data-es>Tú usas búsqueda avanzada para encontrar perfiles que matchean. Envías solicitudes de conexión con nota personalizada de 280 caracteres. <strong>Nada aparece en tu feed.</strong> Tu red no ve nada.</p>
+      <p data-en>You use advanced search to find matching profiles. You send connection requests with a 280-char personalized note. <strong>Nothing appears in your feed.</strong> Your network sees nothing.</p>
+      <ul>
+        <li data-es>$0 con LinkedIn estándar</li>
+        <li data-en>$0 with standard LinkedIn</li>
+        <li data-es>Mejor con Recruiter Lite ($170/mo)</li>
+        <li data-en>Better with Recruiter Lite ($170/mo)</li>
+        <li data-es>Limite ~50 connects/semana</li>
+        <li data-en>Limit ~50 connects/week</li>
+      </ul>
+      <div class="when" data-es>USAR · siempre como base</div>
+      <div class="when" data-en>USE · always as baseline</div>
+    </div>
+
+    <div class="path">
+      <div class="pl" data-es>RUTA 02 · INMAIL DESDE PÁGINA</div>
+      <div class="pl" data-en>ROUTE 02 · INMAIL FROM PAGE</div>
+      <h3 data-es>Mensaje <em>directo</em> sin conectar</h3>
+      <h3 data-en>Direct <em>message</em> without connecting</h3>
+      <p data-es>Con Recruiter Lite obtienes 30 InMails/mes — envías mensajes directos a perfiles SIN tener que conectar. Aparece como "InMail from Sora Travel Agency". Tu red personal jamás lo ve.</p>
+      <p data-en>Recruiter Lite gives 30 InMails/month — direct messages to profiles WITHOUT connecting. Appears as "InMail from Sora Travel Agency". Your personal network never sees it.</p>
+      <ul>
+        <li data-es>Requiere Recruiter Lite</li>
+        <li data-en>Requires Recruiter Lite</li>
+        <li data-es>Tasa de respuesta 18-30%</li>
+        <li data-en>Reply rate 18-30%</li>
+        <li data-es>Mensajes pueden ser largos</li>
+        <li data-en>Messages can be long</li>
+      </ul>
+      <div class="when" data-es>USAR · para candidatos top-tier identificados</div>
+      <div class="when" data-en>USE · for identified top-tier candidates</div>
+    </div>
+
+    <div class="path">
+      <div class="pl" data-es>RUTA 03 · LINKEDIN JOBS AD</div>
+      <div class="pl" data-en>ROUTE 03 · LINKEDIN JOBS AD</div>
+      <h3 data-es>Anuncio <em>pagado</em> dirigido</h3>
+      <h3 data-en>Paid <em>targeted</em> ad</h3>
+      <p data-es>Publicas un Job Posting desde la página de Sora. <strong>NO se comparte automáticamente en tu feed personal.</strong> Aparece solo en LinkedIn Jobs y se promociona a perfiles que matchean filtros (título, ubicación, idioma).</p>
+      <p data-en>Post a Job Posting from Sora Page. <strong>Does NOT auto-share to your personal feed.</strong> Appears only in LinkedIn Jobs and gets promoted to matching profiles (title, location, language).</p>
+      <ul>
+        <li data-es>$5-25/día CPC promedio LATAM</li>
+        <li data-en>$5-25/day avg CPC in LATAM</li>
+        <li data-es>~$150-500/posición total</li>
+        <li data-en>~$150-500/position total</li>
+        <li data-es>Tu red no recibe notificación</li>
+        <li data-en>Your network gets no notification</li>
+      </ul>
+      <div class="when" data-es>USAR · cuando rutas 01-02 no llenan en 7 días</div>
+      <div class="when" data-en>USE · when routes 01-02 don't fill in 7 days</div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 · HOW TO POST WITHOUT FEED BROADCAST -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es>02 · CÓMO POSTEAR SIN APARECER EN TU FEED</div>
+    <div class="sec-num" data-en>02 · HOW TO POST WITHOUT SHOWING IN YOUR FEED</div>
+    <h2 data-es>Paso a <em>paso</em>.</h2>
+    <h2 data-en>Step by <em>step</em>.</h2>
+    <p class="sec-sub" data-es>Si la posición se postea desde tu perfil personal con "Hiring", llega a tu red. Esta es la única forma silenciosa.</p>
+    <p class="sec-sub" data-en>If you post from your personal profile with "Hiring", your network sees it. This is the only silent route.</p>
+  </div>
+
+  <div class="howto">
+    <div class="howto-step">
+      <div class="howto-num">01</div>
+      <div>
+        <h4 data-es>Confirmar que Sora tiene Company Page</h4>
+        <h4 data-en>Confirm Sora has Company Page</h4>
+        <p data-es>Si no existe: <span class="kbd">linkedin.com/company/setup/new</span>. Crear "Sora Travel Agency" o "La Compañía / Sora". Sube logo + headline + descripción en 5 min. <strong>Esta página es la que postea</strong>, no tu perfil.</p>
+        <p data-en>If it doesn't exist: <span class="kbd">linkedin.com/company/setup/new</span>. Create "Sora Travel Agency" or "La Compañía / Sora". Upload logo + headline + description in 5 min. <strong>This page posts</strong>, not your profile.</p>
+      </div>
+    </div>
+
+    <div class="howto-step">
+      <div class="howto-num">02</div>
+      <div>
+        <h4 data-es>Hacerse admin de la página</h4>
+        <h4 data-en>Make yourself page admin</h4>
+        <p data-es>Asegurarte que tu perfil tiene rol de Super Admin en la página Sora. Si la creas tú, automático. Si no, pedirle al creador que te agregue: <span class="kbd">Page Admin Tools → Manage admins</span>.</p>
+        <p data-en>Make sure your profile has Super Admin role on the Sora page. If you created it, automatic. If not, ask the creator to add you: <span class="kbd">Page Admin Tools → Manage admins</span>.</p>
+      </div>
+    </div>
+
+    <div class="howto-step">
+      <div class="howto-num">03</div>
+      <div>
+        <h4 data-es>Publicar el job desde "Post a job"</h4>
+        <h4 data-en>Publish via "Post a job"</h4>
+        <p data-es>Ir a <span class="kbd">linkedin.com/talent/post-a-job</span>. Verificar que el dropdown "Company" muestra <strong>Sora Travel Agency</strong>, no tu nombre. Si muestra tu nombre, cambiarlo. <strong>Este es el momento crítico.</strong></p>
+        <p data-en>Go to <span class="kbd">linkedin.com/talent/post-a-job</span>. Confirm the "Company" dropdown shows <strong>Sora Travel Agency</strong>, not your name. If it shows your name, change it. <strong>This is the critical step.</strong></p>
+      </div>
+    </div>
+
+    <div class="howto-step">
+      <div class="howto-num">04</div>
+      <div>
+        <h4 data-es>NO marcar "Share with my network"</h4>
+        <h4 data-en>DO NOT check "Share with my network"</h4>
+        <p data-es>En la sección de promoción, LinkedIn te ofrece una casilla "Share this job on your profile" o "Notify your network". <strong>Dejarla SIN MARCAR.</strong> Si la marcas, broadcast inmediato a tus conexiones.</p>
+        <p data-en>In the promotion section, LinkedIn offers a checkbox "Share this job on your profile" or "Notify your network". <strong>Leave it UNCHECKED.</strong> Checking it means instant broadcast to your connections.</p>
+      </div>
+    </div>
+
+    <div class="howto-step">
+      <div class="howto-num">05</div>
+      <div>
+        <h4 data-es>Elegir tipo de posting</h4>
+        <h4 data-en>Choose posting type</h4>
+        <p data-es><strong>Free Job</strong> (gratis, 1 activo por página): aparece pero LinkedIn no lo distribuye agresivamente. <strong>Promoted Job</strong> (pagado, CPC): aparece en perfil + se distribuye a candidatos que matchean. Recomendamos <strong>Promoted</strong> para Wave 1.</p>
+        <p data-en><strong>Free Job</strong> (free, 1 active per page): appears but LinkedIn doesn't push it aggressively. <strong>Promoted Job</strong> (paid, CPC): appears on profile + distributes to matching candidates. We recommend <strong>Promoted</strong> for Wave 1.</p>
+      </div>
+    </div>
+
+    <div class="howto-step">
+      <div class="howto-num">06</div>
+      <div>
+        <h4 data-es>Configurar applicant routing a Calendly</h4>
+        <h4 data-en>Configure applicant routing to Calendly</h4>
+        <p data-es>En "How candidates apply" elegir <strong>External website</strong> y pegar el link de Calendly de Minor. Así los aplicantes saltan el CV de LinkedIn y agendan directamente. Reduce ruido 60%.</p>
+        <p data-en>In "How candidates apply" select <strong>External website</strong> and paste Minor's Calendly link. This skips LinkedIn's CV form and they book directly. Cuts noise 60%.</p>
+      </div>
+    </div>
+
+    <div class="howto-step">
+      <div class="howto-num">07</div>
+      <div>
+        <h4 data-es>Verificar en incógnito</h4>
+        <h4 data-en>Verify in incognito</h4>
+        <p data-es>Abrir LinkedIn en navegador incógnito sin tu sesión. Ir a tu perfil público. Si el job aparece bajo "Experiencia" o "Actividad reciente" → es público para tu red. Volver al paso 04 y desactivar share.</p>
+        <p data-en>Open LinkedIn in incognito without your session. Go to your public profile. If the job appears under "Experience" or "Recent activity" → it's visible to your network. Go back to step 04 and disable share.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <span class="cl-label" data-es>VERIFICACIÓN FINAL · OBLIGATORIA</span>
+    <span class="cl-label" data-en>FINAL VERIFICATION · MANDATORY</span>
+    <p data-es>Después de postear, pídele a alguien NO conectado a tu LinkedIn que busque tu nombre. Si ven el job posting bajo tu perfil, hay broadcast. Si no lo ven, está silencioso. <strong>Esta verificación se hace cada vez.</strong></p>
+    <p data-en>After posting, ask someone NOT connected to your LinkedIn to search your name. If they see the job under your profile, there's broadcast. If they don't, it's silent. <strong>Do this verification every time.</strong></p>
+  </div>
+</section>
+
+<!-- 03 · BOOLEAN SEARCHES -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es>03 · BÚSQUEDAS BOOLEANAS</div>
+    <div class="sec-num" data-en>03 · BOOLEAN SEARCHES</div>
+    <h2 data-es>Encontrar al <em>perfil exacto</em>.</h2>
+    <h2 data-en>Find the <em>exact profile</em>.</h2>
+    <p class="sec-sub" data-es>Las búsquedas booleanas son la herramienta más infrautilizada de LinkedIn. Estas son las plantillas exactas — copy-paste a la barra de búsqueda.</p>
+    <p class="sec-sub" data-en>Boolean searches are LinkedIn's most underused tool. These are exact templates — copy-paste into the search bar.</p>
+  </div>
+
+  <h3 data-es style="font-family:var(--display);font-size:24px;color:var(--ink);font-weight:400;margin:32px 0 12px">Búsqueda primaria · <em style="color:var(--coral)">hospitalidad premium</em></h3>
+  <h3 data-en style="font-family:var(--display);font-size:24px;color:var(--ink);font-weight:400;margin:32px 0 12px">Primary search · <em style="color:var(--coral)">premium hospitality</em></h3>
+  <pre class="q"><span class="c"># Pegar en la barra de búsqueda de LinkedIn, filtrar por país después</span>
+(<span class="h">"hospitality manager"</span> <span class="o">OR</span> <span class="h">"F&B director"</span> <span class="o">OR</span> <span class="h">"hotel general manager"</span> <span class="o">OR</span> <span class="h">"lifestyle director"</span>) <span class="o">AND</span> (<span class="h">boutique</span> <span class="o">OR</span> <span class="h">luxury</span> <span class="o">OR</span> <span class="h">premium</span>) <span class="o">NOT</span> (<span class="h">intern</span> <span class="o">OR</span> <span class="h">student</span>)</pre>
+
+  <h3 data-es style="font-family:var(--display);font-size:24px;color:var(--ink);font-weight:400;margin:32px 0 12px">Búsqueda secundaria · <em style="color:var(--coral)">eventos + producción</em></h3>
+  <h3 data-en style="font-family:var(--display);font-size:24px;color:var(--ink);font-weight:400;margin:32px 0 12px">Secondary search · <em style="color:var(--coral)">events + production</em></h3>
+  <pre class="q">(<span class="h">"event producer"</span> <span class="o">OR</span> <span class="h">"event director"</span> <span class="o">OR</span> <span class="h">"experiences manager"</span> <span class="o">OR</span> <span class="h">"creative producer"</span>) <span class="o">AND</span> (<span class="h">private</span> <span class="o">OR</span> <span class="h">VIP</span> <span class="o">OR</span> <span class="h">curated</span>) <span class="o">AND</span> (<span class="h">hospitality</span> <span class="o">OR</span> <span class="h">F&B</span> <span class="o">OR</span> <span class="h">travel</span>)</pre>
+
+  <h3 data-es style="font-family:var(--display);font-size:24px;color:var(--ink);font-weight:400;margin:32px 0 12px">Búsqueda terciaria · <em style="color:var(--coral)">creativos + medios</em></h3>
+  <h3 data-en style="font-family:var(--display);font-size:24px;color:var(--ink);font-weight:400;margin:32px 0 12px">Tertiary search · <em style="color:var(--coral)">creatives + media</em></h3>
+  <pre class="q">(<span class="h">"creative director"</span> <span class="o">OR</span> <span class="h">"brand partnerships"</span> <span class="o">OR</span> <span class="h">"content strategist"</span>) <span class="o">AND</span> (<span class="h">travel</span> <span class="o">OR</span> <span class="h">hospitality</span> <span class="o">OR</span> <span class="h">lifestyle</span>) <span class="o">AND</span> (<span class="h">bilingual</span> <span class="o">OR</span> <span class="h">English</span>)</pre>
+
+  <h3 data-es style="font-family:var(--display);font-size:24px;color:var(--ink);font-weight:400;margin:32px 0 12px">Filtros a aplicar <em style="color:var(--coral)">después</em> de pegar</h3>
+  <h3 data-en style="font-family:var(--display);font-size:24px;color:var(--ink);font-weight:400;margin:32px 0 12px">Filters to apply <em style="color:var(--coral)">after</em> pasting</h3>
+
+  <div class="tbl-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th data-es>FILTRO</th><th data-en>FILTER</th>
+        <th data-es>VALOR</th><th data-en>VALUE</th>
+        <th data-es>POR QUÉ</th><th data-en>WHY</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="tier a">Location</td>
+        <td data-es>Ciudad específica (no país completo)</td><td data-en>Specific city (not full country)</td>
+        <td data-es>Filtrar para que viva ahí, no para "abierto a relocate"</td><td data-en>Filter for those living there, not "open to relocate"</td>
+      </tr>
+      <tr>
+        <td class="tier a">Languages</td>
+        <td data-es>Spanish + English (ambos)</td><td data-en>Spanish + English (both)</td>
+        <td data-es>Self-reported pero buen indicador</td><td data-en>Self-reported but good indicator</td>
+      </tr>
+      <tr>
+        <td class="tier a">Industries</td>
+        <td data-es>Hospitality · Leisure · Travel · F&B · Events</td><td data-en>Hospitality · Leisure · Travel · F&B · Events</td>
+        <td data-es>Filtrar tech/finance/etc.</td><td data-en>Filter out tech/finance/etc.</td>
+      </tr>
+      <tr>
+        <td class="tier b">Years exp.</td>
+        <td>5–15</td>
+        <td data-es>Madurez profesional, no junior ni veterano cansado</td><td data-en>Professional maturity, not junior nor burned veteran</td>
+      </tr>
+      <tr>
+        <td class="tier b">Current company</td>
+        <td data-es>Excluir hoteles cadena 5-star (Marriott, Hilton, IHG)</td><td data-en>Exclude 5-star chain hotels (Marriott, Hilton, IHG)</td>
+        <td data-es>Buscamos perfil de boutique/independiente, no corporate</td><td data-en>We want boutique/independent, not corporate</td>
+      </tr>
+      <tr>
+        <td class="tier c">Education</td>
+        <td data-es>Opcional · solo si quieres top-tier</td><td data-en>Optional · only if you want top-tier</td>
+        <td data-es>Sirve para validar fit cultural, no decisivo</td><td data-en>Useful for cultural fit, not decisive</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- 04 · INMAIL TEMPLATES -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es>04 · PLANTILLAS DE INMAIL</div>
+    <div class="sec-num" data-en>04 · INMAIL TEMPLATES</div>
+    <h2 data-es>Mensajes que <em>obtienen</em> respuesta.</h2>
+    <h2 data-en>Messages that <em>get</em> replies.</h2>
+    <p class="sec-sub" data-es>Cuatro plantillas probadas según el perfil. Tasa promedio 22% respuesta. Nunca usar plantilla idéntica para dos personas — siempre cambiar la línea 2.</p>
+    <p class="sec-sub" data-en>Four tested templates by profile. Average reply rate 22%. Never use the same template for two people — always change line 2.</p>
+  </div>
+
+  <div class="inmail">
+    <div class="il" data-es>INMAIL #01 · PARA HOSPITALITY MANAGER (HOTEL BOUTIQUE)</div>
+    <div class="il" data-en>INMAIL #01 · FOR HOSPITALITY MANAGER (BOUTIQUE HOTEL)</div>
+    <div class="subj" data-es>Algo más cercano a tu visión</div>
+    <div class="subj" data-en>Something closer to your vision</div>
+    <div class="body" data-es>Hola [Nombre],
+
+Vi tu trabajo en [hotel/proyecto específico] — particularmente cómo [observación concreta, ej: "manejaste la experiencia del fin de semana de los 50 invitados de @ana_lopez"]. Es exactamente el tipo de hospitalidad que estamos construyendo.
+
+Soy Abraham, fundador de Sora Travel Agency. Estamos abriendo presencia en [ciudad] y necesitamos UNA persona para ser nuestra cara local. No es un trabajo de hotel — es una asociación: tú activas tu red, nosotros traemos huéspedes premium internacionales.
+
+¿30 minutos esta semana para contarte el modelo? Sin compromiso — si no encaja, al menos te dejo nuestra info para tu network.
+
+Abraham
+La Compañía / Sora</div>
+    <div class="body" data-en>Hi [Name],
+
+I saw your work at [specific hotel/project] — particularly how [concrete observation, e.g. "you ran the 50-guest weekend experience for @ana_lopez"]. It's exactly the kind of hospitality we're building.
+
+I'm Abraham, founder of Sora Travel Agency. We're opening presence in [city] and need ONE person to be our local face. Not a hotel job — a partnership: you activate your network, we bring premium international guests.
+
+30 minutes this week to walk you through the model? No commitment — if it doesn't fit, at least I leave you our info for your network.
+
+Abraham
+La Compañía / Sora</div>
+  </div>
+
+  <div class="inmail" style="margin-top:18px">
+    <div class="il" data-es>INMAIL #02 · PARA EVENT PRODUCER</div>
+    <div class="il" data-en>INMAIL #02 · FOR EVENT PRODUCER</div>
+    <div class="subj" data-es>Te tengo una pregunta directa</div>
+    <div class="subj" data-en>One direct question for you</div>
+    <div class="body" data-es>Hola [Nombre],
+
+Pregunta directa: si pudieras producir el mismo tipo de eventos que produces ahora, pero con presupuesto mayor y huéspedes internacionales premium en lugar de marcas locales — ¿te interesaría?
+
+Te explico el contexto. Soy Abraham de Sora Travel Agency. Estamos abriendo [ciudad] y buscamos UNA persona que ya tenga experiencia produciendo experiencias de 20-40 personas y red local sólida. Tu perfil encaja exactamente.
+
+Llamada 30 min esta semana? Si no funciona, hay otros nombres en tu red que te puedo pedir.
+
+Abraham</div>
+    <div class="body" data-en>Hi [Name],
+
+Direct question: if you could produce the same type of events you produce now, but with bigger budgets and premium international guests instead of local brands — would you be interested?
+
+Context. I'm Abraham from Sora Travel Agency. We're opening [city] and looking for ONE person who already has experience producing 20-40 person experiences and a solid local network. Your profile fits exactly.
+
+30-min call this week? If it doesn't work, there may be names in your network I could ask about.
+
+Abraham</div>
+  </div>
+
+  <div class="inmail" style="margin-top:18px">
+    <div class="il" data-es>INMAIL #03 · PARA CREATIVE DIRECTOR · LIFESTYLE / F&B</div>
+    <div class="il" data-en>INMAIL #03 · FOR CREATIVE DIRECTOR · LIFESTYLE / F&B</div>
+    <div class="subj" data-es>Cruzamos en [referencia específica]</div>
+    <div class="subj" data-en>We crossed paths at [specific ref]</div>
+    <div class="body" data-es>Hola [Nombre],
+
+Tu trabajo en [proyecto específico] me llegó por [@persona o link]. La manera en que [observación concreta, ej: "tradujiste el ADN de la marca al espacio físico"] es exactamente la sensibilidad que estamos buscando.
+
+Soy Abraham de Sora — agencia de viajes premium operando en LATAM. Necesitamos a alguien en [ciudad] que entienda hospitalidad como narrativa, no como servicio. La posición es híbrida creativo/operacional: curar weekends de 8-12 huéspedes premium + diseñar eventos abiertos cada mes.
+
+Si no es para ti pero conoces a la persona — la referencia se agradece mucho. Si te interesa, llamada de 30 min esta semana.
+
+Abraham</div>
+    <div class="body" data-en>Hi [Name],
+
+Your work on [specific project] reached me via [@person or link]. The way you [concrete observation, e.g. "translated the brand's DNA into physical space"] is exactly the sensibility we're looking for.
+
+I'm Abraham from Sora — a premium travel agency operating across LATAM. We need someone in [city] who understands hospitality as narrative, not service. The position is hybrid creative/operational: curate weekends of 8-12 premium guests + design open events monthly.
+
+If it's not for you but you know the person — the referral is much appreciated. If interested, 30-min call this week.
+
+Abraham</div>
+  </div>
+
+  <div class="inmail" style="margin-top:18px">
+    <div class="il" data-es>INMAIL #04 · FOLLOW-UP (5 DÍAS DESPUÉS, SIN RESPUESTA)</div>
+    <div class="il" data-en>INMAIL #04 · FOLLOW-UP (5 DAYS AFTER, NO REPLY)</div>
+    <div class="subj" data-es>Re: [asunto original]</div>
+    <div class="subj" data-en>Re: [original subject]</div>
+    <div class="body" data-es>Hola [Nombre], rebotando esto — sé que las bandejas se llenan.
+
+Si la respuesta es "ahora no, pero abierto en el futuro", también funciona. Solo no quiero asumir un no por silencio.
+
+Abraham</div>
+    <div class="body" data-en>Hi [Name], bumping this — I know inboxes get full.
+
+If the answer is "not now, but open in the future", that works too. I just don't want to assume a no from silence.
+
+Abraham</div>
+  </div>
+
+  <div class="callout warn">
+    <span class="cl-label" data-es>NUNCA HACER</span>
+    <span class="cl-label" data-en>NEVER DO</span>
+    <p data-es><strong>Cero plantillas idénticas.</strong> LinkedIn detecta envíos masivos y reduce deliverability. Cambia mínimo el saludo + 1 frase específica por persona. <strong>Cero emojis en InMail profesional.</strong> Tasa de respuesta baja 8% con emojis en LATAM. <strong>Cero "espero que estés bien"</strong> — desperdicio de las primeras 8 palabras (lo que LinkedIn muestra en preview).</p>
+    <p data-en><strong>Zero identical templates.</strong> LinkedIn detects mass sends and reduces deliverability. Change at least the greeting + 1 specific sentence per person. <strong>Zero emojis in professional InMail.</strong> Reply rate drops 8% with emojis in LATAM. <strong>Zero "hope you're doing well"</strong> — wastes the first 8 words (what LinkedIn shows in preview).</p>
+  </div>
+</section>
+
+<!-- 05 · COUNTRY EFFECTIVENESS -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es>05 · EFECTIVIDAD POR PAÍS</div>
+    <div class="sec-num" data-en>05 · EFFECTIVENESS BY COUNTRY</div>
+    <h2 data-es>Dónde LinkedIn <em>vale</em>.</h2>
+    <h2 data-en>Where LinkedIn <em>is worth it</em>.</h2>
+    <p class="sec-sub" data-es>LinkedIn en LATAM no es uniforme. En BR + MX + PR es canal primario. En HN + NI + BO no vale tu tiempo.</p>
+    <p class="sec-sub" data-en>LinkedIn in LATAM isn't uniform. In BR + MX + PR it's primary channel. In HN + NI + BO it's not worth your time.</p>
+  </div>
+
+  <div class="tbl-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th data-es>PAÍS</th><th data-en>COUNTRY</th>
+        <th data-es>TIER</th><th data-en>TIER</th>
+        <th data-es>POR QUÉ</th><th data-en>WHY</th>
+        <th data-es>RUTA PRIMARIA</th><th data-en>PRIMARY ROUTE</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="country">🇧🇷 Brasil</td>
+        <td class="tier a">A+</td>
+        <td data-es>~70M usuarios. Profesionales reales. Cultura LinkedIn fuerte.</td><td data-en>~70M users. Real professionals. Strong LinkedIn culture.</td>
+        <td data-es>InMail + Jobs Ad combinado</td><td data-en>InMail + Jobs Ad combined</td>
+      </tr>
+      <tr>
+        <td class="country">🇲🇽 México</td>
+        <td class="tier a">A+</td>
+        <td data-es>~22M usuarios. CDMX/Mty/GDL tienen densidad real.</td><td data-en>~22M users. CDMX/Mty/GDL have real density.</td>
+        <td data-es>InMail principal · Jobs Ad CDMX</td><td data-en>InMail primary · Jobs Ad CDMX</td>
+      </tr>
+      <tr>
+        <td class="country">🇨🇴 Colombia</td>
+        <td class="tier a">A</td>
+        <td data-es>~14M usuarios. Bogotá premium. Medellín en crecimiento.</td><td data-en>~14M users. Bogotá premium. Medellín growing.</td>
+        <td data-es>Search booleana · InMail</td><td data-en>Boolean search · InMail</td>
+      </tr>
+      <tr>
+        <td class="country">🇦🇷 Argentina</td>
+        <td class="tier a">A</td>
+        <td data-es>~13M usuarios. Cultura profesional fuerte. BA densa.</td><td data-en>~13M users. Strong professional culture. BA is dense.</td>
+        <td data-es>Search booleana · Connect notes</td><td data-en>Boolean search · Connect notes</td>
+      </tr>
+      <tr>
+        <td class="country">🇨🇱 Chile</td>
+        <td class="tier a">A</td>
+        <td data-es>~7M usuarios. Santiago muy profesional.</td><td data-en>~7M users. Santiago is very professional.</td>
+        <td data-es>Search booleana + Jobs Ad Santiago</td><td data-en>Boolean search + Jobs Ad Santiago</td>
+      </tr>
+      <tr>
+        <td class="country">🇵🇷 Puerto Rico</td>
+        <td class="tier a">A</td>
+        <td data-es>Mercado funcionalmente US. LinkedIn es estándar.</td><td data-en>Functionally a US market. LinkedIn is standard.</td>
+        <td data-es>Jobs Ad bilingüe</td><td data-en>Bilingual Jobs Ad</td>
+      </tr>
+      <tr>
+        <td class="country">🇵🇪 Perú</td>
+        <td class="tier b">B</td>
+        <td data-es>~7M usuarios. Lima profesional, fuera no.</td><td data-en>~7M users. Lima is professional, outside not.</td>
+        <td data-es>Search booleana Lima solo</td><td data-en>Boolean search Lima only</td>
+      </tr>
+      <tr>
+        <td class="country">🇺🇾 Uruguay</td>
+        <td class="tier b">B</td>
+        <td data-es>~1.5M usuarios. Mercado chico pero cualitativo.</td><td data-en>~1.5M users. Small market but qualitative.</td>
+        <td data-es>Connect notes MVD</td><td data-en>Connect notes MVD</td>
+      </tr>
+      <tr>
+        <td class="country">🇨🇷 Costa Rica</td>
+        <td class="tier b">B</td>
+        <td data-es>~2M usuarios. SJ profesional, costa no.</td><td data-en>~2M users. SJ professional, coast not.</td>
+        <td data-es>Search booleana SJ</td><td data-en>Boolean search SJ</td>
+      </tr>
+      <tr>
+        <td class="country">🇵🇦 Panamá</td>
+        <td class="tier b">B</td>
+        <td data-es>~1M usuarios. PA City buena densidad.</td><td data-en>~1M users. PA City good density.</td>
+        <td data-es>Connect + Encuentra24 paralelo</td><td data-en>Connect + parallel Encuentra24</td>
+      </tr>
+      <tr>
+        <td class="country">🇩🇴 Rep. Dominicana</td>
+        <td class="tier b">B</td>
+        <td data-es>~3M usuarios. SD profesional.</td><td data-en>~3M users. SD is professional.</td>
+        <td data-es>Search booleana + Jobs Ad</td><td data-en>Boolean search + Jobs Ad</td>
+      </tr>
+      <tr>
+        <td class="country">🇪🇨 Ecuador</td>
+        <td class="tier c">C</td>
+        <td data-es>~3M usuarios. Bajo uso real.</td><td data-en>~3M users. Low real usage.</td>
+        <td data-es>Solo búsqueda passive</td><td data-en>Passive search only</td>
+      </tr>
+      <tr>
+        <td class="country">🇻🇪 Venezuela</td>
+        <td class="tier c">C</td>
+        <td data-es>Plataforma usada por diáspora, no en-país.</td><td data-en>Used by diaspora, not in-country.</td>
+        <td data-es>Buscar diáspora que regresa</td><td data-en>Search returning diaspora</td>
+      </tr>
+      <tr>
+        <td class="country">🇬🇹 Guatemala · 🇸🇻 El Salvador</td>
+        <td class="tier c">C</td>
+        <td data-es>Densidad baja. Tecoloco gana.</td><td data-en>Low density. Tecoloco wins.</td>
+        <td data-es>Saltarse · usar bolsas</td><td data-en>Skip · use job boards</td>
+      </tr>
+      <tr>
+        <td class="country">🇵🇾 Paraguay · 🇧🇴 Bolivia · 🇭🇳 Honduras · 🇳🇮 Nicaragua</td>
+        <td class="tier c">C–</td>
+        <td data-es>No usar LinkedIn. Bolsas + Facebook + IG.</td><td data-en>Don't use LinkedIn. Boards + Facebook + IG.</td>
+        <td data-es>Otro canal</td><td data-en>Other channel</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- 06 · COST + ROI -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es>06 · COSTO Y ROI</div>
+    <div class="sec-num" data-en>06 · COST + ROI</div>
+    <h2 data-es>$170/mes <em>vs</em> $0.</h2>
+    <h2 data-en>$170/mo <em>vs</em> $0.</h2>
+    <p class="sec-sub" data-es>Decisión simple: si estás contratando para Tier A (BR · MX · CO · AR · CL · PR), Recruiter Lite paga sí o sí. Si solo para Tier B/C, queda en gratis.</p>
+    <p class="sec-sub" data-en>Simple decision: if hiring for Tier A (BR · MX · CO · AR · CL · PR), Recruiter Lite pays for itself. If only Tier B/C, stay free.</p>
+  </div>
+
+  <div class="paths">
+    <div class="path">
+      <div class="pl" data-es>PLAN $0 · LINKEDIN GRATIS</div>
+      <div class="pl" data-en>PLAN $0 · FREE LINKEDIN</div>
+      <h3 data-es><em>Plan</em> gratis</h3>
+      <h3 data-en><em>Free</em> plan</h3>
+      <p data-es>Búsquedas booleanas hasta cierto límite. Solicitudes de conexión con nota (limite 200/sem). Sin InMails.</p>
+      <p data-en>Boolean searches up to a limit. Connection requests with note (200/week limit). No InMails.</p>
+      <ul>
+        <li data-es>Tier C countries</li>
+        <li data-en>Tier C countries</li>
+        <li data-es>Anfitrión #15-19</li>
+        <li data-en>Host #15-19</li>
+        <li data-es>Tiempo: 4 hrs/sem</li>
+        <li data-en>Time: 4 hrs/wk</li>
+      </ul>
+      <div class="when">$0/mo</div>
+    </div>
+
+    <div class="path">
+      <div class="pl" data-es>PLAN $170 · RECRUITER LITE</div>
+      <div class="pl" data-en>PLAN $170 · RECRUITER LITE</div>
+      <h3 data-es><em>Recruiter</em> Lite</h3>
+      <h3 data-en><em>Recruiter</em> Lite</h3>
+      <p data-es>30 InMails/mes. Búsquedas avanzadas. Ver perfil completo de no-conexiones. Mejor filtro de candidatos.</p>
+      <p data-en>30 InMails/mo. Advanced searches. View full profile of non-connections. Better candidate filtering.</p>
+      <ul>
+        <li data-es>Tier A · BR/MX/CO/AR/CL/PR</li>
+        <li data-en>Tier A · BR/MX/CO/AR/CL/PR</li>
+        <li data-es>Wave 1-3 critical</li>
+        <li data-en>Wave 1-3 critical</li>
+        <li data-es>1 mes per país aprox</li>
+        <li data-en>~1 month per country</li>
+      </ul>
+      <div class="when">$170/mo</div>
+    </div>
+
+    <div class="path">
+      <div class="pl" data-es>PLAN VARIABLE · LINKEDIN JOBS AD</div>
+      <div class="pl" data-en>VARIABLE PLAN · LINKEDIN JOBS AD</div>
+      <h3 data-es><em>Job Ad</em> pagado</h3>
+      <h3 data-en>Paid <em>Job Ad</em></h3>
+      <p data-es>Pago por click. Promueve la posición a perfiles que matchean filtros. Bueno para llenar funnel rápido sin trabajo manual.</p>
+      <p data-en>Pay per click. Promotes position to profiles matching filters. Good for fast funnel fill without manual work.</p>
+      <ul>
+        <li data-es>$5-25/día CPC LATAM</li>
+        <li data-en>$5-25/day CPC LATAM</li>
+        <li data-es>~$150-500/posición</li>
+        <li data-en>~$150-500/position</li>
+        <li data-es>Usar solo cuando manual no llena</li>
+        <li data-en>Use only when manual doesn't fill</li>
+      </ul>
+      <div class="when">$150–500/posición</div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <span class="cl-label" data-es>RECOMENDACIÓN OPERATIVA</span>
+    <span class="cl-label" data-en>OPERATING RECOMMENDATION</span>
+    <p data-es><strong>Plan 6 meses:</strong> Recruiter Lite por Junio-Septiembre ($680 total). Cubre las Olas 1-4 que tocan los 6 países donde LinkedIn vale. Pausar para Olas 5 (Oct-Nov) que son países donde LinkedIn no es canal primario. Total $680 sobre 6 meses = ~$36 por anfitrión contratado en países Tier A.</p>
+    <p data-en><strong>6-month plan:</strong> Recruiter Lite June-September ($680 total). Covers Waves 1-4 touching the 6 LinkedIn-worthy countries. Pause for Wave 5 (Oct-Nov) which are non-LinkedIn primary countries. Total $680 over 6 months = ~$36 per host hired in Tier A countries.</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta">
+  <h2 data-es>LinkedIn <em>silencioso</em>, no invisible.</h2>
+  <h2 data-en><em>Quiet</em> LinkedIn, not invisible.</h2>
+  <p data-es>El objetivo no es esconderse — es no broadcast a tu red personal. Los candidatos correctos te encuentran. Tu red personal no se entera.</p>
+  <p data-en>The goal isn't to hide — it's not broadcasting to your personal network. The right candidates find you. Your personal network doesn't notice.</p>
+  <a href="interview-process.html" class="cta-btn" data-es>PROCESO DE ENTREVISTA →</a>
+  <a href="interview-process.html" class="cta-btn" data-en>INTERVIEW PROCESS →</a>
+  <a href="sourcing-facebook.html" class="cta-btn" data-es>FACEBOOK →</a>
+  <a href="sourcing-facebook.html" class="cta-btn" data-en>FACEBOOK →</a>
+  <a href="sourcing-jobboards.html" class="cta-btn" data-es>BOLSAS DE EMPLEO →</a>
+  <a href="sourcing-jobboards.html" class="cta-btn" data-en>JOB BOARDS →</a>
+</div>
+
+<footer>
+  <p data-es>Sourcing · Canal 03 · LinkedIn (sin broadcast) · v1.0 · La Compañía / Sora MMXXVI</p>
+  <p data-en>Sourcing · Channel 03 · LinkedIn (no broadcast) · v1.0 · La Compañía / Sora MMXXVI</p>
+</footer>
+
+<script>
+  function setLang(lang){
+    document.documentElement.lang = lang;
+    document.querySelectorAll('.lang button').forEach(b => b.classList.remove('active'));
+    document.querySelector(`.lang button[onclick="setLang('${lang}')"]`).classList.add('active');
+    try { localStorage.setItem('sora.lang', lang); } catch(e){}
+  }
+  try {
+    const saved = localStorage.getItem('sora.lang');
+    if (saved) setLang(saved);
+  } catch(e){}
+</script>
+
+</body>
+</html>

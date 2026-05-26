@@ -1,0 +1,1647 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SORA · Registros de la Propiedad · LATAM</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Instrument+Serif&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F8F3EA; --cream-2:#F2EBDD; --cream-3:#E9DFCA;
+    --ink:#1B1A17; --ink-2:#3A352D; --ink-3:#5C5346; --faint:#9A8E7A;
+    --line:rgba(27,26,23,.10); --line-2:rgba(27,26,23,.06);
+    --coral:#D9573B; --gold:#B58F4D; --mango:#E2A24A; --green:#3F5F45; --rose:#B8616B; --teal:#2C6E7F;
+    --serif:'Fraunces',Georgia,serif; --display:'Instrument Serif',Georgia,serif;
+    --sans:'Inter',-apple-system,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--cream);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;font-size:15px;line-height:1.55;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.08  0 0 0 0 0.07  0 0 0 0 0.05  0 0 0 0.020 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--coral);color:var(--cream)}
+
+  [data-en]{display:none}
+  html[lang="en"] [data-es]{display:none}
+  html[lang="en"] [data-en]{display:inline}
+  html[lang="en"] li[data-en],html[lang="en"] p[data-en],html[lang="en"] div[data-en],html[lang="en"] h1[data-en],html[lang="en"] h2[data-en],html[lang="en"] h3[data-en],html[lang="en"] td[data-en],html[lang="en"] th[data-en]{display:block}
+  html[lang="en"] td[data-en],html[lang="en"] th[data-en]{display:table-cell}
+
+  .top{position:sticky;top:0;z-index:50;background:rgba(248,243,234,.92);backdrop-filter:blur(14px);border-bottom:0.5px solid var(--line)}
+  .top-in{max-width:1180px;margin:0 auto;padding:14px 28px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .brand{font-family:var(--serif);font-weight:600;font-size:16px;letter-spacing:.16em;color:var(--ink)}
+  .brand em{font-style:italic;color:var(--coral)}
+  .top-tag{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--rose);text-transform:uppercase;padding:4px 10px;background:rgba(184,97,107,.10);border-radius:4px}
+  .top-link{font-family:var(--sans);font-size:12px;color:var(--ink-2);padding:7px 12px;border:0.5px solid var(--line);border-radius:5px}
+  .top-link:hover{background:var(--cream-2)}
+  .spacer{flex:1}
+  .lang{display:inline-flex;border:0.5px solid var(--line);border-radius:5px;overflow:hidden}
+  .lang button{padding:6px 11px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;background:transparent;border:0;color:var(--faint);cursor:pointer;font-weight:500}
+  .lang button.active{background:var(--ink);color:var(--cream)}
+
+  .hero{padding:72px 32px 48px;max-width:1180px;margin:0 auto;text-align:center}
+  .hero-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--coral);font-weight:600;margin-bottom:22px}
+  .hero h1{font-family:var(--display);font-weight:400;font-size:clamp(48px,8vw,96px);line-height:.96;letter-spacing:-.025em;color:var(--ink);margin-bottom:18px}
+  .hero h1 em{font-style:italic;color:var(--coral)}
+  .hero-lede{font-family:var(--serif);font-size:19px;color:var(--ink-2);font-weight:300;max-width:780px;margin:0 auto;line-height:1.5}
+  .hero-lede strong{color:var(--ink);font-weight:500}
+
+  .strip{max-width:1180px;margin:32px auto 0;padding:0 32px;display:grid;grid-template-columns:repeat(5,1fr);border-top:0.5px solid var(--line);border-bottom:0.5px solid var(--line)}
+  .strip > div{padding:22px 18px;text-align:center;border-right:0.5px solid var(--line)}
+  .strip > div:last-child{border-right:0}
+  .strip .n{font-family:var(--display);font-size:34px;color:var(--coral);line-height:1;margin-bottom:6px}
+  .strip .l{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
+
+  section{max-width:1180px;margin:0 auto;padding:56px 32px}
+  .sec-head{margin-bottom:32px;text-align:center}
+  .sec-num{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--coral);font-weight:600;margin-bottom:14px}
+  .sec-num em{font-style:normal;color:var(--ink-3)}
+  .sec-head h2{font-family:var(--display);font-weight:400;font-size:clamp(34px,5vw,52px);line-height:1.04;letter-spacing:-.02em;color:var(--ink);margin-bottom:14px}
+  .sec-head h2 em{font-style:italic;color:var(--coral)}
+  .sec-sub{font-family:var(--serif);font-size:17px;color:var(--ink-3);font-weight:300;max-width:720px;margin:0 auto;line-height:1.55}
+
+  /* TOC */
+  .toc{max-width:1080px;margin:24px auto;padding:24px 28px;background:var(--cream);border:0.5px solid var(--line);border-radius:10px;display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:6px 16px}
+  .toc a{font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--ink-2);padding:6px 8px;border-bottom:0.5px dashed transparent}
+  .toc a:hover{color:var(--coral);border-color:var(--coral)}
+  .toc-h{grid-column:1/-1;font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--coral);text-transform:uppercase;font-weight:600;margin-bottom:6px}
+
+  /* Role cards (5 actors) */
+  .roles{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:24px}
+  .role{background:var(--cream);border:0.5px solid var(--line);border-radius:10px;padding:20px 22px;border-top:3px solid var(--coral)}
+  .role .rn{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--coral);font-weight:600;margin-bottom:6px}
+  .role h4{font-family:var(--display);font-size:20px;font-weight:400;color:var(--ink);margin-bottom:8px;line-height:1.2}
+  .role h4 em{font-style:italic;color:var(--coral)}
+  .role p{font-family:var(--serif);font-size:13.5px;line-height:1.55;color:var(--ink-2);margin-bottom:0}
+
+  /* Country cards */
+  .country{background:var(--cream);border:0.5px solid var(--line);border-radius:12px;padding:28px 32px;margin-bottom:18px;scroll-margin-top:80px}
+  .country-head{display:flex;align-items:baseline;gap:14px;margin-bottom:18px;padding-bottom:12px;border-bottom:0.5px solid var(--line-2);flex-wrap:wrap}
+  .country-flag{font-size:30px;line-height:1}
+  .country-name{font-family:var(--display);font-size:32px;color:var(--ink);font-weight:400;letter-spacing:-.01em}
+  .country-name em{font-style:italic;color:var(--coral);font-size:16px;margin-left:8px;letter-spacing:0;font-family:var(--mono);text-transform:uppercase;font-weight:600}
+  .country-tag{font-family:var(--mono);font-size:10px;letter-spacing:.10em;color:var(--faint);text-transform:uppercase;margin-left:auto}
+
+  .country-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-bottom:16px}
+  .field{background:var(--cream-2);border:0.5px solid var(--line);border-radius:8px;padding:14px 16px}
+  .field .fl{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--coral);font-weight:600;margin-bottom:6px}
+  .field h5{font-family:var(--display);font-size:16px;font-weight:400;color:var(--ink);margin-bottom:4px;line-height:1.2;font-style:italic}
+  .field .url{font-family:var(--mono);font-size:11.5px;color:var(--teal);word-break:break-all;display:block;margin-bottom:6px}
+  .field .url:hover{color:var(--coral)}
+  .field p{font-family:var(--serif);font-size:13px;color:var(--ink-2);line-height:1.5;margin-bottom:0}
+
+  .country-full{margin-top:14px;padding-top:14px;border-top:0.5px solid var(--line-2);display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .country-full > div h5{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--coral);font-weight:600;margin-bottom:8px}
+  .country-full p{font-family:var(--serif);font-size:13.5px;line-height:1.55;color:var(--ink-2);margin-bottom:0}
+  .country-full ul{list-style:none;padding:0;margin:0}
+  .country-full li{font-family:var(--sans);font-size:13px;color:var(--ink-2);padding:4px 0 4px 14px;position:relative;line-height:1.45}
+  .country-full li::before{content:'';position:absolute;left:0;top:11px;width:6px;height:1px;background:var(--coral)}
+  .country-full li strong{color:var(--ink);font-weight:600}
+
+  .restriction{padding:10px 14px;background:rgba(217,87,59,.08);border-left:3px solid var(--coral);border-radius:0 6px 6px 0;font-family:var(--sans);font-size:13px;color:var(--ink-2);line-height:1.5;margin-top:6px}
+  .restriction strong{color:var(--coral);font-weight:700}
+  .open{padding:10px 14px;background:rgba(63,95,69,.08);border-left:3px solid var(--green);border-radius:0 6px 6px 0;font-family:var(--sans);font-size:13px;color:var(--ink-2);line-height:1.5;margin-top:6px}
+  .open strong{color:var(--green);font-weight:700}
+
+  /* Region heading */
+  .region{font-family:var(--display);font-size:28px;color:var(--ink-2);font-weight:400;letter-spacing:-.01em;margin:48px 0 18px;padding-bottom:10px;border-bottom:0.5px solid var(--line);font-style:italic}
+  .region:first-of-type{margin-top:0}
+  .region span{font-family:var(--mono);font-size:11px;color:var(--coral);font-style:normal;letter-spacing:.16em;margin-left:14px;text-transform:uppercase;font-weight:600}
+
+  /* Checklist */
+  .checklist{margin-top:24px;background:var(--cream);border:0.5px solid var(--line);border-radius:10px;overflow:hidden}
+  .check-item{padding:18px 24px;border-bottom:0.5px solid var(--line-2);display:grid;grid-template-columns:36px 1fr;gap:14px;align-items:start}
+  .check-item:last-child{border-bottom:0}
+  .check-n{font-family:var(--mono);font-size:13px;color:var(--coral);font-weight:600;text-align:center}
+  .check-item h4{font-family:var(--serif);font-size:16px;font-weight:600;color:var(--ink);margin-bottom:4px;line-height:1.3}
+  .check-item p{font-family:var(--serif);font-size:14px;color:var(--ink-2);line-height:1.55;margin-bottom:0}
+
+  /* Strategy callout */
+  .strat{background:var(--ink);color:var(--cream);border-radius:12px;padding:32px 36px;margin-top:28px}
+  .strat .sl{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--mango);font-weight:600;margin-bottom:14px}
+  .strat h3{font-family:var(--display);font-size:28px;color:var(--cream);font-weight:400;margin-bottom:14px;font-style:italic}
+  .strat p{font-family:var(--serif);font-size:15.5px;line-height:1.7;color:var(--cream);margin-bottom:14px;opacity:.92}
+  .strat p:last-child{margin-bottom:0}
+  .strat strong{color:var(--mango)}
+
+  /* Mini callout */
+  .callout{background:var(--cream-2);border:0.5px solid var(--line);border-left:3px solid var(--coral);border-radius:8px;padding:20px 24px;margin:24px 0;font-family:var(--serif);font-size:15px;line-height:1.6;color:var(--ink-2)}
+  .callout strong{color:var(--ink)}
+  .callout .cl-label{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--coral);text-transform:uppercase;font-weight:600;margin-bottom:8px;display:block}
+
+  /* CTA */
+  .cta{max-width:780px;margin:64px auto 48px;padding:42px 38px;text-align:center;background:var(--cream-2);border:0.5px solid var(--line);border-radius:14px}
+  .cta h2{font-family:var(--display);font-weight:400;font-size:clamp(30px,4.5vw,46px);line-height:1.04;color:var(--ink);margin-bottom:14px;letter-spacing:-.02em}
+  .cta h2 em{font-style:italic;color:var(--coral)}
+  .cta p{font-family:var(--serif);font-size:16px;color:var(--ink-2);line-height:1.55;margin-bottom:22px}
+  .cta-btn{display:inline-block;padding:12px 26px;background:var(--ink);color:var(--cream);font-family:var(--mono);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;border-radius:6px;font-weight:600;margin:0 4px}
+  .cta-btn:hover{background:var(--coral)}
+
+  footer{max-width:1180px;margin:32px auto 0;padding:32px;border-top:0.5px solid var(--line);text-align:center}
+  footer p{font-family:var(--mono);font-size:11px;letter-spacing:.10em;color:var(--ink-3)}
+
+  @media (max-width:760px){
+    .strip{grid-template-columns:repeat(2,1fr)}
+    .strip > div:nth-child(2n){border-right:0}
+    .strip > div{border-bottom:0.5px solid var(--line)}
+    .country-full{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="top-in">
+    <a class="brand" href="sora-hq.html">SORA<em>°</em></a>
+    <span class="top-tag" data-es>REGISTROS DE PROPIEDAD · LATAM</span>
+    <span class="top-tag" data-en>PROPERTY REGISTRIES · LATAM</span>
+    <a class="top-link" href="LATAM/land.html" data-es>↑ Base de tierras</a>
+    <a class="top-link" href="LATAM/land.html" data-en>↑ Land database</a>
+    <a class="top-link" href="LATAM/atlas.html" data-es>↑ Atlas</a>
+    <a class="top-link" href="LATAM/atlas.html" data-en>↑ Atlas</a>
+    <span class="spacer"></span>
+    <div class="lang">
+      <button class="active" onclick="setLang('es')">ES</button>
+      <button onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="hero-eyebrow" data-es>INTELIGENCIA INMOBILIARIA · LOS DUEÑOS REALES</div>
+  <div class="hero-eyebrow" data-en>REAL ESTATE INTELLIGENCE · THE ACTUAL OWNERS</div>
+  <h1 data-es>Acceso directo<br>al <em>dueño de la tierra</em>.</h1>
+  <h1 data-en>Direct access<br>to the <em>landowner</em>.</h1>
+  <p class="hero-lede" data-es>En LATAM no existe un MLS unificado — pero cada país tiene un <strong>registro público</strong>, un <strong>catastro</strong>, y un sistema notarial donde está la verdad. Esta es la guía completa: registros oficiales, agregadores no oficiales, restricciones a extranjeros, despachos especializados, y la ruta de acceso al inventario off-market que nunca llega a portal.</p>
+  <p class="hero-lede" data-en>LATAM has no unified MLS — but every country has a <strong>public registry</strong>, a <strong>cadastre</strong>, and a notarial system where the truth lives. This is the full guide: official registries, unofficial aggregators, foreign-ownership restrictions, specialist firms, and the route to off-market inventory that never hits a portal.</p>
+</header>
+
+<div class="strip">
+  <div><div class="n">19</div><div class="l" data-es>Países cubiertos</div><div class="l" data-en>Countries covered</div></div>
+  <div><div class="n">38+</div><div class="l" data-es>Portales oficiales</div><div class="l" data-en>Official portals</div></div>
+  <div><div class="n">60+</div><div class="l" data-es>Despachos top</div><div class="l" data-en>Top law firms</div></div>
+  <div><div class="n">25+</div><div class="l" data-es>Agregadores MLS-like</div><div class="l" data-en>MLS-like aggregators</div></div>
+  <div><div class="n">5</div><div class="l" data-es>Roles a contratar</div><div class="l" data-en>Roles to retain</div></div>
+</div>
+
+<!-- TOC -->
+<div class="toc">
+  <div class="toc-h" data-es>NAVEGACIÓN RÁPIDA</div>
+  <div class="toc-h" data-en>QUICK NAV</div>
+  <a href="#system">§01 Sistema</a>
+  <a href="#roles">§02 Roles</a>
+  <a href="#offmarket">§03 Off-market</a>
+  <a href="#north">§04 Norte (MX)</a>
+  <a href="#central">§05 Centroamérica</a>
+  <a href="#caribbean">§06 Caribe</a>
+  <a href="#andean">§07 Andes</a>
+  <a href="#cone">§08 Cono Sur</a>
+  <a href="#brazil">§09 Brasil</a>
+  <a href="#checklist">§10 Checklist DD</a>
+</div>
+
+<!-- ============ 01 · SYSTEM ============ -->
+<section id="system">
+  <div class="sec-head">
+    <div class="sec-num" data-es>01 · EL SISTEMA LEGAL</div>
+    <div class="sec-num" data-en>01 · THE LEGAL SYSTEM</div>
+    <h2 data-es>Cómo funciona la <em>propiedad</em> en LATAM.</h2>
+    <h2 data-en>How <em>property</em> works in LATAM.</h2>
+    <p class="sec-sub" data-es>Todo LATAM opera bajo tradición de derecho civil (Napoleón) excepto Puerto Rico (mixto). Esto significa: el notario es central, los registros son públicos, y el catastro y el registro están separados.</p>
+    <p class="sec-sub" data-en>All of LATAM operates under civil law tradition (Napoleonic) except Puerto Rico (mixed). That means: the notary is central, registries are public, and cadastre and registry are separate systems.</p>
+  </div>
+
+  <div class="strat">
+    <div class="sl" data-es>EL MODELO CIVIL-LAW EN UNA FRASE</div>
+    <div class="sl" data-en>THE CIVIL-LAW MODEL IN ONE SENTENCE</div>
+    <h3 data-es>Tres sistemas paralelos. Aprende a leer los <em>tres</em>.</h3>
+    <h3 data-en>Three parallel systems. Learn to read all <em>three</em>.</h3>
+    <p data-es><strong>(1) Registro Público de la Propiedad</strong> — quién es el dueño legal hoy, qué gravámenes existen, qué hipotecas pesan. Es la fuente de verdad sobre TÍTULO. <strong>(2) Catastro</strong> — qué hay físicamente en el suelo, dimensiones, uso de suelo, valor fiscal. Es la fuente de verdad sobre TIERRA FÍSICA. <strong>(3) Sistema notarial</strong> — quien autentica las transferencias y donde se registran las escrituras antes de inscribirse en el Registro. Es la fuente de verdad sobre PROCESO.</p>
+    <p data-en><strong>(1) Public Property Registry</strong> — who legally owns it today, what liens exist, what mortgages weigh on it. The source of truth on TITLE. <strong>(2) Cadastre</strong> — what's physically on the land, dimensions, land use, fiscal value. The source of truth on PHYSICAL LAND. <strong>(3) Notarial system</strong> — who authenticates transfers and where deeds are formalized before registry inscription. The source of truth on PROCESS.</p>
+    <p data-es><strong>Los tres no siempre coinciden.</strong> Esa es la oportunidad y el riesgo. El catastro puede decir 5 ha, el registro puede decir 4.7, el notario tiene la escritura original de 1947 que dice 4.85. Quien sepa leer los tres encuentra valor; quien solo lee uno, paga de más o compra problema.</p>
+    <p data-en><strong>The three don't always match.</strong> That's the opportunity and the risk. Cadastre might say 5 ha, registry might say 4.7, the notary holds the original 1947 deed saying 4.85. Whoever reads all three finds value; whoever reads only one overpays or buys a problem.</p>
+  </div>
+</section>
+
+<!-- ============ 02 · ROLES ============ -->
+<section id="roles">
+  <div class="sec-head">
+    <div class="sec-num" data-es>02 · LOS CINCO ROLES</div>
+    <div class="sec-num" data-en>02 · THE FIVE ROLES</div>
+    <h2 data-es>Quién necesitas <em>contratar</em>.</h2>
+    <h2 data-en>Who you need to <em>retain</em>.</h2>
+    <p class="sec-sub" data-es>No hay un solo agente que haga todo. Estos son los cinco actores. Conseguir a los cinco en cada país es el moat operacional de Sora.</p>
+    <p class="sec-sub" data-en>There is no single agent who does it all. These are the five actors. Securing all five in every country is Sora's operational moat.</p>
+  </div>
+
+  <div class="roles">
+    <div class="role">
+      <div class="rn">01</div>
+      <h4 data-es><em>Notario</em> público</h4>
+      <h4 data-en>Public <em>notary</em></h4>
+      <p data-es>El que autentica la transferencia. En civil law es un funcionario público, no un servicio comercial. Cada ciudad tiene un número limitado. Su firma es la que vale.</p>
+      <p data-en>Authenticates transfers. In civil law, a public officer, not a commercial service. Each city has a fixed number. Their signature is the one that matters.</p>
+    </div>
+    <div class="role">
+      <div class="rn">02</div>
+      <h4 data-es><em>Abogado</em> inmobiliario</h4>
+      <h4 data-en>Real-estate <em>lawyer</em></h4>
+      <p data-es>Hace la due diligence: revisa registro + catastro + impuestos + servidumbres + uso de suelo. Boutique especializado, no firma generalista.</p>
+      <p data-en>Runs the due diligence: registry + cadastre + taxes + easements + zoning. Specialist boutique, not generalist firm.</p>
+    </div>
+    <div class="role">
+      <div class="rn">03</div>
+      <h4 data-es><em>Topógrafo</em> / perito</h4>
+      <h4 data-en><em>Surveyor</em> / appraiser</h4>
+      <p data-es>El que mide físicamente el terreno y certifica linderos vs. lo que dice el catastro. Crítico para fincas rurales, costa, montaña.</p>
+      <p data-en>Physically measures the land and certifies boundaries vs. what the cadastre says. Critical for rural, coast, mountain properties.</p>
+    </div>
+    <div class="role">
+      <div class="rn">04</div>
+      <h4 data-es>Broker / <em>corredor</em></h4>
+      <h4 data-en>Broker / <em>realtor</em></h4>
+      <p data-es>El acceso al inventario on-market y, más importante, al off-market. Una vez conoces a 3 brokers boutique en un país, ves el 80% del inventario que vale.</p>
+      <p data-en>Access to on-market and, more importantly, off-market inventory. Once you know 3 boutique brokers in a country, you see 80% of inventory worth seeing.</p>
+    </div>
+    <div class="role">
+      <div class="rn">05</div>
+      <h4 data-es>Consultor de <em>catastro</em></h4>
+      <h4 data-en><em>Cadastral</em> consultant</h4>
+      <p data-es>Especialista que descifra discrepancias catastro-registro y proyecta cambios de uso de suelo. Útil cuando hay arbitraje (compras barato por mal catastro, regularizas, valor sube 3x).</p>
+      <p data-en>Specialist who deciphers cadastre-registry discrepancies and projects zoning changes. Useful when there's arbitrage (you buy cheap due to bad cadastre, regularize, value triples).</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 · OFF-MARKET ============ -->
+<section id="offmarket">
+  <div class="sec-head">
+    <div class="sec-num" data-es>03 · LA RUTA OFF-MARKET</div>
+    <div class="sec-num" data-en>03 · THE OFF-MARKET ROUTE</div>
+    <h2 data-es>Lo que <em>no</em> está en el portal.</h2>
+    <h2 data-en>What's <em>not</em> on the portal.</h2>
+    <p class="sec-sub" data-es>El 60-80% de las mejores propiedades premium en LATAM nunca llegan a un portal público. Trafican por red. Estas son las cuatro vías para entrar a esa red.</p>
+    <p class="sec-sub" data-en>60-80% of LATAM's best premium properties never hit a public portal. They move through networks. These are the four routes in.</p>
+  </div>
+
+  <div class="roles">
+    <div class="role" style="border-top-color:var(--coral)">
+      <div class="rn">A</div>
+      <h4 data-es>Lonja / <em>asociación de brokers</em></h4>
+      <h4 data-en>Realtor <em>association</em></h4>
+      <p data-es>Cada ciudad LATAM tiene una "Lonja" o "Cámara Inmobiliaria" — Colombia tiene Lonja, México AMPI, Chile CChC, Brasil CRECI por estado. Membresía abre acceso al MLS interno (cuando existe).</p>
+      <p data-en>Every LATAM city has a "Lonja" or "Realtor Chamber" — Colombia has Lonja, Mexico AMPI, Chile CChC, Brazil CRECI by state. Membership opens the internal MLS (when it exists).</p>
+    </div>
+    <div class="role" style="border-top-color:var(--gold)">
+      <div class="rn">B</div>
+      <h4 data-es><em>Boutique brokers</em> referidos</h4>
+      <h4 data-en>Referral <em>boutique brokers</em></h4>
+      <p data-es>Cada ciudad tiene 5-10 brokers que manejan TODO el inventario premium real. No están en internet — los conoces solo por referencia. Una llamada con un anfitrión Sora local te da los nombres.</p>
+      <p data-en>Each city has 5-10 brokers who handle ALL the real premium inventory. They're not online — only via referral. One call with a local Sora host gives you the names.</p>
+    </div>
+    <div class="role" style="border-top-color:var(--teal)">
+      <div class="rn">C</div>
+      <h4 data-es><em>Notarios</em> como vendedores</h4>
+      <h4 data-en><em>Notaries</em> as sellers</h4>
+      <p data-es>Los notarios saben quién está pensando en vender ANTES de listarlo. Cuando alguien viene a pedir avalúo, el notario lo sabe. Un café cada 2 meses con el notario top de una ciudad = inteligencia de mercado real.</p>
+      <p data-en>Notaries know who's THINKING of selling before they list. When someone comes asking for an appraisal, the notary knows. A coffee every 2 months with a top city notary = real market intelligence.</p>
+    </div>
+    <div class="role" style="border-top-color:var(--green)">
+      <div class="rn">D</div>
+      <h4 data-es><em>Bancos privados</em> y family offices</h4>
+      <h4 data-en>Private <em>banks</em> + family offices</h4>
+      <p data-es>Cuando una familia patrimonial necesita liquidez, vende un activo físico antes de tocar instrumentos financieros. El banco privado coloca la oferta entre 5-15 contactos antes de pensar en mercado abierto.</p>
+      <p data-en>When patrimonial families need liquidity, they sell a physical asset before touching financial instruments. The private bank circulates the offer among 5-15 contacts before considering the open market.</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <span class="cl-label" data-es>EL MOVIMIENTO QUE FUNCIONA</span>
+    <span class="cl-label" data-en>THE MOVE THAT WORKS</span>
+    <p data-es>En cada país que entramos, queremos cerrar relaciones con: <strong>1 abogado boutique + 2 brokers de confianza + 1 notario top + 1 banquero privado</strong>. Cuatro contactos = acceso al 90% del inventario real. La inversión: 5-8 cafés en los primeros 60 días en el país. ROI: para siempre.</p>
+    <p data-en>In every country we enter, we want relationships with: <strong>1 boutique lawyer + 2 trusted brokers + 1 top notary + 1 private banker</strong>. Four contacts = access to 90% of real inventory. The investment: 5-8 coffees in the first 60 days. ROI: forever.</p>
+  </div>
+</section>
+
+<!-- ============ 04 · NORTH ============ -->
+<section id="north">
+  <h3 class="region" data-es>Norte <span>· Wave 1</span></h3>
+  <h3 class="region" data-en>North <span>· Wave 1</span></h3>
+
+  <div class="country" id="mx">
+    <div class="country-head">
+      <span class="country-flag">🇲🇽</span>
+      <div>
+        <div class="country-name">México <em>· Wave 1</em></div>
+      </div>
+      <span class="country-tag" data-es>32 entidades federativas · sistema estatal</span>
+      <span class="country-tag" data-en>32 federal entities · state-level system</span>
+    </div>
+
+    <div class="country-grid">
+      <div class="field">
+        <div class="fl" data-es>REGISTRO PÚBLICO</div><div class="fl" data-en>PUBLIC REGISTRY</div>
+        <h5>Registro Público de la Propiedad y del Comercio</h5>
+        <a class="url" href="https://rppc.cdmx.gob.mx" target="_blank">rppc.cdmx.gob.mx</a>
+        <p data-es>Estado por estado. CDMX en línea; cada estado tiene su portal. Búsqueda por folio real o cadena de titulares.</p>
+        <p data-en>State by state. CDMX online; each state has its portal. Search by folio real or chain of titleholders.</p>
+      </div>
+      <div class="field">
+        <div class="fl" data-es>CATASTRO</div><div class="fl" data-en>CADASTRE</div>
+        <h5>INEGI + Catastros estatales</h5>
+        <a class="url" href="https://www.inegi.org.mx" target="_blank">inegi.org.mx</a>
+        <p data-es>INEGI nacional para datos territoriales. Catastro por municipio (CDMX: Tesorería, GDL: Catastro Municipal).</p>
+        <p data-en>INEGI nationally for territorial data. Cadastre by municipality (CDMX: Tesorería, GDL: Catastro Municipal).</p>
+      </div>
+      <div class="field">
+        <div class="fl" data-es>AGREGADORES (MLS-LIKE)</div><div class="fl" data-en>AGGREGATORS (MLS-LIKE)</div>
+        <h5>Inmuebles24 · Vivanuncios · Lamudi · EasyBroker</h5>
+        <a class="url" href="https://www.inmuebles24.com" target="_blank">inmuebles24.com</a>
+        <p data-es>EasyBroker es el SaaS que conecta a brokers AMPI — es el MLS de facto. Acceso vía broker miembro.</p>
+        <p data-en>EasyBroker is the SaaS connecting AMPI brokers — the de facto MLS. Access via member broker.</p>
+      </div>
+    </div>
+
+    <div class="country-full">
+      <div>
+        <h5 data-es>RESTRICCIÓN A EXTRANJEROS</h5>
+        <h5 data-en>FOREIGN OWNERSHIP RESTRICTION</h5>
+        <div class="restriction" data-es><strong>ZONA RESTRINGIDA · Art. 27 Constitución:</strong> a 100 km de frontera y 50 km de costa, extranjeros NO pueden comprar título directo. Solución: <strong>fideicomiso</strong> en banco mexicano (50 años renovable) O constituir <strong>S.A. de C.V.</strong> mexicana. Costo fideicomiso: ~$2,500 USD setup + $500/año. Tulum, Playa, Cabo, La Paz, Cancún todos requieren esto.</div>
+        <div class="restriction" data-en><strong>RESTRICTED ZONE · Art. 27 Constitution:</strong> within 100km of border and 50km of coast, foreigners CANNOT hold direct title. Solution: <strong>fideicomiso</strong> (Mexican bank trust, 50-year renewable) OR Mexican <strong>S.A. de C.V.</strong> corporation. Fideicomiso cost: ~$2,500 USD setup + $500/year. Tulum, Playa, Cabo, La Paz, Cancún all require this.</div>
+      </div>
+      <div>
+        <h5 data-es>DESPACHOS ESPECIALIZADOS</h5>
+        <h5 data-en>SPECIALIST LAW FIRMS</h5>
+        <ul>
+          <li><strong>Creel, García-Cuéllar, Aiza y Enríquez</strong> — top tier CDMX, M&A + RE</li>
+          <li><strong>Galicia Abogados</strong> — fuerte en hospitalidad y desarrollo</li>
+          <li><strong>SánchezDevanny</strong> — fideicomisos + corporativo</li>
+          <li><strong>Basham, Ringe y Correa</strong> — multi-oficina (CDMX, GDL, Mty)</li>
+          <li><strong>Ritch Mueller</strong> — boutique RE alto</li>
+        </ul>
+      </div>
+    </div>
+    <div class="country-full" style="margin-top:14px">
+      <div>
+        <h5 data-es>BROKERS PREMIUM</h5>
+        <h5 data-en>PREMIUM BROKERS</h5>
+        <ul>
+          <li><strong>Engel & Völkers</strong> — CDMX, Tulum, Cabo</li>
+          <li><strong>Sotheby's International Realty</strong> — Polanco, San Miguel, Cabo</li>
+          <li><strong>Coldwell Banker La Costa</strong> — Riviera Maya</li>
+          <li><strong>Aldebarán</strong> — CDMX boutique top</li>
+        </ul>
+      </div>
+      <div>
+        <h5 data-es>NODO INSTITUCIONAL</h5>
+        <h5 data-en>INSTITUTIONAL NODE</h5>
+        <ul>
+          <li><strong>AMPI</strong> — Asociación Mexicana de Profesionales Inmobiliarios · <a href="https://ampi.org" target="_blank" style="color:var(--teal)">ampi.org</a></li>
+          <li><strong>SEDATU</strong> — Secretaría de Desarrollo Agrario · datos ejidales</li>
+          <li><strong>RAN</strong> — Registro Agrario Nacional · para tierra ejidal</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 · CENTRAL AMERICA ============ -->
+<section id="central">
+  <h3 class="region" data-es>Centroamérica <span>· Waves 1, 3, 4</span></h3>
+  <h3 class="region" data-en>Central America <span>· Waves 1, 3, 4</span></h3>
+
+  <!-- PANAMA -->
+  <div class="country" id="pa">
+    <div class="country-head">
+      <span class="country-flag">🇵🇦</span>
+      <div><div class="country-name">Panamá <em>· Wave 1</em></div></div>
+      <span class="country-tag" data-es>Sistema centralizado · 100% online</span>
+      <span class="country-tag" data-en>Centralized system · 100% online</span>
+    </div>
+
+    <div class="country-grid">
+      <div class="field">
+        <div class="fl" data-es>REGISTRO PÚBLICO</div><div class="fl" data-en>PUBLIC REGISTRY</div>
+        <h5>Registro Público de Panamá</h5>
+        <a class="url" href="https://www.registro-publico.gob.pa" target="_blank">registro-publico.gob.pa</a>
+        <p data-es>Búsqueda en línea por finca, propietario, o ubicación. Acceso a folio real digital. $5-15 por consulta.</p>
+        <p data-en>Online search by finca, owner, or location. Digital folio access. $5-15 per query.</p>
+      </div>
+      <div class="field">
+        <div class="fl" data-es>CATASTRO</div><div class="fl" data-en>CADASTRE</div>
+        <h5>ANATI</h5>
+        <a class="url" href="https://www.anati.gob.pa" target="_blank">anati.gob.pa</a>
+        <p data-es>Autoridad Nacional de Administración de Tierras. Mapa catastral. Crítico en Bocas del Toro y Boquete por "rights of possession" vs título.</p>
+        <p data-en>National Land Administration Authority. Cadastral map. Critical in Bocas del Toro and Boquete for "rights of possession" vs titled land.</p>
+      </div>
+      <div class="field">
+        <div class="fl" data-es>AGREGADORES</div><div class="fl" data-en>AGGREGATORS</div>
+        <h5>Encuentra24 · Sotheby's PA · CompreoAlquile</h5>
+        <a class="url" href="https://www.encuentra24.com/panama-es" target="_blank">encuentra24.com</a>
+        <p data-es>Encuentra24 domina inventario amplio. Sotheby's PA para premium. ACOBIR es la cámara de brokers.</p>
+        <p data-en>Encuentra24 dominates wide inventory. Sotheby's PA for premium. ACOBIR is the broker chamber.</p>
+      </div>
+    </div>
+
+    <div class="country-full">
+      <div>
+        <h5 data-es>EXTRANJEROS · ABIERTO</h5>
+        <h5 data-en>FOREIGN · OPEN</h5>
+        <div class="open" data-es><strong>ABIERTO 100%</strong> excepto dentro de 10km de fronteras con Costa Rica y Colombia (Decreto 5 de 1958). Para Bocas del Toro: <strong>verificar tipo de título</strong> (Rights of Possession vs título registrado son legalmente distintos — los Rights pueden expropiarse).</div>
+        <div class="open" data-en><strong>100% OPEN</strong> except within 10km of Costa Rica and Colombia borders (Decree 5 of 1958). For Bocas del Toro: <strong>verify title type</strong> (Rights of Possession vs registered title are legally distinct — Rights can be expropriated).</div>
+      </div>
+      <div>
+        <h5 data-es>DESPACHOS ESPECIALIZADOS</h5>
+        <h5 data-en>SPECIALIST LAW FIRMS</h5>
+        <ul>
+          <li><strong>Morgan & Morgan</strong> — el más grande, fuerte en RE</li>
+          <li><strong>Arias, Fábrega & Fábrega (ARIFA)</strong> — boutique de élite</li>
+          <li><strong>Galindo, Arias & López</strong> — partnerships familiares</li>
+          <li><strong>Patton, Moreno & Asvat</strong> — RE residencial</li>
+        </ul>
+      </div>
+    </div>
+    <div class="country-full" style="margin-top:14px">
+      <div>
+        <h5 data-es>BROKERS PREMIUM</h5>
+        <h5 data-en>PREMIUM BROKERS</h5>
+        <ul>
+          <li><strong>Punta Pacífica Realty</strong> — PA City alto</li>
+          <li><strong>Sotheby's International Realty PA</strong></li>
+          <li><strong>Engel & Völkers Boquete</strong></li>
+          <li><strong>Coldwell Banker Bocas</strong></li>
+        </ul>
+      </div>
+      <div>
+        <h5 data-es>NODO INSTITUCIONAL</h5>
+        <h5 data-en>INSTITUTIONAL NODE</h5>
+        <ul>
+          <li><strong>ACOBIR</strong> — Asociación de Corredores · <a href="https://www.acobir.com" target="_blank" style="color:var(--teal)">acobir.com</a></li>
+          <li><strong>MIVIOT</strong> — Ministerio de Vivienda · planificación urbana</li>
+          <li><strong>Cámara de Comercio</strong> · networking</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- COSTA RICA -->
+  <div class="country" id="cr">
+    <div class="country-head">
+      <span class="country-flag">🇨🇷</span>
+      <div><div class="country-name">Costa Rica <em>· Wave 3</em></div></div>
+      <span class="country-tag" data-es>Registro y catastro integrados</span>
+      <span class="country-tag" data-en>Registry and cadastre integrated</span>
+    </div>
+
+    <div class="country-grid">
+      <div class="field">
+        <div class="fl" data-es>REGISTRO + CATASTRO</div><div class="fl" data-en>REGISTRY + CADASTRE</div>
+        <h5>Registro Nacional</h5>
+        <a class="url" href="https://www.rnpdigital.com" target="_blank">rnpdigital.com</a>
+        <p data-es>Único en LATAM por integrar registro + catastro en una sola institución. Consulta en línea por número de finca o nombre. Membresía digital ~$50/año.</p>
+        <p data-en>Unique in LATAM for integrating registry + cadastre into one institution. Online search by finca number or name. Digital membership ~$50/year.</p>
+      </div>
+      <div class="field">
+        <div class="fl" data-es>AGREGADORES</div><div class="fl" data-en>AGGREGATORS</div>
+        <h5>Encuentra24 · CR Properties Int'l</h5>
+        <a class="url" href="https://www.encuentra24.com/costa-rica-es" target="_blank">encuentra24.com</a>
+        <p data-es>Encuentra24 domina volumen. Para premium en Nicoya/Tamarindo/Dominical, brokers boutique trabajan off-market 80%.</p>
+        <p data-en>Encuentra24 dominates volume. For premium in Nicoya/Tamarindo/Dominical, boutique brokers work 80% off-market.</p>
+      </div>
+      <div class="field">
+        <div class="fl" data-es>ZONA MARÍTIMA</div><div class="fl" data-en>MARITIME ZONE</div>
+        <h5>ZMT · 200m de costa</h5>
+        <a class="url" href="https://www.ict.go.cr" target="_blank">ict.go.cr</a>
+        <p data-es>Los primeros 200 metros de costa son zona marítimo-terrestre (concesión, no propiedad). Crítico en Nicoya/Manuel Antonio.</p>
+        <p data-en>The first 200 meters of coast is maritime-terrestrial zone (concession, not ownership). Critical in Nicoya/Manuel Antonio.</p>
+      </div>
+    </div>
+
+    <div class="country-full">
+      <div>
+        <h5 data-es>EXTRANJEROS · MUY ABIERTO</h5>
+        <h5 data-en>FOREIGN · VERY OPEN</h5>
+        <div class="open" data-es><strong>ABIERTO 100%</strong> · misma protección legal que ciudadanos. Excepción: zona marítimo-terrestre (200m de costa) sólo via concesión renovable.</div>
+        <div class="open" data-en><strong>100% OPEN</strong> · same legal protection as citizens. Exception: maritime-terrestrial zone (200m of coast) only via renewable concession.</div>
+      </div>
+      <div>
+        <h5 data-es>DESPACHOS ESPECIALIZADOS</h5>
+        <h5 data-en>SPECIALIST LAW FIRMS</h5>
+        <ul>
+          <li><strong>Arias Law</strong> — RE + corporativo</li>
+          <li><strong>Pacheco Coto</strong> — boutique alto</li>
+          <li><strong>Bufete Lara López</strong> — extranjeros + RE</li>
+          <li><strong>Lex Counsel</strong> — guanacaste/coast specialist</li>
+          <li><strong>BLP Abogados</strong> — multi-país CA</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- GUATEMALA -->
+  <div class="country" id="gt">
+    <div class="country-head">
+      <span class="country-flag">🇬🇹</span>
+      <div><div class="country-name">Guatemala <em>· Wave 3</em></div></div>
+      <span class="country-tag" data-es>Sistema dual: RGP + RIC</span>
+      <span class="country-tag" data-en>Dual system: RGP + RIC</span>
+    </div>
+
+    <div class="country-grid">
+      <div class="field">
+        <div class="fl" data-es>REGISTRO PÚBLICO</div><div class="fl" data-en>PUBLIC REGISTRY</div>
+        <h5>Registro General de la Propiedad</h5>
+        <a class="url" href="https://www.rgp.org.gt" target="_blank">rgp.org.gt</a>
+        <p data-es>Búsqueda en línea por número de finca. Dos oficinas: Central (zona central) y Segundo Registro (occidente).</p>
+        <p data-en>Online search by finca number. Two offices: Central (central zone) and Second Registry (western).</p>
+      </div>
+      <div class="field">
+        <div class="fl" data-es>CATASTRO</div><div class="fl" data-en>CADASTRE</div>
+        <h5>RIC · Registro de Información Catastral</h5>
+        <a class="url" href="https://portal.ric.gob.gt" target="_blank">ric.gob.gt</a>
+        <p data-es>Proyecto de modernización catastral. No 100% cubierto — Antigua, Atitlán, CDG tienen buena data. Áreas rurales menos.</p>
+        <p data-en>Cadastral modernization project. Not 100% covered — Antigua, Atitlán, GC have good data. Rural areas less.</p>
+      </div>
+      <div class="field">
+        <div class="fl" data-es>AGREGADORES</div><div class="fl" data-en>AGGREGATORS</div>
+        <h5>OLX Guate · Encuentra24 · Bienes Raíces Guatemala</h5>
+        <a class="url" href="https://www.encuentra24.com/guatemala-es" target="_blank">encuentra24.com/guatemala</a>
+        <p data-es>Mercado pequeño — los mejores brokers son boutique y trabajan referido.</p>
+        <p data-en>Small market — best brokers are boutique and work by referral.</p>
+      </div>
+    </div>
+
+    <div class="country-full">
+      <div>
+        <h5 data-es>EXTRANJEROS</h5>
+        <h5 data-en>FOREIGN</h5>
+        <div class="restriction" data-es><strong>RESTRICCIÓN</strong> · dentro de 15km de fronteras o costas, individuos extranjeros NO pueden comprar directo. Solución: sociedad anónima guatemalteca. Lago de Atitlán y Antigua están bien (interior). Pacífico/Caribe = corporación.</div>
+        <div class="restriction" data-en><strong>RESTRICTION</strong> · within 15km of borders or coasts, foreign individuals CANNOT buy directly. Solution: Guatemalan corporation. Lake Atitlán and Antigua are fine (inland). Pacific/Caribbean = corporation.</div>
+      </div>
+      <div>
+        <h5 data-es>DESPACHOS ESPECIALIZADOS</h5>
+        <h5 data-en>SPECIALIST LAW FIRMS</h5>
+        <ul>
+          <li><strong>Mayora & Mayora</strong> — premier, RE + corporativo</li>
+          <li><strong>BLP Abogados</strong> — RE</li>
+          <li><strong>QIL+4 ABOGADOS</strong> — boutique alto</li>
+          <li><strong>Aguilar Castillo Love</strong> — CA regional</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- EL SALVADOR -->
+  <div class="country" id="sv">
+    <div class="country-head">
+      <span class="country-flag">🇸🇻</span>
+      <div><div class="country-name">El Salvador <em>· Wave 4</em></div></div>
+      <span class="country-tag" data-es>CNR centralizado · digital</span>
+      <span class="country-tag" data-en>Centralized CNR · digital</span>
+    </div>
+
+    <div class="country-grid">
+      <div class="field">
+        <div class="fl" data-es>REGISTRO + CATASTRO</div><div class="fl" data-en>REGISTRY + CADASTRE</div>
+        <h5>CNR · Centro Nacional de Registros</h5>
+        <a class="url" href="https://www.cnr.gob.sv" target="_blank">cnr.gob.sv</a>
+        <p data-es>Centro consolidado — registro inmueble + catastro + comercio en una sola institución. Búsqueda en línea (parcial).</p>
+        <p data-en>Consolidated center — property registry + cadastre + commerce in one institution. Online search (partial).</p>
+      </div>
+      <div class="field">
+        <div class="fl" data-es>AGREGADORES</div><div class="fl" data-en>AGGREGATORS</div>
+        <h5>Encuentra24 SV · Vivanuncios</h5>
+        <a class="url" href="https://www.encuentra24.com/el-salvador-es" target="_blank">encuentra24.com/el-salvador</a>
+        <p data-es>Mercado emergente — playa (El Tunco, El Zonte) dominado por extranjeros post-Bitcoin Law 2021.</p>
+        <p data-en>Emerging market — coast (El Tunco, El Zonte) dominated by foreigners post-2021 Bitcoin Law.</p>
+      </div>
+      <div class="field">
+        <div class="fl" data-es>EXTRANJEROS</div><div class="fl" data-en>FOREIGN</div>
+        <h5 data-es>Abierto · misma protección</h5>
+        <h5 data-en>Open · same protection</h5>
+        <p data-es>Sin restricciones para extranjeros. Bitcoin Law 2021 + Adopting State Strategy hizo del país atractivo para inversores cripto.</p>
+        <p data-en>No restrictions for foreigners. 2021 Bitcoin Law + Adopting State Strategy made the country attractive to crypto investors.</p>
+      </div>
+    </div>
+
+    <div class="country-full">
+      <div>
+        <h5 data-es>DESPACHOS ESPECIALIZADOS</h5>
+        <h5 data-en>SPECIALIST LAW FIRMS</h5>
+        <ul>
+          <li><strong>BLP Abogados SV</strong> — RE + corporativo</li>
+          <li><strong>Arias, Quintanilla & Sandoval</strong></li>
+          <li><strong>Romero Pineda & Asociados</strong> — multi-país CA</li>
+        </ul>
+      </div>
+      <div>
+        <h5 data-es>NODOS</h5>
+        <h5 data-en>NODES</h5>
+        <ul>
+          <li><strong>Cámara Salvadoreña de Bienes Raíces (CSBR)</strong></li>
+          <li><strong>Bitcoin Beach</strong> contactos · El Zonte network</li>
+          <li><strong>BITRSA</strong> · Bitcoin Country oficial</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- HONDURAS -->
+  <div class="country" id="hn">
+    <div class="country-head">
+      <span class="country-flag">🇭🇳</span>
+      <div><div class="country-name">Honduras <em>· Wave 5</em></div></div>
+      <span class="country-tag" data-es>Instituto de la Propiedad · centralizado</span>
+      <span class="country-tag" data-en>Property Institute · centralized</span>
+    </div>
+
+    <div class="country-grid">
+      <div class="field">
+        <div class="fl" data-es>REGISTRO + CATASTRO</div><div class="fl" data-en>REGISTRY + CADASTRE</div>
+        <h5>Instituto de la Propiedad (IP)</h5>
+        <a class="url" href="https://www.ip.gob.hn" target="_blank">ip.gob.hn</a>
+        <p data-es>IP integra registro + catastro nacional. SURE (Sistema Unificado de Registros) es el portal en línea. Acceso requiere registro previo.</p>
+        <p data-en>IP integrates national registry + cadastre. SURE (Unified Registry System) is the online portal. Access requires prior registration.</p>
+      </div>
+      <div class="field">
+        <div class="fl" data-es>AGREGADORES</div><div class="fl" data-en>AGGREGATORS</div>
+        <h5>Encuentra24 HN · propiedades.com.hn</h5>
+        <a class="url" href="https://www.encuentra24.com/honduras-es" target="_blank">encuentra24.com/honduras</a>
+        <p data-es>Para Roatán/Utila: el inventario premium se mueve por red expat en Facebook + brokers especializados de la isla.</p>
+        <p data-en>For Roatán/Utila: premium inventory moves via expat networks on Facebook + island-specialist brokers.</p>
+      </div>
+      <div class="field">
+        <div class="fl" data-es>ALERTA · ROATÁN</div><div class="fl" data-en>ALERT · ROATÁN</div>
+        <h5 data-es>Historia de disputas de título</h5>
+        <h5 data-en>History of title disputes</h5>
+        <p data-es>Roatán tiene historial de disputas (familias garífunas, títulos coloniales, expropiaciones). Due diligence extra-profunda con seguro de título.</p>
+        <p data-en>Roatán has dispute history (Garifuna families, colonial titles, expropriations). Extra-deep DD with title insurance.</p>
+      </div>
+    </div>
+
+    <div class="country-full">
+      <div>
+        <h5 data-es>EXTRANJEROS</h5>
+        <h5 data-en>FOREIGN</h5>
+        <div class="restriction" data-es><strong>RESTRICCIÓN</strong> · individuos extranjeros NO pueden comprar dentro de 40km de fronteras/costa (Art. 107 Constitución). En Roatán/Utila se usa sociedad anónima hondureña (S.A. de C.V.) o fideicomiso. Costo estructura: $2,000-4,000 USD.</div>
+        <div class="restriction" data-en><strong>RESTRICTION</strong> · foreign individuals CANNOT buy within 40km of borders/coast (Constitution Art. 107). In Roatán/Utila a Honduran corporation (S.A. de C.V.) or trust is used. Structure cost: $2,000-4,000 USD.</div>
+      </div>
+      <div>
+        <h5 data-es>DESPACHOS</h5>
+        <h5 data-en>FIRMS</h5>
+        <ul>
+          <li><strong>García & Bodán</strong> — más grande, RE</li>
+          <li><strong>Aguilar Castillo Love</strong> — CA regional</li>
+          <li><strong>Bufete Liang & Asociados</strong> — Roatán especialista</li>
+          <li><strong>Tinoco & Bonifaz</strong> — Bay Islands</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- NICARAGUA -->
+  <div class="country" id="ni">
+    <div class="country-head">
+      <span class="country-flag">🇳🇮</span>
+      <div><div class="country-name">Nicaragua <em>· Wave 5</em></div></div>
+      <span class="country-tag" data-es>Departamental · INETER catastro</span>
+      <span class="country-tag" data-en>Departmental · INETER cadastre</span>
+    </div>
+
+    <div class="country-grid">
+      <div class="field">
+        <div class="fl" data-es>REGISTRO PÚBLICO</div><div class="fl" data-en>PUBLIC REGISTRY</div>
+        <h5>Registro Público de la Propiedad</h5>
+        <a class="url" href="https://www.poderjudicial.gob.ni/registro" target="_blank">poderjudicial.gob.ni/registro</a>
+        <p data-es>Departamental, parte del Poder Judicial. Online limitado — la mayoría requiere consulta presencial.</p>
+        <p data-en>Departmental, part of the Judicial Branch. Limited online — most queries require in-person.</p>
+      </div>
+      <div class="field">
+        <div class="fl" data-es>CATASTRO</div><div class="fl" data-en>CADASTRE</div>
+        <h5>INETER</h5>
+        <a class="url" href="https://www.ineter.gob.ni" target="_blank">ineter.gob.ni</a>
+        <p data-es>Instituto Nicaragüense de Estudios Territoriales. Datos básicos. Para Granada y SJDS, catastro local es más confiable.</p>
+        <p data-en>Nicaraguan Institute of Territorial Studies. Basic data. For Granada and SJDS, local cadastre is more reliable.</p>
+      </div>
+      <div class="field">
+        <div class="fl" data-es>ALERTA · POST-2018</div><div class="fl" data-en>ALERT · POST-2018</div>
+        <h5 data-es>Riesgo de expropiación</h5>
+        <h5 data-en>Expropriation risk</h5>
+        <p data-es>Crisis política 2018+ resultó en expropiaciones de propiedades de opositores. Due diligence política + título insurance internacional son críticos.</p>
+        <p data-en>2018+ political crisis led to expropriations of opposition properties. Political DD + international title insurance critical.</p>
+      </div>
+    </div>
+
+    <div class="country-full">
+      <div>
+        <h5 data-es>EXTRANJEROS</h5>
+        <h5 data-en>FOREIGN</h5>
+        <div class="restriction" data-es><strong>ABIERTO LEGAL · ALTO RIESGO POLÍTICO.</strong> Misma protección legal que ciudadanos en papel. En la práctica, propiedades en zonas turísticas premium (Granada, SJDS) han enfrentado disputas. Recomendación: estructura corporativa con accionistas locales + seguro de título internacional.</div>
+        <div class="restriction" data-en><strong>LEGALLY OPEN · HIGH POLITICAL RISK.</strong> Same legal protection as citizens on paper. In practice, premium tourist-zone properties (Granada, SJDS) have faced disputes. Recommendation: corporate structure with local shareholders + international title insurance.</div>
+      </div>
+      <div>
+        <h5 data-es>DESPACHOS</h5>
+        <h5 data-en>FIRMS</h5>
+        <ul>
+          <li><strong>Aguilar Castillo Love</strong> — CA regional</li>
+          <li><strong>García & Bodán</strong> — CA regional</li>
+          <li><strong>BLP Abogados NI</strong> — boutique RE</li>
+          <li><strong>Alvarado y Asociados</strong> — local</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 06 · CARIBBEAN ============ -->
+<section id="caribbean">
+  <h3 class="region" data-es>Caribe <span>· Wave 3</span></h3>
+  <h3 class="region" data-en>Caribbean <span>· Wave 3</span></h3>
+
+  <!-- DOMINICAN REPUBLIC -->
+  <div class="country" id="do">
+    <div class="country-head">
+      <span class="country-flag">🇩🇴</span>
+      <div><div class="country-name">República Dominicana <em>· Wave 3</em></div></div>
+      <span class="country-tag" data-es>Sistema Torrens · jurisdicción inmobiliaria</span>
+      <span class="country-tag" data-en>Torrens system · property jurisdiction</span>
+    </div>
+
+    <div class="country-grid">
+      <div class="field">
+        <div class="fl" data-es>REGISTRO PÚBLICO</div><div class="fl" data-en>PUBLIC REGISTRY</div>
+        <h5>Registro de Títulos · Jurisdicción Inmobiliaria</h5>
+        <a class="url" href="https://ji.gob.do" target="_blank">ji.gob.do</a>
+        <p data-es>Sistema Torrens (registro de título absoluto). Tribunal Superior de Tierras. Búsqueda online por número de matrícula.</p>
+        <p data-en>Torrens system (absolute title registry). Tribunal Superior de Tierras. Online search by matricula number.</p>
+      </div>
+      <div class="field">
+        <div class="fl" data-es>CATASTRO</div><div class="fl" data-en>CADASTRE</div>
+        <h5>Mensura Catastral</h5>
+        <p data-es>Integrado en la Jurisdicción Inmobiliaria. Mensuras y deslindes obligatorios para todo título nuevo. Crítico en Punta Cana/Cap Cana.</p>
+        <p data-en>Integrated into Property Jurisdiction. Surveys and deslindes mandatory for all new titles. Critical in Punta Cana/Cap Cana.</p>
+      </div>
+      <div class="field">
+        <div class="fl" data-es>AGREGADORES</div><div class="fl" data-en>AGGREGATORS</div>
+        <h5>Encuentra24 DO · Sotheby's RD · propiedades.com.do</h5>
+        <a class="url" href="https://www.encuentra24.com/republica-dominicana-es" target="_blank">encuentra24.com/republica-dominicana</a>
+        <p data-es>Inventario premium en Punta Cana/Cap Cana dominado por brokers internacionales (Sotheby's, Engel & Völkers).</p>
+        <p data-en>Premium inventory in Punta Cana/Cap Cana dominated by international brokers (Sotheby's, Engel & Völkers).</p>
+      </div>
+    </div>
+
+    <div class="country-full">
+      <div>
+        <h5 data-es>EXTRANJEROS · MUY ABIERTO</h5>
+        <h5 data-en>FOREIGN · VERY OPEN</h5>
+        <div class="open" data-es><strong>100% ABIERTO</strong> · misma protección que ciudadanos. Programa de residencia por inversión: $200,000 en RE + 6 meses = residencia. Sistema Torrens da certeza única en LATAM.</div>
+        <div class="open" data-en><strong>100% OPEN</strong> · same protection as citizens. Investment residency program: $200,000 in RE + 6 months = residency. Torrens system gives unique LATAM certainty.</div>
+      </div>
+      <div>
+        <h5 data-es>DESPACHOS</h5>
+        <h5 data-en>FIRMS</h5>
+        <ul>
+          <li><strong>Pellerano & Herrera</strong> — premier, RE</li>
+          <li><strong>Headrick Rizik Álvarez & Fernández</strong></li>
+          <li><strong>Russin Vecchi & Heredia Bonetti</strong></li>
+          <li><strong>OMG Asesores</strong> — boutique extranjeros</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- PUERTO RICO -->
+  <div class="country" id="pr">
+    <div class="country-head">
+      <span class="country-flag">🇵🇷</span>
+      <div><div class="country-name">Puerto Rico <em>· Wave 3</em></div></div>
+      <span class="country-tag" data-es>Sistema mixto US/civil · PRMLS real</span>
+      <span class="country-tag" data-en>Mixed US/civil system · real PRMLS</span>
+    </div>
+
+    <div class="country-grid">
+      <div class="field">
+        <div class="fl" data-es>REGISTRO PÚBLICO</div><div class="fl" data-en>PUBLIC REGISTRY</div>
+        <h5>Registro de la Propiedad</h5>
+        <a class="url" href="https://portal-rip.justicia.pr.gov" target="_blank">portal-rip.justicia.pr.gov</a>
+        <p data-es>Departamento de Justicia. Sistema en línea funcional. 29 secciones por geografía. Datos completos disponibles.</p>
+        <p data-en>Department of Justice. Functional online system. 29 sections by geography. Full data available.</p>
+      </div>
+      <div class="field">
+        <div class="fl" data-es>CATASTRO</div><div class="fl" data-en>CADASTRE</div>
+        <h5>CRIM</h5>
+        <a class="url" href="https://www.crimpr.net" target="_blank">crimpr.net</a>
+        <p data-es>Centro de Recaudación de Ingresos Municipales — equivalente a tax assessor. Mapa fiscal de toda PR.</p>
+        <p data-en>Municipal Revenue Center — tax assessor equivalent. Fiscal map of all PR.</p>
+      </div>
+      <div class="field">
+        <div class="fl" data-es>MLS REAL</div><div class="fl" data-en>REAL MLS</div>
+        <h5>PRMLS</h5>
+        <a class="url" href="https://www.prmls.com" target="_blank">prmls.com</a>
+        <p data-es>El único MLS verdadero en LATAM (como territorio US). Acceso vía agente licenciado de PR. ~$200/mes membresía.</p>
+        <p data-en>The only true MLS in LATAM (as US territory). Access via PR-licensed agent. ~$200/mo membership.</p>
+      </div>
+    </div>
+
+    <div class="country-full">
+      <div>
+        <h5 data-es>EXTRANJEROS / US</h5>
+        <h5 data-en>FOREIGN / US</h5>
+        <div class="open" data-es><strong>ABIERTO TOTAL</strong> · ley federal US aplica. Act 60 (antes Act 20/22) ofrece exención fiscal masiva para residentes nuevos — 4% impuesto a servicios, 0% capital gains en activos post-mudanza. Atractivo único para crypto/RE wealth.</div>
+        <div class="open" data-en><strong>FULLY OPEN</strong> · US federal law applies. Act 60 (formerly Act 20/22) offers massive tax exemption for new residents — 4% services tax, 0% capital gains on post-move assets. Unique attraction for crypto/RE wealth.</div>
+      </div>
+      <div>
+        <h5 data-es>DESPACHOS</h5>
+        <h5 data-en>FIRMS</h5>
+        <ul>
+          <li><strong>McConnell Valdés</strong> — más grande, RE</li>
+          <li><strong>Pietrantoni Méndez & Álvarez</strong></li>
+          <li><strong>Reichard & Escalera</strong></li>
+          <li><strong>O'Neill & Borges</strong> — Act 60 specialist</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 07 · ANDEAN ============ -->
+<section id="andean">
+  <h3 class="region" data-es>Andes <span>· Waves 1, 2</span></h3>
+  <h3 class="region" data-en>Andes <span>· Waves 1, 2</span></h3>
+
+  <!-- COLOMBIA -->
+  <div class="country" id="co">
+    <div class="country-head">
+      <span class="country-flag">🇨🇴</span>
+      <div><div class="country-name">Colombia <em>· Wave 1</em></div></div>
+      <span class="country-tag" data-es>ORIP regional · IGAC catastro</span>
+      <span class="country-tag" data-en>Regional ORIP · IGAC cadastre</span>
+    </div>
+
+    <div class="country-grid">
+      <div class="field">
+        <div class="fl" data-es>REGISTRO PÚBLICO</div><div class="fl" data-en>PUBLIC REGISTRY</div>
+        <h5>VUR · Ventanilla Única de Registro</h5>
+        <a class="url" href="https://vur.gov.co" target="_blank">vur.gov.co</a>
+        <p data-es>Superintendencia de Notariado y Registro. ORIP (Oficina de Registro de Instrumentos Públicos) por región. Búsqueda por matrícula inmobiliaria.</p>
+        <p data-en>Superintendence of Notaries and Registry. ORIP (Public Instruments Registry Office) by region. Search by property matricula.</p>
+      </div>
+      <div class="field">
+        <div class="fl" data-es>CATASTRO</div><div class="fl" data-en>CADASTRE</div>
+        <h5>IGAC + Catastros municipales</h5>
+        <a class="url" href="https://www.igac.gov.co" target="_blank">igac.gov.co</a>
+        <p data-es>IGAC nacional. Bogotá: IDECA · Medellín: Catastro Municipal · Cali: catastro propio. Geoportales públicos con mapas.</p>
+        <p data-en>IGAC national. Bogotá: IDECA · Medellín: Municipal Cadastre · Cali: own cadastre. Public geoportals with maps.</p>
+      </div>
+      <div class="field">
+        <div class="fl" data-es>AGREGADORES (MLS-LIKE)</div><div class="fl" data-en>AGGREGATORS (MLS-LIKE)</div>
+        <h5>Fincaraíz · Metrocuadrado · Ciencuadras</h5>
+        <a class="url" href="https://www.fincaraiz.com.co" target="_blank">fincaraiz.com.co</a>
+        <p data-es>Sin MLS real. Tres portales dominan. Premium en El Poblado, Chicó, Rosales, Provenza vía Lonja brokers.</p>
+        <p data-en>No real MLS. Three portals dominate. Premium in El Poblado, Chicó, Rosales, Provenza via Lonja brokers.</p>
+      </div>
+    </div>
+
+    <div class="country-full">
+      <div>
+        <h5 data-es>EXTRANJEROS · TOTALMENTE ABIERTO</h5>
+        <h5 data-en>FOREIGN · FULLY OPEN</h5>
+        <div class="open" data-es><strong>100% ABIERTO</strong> · misma protección que ciudadanos. Sin restricciones por zona. Residencia tipo M (inversión) con compra de $250,000+ USD.</div>
+        <div class="open" data-en><strong>100% OPEN</strong> · same protection as citizens. No zone restrictions. M-type residency (investment) with $250,000+ USD purchase.</div>
+      </div>
+      <div>
+        <h5 data-es>DESPACHOS ESPECIALIZADOS</h5>
+        <h5 data-en>SPECIALIST LAW FIRMS</h5>
+        <ul>
+          <li><strong>Brigard Urrutia</strong> — top, RE + corporativo</li>
+          <li><strong>Posse Herrera Ruiz</strong> — boutique alto</li>
+          <li><strong>Cárdenas & Cárdenas</strong> — RE residencial</li>
+          <li><strong>Gómez-Pinzón Abogados</strong></li>
+          <li><strong>Philippi Prietocarrizosa Ferrero DU & Uría</strong></li>
+        </ul>
+      </div>
+    </div>
+    <div class="country-full" style="margin-top:14px">
+      <div>
+        <h5 data-es>BROKERS PREMIUM</h5>
+        <h5 data-en>PREMIUM BROKERS</h5>
+        <ul>
+          <li><strong>Engel & Völkers Medellín · Cartagena</strong></li>
+          <li><strong>Sotheby's Realty Colombia</strong></li>
+          <li><strong>Coldwell Banker Inmobiliaria Diamante</strong></li>
+          <li><strong>Greenwich Properties</strong> — El Poblado</li>
+        </ul>
+      </div>
+      <div>
+        <h5 data-es>NODOS INSTITUCIONALES</h5>
+        <h5 data-en>INSTITUTIONAL NODES</h5>
+        <ul>
+          <li><strong>Lonja de Propiedad Raíz Bogotá</strong> · <a href="https://www.lonjadebogota.com" target="_blank" style="color:var(--teal)">lonjadebogota.com</a></li>
+          <li><strong>Lonja de Medellín</strong></li>
+          <li><strong>Lonja de Cali</strong></li>
+          <li><strong>FEDELONJAS</strong> · federación nacional</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- PERU -->
+  <div class="country" id="pe">
+    <div class="country-head">
+      <span class="country-flag">🇵🇪</span>
+      <div><div class="country-name">Perú <em>· Wave 2</em></div></div>
+      <span class="country-tag" data-es>SUNARP centralizado · digital</span>
+      <span class="country-tag" data-en>SUNARP centralized · digital</span>
+    </div>
+
+    <div class="country-grid">
+      <div class="field">
+        <div class="fl" data-es>REGISTRO PÚBLICO</div><div class="fl" data-en>PUBLIC REGISTRY</div>
+        <h5>SUNARP</h5>
+        <a class="url" href="https://www.sunarp.gob.pe" target="_blank">sunarp.gob.pe</a>
+        <p data-es>Superintendencia Nacional de los Registros Públicos. Portal "SUNARP en Línea" con búsquedas, certificados literales, partidas registrales digitales.</p>
+        <p data-en>National Superintendence of Public Registries. "SUNARP en Línea" portal with searches, literal certificates, digital property cards.</p>
+      </div>
+      <div class="field">
+        <div class="fl" data-es>CATASTRO</div><div class="fl" data-en>CADASTRE</div>
+        <h5>COFOPRI + SBN + municipal</h5>
+        <a class="url" href="https://www.cofopri.gob.pe" target="_blank">cofopri.gob.pe</a>
+        <p data-es>COFOPRI rural / SBN bienes estatales / catastros municipales urbanos. Lima Metropolitana es la mejor data.</p>
+        <p data-en>COFOPRI rural / SBN state property / municipal urban cadastres. Lima Metro has the best data.</p>
+      </div>
+      <div class="field">
+        <div class="fl" data-es>AGREGADORES</div><div class="fl" data-en>AGGREGATORS</div>
+        <h5>Adondevivir · Urbania</h5>
+        <a class="url" href="https://www.adondevivir.com" target="_blank">adondevivir.com</a>
+        <p data-es>Dos portales dominan. Premium en Barranco, Miraflores, San Isidro. Cusco/Arequipa boutique brokers locales.</p>
+        <p data-en>Two portals dominate. Premium in Barranco, Miraflores, San Isidro. Cusco/Arequipa: local boutique brokers.</p>
+      </div>
+    </div>
+
+    <div class="country-full">
+      <div>
+        <h5 data-es>EXTRANJEROS</h5>
+        <h5 data-en>FOREIGN</h5>
+        <div class="restriction" data-es><strong>RESTRICCIÓN · Art. 71 Constitución:</strong> extranjeros NO pueden adquirir tierra dentro de 50km de la frontera. Solución: estructura corporativa peruana O autorización especial por decreto supremo (necesidad pública).</div>
+        <div class="restriction" data-en><strong>RESTRICTION · Art. 71 Constitution:</strong> foreigners CANNOT acquire land within 50km of the border. Solution: Peruvian corporate structure OR special authorization by supreme decree (public necessity).</div>
+      </div>
+      <div>
+        <h5 data-es>DESPACHOS</h5>
+        <h5 data-en>FIRMS</h5>
+        <ul>
+          <li><strong>Estudio Echecopar (Baker McKenzie)</strong></li>
+          <li><strong>Rodrigo, Elías & Medrano</strong></li>
+          <li><strong>Rebaza, Alcázar & De Las Casas</strong></li>
+          <li><strong>Payet, Rey, Cauvi, Pérez</strong></li>
+          <li><strong>Hernández & Cía</strong> — RE boutique</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHILE -->
+  <div class="country" id="cl">
+    <div class="country-head">
+      <span class="country-flag">🇨🇱</span>
+      <div><div class="country-name">Chile <em>· Wave 2</em></div></div>
+      <span class="country-tag" data-es>CBR por ciudad · SII catastro fiscal</span>
+      <span class="country-tag" data-en>CBR per city · SII fiscal cadastre</span>
+    </div>
+
+    <div class="country-grid">
+      <div class="field">
+        <div class="fl" data-es>REGISTRO PÚBLICO</div><div class="fl" data-en>PUBLIC REGISTRY</div>
+        <h5>Conservador de Bienes Raíces (CBR)</h5>
+        <a class="url" href="https://www.conservador.cl" target="_blank">conservador.cl</a>
+        <p data-es>Sistema único en LATAM: CBR es independiente del Estado, por concesión. Cada ciudad mayor tiene su CBR. Online completo.</p>
+        <p data-en>Unique LATAM system: CBR is independent from State, by concession. Each major city has its own CBR. Fully online.</p>
+      </div>
+      <div class="field">
+        <div class="fl" data-es>CATASTRO FISCAL</div><div class="fl" data-en>FISCAL CADASTRE</div>
+        <h5>SII · Servicio de Impuestos Internos</h5>
+        <a class="url" href="https://www.sii.cl" target="_blank">sii.cl</a>
+        <p data-es>SII mantiene "certificado de avalúo fiscal" digital de toda propiedad chilena. Búsqueda por rol o RUT propietario.</p>
+        <p data-en>SII maintains digital "fiscal appraisal certificate" of every Chilean property. Search by rol or owner RUT.</p>
+      </div>
+      <div class="field">
+        <div class="fl" data-es>AGREGADORES</div><div class="fl" data-en>AGGREGATORS</div>
+        <h5>Portal Inmobiliario · Yapo · Mercado Libre</h5>
+        <a class="url" href="https://www.portalinmobiliario.com" target="_blank">portalinmobiliario.com</a>
+        <p data-es>Portal Inmobiliario (El Mercurio) es el #1. Premium en Vitacura/Las Condes via brokers boutique.</p>
+        <p data-en>Portal Inmobiliario (El Mercurio) is #1. Premium in Vitacura/Las Condes via boutique brokers.</p>
+      </div>
+    </div>
+
+    <div class="country-full">
+      <div>
+        <h5 data-es>EXTRANJEROS · TOTALMENTE ABIERTO</h5>
+        <h5 data-en>FOREIGN · FULLY OPEN</h5>
+        <div class="open" data-es><strong>100% ABIERTO</strong> · misma protección que ciudadanos. Sin restricciones por zona. CBR independiente da certeza jurídica única en la región. Visa MERCOSUR aplica también.</div>
+        <div class="open" data-en><strong>100% OPEN</strong> · same protection as citizens. No zone restrictions. Independent CBR gives unique regional legal certainty. MERCOSUR visa also applies.</div>
+      </div>
+      <div>
+        <h5 data-es>DESPACHOS</h5>
+        <h5 data-en>FIRMS</h5>
+        <ul>
+          <li><strong>Carey</strong> — más grande, RE</li>
+          <li><strong>Claro & Cía</strong></li>
+          <li><strong>Philippi Prietocarrizosa Ferrero DU & Uría</strong></li>
+          <li><strong>Barros & Errázuriz</strong></li>
+          <li><strong>Cariola Díez Pérez-Cotapos</strong></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ECUADOR -->
+  <div class="country" id="ec">
+    <div class="country-head">
+      <span class="country-flag">🇪🇨</span>
+      <div><div class="country-name">Ecuador <em>· Wave 2</em></div></div>
+      <span class="country-tag" data-es>Cantonal · municipios fuertes</span>
+      <span class="country-tag" data-en>Cantonal · strong municipalities</span>
+    </div>
+
+    <div class="country-grid">
+      <div class="field">
+        <div class="fl" data-es>REGISTRO PÚBLICO</div><div class="fl" data-en>PUBLIC REGISTRY</div>
+        <h5>Registro de la Propiedad · cantonal</h5>
+        <a class="url" href="https://www.registropropiedad.gob.ec" target="_blank">registropropiedad.gob.ec</a>
+        <p data-es>Cantonal — cada municipio. Quito, Guayaquil, Cuenca tienen los más profesionales. DINARDAP coordina.</p>
+        <p data-en>Cantonal — by municipality. Quito, Guayaquil, Cuenca are most professional. DINARDAP coordinates.</p>
+      </div>
+      <div class="field">
+        <div class="fl" data-es>CATASTRO</div><div class="fl" data-en>CADASTRE</div>
+        <h5>Municipal + IGM</h5>
+        <a class="url" href="https://www.igm.gob.ec" target="_blank">igm.gob.ec</a>
+        <p data-es>Catastros municipales urbanos + IGM (Instituto Geográfico Militar) para datos territoriales. Quito catastro es el mejor digital.</p>
+        <p data-en>Municipal urban cadastres + IGM (Military Geographic Institute) for territorial data. Quito cadastre is best digital.</p>
+      </div>
+      <div class="field">
+        <div class="fl" data-es>AGREGADORES</div><div class="fl" data-en>AGGREGATORS</div>
+        <h5>Plusvalia · Inmuebles24 EC</h5>
+        <a class="url" href="https://www.plusvalia.com" target="_blank">plusvalia.com</a>
+        <p data-es>Plusvalia domina. Galápagos restringido — solo locales pueden comprar. Cuenca tiene comunidad expat grande.</p>
+        <p data-en>Plusvalia dominates. Galápagos restricted — only locals can buy. Cuenca has large expat community.</p>
+      </div>
+    </div>
+
+    <div class="country-full">
+      <div>
+        <h5 data-es>EXTRANJEROS</h5>
+        <h5 data-en>FOREIGN</h5>
+        <div class="restriction" data-es><strong>RESTRICCIÓN PARCIAL:</strong> extranjeros pueden comprar excepto dentro de 50km de frontera + 7 millas náuticas de costa militar estratégica + Galápagos (sólo residentes permanentes). Costa Pacífica turística (Salinas, Manta) está OK.</div>
+        <div class="restriction" data-en><strong>PARTIAL RESTRICTION:</strong> foreigners can buy except within 50km of border + 7 nautical miles of strategic military coast + Galápagos (permanent residents only). Tourist Pacific coast (Salinas, Manta) is OK.</div>
+      </div>
+      <div>
+        <h5 data-es>DESPACHOS</h5>
+        <h5 data-en>FIRMS</h5>
+        <ul>
+          <li><strong>Pérez Bustamante & Ponce</strong> — top, RE</li>
+          <li><strong>Bustamante & Bustamante</strong></li>
+          <li><strong>Tobar ZVS</strong> — boutique</li>
+          <li><strong>CorralRosales</strong></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOLIVIA -->
+  <div class="country" id="bo">
+    <div class="country-head">
+      <span class="country-flag">🇧🇴</span>
+      <div><div class="country-name">Bolivia <em>· Wave 5</em></div></div>
+      <span class="country-tag" data-es>Derechos Reales · departamental</span>
+      <span class="country-tag" data-en>Derechos Reales · departmental</span>
+    </div>
+
+    <div class="country-grid">
+      <div class="field">
+        <div class="fl" data-es>REGISTRO PÚBLICO</div><div class="fl" data-en>PUBLIC REGISTRY</div>
+        <h5>Derechos Reales</h5>
+        <a class="url" href="https://www.derechosreales.gob.bo" target="_blank">derechosreales.gob.bo</a>
+        <p data-es>Por departamento (9). Consejo de la Magistratura supervisa. Búsqueda en línea limitada — La Paz y SCZ tienen mejor digitalización.</p>
+        <p data-en>By department (9). Council of Magistracy supervises. Limited online search — La Paz and SCZ have best digitalization.</p>
+      </div>
+      <div class="field">
+        <div class="fl" data-es>CATASTRO</div><div class="fl" data-en>CADASTRE</div>
+        <h5>INRA (rural) + GAM (urbano)</h5>
+        <a class="url" href="https://www.inra.gob.bo" target="_blank">inra.gob.bo</a>
+        <p data-es>INRA para tierra rural (saneamiento de tierras). GAM (Gobierno Autónomo Municipal) para urbano. La Paz GAM tiene catastro digital.</p>
+        <p data-en>INRA for rural land (land regularization). GAM (Autonomous Municipal Government) for urban. La Paz GAM has digital cadastre.</p>
+      </div>
+      <div class="field">
+        <div class="fl" data-es>AGREGADORES</div><div class="fl" data-en>AGGREGATORS</div>
+        <h5>InfoCasas BO · UltraCasas</h5>
+        <a class="url" href="https://www.infocasas.com.bo" target="_blank">infocasas.com.bo</a>
+        <p data-es>Mercado emergente, transparencia parcial. La Paz y Santa Cruz son los mercados premium. Uyuni: turístico, brokers especializados.</p>
+        <p data-en>Emerging market, partial transparency. La Paz and Santa Cruz are premium markets. Uyuni: tourist, specialized brokers.</p>
+      </div>
+    </div>
+
+    <div class="country-full">
+      <div>
+        <h5 data-es>EXTRANJEROS</h5>
+        <h5 data-en>FOREIGN</h5>
+        <div class="restriction" data-es><strong>RESTRICCIÓN · 50km de frontera</strong> y también para tierras agrarias (límite de superficie). En urbano La Paz/SCZ/Cochabamba: extranjeros pueden comprar libremente. Reforma agraria 1953 + LMAD 2010 da incertidumbre rural — DD estricta.</div>
+        <div class="restriction" data-en><strong>RESTRICTION · 50km of border</strong> and also for agrarian land (surface limits). In urban La Paz/SCZ/Cochabamba: foreigners can buy freely. 1953 land reform + 2010 LMAD give rural uncertainty — strict DD.</div>
+      </div>
+      <div>
+        <h5 data-es>DESPACHOS</h5>
+        <h5 data-en>FIRMS</h5>
+        <ul>
+          <li><strong>Bufete Aguirre</strong> — premier</li>
+          <li><strong>Indacochea & Asociados</strong></li>
+          <li><strong>CR&F Rojas</strong></li>
+          <li><strong>Quintanilla, Soria & Nishizawa</strong></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- VENEZUELA -->
+  <div class="country" id="ve">
+    <div class="country-head">
+      <span class="country-flag">🇻🇪</span>
+      <div><div class="country-name">Venezuela <em>· Wave 1</em></div></div>
+      <span class="country-tag" data-es>SAREN · contexto político crítico</span>
+      <span class="country-tag" data-en>SAREN · critical political context</span>
+    </div>
+
+    <div class="country-grid">
+      <div class="field">
+        <div class="fl" data-es>REGISTRO + NOTARÍA</div><div class="fl" data-en>REGISTRY + NOTARY</div>
+        <h5>SAREN</h5>
+        <a class="url" href="https://www.saren.gob.ve" target="_blank">saren.gob.ve</a>
+        <p data-es>Servicio Autónomo de Registros y Notarías. Sistema centralizado. Consulta presencial recomendada — sistema digital irregular.</p>
+        <p data-en>Autonomous Registry and Notary Service. Centralized system. In-person consultation recommended — digital system irregular.</p>
+      </div>
+      <div class="field">
+        <div class="fl" data-es>CATASTRO</div><div class="fl" data-en>CADASTRE</div>
+        <h5>Municipal + INTI</h5>
+        <p data-es>Catastros municipales urbanos. INTI (Instituto Nacional de Tierras) para rural. Caracas tiene el catastro más profesional.</p>
+        <p data-en>Municipal urban cadastres. INTI (National Land Institute) for rural. Caracas has the most professional cadastre.</p>
+      </div>
+      <div class="field">
+        <div class="fl" data-es>AGREGADORES</div><div class="fl" data-en>AGGREGATORS</div>
+        <h5>Mercado Libre VE · Inmuebles Venezuela</h5>
+        <a class="url" href="https://inmuebles.mercadolibre.com.ve" target="_blank">inmuebles.mercadolibre.com.ve</a>
+        <p data-es>Mercado severamente dislocado por contexto. Transacciones en USD cash + cripto cada vez más comunes. Margarita: dolarizado de facto.</p>
+        <p data-en>Market severely dislocated by context. USD cash + crypto transactions increasingly common. Margarita: de facto dollarized.</p>
+      </div>
+    </div>
+
+    <div class="country-full">
+      <div>
+        <h5 data-es>EXTRANJEROS · LEGAL VS PRÁCTICO</h5>
+        <h5 data-en>FOREIGN · LEGAL VS PRACTICAL</h5>
+        <div class="restriction" data-es><strong>LEGALMENTE ABIERTO · OPERATIVAMENTE COMPLEJO.</strong> Sin restricciones legales por zona. En la práctica: dificultad de remesa, transacciones generalmente en cash USD o cripto, riesgo expropiación (Ley de Tierras 2001). Recomendación: estructura corporativa + acompañamiento legal alto.</div>
+        <div class="restriction" data-en><strong>LEGALLY OPEN · OPERATIONALLY COMPLEX.</strong> No legal restrictions by zone. In practice: remittance difficulty, transactions usually in USD cash or crypto, expropriation risk (2001 Land Law). Recommendation: corporate structure + heavy legal accompaniment.</div>
+      </div>
+      <div>
+        <h5 data-es>DESPACHOS</h5>
+        <h5 data-en>FIRMS</h5>
+        <ul>
+          <li><strong>Hoet Peláez Castillo & Duque</strong></li>
+          <li><strong>D'Empaire</strong></li>
+          <li><strong>Mendoza, Palacios, Acedo, Borjas, Páez Pumar & Cía</strong></li>
+          <li><strong>Travieso Evans Arria Rengel & Paz</strong></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 08 · CONE SUR ============ -->
+<section id="cone">
+  <h3 class="region" data-es>Cono Sur <span>· Wave 4</span></h3>
+  <h3 class="region" data-en>Southern Cone <span>· Wave 4</span></h3>
+
+  <!-- ARGENTINA -->
+  <div class="country" id="ar">
+    <div class="country-head">
+      <span class="country-flag">🇦🇷</span>
+      <div><div class="country-name">Argentina <em>· Wave 4</em></div></div>
+      <span class="country-tag" data-es>Registro provincial · catastros provinciales</span>
+      <span class="country-tag" data-en>Provincial registry · provincial cadastres</span>
+    </div>
+
+    <div class="country-grid">
+      <div class="field">
+        <div class="fl" data-es>REGISTRO PÚBLICO</div><div class="fl" data-en>PUBLIC REGISTRY</div>
+        <h5>Registro de la Propiedad Inmueble</h5>
+        <a class="url" href="https://www.dnrpi.jus.gob.ar" target="_blank">dnrpi.jus.gob.ar</a>
+        <p data-es>Provincial. CABA: RPICABA. Buenos Aires Provincia: RPBA. Mendoza, Córdoba, etc. — cada uno propio. Búsqueda online por matrícula.</p>
+        <p data-en>Provincial. CABA: RPICABA. Buenos Aires Province: RPBA. Mendoza, Córdoba, etc. — each its own. Online search by matricula.</p>
+      </div>
+      <div class="field">
+        <div class="fl" data-es>CATASTRO</div><div class="fl" data-en>CADASTRE</div>
+        <h5>ARBA · ATER · catastros provinciales</h5>
+        <a class="url" href="https://www.arba.gob.ar" target="_blank">arba.gob.ar</a>
+        <p data-es>ARBA (Provincia de BA), ATER (Entre Ríos), DGR (Mendoza), etc. Geoportales con mapas catastrales.</p>
+        <p data-en>ARBA (BA Province), ATER (Entre Ríos), DGR (Mendoza), etc. Geoportals with cadastral maps.</p>
+      </div>
+      <div class="field">
+        <div class="fl" data-es>AGREGADORES</div><div class="fl" data-en>AGGREGATORS</div>
+        <h5>ZonaProp · Argenprop · Mercado Libre</h5>
+        <a class="url" href="https://www.zonaprop.com.ar" target="_blank">zonaprop.com.ar</a>
+        <p data-es>ZonaProp dominante. Premium en Palermo, Recoleta, Puerto Madero via brokers boutique. Reporte Inmobiliario es la fuente de pricing serio.</p>
+        <p data-en>ZonaProp dominant. Premium in Palermo, Recoleta, Puerto Madero via boutique brokers. Reporte Inmobiliario is the serious pricing source.</p>
+      </div>
+    </div>
+
+    <div class="country-full">
+      <div>
+        <h5 data-es>EXTRANJEROS</h5>
+        <h5 data-en>FOREIGN</h5>
+        <div class="restriction" data-es><strong>ABIERTO URBANO · RESTRINGIDO RURAL.</strong> Compra urbana sin restricción. Tierra rural (Ley 26.737/2011): extranjeros máximo 1,000 ha por persona, total nacional 15% de superficie. Patagonia/Mendoza rural requiere autorización del Registro Nacional de Tierras Rurales.</div>
+        <div class="restriction" data-en><strong>OPEN URBAN · RESTRICTED RURAL.</strong> Urban purchase without restriction. Rural land (Law 26737/2011): foreigners max 1,000 ha per person, national total 15% of surface. Patagonia/Mendoza rural requires authorization from National Rural Land Registry.</div>
+      </div>
+      <div>
+        <h5 data-es>DESPACHOS</h5>
+        <h5 data-en>FIRMS</h5>
+        <ul>
+          <li><strong>Marval O'Farrell Mairal</strong> — el más grande, RE</li>
+          <li><strong>Bruchou & Funes de Rioja</strong></li>
+          <li><strong>Mitrani Caballero & Ruiz Moreno</strong></li>
+          <li><strong>Allende & Brea</strong></li>
+          <li><strong>Pérez Alati, Grondona, Benites & Arntsen</strong></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- URUGUAY -->
+  <div class="country" id="uy">
+    <div class="country-head">
+      <span class="country-flag">🇺🇾</span>
+      <div><div class="country-name">Uruguay <em>· Wave 4</em></div></div>
+      <span class="country-tag" data-es>Sistema departamental · alta certeza</span>
+      <span class="country-tag" data-en>Departmental system · high certainty</span>
+    </div>
+
+    <div class="country-grid">
+      <div class="field">
+        <div class="fl" data-es>REGISTRO PÚBLICO</div><div class="fl" data-en>PUBLIC REGISTRY</div>
+        <h5>Registro de la Propiedad</h5>
+        <a class="url" href="https://www.dgr.gub.uy" target="_blank">dgr.gub.uy</a>
+        <p data-es>Dirección General de Registros. Sección Inmobiliaria por departamento. Búsqueda en línea por padrón.</p>
+        <p data-en>General Registry Directorate. Property Section by department. Online search by padrón.</p>
+      </div>
+      <div class="field">
+        <div class="fl" data-es>CATASTRO</div><div class="fl" data-en>CADASTRE</div>
+        <h5>Dirección Nacional de Catastro</h5>
+        <a class="url" href="https://www.catastro.gub.uy" target="_blank">catastro.gub.uy</a>
+        <p data-es>Nacional. Visor geoespacial completo. Búsqueda por padrón, propietario, ubicación. Uno de los mejores en LATAM.</p>
+        <p data-en>National. Full geospatial viewer. Search by padrón, owner, location. One of the best in LATAM.</p>
+      </div>
+      <div class="field">
+        <div class="fl" data-es>AGREGADORES</div><div class="fl" data-en>AGGREGATORS</div>
+        <h5>InfoCasas · Gallito · Mercado Libre</h5>
+        <a class="url" href="https://www.infocasas.com.uy" target="_blank">infocasas.com.uy</a>
+        <p data-es>InfoCasas líder. Premium en Punta del Este, José Ignacio, Pocitos. Estancias rurales via brokers especializados (Estancias Argentinas, Patagonia Sotheby's).</p>
+        <p data-en>InfoCasas leads. Premium in Punta del Este, José Ignacio, Pocitos. Rural estancias via specialized brokers (Estancias Argentinas, Patagonia Sotheby's).</p>
+      </div>
+    </div>
+
+    <div class="country-full">
+      <div>
+        <h5 data-es>EXTRANJEROS · MUY ABIERTO</h5>
+        <h5 data-en>FOREIGN · VERY OPEN</h5>
+        <div class="open" data-es><strong>100% ABIERTO</strong> · misma protección que ciudadanos. Estabilidad política + certeza jurídica reconocidas. Inversión de $375,000+ USD da residencia. Punta del Este es destino premium argentino/brasileño.</div>
+        <div class="open" data-en><strong>100% OPEN</strong> · same protection as citizens. Recognized political stability + legal certainty. $375,000+ USD investment grants residency. Punta del Este is the premium Argentine/Brazilian destination.</div>
+      </div>
+      <div>
+        <h5 data-es>DESPACHOS</h5>
+        <h5 data-en>FIRMS</h5>
+        <ul>
+          <li><strong>Guyer & Regules</strong> — premier</li>
+          <li><strong>Ferrere</strong> — multi-país</li>
+          <li><strong>Bragard</strong></li>
+          <li><strong>Posadas, Posadas & Vecino</strong></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- PARAGUAY -->
+  <div class="country" id="py">
+    <div class="country-head">
+      <span class="country-flag">🇵🇾</span>
+      <div><div class="country-name">Paraguay <em>· Wave 4</em></div></div>
+      <span class="country-tag" data-es>DGRP centralizado · SNC catastro</span>
+      <span class="country-tag" data-en>Centralized DGRP · SNC cadastre</span>
+    </div>
+
+    <div class="country-grid">
+      <div class="field">
+        <div class="fl" data-es>REGISTRO PÚBLICO</div><div class="fl" data-en>PUBLIC REGISTRY</div>
+        <h5>Dirección General de los Registros Públicos</h5>
+        <a class="url" href="https://www.pj.gov.py" target="_blank">pj.gov.py</a>
+        <p data-es>Bajo el Poder Judicial. Búsqueda en línea limitada. Asunción tiene la mayor parte del inventario premium.</p>
+        <p data-en>Under the Judicial Branch. Limited online search. Asunción has most of the premium inventory.</p>
+      </div>
+      <div class="field">
+        <div class="fl" data-es>CATASTRO</div><div class="fl" data-en>CADASTRE</div>
+        <h5>SNC · Servicio Nacional de Catastro</h5>
+        <a class="url" href="https://www.catastro.gov.py" target="_blank">catastro.gov.py</a>
+        <p data-es>Nacional. Modernización en curso. Datos rurales completos para Chaco — donde se compran estancias.</p>
+        <p data-en>National. Modernization underway. Complete rural data for the Chaco — where estancias are bought.</p>
+      </div>
+      <div class="field">
+        <div class="fl" data-es>AGREGADORES</div><div class="fl" data-en>AGGREGATORS</div>
+        <h5>InfoCasas PY · Clasipar</h5>
+        <a class="url" href="https://www.infocasas.com.py" target="_blank">infocasas.com.py</a>
+        <p data-es>Mercado pequeño y emergente. Chaco rural (estancias ganaderas) tiene su propia red — brokers de ganadería como Acoba.</p>
+        <p data-en>Small emerging market. Rural Chaco (cattle estancias) has its own network — cattle brokers like Acoba.</p>
+      </div>
+    </div>
+
+    <div class="country-full">
+      <div>
+        <h5 data-es>EXTRANJEROS · TOTALMENTE ABIERTO</h5>
+        <h5 data-en>FOREIGN · FULLY OPEN</h5>
+        <div class="open" data-es><strong>100% ABIERTO</strong> · sin restricciones por zona o tamaño. Residencia rápida ($5,000 USD aprox). Atractivo creciente para extranjeros (low tax, low cost of living, MERCOSUR access).</div>
+        <div class="open" data-en><strong>100% OPEN</strong> · no zone or size restrictions. Fast residency (~$5,000 USD). Growing foreign appeal (low tax, low cost of living, MERCOSUR access).</div>
+      </div>
+      <div>
+        <h5 data-es>DESPACHOS</h5>
+        <h5 data-en>FIRMS</h5>
+        <ul>
+          <li><strong>Vouga Abogados</strong> — RE + corporativo</li>
+          <li><strong>Mersán Abogados</strong> — premier</li>
+          <li><strong>Berkemeyer</strong></li>
+          <li><strong>Ferrere Paraguay</strong></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 09 · BRAZIL ============ -->
+<section id="brazil">
+  <h3 class="region" data-es>Brasil <span>· Wave 2 · sistema único</span></h3>
+  <h3 class="region" data-en>Brazil <span>· Wave 2 · unique system</span></h3>
+
+  <!-- BRAZIL -->
+  <div class="country" id="br">
+    <div class="country-head">
+      <span class="country-flag">🇧🇷</span>
+      <div><div class="country-name">Brasil <em>· Wave 2</em></div></div>
+      <span class="country-tag" data-es>Cartórios estaduais · sistema notarial</span>
+      <span class="country-tag" data-en>State cartórios · notarial system</span>
+    </div>
+
+    <div class="country-grid">
+      <div class="field">
+        <div class="fl" data-es>REGISTRO PÚBLICO</div><div class="fl" data-en>PUBLIC REGISTRY</div>
+        <h5>Cartórios de Registro de Imóveis</h5>
+        <a class="url" href="https://www.registradores.org.br" target="_blank">registradores.org.br</a>
+        <p data-es>Sistema único en LATAM: cartórios privados regulados (notariales). SP tiene ARISP (búsqueda online unificada). Brasil tiene matrícula por inmueble, no por propietario.</p>
+        <p data-en>Unique LATAM system: regulated private cartórios (notarial). SP has ARISP (unified online search). Brazil indexes by property matricula, not by owner.</p>
+      </div>
+      <div class="field">
+        <div class="fl" data-es>CATASTRO</div><div class="fl" data-en>CADASTRE</div>
+        <h5>SIGEF (rural) + IPTU (urbano)</h5>
+        <a class="url" href="https://sigef.incra.gov.br" target="_blank">sigef.incra.gov.br</a>
+        <p data-es>SIGEF (INCRA) para rural — visor geoespacial nacional. ITR + IPTU son los catastros fiscales. Cada municipio mantiene IPTU.</p>
+        <p data-en>SIGEF (INCRA) for rural — national geospatial viewer. ITR + IPTU are fiscal cadastres. Each municipality maintains IPTU.</p>
+      </div>
+      <div class="field">
+        <div class="fl" data-es>AGREGADORES (MLS-LIKE)</div><div class="fl" data-en>AGGREGATORS (MLS-LIKE)</div>
+        <h5>VivaReal · ZAP Imóveis · ImovelWeb</h5>
+        <a class="url" href="https://www.vivareal.com.br" target="_blank">vivareal.com.br</a>
+        <p data-es>VivaReal/ZAP es el #1. Sin MLS verdadero. Premium en Trancoso, Búzios, Praia do Espelho via brokers boutique. CRECI per state da licencias.</p>
+        <p data-en>VivaReal/ZAP is #1. No true MLS. Premium in Trancoso, Búzios, Praia do Espelho via boutique brokers. CRECI per state licenses agents.</p>
+      </div>
+    </div>
+
+    <div class="country-full">
+      <div>
+        <h5 data-es>EXTRANJEROS</h5>
+        <h5 data-en>FOREIGN</h5>
+        <div class="restriction" data-es><strong>ABIERTO URBANO · RESTRINGIDO FRONTERA/INDÍGENA.</strong> Compra urbana sin restricción. Faixa de Fronteira (150km de frontera) restringida — autorización del Consejo de Defensa Nacional. Tierras indígenas demarcadas: prohibidas. Costa: sin restricción (Trancoso, Búzios, Florianópolis libres).</div>
+        <div class="restriction" data-en><strong>OPEN URBAN · RESTRICTED BORDER/INDIGENOUS.</strong> Urban purchase without restriction. Faixa de Fronteira (150km of border) restricted — National Defense Council authorization. Demarcated indigenous lands: prohibited. Coast: no restriction (Trancoso, Búzios, Florianópolis free).</div>
+      </div>
+      <div>
+        <h5 data-es>DESPACHOS ESPECIALIZADOS</h5>
+        <h5 data-en>SPECIALIST LAW FIRMS</h5>
+        <ul>
+          <li><strong>Mattos Filho</strong> — el más grande, RE</li>
+          <li><strong>Pinheiro Neto</strong></li>
+          <li><strong>BMA · Barbosa, Müssnich, Aragão</strong></li>
+          <li><strong>Demarest</strong></li>
+          <li><strong>Vella Pugliese Buosi Guidoni</strong></li>
+          <li><strong>Trench Rossi Watanabe</strong></li>
+        </ul>
+      </div>
+    </div>
+    <div class="country-full" style="margin-top:14px">
+      <div>
+        <h5 data-es>BROKERS PREMIUM REGIONALES</h5>
+        <h5 data-en>PREMIUM REGIONAL BROKERS</h5>
+        <ul>
+          <li><strong>Bossa Nova Sotheby's</strong> — SP, Rio, Trancoso</li>
+          <li><strong>Coldwell Banker Trancoso</strong></li>
+          <li><strong>Engel & Völkers São Paulo</strong></li>
+          <li><strong>Quintessentially Estates</strong> — luxe BR</li>
+        </ul>
+      </div>
+      <div>
+        <h5 data-es>NODOS INSTITUCIONALES</h5>
+        <h5 data-en>INSTITUTIONAL NODES</h5>
+        <ul>
+          <li><strong>CRECI</strong> · Conselho Regional de Corretores · por estado</li>
+          <li><strong>FECOMÉRCIO</strong> · cámaras comerciales con sector inmobiliario</li>
+          <li><strong>SECOVI-SP</strong> · sindicato de empresas RE más fuerte</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 10 · CHECKLIST ============ -->
+<section id="checklist">
+  <div class="sec-head">
+    <div class="sec-num" data-es>10 · DUE DILIGENCE · CHECKLIST UNIVERSAL</div>
+    <div class="sec-num" data-en>10 · DUE DILIGENCE · UNIVERSAL CHECKLIST</div>
+    <h2 data-es>Las <em>15 verificaciones</em> antes de firmar.</h2>
+    <h2 data-en>The <em>15 verifications</em> before signing.</h2>
+    <p class="sec-sub" data-es>Independiente del país, estas 15 verificaciones se hacen TODAS antes de transferir un dólar. Si una sola sale rara — paramos.</p>
+    <p class="sec-sub" data-en>Country-independent, all 15 verifications happen BEFORE any dollar moves. If one comes back odd — we stop.</p>
+  </div>
+
+  <div class="checklist">
+    <div class="check-item">
+      <div class="check-n">01</div>
+      <div>
+        <h4 data-es>Certificado de tradición / folio real</h4>
+        <h4 data-en>Title certificate / folio real</h4>
+        <p data-es>Cadena completa de titulares por los últimos 20 años. Buscar: pasos sin documentar, herencias no inscritas, cambios de nombre.</p>
+        <p data-en>Complete chain of owners for the last 20 years. Look for: undocumented steps, unregistered inheritances, name changes.</p>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-n">02</div>
+      <div>
+        <h4 data-es>Gravámenes y limitaciones</h4>
+        <h4 data-en>Liens and limitations</h4>
+        <p data-es>Hipotecas activas, embargos, servidumbres pasivas, anticresis. Cualquier carga sobre la propiedad. Crítico.</p>
+        <p data-en>Active mortgages, embargos, passive easements, antichresis. Any encumbrance on the property. Critical.</p>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-n">03</div>
+      <div>
+        <h4 data-es>Concordancia catastro-registro</h4>
+        <h4 data-en>Cadastre-registry concordance</h4>
+        <p data-es>Las dimensiones, ubicación, linderos del registro deben coincidir con el catastro. Si difieren más de 5% — investigar.</p>
+        <p data-en>Dimensions, location, boundaries from registry must match cadastre. If they differ by more than 5% — investigate.</p>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-n">04</div>
+      <div>
+        <h4 data-es>Levantamiento topográfico (mensura)</h4>
+        <h4 data-en>Topographic survey (mensura)</h4>
+        <p data-es>Topógrafo certifica las dimensiones físicas reales. Obligatorio en rural, costa, montaña. En urbano si la propiedad &gt; 500m².</p>
+        <p data-en>Surveyor certifies real physical dimensions. Mandatory in rural, coast, mountain. In urban if property &gt; 500m².</p>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-n">05</div>
+      <div>
+        <h4 data-es>Uso de suelo y normativa</h4>
+        <h4 data-en>Zoning and regulations</h4>
+        <p data-es>Verificar qué se puede construir, qué uso se permite. Si plan es alquiler vacacional, validar que zonificación lo permite (cada vez más restringido en LATAM).</p>
+        <p data-en>Verify what can be built, what use is allowed. If plan is vacation rental, validate zoning permits it (increasingly restricted in LATAM).</p>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-n">06</div>
+      <div>
+        <h4 data-es>Impuestos y servicios al día</h4>
+        <h4 data-en>Taxes and utilities current</h4>
+        <p data-es>Predial, agua, luz, gas — todos al día. Cualquier deuda pendiente pasa al nuevo comprador en LATAM.</p>
+        <p data-en>Property tax, water, electricity, gas — all current. Any pending debt passes to the new buyer in LATAM.</p>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-n">07</div>
+      <div>
+        <h4 data-es>Licencias de construcción / permisos</h4>
+        <h4 data-en>Construction licenses / permits</h4>
+        <p data-es>Toda construcción existente debe tener permiso. Construcciones sin permiso son riesgo de demolición. Verificar contra plano oficial.</p>
+        <p data-en>All existing construction must have permits. Unpermitted construction is demolition risk. Verify against official plans.</p>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-n">08</div>
+      <div>
+        <h4 data-es>Estado de la sociedad vendedora (si aplica)</h4>
+        <h4 data-en>Selling entity status (if applicable)</h4>
+        <p data-es>Si el vendedor es persona jurídica: actos constitutivos, accionistas, autorizaciones para vender, situación tributaria.</p>
+        <p data-en>If seller is a legal entity: constitutional acts, shareholders, sale authorization, tax status.</p>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-n">09</div>
+      <div>
+        <h4 data-es>Estado civil + régimen patrimonial</h4>
+        <h4 data-en>Marital status + property regime</h4>
+        <p data-es>Si el vendedor está casado, el cónyuge debe aprobar (sociedad de gananciales). Sin esto, el contrato puede ser anulado.</p>
+        <p data-en>If seller is married, spouse must approve (community property). Without this, the contract can be voided.</p>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-n">10</div>
+      <div>
+        <h4 data-es>Restricciones a extranjeros</h4>
+        <h4 data-en>Foreign restrictions</h4>
+        <p data-es>Zona restringida, frontera, costa, área indígena — confirmar tipo de zona y estructura legal necesaria (fideicomiso, S.A., autorización).</p>
+        <p data-en>Restricted zone, border, coast, indigenous area — confirm zone type and required legal structure (trust, corp, authorization).</p>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-n">11</div>
+      <div>
+        <h4 data-es>Litigios y procesos judiciales</h4>
+        <h4 data-en>Litigation and judicial processes</h4>
+        <p data-es>Búsqueda en cortes locales por el nombre del vendedor + por la dirección de la propiedad. Cualquier proceso activo bloquea la venta.</p>
+        <p data-en>Search local courts by seller name + property address. Any active process blocks the sale.</p>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-n">12</div>
+      <div>
+        <h4 data-es>Servidumbres y derechos de paso</h4>
+        <h4 data-en>Easements and rights of way</h4>
+        <p data-es>Algunos predios tienen servidumbres no obvias (paso, agua, vista, líneas eléctricas). Levantamiento físico identifica las visibles; abogado las legales.</p>
+        <p data-en>Some plots have non-obvious easements (passage, water, view, power lines). Physical survey finds visible ones; lawyer finds legal ones.</p>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-n">13</div>
+      <div>
+        <h4 data-es>Patrimonio cultural / protección ambiental</h4>
+        <h4 data-en>Cultural heritage / environmental protection</h4>
+        <p data-es>Áreas protegidas, sitios arqueológicos, reservas. Limitan severamente uso. Verificar SEMARNAT (MX), Ministerio de Ambiente, Patrimonio Cultural.</p>
+        <p data-en>Protected areas, archaeological sites, reserves. Severely limit use. Check SEMARNAT (MX), Environment Ministry, Cultural Heritage.</p>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-n">14</div>
+      <div>
+        <h4 data-es>Seguro de título (donde existe)</h4>
+        <h4 data-en>Title insurance (where it exists)</h4>
+        <p data-es>Disponible en PR, CR, RD, PA, MX. Esencial en países con historia de disputas (HN, NI). Costo: 0.3-0.6% del precio de compra, vale el ROI.</p>
+        <p data-en>Available in PR, CR, DR, PA, MX. Essential in countries with dispute history (HN, NI). Cost: 0.3-0.6% of purchase price, worth the ROI.</p>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-n">15</div>
+      <div>
+        <h4 data-es>Inspección física final</h4>
+        <h4 data-en>Final physical inspection</h4>
+        <p data-es>El día antes de firmar, ir al sitio. Verificar que coincide con lo descrito. Tomar fotos. Conversar con vecinos — saben cosas que el registro no.</p>
+        <p data-en>The day before signing, visit the site. Verify it matches the description. Take photos. Talk to neighbors — they know things registries don't.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta">
+  <h2 data-es>El registro es <em>el mapa</em>. La red es <em>el atajo</em>.</h2>
+  <h2 data-en>The registry is <em>the map</em>. The network is <em>the shortcut</em>.</h2>
+  <p data-es>Los portales públicos te dan datos. Los notarios y abogados boutique te dan acceso. Las dos cosas juntas son el moat. Empezar siempre por el registro, después construir la red local.</p>
+  <p data-en>Public portals give you data. Notaries and boutique lawyers give you access. The two together are the moat. Always start with the registry, then build the local network.</p>
+  <a href="LATAM/land.html" class="cta-btn" data-es>BASE DE TIERRAS →</a>
+  <a href="LATAM/land.html" class="cta-btn" data-en>LAND DATABASE →</a>
+  <a href="LATAM/contacts.html" class="cta-btn" data-es>CRM ABOGADOS →</a>
+  <a href="LATAM/contacts.html" class="cta-btn" data-en>LAWYER CRM →</a>
+  <a href="sora-hq.html" class="cta-btn">HQ</a>
+</div>
+
+<footer>
+  <p data-es>Inteligencia de propiedad LATAM · v1.0 · La Compañía / Sora MMXXVI</p>
+  <p data-en>LATAM property intelligence · v1.0 · La Compañía / Sora MMXXVI</p>
+</footer>
+
+<script>
+  function setLang(lang){
+    document.documentElement.lang = lang;
+    document.querySelectorAll('.lang button').forEach(b => b.classList.remove('active'));
+    document.querySelector(`.lang button[onclick="setLang('${lang}')"]`).classList.add('active');
+    try { localStorage.setItem('sora.lang', lang); } catch(e){}
+  }
+  try {
+    const saved = localStorage.getItem('sora.lang');
+    if (saved) setLang(saved);
+  } catch(e){}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,961 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SORA · Proceso de Entrevista · 3 etapas</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Instrument+Serif&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F8F3EA; --cream-2:#F2EBDD; --cream-3:#E9DFCA;
+    --ink:#1B1A17; --ink-2:#3A352D; --ink-3:#5C5346; --faint:#9A8E7A;
+    --line:rgba(27,26,23,.10); --line-2:rgba(27,26,23,.06);
+    --coral:#D9573B; --gold:#B58F4D; --mango:#E2A24A; --green:#3F5F45; --rose:#B8616B; --teal:#2C6E7F;
+    --serif:'Fraunces',Georgia,serif; --display:'Instrument Serif',Georgia,serif;
+    --sans:'Inter',-apple-system,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--cream);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;font-size:15px;line-height:1.55;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.08  0 0 0 0 0.07  0 0 0 0 0.05  0 0 0 0.020 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--coral);color:var(--cream)}
+
+  [data-en]{display:none}
+  html[lang="en"] [data-es]{display:none}
+  html[lang="en"] [data-en]{display:inline}
+  html[lang="en"] li[data-en],html[lang="en"] p[data-en],html[lang="en"] div[data-en],html[lang="en"] h1[data-en],html[lang="en"] h2[data-en],html[lang="en"] h3[data-en],html[lang="en"] td[data-en],html[lang="en"] th[data-en]{display:block}
+  html[lang="en"] td[data-en],html[lang="en"] th[data-en]{display:table-cell}
+
+  .top{position:sticky;top:0;z-index:50;background:rgba(248,243,234,.92);backdrop-filter:blur(14px);border-bottom:0.5px solid var(--line)}
+  .top-in{max-width:1180px;margin:0 auto;padding:14px 28px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .brand{font-family:var(--serif);font-weight:600;font-size:16px;letter-spacing:.16em;color:var(--ink)}
+  .brand em{font-style:italic;color:var(--coral)}
+  .top-tag{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--rose);text-transform:uppercase;padding:4px 10px;background:rgba(184,97,107,.10);border-radius:4px}
+  .top-link{font-family:var(--sans);font-size:12px;color:var(--ink-2);padding:7px 12px;border:0.5px solid var(--line);border-radius:5px}
+  .top-link:hover{background:var(--cream-2)}
+  .spacer{flex:1}
+  .lang{display:inline-flex;border:0.5px solid var(--line);border-radius:5px;overflow:hidden}
+  .lang button{padding:6px 11px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;background:transparent;border:0;color:var(--faint);cursor:pointer;font-weight:500}
+  .lang button.active{background:var(--ink);color:var(--cream)}
+
+  .hero{padding:80px 32px 56px;max-width:1180px;margin:0 auto;text-align:center}
+  .hero-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--coral);font-weight:600;margin-bottom:24px}
+  .hero h1{font-family:var(--display);font-weight:400;font-size:clamp(54px,9vw,108px);line-height:.96;letter-spacing:-.025em;color:var(--ink);margin-bottom:18px}
+  .hero h1 em{font-style:italic;color:var(--coral)}
+  .hero-lede{font-family:var(--serif);font-size:20px;color:var(--ink-2);font-weight:300;max-width:740px;margin:0 auto 36px;line-height:1.5}
+  .hero-lede strong{color:var(--ink);font-weight:500}
+
+  .strip{max-width:1180px;margin:0 auto 24px;padding:0 32px;display:grid;grid-template-columns:repeat(5,1fr);border-top:0.5px solid var(--line);border-bottom:0.5px solid var(--line)}
+  .strip > div{padding:22px 18px;text-align:center;border-right:0.5px solid var(--line)}
+  .strip > div:last-child{border-right:0}
+  .strip .n{font-family:var(--display);font-size:36px;color:var(--coral);line-height:1;margin-bottom:6px}
+  .strip .l{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
+
+  section{max-width:1180px;margin:0 auto;padding:64px 32px}
+  .sec-head{margin-bottom:36px;text-align:center}
+  .sec-num{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--coral);font-weight:600;margin-bottom:14px}
+  .sec-num em{font-style:normal;color:var(--ink-3)}
+  .sec-head h2{font-family:var(--display);font-weight:400;font-size:clamp(36px,5vw,56px);line-height:1.04;letter-spacing:-.02em;color:var(--ink);margin-bottom:14px}
+  .sec-head h2 em{font-style:italic;color:var(--coral)}
+  .sec-sub{font-family:var(--serif);font-size:17px;color:var(--ink-3);font-weight:300;max-width:680px;margin:0 auto;line-height:1.55}
+
+  /* Funnel visual */
+  .funnel{max-width:760px;margin:32px auto 0;display:flex;flex-direction:column;align-items:center;gap:0}
+  .funnel-row{display:grid;grid-template-columns:1fr auto 1fr;gap:18px;align-items:center;width:100%}
+  .funnel-row .pill{font-family:var(--mono);font-size:12px;letter-spacing:.10em;color:var(--ink-2);padding:12px 18px;background:var(--cream);border:0.5px solid var(--line);border-radius:8px;text-align:center}
+  .funnel-row .pill .n{font-family:var(--display);font-size:24px;color:var(--coral);margin-right:8px}
+  .funnel-row .arrow{font-family:var(--mono);color:var(--coral);font-weight:600}
+  .funnel-row .desc{font-family:var(--serif);font-size:13.5px;color:var(--ink-3);line-height:1.45}
+  .funnel-step{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--coral);font-weight:600;text-align:center;padding:14px 0 8px}
+
+  /* Stage cards */
+  .stage{background:var(--cream);border:0.5px solid var(--line);border-radius:12px;padding:0;margin-bottom:32px;overflow:hidden}
+  .stage-band{height:8px;background:var(--coral)}
+  .stage.s1 .stage-band{background:var(--gold)}
+  .stage.s2 .stage-band{background:var(--teal)}
+  .stage.s3 .stage-band{background:var(--coral)}
+  .stage-body{padding:32px 36px}
+  .stage-top{display:grid;grid-template-columns:140px 1fr auto;gap:24px;align-items:start;margin-bottom:24px;padding-bottom:24px;border-bottom:0.5px solid var(--line-2)}
+  .stage-num{font-family:var(--display);font-size:64px;color:var(--coral);line-height:1;font-style:italic}
+  .stage.s1 .stage-num{color:var(--gold)}
+  .stage.s2 .stage-num{color:var(--teal)}
+  .stage-top h3{font-family:var(--display);font-size:32px;font-weight:400;color:var(--ink);margin-bottom:8px;letter-spacing:-.01em;line-height:1.1}
+  .stage-top h3 em{font-style:italic;color:var(--coral)}
+  .stage-top .meta{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--ink-3);text-transform:uppercase}
+  .stage-top .who{font-family:var(--display);font-size:18px;color:var(--ink-2);font-style:italic;text-align:right}
+  .stage-top .who span{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;color:var(--coral);text-transform:uppercase;font-style:normal;margin-top:4px;font-weight:600}
+
+  .stage-section{margin-bottom:24px}
+  .stage-section:last-child{margin-bottom:0}
+  .stage-section h4{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);font-weight:600;margin-bottom:12px}
+  .stage-section p{font-family:var(--serif);font-size:15px;line-height:1.6;color:var(--ink-2);margin-bottom:10px}
+  .stage-section ul{list-style:none;padding:0}
+  .stage-section li{font-family:var(--sans);font-size:14px;color:var(--ink-2);padding:8px 0 8px 22px;position:relative;line-height:1.5;border-bottom:0.5px solid var(--line-2)}
+  .stage-section li:last-child{border-bottom:0}
+  .stage-section li::before{content:'';position:absolute;left:0;top:18px;width:10px;height:1px;background:var(--coral)}
+  .stage-section li strong{color:var(--ink);font-weight:600}
+  .stage-section li em{font-style:italic;color:var(--ink-3)}
+
+  /* Question block */
+  .question{background:var(--cream-2);border:0.5px solid var(--line);border-left:3px solid var(--coral);border-radius:8px;padding:18px 22px;margin:12px 0}
+  .question .qnum{font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--coral);font-weight:600;margin-bottom:6px}
+  .question .q{font-family:var(--display);font-size:18px;font-style:italic;color:var(--ink);line-height:1.4;margin-bottom:8px}
+  .question .signal{font-family:var(--mono);font-size:10.5px;letter-spacing:.10em;text-transform:uppercase;color:var(--ink-3);font-weight:500}
+  .question .signal strong{color:var(--green);font-weight:700}
+
+  /* Rubric tables */
+  .tbl-wrap{overflow-x:auto;border-radius:10px;margin-top:18px}
+  table{width:100%;border-collapse:collapse;background:var(--cream);border:0.5px solid var(--line);border-radius:10px;overflow:hidden}
+  th{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);font-weight:600;text-align:left;padding:14px 18px;background:var(--cream-2);border-bottom:0.5px solid var(--line)}
+  td{padding:14px 18px;font-size:14px;color:var(--ink-2);border-bottom:0.5px solid var(--line-2);font-family:var(--sans);vertical-align:top}
+  tr:last-child td{border-bottom:0}
+  td.n{font-family:var(--mono);font-size:13px;color:var(--coral);font-feature-settings:"tnum";white-space:nowrap}
+  td.score{font-family:var(--display);font-style:italic;font-size:18px;color:var(--ink);text-align:center}
+
+  /* Script blocks */
+  .script{background:var(--ink);color:var(--cream);border-radius:10px;padding:24px 28px;margin-top:18px;font-family:var(--mono);font-size:13px;line-height:1.7;white-space:pre-wrap}
+  .script .hdr{color:var(--mango);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:14px;font-weight:600}
+
+  /* Offer card */
+  .offer{background:var(--cream-2);border:0.5px solid var(--line);border-left:3px solid var(--green);border-radius:10px;padding:32px 36px;margin-top:32px}
+  .offer h3{font-family:var(--display);font-size:28px;font-weight:400;color:var(--ink);margin-bottom:14px}
+  .offer h3 em{font-style:italic;color:var(--green)}
+  .offer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:20px}
+  .offer-grid > div{padding:18px 20px;background:var(--cream);border:0.5px solid var(--line);border-radius:8px}
+  .offer-grid h5{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--coral);font-weight:600;margin-bottom:8px}
+  .offer-grid p{font-family:var(--serif);font-size:14.5px;color:var(--ink-2);line-height:1.5;margin-bottom:0}
+
+  /* Decision matrix */
+  .matrix{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}
+  .matrix-cell{background:var(--cream);border:0.5px solid var(--line);border-radius:10px;padding:22px 24px;text-align:center}
+  .matrix-cell.go{border-left:3px solid var(--green)}
+  .matrix-cell.maybe{border-left:3px solid var(--mango)}
+  .matrix-cell.no{border-left:3px solid var(--coral)}
+  .matrix-cell h4{font-family:var(--display);font-size:22px;color:var(--ink);margin-bottom:8px;font-weight:400}
+  .matrix-cell.go h4 em{color:var(--green);font-style:italic}
+  .matrix-cell.maybe h4 em{color:var(--mango);font-style:italic}
+  .matrix-cell.no h4 em{color:var(--coral);font-style:italic}
+  .matrix-cell p{font-family:var(--serif);font-size:14px;color:var(--ink-2);line-height:1.5}
+  .matrix-cell .threshold{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--ink-3);text-transform:uppercase;margin-top:10px}
+
+  /* CTA */
+  .cta{max-width:780px;margin:80px auto 60px;padding:48px 40px;text-align:center;background:var(--cream-2);border:0.5px solid var(--line);border-radius:14px}
+  .cta h2{font-family:var(--display);font-weight:400;font-size:clamp(34px,5vw,52px);line-height:1.04;color:var(--ink);margin-bottom:16px;letter-spacing:-.02em}
+  .cta h2 em{font-style:italic;color:var(--coral)}
+  .cta p{font-family:var(--serif);font-size:17px;color:var(--ink-2);line-height:1.55;margin-bottom:24px;max-width:560px;margin-left:auto;margin-right:auto}
+  .cta-btn{display:inline-block;padding:14px 32px;background:var(--ink);color:var(--cream);font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;border-radius:6px;font-weight:600;margin:0 6px}
+  .cta-btn:hover{background:var(--coral)}
+
+  footer{max-width:1180px;margin:40px auto 0;padding:40px 32px;border-top:0.5px solid var(--line);text-align:center}
+  footer .brand{font-size:14px;letter-spacing:.22em;margin-bottom:8px;display:block}
+  footer p{font-family:var(--mono);font-size:11px;letter-spacing:.10em;color:var(--ink-3)}
+
+  @media (max-width:760px){
+    .strip{grid-template-columns:repeat(2,1fr)}
+    .strip > div:nth-child(2n){border-right:0}
+    .strip > div{border-bottom:0.5px solid var(--line)}
+    .stage-top{grid-template-columns:1fr;gap:12px}
+    .stage-top .who{text-align:left}
+    .funnel-row{grid-template-columns:1fr}
+    .matrix{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="top-in">
+    <a class="brand" href="sora-hq.html">SORA<em>°</em></a>
+    <span class="top-tag" data-es>ENTREVISTAS · 3 ETAPAS</span>
+    <span class="top-tag" data-en>INTERVIEWS · 3 STAGES</span>
+    <a class="top-link" href="latam-expansion-system.html" data-es>↑ Sistema maestro</a>
+    <a class="top-link" href="latam-expansion-system.html" data-en>↑ Master system</a>
+    <span class="spacer"></span>
+    <div class="lang">
+      <button class="active" onclick="setLang('es')">ES</button>
+      <button onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-eyebrow" data-es>PROCESO DE CONTRATACIÓN · ANFITRIONES</div>
+  <div class="hero-eyebrow" data-en>HIRING PROCESS · HOSTS</div>
+  <h1 data-es>Tres <em>entrevistas</em>.<br>Una oferta.</h1>
+  <h1 data-en>Three <em>interviews</em>.<br>One offer.</h1>
+  <p class="hero-lede" data-es>Ningún anfitrión Sora se contrata sin haber pasado por las <strong>tres etapas</strong>. Minor filtra. Michelle prueba el inglés. Abraham cierra. Una falla = no oferta. Veintinueve son rechazados por cada uno contratado. Eso es la receta.</p>
+  <p class="hero-lede" data-en>No Sora host gets hired without clearing <strong>all three stages</strong>. Minor screens. Michelle tests the English. Abraham closes. One stage fails = no offer. Twenty-nine rejected for every one hired. That's the recipe.</p>
+</header>
+
+<div class="strip">
+  <div><div class="n">3</div><div class="l" data-es>Etapas</div><div class="l" data-en>Stages</div></div>
+  <div><div class="n">2h</div><div class="l" data-es>Tiempo total</div><div class="l" data-en>Total time</div></div>
+  <div><div class="n">3w</div><div class="l" data-es>De principio a fin</div><div class="l" data-en>Start to finish</div></div>
+  <div><div class="n">30→1</div><div class="l" data-es>Tasa de filtro</div><div class="l" data-en>Filter rate</div></div>
+  <div><div class="n">$0</div><div class="l" data-es>Costo por candidato</div><div class="l" data-en>Cost per candidate</div></div>
+</div>
+
+<!-- 01 · FUNNEL OVERVIEW -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es>01 · EL EMBUDO COMPLETO</div>
+    <div class="sec-num" data-en>01 · THE FULL FUNNEL</div>
+    <h2 data-es>De treinta <em>a uno</em>.</h2>
+    <h2 data-en>From thirty <em>to one</em>.</h2>
+    <p class="sec-sub" data-es>Tres semanas. Cada etapa elimina ~70%. La meta es <strong>rechazar pronto</strong>, no contratar rápido.</p>
+    <p class="sec-sub" data-en>Three weeks. Each stage cuts ~70%. The goal is to <strong>reject early</strong>, not hire fast.</p>
+  </div>
+
+  <div class="funnel">
+    <div class="funnel-step" data-es>SEMANA 0 · SOURCING</div>
+    <div class="funnel-step" data-en>WEEK 0 · SOURCING</div>
+    <div class="funnel-row">
+      <div class="pill"><span class="n">30</span><span data-es>Candidatos identificados</span><span data-en>Candidates identified</span></div>
+      <div class="arrow">→</div>
+      <div class="desc" data-es>IG + LinkedIn + bolsas de empleo + referencias</div>
+      <div class="desc" data-en>IG + LinkedIn + job boards + referrals</div>
+    </div>
+    <div class="funnel-step" data-es>SEMANA 1 · DM + LLAMADA INICIAL</div>
+    <div class="funnel-step" data-en>WEEK 1 · DM + INITIAL CALL</div>
+    <div class="funnel-row">
+      <div class="pill"><span class="n">10</span><span data-es>Responden + agendan</span><span data-en>Reply + schedule</span></div>
+      <div class="arrow">→</div>
+      <div class="desc" data-es>~33% de respuesta a outreach personalizado</div>
+      <div class="desc" data-en>~33% reply rate to personalized outreach</div>
+    </div>
+    <div class="funnel-step" data-es>SEMANA 1–2 · ETAPA 1 · MINOR</div>
+    <div class="funnel-step" data-en>WEEK 1–2 · STAGE 1 · MINOR</div>
+    <div class="funnel-row">
+      <div class="pill"><span class="n">5</span><span data-es>Pasan screening</span><span data-en>Pass screening</span></div>
+      <div class="arrow">→</div>
+      <div class="desc" data-es>50% pasan · red real, gusto, fluidez operativa</div>
+      <div class="desc" data-en>50% pass · real network, taste, operational fluency</div>
+    </div>
+    <div class="funnel-step" data-es>SEMANA 2 · ETAPA 2 · MICHELLE</div>
+    <div class="funnel-step" data-en>WEEK 2 · STAGE 2 · MICHELLE</div>
+    <div class="funnel-row">
+      <div class="pill"><span class="n">3</span><span data-es>Pasan prueba de inglés</span><span data-en>Pass English test</span></div>
+      <div class="arrow">→</div>
+      <div class="desc" data-es>60% pasan · inglés de negocios C1+</div>
+      <div class="desc" data-en>60% pass · C1+ business English</div>
+    </div>
+    <div class="funnel-step" data-es>SEMANA 3 · ETAPA 3 · ABRAHAM</div>
+    <div class="funnel-step" data-en>WEEK 3 · STAGE 3 · ABRAHAM</div>
+    <div class="funnel-row">
+      <div class="pill"><span class="n">1–2</span><span data-es>Reciben oferta</span><span data-en>Receive offer</span></div>
+      <div class="arrow">→</div>
+      <div class="desc" data-es>40% reciben oferta · visión + química + cierre</div>
+      <div class="desc" data-en>40% receive offer · vision + chemistry + close</div>
+    </div>
+    <div class="funnel-step" data-es>SEMANA 3 · OFERTA + FIRMA</div>
+    <div class="funnel-step" data-en>WEEK 3 · OFFER + SIGN</div>
+    <div class="funnel-row">
+      <div class="pill" style="border-color:var(--coral);background:rgba(217,87,59,.08)"><span class="n" style="color:var(--coral)">1</span><span data-es>Anfitrión firmado</span><span data-en>Host signed</span></div>
+      <div class="arrow">★</div>
+      <div class="desc" data-es>Trial de 60 días arranca el día siguiente</div>
+      <div class="desc" data-en>60-day trial starts next day</div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 · STAGE 1 · MINOR -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es>02 · ETAPA 1</div>
+    <div class="sec-num" data-en>02 · STAGE 1</div>
+    <h2 data-es>Minor · <em>screening</em></h2>
+    <h2 data-en>Minor · <em>screening</em></h2>
+    <p class="sec-sub" data-es>30 min · mixto ES/EN al final · video Zoom obligatorio · meta: confirmar que es real, no inflado.</p>
+    <p class="sec-sub" data-en>30 min · ES with EN switch at end · Zoom video required · goal: confirm they're real, not inflated.</p>
+  </div>
+
+  <div class="stage s1">
+    <div class="stage-band"></div>
+    <div class="stage-body">
+      <div class="stage-top">
+        <div class="stage-num">01</div>
+        <div>
+          <h3 data-es>El <em>filtro de realidad</em></h3>
+          <h3 data-en>The <em>reality filter</em></h3>
+          <div class="meta" data-es>30 min · Zoom video · español primario, switch a inglés al min. 22</div>
+          <div class="meta" data-en>30 min · Zoom video · Spanish primary, switch to English at min. 22</div>
+        </div>
+        <div class="who">
+          Minor
+          <span data-es>Entrevistador</span>
+          <span data-en>Interviewer</span>
+        </div>
+      </div>
+
+      <div class="stage-section">
+        <h4 data-es>QUÉ SE ESTÁ MIDIENDO</h4>
+        <h4 data-en>WHAT'S BEING MEASURED</h4>
+        <ul>
+          <li><strong data-es>Red real:</strong> <strong data-en>Real network:</strong> <span data-es>¿conoce de verdad a hoteleros, chefs, productores en su ciudad — o solo dice que sí?</span><span data-en>do they actually know hoteliers, chefs, producers in their city — or are they just claiming?</span></li>
+          <li><strong data-es>Capacidad operativa:</strong> <strong data-en>Operational capacity:</strong> <span data-es>¿podría armar una cena para 12 personas en 48 horas sin pánico?</span><span data-en>could they pull together a dinner for 12 in 48 hours without panic?</span></li>
+          <li><strong data-es>Gusto:</strong> <strong data-en>Taste:</strong> <span data-es>cuando habla de lugares premium, ¿menciona los correctos? ¿o nombra los obvios turísticos?</span><span data-en>when they talk premium spots, do they name the right ones? or the obvious tourist ones?</span></li>
+          <li><strong data-es>Motivación financiera:</strong> <strong data-en>Financial motivation:</strong> <span data-es>¿el modelo de comisión funciona para su realidad? ¿no está desesperado por dinero rápido?</span><span data-en>does commission work for their reality? not desperate for fast cash?</span></li>
+          <li><strong data-es>Inglés baseline:</strong> <strong data-en>Baseline English:</strong> <span data-es>switch a inglés en últimos 8 min — si claramente sufre, no llega a etapa 2.</span><span data-en>switch to English in last 8 min — if they clearly suffer, no Stage 2.</span></li>
+        </ul>
+      </div>
+
+      <div class="stage-section">
+        <h4 data-es>LAS PREGUNTAS</h4>
+        <h4 data-en>THE QUESTIONS</h4>
+
+        <div class="question">
+          <div class="qnum">01</div>
+          <p class="q" data-es>"Cuéntame del último fin de semana que organizaste para 8 o más personas — desde cómo armaste la lista hasta cómo terminó."</p>
+          <p class="q" data-en>"Tell me about the last weekend you organized for 8+ people — from how you built the list to how it ended."</p>
+          <p class="signal" data-es>SEÑAL · <strong>real host</strong> nombra fechas específicas, lugares, costos. <strong>fake host</strong> habla en abstracto.</p>
+          <p class="signal" data-en>SIGNAL · <strong>real host</strong> names specific dates, places, costs. <strong>fake host</strong> talks in abstract.</p>
+        </div>
+
+        <div class="question">
+          <div class="qnum">02</div>
+          <p class="q" data-es>"Si tuvieras que nombrar a las tres personas en tu ciudad que conocen a todos en hospitalidad — ¿quiénes son y cómo las conoces?"</p>
+          <p class="q" data-en>"If you had to name the three people in your city who know everyone in hospitality — who are they and how do you know them?"</p>
+          <p class="signal" data-es>SEÑAL · debe poder nombrar las tres en <strong>menos de 15 segundos</strong>. duda = no las conoce.</p>
+          <p class="signal" data-en>SIGNAL · they should name three in <strong>under 15 seconds</strong>. hesitation = doesn't know them.</p>
+        </div>
+
+        <div class="question">
+          <div class="qnum">03</div>
+          <p class="q" data-es>"Imagina que te llamo el viernes a las 3pm. Necesito una cena para 12 personas, sábado a las 8pm, en tu ciudad, $2,500 USD presupuesto total. ¿Qué haces en las próximas 6 horas?"</p>
+          <p class="q" data-en>"Imagine I call you Friday at 3pm. I need a dinner for 12, Saturday 8pm, in your city, $2,500 USD total budget. What do you do in the next 6 hours?"</p>
+          <p class="signal" data-es>SEÑAL · debe responder con <strong>llamadas concretas</strong>, no con marco abstracto. nombre del restaurante, nombre del chef que llama primero, nombre del vino.</p>
+          <p class="signal" data-en>SIGNAL · answer should include <strong>concrete calls</strong>, not abstract framework. restaurant name, chef name they call first, wine name.</p>
+        </div>
+
+        <div class="question">
+          <div class="qnum">04</div>
+          <p class="q" data-es>"Dame tus cinco lugares premium en la ciudad — el que solo tú llevarías a alguien que viene de fuera y quiere lo mejor."</p>
+          <p class="q" data-en>"Give me your five premium spots in the city — the place only you would take someone from out of town who wants the very best."</p>
+          <p class="signal" data-es>SEÑAL · debe haber al menos <strong>2 no-obvios</strong>. si son los 5 que aparecen en TripAdvisor, no es Sora.</p>
+          <p class="signal" data-en>SIGNAL · at least <strong>2 should be non-obvious</strong>. if all 5 are TripAdvisor top, not Sora.</p>
+        </div>
+
+        <div class="question">
+          <div class="qnum">05</div>
+          <p class="q" data-es>"Nuestra primera fase paga $0 base + 25% de los viajes que vendas. Esto significa que en los primeros 60 días podrías ganar $0, o $4,000. ¿Por qué esto funciona para ti — y por qué no funcionaría?"</p>
+          <p class="q" data-en>"Our first phase pays $0 base + 25% of trips you sell. That means in the first 60 days you might earn $0 or $4,000. Why does this work for you — and why wouldn't it?"</p>
+          <p class="signal" data-es>SEÑAL · busca <strong>realismo financiero</strong>, no avaricia ni pánico. ideal: "tengo cobertura por 90 días, después esto tiene que producir".</p>
+          <p class="signal" data-en>SIGNAL · look for <strong>financial realism</strong>, not greed or panic. ideal: "I have runway for 90 days, then this has to produce."</p>
+        </div>
+
+        <div class="question">
+          <div class="qnum">06 · <span data-es>en inglés</span><span data-en>in English</span></div>
+          <p class="q" data-es>"Switching to English now — what's the last trip you took outside Latin America, and what did you learn from how that hospitality worked?"</p>
+          <p class="q" data-en>"Switching to English now — what's the last trip you took outside Latin America, and what did you learn from how that hospitality worked?"</p>
+          <p class="signal" data-es>SEÑAL · solo prueba baseline. Michelle hace la prueba real. Si no puede mantener 90 segundos sin trabarse → no Etapa 2.</p>
+          <p class="signal" data-en>SIGNAL · just baseline test. Michelle does the real test. If they can't hold 90 seconds without stumbling → no Stage 2.</p>
+        </div>
+      </div>
+
+      <div class="stage-section">
+        <h4 data-es>RÚBRICA DE SCORING · 25 PUNTOS</h4>
+        <h4 data-en>SCORING RUBRIC · 25 POINTS</h4>
+        <div class="tbl-wrap">
+        <table>
+          <thead><tr>
+            <th>#</th>
+            <th data-es>CRITERIO</th><th data-en>CRITERION</th>
+            <th data-es>SEÑAL</th><th data-en>SIGNAL</th>
+            <th data-es>PUNTOS</th><th data-en>POINTS</th>
+          </tr></thead>
+          <tbody>
+            <tr><td class="n">01</td><td data-es>Especificidad de red</td><td data-en>Network specificity</td><td data-es>Nombra 3+ contactos reales con detalle</td><td data-en>Names 3+ real contacts with detail</td><td class="score">/5</td></tr>
+            <tr><td class="n">02</td><td data-es>Capacidad operativa</td><td data-en>Operational capacity</td><td data-es>Respuesta a la pregunta 03 incluye 3+ acciones concretas</td><td data-en>Q3 answer includes 3+ concrete actions</td><td class="score">/5</td></tr>
+            <tr><td class="n">03</td><td data-es>Gusto / curaduría</td><td data-en>Taste / curation</td><td data-es>≥2 de 5 lugares no-obvios</td><td data-en>≥2 of 5 places are non-obvious</td><td class="score">/5</td></tr>
+            <tr><td class="n">04</td><td data-es>Energía + presencia</td><td data-en>Energy + presence</td><td data-es>Cámara prendida, viste con cuidado, llega a tiempo, hace preguntas</td><td data-en>Camera on, well-dressed, on time, asks questions</td><td class="score">/4</td></tr>
+            <tr><td class="n">05</td><td data-es>Realismo financiero</td><td data-en>Financial realism</td><td data-es>Entiende comisiones, tiene runway, no desespera</td><td data-en>Gets commissions, has runway, no panic</td><td class="score">/3</td></tr>
+            <tr><td class="n">06</td><td data-es>Inglés baseline</td><td data-en>Baseline English</td><td data-es>Sostiene 90 seg sin trabarse</td><td data-en>Holds 90 sec without stumbling</td><td class="score">/3</td></tr>
+          </tbody>
+        </table>
+        </div>
+
+        <div class="matrix">
+          <div class="matrix-cell go">
+            <h4 data-es><em>20-25</em> · pasa</h4>
+            <h4 data-en><em>20-25</em> · pass</h4>
+            <p data-es>Agendar etapa 2 con Michelle en 48 horas.</p>
+            <p data-en>Schedule stage 2 with Michelle within 48 hours.</p>
+            <div class="threshold" data-es>VERDE</div>
+            <div class="threshold" data-en>GREEN</div>
+          </div>
+          <div class="matrix-cell maybe">
+            <h4 data-es><em>15-19</em> · revisar</h4>
+            <h4 data-en><em>15-19</em> · review</h4>
+            <p data-es>Minor envía grabación + notas a Abraham. Decisión conjunta.</p>
+            <p data-en>Minor sends recording + notes to Abraham. Joint call.</p>
+            <div class="threshold" data-es>AMARILLO</div>
+            <div class="threshold" data-en>YELLOW</div>
+          </div>
+          <div class="matrix-cell no">
+            <h4 data-es><em>0-14</em> · rechazo</h4>
+            <h4 data-en><em>0-14</em> · reject</h4>
+            <p data-es>Minor envía rechazo amable en 24 horas (script abajo).</p>
+            <p data-en>Minor sends kind rejection within 24 hours (script below).</p>
+            <div class="threshold" data-es>ROJO</div>
+            <div class="threshold" data-en>RED</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stage-section">
+        <h4 data-es>HANDOFF · CÓMO MINOR PASA EL CANDIDATO A MICHELLE</h4>
+        <h4 data-en>HANDOFF · HOW MINOR PASSES THE CANDIDATE TO MICHELLE</h4>
+        <div class="script"><div class="hdr" data-es>EMAIL · MINOR → MICHELLE</div><div class="hdr" data-en>EMAIL · MINOR → MICHELLE</div><span data-es">Michelle,
+
+Candidato/a: [nombre], [ciudad], [país].
+Etapa 1 score: __/25.
+
+Resumen (90 segundos de tu tiempo):
+· Red — [3 nombres que mencionó, qué tan creíbles]
+· Operacional — [cómo respondió a la cena de 48 horas]
+· Gusto — [los 5 lugares; cuáles fueron las 2 sorpresas]
+· Financiero — [su situación, runway estimado]
+· Inglés baseline — [pude / no pude sostener inglés últimos 8 min]
+
+Recomendación: PASA / REVISAR / NO PASA
+
+Zoom grabado: [link]
+Notas detalladas: [Notion/Doc link]
+
+Le mando agenda contigo por separado.
+
+Minor</span><span data-en>Michelle,
+
+Candidate: [name], [city], [country].
+Stage 1 score: __/25.
+
+Summary (90 seconds of your time):
+· Network — [3 names they mentioned, how credible]
+· Operational — [how they answered the 48-hour dinner]
+· Taste — [the 5 spots; which 2 were surprises]
+· Financial — [their situation, estimated runway]
+· Baseline English — [could / couldn't hold English last 8 min]
+
+Recommendation: PASS / REVIEW / NO PASS
+
+Recorded Zoom: [link]
+Detailed notes: [Notion/Doc link]
+
+I'll send them a calendar invite for you separately.
+
+Minor</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 · STAGE 2 · MICHELLE -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es>03 · ETAPA 2</div>
+    <div class="sec-num" data-en>03 · STAGE 2</div>
+    <h2 data-es>Michelle · <em>prueba de inglés</em></h2>
+    <h2 data-en>Michelle · <em>English test</em></h2>
+    <p class="sec-sub" data-es>45 min · <strong>full English</strong> de principio a fin · prohibido cambiar a español · meta: ¿puede atender a una pareja de Londres por 4 horas sin que se sienta incómoda?</p>
+    <p class="sec-sub" data-en>45 min · <strong>full English</strong> start to finish · switching to Spanish not allowed · goal: can they host a London couple for 4 hours without it feeling awkward?</p>
+  </div>
+
+  <div class="stage s2">
+    <div class="stage-band"></div>
+    <div class="stage-body">
+      <div class="stage-top">
+        <div class="stage-num">02</div>
+        <div>
+          <h3 data-es>La <em>prueba de fluidez</em></h3>
+          <h3 data-en>The <em>fluency test</em></h3>
+          <div class="meta" data-es>45 min · Zoom video · 100% English · sin excepciones</div>
+          <div class="meta" data-en>45 min · Zoom video · 100% English · no exceptions</div>
+        </div>
+        <div class="who">
+          Michelle
+          <span data-es>Hablante nativa</span>
+          <span data-en>Native speaker</span>
+        </div>
+      </div>
+
+      <div class="stage-section">
+        <h4 data-es>POR QUÉ MICHELLE</h4>
+        <h4 data-en>WHY MICHELLE</h4>
+        <p data-es>El 60% de huéspedes Sora vienen de mercados de habla inglesa (EE.UU., Reino Unido, Canadá, Australia). Si el anfitrión no puede sostener inglés de negocios fluido — con idiomas, modismos, vocabulario hospitalidad — el huésped lo siente en los primeros 30 min y la experiencia entera baja de tier. Michelle es hablante nativa y se entrena específicamente para detectar el nivel real, no el nivel performado.</p>
+        <p data-en>60% of Sora guests come from English-speaking markets (US, UK, Canada, Australia). If a host can't hold fluent business English — with idioms, vocabulary, hospitality terms — the guest feels it in the first 30 min and the entire experience drops a tier. Michelle is a native speaker, trained to detect real fluency vs. performed.</p>
+        <p data-es><em>Esta etapa puede ser reemplazada por otra persona en el futuro</em> con los mismos criterios — debe ser hablante nativa de inglés (US/UK/CA/AU), con background en hospitalidad o servicio, y temperamento neutral (ni amable de más, ni dura de más).</p>
+        <p data-en><em>This stage can be replaced by another person in the future</em> with the same criteria — must be a native English speaker (US/UK/CA/AU), with hospitality or service background, and neutral temperament (neither overly warm nor harsh).</p>
+      </div>
+
+      <div class="stage-section">
+        <h4 data-es>QUÉ SE ESTÁ MIDIENDO</h4>
+        <h4 data-en>WHAT'S BEING MEASURED</h4>
+        <ul>
+          <li><strong data-es>Nivel CEFR mínimo C1:</strong> <strong data-en>CEFR minimum C1:</strong> <span data-es>habla sin esfuerzo visible, errores menores, vocabulario amplio.</span><span data-en>speaks without visible effort, minor errors, broad vocabulary.</span></li>
+          <li><strong data-es>Vocabulario hospitalario:</strong> <strong data-en>Hospitality vocabulary:</strong> <span data-es>entiende y usa términos como charter, concierge, ambiance, pairing, plating, R&R, dietary restrictions.</span><span data-en>understands and uses terms like charter, concierge, ambiance, pairing, plating, R&R, dietary restrictions.</span></li>
+          <li><strong data-es>Idiomas y matiz cultural:</strong> <strong data-en>Idioms and cultural nuance:</strong> <span data-es>"on the rocks", "down to earth", "white-glove" — debe captarlos sin pedir aclaración.</span><span data-en>"on the rocks", "down to earth", "white-glove" — should catch them without asking for clarification.</span></li>
+          <li><strong data-es>Manejo de conflicto en inglés:</strong> <strong data-en>Conflict handling in English:</strong> <span data-es>cuando se le presenta un escenario tenso, responde con confianza, no con disculpas excesivas.</span><span data-en>when presented with a tense scenario, responds with confidence, not excessive apology.</span></li>
+          <li><strong data-es>Encanto bajo presión:</strong> <strong data-en>Charm under pressure:</strong> <span data-es>cuando lo presionan, sigue siendo cálido, articulado, no defensivo.</span><span data-en>when pressed, stays warm, articulate, not defensive.</span></li>
+        </ul>
+      </div>
+
+      <div class="stage-section">
+        <h4 data-es>LAS PREGUNTAS · 45 MIN, 100% ENGLISH</h4>
+        <h4 data-en>THE QUESTIONS · 45 MIN, 100% ENGLISH</h4>
+
+        <div class="question">
+          <div class="qnum" data-es>01 · DISEÑO (10 min)</div>
+          <div class="qnum" data-en>01 · DESIGN (10 min)</div>
+          <p class="q">"Walk me through a weekend you'd design for a couple from London who's never been to your city. They have $5,000 to spend across three days. They want to feel like locals, not like tourists. Take your time."</p>
+          <p class="signal" data-es>SEÑAL · busca <strong>narrativa fluida en inglés</strong>, vocabulario específico (no "very good food" sino "the kitchen leans Levantine with smoked octopus"), capacidad de pintar una imagen.</p>
+          <p class="signal" data-en>SIGNAL · look for <strong>fluid English narrative</strong>, specific vocabulary (not "very good food" but "the kitchen leans Levantine with smoked octopus"), ability to paint a picture.</p>
+        </div>
+
+        <div class="question">
+          <div class="qnum" data-es>02 · CULTURAL (5 min)</div>
+          <div class="qnum" data-en>02 · CULTURAL (5 min)</div>
+          <p class="q">"What's the biggest misconception people from outside have about your city? And how do you correct it without being defensive?"</p>
+          <p class="signal" data-es>SEÑAL · respuestas defensivas, generalizaciones políticas o quejas → rojo. respuestas con humor, matiz, autoconciencia → verde.</p>
+          <p class="signal" data-en>SIGNAL · defensive answers, political generalizations or complaints → red. responses with humor, nuance, self-awareness → green.</p>
+        </div>
+
+        <div class="question">
+          <div class="qnum" data-es>03 · CONFLICTO (8 min)</div>
+          <div class="qnum" data-en>03 · CONFLICT (8 min)</div>
+          <p class="q">"It's Saturday night. Your guests just got back from dinner — they hate the hotel you booked. They're angry, they're hungry-for-Wi-Fi-and-AC, and the husband is starting to raise his voice. Walk me through your next 60 minutes. What do you say? What do you do?"</p>
+          <p class="signal" data-es>SEÑAL · busca <strong>"I'd do this, then I'd do this, then I'd offer this"</strong>. respuestas tipo "I would try to..." sin verbo concreto = rojo. el lenguaje debe ser activo, calmo, dueño de la situación.</p>
+          <p class="signal" data-en>SIGNAL · look for <strong>"I'd do this, then I'd do this, then I'd offer this"</strong>. "I would try to..." without concrete verb = red. language should be active, calm, ownership.</p>
+        </div>
+
+        <div class="question">
+          <div class="qnum" data-es>04 · VOCABULARIO RÁPIDO (5 min)</div>
+          <div class="qnum" data-en>04 · RAPID VOCABULARY (5 min)</div>
+          <p class="q">"Rapid round — give me a one-sentence definition of each of these terms in a hospitality context: <strong>charter, R&R, pairing, plating, off-the-beaten-path, white-glove, dietary restriction, concierge, ambiance, prix fixe</strong>."</p>
+          <p class="signal" data-es>SEÑAL · debe acertar <strong>8 de 10</strong>. dudar en 2 está bien. dudar en 4+ = no pasa.</p>
+          <p class="signal" data-en>SIGNAL · should get <strong>8 of 10</strong> right. hesitating on 2 is fine. hesitating on 4+ = no pass.</p>
+        </div>
+
+        <div class="question">
+          <div class="qnum" data-es>05 · COMPRENSIÓN DE MATIZ (10 min)</div>
+          <div class="qnum" data-en>05 · NUANCE COMPREHENSION (10 min)</div>
+          <p class="q">"I'm going to ask you something layered — listen carefully and respond when I finish. <em>If you had to choose between hosting a quiet honeymoon couple who tip generously but ask a lot of last-minute changes, versus a confident solo founder who is decisive but only wants three things done perfectly, which one do you actually prefer and why — and what does that say about how you'd run your country chapter?</em>"</p>
+          <p class="signal" data-es>SEÑAL · prueba <strong>comprensión auditiva de inglés complejo</strong> + autoconciencia. respuesta de una línea = rojo. respuesta que desempaca las dos partes = verde.</p>
+          <p class="signal" data-en>SIGNAL · tests <strong>complex English listening</strong> + self-awareness. one-line answer = red. answer that unpacks both halves = green.</p>
+        </div>
+
+        <div class="question">
+          <div class="qnum" data-es>06 · ROL-PLAY DE 7 MIN (last 7 min)</div>
+          <div class="qnum" data-en>06 · 7-MIN ROLEPLAY (last 7 min)</div>
+          <p class="q">"For the last 7 minutes, let's roleplay — you're the host, I'm a guest who just landed. Greet me, walk me through what's next. Be warm but professional. Go."</p>
+          <p class="signal" data-es>SEÑAL · busca <strong>cadencia natural</strong>, no script memorizado. transiciones cálidas, microhumor, lectura de la energía. si suena como recepción de hotel, no es Sora.</p>
+          <p class="signal" data-en>SIGNAL · look for <strong>natural cadence</strong>, not memorized script. warm transitions, micro-humor, reading the energy. if it sounds like hotel reception, not Sora.</p>
+        </div>
+      </div>
+
+      <div class="stage-section">
+        <h4 data-es>RÚBRICA DE SCORING · 30 PUNTOS</h4>
+        <h4 data-en>SCORING RUBRIC · 30 POINTS</h4>
+        <div class="tbl-wrap">
+        <table>
+          <thead><tr>
+            <th>#</th>
+            <th data-es>CRITERIO</th><th data-en>CRITERION</th>
+            <th data-es>SEÑAL</th><th data-en>SIGNAL</th>
+            <th>PTS</th>
+          </tr></thead>
+          <tbody>
+            <tr><td class="n">01</td><td data-es>Fluidez (CEFR C1+)</td><td data-en>Fluency (CEFR C1+)</td><td data-es>Habla sin pausas largas, sin búsqueda visible de palabras</td><td data-en>Speaks without long pauses, no visible word-searching</td><td class="score">/6</td></tr>
+            <tr><td class="n">02</td><td data-es>Vocabulario hospitalidad</td><td data-en>Hospitality vocab</td><td data-es>8/10 términos correctos en pregunta 04</td><td data-en>8/10 terms correct on Q4</td><td class="score">/5</td></tr>
+            <tr><td class="n">03</td><td data-es>Comprensión auditiva</td><td data-en>Listening comprehension</td><td data-es>Capta pregunta 05 sin pedir repetición</td><td data-en>Catches Q5 without asking for repeat</td><td class="score">/5</td></tr>
+            <tr><td class="n">04</td><td data-es>Confianza bajo presión</td><td data-en>Confidence under pressure</td><td data-es>Pregunta 03 con verbos activos y ownership</td><td data-en>Q3 answered with active verbs and ownership</td><td class="score">/4</td></tr>
+            <tr><td class="n">05</td><td data-es>Calidez + presencia</td><td data-en>Warmth + presence</td><td data-es>Roleplay 06 se siente real, no scripted</td><td data-en>Q6 roleplay feels real, not scripted</td><td class="score">/5</td></tr>
+            <tr><td class="n">06</td><td data-es>Sin defensiva cultural</td><td data-en>No cultural defensiveness</td><td data-es>Pregunta 02 sin quejas ni generalizaciones</td><td data-en>Q2 without complaints or generalizations</td><td class="score">/3</td></tr>
+            <tr><td class="n">07</td><td data-es>Capacidad de cierre</td><td data-en>Closing ability</td><td data-es>Termina cada respuesta con punto, no se diluye</td><td data-en>Closes each answer with a point, doesn't trail off</td><td class="score">/2</td></tr>
+          </tbody>
+        </table>
+        </div>
+
+        <div class="matrix">
+          <div class="matrix-cell go">
+            <h4 data-es><em>24-30</em> · pasa</h4>
+            <h4 data-en><em>24-30</em> · pass</h4>
+            <p data-es>Agendar etapa 3 con Abraham esta misma semana.</p>
+            <p data-en>Schedule stage 3 with Abraham same week.</p>
+            <div class="threshold" data-es>VERDE</div>
+            <div class="threshold" data-en>GREEN</div>
+          </div>
+          <div class="matrix-cell maybe">
+            <h4 data-es><em>18-23</em> · revisar</h4>
+            <h4 data-en><em>18-23</em> · review</h4>
+            <p data-es>Michelle + Abraham revisan grabación juntos antes de decidir.</p>
+            <p data-en>Michelle + Abraham review recording together before deciding.</p>
+            <div class="threshold" data-es>AMARILLO</div>
+            <div class="threshold" data-en>YELLOW</div>
+          </div>
+          <div class="matrix-cell no">
+            <h4 data-es><em>0-17</em> · rechazo</h4>
+            <h4 data-en><em>0-17</em> · reject</h4>
+            <p data-es>Rechazo amable. Mantener en CRM como "futuro re-evaluar en 12 meses".</p>
+            <p data-en>Kind rejection. Keep in CRM as "re-evaluate in 12 months."</p>
+            <div class="threshold" data-es>ROJO</div>
+            <div class="threshold" data-en>RED</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 · STAGE 3 · ABRAHAM -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es>04 · ETAPA 3 · FINAL</div>
+    <div class="sec-num" data-en>04 · STAGE 3 · FINAL</div>
+    <h2 data-es>Abraham · <em>cierre</em></h2>
+    <h2 data-en>Abraham · <em>close</em></h2>
+    <p class="sec-sub" data-es>45 min · mixto · visión + química + términos · meta: ¿quiero a esta persona en bodas, retiros y planes de 10 años?</p>
+    <p class="sec-sub" data-en>45 min · mixed · vision + chemistry + terms · goal: do I want this person at weddings, retreats, and 10-year plans?</p>
+  </div>
+
+  <div class="stage s3">
+    <div class="stage-band"></div>
+    <div class="stage-body">
+      <div class="stage-top">
+        <div class="stage-num">03</div>
+        <div>
+          <h3 data-es>El <em>cierre</em></h3>
+          <h3 data-en>The <em>close</em></h3>
+          <div class="meta" data-es>45 min · Zoom video · 70% inglés / 30% español · termina con oferta verbal o "next steps"</div>
+          <div class="meta" data-en>45 min · Zoom video · 70% English / 30% Spanish · ends with verbal offer or "next steps"</div>
+        </div>
+        <div class="who">
+          Abraham
+          <span data-es>Fundador</span>
+          <span data-en>Founder</span>
+        </div>
+      </div>
+
+      <div class="stage-section">
+        <h4 data-es>QUÉ SE ESTÁ MIDIENDO</h4>
+        <h4 data-en>WHAT'S BEING MEASURED</h4>
+        <ul>
+          <li><strong data-es>Alineación de visión:</strong> <strong data-en>Vision alignment:</strong> <span data-es>¿entiende que Sora es 10 años, no un side hustle?</span><span data-en>do they understand Sora is 10 years, not a side hustle?</span></li>
+          <li><strong data-es>Madurez emocional:</strong> <strong data-en>Emotional maturity:</strong> <span data-es>¿puede hablar de un fracaso público sin culpar a alguien más?</span><span data-en>can they talk about a public failure without blaming someone else?</span></li>
+          <li><strong data-es>Ambición:</strong> <strong data-en>Ambition:</strong> <span data-es>¿imagina algo grande para Sora en su país — o solo "trabajar bien"?</span><span data-en>do they imagine something big for Sora in their country — or just "working well"?</span></li>
+          <li><strong data-es>Química personal:</strong> <strong data-en>Personal chemistry:</strong> <span data-es>¿quiero cenar con este ser humano mañana? si la respuesta no es un sí inmediato → no.</span><span data-en>do I want to have dinner with this human tomorrow? if not an immediate yes → no.</span></li>
+          <li><strong data-es>Aceptación de términos:</strong> <strong data-en>Terms acceptance:</strong> <span data-es>acepta visión sin negociar — solo negocia números, y eso está bien.</span><span data-en>accepts the vision without negotiating — only negotiates numbers, and that's fine.</span></li>
+        </ul>
+      </div>
+
+      <div class="stage-section">
+        <h4 data-es>LAS PREGUNTAS</h4>
+        <h4 data-en>THE QUESTIONS</h4>
+
+        <div class="question">
+          <div class="qnum">01 · <span data-es>visión</span><span data-en>vision</span> (8 min)</div>
+          <p class="q" data-es>"¿Por qué Sora — y no esto solo, por tu cuenta? Tú ya tienes red. Podrías cobrar a los huéspedes directo. ¿Qué te da Sora que no te das tú?"</p>
+          <p class="q" data-en>"Why Sora — and not just doing this on your own? You already have the network. You could charge guests directly. What does Sora give you that you can't give yourself?"</p>
+          <p class="signal" data-es>SEÑAL · respuesta tipo "dinero más rápido" = rojo. respuesta tipo "no quiero construir marca solo" o "quiero estar en algo más grande" = verde.</p>
+          <p class="signal" data-en>SIGNAL · "faster money" = red. "I don't want to build a brand alone" or "I want to be part of something bigger" = green.</p>
+        </div>
+
+        <div class="question">
+          <div class="qnum">02 · <span data-es>ambición</span><span data-en>ambition</span> (7 min)</div>
+          <p class="q" data-es>"Imagina que estás leyendo una nota de prensa sobre Sora en 18 meses. ¿Qué dice el titular? Y específicamente sobre tu país."</p>
+          <p class="q" data-en>"Imagine reading a press piece on Sora 18 months from now. What does the headline say? And specifically about your country."</p>
+          <p class="signal" data-es>SEÑAL · busca <strong>números concretos + imaginación específica</strong>. "Sora opera bien" = rojo. "Sora-Colombia movió $4M en su primer año y abrió Cartagena como destino premium" = verde.</p>
+          <p class="signal" data-en>SIGNAL · look for <strong>concrete numbers + specific imagination</strong>. "Sora is running well" = red. "Sora-Colombia moved $4M in year one and opened Cartagena as a premium destination" = green.</p>
+        </div>
+
+        <div class="question">
+          <div class="qnum">03 · <span data-es>madurez</span><span data-en>maturity</span> (10 min)</div>
+          <p class="q" data-es>"Cuéntame de una vez que fallaste públicamente — un proyecto, un evento, una relación profesional. No la versión pulida. La real. ¿Qué aprendiste, y cómo cambió la forma en que operas hoy?"</p>
+          <p class="q" data-en>"Tell me about a time you failed publicly — a project, an event, a professional relationship. Not the polished version. The real one. What did you learn, and how has it changed how you operate today?"</p>
+          <p class="signal" data-es>SEÑAL · "no se me ocurre nada" = rojo. culpar al equipo, jefe, contexto = rojo. ownership + lección concreta = verde. <strong>la calidad del fracaso predice la calidad del éxito</strong>.</p>
+          <p class="signal" data-en>SIGNAL · "nothing comes to mind" = red. blaming team, boss, context = red. ownership + concrete lesson = green. <strong>quality of failure predicts quality of success</strong>.</p>
+        </div>
+
+        <div class="question">
+          <div class="qnum">04 · <span data-es>operacional / hospitalidad</span><span data-en>operational / hospitality</span> (8 min)</div>
+          <p class="q" data-es>"Vamos a mandar a un miembro de La Compañía a tu ciudad la próxima semana, por 3 días. Tú diseñas la agenda — quieres que vuelva habiendo entendido tu red completa. ¿Cómo se ve esos 3 días?"</p>
+          <p class="q" data-en>"We're going to fly a La Compañía member to your city next week, for 3 days. You design the agenda — you want them to leave having understood your full network. What do those 3 days look like?"</p>
+          <p class="signal" data-es>SEÑAL · nombres específicos, lógica de orden (warm-up → core → close), atención a momentos de descanso. lista genérica = rojo. agenda viva con personalidad = verde.</p>
+          <p class="signal" data-en>SIGNAL · specific names, logical order (warm-up → core → close), attention to rest moments. generic list = red. living agenda with personality = green.</p>
+        </div>
+
+        <div class="question">
+          <div class="qnum">05 · <span data-es>química directa</span><span data-en>direct chemistry</span> (5 min)</div>
+          <p class="q" data-es>"Pregunta directa: ¿hay algo que aún no te he preguntado, que quieres asegurarte que sepa antes de tomar una decisión?"</p>
+          <p class="q" data-en>"Direct question: is there anything I haven't asked yet that you want to make sure I know before I decide?"</p>
+          <p class="signal" data-es>SEÑAL · prueba autoconfianza + claridad. respuesta tipo "ah no, todo bien" = se le escapan cosas. respuesta tipo "sí — quiero que sepas X" = ownership.</p>
+          <p class="signal" data-en>SIGNAL · tests self-confidence + clarity. "no, all good" = things slip through. "yes — I want you to know X" = ownership.</p>
+        </div>
+
+        <div class="question">
+          <div class="qnum">06 · <span data-es>presentación de oferta</span><span data-en>offer presentation</span> (7 min)</div>
+          <p class="q" data-es>"OK, déjame compartir cómo trabajaríamos juntos." <em>(Abraham presenta la oferta de fase Trial — ver abajo. Observa la reacción.)</em></p>
+          <p class="q" data-en>"OK, let me share how we'd work together." <em>(Abraham presents the Trial phase offer — see below. Watch the reaction.)</em></p>
+          <p class="signal" data-es>SEÑAL · negocia visión = rojo. negocia comisiones razonablemente = verde. acepta todo sin preguntas = amarillo (puede ser desesperado o pasivo).</p>
+          <p class="signal" data-en>SIGNAL · negotiates vision = red. negotiates commission reasonably = green. accepts everything without questions = yellow (could be desperate or passive).</p>
+        </div>
+      </div>
+
+      <div class="stage-section">
+        <h4 data-es>RÚBRICA DE SCORING · 25 PUNTOS</h4>
+        <h4 data-en>SCORING RUBRIC · 25 POINTS</h4>
+        <div class="tbl-wrap">
+        <table>
+          <thead><tr>
+            <th>#</th>
+            <th data-es>CRITERIO</th><th data-en>CRITERION</th>
+            <th data-es>SEÑAL</th><th data-en>SIGNAL</th>
+            <th>PTS</th>
+          </tr></thead>
+          <tbody>
+            <tr><td class="n">01</td><td data-es>Alineación de visión</td><td data-en>Vision alignment</td><td data-es>Q1 muestra entendimiento más allá del dinero</td><td data-en>Q1 shows understanding beyond money</td><td class="score">/5</td></tr>
+            <tr><td class="n">02</td><td data-es>Ambición específica</td><td data-en>Specific ambition</td><td data-es>Q2 incluye números + imagen concreta</td><td data-en>Q2 includes numbers + concrete image</td><td class="score">/5</td></tr>
+            <tr><td class="n">03</td><td data-es>Madurez / ownership</td><td data-en>Maturity / ownership</td><td data-es>Q3 con fracaso real + lección aplicada</td><td data-en>Q3 with real failure + applied lesson</td><td class="score">/5</td></tr>
+            <tr><td class="n">04</td><td data-es>Calidad de agenda Q4</td><td data-en>Q4 agenda quality</td><td data-es>Diseño con nombres, ritmo, personalidad</td><td data-en>Design with names, rhythm, personality</td><td class="score">/4</td></tr>
+            <tr><td class="n">05</td><td data-es>Química personal</td><td data-en>Personal chemistry</td><td data-es>Test: ¿cenaría con esta persona mañana?</td><td data-en>Test: would I have dinner with this person tomorrow?</td><td class="score">/4</td></tr>
+            <tr><td class="n">06</td><td data-es>Aceptación de oferta</td><td data-en>Offer acceptance</td><td data-es>Negocia números, acepta visión</td><td data-en>Negotiates numbers, accepts vision</td><td class="score">/2</td></tr>
+          </tbody>
+        </table>
+        </div>
+
+        <div class="matrix">
+          <div class="matrix-cell go">
+            <h4 data-es><em>20-25</em> · oferta firmada</h4>
+            <h4 data-en><em>20-25</em> · offer signed</h4>
+            <p data-es>Enviar contrato escrito en 24 horas. Trial arranca al día siguiente de firma.</p>
+            <p data-en>Send written contract within 24 hours. Trial starts day after signing.</p>
+            <div class="threshold" data-es>VERDE</div>
+            <div class="threshold" data-en>GREEN</div>
+          </div>
+          <div class="matrix-cell maybe">
+            <h4 data-es><em>15-19</em> · segunda llamada</h4>
+            <h4 data-en><em>15-19</em> · second call</h4>
+            <p data-es>Programar segunda conversación de 30 min en 5 días. Una sola repesca.</p>
+            <p data-en>Schedule a 30-min second conversation within 5 days. One callback only.</p>
+            <div class="threshold" data-es>AMARILLO</div>
+            <div class="threshold" data-en>YELLOW</div>
+          </div>
+          <div class="matrix-cell no">
+            <h4 data-es><em>0-14</em> · rechazo final</h4>
+            <h4 data-en><em>0-14</em> · final rejection</h4>
+            <p data-es>Llamada personal de Abraham, no email. Mantener en CRM tier-2.</p>
+            <p data-en>Personal call from Abraham, not email. Keep in CRM tier-2.</p>
+            <div class="threshold" data-es>ROJO</div>
+            <div class="threshold" data-en>RED</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 · OFFER TEMPLATE -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es>05 · LA OFERTA</div>
+    <div class="sec-num" data-en>05 · THE OFFER</div>
+    <h2 data-es>Lo que Abraham <em>presenta</em> en el min. 30 de Etapa 3.</h2>
+    <h2 data-en>What Abraham <em>presents</em> in minute 30 of Stage 3.</h2>
+    <p class="sec-sub" data-es>La oferta no se manda por email. Se presenta en vivo, frente a frente, viendo la reacción.</p>
+    <p class="sec-sub" data-en>The offer is not emailed. It's presented live, face-to-face, watching the reaction.</p>
+  </div>
+
+  <div class="offer">
+    <h3 data-es>Oferta de <em>fase Trial</em> · primeros 60 días</h3>
+    <h3 data-en><em>Trial phase</em> offer · first 60 days</h3>
+    <p data-es style="font-family:var(--serif);font-size:16px;color:var(--ink-2);line-height:1.6">Lo siguiente es lo que arranca el día después de firmar. Es trial — porque ni tú ni nosotros sabemos todavía si esto funciona. Si en 60 días produjiste $0 sin razones externas válidas, terminamos amistosamente. Si produjiste $4,000+ pasamos a Fase Probada con base mensual.</p>
+    <p data-en style="font-family:var(--serif);font-size:16px;color:var(--ink-2);line-height:1.6">What follows starts the day after signing. It's trial — because neither you nor we yet know if this works. If at 60 days you produced $0 without valid external reasons, we end amicably. If you produced $4,000+ we move to Proven Phase with monthly base.</p>
+
+    <div class="offer-grid">
+      <div>
+        <h5 data-es>BASE</h5><h5 data-en>BASE</h5>
+        <p data-es><strong>$0/mes</strong>. Sora cubre tus gastos de evento (lugar, comida, transporte). No cubre tu vida personal.</p>
+        <p data-en><strong>$0/mo</strong>. Sora covers event costs (venue, food, transport). Does not cover your personal living.</p>
+      </div>
+      <div>
+        <h5 data-es>COMISIÓN VIAJES</h5><h5 data-en>TRIP COMMISSION</h5>
+        <p data-es><strong>25%</strong> del fee neto de cada viaje Sora vendido en tu país.</p>
+        <p data-en><strong>25%</strong> of net fee on every Sora trip sold in your country.</p>
+      </div>
+      <div>
+        <h5 data-es>COMISIÓN REAL ESTATE</h5><h5 data-en>REAL ESTATE COMMISSION</h5>
+        <p data-es><strong>10%</strong> de la comisión de Sora en cualquier cierre que tú originaste.</p>
+        <p data-en><strong>10%</strong> of Sora's commission on any close you originated.</p>
+      </div>
+      <div>
+        <h5 data-es>PRIMER EVENTO</h5><h5 data-en>OPENING EVENT</h5>
+        <p data-es>$3,500 cubierto por Sora. Un miembro de La Compañía vuela y lo facilita.</p>
+        <p data-en>$3,500 covered by Sora. A La Compañía member flies in to facilitate.</p>
+      </div>
+      <div>
+        <h5 data-es>STIPEND DE GASTOS</h5><h5 data-en>EXPENSE STIPEND</h5>
+        <p data-es>$300/mes en gastos comprobables (transporte, café con leads, teléfono).</p>
+        <p data-en>$300/mo in receipts-backed expenses (transport, lead coffees, phone).</p>
+      </div>
+      <div>
+        <h5 data-es>SALIDA</h5><h5 data-en>EXIT</h5>
+        <p data-es>Cualquiera puede terminar a los 60 días sin penalización. Después de Fase 2: 30 días aviso.</p>
+        <p data-en>Either side can end at 60 days with no penalty. After Phase 2: 30 days notice.</p>
+      </div>
+    </div>
+
+    <p data-es style="font-family:var(--serif);font-size:15px;color:var(--ink-2);line-height:1.6;margin-top:24px;padding-top:18px;border-top:0.5px solid var(--line-2);font-style:italic">Después del trial, la oferta escala a las fases <strong>Probado</strong> ($800 base + comisiones), <strong>Partner</strong> ($1,500 base + comisiones + opcional equity país), <strong>Country Director</strong> ($3,000 base + override 15%). Ver <a href="latam-expansion-system.html" style="color:var(--coral);text-decoration:underline">sistema maestro</a> para detalles.</p>
+    <p data-en style="font-family:var(--serif);font-size:15px;color:var(--ink-2);line-height:1.6;margin-top:24px;padding-top:18px;border-top:0.5px solid var(--line-2);font-style:italic">After trial, offer scales to <strong>Proven</strong> ($800 base + commissions), <strong>Partner</strong> ($1,500 base + commissions + optional country equity), <strong>Country Director</strong> ($3,000 base + 15% override). See <a href="latam-expansion-system.html" style="color:var(--coral);text-decoration:underline">master system</a> for details.</p>
+  </div>
+</section>
+
+<!-- 06 · REJECTION SCRIPTS -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es>06 · CÓMO RECHAZAR BIEN</div>
+    <div class="sec-num" data-en>06 · HOW TO REJECT WELL</div>
+    <h2 data-es>Veintinueve <em>rechazos</em> por cada contratación.</h2>
+    <h2 data-en>Twenty-nine <em>rejections</em> per hire.</h2>
+    <p class="sec-sub" data-es>Cada persona rechazada hoy es un potencial conector, anfitrión futuro, o cliente. Cómo decimos no construye o destruye reputación. Estas son las plantillas.</p>
+    <p class="sec-sub" data-en>Every person rejected today is a potential connector, future host, or client. How we say no builds or destroys reputation. Here are the templates.</p>
+  </div>
+
+  <div class="script"><div class="hdr" data-es>RECHAZO DESPUÉS DE ETAPA 1 · ESPAÑOL</div><div class="hdr" data-en>POST-STAGE 1 REJECTION · SPANISH</div><span data-es>Hola [Nombre],
+
+Gracias por el tiempo de ayer — me encantó conocerte y aprender sobre tu trabajo en [ciudad].
+
+Para esta posición específica de anfitrión de Sora en [país], decidimos seguir adelante con otros candidatos cuyo perfil se alinea más exactamente con lo que estamos buscando ahora. No es un reflejo de tu calidad — es ajuste de momento.
+
+Quiero mantenerte en nuestro radar. Te voy a guardar en nuestra base para volver a hablar en 6–12 meses cuando abramos otras posiciones, o si surge algo más específico en [ciudad].
+
+Si en ese tiempo escuchas de alguien que crees que encaja con lo que vimos juntos — la referencia se aprecia mucho.
+
+Gracias de nuevo. Que sigan los proyectos buenos.
+
+Minor
+La Compañía / Sora</span><span data-en>Hi [Name],
+
+Thanks for the time yesterday — I really enjoyed meeting you and learning about your work in [city].
+
+For this specific Sora host position in [country], we've decided to move forward with other candidates whose profile aligns more precisely with what we're looking for right now. It's not a reflection of your quality — it's timing fit.
+
+I want to keep you on our radar. I'll save you in our pipeline to reconnect in 6–12 months when we open other positions, or if something more specific comes up in [city].
+
+If during that time you hear of someone you think fits what we discussed — the referral is much appreciated.
+
+Thanks again. May the good projects keep coming.
+
+Minor
+La Compañía / Sora</span></div>
+
+  <div class="script" style="margin-top:18px"><div class="hdr" data-es>RECHAZO DESPUÉS DE ETAPA 3 · LLAMADA PERSONAL DE ABRAHAM</div><div class="hdr" data-en>POST-STAGE 3 REJECTION · ABRAHAM PERSONAL CALL</div><span data-es>[Llamada de 10 min, no WhatsApp ni email — esta persona llegó al final y merece la cortesía de tu voz.]
+
+"Hola [Nombre] — gracias por el tiempo esta semana. Quería llamarte personalmente porque llegaste hasta el final de nuestro proceso y eso te ganaste.
+
+He pensado mucho en esto. Por [razón específica y honesta — no genérica], hemos decidido no proceder con la oferta. Lo que sí sé es que [reconocimiento específico de algo que vimos en ti que sí brilló].
+
+Si en el futuro algo cambia — para ti o para nosotros — me gustaría volver a hablar. ¿Estarías abierto a que te contacte en 8–12 meses?
+
+Si conoces a alguien que crees que encaja con lo que hablamos — esa referencia es la mejor manera de seguir conectados.
+
+Gracias de verdad. Cuídate."</span><span data-en>[10-min call, not WhatsApp or email — this person reached the end and deserves the courtesy of your voice.]
+
+"Hi [Name] — thank you for the time this week. I wanted to call you personally because you made it to the end of our process and that's earned.
+
+I've thought hard about this. Because of [specific honest reason — not generic], we've decided not to proceed with an offer. What I do know is that [specific recognition of something we saw in you that did shine].
+
+If in the future something changes — for you or for us — I'd like to talk again. Would you be open to me reaching out in 8–12 months?
+
+If you know someone you think fits what we discussed — that referral is the best way to stay connected.
+
+Thank you, truly. Take care."</span></div>
+</section>
+
+<!-- 07 · WHAT HAPPENS AFTER SIGNING -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es>07 · DESPUÉS DE FIRMAR</div>
+    <div class="sec-num" data-en>07 · POST-SIGNING</div>
+    <h2 data-es>Lo que sigue en las <em>primeras 72 horas</em>.</h2>
+    <h2 data-en>What happens in the <em>first 72 hours</em>.</h2>
+  </div>
+
+  <div class="tbl-wrap">
+  <table>
+    <thead><tr>
+      <th data-es>CUÁNDO</th><th data-en>WHEN</th>
+      <th data-es>QUÉ</th><th data-en>WHAT</th>
+      <th data-es>QUIÉN</th><th data-en>WHO</th>
+    </tr></thead>
+    <tbody>
+      <tr>
+        <td class="n" data-es>Día 0</td><td class="n" data-en>Day 0</td>
+        <td data-es>Contrato firmado por DocuSign. Pago de $300 stipend del mes 1 enviado.</td><td data-en>Contract signed via DocuSign. Month-1 $300 stipend wired.</td>
+        <td data-es>Abraham + Minor (legal)</td><td data-en>Abraham + Minor (legal)</td>
+      </tr>
+      <tr>
+        <td class="n" data-es>Día 1</td><td class="n" data-en>Day 1</td>
+        <td data-es>Onboarding call de 90 min con Minor. Acceso a Notion, WhatsApp grupo LATAM, plantillas.</td><td data-en>90-min onboarding call with Minor. Access to Notion, LATAM WhatsApp group, templates.</td>
+        <td data-es>Minor</td><td data-en>Minor</td>
+      </tr>
+      <tr>
+        <td class="n" data-es>Día 2</td><td class="n" data-en>Day 2</td>
+        <td data-es>El miembro de La Compañía asignado reserva su vuelo. Llegan en día 8.</td><td data-en>Assigned La Compañía member books flight. Arrives day 8.</td>
+        <td data-es>Abraham asigna</td><td data-en>Abraham assigns</td>
+      </tr>
+      <tr>
+        <td class="n" data-es>Día 3</td><td class="n" data-en>Day 3</td>
+        <td data-es>Anfitrión envía primera lista borrador de 40 nombres para el evento de lanzamiento.</td><td data-en>Host sends first draft list of 40 names for opening event.</td>
+        <td data-es>Anfitrión</td><td data-en>Host</td>
+      </tr>
+      <tr>
+        <td class="n" data-es>Día 8</td><td class="n" data-en>Day 8</td>
+        <td data-es>Miembro de La Compañía aterriza. Empieza protocolo de 14 días (ver sistema maestro).</td><td data-en>La Compañía member lands. 14-day protocol starts (see master system).</td>
+        <td data-es>Ambos</td><td data-en>Both</td>
+      </tr>
+      <tr>
+        <td class="n" data-es>Día 22</td><td class="n" data-en>Day 22</td>
+        <td data-es>Primer evento ejecutado. Day 23: retrospectiva. Day 30: primera venta target.</td><td data-en>Opening event executed. Day 23: retro. Day 30: first sale target.</td>
+        <td data-es>Anfitrión + La Compañía</td><td data-en>Host + La Compañía</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta">
+  <h2 data-es>El sistema <em>no falla</em> por las preguntas.</h2>
+  <h2 data-en>The system <em>doesn't fail</em> on the questions.</h2>
+  <p data-es>Falla cuando alguien se salta una etapa, ignora un score amarillo, o contrata por desesperación de cubrir una ola. Tres entrevistas. Sin excepciones. Esto es lo que protege la marca a 10 años.</p>
+  <p data-en>It fails when someone skips a stage, ignores a yellow score, or hires out of desperation to cover a wave. Three interviews. No exceptions. This is what protects the brand for 10 years.</p>
+  <a href="latam-expansion-system.html" class="cta-btn" data-es>SISTEMA MAESTRO →</a>
+  <a href="latam-expansion-system.html" class="cta-btn" data-en>MASTER SYSTEM →</a>
+  <a href="sora-hq.html" class="cta-btn" data-es>VOLVER A HQ</a>
+  <a href="sora-hq.html" class="cta-btn" data-en>BACK TO HQ</a>
+</div>
+
+<footer>
+  <span class="brand">LA COMPAÑÍA<em>°</em> MMXXVI</span>
+  <p data-es>Proceso de entrevista interno · Sora Travel Agency · 3 etapas · v1.0</p>
+  <p data-en>Internal interview process · Sora Travel Agency · 3 stages · v1.0</p>
+</footer>
+
+<script>
+  function setLang(lang){
+    document.documentElement.lang = lang;
+    document.querySelectorAll('.lang button').forEach(b => b.classList.remove('active'));
+    document.querySelector(`.lang button[onclick="setLang('${lang}')"]`).classList.add('active');
+    try { localStorage.setItem('sora.lang', lang); } catch(e){}
+  }
+  try {
+    const saved = localStorage.getItem('sora.lang');
+    if (saved) setLang(saved);
+  } catch(e){}
+</script>
+
+</body>
+</html>

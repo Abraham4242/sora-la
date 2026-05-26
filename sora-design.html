@@ -1,0 +1,908 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SORA · Design Resources · Brand & AI Generation</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Instrument+Serif&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F8F3EA; --cream-2:#F2EBDD; --cream-3:#E9DFCA;
+    --ink:#1B1A17; --ink-2:#3A352D; --ink-3:#5C5346; --faint:#9A8E7A;
+    --line:rgba(27,26,23,.10); --line-2:rgba(27,26,23,.06);
+    --coral:#D9573B; --gold:#B58F4D; --mango:#E2A24A; --green:#3F5F45; --rose:#B8616B; --teal:#2C6E7F;
+    --serif:'Fraunces',Georgia,serif; --display:'Instrument Serif',Georgia,serif;
+    --sans:'Inter',-apple-system,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--cream);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;font-size:15px;line-height:1.55;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.08  0 0 0 0 0.07  0 0 0 0 0.05  0 0 0 0.020 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--coral);color:var(--cream)}
+
+  [data-en]{display:none}
+  html[lang="en"] [data-es]{display:none}
+  html[lang="en"] [data-en]{display:inline}
+  html[lang="en"] li[data-en],html[lang="en"] p[data-en],html[lang="en"] div[data-en],html[lang="en"] h1[data-en],html[lang="en"] h2[data-en],html[lang="en"] h3[data-en],html[lang="en"] td[data-en],html[lang="en"] th[data-en]{display:block}
+
+  .top{position:sticky;top:0;z-index:50;background:rgba(248,243,234,.92);backdrop-filter:blur(14px);border-bottom:0.5px solid var(--line)}
+  .top-in{max-width:1180px;margin:0 auto;padding:14px 28px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .brand{font-family:var(--serif);font-weight:600;font-size:16px;letter-spacing:.16em;color:var(--ink)}
+  .brand em{font-style:italic;color:var(--coral)}
+  .top-tag{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--rose);text-transform:uppercase;padding:4px 10px;background:rgba(184,97,107,.10);border-radius:4px}
+  .top-link{font-family:var(--sans);font-size:12px;color:var(--ink-2);padding:7px 12px;border:0.5px solid var(--line);border-radius:5px}
+  .top-link:hover{background:var(--cream-2)}
+  .spacer{flex:1}
+  .lang{display:inline-flex;border:0.5px solid var(--line);border-radius:5px;overflow:hidden}
+  .lang button{padding:6px 11px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;background:transparent;border:0;color:var(--faint);cursor:pointer;font-weight:500}
+  .lang button.active{background:var(--ink);color:var(--cream)}
+
+  .hero{padding:72px 32px 48px;max-width:1180px;margin:0 auto;text-align:center}
+  .hero-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--coral);font-weight:600;margin-bottom:22px}
+  .hero h1{font-family:var(--display);font-weight:400;font-size:clamp(48px,8vw,96px);line-height:.96;letter-spacing:-.025em;color:var(--ink);margin-bottom:18px}
+  .hero h1 em{font-style:italic;color:var(--coral)}
+  .hero-lede{font-family:var(--serif);font-size:19px;color:var(--ink-2);font-weight:300;max-width:780px;margin:0 auto;line-height:1.5}
+  .hero-lede strong{color:var(--ink);font-weight:500}
+
+  .strip{max-width:1180px;margin:32px auto 0;padding:0 32px;display:grid;grid-template-columns:repeat(5,1fr);border-top:0.5px solid var(--line);border-bottom:0.5px solid var(--line)}
+  .strip > div{padding:22px 18px;text-align:center;border-right:0.5px solid var(--line)}
+  .strip > div:last-child{border-right:0}
+  .strip .n{font-family:var(--display);font-size:34px;color:var(--coral);line-height:1;margin-bottom:6px}
+  .strip .l{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
+
+  section{max-width:1180px;margin:0 auto;padding:48px 32px}
+  .sec-head{margin-bottom:28px}
+  .sec-num{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--coral);font-weight:600;margin-bottom:12px}
+  .sec-head h2{font-family:var(--display);font-weight:400;font-size:clamp(30px,4.5vw,46px);line-height:1.06;letter-spacing:-.02em;color:var(--ink);margin-bottom:10px}
+  .sec-head h2 em{font-style:italic;color:var(--coral)}
+  .sec-sub{font-family:var(--serif);font-size:16px;color:var(--ink-3);font-weight:300;max-width:740px;line-height:1.55}
+
+  /* Color palette swatches */
+  .palette{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-top:18px}
+  .swatch{border-radius:8px;overflow:hidden;border:0.5px solid var(--line);background:var(--cream)}
+  .swatch-block{aspect-ratio:1.5;display:flex;align-items:flex-end;padding:14px;color:#fff}
+  .swatch-block.dark-text{color:var(--ink)}
+  .swatch-label{font-family:var(--mono);font-size:11px;letter-spacing:.10em;text-transform:uppercase;font-weight:600}
+  .swatch-info{padding:12px 14px;border-top:0.5px solid var(--line)}
+  .swatch-name{font-family:var(--display);font-size:16px;color:var(--ink);font-style:italic;line-height:1.2;margin-bottom:4px}
+  .swatch-hex{font-family:var(--mono);font-size:11.5px;color:var(--ink-3);letter-spacing:.05em}
+  .swatch-use{font-family:var(--sans);font-size:11.5px;color:var(--ink-2);line-height:1.4;margin-top:6px}
+
+  /* Typography demos */
+  .typo{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:18px}
+  .typo-card{background:var(--cream);border:0.5px solid var(--line);border-radius:10px;padding:24px 26px}
+  .typo-card .label{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--coral);font-weight:600;margin-bottom:14px}
+  .typo-demo{margin-bottom:12px;line-height:1.05}
+  .typo-demo.display{font-family:var(--display);font-size:48px;font-style:italic;color:var(--ink);letter-spacing:-.02em}
+  .typo-demo.serif{font-family:var(--serif);font-size:24px;color:var(--ink);font-weight:500}
+  .typo-demo.sans{font-family:var(--sans);font-size:18px;color:var(--ink-2)}
+  .typo-demo.mono{font-family:var(--mono);font-size:14px;color:var(--ink-2);letter-spacing:.06em}
+  .typo-info{font-family:var(--sans);font-size:12.5px;color:var(--ink-3);line-height:1.5;padding-top:12px;border-top:0.5px solid var(--line-2)}
+  .typo-info strong{color:var(--ink);font-weight:600}
+
+  /* Tool cards */
+  .tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:20px}
+  .tool{background:var(--cream);border:0.5px solid var(--line);border-radius:10px;padding:22px 24px;display:flex;flex-direction:column}
+  .tool .badge{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;color:var(--coral);font-weight:600;margin-bottom:6px;text-transform:uppercase}
+  .tool h4{font-family:var(--display);font-size:22px;font-weight:400;color:var(--ink);margin-bottom:6px;line-height:1.2}
+  .tool h4 em{font-style:italic;color:var(--coral)}
+  .tool .url{font-family:var(--mono);font-size:11px;color:var(--teal);margin-bottom:12px;word-break:break-all}
+  .tool p{font-family:var(--serif);font-size:14px;color:var(--ink-2);line-height:1.55;margin-bottom:10px}
+  .tool .pricing{font-family:var(--mono);font-size:11.5px;color:var(--green);font-weight:600;padding-top:10px;border-top:0.5px solid var(--line-2);margin-top:auto}
+
+  /* Prompt block */
+  .prompt{background:var(--ink);color:var(--cream);border-radius:10px;padding:24px 28px;margin:14px 0;position:relative}
+  .prompt .plbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--mango);font-weight:600;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center}
+  .prompt .ptag{font-family:var(--mono);font-size:9.5px;color:var(--cream);background:var(--coral);padding:3px 7px;border-radius:3px;letter-spacing:.10em}
+  .prompt pre{font-family:var(--mono);font-size:12.5px;line-height:1.7;color:var(--cream);white-space:pre-wrap;margin:0}
+  .prompt .note{font-family:var(--serif);font-size:13px;font-style:italic;color:var(--cream);opacity:.7;margin-top:12px;padding-top:12px;border-top:0.5px solid rgba(248,243,234,.15);line-height:1.5}
+
+  /* Workflow steps */
+  .workflow{display:grid;gap:10px;margin-top:18px}
+  .step{background:var(--cream);border:0.5px solid var(--line);border-left:3px solid var(--coral);border-radius:8px;padding:18px 22px;display:grid;grid-template-columns:38px 1fr;gap:14px;align-items:start}
+  .step-n{font-family:var(--display);font-size:28px;color:var(--coral);line-height:1;font-style:italic}
+  .step h4{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--ink);margin-bottom:4px}
+  .step p{font-family:var(--serif);font-size:14px;color:var(--ink-2);line-height:1.55;margin-bottom:0}
+  .step code{font-family:var(--mono);font-size:12px;background:var(--cream-2);padding:1px 6px;border-radius:3px}
+
+  /* Brand DNA principles */
+  .principles{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:18px}
+  .principle{background:var(--cream);border:0.5px solid var(--line);border-radius:10px;padding:20px 22px}
+  .principle .pn{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--coral);font-weight:600;margin-bottom:8px}
+  .principle h4{font-family:var(--display);font-size:20px;font-weight:400;color:var(--ink);margin-bottom:8px;line-height:1.2;font-style:italic}
+  .principle p{font-family:var(--serif);font-size:14px;color:var(--ink-2);line-height:1.55;margin-bottom:0}
+
+  /* Callout */
+  .callout{background:var(--cream-2);border:0.5px solid var(--line);border-left:3px solid var(--coral);border-radius:8px;padding:20px 24px;margin:24px 0;font-family:var(--serif);font-size:15px;line-height:1.6;color:var(--ink-2)}
+  .callout strong{color:var(--ink)}
+  .callout .cl-label{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--coral);text-transform:uppercase;font-weight:600;margin-bottom:8px;display:block}
+
+  /* Category section heading */
+  .cat-head{font-family:var(--display);font-size:26px;color:var(--ink);font-weight:400;font-style:italic;margin:36px 0 12px;letter-spacing:-.01em;padding-bottom:10px;border-bottom:0.5px solid var(--line)}
+  .cat-head em{color:var(--coral);font-style:normal;font-family:var(--mono);font-size:11px;letter-spacing:.14em;margin-left:14px;font-weight:600;text-transform:uppercase;vertical-align:middle}
+
+  /* CTA */
+  .cta{max-width:780px;margin:48px auto 40px;padding:42px 38px;text-align:center;background:var(--cream-2);border:0.5px solid var(--line);border-radius:14px}
+  .cta h2{font-family:var(--display);font-weight:400;font-size:clamp(28px,4.5vw,42px);line-height:1.1;color:var(--ink);margin-bottom:14px}
+  .cta h2 em{font-style:italic;color:var(--coral)}
+  .cta p{font-family:var(--serif);font-size:16px;color:var(--ink-2);line-height:1.55;margin-bottom:22px}
+  .cta-btn{display:inline-block;padding:12px 26px;background:var(--ink);color:var(--cream);font-family:var(--mono);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;border-radius:6px;font-weight:600;margin:0 4px}
+  .cta-btn:hover{background:var(--coral)}
+
+  footer{max-width:1180px;margin:24px auto 0;padding:28px 32px;border-top:0.5px solid var(--line);text-align:center}
+  footer p{font-family:var(--mono);font-size:11px;letter-spacing:.10em;color:var(--ink-3)}
+
+  @media (max-width:760px){
+    .strip{grid-template-columns:repeat(2,1fr)}
+    .strip > div:nth-child(2n){border-right:0}
+    .strip > div{border-bottom:0.5px solid var(--line)}
+  }
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="top-in">
+    <a class="brand" href="sora-hq.html">SORA<em>°</em></a>
+    <span class="top-tag" data-es>DESIGN · BRAND & AI GENERATION</span>
+    <span class="top-tag" data-en>DESIGN · BRAND & AI GENERATION</span>
+    <a class="top-link" href="sora-apps.html" data-es>↗ Applications</a>
+    <a class="top-link" href="sora-apps.html" data-en>↗ Applications</a>
+    <a class="top-link" href="latam-expansion-system.html" data-es>↗ Sistema maestro</a>
+    <a class="top-link" href="latam-expansion-system.html" data-en>↗ Master system</a>
+    <span class="spacer"></span>
+    <div class="lang">
+      <button class="active" onclick="setLang('es')">ES</button>
+      <button onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="hero-eyebrow" data-es>DESIGN RESOURCES · LO QUE HACE SORA = SORA</div>
+  <div class="hero-eyebrow" data-en>DESIGN RESOURCES · WHAT MAKES SORA = SORA</div>
+  <h1 data-es>El <em>brand</em>.<br>Los <em>prompts</em>.<br>Las herramientas.</h1>
+  <h1 data-en>The <em>brand</em>.<br>The <em>prompts</em>.<br>The tools.</h1>
+  <p class="hero-lede" data-es>Hub de diseño Sora. <strong>Brand foundation</strong> (paleta, tipografía, voz, principios) + <strong>AI stack</strong> para generar todo (logos, IG promos, videos, sonido) + <strong>prompts pre-cargados</strong> que producen output Sora-coherente de inmediato. Sin diseñador externo, sin pérdida de coherencia.</p>
+  <p class="hero-lede" data-en>Sora design hub. <strong>Brand foundation</strong> (palette, typography, voice, principles) + <strong>AI stack</strong> to generate everything (logos, IG promos, videos, sound) + <strong>pre-loaded prompts</strong> that produce Sora-coherent output instantly. No external designer, no loss of coherence.</p>
+</header>
+
+<div class="strip">
+  <div><div class="n">7</div><div class="l" data-es>Colores brand</div><div class="l" data-en>Brand colors</div></div>
+  <div><div class="n">4</div><div class="l" data-es>Familias tipo</div><div class="l" data-en>Type families</div></div>
+  <div><div class="n">12</div><div class="l" data-es>AI tools curados</div><div class="l" data-en>Curated AI tools</div></div>
+  <div><div class="n">25+</div><div class="l" data-es>Prompts listos</div><div class="l" data-en>Ready prompts</div></div>
+  <div><div class="n">0</div><div class="l" data-es>Emojis en brand</div><div class="l" data-en>Brand emojis</div></div>
+</div>
+
+<!-- ============ 01 · BRAND FOUNDATION ============ -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es>01 · BRAND FOUNDATION · COLOR</div>
+    <div class="sec-num" data-en>01 · BRAND FOUNDATION · COLOR</div>
+    <h2 data-es>La <em>paleta</em>.</h2>
+    <h2 data-en>The <em>palette</em>.</h2>
+    <p class="sec-sub" data-es>Cream-warm de fondo. Ink-near-black para texto. Coral como UNICO acento de call-to-action. Los demás (green, gold, teal, rose) son colores secundarios usables sólo para categorización, nunca para énfasis.</p>
+    <p class="sec-sub" data-en>Cream-warm background. Ink-near-black for text. Coral as the SINGLE call-to-action accent. The rest (green, gold, teal, rose) are secondary usable only for categorization, never for emphasis.</p>
+  </div>
+
+  <div class="palette">
+
+    <div class="swatch">
+      <div class="swatch-block dark-text" style="background:#F8F3EA">
+        <span class="swatch-label">CREAM · 01</span>
+      </div>
+      <div class="swatch-info">
+        <div class="swatch-name">Cream base</div>
+        <div class="swatch-hex">#F8F3EA</div>
+        <div class="swatch-use" data-es>Fondo de todo. La temperatura cálida que distingue Sora del cool-tech.</div>
+        <div class="swatch-use" data-en>Background everywhere. The warm temperature that distinguishes Sora from cool-tech.</div>
+      </div>
+    </div>
+
+    <div class="swatch">
+      <div class="swatch-block" style="background:#1B1A17">
+        <span class="swatch-label">INK · 02</span>
+      </div>
+      <div class="swatch-info">
+        <div class="swatch-name">Ink near-black</div>
+        <div class="swatch-hex">#1B1A17</div>
+        <div class="swatch-use" data-es>Texto primario, CTA buttons. Nunca usar #000 puro — tonalidad warm-black mata el tech-vibe.</div>
+        <div class="swatch-use" data-en>Primary text, CTA buttons. Never use pure #000 — warm-black tone kills the tech vibe.</div>
+      </div>
+    </div>
+
+    <div class="swatch">
+      <div class="swatch-block" style="background:#D9573B">
+        <span class="swatch-label">CORAL · 03</span>
+      </div>
+      <div class="swatch-info">
+        <div class="swatch-name">Coral · accent</div>
+        <div class="swatch-hex">#D9573B</div>
+        <div class="swatch-use" data-es>EL accent. Links, hovers, énfasis, italics destacados. Un solo color por superficie — la regla.</div>
+        <div class="swatch-use" data-en>THE accent. Links, hovers, emphasis, italics. One color per surface — the rule.</div>
+      </div>
+    </div>
+
+    <div class="swatch">
+      <div class="swatch-block" style="background:#3F5F45">
+        <span class="swatch-label">GREEN · 04</span>
+      </div>
+      <div class="swatch-info">
+        <div class="swatch-name">Forest green</div>
+        <div class="swatch-hex">#3F5F45</div>
+        <div class="swatch-use" data-es>Categoría: estado "verde", success, naturaleza/fincas, label de "tier entry".</div>
+        <div class="swatch-use" data-en>Category: "green" status, success, nature/fincas, "entry tier" label.</div>
+      </div>
+    </div>
+
+    <div class="swatch">
+      <div class="swatch-block" style="background:#B58F4D">
+        <span class="swatch-label">GOLD · 05</span>
+      </div>
+      <div class="swatch-info">
+        <div class="swatch-name">Antique gold</div>
+        <div class="swatch-hex">#B58F4D</div>
+        <div class="swatch-use" data-es>Categoría: medio/yellow tier, warm warning, premium-secondary.</div>
+        <div class="swatch-use" data-en>Category: mid/yellow tier, warm warning, premium-secondary.</div>
+      </div>
+    </div>
+
+    <div class="swatch">
+      <div class="swatch-block" style="background:#2C6E7F">
+        <span class="swatch-label">TEAL · 06</span>
+      </div>
+      <div class="swatch-info">
+        <div class="swatch-name">Deep teal</div>
+        <div class="swatch-hex">#2C6E7F</div>
+        <div class="swatch-use" data-es>Links secundarios, datos/analytics, URLs en text body, modo data-heavy.</div>
+        <div class="swatch-use" data-en>Secondary links, data/analytics, URLs in body text, data-heavy mode.</div>
+      </div>
+    </div>
+
+    <div class="swatch">
+      <div class="swatch-block" style="background:#B8616B">
+        <span class="swatch-label">ROSE · 07</span>
+      </div>
+      <div class="swatch-info">
+        <div class="swatch-name">Muted rose</div>
+        <div class="swatch-hex">#B8616B</div>
+        <div class="swatch-use" data-es>Documentos privados/internos tags, lifestyle/romance, brand secondary.</div>
+        <div class="swatch-use" data-en>Private/internal doc tags, lifestyle/romance, brand secondary.</div>
+      </div>
+    </div>
+
+    <div class="swatch">
+      <div class="swatch-block" style="background:#E2A24A">
+        <span class="swatch-label">MANGO · 08</span>
+      </div>
+      <div class="swatch-info">
+        <div class="swatch-name">Warm mango</div>
+        <div class="swatch-hex">#E2A24A</div>
+        <div class="swatch-use" data-es>Headers en dark mode (sobre Ink), highlights en code blocks, accent dorado-cálido.</div>
+        <div class="swatch-use" data-en>Headers in dark mode (over Ink), code-block highlights, warm-golden accent.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="callout">
+    <span class="cl-label" data-es>REGLA DE ORO DEL COLOR</span>
+    <span class="cl-label" data-en>GOLDEN RULE OF COLOR</span>
+    <p data-es>En cada pieza de diseño, máximo <strong>2 colores activos</strong>: Ink + un acento. El resto es Cream. Si una pieza necesita 3+ colores compitiendo por atención, está mal diseñada. La paleta entera existe sólo para que diferentes superficies de Sora se sientan parientes — no para mezclarse dentro de una pieza.</p>
+    <p data-en>In every design piece, maximum <strong>2 active colors</strong>: Ink + one accent. Everything else is Cream. If a piece needs 3+ competing colors, it's poorly designed. The full palette exists only so different Sora surfaces feel related — not to mix within one piece.</p>
+  </div>
+</section>
+
+<!-- ============ 02 · TYPOGRAPHY ============ -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es>02 · BRAND FOUNDATION · TIPOGRAFÍA</div>
+    <div class="sec-num" data-en>02 · BRAND FOUNDATION · TYPOGRAPHY</div>
+    <h2 data-es>Cuatro <em>familias</em>. Roles claros.</h2>
+    <h2 data-en>Four <em>families</em>. Clear roles.</h2>
+  </div>
+
+  <div class="typo">
+
+    <div class="typo-card">
+      <div class="label" data-es>01 · DISPLAY · TITULARES</div>
+      <div class="label" data-en>01 · DISPLAY · HEADLINES</div>
+      <div class="typo-demo display">Sora</div>
+      <div class="typo-info"><strong>Instrument Serif</strong> · italic. <span data-es>Solo titulares grandes (32px+). Cuando necesitas drama editorial. La firma visual de Sora.</span><span data-en>Big headlines only (32px+). When you need editorial drama. Sora's visual signature.</span></div>
+    </div>
+
+    <div class="typo-card">
+      <div class="label" data-es>02 · SERIF · CUERPO LARGO</div>
+      <div class="label" data-en>02 · SERIF · LONG-FORM BODY</div>
+      <div class="typo-demo serif">Una noche reemplaza meses.</div>
+      <div class="typo-info"><strong>Fraunces</strong> · 300-500 weight. <span data-es>Para párrafos editorial, lede, citas, descripciones largas. Calidez + autoridad.</span><span data-en>For editorial paragraphs, lede, quotes, long descriptions. Warmth + authority.</span></div>
+    </div>
+
+    <div class="typo-card">
+      <div class="label" data-es>03 · SANS · UI + DATOS</div>
+      <div class="label" data-en>03 · SANS · UI + DATA</div>
+      <div class="typo-demo sans">Curated weekend in 14 days</div>
+      <div class="typo-info"><strong>Inter</strong> · 400-600 weight. <span data-es>UI básico, listas, controles, tablas. Sans-serif moderno limpio.</span><span data-en>Basic UI, lists, controls, tables. Clean modern sans-serif.</span></div>
+    </div>
+
+    <div class="typo-card">
+      <div class="label" data-es>04 · MONO · TÉCNICO</div>
+      <div class="label" data-en>04 · MONO · TECHNICAL</div>
+      <div class="typo-demo mono">CAP $5,600 · 28 PAX</div>
+      <div class="typo-info"><strong>JetBrains Mono</strong>. <span data-es>Números, código, labels small-caps, tags, IDs, precios, metadata.</span><span data-en>Numbers, code, small-caps labels, tags, IDs, prices, metadata.</span></div>
+    </div>
+
+  </div>
+
+  <div class="callout">
+    <span class="cl-label" data-es>LA REGLA DEL TYPESETTING SORA</span>
+    <span class="cl-label" data-en>SORA TYPESETTING RULE</span>
+    <p data-es>Si una página usa más de <strong>3 familias visibles</strong>, está sobre-diseñada. Las cuatro familias existen — pero no todas en cada página. Default: <strong>Display para H1 + Serif para body + Mono para labels/data</strong>. Sans queda para casos UI específicos (botones, controles, tablas).</p>
+    <p data-en>If a page uses more than <strong>3 visible families</strong>, it's over-designed. All four exist — but not all on every page. Default: <strong>Display for H1 + Serif for body + Mono for labels/data</strong>. Sans is for specific UI cases (buttons, controls, tables).</p>
+  </div>
+</section>
+
+<!-- ============ 03 · BRAND DNA ============ -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es>03 · BRAND DNA · LO QUE NO DEBES TOCAR</div>
+    <div class="sec-num" data-en>03 · BRAND DNA · WHAT NOT TO TOUCH</div>
+    <h2 data-es>Seis <em>principios</em> que hacen Sora = Sora.</h2>
+    <h2 data-en>Six <em>principles</em> that make Sora = Sora.</h2>
+    <p class="sec-sub" data-es>Si quitas cualquiera de estos, deja de parecer Sora. Estos son los anchors visuales obligatorios.</p>
+    <p class="sec-sub" data-en>Remove any of these and it stops feeling Sora. These are the mandatory visual anchors.</p>
+  </div>
+
+  <div class="principles">
+
+    <div class="principle">
+      <div class="pn">01</div>
+      <h4 data-es>Italics editoriales</h4>
+      <h4 data-en>Editorial italics</h4>
+      <p data-es>Las palabras importantes se ponen en <em>italic</em>, no en bold. El énfasis viene de la cursiva, no del peso. Drama editorial vs énfasis publicitario.</p>
+      <p data-en>Important words go in <em>italic</em>, not bold. Emphasis comes from cursive, not weight. Editorial drama vs advertising emphasis.</p>
+    </div>
+
+    <div class="principle">
+      <div class="pn">02</div>
+      <h4 data-es>Cream + ruido sutil</h4>
+      <h4 data-en>Cream + subtle noise</h4>
+      <p data-es>El fondo cream tiene una textura SVG de ruido fino que da calidez. Nunca cream puro plano — siempre con la imperfección de noise.</p>
+      <p data-en>Cream background has a fine SVG noise texture that adds warmth. Never plain flat cream — always with noise imperfection.</p>
+    </div>
+
+    <div class="principle">
+      <div class="pn">03</div>
+      <h4 data-es>Símbolo "°" en el logo</h4>
+      <h4 data-en>"°" symbol in logo</h4>
+      <p data-es>La marca se escribe <strong>SORA°</strong> con el degree-symbol en coral. No es decoración — significa "destino, coordenada". Identidad mnemónica.</p>
+      <p data-en>Brand written <strong>SORA°</strong> with the coral degree-symbol. Not decoration — means "destination, coordinate". Mnemonic identity.</p>
+    </div>
+
+    <div class="principle">
+      <div class="pn">04</div>
+      <h4 data-es>Cero emojis en producto</h4>
+      <h4 data-en>Zero emojis in product</h4>
+      <p data-es>Las banderas país (🇲🇽🇨🇴) son la única excepción — funcionan como ID, no como emoji. Todo lo demás: cero. Reduces 8% open-rate pero levanta perceived quality 30%.</p>
+      <p data-en>Country flags (🇲🇽🇨🇴) the only exception — they work as ID, not emoji. Everything else: zero. Drops open-rate 8% but lifts perceived quality 30%.</p>
+    </div>
+
+    <div class="principle">
+      <div class="pn">05</div>
+      <h4 data-es>Borders 0.5px</h4>
+      <h4 data-en>0.5px borders</h4>
+      <p data-es>Todos los bordes son <strong>0.5px solid rgba(27,26,23,.10)</strong>. Casi invisibles pero presentes. Estructura sin pelearse con el ojo. Nunca 1px+ a no ser que sea énfasis (3px coral side-border).</p>
+      <p data-en>All borders are <strong>0.5px solid rgba(27,26,23,.10)</strong>. Nearly invisible but present. Structure without fighting the eye. Never 1px+ unless emphasis (3px coral side-border).</p>
+    </div>
+
+    <div class="principle">
+      <div class="pn">06</div>
+      <h4 data-es>Más blanco que diseño</h4>
+      <h4 data-en>More white than design</h4>
+      <p data-es>Padding generoso, restraint en density. Si la pieza se ve "vacía", probablemente está bien. Si se ve "llena", está sobre-diseñada. <em>Less is more</em> aplica literal.</p>
+      <p data-en>Generous padding, restraint on density. If the piece looks "empty", probably right. If it looks "full", over-designed. <em>Less is more</em> applies literally.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ 04 · VOICE ============ -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es>04 · BRAND DNA · VOZ</div>
+    <div class="sec-num" data-en>04 · BRAND DNA · VOICE</div>
+    <h2 data-es>Cómo <em>suena</em> Sora.</h2>
+    <h2 data-en>How Sora <em>sounds</em>.</h2>
+  </div>
+
+  <div class="principles">
+    <div class="principle"><div class="pn">VOZ · 01</div>
+      <h4 data-es>Frases cortas. Pausas.</h4>
+      <h4 data-en>Short sentences. Pauses.</h4>
+      <p data-es>Sora habla en pulsos cortos. Punto. Pausa. Siguiente idea. Como una conversación a la 1am, no como un comercial.</p>
+      <p data-en>Sora speaks in short pulses. Period. Pause. Next idea. Like a 1am conversation, not a commercial.</p>
+    </div>
+    <div class="principle"><div class="pn">VOZ · 02</div>
+      <h4 data-es>Específico mata genérico</h4>
+      <h4 data-en>Specific beats generic</h4>
+      <p data-es>"Un viaje increíble" = mal. "28 personas a la mesa larga de Don Julio el sábado a las 9pm" = bien. Detalle concreto sobre lugar y tiempo.</p>
+      <p data-en>"An amazing trip" = bad. "28 people at Don Julio's long table Saturday 9pm" = good. Concrete detail on place and time.</p>
+    </div>
+    <div class="principle"><div class="pn">VOZ · 03</div>
+      <h4 data-es>Italics para nuance</h4>
+      <h4 data-en>Italics for nuance</h4>
+      <p data-es>Cuando una palabra tiene peso emocional o conceptual — italic. "Los anfitriones <em>correctos</em> componen interés durante años."</p>
+      <p data-en>When a word has emotional or conceptual weight — italic. "The <em>right</em> hosts compound interest for years."</p>
+    </div>
+    <div class="principle"><div class="pn">VOZ · 04</div>
+      <h4 data-es>Sin venta. Sin urgencia falsa.</h4>
+      <h4 data-en>No sales. No fake urgency.</h4>
+      <p data-es>Cero "compra ya", "última oportunidad", "no te lo pierdas". Sora informa. El que está alineado responde. El que no, no era.</p>
+      <p data-en>Zero "buy now", "last chance", "don't miss out". Sora informs. The aligned respond. The unaligned weren't a fit.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 · AI TOOL STACK ============ -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es>05 · AI STACK · LAS HERRAMIENTAS</div>
+    <div class="sec-num" data-en>05 · AI STACK · THE TOOLS</div>
+    <h2 data-es>Una <em>herramienta</em> por tarea.</h2>
+    <h2 data-en>One <em>tool</em> per task.</h2>
+    <p class="sec-sub" data-es>Cada herramienta tiene fortalezas específicas. Stack curado para evitar over-spending y over-paralysis. Usar la herramienta correcta para cada output, no todas para todo.</p>
+    <p class="sec-sub" data-en>Each tool has specific strengths. Curated stack to avoid overspending and over-paralysis. Use the right tool per output, not all tools for everything.</p>
+  </div>
+
+  <h3 class="cat-head" data-es>Imagen estática <em>· logos · gráficos · IG square</em></h3>
+  <h3 class="cat-head" data-en>Static image <em>· logos · graphics · IG square</em></h3>
+
+  <div class="tools">
+    <div class="tool">
+      <div class="badge" data-es>★ PRIMARIO · LOGOS + COMPOSICIONES</div>
+      <div class="badge" data-en>★ PRIMARY · LOGOS + COMPOSITIONS</div>
+      <h4>Midjourney <em>v6</em></h4>
+      <a class="url" href="https://midjourney.com" target="_blank">midjourney.com</a>
+      <p data-es>El mejor en composición estética + control de estilo (--style raw, --sref para referencia). Para logos, IG square promos, materiales editoriales.</p>
+      <p data-en>Best in aesthetic composition + style control (--style raw, --sref for reference). For logos, IG square promos, editorial materials.</p>
+      <div class="pricing">$10–60/mo · Standard $30 · Pro $60 (recommended)</div>
+    </div>
+
+    <div class="tool">
+      <div class="badge" data-es>★ TIPOGRAFÍA + TEXTO</div>
+      <div class="badge" data-en>★ TYPOGRAPHY + TEXT</div>
+      <h4>Ideogram <em>2.0</em></h4>
+      <a class="url" href="https://ideogram.ai" target="_blank">ideogram.ai</a>
+      <p data-es>El único que renderiza tipografía coherentemente. Para diseños con texto: flyers, anuncios, cover IG con frase. Midjourney falla aquí.</p>
+      <p data-en>The only one that renders typography coherently. For designs with text: flyers, ads, IG covers with phrase. Midjourney fails here.</p>
+      <div class="pricing">$0 base · Plus $8/mo · Pro $20/mo</div>
+    </div>
+
+    <div class="tool">
+      <div class="badge" data-es>FOTOREALISMO + EDICIÓN</div>
+      <div class="badge" data-en>PHOTOREALISM + EDIT</div>
+      <h4>Adobe <em>Firefly</em></h4>
+      <a class="url" href="https://firefly.adobe.com" target="_blank">firefly.adobe.com</a>
+      <p data-es>Integrado con Photoshop (Generative Fill, Background Remove). Bueno para retoque post-Midjourney y composiciones complejas.</p>
+      <p data-en>Integrated with Photoshop (Generative Fill, Background Remove). Good for post-Midjourney retouch and complex compositions.</p>
+      <div class="pricing">$20/mo standalone · incluido en Adobe CC $55/mo</div>
+    </div>
+
+    <div class="tool">
+      <div class="badge" data-es>UPSCALING + RETOQUE</div>
+      <div class="badge" data-en>UPSCALING + RETOUCH</div>
+      <h4>Magnific <em>AI</em></h4>
+      <a class="url" href="https://magnific.ai" target="_blank">magnific.ai</a>
+      <p data-es>El upscaler que añade detalle real (no solo más píxeles). Para llevar un MJ a impresión grande o web hero. Re-imagina detalles.</p>
+      <p data-en>The upscaler that adds real detail (not just more pixels). For taking an MJ to large print or web hero. Re-imagines details.</p>
+      <div class="pricing">$39–199/mo · Pro $99 (sweet spot)</div>
+    </div>
+  </div>
+
+  <h3 class="cat-head" data-es>Video <em>· reels · promos · stories</em></h3>
+  <h3 class="cat-head" data-en>Video <em>· reels · promos · stories</em></h3>
+
+  <div class="tools">
+    <div class="tool">
+      <div class="badge" data-es>★ TEXT-TO-VIDEO PREMIUM</div>
+      <div class="badge" data-en>★ TEXT-TO-VIDEO PREMIUM</div>
+      <h4>OpenAI <em>Sora</em></h4>
+      <a class="url" href="https://sora.com" target="_blank">sora.com</a>
+      <p data-es>El más alto fotorealismo + coherencia de movimiento. Para hero reels, openings de evento, contenido high-tier. Confusión de marca con la nuestra — fuera del producto, no problema.</p>
+      <p data-en>Highest photorealism + motion coherence. For hero reels, event openers, high-tier content. Brand name collision with ours — outside the product, no issue.</p>
+      <div class="pricing">Incluido en ChatGPT Plus $20/mo · Pro $200/mo</div>
+    </div>
+
+    <div class="tool">
+      <div class="badge" data-es>★ IMAGEN-A-VIDEO + CAMERA CONTROL</div>
+      <div class="badge" data-en>★ IMAGE-TO-VIDEO + CAMERA CONTROL</div>
+      <h4>Runway <em>Gen-3</em></h4>
+      <a class="url" href="https://runwayml.com" target="_blank">runwayml.com</a>
+      <p data-es>Mejor cuando partes de una foto existente (foto del venue, del chef, del producto) y la animas. Camera movement controls precisos.</p>
+      <p data-en>Best when starting from existing photo (venue, chef, product) and animating it. Precise camera-movement controls.</p>
+      <div class="pricing">Free trial · Standard $15/mo · Pro $35/mo</div>
+    </div>
+
+    <div class="tool">
+      <div class="badge" data-es>RÁPIDO + COSTO BAJO</div>
+      <div class="badge" data-en>FAST + LOW COST</div>
+      <h4>Pika <em>2.0</em></h4>
+      <a class="url" href="https://pika.art" target="_blank">pika.art</a>
+      <p data-es>Más rápido y barato que Sora/Runway. Calidad B+ pero perfecto para iteración rápida y pruebas de concepto. Tasa de generación alta.</p>
+      <p data-en>Faster and cheaper than Sora/Runway. B+ quality but perfect for fast iteration and concept tests. High generation rate.</p>
+      <div class="pricing">Free · Standard $8/mo · Pro $35/mo</div>
+    </div>
+
+    <div class="tool">
+      <div class="badge" data-es>MOVIMIENTO LARGO + FLOW</div>
+      <div class="badge" data-en>LONG MOTION + FLOW</div>
+      <h4>Luma <em>Dream Machine</em></h4>
+      <a class="url" href="https://lumalabs.ai/dream-machine" target="_blank">lumalabs.ai</a>
+      <p data-es>Excelente para videos de 5-10s con movimiento natural. Calidad fotorealista en escenas con flow (agua, viento, gente caminando).</p>
+      <p data-en>Excellent for 5-10s videos with natural motion. Photorealistic quality in flow scenes (water, wind, people walking).</p>
+      <div class="pricing">Free · $9.99 · $29.99 · $94.99/mo</div>
+    </div>
+  </div>
+
+  <h3 class="cat-head" data-es>Audio <em>· voz · música · podcasts</em></h3>
+  <h3 class="cat-head" data-en>Audio <em>· voice · music · podcasts</em></h3>
+
+  <div class="tools">
+    <div class="tool">
+      <div class="badge" data-es>★ VOZ EN MÚLTIPLES IDIOMAS</div>
+      <div class="badge" data-en>★ VOICE IN MULTIPLE LANGUAGES</div>
+      <h4>ElevenLabs</h4>
+      <a class="url" href="https://elevenlabs.io" target="_blank">elevenlabs.io</a>
+      <p data-es>Voz AI para narración de reels, voiceover de promos. Acentos LATAM disponibles (México, Argentina, Colombia, Chile). Clonar voz propia legal.</p>
+      <p data-en>AI voice for reel narration, promo voiceover. LATAM accents available (Mexico, Argentina, Colombia, Chile). Legal own-voice cloning.</p>
+      <div class="pricing">Free · Starter $5/mo · Creator $22 · Pro $99</div>
+    </div>
+
+    <div class="tool">
+      <div class="badge" data-es>MÚSICA ORIGINAL</div>
+      <div class="badge" data-en>ORIGINAL MUSIC</div>
+      <h4>Suno <em>v3.5</em></h4>
+      <a class="url" href="https://suno.com" target="_blank">suno.com</a>
+      <p data-es>Generación de música original con letra y estilo. Sora-vibe: "bossa nova con acoustic guitar, slow tempo, intimate".</p>
+      <p data-en>Original music with lyrics and style. Sora-vibe: "bossa nova with acoustic guitar, slow tempo, intimate".</p>
+      <div class="pricing">Free 10 songs/day · Pro $10/mo · Premier $30/mo</div>
+    </div>
+
+    <div class="tool">
+      <div class="badge" data-es>EDICIÓN PODCAST + TRANSCRIPCIÓN</div>
+      <div class="badge" data-en>PODCAST EDIT + TRANSCRIPTION</div>
+      <h4>Descript</h4>
+      <a class="url" href="https://descript.com" target="_blank">descript.com</a>
+      <p data-es>Editar audio editando el texto transcrito. Cortar "ums", limpiar entrevistas con anfitriones. Eye-contact correction para reels.</p>
+      <p data-en>Edit audio by editing transcribed text. Cut "ums", clean host interviews. Eye-contact correction for reels.</p>
+      <div class="pricing">Free · Hobbyist $19 · Creator $35/mo</div>
+    </div>
+  </div>
+
+  <h3 class="cat-head" data-es>Editing + assembly <em>· integración</em></h3>
+  <h3 class="cat-head" data-en>Editing + assembly <em>· integration</em></h3>
+
+  <div class="tools">
+    <div class="tool">
+      <div class="badge" data-es>EDITOR PRINCIPAL</div>
+      <div class="badge" data-en>MAIN EDITOR</div>
+      <h4>CapCut <em>(desktop)</em></h4>
+      <a class="url" href="https://capcut.com" target="_blank">capcut.com</a>
+      <p data-es>El editor de video para los reels Sora. Free, sin watermark, integraciones IG/TikTok directas. Plantillas custom y templates Sora pre-construidas.</p>
+      <p data-en>Video editor for Sora reels. Free, no watermark, direct IG/TikTok integrations. Custom templates and pre-built Sora templates.</p>
+      <div class="pricing">Free · Pro $7.99/mo (recommended for export 4K)</div>
+    </div>
+
+    <div class="tool">
+      <div class="badge" data-es>DISEÑO RÁPIDO + COLABORACIÓN</div>
+      <div class="badge" data-en>FAST DESIGN + COLLAB</div>
+      <h4>Canva <em>Pro AI</em></h4>
+      <a class="url" href="https://canva.com" target="_blank">canva.com</a>
+      <p data-es>Para diseños rápidos con plantillas: stories, IG carousels, flyers. Brand Kit para mantener coherencia. Magic Resize para múltiples formatos.</p>
+      <p data-en>For fast designs with templates: stories, IG carousels, flyers. Brand Kit to maintain coherence. Magic Resize for multiple formats.</p>
+      <div class="pricing">Free · Pro $13/mo (Brand Kit incluido) · Teams $13/user/mo</div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <span class="cl-label" data-es>STACK RECOMENDADO MENSUAL · SORA OPS</span>
+    <span class="cl-label" data-en>RECOMMENDED MONTHLY STACK · SORA OPS</span>
+    <p data-es><strong>Esencial</strong> · Midjourney Standard $30 + ChatGPT Plus $20 (Sora video + DALL-E) + Canva Pro $13 = <strong>$63/mes</strong>. <strong>Producción seria</strong> · agregar Runway Standard $15 + ElevenLabs Starter $5 + Ideogram Plus $8 = <strong>$91/mes adicional</strong>. <strong>Total full stack</strong>: ~$154/mes. Cubre todo el output gráfico + video + voz que Sora necesita para 19 países.</p>
+    <p data-en><strong>Essential</strong> · Midjourney Standard $30 + ChatGPT Plus $20 (Sora video + DALL-E) + Canva Pro $13 = <strong>$63/mo</strong>. <strong>Serious production</strong> · add Runway Standard $15 + ElevenLabs Starter $5 + Ideogram Plus $8 = <strong>additional $91/mo</strong>. <strong>Total full stack</strong>: ~$154/mo. Covers all graphic + video + voice output Sora needs for 19 countries.</p>
+  </div>
+</section>
+
+<!-- ============ 06 · BRAND-LOCKED PROMPTS ============ -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es>06 · PROMPTS BRAND-LOCKED · COPY/PASTE</div>
+    <div class="sec-num" data-en>06 · BRAND-LOCKED PROMPTS · COPY/PASTE</div>
+    <h2 data-es>Prompts con <em>Sora-DNA</em> embebido.</h2>
+    <h2 data-en>Prompts with <em>Sora-DNA</em> embedded.</h2>
+    <p class="sec-sub" data-es>Cada prompt tiene los parámetros de marca (paleta cream/coral, italic editorial, mood) ya incorporados. Copy/paste, reemplaza variables [BRACKETS], genera.</p>
+    <p class="sec-sub" data-en>Each prompt has brand parameters (cream/coral palette, editorial italic, mood) already incorporated. Copy/paste, replace [BRACKETS] variables, generate.</p>
+  </div>
+
+  <h3 class="cat-head" data-es>Logos <em>· Midjourney</em></h3>
+  <h3 class="cat-head" data-en>Logos <em>· Midjourney</em></h3>
+
+  <div class="prompt">
+    <div class="plbl"><span>PROMPT · LOGO PRINCIPAL · MIDJOURNEY V6</span><span class="ptag">MJ</span></div>
+<pre>editorial minimalist logo for "SORA°" travel agency, single line wordmark,
+elegant Italian serif typography with subtle italic, the degree symbol °
+in coral red color #D9573B as accent, lowercase or small caps,
+warm cream background #F8F3EA with fine paper grain noise texture,
+high-end magazine masthead aesthetic, restrained and confident,
+no decoration, no illustrations, no icons,
+inspired by Apartamento magazine, Cabana, Cereal magazine logos,
+extreme negative space, --ar 3:1 --style raw --v 6 --q 2</pre>
+    <div class="note" data-es>★ Lock estos parámetros: <strong>#D9573B · #F8F3EA · serif italic · --style raw</strong>. Cambiar el "SORA°" si necesitas variantes (Sora MX, Sora · La Compañía).</div>
+    <div class="note" data-en>★ Lock these params: <strong>#D9573B · #F8F3EA · serif italic · --style raw</strong>. Change "SORA°" if you need variants (Sora MX, Sora · La Compañía).</div>
+  </div>
+
+  <div class="prompt">
+    <div class="plbl"><span>PROMPT · ICON / SYMBOL SUITE · MIDJOURNEY</span><span class="ptag">MJ</span></div>
+<pre>minimal line icon for travel agency, symbol of [SUBJECT: long table dinner /
+wine glasses / palm tree / map coordinate / sunset terrace], single stroke
+weight 1.5pt, deep coral red #D9573B on warm cream #F8F3EA paper background,
+no fill no shadow, 200x200 px output, editorial magazine icon style,
+inspired by Italian La Repubblica weekend supplement icons,
+--ar 1:1 --style raw --v 6 --q 2</pre>
+    <div class="note" data-es>Reemplazar [SUBJECT] por el ícono específico que necesitas. Estos íconos pueden ir a la app PWA y a IG post graphics.</div>
+    <div class="note" data-en>Replace [SUBJECT] with the specific icon you need. These icons can go in the PWA app and IG post graphics.</div>
+  </div>
+
+  <h3 class="cat-head" data-es>IG Square Promos <em>· evento</em></h3>
+  <h3 class="cat-head" data-en>IG Square Promos <em>· event</em></h3>
+
+  <div class="prompt">
+    <div class="plbl"><span>PROMPT · IG SQUARE PROMO · IDEOGRAM 2.0 (texto)</span><span class="ptag">IDEO</span></div>
+<pre>editorial Instagram square poster for "[EVENT NAME, e.g. 'Asado in
+Mendoza']" by SORA° travel agency, set in [CITY], date [DATE].
+
+design specs:
+- warm cream paper background #F8F3EA with subtle noise grain
+- elegant italic serif typography "Instrument Serif" style for main title
+- coral red accent color #D9573B for date and CTA
+- lowercase small caps "SORA°" wordmark top-left small
+- soft photo crop of [VISUAL: long candlelit table / parrilla flames /
+  wine glasses on linen] in bottom half, muted color grade
+- generous negative space top, restrained typography
+- no emojis, no decorative flourishes
+- inspired by Apartamento magazine, Kinfolk, Cereal aesthetic
+- 1080x1080 px Instagram square format
+- premium boutique magazine cover quality</pre>
+    <div class="note" data-es>Ideogram supera a Midjourney en este caso porque renderiza la tipografía correctamente. Reemplazar [EVENT NAME], [CITY], [DATE], [VISUAL] con tus datos. La estética sale Sora-coherente sin instrucción adicional.</div>
+    <div class="note" data-en>Ideogram beats Midjourney here because it renders typography correctly. Replace [EVENT NAME], [CITY], [DATE], [VISUAL] with your data. Aesthetic comes out Sora-coherent without extra instruction.</div>
+  </div>
+
+  <div class="prompt">
+    <div class="plbl"><span>PROMPT · IG STORY · IDEOGRAM</span><span class="ptag">IDEO</span></div>
+<pre>vertical Instagram story 9:16 for SORA° travel agency announcing
+"[ANNOUNCEMENT, e.g. 'Hosts wanted in Medellín']".
+
+- warm cream #F8F3EA background, subtle paper grain
+- main copy "[MAIN LINE]" in large italic serif (Instrument Serif style)
+- coral red #D9573B underline accent on key word
+- secondary copy below in clean sans-serif (Inter style)
+- small "SORA°" wordmark bottom center with degree symbol in coral
+- generous top and bottom padding (story-safe zones)
+- single photographic element OR full-bleed cream
+- editorial restraint, no swipe-up arrows, no neon
+- 1080x1920 px
+- inspired by Mercury, Stripe, Linear marketing aesthetic</pre>
+    <div class="note" data-es>Variar [ANNOUNCEMENT] y [MAIN LINE] según tu mensaje. Funciona para hiring, anuncio de eventos, "save the date".</div>
+    <div class="note" data-en>Vary [ANNOUNCEMENT] and [MAIN LINE] per message. Works for hiring, event announcements, "save the date".</div>
+  </div>
+
+  <h3 class="cat-head" data-es>Reels / Video <em>· OpenAI Sora / Runway / Pika</em></h3>
+  <h3 class="cat-head" data-en>Reels / Video <em>· OpenAI Sora / Runway / Pika</em></h3>
+
+  <div class="prompt">
+    <div class="plbl"><span>PROMPT · OPENING REEL · OPENAI SORA / RUNWAY</span><span class="ptag">VIDEO</span></div>
+<pre>cinematic 10-second opening reel for SORA° travel agency event in [CITY].
+
+scene: golden hour, soft warm light, long candlelit dining table outdoors
+under [LOCATION: jungle canopy / vineyard / colonial courtyard / ocean
+terrace], slow dolly-in camera movement revealing the table from end to
+end, 28 chairs visible, single white linen tablecloth, wine glasses with
+warm reflections, candles flickering, no people yet.
+
+mood: anticipation, intimate, premium, restrained, editorial.
+color grade: muted warm tones, slight film grain, Kodak Portra 400 reference.
+no text overlay, no captions, no logos in shot.
+
+aspect 9:16 vertical, 10 seconds, photorealistic.</pre>
+    <div class="note" data-es>Para Sora-OpenAI o Runway Gen-3. La escena puede reciclarse con cualquier ciudad. Cambia [LOCATION] por el venue específico del país.</div>
+    <div class="note" data-en>For Sora-OpenAI or Runway Gen-3. Scene recyclable with any city. Change [LOCATION] for country-specific venue.</div>
+  </div>
+
+  <div class="prompt">
+    <div class="plbl"><span>PROMPT · TESTIMONIAL CUTAWAY · RUNWAY (img-to-video)</span><span class="ptag">RWY</span></div>
+<pre>animate this photo of [PERSON / VENUE / DISH]: subtle slow zoom-in
+over 5 seconds with very gentle parallax, slight grain shimmer, warm
+golden-hour light fluctuation, no major movement, editorial documentary
+feel, hold focus on subject, no camera shake.
+
+aspect 9:16, 5 seconds, slow-motion natural.</pre>
+    <div class="note" data-es>Image-to-video con Runway Gen-3. Subir foto del huésped, del chef, del platillo. Output sutil para B-roll de reels más largos.</div>
+    <div class="note" data-en>Image-to-video with Runway Gen-3. Upload photo of guest, chef, dish. Subtle output for B-roll in longer reels.</div>
+  </div>
+
+  <h3 class="cat-head" data-es>Promo de Evento <em>· workflow completo</em></h3>
+  <h3 class="cat-head" data-en>Event Promo <em>· full workflow</em></h3>
+
+  <div class="prompt">
+    <div class="plbl"><span>PROMPT · MAIN EVENT PROMO REEL · PIKA / RUNWAY</span><span class="ptag">REEL</span></div>
+<pre>30-second cinematic promo reel for SORA° dinner event in [CITY] on [DATE].
+
+storyboard (6 shots, 5 sec each):
+shot 1: drone aerial of [CITY] at golden hour, warm tones, slow descent
+shot 2: close-up of hands setting candle on a long wooden table, slow dolly
+shot 3: medium shot of chef plating in candlelight, hands and food only
+shot 4: wine being poured into a glass, slow-mo, warm amber
+shot 5: wide shot of full table from above, 28 plates, candles flickering
+shot 6: empty chair at the head of the table, gentle inward push, fade to
+        warm cream background with single line "October 12 · 8pm" in italic
+        serif coral and "SORA°" small below center
+
+color grade: warm Kodak film stock, muted but rich, gentle grain.
+no emojis, no flashy transitions, no upbeat music (use bossa nova or
+classical guitar).
+
+aspect 9:16, 30 seconds total, premium editorial style.</pre>
+    <div class="note" data-es>Generar cada shot por separado en Pika/Runway (5s cada uno), ensamblar en CapCut, agregar voiceover de ElevenLabs si quieres, música de Suno (prompt: "intimate bossa nova, acoustic guitar, slow, no vocals").</div>
+    <div class="note" data-en>Generate each shot separately in Pika/Runway (5s each), assemble in CapCut, add ElevenLabs voiceover if desired, music from Suno (prompt: "intimate bossa nova, acoustic guitar, slow, no vocals").</div>
+  </div>
+
+  <h3 class="cat-head" data-es>Voiceover Sora <em>· ElevenLabs</em></h3>
+  <h3 class="cat-head" data-en>Sora Voiceover <em>· ElevenLabs</em></h3>
+
+  <div class="prompt">
+    <div class="plbl"><span>VOZ STYLE GUIDE · ELEVENLABS SETTINGS</span><span class="ptag">VOICE</span></div>
+<pre>voice choice: deep warm female voice, mid-30s, soft articulation, slight
+LATAM Spanish accent if speaking English, or neutral cosmopolitan
+Spanish if speaking Spanish.
+
+elevenlabs settings:
+- stability: 0.55 (some natural variance)
+- clarity + similarity: 0.75 (smooth but not robotic)
+- style exaggeration: 0.25 (subdued, editorial)
+- speaker boost: ON
+
+voiceover script style:
+- pause between sentences (extra space)
+- italicize emphasized words in script with *asterisks*
+- short pulses · not run-on monologue
+- under 30 seconds for reels, under 60 for longer formats</pre>
+    <div class="note" data-es>Recomendamos clonar una voz humana específica (la de Yendri, o una hablante nativa contratada). Voces stock pueden sonar AI a alguien atento.</div>
+    <div class="note" data-en>Recommend cloning a specific human voice (Yendri's, or a hired native speaker). Stock voices can sound AI to attentive listener.</div>
+  </div>
+</section>
+
+<!-- ============ 07 · END-TO-END WORKFLOWS ============ -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es>07 · WORKFLOW · DE IDEA A POST</div>
+    <div class="sec-num" data-en>07 · WORKFLOW · IDEA TO POST</div>
+    <h2 data-es>Pipelines <em>completos</em> en horas, no días.</h2>
+    <h2 data-en>Full <em>pipelines</em> in hours, not days.</h2>
+  </div>
+
+  <h3 class="cat-head" data-es>WF-01 · Anuncio de evento IG <em>(45 min total)</em></h3>
+  <h3 class="cat-head" data-en>WF-01 · Event announcement IG <em>(45 min total)</em></h3>
+
+  <div class="workflow">
+    <div class="step"><div class="step-n">01</div><div>
+      <h4 data-es>Brief en 5 min · Sora copy generator (beta)</h4>
+      <h4 data-en>Brief in 5 min · Sora copy generator (beta)</h4>
+      <p data-es>Decir al copywriter: <code>brief: cena curada Roma Norte CDMX, viernes 12 oct, 28 personas, $250pp</code> → genera 3 variantes de caption + título + CTA.</p>
+      <p data-en>Tell copywriter: <code>brief: curated dinner Roma Norte CDMX, Fri Oct 12, 28 people, $250pp</code> → generates 3 caption variants + title + CTA.</p>
+    </div></div>
+    <div class="step"><div class="step-n">02</div><div>
+      <h4 data-es>Imagen square · Ideogram (10 min)</h4>
+      <h4 data-en>Square image · Ideogram (10 min)</h4>
+      <p data-es>Pegar prompt §06 IG square promo. Reemplazar variables. Generar 4 variantes. Elegir la mejor, descargar.</p>
+      <p data-en>Paste §06 IG square promo prompt. Replace variables. Generate 4 variants. Pick best, download.</p>
+    </div></div>
+    <div class="step"><div class="step-n">03</div><div>
+      <h4 data-es>Touch-up · Adobe Firefly Generative Fill (5 min)</h4>
+      <h4 data-en>Touch-up · Adobe Firefly Generative Fill (5 min)</h4>
+      <p data-es>Si la tipografía salió con error: Photoshop → Generative Fill para corregir el texto. O regenerar en Ideogram con el spelling correcto.</p>
+      <p data-en>If typography came out with error: Photoshop → Generative Fill to correct text. Or regenerate in Ideogram with correct spelling.</p>
+    </div></div>
+    <div class="step"><div class="step-n">04</div><div>
+      <h4 data-es>Publicar · Canva Pro Brand Kit + IG Scheduler (5 min)</h4>
+      <h4 data-en>Publish · Canva Pro Brand Kit + IG Scheduler (5 min)</h4>
+      <p data-es>Subir imagen + caption a Canva Pro Content Planner. Schedulear para próximo viernes 10am hora local. Sora WhatsApp bot tomará las DMs de respuesta.</p>
+      <p data-en>Upload image + caption to Canva Pro Content Planner. Schedule for next Friday 10am local time. Sora WhatsApp bot picks up reply DMs.</p>
+    </div></div>
+  </div>
+
+  <h3 class="cat-head" data-es>WF-02 · Reel de promo de evento <em>(2 horas total)</em></h3>
+  <h3 class="cat-head" data-en>WF-02 · Event promo reel <em>(2 hours total)</em></h3>
+
+  <div class="workflow">
+    <div class="step"><div class="step-n">01</div><div>
+      <h4 data-es>Storyboard · 6 shots de 5 seg cada uno (10 min)</h4>
+      <h4 data-en>Storyboard · 6 shots of 5s each (10 min)</h4>
+      <p data-es>Usar el storyboard del prompt §06. Decidir si necesitas fotos reales del venue o si generamos todo desde cero (preferir real cuando posible).</p>
+      <p data-en>Use §06 prompt storyboard. Decide if you need real venue photos or generate all from scratch (prefer real when possible).</p>
+    </div></div>
+    <div class="step"><div class="step-n">02</div><div>
+      <h4 data-es>Generar 6 clips · Pika o Runway (30 min)</h4>
+      <h4 data-en>Generate 6 clips · Pika or Runway (30 min)</h4>
+      <p data-es>Pika Pro para velocidad (~$0.15/clip), Runway Gen-3 si necesitas calidad superior (~$0.50/clip). Generar 2 versiones por shot, elegir mejor.</p>
+      <p data-en>Pika Pro for speed (~$0.15/clip), Runway Gen-3 if you need higher quality (~$0.50/clip). Generate 2 versions per shot, pick best.</p>
+    </div></div>
+    <div class="step"><div class="step-n">03</div><div>
+      <h4 data-es>Voiceover · ElevenLabs (15 min)</h4>
+      <h4 data-en>Voiceover · ElevenLabs (15 min)</h4>
+      <p data-es>Script 25-30 segundos. Subir a ElevenLabs con voz Sora. Generar. Descargar MP3.</p>
+      <p data-en>Script 25-30 seconds. Upload to ElevenLabs with Sora voice. Generate. Download MP3.</p>
+    </div></div>
+    <div class="step"><div class="step-n">04</div><div>
+      <h4 data-es>Música · Suno (15 min)</h4>
+      <h4 data-en>Music · Suno (15 min)</h4>
+      <p data-es>Generar 2 opciones de música: "intimate bossa nova acoustic, slow, no vocals" y "subtle classical guitar, contemplative, no drums". Mezclar al 30% volumen bajo el voiceover.</p>
+      <p data-en>Generate 2 music options: "intimate bossa nova acoustic, slow, no vocals" and "subtle classical guitar, contemplative, no drums". Mix at 30% volume under voiceover.</p>
+    </div></div>
+    <div class="step"><div class="step-n">05</div><div>
+      <h4 data-es>Edit · CapCut Desktop (45 min)</h4>
+      <h4 data-en>Edit · CapCut Desktop (45 min)</h4>
+      <p data-es>Importar 6 clips + audio + voiceover. Ensamblar timeline. Color grade warm. Texto overlay sólo en último shot (fecha + SORA°). Exportar 4K vertical 9:16.</p>
+      <p data-en>Import 6 clips + audio + voiceover. Assemble timeline. Warm color grade. Text overlay only on last shot (date + SORA°). Export 4K vertical 9:16.</p>
+    </div></div>
+    <div class="step"><div class="step-n">06</div><div>
+      <h4 data-es>Publish · IG + TikTok cross-post (5 min)</h4>
+      <h4 data-en>Publish · IG + TikTok cross-post (5 min)</h4>
+      <p data-es>Subir directo desde CapCut a IG (Reel) + TikTok. Hashtags pre-cargados de la voz Sora (max 5, todos hyper-locales del país).</p>
+      <p data-en>Upload directly from CapCut to IG (Reel) + TikTok. Pre-loaded hashtags from Sora voice (max 5, all hyper-local to country).</p>
+    </div></div>
+  </div>
+
+  <div class="callout">
+    <span class="cl-label" data-es>ECONOMÍA DEL WORKFLOW</span>
+    <span class="cl-label" data-en>WORKFLOW ECONOMICS</span>
+    <p data-es>Un reel completo Sora-quality producido con este pipeline cuesta ~$15-25 en compute (Pika + ElevenLabs + Suno + Magnific touch-up). Una agencia tradicional cobra $800-3,000 por la misma cosa. <strong>Margen 99%</strong>. Multiplicado por 76 eventos en 6 meses = ahorro real de $60K+.</p>
+    <p data-en>A full Sora-quality reel produced via this pipeline costs ~$15-25 in compute (Pika + ElevenLabs + Suno + Magnific touch-up). A traditional agency charges $800-3,000 for the same thing. <strong>99% margin</strong>. Multiplied by 76 events in 6 months = real savings of $60K+.</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta">
+  <h2 data-es>El diseño Sora no es <em>arte</em>. Es <em>infraestructura</em>.</h2>
+  <h2 data-en>Sora design isn't <em>art</em>. It's <em>infrastructure</em>.</h2>
+  <p data-es>Cuando cada miembro del equipo puede generar output coherente con la marca sin pasar por un diseñador, escalamos sin pérdida de calidad. Eso es lo que vale.</p>
+  <p data-en>When every team member can generate brand-coherent output without going through a designer, we scale without quality loss. That's what's worth it.</p>
+  <a href="sora-apps.html" class="cta-btn" data-es>APPLICATIONS →</a>
+  <a href="sora-apps.html" class="cta-btn" data-en>APPLICATIONS →</a>
+  <a href="sora/brand-kit.html" class="cta-btn" data-es>BRAND KIT (PWA) →</a>
+  <a href="sora/brand-kit.html" class="cta-btn" data-en>BRAND KIT (PWA) →</a>
+  <a href="sora-hq.html" class="cta-btn">HQ</a>
+</div>
+
+<footer>
+  <p data-es>Design resources · Brand & AI generation · v1.0 · La Compañía / Sora MMXXVI</p>
+  <p data-en>Design resources · Brand & AI generation · v1.0 · La Compañía / Sora MMXXVI</p>
+</footer>
+
+<script>
+  function setLang(lang){
+    document.documentElement.lang = lang;
+    document.querySelectorAll('.lang button').forEach(b => b.classList.remove('active'));
+    document.querySelector(`.lang button[onclick="setLang('${lang}')"]`).classList.add('active');
+    try { localStorage.setItem('sora.lang', lang); } catch(e){}
+  }
+  try {
+    const saved = localStorage.getItem('sora.lang');
+    if (saved) setLang(saved);
+  } catch(e){}
+</script>
+
+</body>
+</html>

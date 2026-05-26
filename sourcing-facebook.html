@@ -1,0 +1,828 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SORA · Sourcing · Facebook + Grupos</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Instrument+Serif&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F8F3EA; --cream-2:#F2EBDD; --cream-3:#E9DFCA;
+    --ink:#1B1A17; --ink-2:#3A352D; --ink-3:#5C5346; --faint:#9A8E7A;
+    --line:rgba(27,26,23,.10); --line-2:rgba(27,26,23,.06);
+    --coral:#D9573B; --gold:#B58F4D; --mango:#E2A24A; --green:#3F5F45; --rose:#B8616B; --teal:#2C6E7F;
+    --serif:'Fraunces',Georgia,serif; --display:'Instrument Serif',Georgia,serif;
+    --sans:'Inter',-apple-system,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--cream);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;font-size:15px;line-height:1.55}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--coral);color:var(--cream)}
+
+  [data-en]{display:none}
+  html[lang="en"] [data-es]{display:none}
+  html[lang="en"] [data-en]{display:inline}
+  html[lang="en"] li[data-en],html[lang="en"] p[data-en],html[lang="en"] div[data-en],html[lang="en"] h1[data-en],html[lang="en"] h2[data-en],html[lang="en"] h3[data-en],html[lang="en"] td[data-en],html[lang="en"] th[data-en]{display:block}
+  html[lang="en"] td[data-en],html[lang="en"] th[data-en]{display:table-cell}
+
+  .top{position:sticky;top:0;z-index:50;background:rgba(248,243,234,.92);backdrop-filter:blur(14px);border-bottom:0.5px solid var(--line)}
+  .top-in{max-width:1180px;margin:0 auto;padding:14px 28px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .brand{font-family:var(--serif);font-weight:600;font-size:16px;letter-spacing:.16em;color:var(--ink)}
+  .brand em{font-style:italic;color:var(--coral)}
+  .top-tag{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--rose);text-transform:uppercase;padding:4px 10px;background:rgba(184,97,107,.10);border-radius:4px}
+  .top-link{font-family:var(--sans);font-size:12px;color:var(--ink-2);padding:7px 12px;border:0.5px solid var(--line);border-radius:5px}
+  .top-link:hover{background:var(--cream-2)}
+  .spacer{flex:1}
+  .lang{display:inline-flex;border:0.5px solid var(--line);border-radius:5px;overflow:hidden}
+  .lang button{padding:6px 11px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;background:transparent;border:0;color:var(--faint);cursor:pointer;font-weight:500}
+  .lang button.active{background:var(--ink);color:var(--cream)}
+
+  .hero{padding:72px 32px 48px;max-width:1180px;margin:0 auto;text-align:center}
+  .hero-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--coral);font-weight:600;margin-bottom:22px}
+  .hero h1{font-family:var(--display);font-weight:400;font-size:clamp(48px,8vw,96px);line-height:.96;letter-spacing:-.025em;color:var(--ink);margin-bottom:18px}
+  .hero h1 em{font-style:italic;color:var(--coral)}
+  .hero-lede{font-family:var(--serif);font-size:19px;color:var(--ink-2);font-weight:300;max-width:780px;margin:0 auto;line-height:1.5}
+  .hero-lede strong{color:var(--ink);font-weight:500}
+
+  .strip{max-width:1180px;margin:32px auto 0;padding:0 32px;display:grid;grid-template-columns:repeat(5,1fr);border-top:0.5px solid var(--line);border-bottom:0.5px solid var(--line)}
+  .strip > div{padding:22px 18px;text-align:center;border-right:0.5px solid var(--line)}
+  .strip > div:last-child{border-right:0}
+  .strip .n{font-family:var(--display);font-size:34px;color:var(--coral);line-height:1;margin-bottom:6px}
+  .strip .l{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
+
+  section{max-width:1180px;margin:0 auto;padding:56px 32px}
+  .sec-head{margin-bottom:32px;text-align:center}
+  .sec-num{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--coral);font-weight:600;margin-bottom:14px}
+  .sec-num em{font-style:normal;color:var(--ink-3)}
+  .sec-head h2{font-family:var(--display);font-weight:400;font-size:clamp(34px,5vw,52px);line-height:1.04;letter-spacing:-.02em;color:var(--ink);margin-bottom:14px}
+  .sec-head h2 em{font-style:italic;color:var(--coral)}
+  .sec-sub{font-family:var(--serif);font-size:17px;color:var(--ink-3);font-weight:300;max-width:680px;margin:0 auto;line-height:1.55}
+
+  /* Route cards */
+  .routes{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:24px}
+  .route{background:var(--cream);border:0.5px solid var(--line);border-radius:10px;padding:24px 26px}
+  .route .rl{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--coral);font-weight:600;margin-bottom:8px}
+  .route h3{font-family:var(--display);font-size:22px;font-weight:400;color:var(--ink);margin-bottom:8px;line-height:1.2}
+  .route h3 em{font-style:italic;color:var(--coral)}
+  .route p{font-family:var(--serif);font-size:14px;line-height:1.55;color:var(--ink-2);margin-bottom:10px}
+  .route ul{list-style:none;padding:0;margin-top:10px}
+  .route li{font-family:var(--sans);font-size:13px;color:var(--ink-2);padding:6px 0 6px 16px;position:relative;line-height:1.45}
+  .route li::before{content:'';position:absolute;left:0;top:13px;width:6px;height:1px;background:var(--coral)}
+  .route .meta{font-family:var(--mono);font-size:10.5px;color:var(--green);padding-top:12px;border-top:0.5px solid var(--line-2);margin-top:12px;font-weight:600;letter-spacing:.10em}
+
+  /* Group taxonomy cards */
+  .groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-top:24px}
+  .group-cat{background:var(--cream);border:0.5px solid var(--line);border-left:3px solid var(--coral);border-radius:10px;padding:24px 26px}
+  .group-cat.t2{border-left-color:var(--gold)}
+  .group-cat.t3{border-left-color:var(--teal)}
+  .group-cat .gn{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--coral);font-weight:600;margin-bottom:8px}
+  .group-cat.t2 .gn{color:var(--gold)}
+  .group-cat.t3 .gn{color:var(--teal)}
+  .group-cat h3{font-family:var(--display);font-size:22px;font-weight:400;color:var(--ink);margin-bottom:10px;line-height:1.2}
+  .group-cat p{font-family:var(--serif);font-size:14px;line-height:1.55;color:var(--ink-2);margin-bottom:10px}
+  .group-cat .examples{font-family:var(--mono);font-size:11.5px;color:var(--ink-3);background:var(--cream-2);padding:10px 12px;border-radius:5px;line-height:1.5;white-space:pre-wrap;border:0.5px solid var(--line-2)}
+
+  /* Step rules */
+  .rules{margin-top:24px;background:var(--cream);border:0.5px solid var(--line);border-radius:10px;overflow:hidden}
+  .rule{padding:22px 28px;border-bottom:0.5px solid var(--line-2);display:grid;grid-template-columns:48px 1fr;gap:18px;align-items:start}
+  .rule:last-child{border-bottom:0}
+  .rule.do{border-left:3px solid var(--green)}
+  .rule.dont{border-left:3px solid var(--coral)}
+  .rule-icon{font-family:var(--display);font-size:32px;color:var(--green);line-height:1;font-style:italic;text-align:center}
+  .rule.dont .rule-icon{color:var(--coral)}
+  .rule h4{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--ink);margin-bottom:6px;line-height:1.3}
+  .rule p{font-family:var(--serif);font-size:14.5px;line-height:1.55;color:var(--ink-2);margin-bottom:0}
+
+  /* Post templates */
+  .post{background:var(--ink);color:var(--cream);border-radius:10px;padding:28px 32px;margin-top:24px}
+  .post .pl{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--mango);font-weight:600;margin-bottom:14px}
+  .post .body{font-family:var(--serif);font-size:14.5px;color:var(--cream);line-height:1.7;white-space:pre-wrap}
+
+  /* Country group table */
+  .tbl-wrap{overflow-x:auto;border-radius:10px;margin-top:24px}
+  table{width:100%;border-collapse:collapse;background:var(--cream);border:0.5px solid var(--line);border-radius:10px;overflow:hidden;min-width:780px}
+  th{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);font-weight:600;text-align:left;padding:14px 18px;background:var(--cream-2);border-bottom:0.5px solid var(--line)}
+  td{padding:14px 18px;font-size:14px;color:var(--ink-2);border-bottom:0.5px solid var(--line-2);font-family:var(--sans);vertical-align:top}
+  tr:last-child td{border-bottom:0}
+  td.country{font-family:var(--display);font-style:italic;font-size:17px;color:var(--ink);white-space:nowrap}
+  td.search{font-family:var(--mono);font-size:11.5px;color:var(--teal);line-height:1.5}
+
+  /* Callout */
+  .callout{background:var(--cream-2);border:0.5px solid var(--line);border-left:3px solid var(--coral);border-radius:8px;padding:20px 24px;margin:24px 0;font-family:var(--serif);font-size:15.5px;line-height:1.6;color:var(--ink-2)}
+  .callout strong{color:var(--ink)}
+  .callout .cl-label{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--coral);text-transform:uppercase;font-weight:600;margin-bottom:8px;display:block}
+
+  /* Ads section */
+  .ads{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-top:24px}
+  .ad{background:var(--cream);border:0.5px solid var(--line);border-radius:10px;padding:22px 24px}
+  .ad h4{font-family:var(--display);font-size:20px;font-weight:400;color:var(--ink);margin-bottom:8px;line-height:1.2}
+  .ad h4 em{font-style:italic;color:var(--coral)}
+  .ad p{font-family:var(--serif);font-size:14px;color:var(--ink-2);line-height:1.55;margin-bottom:10px}
+  .ad .filters{font-family:var(--mono);font-size:11.5px;color:var(--ink-3);background:var(--cream-2);padding:10px 12px;border-radius:5px;line-height:1.6}
+
+  /* CTA */
+  .cta{max-width:780px;margin:64px auto 48px;padding:42px 38px;text-align:center;background:var(--cream-2);border:0.5px solid var(--line);border-radius:14px}
+  .cta h2{font-family:var(--display);font-weight:400;font-size:clamp(30px,4.5vw,46px);line-height:1.04;color:var(--ink);margin-bottom:14px;letter-spacing:-.02em}
+  .cta h2 em{font-style:italic;color:var(--coral)}
+  .cta p{font-family:var(--serif);font-size:16px;color:var(--ink-2);line-height:1.55;margin-bottom:22px}
+  .cta-btn{display:inline-block;padding:12px 26px;background:var(--ink);color:var(--cream);font-family:var(--mono);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;border-radius:6px;font-weight:600;margin:0 4px}
+  .cta-btn:hover{background:var(--coral)}
+
+  footer{max-width:1180px;margin:32px auto 0;padding:32px;border-top:0.5px solid var(--line);text-align:center}
+  footer p{font-family:var(--mono);font-size:11px;letter-spacing:.10em;color:var(--ink-3)}
+
+  @media (max-width:760px){
+    .strip{grid-template-columns:repeat(2,1fr)}
+    .strip > div:nth-child(2n){border-right:0}
+    .strip > div{border-bottom:0.5px solid var(--line)}
+  }
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="top-in">
+    <a class="brand" href="sora-hq.html">SORA<em>°</em></a>
+    <span class="top-tag" data-es>SOURCING · FACEBOOK</span>
+    <span class="top-tag" data-en>SOURCING · FACEBOOK</span>
+    <a class="top-link" href="latam-expansion-system.html" data-es>↑ Sistema maestro</a>
+    <a class="top-link" href="latam-expansion-system.html" data-en>↑ Master system</a>
+    <a class="top-link" href="interview-process.html" data-es>↑ Entrevistas</a>
+    <a class="top-link" href="interview-process.html" data-en>↑ Interviews</a>
+    <span class="spacer"></span>
+    <div class="lang">
+      <button class="active" onclick="setLang('es')">ES</button>
+      <button onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="hero-eyebrow" data-es>SOURCING · CANAL 04 · FACEBOOK + GRUPOS</div>
+  <div class="hero-eyebrow" data-en>SOURCING · CHANNEL 04 · FACEBOOK + GROUPS</div>
+  <h1 data-es>El canal <em>más</em> infravalorado.</h1>
+  <h1 data-en>The <em>most</em> underrated channel.</h1>
+  <p class="hero-lede" data-es>En LATAM, Facebook todavía concentra <strong>más usuarios activos que Instagram + LinkedIn juntos</strong>. Pero todos lo ignoran porque "ya no es cool". Esa es la ventaja. Cuatro rutas: <strong>grupos</strong> (los nodos sociales reales), <strong>Marketplace Jobs</strong> (MX/BR), <strong>posts desde Sora Page</strong>, y <strong>Ads hyper-locales</strong>.</p>
+  <p class="hero-lede" data-en>In LATAM, Facebook still has <strong>more active users than Instagram + LinkedIn combined</strong>. But everyone ignores it because "it's not cool anymore." That's the advantage. Four routes: <strong>groups</strong> (the real social nodes), <strong>Marketplace Jobs</strong> (MX/BR), <strong>Sora Page posts</strong>, and <strong>hyper-local Ads</strong>.</p>
+</header>
+
+<div class="strip">
+  <div><div class="n">4</div><div class="l" data-es>Rutas</div><div class="l" data-en>Routes</div></div>
+  <div><div class="n">200+</div><div class="l" data-es>Grupos mapeables</div><div class="l" data-en>Mappable groups</div></div>
+  <div><div class="n">7d</div><div class="l" data-es>Para ser miembro creíble</div><div class="l" data-en>To become credible member</div></div>
+  <div><div class="n">$3–15</div><div class="l" data-es>USD/día ads</div><div class="l" data-en>USD/day ads</div></div>
+  <div><div class="n">19/19</div><div class="l" data-es>Países cubiertos</div><div class="l" data-en>Countries covered</div></div>
+</div>
+
+<!-- 01 · WHY FACEBOOK MATTERS -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es>01 · LA OPORTUNIDAD</div>
+    <div class="sec-num" data-en>01 · THE OPPORTUNITY</div>
+    <h2 data-es>Por qué Facebook <em>todavía</em> domina LATAM.</h2>
+    <h2 data-en>Why Facebook <em>still</em> dominates LATAM.</h2>
+    <p class="sec-sub" data-es>El sesgo de las élites profesionales en EE.UU. dice "Facebook está muerto". En LATAM eso es falso. En Centroamérica, Caribe, ciudades secundarias de Sudamérica y mercados expat, Facebook es el sistema operativo social.</p>
+    <p class="sec-sub" data-en>The elite professional bias in the US says "Facebook is dead". In LATAM that's false. In Central America, Caribbean, secondary South American cities, and expat markets, Facebook is the social operating system.</p>
+  </div>
+
+  <div class="routes">
+    <div class="route">
+      <div class="rl" data-es>RUTA 01 · GRUPOS</div>
+      <div class="rl" data-en>ROUTE 01 · GROUPS</div>
+      <h3 data-es><em>Grupos</em> — el motor primario</h3>
+      <h3 data-en><em>Groups</em> — primary engine</h3>
+      <p data-es>50–80 grupos por país son nodos sociales reales: hospitalidad, empleos, expats, eventos, emprendedores. Postear ahí con criterio convierte mejor que ninguna plataforma profesional.</p>
+      <p data-en>50–80 groups per country are real social nodes: hospitality, jobs, expats, events, entrepreneurs. Posting there with judgment converts better than any professional platform.</p>
+      <div class="meta" data-es>Esfuerzo medio · ROI altísimo · gratis</div>
+      <div class="meta" data-en>Medium effort · Very high ROI · free</div>
+    </div>
+    <div class="route">
+      <div class="rl" data-es>RUTA 02 · MARKETPLACE JOBS</div>
+      <div class="rl" data-en>ROUTE 02 · MARKETPLACE JOBS</div>
+      <h3 data-es><em>Jobs</em> en Marketplace</h3>
+      <h3 data-en><em>Jobs</em> on Marketplace</h3>
+      <p data-es>Activo principalmente en México y Brasil. Posición gratuita, distribución natural a usuarios de Marketplace en la ciudad. Aplicaciones llegan vía Messenger.</p>
+      <p data-en>Active mainly in Mexico and Brazil. Free posting, natural distribution to city Marketplace users. Applications arrive via Messenger.</p>
+      <div class="meta" data-es>Esfuerzo bajo · ROI alto · gratis</div>
+      <div class="meta" data-en>Low effort · High ROI · free</div>
+    </div>
+    <div class="route">
+      <div class="rl" data-es>RUTA 03 · SORA PAGE</div>
+      <div class="rl" data-en>ROUTE 03 · SORA PAGE</div>
+      <h3 data-es>Posts desde <em>página Sora</em></h3>
+      <h3 data-en>Posts from <em>Sora Page</em></h3>
+      <p data-es>Construir audiencia primero, luego postear posiciones a esa audiencia. Toma 90 días tener tracción pero crea moat: cuando publicas vacante, hay seguidores reales que la ven.</p>
+      <p data-en>Build audience first, then post positions to that audience. Takes 90 days to get traction but creates moat: when you publish an opening, real followers see it.</p>
+      <div class="meta" data-es>Esfuerzo alto · ROI alto (largo plazo) · gratis</div>
+      <div class="meta" data-en>High effort · High ROI (long term) · free</div>
+    </div>
+    <div class="route">
+      <div class="rl" data-es>RUTA 04 · ADS HYPER-LOCALES</div>
+      <div class="rl" data-en>ROUTE 04 · HYPER-LOCAL ADS</div>
+      <h3 data-es><em>Meta Ads</em> con targeting fino</h3>
+      <h3 data-en><em>Meta Ads</em> with sharp targeting</h3>
+      <p data-es>Crear un Lead Form Ad o Job Ad con filtros: ciudad + edad 28-45 + intereses (boutique hotels, fine dining, travel) + lookalike de seguidores. CPM de los más bajos del mundo en LATAM.</p>
+      <p data-en>Create a Lead Form Ad or Job Ad with filters: city + age 28-45 + interests (boutique hotels, fine dining, travel) + audience lookalike. LATAM has some of the lowest CPMs globally.</p>
+      <div class="meta" data-es>Esfuerzo medio · ROI medio-alto · $3-15/día</div>
+      <div class="meta" data-en>Medium effort · Medium-high ROI · $3-15/day</div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 · GROUP TAXONOMY -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es>02 · TAXONOMÍA DE GRUPOS</div>
+    <div class="sec-num" data-en>02 · GROUP TAXONOMY</div>
+    <h2 data-es>Cinco <em>tipos</em> de grupo · 50+ por país.</h2>
+    <h2 data-en>Five group <em>types</em> · 50+ per country.</h2>
+    <p class="sec-sub" data-es>No todos los grupos sirven. Estos cinco tipos son donde realmente encuentras anfitriones. El resto es ruido.</p>
+    <p class="sec-sub" data-en>Not every group works. These five types are where hosts actually live. Everything else is noise.</p>
+  </div>
+
+  <div class="groups">
+
+    <div class="group-cat">
+      <div class="gn" data-es>TIER 1 · DIRECTO</div>
+      <div class="gn" data-en>TIER 1 · DIRECT</div>
+      <h3 data-es>Hospitalidad + Eventos</h3>
+      <h3 data-en>Hospitality + Events</h3>
+      <p data-es>Profesionales activos del sector. Comparten openings, vacantes, oportunidades. Tasa de conversión más alta.</p>
+      <p data-en>Active sector professionals. Share openings, vacancies, opportunities. Highest conversion rate.</p>
+      <div class="examples">Hospitalidad [Ciudad]
+Sommeliers [País]
+Chefs Privados LATAM
+Eventos Premium [Ciudad]
+Wedding Planners [Ciudad]
+F&B Network [Ciudad]
+Hospitality Pros [Country]</div>
+    </div>
+
+    <div class="group-cat">
+      <div class="gn" data-es>TIER 1 · DIRECTO</div>
+      <div class="gn" data-en>TIER 1 · DIRECT</div>
+      <h3 data-es>Expats + locales bilingües</h3>
+      <h3 data-en>Expats + bilingual locals</h3>
+      <p data-es>El mejor canal en ciudades costeras o destinos turísticos (Tulum, Medellín, Bocas, Granada). Audiencia bilingüe por defecto.</p>
+      <p data-en>Best channel in coastal cities or tourist destinations (Tulum, Medellín, Bocas, Granada). Bilingual audience by default.</p>
+      <div class="examples">Expats in [City]
+[City] Locals + Expats
+InterNations [City]
+Americans in [Country]
+Brits in [City]
+Digital Nomads [City]</div>
+    </div>
+
+    <div class="group-cat t2">
+      <div class="gn" data-es>TIER 2 · ALTO VOLUMEN</div>
+      <div class="gn" data-en>TIER 2 · HIGH VOLUME</div>
+      <h3 data-es>Empleos · ciudad específica</h3>
+      <h3 data-en>Jobs · specific city</h3>
+      <p data-es>Mucho ruido pero buen volumen. Funciona si el anuncio está bien escrito (filtra solo). Mejor en ciudades pequeñas/secundarias.</p>
+      <p data-en>Lots of noise but good volume. Works if the ad is well-written (filters itself). Best in small/secondary cities.</p>
+      <div class="examples">Empleos en [Ciudad]
+Trabajos [Ciudad]
+Vacantes [Ciudad]
+Bolsa de empleo [Ciudad]</div>
+    </div>
+
+    <div class="group-cat t2">
+      <div class="gn" data-es>TIER 2 · MEDIO</div>
+      <div class="gn" data-en>TIER 2 · MEDIUM</div>
+      <h3 data-es>Emprendedores + Networking</h3>
+      <h3 data-en>Entrepreneurs + Networking</h3>
+      <p data-es>Útil para encontrar perfiles "ya están emprendiendo, buscan algo de menos riesgo". Buena fuente en CDMX, BA, Medellín, SP.</p>
+      <p data-en>Useful for finding profiles "already entrepreneurial, looking for less risk." Good source in CDMX, BA, Medellín, SP.</p>
+      <div class="examples">Emprendedores [Ciudad]
+Networking [Ciudad]
+Startup [País]
+Founders [Country]
+Mujeres Emprendedoras [País]</div>
+    </div>
+
+    <div class="group-cat t3">
+      <div class="gn" data-es>TIER 3 · LATERAL</div>
+      <div class="gn" data-en>TIER 3 · LATERAL</div>
+      <h3 data-es>Lifestyle + Foodies</h3>
+      <h3 data-en>Lifestyle + Foodies</h3>
+      <p data-es>No para anuncios. Para encontrar gente activa en la conversación gastronómica/cultural local — quien comenta inteligente en estos grupos es candidato potencial.</p>
+      <p data-en>Not for ads. For finding people active in local food/culture conversation — those who comment intelligently here are potential candidates.</p>
+      <div class="examples">Foodies [Ciudad]
+[Ciudad] Bohemio
+Restaurantes [Ciudad]
+[Ciudad] Cool
+Vinos [País]</div>
+    </div>
+
+    <div class="group-cat t3">
+      <div class="gn" data-es>TIER 3 · BONUS</div>
+      <div class="gn" data-en>TIER 3 · BONUS</div>
+      <h3 data-es>Compra/venta de ciudad</h3>
+      <h3 data-en>City buy/sell</h3>
+      <p data-es>Grupos generalistas masivos (50K+ miembros). Útil solo para Ola 5 (HN, NI, BO) cuando los grupos especializados son débiles.</p>
+      <p data-en>Mass-generalist groups (50K+ members). Useful only for Wave 5 (HN, NI, BO) when specialized groups are weak.</p>
+      <div class="examples">Compra y venta [Ciudad]
+Buy and Sell [City]
+Clasificados [Ciudad]</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- 03 · HOW TO FIND THE RIGHT GROUPS -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es>03 · CÓMO ENCONTRAR LOS GRUPOS</div>
+    <div class="sec-num" data-en>03 · HOW TO FIND THE GROUPS</div>
+    <h2 data-es>Búsquedas <em>exactas</em>.</h2>
+    <h2 data-en>Exact <em>searches</em>.</h2>
+    <p class="sec-sub" data-es>Reemplazar [Ciudad] / [País] con tu mercado. Estas búsquedas devuelven los grupos correctos en orden de relevancia.</p>
+    <p class="sec-sub" data-en>Replace [City] / [Country] with your market. These searches return the right groups in order of relevance.</p>
+  </div>
+
+  <div class="tbl-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th data-es>TIPO DE GRUPO</th><th data-en>GROUP TYPE</th>
+        <th data-es>BÚSQUEDA EN FACEBOOK</th><th data-en>FACEBOOK SEARCH</th>
+        <th data-es>FILTROS ADICIONALES</th><th data-en>ADDITIONAL FILTERS</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="country" data-es>Hospitalidad</td><td class="country" data-en>Hospitality</td>
+        <td class="search">hospitalidad [Ciudad]
+hoteleros [País]
+hotel professionals [City]
+chefs [Ciudad]</td>
+        <td data-es>Filtro · Grupos · Miembros 500-50K · Activo último mes</td>
+        <td data-en>Filter · Groups · Members 500-50K · Active last month</td>
+      </tr>
+      <tr>
+        <td class="country" data-es>Eventos</td><td class="country" data-en>Events</td>
+        <td class="search">eventos premium [Ciudad]
+wedding planner [País]
+event production [City]
+bodas [Ciudad]</td>
+        <td data-es>Filtro · Grupos · Públicos primero, privados después</td>
+        <td data-en>Filter · Groups · Public first, private after</td>
+      </tr>
+      <tr>
+        <td class="country" data-es>Expats</td><td class="country" data-en>Expats</td>
+        <td class="search">expats in [City]
+foreigners [City]
+americans in [Country]
+[City] locals + expats</td>
+        <td data-es>Filtro · Grupos · Miembros 1K+ · Públicos</td>
+        <td data-en>Filter · Groups · Members 1K+ · Public</td>
+      </tr>
+      <tr>
+        <td class="country" data-es>Empleos</td><td class="country" data-en>Jobs</td>
+        <td class="search">empleos [Ciudad]
+trabajos [Ciudad]
+vacantes [Ciudad]
+jobs in [City]</td>
+        <td data-es>Filtro · Grupos · Miembros 10K+ · Actividad alta</td>
+        <td data-en>Filter · Groups · Members 10K+ · High activity</td>
+      </tr>
+      <tr>
+        <td class="country" data-es>Emprendedores</td><td class="country" data-en>Entrepreneurs</td>
+        <td class="search">emprendedores [País]
+networking [Ciudad]
+founders [Country]
+startup [City]</td>
+        <td data-es>Filtro · Grupos · Privados (más cualitativos)</td>
+        <td data-en>Filter · Groups · Private (more qualitative)</td>
+      </tr>
+      <tr>
+        <td class="country" data-es>Foodies / Lifestyle</td><td class="country" data-en>Foodies / Lifestyle</td>
+        <td class="search">foodies [Ciudad]
+restaurantes [Ciudad]
+vinos [País]
+[City] cool</td>
+        <td data-es>Para observar, no postear · alta calidad de candidatos</td>
+        <td data-en>To observe, not post · high candidate quality</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="callout">
+    <span class="cl-label" data-es>ATAJO · ENCONTRAR LOS 50 DE UNA VEZ</span>
+    <span class="cl-label" data-en>SHORTCUT · FIND ALL 50 AT ONCE</span>
+    <p data-es>Buscar en Facebook: <strong>"facebook.com/groups/ + [ciudad] + lista"</strong> en Google. Sitios como GroupSpy, FBSurveyor o thread de Reddit r/[city] suelen tener listas curadas de grupos activos por ciudad. Hacer una hoja con 50 grupos por país antes de empezar Wave 1.</p>
+    <p data-en>Google: <strong>"facebook.com/groups/ + [city] + list"</strong>. Sites like GroupSpy, FBSurveyor or Reddit threads r/[city] often have curated lists of active groups by city. Build a sheet with 50 groups per country before starting Wave 1.</p>
+  </div>
+</section>
+
+<!-- 04 · THE 7-DAY RULE -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es>04 · LA REGLA DE 7 DÍAS</div>
+    <div class="sec-num" data-en>04 · THE 7-DAY RULE</div>
+    <h2 data-es>Cómo entrar <em>sin spam</em>.</h2>
+    <h2 data-en>How to enter <em>without spam</em>.</h2>
+    <p class="sec-sub" data-es>Postear el día que entras al grupo es la forma más rápida de ser baneado y dañar la reputación de la marca. Estos son los siete días previos al anuncio.</p>
+    <p class="sec-sub" data-en>Posting the day you join the group is the fastest way to be banned and damage brand reputation. These are the seven days before the ad.</p>
+  </div>
+
+  <div class="rules">
+    <div class="rule do">
+      <div class="rule-icon">✓</div>
+      <div>
+        <h4 data-es>Día 1–2 · Solicitar entrada con respuesta cuidada</h4>
+        <h4 data-en>Day 1–2 · Request entry with careful answer</h4>
+        <p data-es>Los grupos privados preguntan "¿Por qué quieres unirte?". Responder con frase de 2 líneas que sea humano, no marketing. "Soy [Nombre], trabajo en hospitalidad en [ciudad], quiero conectarme con colegas del sector". Sin link, sin pitch.</p>
+        <p data-en>Private groups ask "Why do you want to join?" Reply with a 2-line human sentence, not marketing. "I'm [Name], I work in hospitality in [city], I want to connect with sector peers." No link, no pitch.</p>
+      </div>
+    </div>
+    <div class="rule do">
+      <div class="rule-icon">✓</div>
+      <div>
+        <h4 data-es>Día 3–4 · Comentar 2 posts del grupo</h4>
+        <h4 data-en>Day 3–4 · Comment on 2 group posts</h4>
+        <p data-es>Buscar posts recientes donde puedas aportar valor genuino. Una opinión, una recomendación, una historia corta. Los admins notan quién comenta y quién solo absorbe.</p>
+        <p data-en>Find recent posts where you can offer genuine value. An opinion, a recommendation, a short story. Admins notice who comments vs. who only lurks.</p>
+      </div>
+    </div>
+    <div class="rule do">
+      <div class="rule-icon">✓</div>
+      <div>
+        <h4 data-es>Día 5–6 · Postear algo útil (no anuncio)</h4>
+        <h4 data-en>Day 5–6 · Post something useful (not the ad)</h4>
+        <p data-es>Una recomendación de lugar, una pregunta abierta, un artículo relevante con tu comentario. Esto te establece como miembro real. <strong>Esperar reacciones — si los miembros responden, tu primer anuncio tendrá tracción.</strong></p>
+        <p data-en>A place recommendation, an open question, a relevant article with your comment. This establishes you as a real member. <strong>Wait for reactions — if members engage, your first ad will get traction.</strong></p>
+      </div>
+    </div>
+    <div class="rule do">
+      <div class="rule-icon">✓</div>
+      <div>
+        <h4 data-es>Día 7 · Revisar reglas del grupo</h4>
+        <h4 data-en>Day 7 · Re-read group rules</h4>
+        <p data-es>Muchos grupos exigen "se permiten anuncios solo los lunes" o "DM al admin antes de postear". Romper esto = baneo. Leer las reglas dos veces.</p>
+        <p data-en>Many groups require "ads only on Mondays" or "DM the admin before posting." Breaking this = ban. Read the rules twice.</p>
+      </div>
+    </div>
+    <div class="rule do">
+      <div class="rule-icon">✓</div>
+      <div>
+        <h4 data-es>Día 8 · Postear el anuncio</h4>
+        <h4 data-en>Day 8 · Post the ad</h4>
+        <p data-es>Ya eres miembro real. El anuncio recibe engagement orgánico. Los miembros tagean amigos. La conversión sube 5x vs. postear día 1.</p>
+        <p data-en>You're a real member now. The ad gets organic engagement. Members tag friends. Conversion goes 5x vs. posting day 1.</p>
+      </div>
+    </div>
+    <div class="rule dont">
+      <div class="rule-icon">✗</div>
+      <div>
+        <h4 data-es>NUNCA · Postear el mismo texto en 5 grupos en el mismo día</h4>
+        <h4 data-en>NEVER · Post the same text in 5 groups on the same day</h4>
+        <p data-es>Facebook detecta esto como spam y baja tu reach. Espaciar mínimo 8 horas entre posts. Cambiar la primera línea de cada post. Aún mejor: usar 3 variantes rotativas.</p>
+        <p data-en>Facebook detects this as spam and reduces reach. Space at least 8 hours between posts. Change the opening line in each. Even better: rotate 3 variants.</p>
+      </div>
+    </div>
+    <div class="rule dont">
+      <div class="rule-icon">✗</div>
+      <div>
+        <h4 data-es>NUNCA · Postear sin tag de ciudad específica</h4>
+        <h4 data-en>NEVER · Post without a specific city tag</h4>
+        <p data-es>"Buscamos persona para LATAM" se pierde. "Buscamos persona en Medellín" tiene 8x más respuesta. Hyper-local siempre gana.</p>
+        <p data-en>"Looking for a person for LATAM" gets lost. "Looking for a person in Medellín" gets 8x more replies. Hyper-local always wins.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 · POST TEMPLATES -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es>05 · PLANTILLAS DE POST</div>
+    <div class="sec-num" data-en>05 · POST TEMPLATES</div>
+    <h2 data-es>Tres <em>variantes</em>, rotar.</h2>
+    <h2 data-en>Three <em>variants</em>, rotate.</h2>
+  </div>
+
+  <div class="post">
+    <div class="pl" data-es>VARIANTE 01 · GRUPO DE HOSPITALIDAD</div>
+    <div class="pl" data-en>VARIANT 01 · HOSPITALITY GROUP</div>
+    <div class="body" data-es>Hola gente — estamos abriendo Sora Travel Agency en [Ciudad] y buscamos UNA persona que sea nuestra cara local.
+
+No es un trabajo de hotel. Es una asociación: tú activas tu red, nosotros traemos huéspedes premium internacionales y la plataforma.
+
+Si tienes background en hospitalidad o eventos, vives en [Ciudad] hace 3+ años, hablas inglés fluido — me gustaría hablar. Y si conoces a la persona perfecta, la referencia se agradece mucho.
+
+Comisión durante el trial + base creciente después. WhatsApp DM si te interesa: [+507 XXXX-XXXX]
+
+Abraham · La Compañía / Sora</div>
+    <div class="body" data-en>Hi all — we're opening Sora Travel Agency in [City] and looking for ONE person to be our local face.
+
+Not a hotel job. A partnership: you activate your network, we bring premium international guests and the platform.
+
+If you have hospitality or events background, live in [City] for 3+ years, speak fluent English — I'd love to talk. And if you know the perfect person, the referral is much appreciated.
+
+Commission during trial + growing base after. WhatsApp DM if interested: [+507 XXXX-XXXX]
+
+Abraham · La Compañía / Sora</div>
+  </div>
+
+  <div class="post" style="margin-top:18px">
+    <div class="pl" data-es>VARIANTE 02 · GRUPO DE EXPATS / BILINGÜES</div>
+    <div class="pl" data-en>VARIANT 02 · EXPAT / BILINGUAL GROUP</div>
+    <div class="body" data-es>Looking for one bilingual local in [City] to lead Sora's expansion here. Sora is a premium travel agency operating across LATAM — curated weekends, private dinners, the kind of experiences guests can't book themselves.
+
+Profile: 28-45, lives in [City] 3+ years, English fluent, has an active hospitality/lifestyle network. Not entry-level — you should already know the city's premium operators by name.
+
+Commission-based to start, scales to base + override after 60 days. Strong upside.
+
+If this is you or someone you know — DM with one line about your network and one premium spot most people don't know about in [City].
+
+Abraham · founder, Sora</div>
+    <div class="body" data-en>Looking for one bilingual local in [City] to lead Sora's expansion here. Sora is a premium travel agency operating across LATAM — curated weekends, private dinners, the kind of experiences guests can't book themselves.
+
+Profile: 28-45, lives in [City] 3+ years, English fluent, has an active hospitality/lifestyle network. Not entry-level — you should already know the city's premium operators by name.
+
+Commission-based to start, scales to base + override after 60 days. Strong upside.
+
+If this is you or someone you know — DM with one line about your network and one premium spot most people don't know about in [City].
+
+Abraham · founder, Sora</div>
+  </div>
+
+  <div class="post" style="margin-top:18px">
+    <div class="pl" data-es>VARIANTE 03 · GRUPO DE EMPLEOS / GENERAL</div>
+    <div class="pl" data-en>VARIANT 03 · JOBS / GENERAL GROUP</div>
+    <div class="body" data-es>POSICIÓN · Anfitrión/a de experiencias premium · [Ciudad]
+EMPRESA · Sora Travel Agency (La Compañía)
+TIPO · Híbrido · 25 hrs/sem mínimo
+PAGO · Comisión inicial (25%) + base creciente
+
+Buscamos UNA persona en [Ciudad] que tenga red activa en hospitalidad, eventos o lifestyle premium. No es un trabajo de oficina — es una asociación de largo plazo.
+
+Requisitos:
+· Bilingüe español + inglés fluido
+· 3+ años viviendo en [Ciudad]
+· Red propia en hospitalidad/eventos
+· Mínimo 25 hrs/semana disponibles
+
+Cómo aplicar: WhatsApp [+507 XXXX-XXXX] con tu nombre + 1 línea sobre tu red + 1 lugar premium que la mayoría no conoce. No mandes CV.
+
+Abraham · La Compañía</div>
+    <div class="body" data-en>POSITION · Premium experience host · [City]
+COMPANY · Sora Travel Agency (La Compañía)
+TYPE · Hybrid · 25 hrs/wk min
+PAY · Starting commission (25%) + growing base
+
+We're looking for ONE person in [City] with an active network in hospitality, events, or premium lifestyle. Not an office job — a long-term partnership.
+
+Requirements:
+· Bilingual Spanish + fluent English
+· 3+ years living in [City]
+· Own network in hospitality/events
+· Minimum 25 hrs/week available
+
+How to apply: WhatsApp [+507 XXXX-XXXX] with your name + 1 line about your network + 1 premium spot most people don't know. Don't send a CV.
+
+Abraham · La Compañía</div>
+  </div>
+</section>
+
+<!-- 06 · MARKETPLACE JOBS -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es>06 · MARKETPLACE JOBS</div>
+    <div class="sec-num" data-en>06 · MARKETPLACE JOBS</div>
+    <h2 data-es>Activo en <em>MX</em>, <em>BR</em>, parcialmente otros.</h2>
+    <h2 data-en>Active in <em>MX</em>, <em>BR</em>, partially others.</h2>
+    <p class="sec-sub" data-es>Facebook Marketplace Jobs es la sección oficial de empleos. Funciona muy bien en México y Brasil, parcial en CO/AR/CL, deshabilitado en algunos países. Cuando funciona — es gratis y eficiente.</p>
+    <p class="sec-sub" data-en>Facebook Marketplace Jobs is the official jobs section. Works very well in Mexico and Brazil, partial in CO/AR/CL, disabled in some countries. When it works — free and efficient.</p>
+  </div>
+
+  <div class="rules">
+    <div class="rule do">
+      <div class="rule-icon">01</div>
+      <div>
+        <h4 data-es>Acceder desde Sora Page · no perfil personal</h4>
+        <h4 data-en>Access from Sora Page · not personal profile</h4>
+        <p data-es>Ir a la página de Sora Travel Agency → "Publish" → "Job". Si no aparece la opción "Job" en tu país, la función está deshabilitada localmente (común en CR, PA, PE).</p>
+        <p data-en>Go to Sora Travel Agency page → "Publish" → "Job". If no "Job" option appears in your country, the feature is locally disabled (common in CR, PA, PE).</p>
+      </div>
+    </div>
+    <div class="rule do">
+      <div class="rule-icon">02</div>
+      <div>
+        <h4 data-es>Llenar el formulario completo</h4>
+        <h4 data-en>Fill out the full form</h4>
+        <p data-es>Title: "Anfitrión de experiencias premium". Location: ciudad exacta. Type: Part-time. Pay: NO incluir números — escribir "Commission + base · DM for details". Description: pegar la Variante 03 de §05.</p>
+        <p data-en>Title: "Premium experience host". Location: exact city. Type: Part-time. Pay: do NOT include numbers — write "Commission + base · DM for details". Description: paste Variant 03 from §05.</p>
+      </div>
+    </div>
+    <div class="rule do">
+      <div class="rule-icon">03</div>
+      <div>
+        <h4 data-es>Configurar aplicación via Messenger</h4>
+        <h4 data-en>Configure application via Messenger</h4>
+        <p data-es>Marcar "Receive applications via Messenger" — los candidatos llegan directo a tu inbox, sin emails que se pierden.</p>
+        <p data-en>Check "Receive applications via Messenger" — candidates land directly in your inbox, no emails lost.</p>
+      </div>
+    </div>
+    <div class="rule do">
+      <div class="rule-icon">04</div>
+      <div>
+        <h4 data-es>Boost por $20-50 si volumen es bajo</h4>
+        <h4 data-en>Boost $20-50 if volume is low</h4>
+        <p data-es>Facebook ofrece boost al postear. En MX/BR no es necesario (orgánico funciona). En países más chicos: $20-50 boost a 5 días duplica visibilidad.</p>
+        <p data-en>Facebook offers boost when posting. In MX/BR not needed (organic works). In smaller countries: $20-50 boost over 5 days doubles visibility.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 · ADS HYPER-LOCAL -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es>07 · ADS HYPER-LOCALES</div>
+    <div class="sec-num" data-en>07 · HYPER-LOCAL ADS</div>
+    <h2 data-es>Targeting <em>quirúrgico</em> · $3–15/día.</h2>
+    <h2 data-en><em>Surgical</em> targeting · $3–15/day.</h2>
+    <p class="sec-sub" data-es>Meta Ads en LATAM tiene CPM más bajo del mundo. Con $3-15/día puedes alcanzar 800-2,500 personas exactamente segmentadas en tu ciudad por semana.</p>
+    <p class="sec-sub" data-en>Meta Ads in LATAM has the world's lowest CPM. With $3-15/day you reach 800-2,500 exactly-segmented people in your city per week.</p>
+  </div>
+
+  <div class="ads">
+    <div class="ad">
+      <h4 data-es><em>Ad #01</em> · Lead Form</h4>
+      <h4 data-en><em>Ad #01</em> · Lead Form</h4>
+      <p data-es>Anuncio que abre un formulario dentro de Facebook (no redirige a sitio externo). Captura nombre + teléfono + 2 preguntas custom. Es el formato con mayor conversión LATAM.</p>
+      <p data-en>Ad opens a form inside Facebook (doesn't redirect to external site). Captures name + phone + 2 custom questions. Highest converting format in LATAM.</p>
+      <div class="filters">OBJETIVO · Lead Generation
+PRESUPUESTO · $5-10/día
+DURACIÓN · 7 días
+PREGUNTAS · (1) ¿En qué ciudad vives? (2) Describe tu red en 1 línea</div>
+    </div>
+
+    <div class="ad">
+      <h4 data-es><em>Ad #02</em> · Job Ad</h4>
+      <h4 data-en><em>Ad #02</em> · Job Ad</h4>
+      <p data-es>Si Marketplace Jobs está activo en el país, Facebook auto-genera un Ad para promocionar. Pagas por click. Más caro que Lead Form pero candidatos más "warm".</p>
+      <p data-en>If Marketplace Jobs is active in the country, Facebook auto-generates an Ad to promote. Pay per click. Pricier than Lead Form but "warmer" candidates.</p>
+      <div class="filters">OBJETIVO · Jobs (auto)
+PRESUPUESTO · $8-15/día
+DURACIÓN · 10 días
+APPLY VIA · Messenger</div>
+    </div>
+
+    <div class="ad">
+      <h4 data-es><em>Ad #03</em> · Reach + Awareness</h4>
+      <h4 data-en><em>Ad #03</em> · Reach + Awareness</h4>
+      <p data-es>Construir audiencia de Sora Page primero. Usar 3 semanas en este modo ($3-5/día) para crear lookalike audience. Después Lead Form al lookalike convierte 3x mejor.</p>
+      <p data-en>Build Sora Page audience first. Run this mode 3 weeks ($3-5/day) to create lookalike audience. Then Lead Form to lookalike converts 3x better.</p>
+      <div class="filters">OBJETIVO · Reach / Page Likes
+PRESUPUESTO · $3-5/día
+DURACIÓN · 21 días
+META · 500-2,000 nuevos seguidores</div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <span class="cl-label" data-es>FILTROS DE TARGETING · COPY PEGAR EN ADS MANAGER</span>
+    <span class="cl-label" data-en>TARGETING FILTERS · COPY PASTE INTO ADS MANAGER</span>
+    <p data-es><strong>Location:</strong> [Ciudad] + radio 10-15 km. <strong>Age:</strong> 28–45. <strong>Languages:</strong> Spanish + English. <strong>Interests (mínimo 3, máx 7):</strong> boutique hotels, fine dining, travel agency, hospitality industry, event planning, wine tasting, premium travel. <strong>Behaviors:</strong> Frequent travelers (international). <strong>Education:</strong> University. Eso te da una audiencia de 30-80K personas en una ciudad LATAM mediana — perfecto para CPM bajo + relevancia alta.</p>
+    <p data-en><strong>Location:</strong> [City] + 10-15 km radius. <strong>Age:</strong> 28–45. <strong>Languages:</strong> Spanish + English. <strong>Interests (minimum 3, max 7):</strong> boutique hotels, fine dining, travel agency, hospitality industry, event planning, wine tasting, premium travel. <strong>Behaviors:</strong> Frequent travelers (international). <strong>Education:</strong> University. That yields a 30-80K audience in a mid-size LATAM city — perfect for low CPM + high relevance.</p>
+  </div>
+</section>
+
+<!-- 08 · COUNTRY PRIORITY -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es>08 · DÓNDE FACEBOOK GANA</div>
+    <div class="sec-num" data-en>08 · WHERE FACEBOOK WINS</div>
+    <h2 data-es>Más útil en <em>mercados expat</em> y ciudades secundarias.</h2>
+    <h2 data-en>Most useful in <em>expat markets</em> and secondary cities.</h2>
+  </div>
+
+  <div class="tbl-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th data-es>PAÍS</th><th data-en>COUNTRY</th>
+        <th data-es>CIUDADES TOP</th><th data-en>TOP CITIES</th>
+        <th data-es>RUTA RECOMENDADA</th><th data-en>RECOMMENDED ROUTE</th>
+        <th data-es>POR QUÉ FACEBOOK</th><th data-en>WHY FACEBOOK</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="country">🇲🇽 México</td>
+        <td>Tulum · Mérida · Mty</td>
+        <td data-es>Marketplace + grupos expats Tulum</td><td data-en>Marketplace + Tulum expat groups</td>
+        <td data-es>Marketplace Jobs muy activo · grupos Tulum top-tier</td><td data-en>Marketplace Jobs very active · top-tier Tulum groups</td>
+      </tr>
+      <tr>
+        <td class="country">🇨🇴 Colombia</td>
+        <td>Medellín · Cartagena · Pereira</td>
+        <td data-es>Grupos expats + Ads Medellín</td><td data-en>Expat groups + Medellín Ads</td>
+        <td data-es>Medellín tiene 8+ grupos expats activos</td><td data-en>Medellín has 8+ active expat groups</td>
+      </tr>
+      <tr>
+        <td class="country">🇧🇷 Brasil</td>
+        <td>SP · Rio · Trancoso</td>
+        <td data-es>Marketplace + grupos lifestyle</td><td data-en>Marketplace + lifestyle groups</td>
+        <td data-es>Brasil sigue siendo plataforma #1 LATAM</td><td data-en>Brazil still #1 LATAM platform</td>
+      </tr>
+      <tr>
+        <td class="country">🇦🇷 Argentina</td>
+        <td>BA · Mendoza · Bariloche</td>
+        <td data-es>Grupos + Ads CABA</td><td data-en>Groups + CABA Ads</td>
+        <td data-es>Grupos de emprendedores muy activos</td><td data-en>Very active entrepreneur groups</td>
+      </tr>
+      <tr>
+        <td class="country">🇵🇦 Panamá</td>
+        <td>Bocas · Boquete · PA City</td>
+        <td data-es>Grupos expats Bocas + Boquete</td><td data-en>Bocas + Boquete expat groups</td>
+        <td data-es>Mercados costeros 80% expat — Facebook canal #1</td><td data-en>Coastal markets 80% expat — Facebook is #1</td>
+      </tr>
+      <tr>
+        <td class="country">🇨🇷 Costa Rica</td>
+        <td>Nicoya · Tamarindo · SJ</td>
+        <td data-es>Grupos expats + Ads</td><td data-en>Expat groups + Ads</td>
+        <td data-es>Costa expat-heavy · grupos enormes en FB</td><td data-en>Expat-heavy coast · huge FB groups</td>
+      </tr>
+      <tr>
+        <td class="country">🇳🇮 Nicaragua</td>
+        <td>Granada · San Juan del Sur</td>
+        <td data-es>Solo grupos expats</td><td data-en>Expat groups only</td>
+        <td data-es>Mercado tan chico que solo FB tiene densidad</td><td data-en>Market so small only FB has density</td>
+      </tr>
+      <tr>
+        <td class="country">🇭🇳 Honduras</td>
+        <td>Roatán · Utila</td>
+        <td data-es>Solo grupos expats Roatán</td><td data-en>Roatán expat groups only</td>
+        <td data-es>Roatán expat = canal único viable</td><td data-en>Roatán expat = the only viable channel</td>
+      </tr>
+      <tr>
+        <td class="country">🇬🇹 Guatemala</td>
+        <td>Antigua · Atitlán</td>
+        <td data-es>Grupos expats Antigua + Atitlán</td><td data-en>Antigua + Atitlán expat groups</td>
+        <td data-es>Antigua tiene comunidad expat sólida</td><td data-en>Antigua has solid expat community</td>
+      </tr>
+      <tr>
+        <td class="country">🇧🇴 Bolivia</td>
+        <td>Salar de Uyuni · La Paz</td>
+        <td data-es>Solo grupos lifestyle/foodies</td><td data-en>Lifestyle/foodies groups only</td>
+        <td data-es>Mercado seco — usar como complemento</td><td data-en>Dry market — use as complement</td>
+      </tr>
+      <tr>
+        <td class="country">🇸🇻 El Salvador · 🇩🇴 RD · 🇵🇷 PR</td>
+        <td data-es>Capitales + costa</td><td data-en>Capitals + coast</td>
+        <td data-es>Grupos expats + Ads</td><td data-en>Expat groups + Ads</td>
+        <td data-es>Costa muy expat, Facebook domina</td><td data-en>Very expat coast, Facebook dominates</td>
+      </tr>
+      <tr>
+        <td class="country">🇵🇪 PE · 🇨🇱 CL · 🇪🇨 EC · 🇻🇪 VE · 🇺🇾 UY · 🇵🇾 PY</td>
+        <td data-es>Capitales</td><td data-en>Capitals</td>
+        <td data-es>Suplemento, no primario</td><td data-en>Supplement, not primary</td>
+        <td data-es>LinkedIn + bolsas trabajan mejor</td><td data-en>LinkedIn + boards work better</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta">
+  <h2 data-es>Facebook = <em>tracción rápida</em>.</h2>
+  <h2 data-en>Facebook = <em>fast traction</em>.</h2>
+  <p data-es>Cuando IG mining + referencias + LinkedIn no llenan el embudo, Facebook es donde están las personas que los otros canales no muestran. Especialmente en mercados expat y secundarios.</p>
+  <p data-en>When IG mining + referrals + LinkedIn don't fill the funnel, Facebook is where the people the other channels don't show live. Especially in expat and secondary markets.</p>
+  <a href="interview-process.html" class="cta-btn" data-es>PROCESO DE ENTREVISTA →</a>
+  <a href="interview-process.html" class="cta-btn" data-en>INTERVIEW PROCESS →</a>
+  <a href="sourcing-linkedin.html" class="cta-btn" data-es>LINKEDIN →</a>
+  <a href="sourcing-linkedin.html" class="cta-btn" data-en>LINKEDIN →</a>
+  <a href="sourcing-jobboards.html" class="cta-btn" data-es>BOLSAS DE EMPLEO →</a>
+  <a href="sourcing-jobboards.html" class="cta-btn" data-en>JOB BOARDS →</a>
+</div>
+
+<footer>
+  <p data-es>Sourcing · Canal 04 · Facebook + Grupos · v1.0 · La Compañía / Sora MMXXVI</p>
+  <p data-en>Sourcing · Channel 04 · Facebook + Groups · v1.0 · La Compañía / Sora MMXXVI</p>
+</footer>
+
+<script>
+  function setLang(lang){
+    document.documentElement.lang = lang;
+    document.querySelectorAll('.lang button').forEach(b => b.classList.remove('active'));
+    document.querySelector(`.lang button[onclick="setLang('${lang}')"]`).classList.add('active');
+    try { localStorage.setItem('sora.lang', lang); } catch(e){}
+  }
+  try {
+    const saved = localStorage.getItem('sora.lang');
+    if (saved) setLang(saved);
+  } catch(e){}
+</script>
+
+</body>
+</html>

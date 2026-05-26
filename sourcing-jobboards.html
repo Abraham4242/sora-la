@@ -1,0 +1,725 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SORA · Sourcing · Bolsas de Empleo LATAM</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Instrument+Serif&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F8F3EA; --cream-2:#F2EBDD; --cream-3:#E9DFCA;
+    --ink:#1B1A17; --ink-2:#3A352D; --ink-3:#5C5346; --faint:#9A8E7A;
+    --line:rgba(27,26,23,.10); --line-2:rgba(27,26,23,.06);
+    --coral:#D9573B; --gold:#B58F4D; --mango:#E2A24A; --green:#3F5F45; --rose:#B8616B; --teal:#2C6E7F;
+    --serif:'Fraunces',Georgia,serif; --display:'Instrument Serif',Georgia,serif;
+    --sans:'Inter',-apple-system,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--cream);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;font-size:15px;line-height:1.55}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--coral);color:var(--cream)}
+
+  [data-en]{display:none}
+  html[lang="en"] [data-es]{display:none}
+  html[lang="en"] [data-en]{display:inline}
+  html[lang="en"] li[data-en],html[lang="en"] p[data-en],html[lang="en"] div[data-en],html[lang="en"] h1[data-en],html[lang="en"] h2[data-en],html[lang="en"] h3[data-en],html[lang="en"] td[data-en],html[lang="en"] th[data-en]{display:block}
+  html[lang="en"] td[data-en],html[lang="en"] th[data-en]{display:table-cell}
+
+  .top{position:sticky;top:0;z-index:50;background:rgba(248,243,234,.92);backdrop-filter:blur(14px);border-bottom:0.5px solid var(--line)}
+  .top-in{max-width:1180px;margin:0 auto;padding:14px 28px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .brand{font-family:var(--serif);font-weight:600;font-size:16px;letter-spacing:.16em;color:var(--ink)}
+  .brand em{font-style:italic;color:var(--coral)}
+  .top-tag{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--rose);text-transform:uppercase;padding:4px 10px;background:rgba(184,97,107,.10);border-radius:4px}
+  .top-link{font-family:var(--sans);font-size:12px;color:var(--ink-2);padding:7px 12px;border:0.5px solid var(--line);border-radius:5px}
+  .top-link:hover{background:var(--cream-2)}
+  .spacer{flex:1}
+  .lang{display:inline-flex;border:0.5px solid var(--line);border-radius:5px;overflow:hidden}
+  .lang button{padding:6px 11px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;background:transparent;border:0;color:var(--faint);cursor:pointer;font-weight:500}
+  .lang button.active{background:var(--ink);color:var(--cream)}
+
+  .hero{padding:72px 32px 48px;max-width:1180px;margin:0 auto;text-align:center}
+  .hero-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--coral);font-weight:600;margin-bottom:22px}
+  .hero h1{font-family:var(--display);font-weight:400;font-size:clamp(48px,8vw,96px);line-height:.96;letter-spacing:-.025em;color:var(--ink);margin-bottom:18px}
+  .hero h1 em{font-style:italic;color:var(--coral)}
+  .hero-lede{font-family:var(--serif);font-size:19px;color:var(--ink-2);font-weight:300;max-width:760px;margin:0 auto;line-height:1.5}
+  .hero-lede strong{color:var(--ink);font-weight:500}
+
+  .strip{max-width:1180px;margin:32px auto 0;padding:0 32px;display:grid;grid-template-columns:repeat(5,1fr);border-top:0.5px solid var(--line);border-bottom:0.5px solid var(--line)}
+  .strip > div{padding:22px 18px;text-align:center;border-right:0.5px solid var(--line)}
+  .strip > div:last-child{border-right:0}
+  .strip .n{font-family:var(--display);font-size:34px;color:var(--coral);line-height:1;margin-bottom:6px}
+  .strip .l{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
+
+  section{max-width:1180px;margin:0 auto;padding:56px 32px}
+  .sec-head{margin-bottom:32px;text-align:center}
+  .sec-num{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--coral);font-weight:600;margin-bottom:14px}
+  .sec-num em{font-style:normal;color:var(--ink-3)}
+  .sec-head h2{font-family:var(--display);font-weight:400;font-size:clamp(34px,5vw,52px);line-height:1.04;letter-spacing:-.02em;color:var(--ink);margin-bottom:14px}
+  .sec-head h2 em{font-style:italic;color:var(--coral)}
+  .sec-sub{font-family:var(--serif);font-size:17px;color:var(--ink-3);font-weight:300;max-width:680px;margin:0 auto;line-height:1.55}
+
+  /* Platform cards */
+  .platforms{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-top:24px}
+  .platform{background:var(--cream);border:0.5px solid var(--line);border-radius:10px;padding:24px 26px;position:relative}
+  .platform.tier-a{border-left:3px solid var(--coral)}
+  .platform.tier-b{border-left:3px solid var(--gold)}
+  .platform.tier-c{border-left:3px solid var(--faint)}
+  .platform .tier{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;padding:3px 7px;border-radius:3px;display:inline-block;margin-bottom:10px}
+  .platform.tier-a .tier{color:var(--coral);background:rgba(217,87,59,.10)}
+  .platform.tier-b .tier{color:var(--gold);background:rgba(181,143,77,.12)}
+  .platform.tier-c .tier{color:var(--ink-3);background:var(--cream-2)}
+  .platform h3{font-family:var(--display);font-size:24px;color:var(--ink);font-weight:400;margin-bottom:4px;letter-spacing:-.005em}
+  .platform .url{font-family:var(--mono);font-size:11px;color:var(--teal);margin-bottom:12px;display:block}
+  .platform .countries{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;color:var(--ink-3);text-transform:uppercase;margin-bottom:14px;padding:8px 10px;background:var(--cream-2);border-radius:4px}
+  .platform p{font-family:var(--serif);font-size:14px;color:var(--ink-2);line-height:1.55;margin-bottom:12px}
+  .platform .price{font-family:var(--mono);font-size:11.5px;color:var(--green);font-weight:600;padding-top:10px;border-top:0.5px solid var(--line-2);margin-top:auto}
+  .platform .price strong{color:var(--coral)}
+
+  /* Country grid table */
+  .tbl-wrap{overflow-x:auto;border-radius:10px;margin-top:24px}
+  table{width:100%;border-collapse:collapse;background:var(--cream);border:0.5px solid var(--line);border-radius:10px;overflow:hidden;min-width:760px}
+  th{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);font-weight:600;text-align:left;padding:14px 18px;background:var(--cream-2);border-bottom:0.5px solid var(--line)}
+  td{padding:14px 18px;font-size:14px;color:var(--ink-2);border-bottom:0.5px solid var(--line-2);font-family:var(--sans);vertical-align:top}
+  tr:last-child td{border-bottom:0}
+  td.country{font-family:var(--display);font-style:italic;font-size:17px;color:var(--ink);white-space:nowrap}
+  td.primary{font-family:var(--mono);font-size:12px;color:var(--coral);font-weight:600}
+  td.secondary{font-family:var(--mono);font-size:11.5px;color:var(--ink-3)}
+  td a{color:var(--teal);border-bottom:0.5px dashed rgba(44,110,127,.30);padding-bottom:1px}
+  td a:hover{color:var(--coral);border-color:var(--coral)}
+
+  /* Job ad template */
+  .ad-mock{background:var(--ink);color:var(--cream);border-radius:10px;padding:32px 36px;margin-top:24px;font-family:var(--sans);font-size:14.5px;line-height:1.7}
+  .ad-mock .ad-label{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--mango);font-weight:600;margin-bottom:14px}
+  .ad-mock h4{font-family:var(--display);font-size:28px;color:var(--cream);font-weight:400;margin-bottom:6px;font-style:italic}
+  .ad-mock .ad-meta{font-family:var(--mono);font-size:11px;color:var(--faint);letter-spacing:.10em;margin-bottom:18px}
+  .ad-mock .ad-body{font-family:var(--serif);font-size:14.5px;color:var(--cream);line-height:1.65}
+  .ad-mock .ad-body strong{color:var(--mango)}
+  .ad-mock hr{border:0;border-top:0.5px solid rgba(248,243,234,.20);margin:18px 0}
+
+  /* Process steps */
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:24px}
+  .step{background:var(--cream);border:0.5px solid var(--line);border-radius:10px;padding:22px 24px}
+  .step-n{font-family:var(--display);font-size:32px;color:var(--coral);line-height:1;margin-bottom:10px;font-style:italic}
+  .step h4{font-family:var(--display);font-size:19px;font-weight:400;color:var(--ink);margin-bottom:10px;line-height:1.2}
+  .step p{font-family:var(--serif);font-size:14px;line-height:1.55;color:var(--ink-2)}
+
+  /* Mini-callout */
+  .callout{background:var(--cream-2);border:0.5px solid var(--line);border-left:3px solid var(--coral);border-radius:8px;padding:18px 22px;margin:24px 0;font-family:var(--serif);font-size:15.5px;line-height:1.6;color:var(--ink-2)}
+  .callout strong{color:var(--ink)}
+  .callout .cl-label{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--coral);text-transform:uppercase;font-weight:600;margin-bottom:8px;display:block}
+
+  /* CTA */
+  .cta{max-width:780px;margin:64px auto 48px;padding:42px 38px;text-align:center;background:var(--cream-2);border:0.5px solid var(--line);border-radius:14px}
+  .cta h2{font-family:var(--display);font-weight:400;font-size:clamp(30px,4.5vw,46px);line-height:1.04;color:var(--ink);margin-bottom:14px;letter-spacing:-.02em}
+  .cta h2 em{font-style:italic;color:var(--coral)}
+  .cta p{font-family:var(--serif);font-size:16px;color:var(--ink-2);line-height:1.55;margin-bottom:22px}
+  .cta-btn{display:inline-block;padding:12px 26px;background:var(--ink);color:var(--cream);font-family:var(--mono);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;border-radius:6px;font-weight:600;margin:0 4px}
+  .cta-btn:hover{background:var(--coral)}
+
+  footer{max-width:1180px;margin:32px auto 0;padding:32px;border-top:0.5px solid var(--line);text-align:center}
+  footer p{font-family:var(--mono);font-size:11px;letter-spacing:.10em;color:var(--ink-3)}
+
+  @media (max-width:760px){
+    .strip{grid-template-columns:repeat(2,1fr)}
+    .strip > div:nth-child(2n){border-right:0}
+    .strip > div{border-bottom:0.5px solid var(--line)}
+  }
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="top-in">
+    <a class="brand" href="sora-hq.html">SORA<em>°</em></a>
+    <span class="top-tag" data-es>SOURCING · BOLSAS DE EMPLEO</span>
+    <span class="top-tag" data-en>SOURCING · JOB BOARDS</span>
+    <a class="top-link" href="latam-expansion-system.html" data-es>↑ Sistema maestro</a>
+    <a class="top-link" href="latam-expansion-system.html" data-en>↑ Master system</a>
+    <a class="top-link" href="interview-process.html" data-es>↑ Entrevistas</a>
+    <a class="top-link" href="interview-process.html" data-en>↑ Interviews</a>
+    <span class="spacer"></span>
+    <div class="lang">
+      <button class="active" onclick="setLang('es')">ES</button>
+      <button onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="hero-eyebrow" data-es>SOURCING · CANAL 02 · BOLSAS DE EMPLEO LATAM</div>
+  <div class="hero-eyebrow" data-en>SOURCING · CHANNEL 02 · LATAM JOB BOARDS</div>
+  <h1 data-es>Doce <em>bolsas</em>.<br>Diecinueve países.</h1>
+  <h1 data-en>Twelve <em>boards</em>.<br>Nineteen countries.</h1>
+  <p class="hero-lede" data-es>Cuando Instagram + referencias no llenan el embudo, las bolsas de empleo locales son el siguiente paso. <strong>Computrabajo</strong> domina Hispanoamérica. <strong>Catho + Vagas</strong> en Brasil. <strong>Encuentra24</strong> en Centroamérica + el Caribe. Esta es la guía: dónde postear, qué cuesta, qué título usar, y cómo no convertir esto en spam.</p>
+  <p class="hero-lede" data-en>When Instagram + referrals don't fill the funnel, local job boards are the next step. <strong>Computrabajo</strong> dominates Spanish America. <strong>Catho + Vagas</strong> in Brazil. <strong>Encuentra24</strong> in Central America + Caribbean. This is the guide: where to post, what it costs, what title to use, and how not to turn this into spam.</p>
+</header>
+
+<div class="strip">
+  <div><div class="n">12</div><div class="l" data-es>Plataformas</div><div class="l" data-en>Platforms</div></div>
+  <div><div class="n">19</div><div class="l" data-es>Países</div><div class="l" data-en>Countries</div></div>
+  <div><div class="n">$0–150</div><div class="l" data-es>USD/post</div><div class="l" data-en>USD/post</div></div>
+  <div><div class="n">7d</div><div class="l" data-es>Vida útil de un post</div><div class="l" data-en>Useful life of a post</div></div>
+  <div><div class="n">~40</div><div class="l" data-es>Aplicaciones esperadas</div><div class="l" data-en>Apps expected</div></div>
+</div>
+
+<!-- 01 · STRATEGY -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es>01 · ESTRATEGIA</div>
+    <div class="sec-num" data-en>01 · STRATEGY</div>
+    <h2 data-es>Las bolsas son el <em>último canal</em>, no el primero.</h2>
+    <h2 data-en>Job boards are the <em>last channel</em>, not the first.</h2>
+    <p class="sec-sub" data-es>El mejor anfitrión rara vez busca trabajo activamente. Por eso usamos bolsas como red de seguridad, no como motor primario. La regla de oro: postear solo después de agotar referencias + IG + LinkedIn silencioso.</p>
+    <p class="sec-sub" data-en>The best host rarely actively job-hunts. We use boards as safety net, not primary engine. Golden rule: post only after exhausting referrals + IG + quiet LinkedIn.</p>
+  </div>
+
+  <div class="callout">
+    <span class="cl-label" data-es>ORDEN DE CANALES · IMPORTANTE</span>
+    <span class="cl-label" data-en>CHANNEL ORDER · IMPORTANT</span>
+    <p data-es>(1) Referencias de anfitriones existentes · (2) Instagram + TikTok mining · (3) LinkedIn silencioso · (4) Facebook grupos · (5) <strong>Bolsas de empleo (este doc)</strong>. Las bolsas se postean en semana 2 si la lista de candidatos del país está por debajo de 20. Antes de eso, ahogan el embudo con perfiles de baja calidad.</p>
+    <p data-en>(1) Referrals from existing hosts · (2) Instagram + TikTok mining · (3) Quiet LinkedIn · (4) Facebook groups · (5) <strong>Job boards (this doc)</strong>. Boards get posted in week 2 if the country's candidate list is below 20. Earlier than that, they flood the funnel with low-quality profiles.</p>
+  </div>
+</section>
+
+<!-- 02 · THE 12 PLATFORMS -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es>02 · LAS DOCE PLATAFORMAS</div>
+    <div class="sec-num" data-en>02 · THE TWELVE PLATFORMS</div>
+    <h2 data-es>Por <em>tier</em> de calidad.</h2>
+    <h2 data-en>By quality <em>tier</em>.</h2>
+    <p class="sec-sub" data-es>Tier A = mejor relación calidad/precio + cobertura amplia. Tier B = bueno para país específico. Tier C = útil pero ruido alto.</p>
+    <p class="sec-sub" data-en>Tier A = best quality/price ratio + broad coverage. Tier B = good for specific country. Tier C = useful but high noise.</p>
+  </div>
+
+  <div class="platforms">
+
+    <div class="platform tier-a">
+      <span class="tier">TIER A</span>
+      <h3>Computrabajo</h3>
+      <a class="url" href="https://www.computrabajo.com" target="_blank">computrabajo.com</a>
+      <div class="countries">AR · BO · CL · CO · CR · EC · GT · HN · MX · PA · PE · PR · DO · UY · VE</div>
+      <p data-es>El más grande de LATAM hispano. 15 países, dominio local en cada uno (computrabajo.com.co, .mx, .pe, etc.). Free post estándar 30 días. Aplicaciones vienen con CV adjunto.</p>
+      <p data-en>Largest in Spanish LATAM. 15 countries, local domain in each (computrabajo.com.co, .mx, .pe, etc.). Standard free post lasts 30 days. Applications arrive with CV attached.</p>
+      <div class="price"><strong data-es>Gratis</strong><strong data-en>Free</strong><span data-es> básico · </span><span data-en> basic · </span>$50–120 USD <span data-es>destacado</span><span data-en>featured</span></div>
+    </div>
+
+    <div class="platform tier-a">
+      <span class="tier">TIER A</span>
+      <h3>Bumeran</h3>
+      <a class="url" href="https://www.bumeran.com" target="_blank">bumeran.com</a>
+      <div class="countries">AR · CL · EC · MX · PA · PE · UY · VE</div>
+      <p data-es>Segundo más fuerte después de Computrabajo en Cono Sur (especialmente AR). Calidad de candidato más alta que Computrabajo en MX y PE. Premium templates más limpios.</p>
+      <p data-en>Second strongest after Computrabajo in Southern Cone (especially AR). Higher candidate quality than Computrabajo in MX and PE. Cleaner premium templates.</p>
+      <div class="price"><strong data-es>Gratis</strong><strong data-en>Free</strong><span data-es> · </span><span data-en> · </span>$80–180 USD <span data-es>premium</span><span data-en>premium</span></div>
+    </div>
+
+    <div class="platform tier-a">
+      <span class="tier">TIER A</span>
+      <h3>Encuentra24</h3>
+      <a class="url" href="https://www.encuentra24.com" target="_blank">encuentra24.com</a>
+      <div class="countries">PA · CR · NI · SV · GT · HN · DO</div>
+      <p data-es>Clasificados generales con sección de empleo muy activa. Domina Centroamérica + Panamá. Muchas aplicaciones, calidad mixta — necesita filtro fuerte. WhatsApp directo común.</p>
+      <p data-en>General classifieds with very active jobs section. Dominates Central America + Panama. Many applications, mixed quality — needs strong filter. Direct WhatsApp common.</p>
+      <div class="price"><strong data-es>Gratis</strong><strong data-en>Free</strong><span data-es> · </span><span data-en> · </span>$30–80 USD <span data-es>destacar</span><span data-en>highlight</span></div>
+    </div>
+
+    <div class="platform tier-a">
+      <span class="tier">TIER A · BR</span>
+      <h3>Catho</h3>
+      <a class="url" href="https://www.catho.com.br" target="_blank">catho.com.br</a>
+      <div class="countries">BR</div>
+      <p data-es>La bolsa principal de Brasil con candidatos de cuello blanco. Necesita texto en portugués. Costo más alto que LATAM hispano pero calidad consistente.</p>
+      <p data-en>Brazil's main board with white-collar candidates. Needs Portuguese text. Higher cost than Spanish LATAM but consistent quality.</p>
+      <div class="price"><strong>R$200–600/post</strong> <span data-es>(~$40–120 USD)</span><span data-en>(~$40–120 USD)</span></div>
+    </div>
+
+    <div class="platform tier-a">
+      <span class="tier">TIER A · BR</span>
+      <h3>Vagas.com</h3>
+      <a class="url" href="https://www.vagas.com.br" target="_blank">vagas.com.br</a>
+      <div class="countries">BR</div>
+      <p data-es>Segundo Brasil. Mejor para roles "executive-adjacent" (hospitalidad alta, partnerships). Free tier limitado, premium robusto.</p>
+      <p data-en>Brazil's #2. Better for "executive-adjacent" roles (premium hospitality, partnerships). Limited free tier, robust premium.</p>
+      <div class="price"><strong>R$300+/post</strong></div>
+    </div>
+
+    <div class="platform tier-b">
+      <span class="tier">TIER B · CA</span>
+      <h3>Tecoloco</h3>
+      <a class="url" href="https://www.tecoloco.com" target="_blank">tecoloco.com</a>
+      <div class="countries">SV · GT · HN · NI · CR · DO</div>
+      <p data-es>Líder en Centroamérica para roles profesionales. Mejor que Encuentra24 cuando buscas perfiles de oficina/corporate más serios. Más caro que Encuentra24.</p>
+      <p data-en>Central America leader for professional roles. Better than Encuentra24 when seeking serious office/corporate profiles. Pricier than Encuentra24.</p>
+      <div class="price"><strong>$50–150/post</strong></div>
+    </div>
+
+    <div class="platform tier-b">
+      <span class="tier">TIER B · MX</span>
+      <h3>OCC Mundial</h3>
+      <a class="url" href="https://www.occ.com.mx" target="_blank">occ.com.mx</a>
+      <div class="countries">MX</div>
+      <p data-es>El gigante mexicano. Para CDMX + Monterrey + Guadalajara es imprescindible. Templates muy buenos, base 3M+ usuarios. Más caro que Computrabajo MX pero candidato top-tier.</p>
+      <p data-en>The Mexican giant. For CDMX + Monterrey + Guadalajara essential. Very good templates, 3M+ user base. Pricier than Computrabajo MX but top-tier candidate.</p>
+      <div class="price"><strong>$80–200 USD/post</strong></div>
+    </div>
+
+    <div class="platform tier-b">
+      <span class="tier">TIER B · CO</span>
+      <h3>elempleo.com</h3>
+      <a class="url" href="https://www.elempleo.com" target="_blank">elempleo.com</a>
+      <div class="countries">CO</div>
+      <p data-es>El #1 colombiano (Bogotá, Medellín, Cali). Más caro que Computrabajo CO pero candidato sustancialmente mejor. Vital si buscas perfil profesional/ejecutivo.</p>
+      <p data-en>Colombia's #1 (Bogotá, Medellín, Cali). Pricier than Computrabajo CO but substantially better candidate. Vital if seeking professional/executive profile.</p>
+      <div class="price"><strong>$120–250 USD/post</strong></div>
+    </div>
+
+    <div class="platform tier-b">
+      <span class="tier">TIER B</span>
+      <h3>Konzerta</h3>
+      <a class="url" href="https://www.konzerta.com" target="_blank">konzerta.com</a>
+      <div class="countries">AR · UY · PY</div>
+      <p data-es>Subsidiaria de Bumeran fuerte en el Cono Sur. Mejor opción Paraguay (donde Computrabajo es débil). Buena UX, base profesional.</p>
+      <p data-en>Bumeran subsidiary strong in Southern Cone. Best option for Paraguay (where Computrabajo is weak). Good UX, professional base.</p>
+      <div class="price"><strong>$60–140 USD/post</strong></div>
+    </div>
+
+    <div class="platform tier-b">
+      <span class="tier">TIER B · CL</span>
+      <h3>Trabajando.com</h3>
+      <a class="url" href="https://www.trabajando.com" target="_blank">trabajando.com</a>
+      <div class="countries">CL · AR · MX · CO · PE · EC</div>
+      <p data-es>Fuerte en Chile (#2 después de Laborum). Cobertura multi-país pero diluida fuera de CL. Útil cuando quieres una segunda bolsa además de Computrabajo.</p>
+      <p data-en>Strong in Chile (#2 after Laborum). Multi-country coverage but diluted outside CL. Useful as a second board beyond Computrabajo.</p>
+      <div class="price"><strong>$70–160 USD/post</strong></div>
+    </div>
+
+    <div class="platform tier-c">
+      <span class="tier">TIER C</span>
+      <h3>Indeed</h3>
+      <a class="url" href="https://www.indeed.com" target="_blank">indeed.com (.mx/.co.cr/etc.)</a>
+      <div class="countries">MX · CO · BR · CL · AR · PE · CR · PA</div>
+      <p data-es>Cobertura regional pero motor débil para hospitalidad LATAM. Útil como respaldo. Free posts limitados, Sponsored paid funciona OK.</p>
+      <p data-en>Regional coverage but weak engine for LATAM hospitality. Useful as backup. Limited free posts, paid Sponsored works OK.</p>
+      <div class="price"><strong data-es>Free + CPC</strong><strong data-en>Free + CPC</strong></div>
+    </div>
+
+    <div class="platform tier-c">
+      <span class="tier">TIER C</span>
+      <h3>Workana</h3>
+      <a class="url" href="https://www.workana.com" target="_blank">workana.com</a>
+      <div class="countries">AR · MX · CO · PE · CL · BR + LATAM</div>
+      <p data-es>Plataforma freelance LATAM. Útil <em>solo</em> para contratos cortos / proyectos discretos (ej: el evento inicial), no para anfitrión fijo. Bajo costo de prueba.</p>
+      <p data-en>LATAM freelance platform. Useful <em>only</em> for short contracts / discrete projects (eg: opening event), not full-time host. Low trial cost.</p>
+      <div class="price"><strong data-es>Free + 10% fee</strong><strong data-en>Free + 10% fee</strong></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- 03 · PER-COUNTRY MAPPING -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es>03 · MAPA POR PAÍS</div>
+    <div class="sec-num" data-en>03 · PER-COUNTRY MAP</div>
+    <h2 data-es>Cuál usar <em>primero</em>, cuál de <em>respaldo</em>.</h2>
+    <h2 data-en>Which to use <em>first</em>, which as <em>backup</em>.</h2>
+    <p class="sec-sub" data-es>Si solo puedes postear en una plataforma por país, usa la columna "Primaria". Si tienes presupuesto, agrega "Secundaria" después de 5 días.</p>
+    <p class="sec-sub" data-en>If you can only post on one platform per country, use the "Primary" column. If budget allows, add "Secondary" after 5 days.</p>
+  </div>
+
+  <div class="tbl-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th data-es>PAÍS</th><th data-en>COUNTRY</th>
+        <th data-es>PRIMARIA</th><th data-en>PRIMARY</th>
+        <th data-es>SECUNDARIA</th><th data-en>SECONDARY</th>
+        <th data-es>NOTAS</th><th data-en>NOTES</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="country">🇲🇽 México</td>
+        <td class="primary"><a href="https://www.occ.com.mx" target="_blank">OCC Mundial</a></td>
+        <td class="secondary"><a href="https://www.computrabajo.com.mx" target="_blank">Computrabajo MX</a> · <a href="https://www.bumeran.com.mx" target="_blank">Bumeran MX</a></td>
+        <td data-es>CDMX · Mty · GDL: OCC siempre. Tulum/Mérida: Encuentra24.</td>
+        <td data-en>CDMX · Mty · GDL: OCC always. Tulum/Mérida: Encuentra24.</td>
+      </tr>
+      <tr>
+        <td class="country">🇨🇴 Colombia</td>
+        <td class="primary"><a href="https://www.elempleo.com" target="_blank">elempleo.com</a></td>
+        <td class="secondary"><a href="https://co.computrabajo.com" target="_blank">Computrabajo CO</a> · <a href="https://www.magneto365.com" target="_blank">Magneto365</a></td>
+        <td data-es>Medellín: elempleo + Magneto. Cartagena/Pereira: Computrabajo CO basta.</td>
+        <td data-en>Medellín: elempleo + Magneto. Cartagena/Pereira: Computrabajo CO is enough.</td>
+      </tr>
+      <tr>
+        <td class="country">🇦🇷 Argentina</td>
+        <td class="primary"><a href="https://www.bumeran.com.ar" target="_blank">Bumeran AR</a></td>
+        <td class="secondary"><a href="https://www.zonajobs.com.ar" target="_blank">Zonajobs</a> · <a href="https://www.konzerta.com" target="_blank">Konzerta</a></td>
+        <td data-es>BA: Bumeran #1. Mendoza/Bariloche: agregar Computrabajo AR.</td>
+        <td data-en>BA: Bumeran #1. Mendoza/Bariloche: add Computrabajo AR.</td>
+      </tr>
+      <tr>
+        <td class="country">🇧🇷 Brasil</td>
+        <td class="primary"><a href="https://www.catho.com.br" target="_blank">Catho</a></td>
+        <td class="secondary"><a href="https://www.vagas.com.br" target="_blank">Vagas.com</a> · <a href="https://www.linkedin.com" target="_blank">LinkedIn BR</a></td>
+        <td data-es>Texto debe estar en portugués. SP/Rio: ambas; Trancoso/Salvador: Catho + IG.</td>
+        <td data-en>Text must be in Portuguese. SP/Rio: both; Trancoso/Salvador: Catho + IG.</td>
+      </tr>
+      <tr>
+        <td class="country">🇨🇱 Chile</td>
+        <td class="primary"><a href="https://www.laborum.cl" target="_blank">Laborum</a></td>
+        <td class="secondary"><a href="https://www.trabajando.com" target="_blank">Trabajando.com</a> · <a href="https://cl.computrabajo.com" target="_blank">Computrabajo CL</a></td>
+        <td data-es>Santiago: Laborum primero. Valpo/Pucón: Computrabajo CL basta.</td>
+        <td data-en>Santiago: Laborum first. Valpo/Pucón: Computrabajo CL is enough.</td>
+      </tr>
+      <tr>
+        <td class="country">🇵🇪 Perú</td>
+        <td class="primary"><a href="https://www.bumeran.com.pe" target="_blank">Bumeran PE</a></td>
+        <td class="secondary"><a href="https://aptitus.com" target="_blank">Aptitus</a> · <a href="https://pe.computrabajo.com" target="_blank">Computrabajo PE</a></td>
+        <td data-es>Lima: Bumeran #1. Cusco: agregar Aptitus.</td>
+        <td data-en>Lima: Bumeran #1. Cusco: add Aptitus.</td>
+      </tr>
+      <tr>
+        <td class="country">🇪🇨 Ecuador</td>
+        <td class="primary"><a href="https://www.multitrabajos.com" target="_blank">Multitrabajos</a></td>
+        <td class="secondary"><a href="https://ec.computrabajo.com" target="_blank">Computrabajo EC</a></td>
+        <td data-es>Quito · Cuenca · Guayaquil — Multitrabajos domina.</td>
+        <td data-en>Quito · Cuenca · Guayaquil — Multitrabajos dominates.</td>
+      </tr>
+      <tr>
+        <td class="country">🇨🇷 Costa Rica</td>
+        <td class="primary"><a href="https://www.encuentra24.com/costa-rica-es/empleos" target="_blank">Encuentra24 CR</a></td>
+        <td class="secondary"><a href="https://www.tecoloco.co.cr" target="_blank">Tecoloco CR</a> · <a href="https://cr.computrabajo.com" target="_blank">Computrabajo CR</a></td>
+        <td data-es>SJ: Tecoloco para corporate. Nicoya/Tamarindo: Encuentra24.</td>
+        <td data-en>SJ: Tecoloco for corporate. Nicoya/Tamarindo: Encuentra24.</td>
+      </tr>
+      <tr>
+        <td class="country">🇵🇦 Panamá</td>
+        <td class="primary"><a href="https://www.encuentra24.com/panama-es/empleos" target="_blank">Encuentra24 PA</a></td>
+        <td class="secondary"><a href="https://www.konzerta.com" target="_blank">Konzerta PA</a> · <a href="https://pa.computrabajo.com" target="_blank">Computrabajo PA</a></td>
+        <td data-es>PA City: Encuentra24 + Konzerta. Bocas: solo Encuentra24 + Facebook.</td>
+        <td data-en>PA City: Encuentra24 + Konzerta. Bocas: only Encuentra24 + Facebook.</td>
+      </tr>
+      <tr>
+        <td class="country">🇺🇾 Uruguay</td>
+        <td class="primary"><a href="https://www.buscojobs.com.uy" target="_blank">BuscoJobs UY</a></td>
+        <td class="secondary"><a href="https://www.konzerta.com" target="_blank">Konzerta UY</a> · <a href="https://uy.computrabajo.com" target="_blank">Computrabajo UY</a></td>
+        <td data-es>MVD: BuscoJobs líder. Punta del Este: agregar Facebook grupos.</td>
+        <td data-en>MVD: BuscoJobs leads. Punta del Este: add Facebook groups.</td>
+      </tr>
+      <tr>
+        <td class="country">🇻🇪 Venezuela</td>
+        <td class="primary"><a href="https://www.bumeran.com.ve" target="_blank">Bumeran VE</a></td>
+        <td class="secondary"><a href="https://ve.computrabajo.com" target="_blank">Computrabajo VE</a></td>
+        <td data-es>Caracas: ambas. Margarita: solo Computrabajo + IG.</td>
+        <td data-en>Caracas: both. Margarita: only Computrabajo + IG.</td>
+      </tr>
+      <tr>
+        <td class="country">🇩🇴 Rep. Dominicana</td>
+        <td class="primary"><a href="https://www.tecoloco.com.do" target="_blank">Tecoloco DO</a></td>
+        <td class="secondary"><a href="https://www.encuentra24.com/republica-dominicana-es/empleos" target="_blank">Encuentra24 DO</a> · <a href="https://do.computrabajo.com" target="_blank">Computrabajo DO</a></td>
+        <td data-es>Santo Domingo + Punta Cana: Tecoloco para corporate.</td>
+        <td data-en>Santo Domingo + Punta Cana: Tecoloco for corporate.</td>
+      </tr>
+      <tr>
+        <td class="country">🇵🇷 Puerto Rico</td>
+        <td class="primary"><a href="https://www.linkedin.com/jobs" target="_blank">LinkedIn PR</a></td>
+        <td class="secondary"><a href="https://www.clasificadosonline.com" target="_blank">ClasificadosOnline</a></td>
+        <td data-es>PR es mercado anglosajón funcional — LinkedIn domina. Anuncio bilingüe.</td>
+        <td data-en>PR is functionally an Anglo market — LinkedIn dominates. Bilingual ad.</td>
+      </tr>
+      <tr>
+        <td class="country">🇬🇹 Guatemala</td>
+        <td class="primary"><a href="https://www.tecoloco.com.gt" target="_blank">Tecoloco GT</a></td>
+        <td class="secondary"><a href="https://www.encuentra24.com/guatemala-es/empleos" target="_blank">Encuentra24 GT</a></td>
+        <td data-es>Antigua: Encuentra24 también. CDG: Tecoloco primero.</td>
+        <td data-en>Antigua: Encuentra24 too. GC: Tecoloco first.</td>
+      </tr>
+      <tr>
+        <td class="country">🇸🇻 El Salvador</td>
+        <td class="primary"><a href="https://www.tecoloco.com.sv" target="_blank">Tecoloco SV</a></td>
+        <td class="secondary"><a href="https://www.encuentra24.com/el-salvador-es/empleos" target="_blank">Encuentra24 SV</a></td>
+        <td data-es>SS: Tecoloco. El Tunco/playa: Encuentra24 + Facebook grupos.</td>
+        <td data-en>SS: Tecoloco. El Tunco/beach: Encuentra24 + Facebook groups.</td>
+      </tr>
+      <tr>
+        <td class="country">🇭🇳 Honduras</td>
+        <td class="primary"><a href="https://www.tecoloco.com.hn" target="_blank">Tecoloco HN</a></td>
+        <td class="secondary"><a href="https://www.encuentra24.com/honduras-es/empleos" target="_blank">Encuentra24 HN</a></td>
+        <td data-es>Roatán: solo Encuentra24 + IG + LinkedIn (mercado expat).</td>
+        <td data-en>Roatán: Encuentra24 + IG + LinkedIn only (expat market).</td>
+      </tr>
+      <tr>
+        <td class="country">🇳🇮 Nicaragua</td>
+        <td class="primary"><a href="https://www.encuentra24.com/nicaragua-es/empleos" target="_blank">Encuentra24 NI</a></td>
+        <td class="secondary"><a href="https://www.tecoloco.com.ni" target="_blank">Tecoloco NI</a></td>
+        <td data-es>Granada/SJDS: Encuentra24 + Facebook (expat heavy).</td>
+        <td data-en>Granada/SJDS: Encuentra24 + Facebook (expat heavy).</td>
+      </tr>
+      <tr>
+        <td class="country">🇵🇾 Paraguay</td>
+        <td class="primary"><a href="https://www.konzerta.com" target="_blank">Konzerta PY</a></td>
+        <td class="secondary"><a href="https://py.computrabajo.com" target="_blank">Computrabajo PY</a></td>
+        <td data-es>Asunción: Konzerta primero. Mercado pequeño — bajar expectativas.</td>
+        <td data-en>Asunción: Konzerta first. Small market — lower expectations.</td>
+      </tr>
+      <tr>
+        <td class="country">🇧🇴 Bolivia</td>
+        <td class="primary"><a href="https://www.trabajopolis.bo" target="_blank">Trabajopolis</a></td>
+        <td class="secondary"><a href="https://bo.computrabajo.com" target="_blank">Computrabajo BO</a></td>
+        <td data-es>SCZ · LP · Uyuni — Trabajopolis líder. Uyuni: agregar Facebook + IG.</td>
+        <td data-en>SCZ · LP · Uyuni — Trabajopolis leads. Uyuni: add Facebook + IG.</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- 04 · THE AD TEMPLATE -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es>04 · LA PLANTILLA DEL ANUNCIO</div>
+    <div class="sec-num" data-en>04 · THE AD TEMPLATE</div>
+    <h2 data-es>El <em>texto exacto</em> que postear.</h2>
+    <h2 data-en>The <em>exact text</em> to post.</h2>
+    <p class="sec-sub" data-es>Diseñado para que los candidatos correctos se sientan atraídos y los incorrectos no apliquen. El título es la mitad del trabajo: nunca "marketing manager", siempre "anfitrión de experiencias premium".</p>
+    <p class="sec-sub" data-en>Designed so the right candidates feel pulled in and the wrong ones don't apply. The title is half the job: never "marketing manager", always "premium experience host."</p>
+  </div>
+
+  <div class="ad-mock">
+    <div class="ad-label" data-es>VISTA PREVIA · ANUNCIO LISTO PARA COPY-PASTE</div>
+    <div class="ad-label" data-en>PREVIEW · COPY-PASTE READY AD</div>
+    <h4 data-es>Anfitrión/a de experiencias premium · Sora Travel Agency · [Ciudad]</h4>
+    <h4 data-en>Premium experience host · Sora Travel Agency · [City]</h4>
+    <div class="ad-meta" data-es>Híbrido · Comisión + base creciente · Bilingüe español/inglés requerido · Tiempo flexible</div>
+    <div class="ad-meta" data-en>Hybrid · Commission + growing base · Bilingual Spanish/English required · Flexible time</div>
+
+    <div class="ad-body">
+<span data-es><strong>Sobre Sora.</strong> Somos una agencia de viajes premium de La Compañía, especializada en fines de semana curados en 19 países de Latinoamérica. Cenas privadas, fincas, vinos, encuentros que abren ciudades para huéspedes internacionales que valoran la curaduría sobre la masa.
+
+<strong>La posición.</strong> Buscamos UNA persona para ser el rostro de Sora en [Ciudad]. No es un trabajo de oficina — es una asociación. Tú activas tu red, nosotros traemos huéspedes premium y la plataforma. Empiezas curando un evento al mes; en 6 meses estás coordinando 3 viajes simultáneos.
+
+<strong>Vas a hacer.</strong>
+· Curar y co-anfitrionar fines de semana de 8-12 personas
+· Mantener relación con 30-50 contactos clave (hoteles, restaurantes, fotógrafos, productores)
+· Diseñar y ejecutar 1-2 eventos mensuales de 20-40 invitados
+· Reportar avances cada semana con un líder de La Compañía
+
+<strong>El perfil que buscamos.</strong>
+· Vives en [Ciudad] hace 3+ años (no negociable)
+· Bilingüe español + inglés fluido (se evalúa en entrevista)
+· Background en hospitalidad, eventos, viajes o medios
+· Red propia activa (no empiezas de cero)
+· Mínimo 25 hrs/semana
+· Auto o acceso fácil a transporte
+
+<strong>El modelo de pago.</strong> Comisión durante los primeros 60 días (25% sobre viajes vendidos). Luego pasa a base mensual creciente + comisión. No hay techo. El primer año bien ejecutado se estima en $24,000–$48,000 USD.
+
+<strong>Cómo aplicar.</strong> WhatsApp directo a [+507 XXXX-XXXX] con UN mensaje:
+(1) Nombre + ciudad
+(2) Una línea sobre tu red en [Ciudad]
+(3) Un lugar premium de [Ciudad] que la mayoría no conoce
+
+NO mandes CV. Si tu mensaje pasa el primer filtro, te llamamos en 48 horas.
+
+— La Compañía / Sora</span><span data-en><strong>About Sora.</strong> We're a premium travel agency from La Compañía, specializing in curated weekends across 19 Latin American countries. Private dinners, fincas, wines, encounters that unlock cities for international guests who value curation over mass.
+
+<strong>The position.</strong> We're looking for ONE person to be the face of Sora in [City]. Not an office job — a partnership. You activate your network, we bring the premium guests and the platform. You start curating one event a month; in 6 months you're coordinating 3 simultaneous trips.
+
+<strong>You will.</strong>
+· Curate and co-host weekends for 8-12 people
+· Maintain relationships with 30-50 key contacts (hotels, restaurants, photographers, producers)
+· Design and execute 1-2 events monthly with 20-40 guests
+· Report progress weekly to a La Compañía lead
+
+<strong>The profile we want.</strong>
+· You've lived in [City] for 3+ years (non-negotiable)
+· Bilingual Spanish + fluent English (assessed in interview)
+· Background in hospitality, events, travel, or media
+· Active personal network (you don't start from zero)
+· Minimum 25 hrs/week
+· Car or easy transport access
+
+<strong>The pay model.</strong> Commission for the first 60 days (25% on trips sold). Then transitions to growing monthly base + commission. No ceiling. A well-executed first year is estimated $24,000–$48,000 USD.
+
+<strong>How to apply.</strong> Direct WhatsApp to [+507 XXXX-XXXX] with ONE message:
+(1) Name + city
+(2) One line about your network in [City]
+(3) One premium spot in [City] most people don't know
+
+DO NOT send a CV. If your message passes the first filter, we call you within 48 hours.
+
+— La Compañía / Sora</span>
+    </div>
+  </div>
+
+  <div class="callout">
+    <span class="cl-label" data-es>POR QUÉ FUNCIONA EL FILTRO DE WHATSAPP</span>
+    <span class="cl-label" data-en>WHY THE WHATSAPP FILTER WORKS</span>
+    <p data-es><strong>Asking for ONE message instead of a CV elimina el 70% del ruido.</strong> Los candidatos serios siguen instrucciones; los demás mandan CV automáticamente. El "lugar premium que pocos conocen" filtra inmediatamente entre los que tienen criterio versus los que copy-paste de TripAdvisor. Ahorra 8+ horas semanales de revisión de CVs irrelevantes.</p>
+    <p data-en><strong>Asking for ONE message instead of a CV eliminates 70% of the noise.</strong> Serious candidates follow instructions; the rest send a CV automatically. The "premium spot most people don't know" instantly filters those with taste vs. TripAdvisor copy-pasters. Saves 8+ hours weekly of irrelevant CV review.</p>
+  </div>
+</section>
+
+<!-- 05 · POSTING WORKFLOW -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es>05 · FLUJO DE PUBLICACIÓN</div>
+    <div class="sec-num" data-en>05 · POSTING WORKFLOW</div>
+    <h2 data-es>De <em>posteo</em> a entrevista en 5 días.</h2>
+    <h2 data-en>From <em>posting</em> to interview in 5 days.</h2>
+  </div>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-n">01</div>
+      <h4 data-es>Día 1 · publicar en primaria</h4>
+      <h4 data-en>Day 1 · post on primary</h4>
+      <p data-es>Postear en la bolsa primaria del país (ver tabla §03). Pagar destacado solo si: hay otros 5+ anuncios similares activos o si estás en Wave 1.</p>
+      <p data-en>Post on the country's primary board (see table §03). Pay for featured only if: 5+ similar ads active, or you're in Wave 1.</p>
+    </div>
+    <div class="step">
+      <div class="step-n">02</div>
+      <h4 data-es>Día 2–3 · monitorear sin responder</h4>
+      <h4 data-en>Day 2–3 · monitor without replying</h4>
+      <p data-es>Dejar acumular aplicaciones. No responder todavía — quieres ver el volumen total y la calidad media antes de invertir tiempo en respuestas.</p>
+      <p data-en>Let applications accumulate. Don't reply yet — you want to see total volume and average quality before investing reply time.</p>
+    </div>
+    <div class="step">
+      <div class="step-n">03</div>
+      <h4 data-es>Día 4 · filtrar 30→10</h4>
+      <h4 data-en>Day 4 · filter 30→10</h4>
+      <p data-es>Revisar los WhatsApps. Descartar los que: mandaron CV, no respondieron las 3 preguntas, dijeron un lugar obvio. De los que quedan, agendar llamada con Minor.</p>
+      <p data-en>Review the WhatsApps. Discard those who: sent a CV, didn't answer the 3 questions, named an obvious spot. From the rest, schedule calls with Minor.</p>
+    </div>
+    <div class="step">
+      <div class="step-n">04</div>
+      <h4 data-es>Día 5 · publicar en secundaria</h4>
+      <h4 data-en>Day 5 · post on secondary</h4>
+      <p data-es>Si el volumen del día 4 fue &lt;15 aplicaciones cualificadas, agregar la plataforma secundaria. Si fue &gt;25, no agregar — ya tienes pipeline.</p>
+      <p data-en>If day-4 volume was &lt;15 qualified applications, add the secondary platform. If &gt;25, don't add — pipeline is set.</p>
+    </div>
+    <div class="step">
+      <div class="step-n">05</div>
+      <h4 data-es>Día 6–10 · llamadas etapa 1</h4>
+      <h4 data-en>Day 6–10 · stage 1 calls</h4>
+      <p data-es>Minor llama a los 8-12 finalistas. Mismo proceso de 3 etapas (ver <a href="interview-process.html" style="color:var(--coral)">/interview-process</a>).</p>
+      <p data-en>Minor calls the 8-12 finalists. Same 3-stage process (see <a href="interview-process.html" style="color:var(--coral)">/interview-process</a>).</p>
+    </div>
+    <div class="step">
+      <div class="step-n">06</div>
+      <h4 data-es>Día 14 · cerrar el post</h4>
+      <h4 data-en>Day 14 · close the post</h4>
+      <p data-es>Bajar el anuncio (o dejar expirar). Mensaje "ya cubrimos esta posición, gracias" a quienes siguen aplicando. Brand hygiene.</p>
+      <p data-en>Take down the ad (or let it expire). Reply "we've filled this position, thanks" to ongoing applicants. Brand hygiene.</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <span class="cl-label" data-es>REGLA NO NEGOCIABLE</span>
+    <span class="cl-label" data-en>NON-NEGOTIABLE RULE</span>
+    <p data-es>Todo aplicante que entró por bolsa de empleo recibe respuesta en máximo 7 días — incluso si es un rechazo. Una persona rechazada con respeto se vuelve recomendación; una persona ghosteada se vuelve antimarketing en su red.</p>
+    <p data-en>Every applicant who came through a job board gets a reply within 7 days max — even if it's a rejection. A person rejected with respect becomes a referral; a person ghosted becomes anti-marketing in their network.</p>
+  </div>
+</section>
+
+<!-- 06 · BUDGET PLANNING -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es>06 · PRESUPUESTO POR OLA</div>
+    <div class="sec-num" data-en>06 · BUDGET PER WAVE</div>
+    <h2 data-es>Lo que <em>vale</em> gastar.</h2>
+    <h2 data-en>What's <em>worth</em> spending.</h2>
+  </div>
+
+  <div class="tbl-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th data-es>OLA</th><th data-en>WAVE</th>
+        <th data-es>PAÍSES</th><th data-en>COUNTRIES</th>
+        <th data-es>USO RECOMENDADO</th><th data-en>RECOMMENDED USE</th>
+        <th data-es>PRESUPUESTO</th><th data-en>BUDGET</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="country" data-es>Ola 1 · Jun</td><td class="country" data-en>Wave 1 · Jun</td>
+        <td>PA · CO · MX · VE</td>
+        <td data-es>Solo si referencias + IG no llenan en 7 días</td><td data-en>Only if referrals + IG don't fill in 7 days</td>
+        <td class="primary">$0–200</td>
+      </tr>
+      <tr>
+        <td class="country" data-es>Ola 2 · Jul</td><td class="country" data-en>Wave 2 · Jul</td>
+        <td>PE · CL · EC · BR</td>
+        <td data-es>BR caro (Catho) — invertir en post premium</td><td data-en>BR pricey (Catho) — invest in premium post</td>
+        <td class="primary">$200–500</td>
+      </tr>
+      <tr>
+        <td class="country" data-es>Ola 3 · Ago</td><td class="country" data-en>Wave 3 · Aug</td>
+        <td>CR · GT · DO · PR</td>
+        <td data-es>Encuentra24 + Tecoloco + LinkedIn PR</td><td data-en>Encuentra24 + Tecoloco + LinkedIn PR</td>
+        <td class="primary">$300–500</td>
+      </tr>
+      <tr>
+        <td class="country" data-es>Ola 4 · Sep</td><td class="country" data-en>Wave 4 · Sep</td>
+        <td>AR · UY · PY · SV</td>
+        <td data-es>AR via Bumeran. PY/SV son mercados secos — agregar Facebook</td><td data-en>AR via Bumeran. PY/SV are dry markets — add Facebook</td>
+        <td class="primary">$400–600</td>
+      </tr>
+      <tr>
+        <td class="country" data-es>Ola 5 · Oct/Nov</td><td class="country" data-en>Wave 5 · Oct/Nov</td>
+        <td>HN · NI · BO</td>
+        <td data-es>Mercados pequeños — Encuentra24/Trabajopolis + IG + grupos FB son suficientes</td><td data-en>Small markets — Encuentra24/Trabajopolis + IG + FB groups suffice</td>
+        <td class="primary">$200–400</td>
+      </tr>
+      <tr style="background:rgba(217,87,59,.04)">
+        <td class="country" data-es><strong>TOTAL 6 MESES</strong></td><td class="country" data-en><strong>TOTAL 6 MO</strong></td>
+        <td>19 países</td>
+        <td data-es>Como red de seguridad, no como motor principal</td><td data-en>As safety net, not primary engine</td>
+        <td class="primary"><strong>$1,100–2,200</strong></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta">
+  <h2 data-es>Las bolsas <em>no contratan</em>. Filtran.</h2>
+  <h2 data-en>Boards <em>don't hire</em>. They filter.</h2>
+  <p data-es>El anfitrión que firma siempre pasa por el proceso de 3 entrevistas. Las bolsas solo ayudan a llenar el embudo. La calidad del anuncio determina la calidad de los aplicantes.</p>
+  <p data-en>The host who signs always goes through the 3-stage interview process. Boards just help fill the funnel. The quality of the ad determines the quality of the applicants.</p>
+  <a href="interview-process.html" class="cta-btn" data-es>PROCESO DE ENTREVISTA →</a>
+  <a href="interview-process.html" class="cta-btn" data-en>INTERVIEW PROCESS →</a>
+  <a href="sourcing-linkedin.html" class="cta-btn" data-es>LINKEDIN →</a>
+  <a href="sourcing-linkedin.html" class="cta-btn" data-en>LINKEDIN →</a>
+  <a href="sourcing-facebook.html" class="cta-btn" data-es>FACEBOOK →</a>
+  <a href="sourcing-facebook.html" class="cta-btn" data-en>FACEBOOK →</a>
+</div>
+
+<footer>
+  <p data-es>Sourcing · Canal 02 · Bolsas de Empleo LATAM · v1.0 · La Compañía / Sora MMXXVI</p>
+  <p data-en>Sourcing · Channel 02 · LATAM Job Boards · v1.0 · La Compañía / Sora MMXXVI</p>
+</footer>
+
+<script>
+  function setLang(lang){
+    document.documentElement.lang = lang;
+    document.querySelectorAll('.lang button').forEach(b => b.classList.remove('active'));
+    document.querySelector(`.lang button[onclick="setLang('${lang}')"]`).classList.add('active');
+    try { localStorage.setItem('sora.lang', lang); } catch(e){}
+  }
+  try {
+    const saved = localStorage.getItem('sora.lang');
+    if (saved) setLang(saved);
+  } catch(e){}
+</script>
+
+</body>
+</html>

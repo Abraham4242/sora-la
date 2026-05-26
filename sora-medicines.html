@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SORA · Medicinas Modernas</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Instrument+Serif&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F8F3EA; --cream-2:#F2EBDD; --cream-3:#E9DFCA;
+    --ink:#1B1A17; --ink-2:#3A352D; --ink-3:#5C5346; --faint:#9A8E7A;
+    --line:rgba(27,26,23,.10); --line-2:rgba(27,26,23,.06);
+    --coral:#D9573B; --green:#3F5F45; --teal:#2C6E7F;
+    --amber:#B58F4D; --rust:#8E5A3A; --copper:#A86E3E; --bronze:#7E5028;
+    --serif:'Fraunces',Georgia,serif; --display:'Instrument Serif',Georgia,serif;
+    --sans:'Inter',-apple-system,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--cream);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;font-size:15px;line-height:1.55;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.08  0 0 0 0 0.07  0 0 0 0 0.05  0 0 0 0.020 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--amber);color:var(--cream)}
+  [data-en]{display:none}
+  html[lang="en"] [data-es]{display:none}
+  html[lang="en"] [data-en]{display:inline}
+
+  .top{position:sticky;top:0;z-index:50;background:rgba(248,243,234,.92);backdrop-filter:blur(14px);border-bottom:0.5px solid var(--line)}
+  .top-in{max-width:1180px;margin:0 auto;padding:14px 28px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .brand{font-family:var(--serif);font-weight:600;font-size:16px;letter-spacing:.16em;color:var(--ink)}
+  .brand em{font-style:italic;color:var(--amber)}
+  .top-tag{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--amber);text-transform:uppercase;padding:4px 10px;background:rgba(181,143,77,.10);border-radius:4px}
+  .top-link{font-family:var(--sans);font-size:12px;color:var(--ink-2);padding:7px 12px;border:0.5px solid var(--line);border-radius:5px}
+  .top-link:hover{background:var(--cream-2)}
+  .spacer{flex:1}
+  .lang{display:inline-flex;border:0.5px solid var(--line);border-radius:5px;overflow:hidden}
+  .lang button{padding:6px 11px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;background:transparent;border:0;color:var(--faint);cursor:pointer;font-weight:500}
+  .lang button.active{background:var(--ink);color:var(--cream)}
+
+  .hero{padding:80px 32px 48px;max-width:1180px;margin:0 auto;text-align:center}
+  .hero-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--amber);font-weight:600;margin-bottom:22px}
+  .hero h1{font-family:var(--display);font-weight:400;font-size:clamp(52px,9vw,108px);line-height:.94;letter-spacing:-.025em;color:var(--ink);margin-bottom:18px}
+  .hero h1 em{font-style:italic;color:var(--amber)}
+  .hero-lede{font-family:var(--serif);font-size:19px;color:var(--ink-2);font-weight:300;max-width:780px;margin:0 auto;line-height:1.55}
+  .hero-lede strong{color:var(--ink);font-weight:500}
+
+  .disclaimer{max-width:880px;margin:24px auto 0;padding:18px 24px;background:rgba(181,143,77,.08);border:0.5px solid var(--line);border-left:3px solid var(--amber);border-radius:8px;font-family:var(--serif);font-size:13.5px;line-height:1.55;color:var(--ink-2)}
+  .disclaimer strong{color:var(--amber);font-weight:700}
+
+  .strip{max-width:1180px;margin:24px auto 0;padding:0 32px;display:grid;grid-template-columns:repeat(5,1fr);border-top:0.5px solid var(--line);border-bottom:0.5px solid var(--line)}
+  .strip > div{padding:22px 18px;text-align:center;border-right:0.5px solid var(--line)}
+  .strip > div:last-child{border-right:0}
+  .strip .n{font-family:var(--display);font-size:34px;color:var(--amber);line-height:1;margin-bottom:6px}
+  .strip .l{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
+
+  section{max-width:1180px;margin:0 auto;padding:48px 32px 40px}
+  .sec-head{margin-bottom:24px;text-align:center}
+  .sec-num{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);font-weight:600;margin-bottom:10px}
+  .sec-head h2{font-family:var(--display);font-weight:400;font-size:clamp(22px,3vw,32px);line-height:1.15;letter-spacing:-.01em;color:var(--ink);margin-bottom:10px}
+  .sec-head h2 em{font-style:italic;color:var(--amber)}
+  .sec-sub{font-family:var(--serif);font-size:15px;color:var(--ink-3);font-weight:300;max-width:680px;margin:0 auto;line-height:1.55}
+
+  .filter{position:sticky;top:62px;z-index:40;background:rgba(248,243,234,.92);backdrop-filter:blur(14px);padding:14px 32px;border-bottom:0.5px solid var(--line);margin:32px 0 0}
+  .filter-in{max-width:1180px;margin:0 auto;display:flex;flex-wrap:wrap;gap:6px;align-items:center;justify-content:center}
+  .fl{font-family:var(--mono);font-size:11px;letter-spacing:.10em;padding:7px 13px;background:var(--cream);border:0.5px solid var(--line);border-radius:5px;color:var(--ink-2);cursor:pointer;text-transform:uppercase;font-weight:500;transition:all .14s}
+  .fl:hover{background:var(--cream-2)}
+  .fl.on{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+
+  .apothecary{position:relative;max-width:1400px;margin:24px auto 0;padding:0 8px}
+  .shelf{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:40px 56px 32px;-webkit-mask:linear-gradient(90deg,transparent 0,#000 4%,#000 96%,transparent 100%);mask:linear-gradient(90deg,transparent 0,#000 4%,#000 96%,transparent 100%);scrollbar-color:var(--amber) transparent;scrollbar-width:thin}
+  .shelf::-webkit-scrollbar{height:8px}
+  .shelf::-webkit-scrollbar-thumb{background:rgba(181,143,77,.40);border-radius:4px}
+
+  .potion{flex:0 0 248px;min-height:460px;scroll-snap-align:start;background:linear-gradient(180deg,var(--cream) 0%,var(--cream-2) 100%);border:0.5px solid var(--line);border-radius:14px;padding:18px 16px 22px;display:flex;flex-direction:column;align-items:center;cursor:pointer;position:relative;transition:all .26s cubic-bezier(0.25,1,0.5,1)}
+  .potion::before{content:'';position:absolute;top:0;left:18px;right:18px;height:3px;background:var(--amber);border-radius:0 0 4px 4px}
+  .potion.cat-mitochondrial::before{background:#3E5BAA}
+  .potion.cat-longevity::before{background:var(--amber)}
+  .potion.cat-cognitive::before{background:var(--copper)}
+  .potion.cat-therapy::before{background:var(--rust)}
+  .potion:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 12px 40px rgba(27,26,23,.12),0 0 0 0.5px var(--amber);border-color:var(--amber);background:linear-gradient(180deg,var(--cream) 0%,#FBF4E5 100%)}
+
+  .potion-cat{font-family:var(--mono);font-size:9px;letter-spacing:.18em;color:var(--amber);text-transform:uppercase;font-weight:700;margin-top:8px;text-align:center}
+  .potion.cat-mitochondrial .potion-cat{color:#3E5BAA}
+  .potion.cat-longevity .potion-cat{color:var(--amber)}
+  .potion.cat-cognitive .potion-cat{color:var(--copper)}
+  .potion.cat-therapy .potion-cat{color:var(--rust)}
+
+  .potion-bottle{flex:1;display:flex;align-items:center;justify-content:center;width:100%;padding:8px 0;min-height:220px}
+  .potion-bottle svg{width:130px;height:auto;filter:drop-shadow(0 6px 12px rgba(27,26,23,.18))}
+  .potion:hover .potion-bottle svg{animation:potion-glow 1.4s ease-in-out infinite alternate}
+  @keyframes potion-glow{from{filter:drop-shadow(0 6px 12px rgba(27,26,23,.18))}to{filter:drop-shadow(0 8px 22px rgba(181,143,77,.42))}}
+
+  .potion-meta{text-align:center;width:100%;padding:0 4px}
+  .potion h3{font-family:var(--display);font-size:21px;font-weight:400;color:var(--ink);line-height:1.1;letter-spacing:-.01em;margin-bottom:6px;min-height:46px;display:flex;align-items:center;justify-content:center}
+  .potion h3 em{font-style:italic;color:var(--amber)}
+  .potion-origin{font-family:var(--mono);font-size:9.5px;color:var(--ink-3);letter-spacing:.06em;text-transform:uppercase;line-height:1.4;margin-bottom:10px;opacity:.85}
+  .potion-one{font-family:var(--serif);font-style:italic;font-size:12.5px;color:var(--ink-2);line-height:1.45;margin-bottom:8px;min-height:36px}
+  .potion-tap{font-family:var(--mono);font-size:9px;letter-spacing:.18em;color:var(--amber);font-weight:700;padding-top:10px;border-top:0.5px solid var(--line-2);width:100%;text-align:center;opacity:.5;transition:opacity .2s}
+  .potion:hover .potion-tap{opacity:1}
+
+  .shelf-nav{position:absolute;top:50%;transform:translateY(-50%);z-index:5;width:48px;height:48px;border-radius:50%;background:var(--ink);color:var(--cream);border:0;cursor:pointer;font-size:22px;font-family:var(--serif);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(27,26,23,.20);transition:all .18s}
+  .shelf-nav:hover{background:var(--amber);transform:translateY(-50%) scale(1.08)}
+  .shelf-nav.prev{left:12px}.shelf-nav.next{right:12px}
+  .shelf-nav:disabled{opacity:0.25;cursor:not-allowed;background:var(--faint)}
+  .shelf-counter{text-align:center;font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;color:var(--ink-3);text-transform:uppercase;margin-top:8px}
+  .shelf-counter .now{color:var(--amber);font-weight:700;font-size:13px}
+
+  .modal-bg{position:fixed;inset:0;background:rgba(27,26,23,.78);backdrop-filter:blur(6px);z-index:100;display:none;align-items:flex-start;justify-content:center;padding:32px 16px;overflow-y:auto}
+  .modal-bg.on{display:flex}
+  .modal{background:var(--cream);border-radius:14px;width:100%;max-width:880px;border:0.5px solid var(--line);overflow:hidden;position:relative;animation:popup .26s cubic-bezier(0.25,1,0.5,1)}
+  @keyframes popup{from{opacity:0;transform:translateY(20px) scale(.98)}to{opacity:1;transform:none}}
+  .m-band{height:8px;background:var(--amber)}
+  .modal.cat-mitochondrial .m-band{background:#3E5BAA}
+  .modal.cat-longevity .m-band{background:var(--amber)}
+  .modal.cat-cognitive .m-band{background:var(--copper)}
+  .modal.cat-therapy .m-band{background:var(--rust)}
+  .m-close{position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:50%;background:rgba(27,26,23,.06);border:0;cursor:pointer;font-size:18px;color:var(--ink);display:flex;align-items:center;justify-content:center;font-family:var(--mono);z-index:10}
+  .m-close:hover{background:var(--amber);color:var(--cream)}
+  .m-body{padding:36px 40px 40px}
+  .m-cat{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--amber);font-weight:700;margin-bottom:8px}
+  .modal.cat-mitochondrial .m-cat{color:#3E5BAA}
+  .modal.cat-cognitive .m-cat{color:var(--copper)}
+  .modal.cat-therapy .m-cat{color:var(--rust)}
+  .m-title{font-family:var(--display);font-size:48px;font-weight:400;color:var(--ink);margin-bottom:8px;line-height:1;letter-spacing:-.02em}
+  .m-title em{font-style:italic;color:var(--amber)}
+  .m-origin{font-family:var(--mono);font-size:11.5px;letter-spacing:.10em;color:var(--ink-3);margin-bottom:18px}
+  .m-one{font-family:var(--serif);font-style:italic;font-size:18px;color:var(--ink-2);line-height:1.5;margin-bottom:24px;padding-bottom:22px;border-bottom:0.5px solid var(--line-2)}
+  .m-block{margin-bottom:24px}
+  .m-label{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--amber);font-weight:700;margin-bottom:10px}
+  .modal.cat-mitochondrial .m-label{color:#3E5BAA}
+  .modal.cat-cognitive .m-label{color:var(--copper)}
+  .modal.cat-therapy .m-label{color:var(--rust)}
+  .m-block p{font-family:var(--serif);font-size:15px;line-height:1.7;color:var(--ink-2);margin-bottom:10px}
+  .m-compounds{font-family:var(--mono);font-size:12.5px;line-height:1.7;color:var(--ink-2);background:var(--cream-2);padding:14px 18px;border-radius:8px;border:0.5px solid var(--line-2)}
+  .m-block ul{list-style:none;padding:0;margin-top:6px}
+  .m-block li{font-family:var(--sans);font-size:14px;color:var(--ink-2);padding:5px 0 5px 18px;position:relative;line-height:1.5}
+  .m-block li::before{content:'';position:absolute;left:0;top:13px;width:8px;height:1px;background:var(--amber)}
+
+  ol.step-list{counter-reset:step;list-style:none;padding:0;margin:10px 0 0}
+  ol.step-list > li{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start;padding:14px 18px;margin-bottom:8px;background:var(--cream);border:0.5px solid var(--line-2);border-radius:10px;font-family:var(--serif);font-size:15px;line-height:1.6;color:var(--ink-2);counter-increment:step;position:relative}
+  ol.step-list > li::before{content:counter(step,decimal-leading-zero);position:static;width:auto;height:auto;top:auto;left:auto;font-family:var(--mono);font-size:12px;font-weight:700;color:var(--cream)!important;background:var(--amber);padding:5px 4px;border-radius:5px;text-align:center;letter-spacing:.04em;box-shadow:0 1px 3px rgba(181,143,77,.30);align-self:start;margin-top:1px;display:block}
+  .modal.cat-mitochondrial ol.step-list > li::before{background:#3E5BAA}
+  .modal.cat-cognitive ol.step-list > li::before{background:var(--copper)}
+  .modal.cat-therapy ol.step-list > li::before{background:var(--rust)}
+
+  .src-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:6px}
+  .src-row{display:grid;grid-template-columns:90px 1fr;gap:12px;align-items:start;padding:11px 14px;background:var(--cream);border:0.5px solid var(--line-2);border-radius:8px;border-left:3px solid var(--amber)}
+  .src-eta{font-family:var(--mono);font-size:9.5px;letter-spacing:.10em;text-transform:uppercase;color:var(--amber);font-weight:700;padding-top:2px}
+  .src-main a{font-family:var(--sans);font-size:13.5px;color:var(--ink);font-weight:600;border-bottom:0.5px dashed var(--ink-3);padding-bottom:1px}
+  .src-main a:hover{color:var(--amber);border-color:var(--amber)}
+  .src-main .src-note{display:block;font-family:var(--serif);font-style:italic;font-size:12.5px;color:var(--ink-3);margin-top:3px;line-height:1.4}
+
+  .cta{max-width:780px;margin:48px auto 40px;padding:42px 38px;text-align:center;background:var(--cream-2);border:0.5px solid var(--line);border-radius:14px}
+  .cta h2{font-family:var(--display);font-weight:400;font-size:clamp(28px,4.5vw,42px);line-height:1.1;color:var(--ink);margin-bottom:14px}
+  .cta h2 em{font-style:italic;color:var(--amber)}
+  .cta p{font-family:var(--serif);font-size:16px;color:var(--ink-2);line-height:1.55;margin-bottom:22px}
+  .cta-btn{display:inline-block;padding:12px 26px;background:var(--ink);color:var(--cream);font-family:var(--mono);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;border-radius:6px;font-weight:600;margin:0 4px}
+  .cta-btn:hover{background:var(--amber)}
+
+  footer{max-width:1180px;margin:24px auto 0;padding:28px 32px;border-top:0.5px solid var(--line);text-align:center}
+  footer p{font-family:var(--mono);font-size:11px;letter-spacing:.10em;color:var(--ink-3)}
+
+  @media (max-width:760px){.strip{grid-template-columns:repeat(2,1fr)}.strip > div:nth-child(2n){border-right:0}.strip > div{border-bottom:0.5px solid var(--line)}.m-body{padding:28px 22px}.m-title{font-size:36px}}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="top-in">
+    <a class="brand" href="sora-hq.html">SORA<em>°</em></a>
+    <span class="top-tag" data-es>MEDICINAS · MODERNA</span>
+    <span class="top-tag" data-en>MEDICINES · MODERN</span>
+    <a class="top-link" href="sora-elixirs.html" data-es>↩ Elixires</a>
+    <a class="top-link" href="sora-elixirs.html" data-en>↩ Elixirs</a>
+    <a class="top-link" href="sora-peptides.html" data-es>↩ Péptidos</a>
+    <a class="top-link" href="sora-peptides.html" data-en>↩ Peptides</a>
+    <a class="top-link" href="sora-chemicals.html" data-es>↩ Químicos</a>
+    <a class="top-link" href="sora-chemicals.html" data-en>↩ Chemicals</a>
+    <span class="spacer"></span>
+    <div class="lang">
+      <button class="active" onclick="setLang('es')">ES</button>
+      <button onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="hero-eyebrow" data-es>MEDICINAS · NOOTRÓPICOS · TERAPIAS · LONGEVIDAD</div>
+  <div class="hero-eyebrow" data-en>MEDICINES · NOOTROPICS · THERAPIES · LONGEVITY</div>
+  <h1 data-es>Las <em>medicinas</em>.</h1>
+  <h1 data-en>The <em>medicines</em>.</h1>
+  <p class="hero-lede" data-es>Compuestos modernos con evidencia clínica para optimización cognitiva, longevidad, y tratamiento de condiciones resistentes. Algunos son OTC (NMN, methylene blue, berberina, fisetina, espermidina · suplementos clase-1). Otros requieren prescripción + telehealth (modafinil, metformin, rapamicina, tirzepatida, LDN, ketamina, selegilina). <strong>Dieciséis medicinas</strong> · mitocondrial + longevidad clásica/senolítica/GLP-1 + nootrópicos + terapias (HBOT, ketamina, LDN, tianeptina). <em>Diferentes a los químicos psicodélicos puros — éstos tienen aprobación FDA o uso off-label médico-supervisado.</em></p>
+  <p class="hero-lede" data-en>Modern compounds with clinical evidence for cognitive optimization, longevity, and treatment of resistant conditions. Some are OTC (NMN, methylene blue, berberine, fisetin, spermidine · Class-1 supplements). Others require prescription + telehealth (modafinil, metformin, rapamycin, tirzepatide, LDN, ketamine, selegiline). <strong>Sixteen medicines</strong> · mitochondrial + classical/senolytic/GLP-1 longevity + nootropics + therapies (HBOT, ketamine, LDN, tianeptine). <em>Different from pure psychedelic chemicals — these have FDA approval or medically-supervised off-label use.</em></p>
+  <div class="disclaimer">
+    <strong data-es>⚠ AVISO MÉDICO ·</strong>
+    <strong data-en>⚠ MEDICAL DISCLAIMER ·</strong>
+    <span data-es> Modafinil, metformin, ketamine, esketamine son <strong>medicamentos Rx</strong>. Acceso vía telehealth USA legítimo (Lifeforce, Marek Health, HoneyHill, Mindbloom). NMN, methylene blue, racetams son OTC pero requieren protocolo cuidadoso. Antes de cualquier protocolo, médico-supervisión recomendada. Esto es <strong>investigación educacional</strong>, no consejo médico.</span>
+    <span data-en> Modafinil, metformin, ketamine, esketamine are <strong>Rx medications</strong>. Access via legitimate US telehealth (Lifeforce, Marek Health, HoneyHill, Mindbloom). NMN, methylene blue, racetams are OTC but require careful protocols. Before any protocol, physician supervision recommended. This is <strong>educational research</strong>, not medical advice.</span>
+  </div>
+</header>
+
+<div class="strip">
+  <div><div class="n">16</div><div class="l" data-es>Medicinas</div><div class="l" data-en>Medicines</div></div>
+  <div><div class="n">4</div><div class="l" data-es>Categorías</div><div class="l" data-en>Categories</div></div>
+  <div><div class="n">FDA</div><div class="l" data-es>Aprobados Rx o off-label</div><div class="l" data-en>Approved Rx or off-label</div></div>
+  <div><div class="n">$30-300</div><div class="l" data-es>USD/mes stack</div><div class="l" data-en>USD/mo stack</div></div>
+  <div><div class="n">★</div><div class="l" data-es>Telehealth USA OK</div><div class="l" data-en>US telehealth OK</div></div>
+</div>
+
+<div class="filter">
+  <div class="filter-in">
+    <button class="fl on" data-cat="all" data-es>★ Todas (16)</button>
+    <button class="fl on" data-cat="all" data-en>★ All (16)</button>
+    <button class="fl" data-cat="longevity" data-es>Longevidad · 6</button>
+    <button class="fl" data-cat="longevity" data-en>Longevity · 6</button>
+    <button class="fl" data-cat="cognitive" data-es>Cognitivo · 5</button>
+    <button class="fl" data-cat="cognitive" data-en>Cognitive · 5</button>
+    <button class="fl" data-cat="mitochondrial" data-es>Mitocondrial · 3</button>
+    <button class="fl" data-cat="mitochondrial" data-en>Mitochondrial · 3</button>
+    <button class="fl" data-cat="therapy" data-es>Terapia · 2</button>
+    <button class="fl" data-cat="therapy" data-en>Therapy · 2</button>
+  </div>
+</div>
+
+<div class="apothecary" style="padding-top:8px">
+  <button class="shelf-nav prev" onclick="scrollShelf(-1)">‹</button>
+  <button class="shelf-nav next" onclick="scrollShelf(1)">›</button>
+  <div class="shelf" id="shelf"></div>
+  <div class="shelf-counter"><span data-es>Mostrando</span><span data-en>Showing</span> <span class="now" id="shelf-now">6</span> <span data-es>de</span><span data-en>of</span> <span id="shelf-total">6</span> <span data-es>medicinas · click para protocolo completo</span><span data-en>medicines · click for full protocol</span></div>
+</div>
+
+<div class="cta">
+  <h2 data-es>El <em>fármaco</em> correcto, supervisado.</h2>
+  <h2 data-en>The right <em>drug</em>, supervised.</h2>
+  <p data-es>Cuando la planta o el péptido no son suficientes, la farmacología moderna ofrece compuestos diseñados con precisión. Cada uno requiere protocolo, dosis correcta, y monitoreo. Telehealth USA hace el acceso legal y supervisado posible.</p>
+  <p data-en>When plant or peptide isn\'t enough, modern pharmacology offers precision-designed compounds. Each requires protocol, correct dose, and monitoring. US telehealth makes legal supervised access possible.</p>
+  <a href="sora-elixirs.html" class="cta-btn" data-es>BEBIDAS →</a>
+  <a href="sora-elixirs.html" class="cta-btn" data-en>DRINKS →</a>
+  <a href="sora-peptides.html" class="cta-btn" data-es>PÉPTIDOS →</a>
+  <a href="sora-peptides.html" class="cta-btn" data-en>PEPTIDES →</a>
+  <a href="sora-chemicals.html" class="cta-btn" data-es>QUÍMICOS →</a>
+  <a href="sora-chemicals.html" class="cta-btn" data-en>CHEMICALS →</a>
+  <a href="sora-hq.html" class="cta-btn">HQ</a>
+</div>
+
+<footer>
+  <p data-es>Medicinas modernas · clínica + nootrópicos · v1.0 · La Compañía MMXXVI · educacional</p>
+  <p data-en>Modern medicines · clinical + nootropics · v1.0 · La Compañía MMXXVI · educational</p>
+</footer>
+
+<div class="modal-bg" id="modal-bg" onclick="if(event.target===this)closeModal()">
+  <div class="modal" id="modal">
+    <div class="m-band"></div>
+    <button class="m-close" onclick="closeModal()">×</button>
+    <div class="m-body" id="m-body"></div>
+  </div>
+</div>
+
+<script src="medicines-data.js"></script>
+<script>
+  const CATS = {
+    mitochondrial:{es:'Mitocondrial · Azul de Metileno',en:'Mitochondrial · Methylene Blue'},
+    longevity:{es:'Longevidad · NAD/AMPK',en:'Longevity · NAD/AMPK'},
+    cognitive:{es:'Cognitivo · Eugeroico/Racetam',en:'Cognitive · Eugeroic/Racetam'},
+    therapy:{es:'Terapia · Disociativa Clínica',en:'Therapy · Clinical Dissociative'}
+  };
+  const BOTTLE_VARIANTS = {
+    mitochondrial:[['#3E5BAA','#243E7E','#0F1F4A'],['#5274C0','#2F4F8E','#13265A'],['#4B6FB8','#2A4892','#0F2354']],
+    longevity:[['#E0C25E','#A88C38','#6E5A1E'],['#D4A85E','#B58F4D','#8B6932'],['#CFA94B','#9C7A2B','#5E4A12'],['#E8C975','#B59546','#7A6228'],['#D0B370','#9F843E','#67521E'],['#BFA058','#8C7332','#523F12']],
+    cognitive:[['#C58A6E','#8E5A42','#5A3522'],['#A86E3E','#7A4A22','#4E2E14'],['#B57852','#823F1E','#502516'],['#9C6A3E','#6E4220','#42220D'],['#B07650','#7C4824','#4A2A11']],
+    therapy:[['#9E5238','#6E3522','#3F1F12'],['#B8623E','#824522','#4F2B13']]
+  };
+  let currentFilter='all';
+  function pickVariant(e){const v=BOTTLE_VARIANTS[e.category]||BOTTLE_VARIANTS.longevity;return v[[...e.id].reduce((a,c)=>a+c.charCodeAt(0),0)%v.length]}
+
+  function bottleSVG(e, num){
+    const [c1,c2,c3]=pickVariant(e);
+    const id3=(e.id||'').replace(/-/g,'').slice(0,3).toUpperCase();
+    return `
+      <svg class="bottle-svg" viewBox="0 0 120 220" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="liq-${e.id}" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="${c1}" stop-opacity="0.92"/>
+            <stop offset="0.55" stop-color="${c2}"/>
+            <stop offset="1" stop-color="${c3}"/>
+          </linearGradient>
+        </defs>
+        <!-- Prescription pill bottle: amber with child-safety cap -->
+        <!-- white child-safety cap -->
+        <rect x="32" y="6" width="56" height="22" rx="3" fill="#F0EEE8"/>
+        <rect x="30" y="10" width="60" height="3" fill="#D0CCC2"/>
+        <rect x="30" y="18" width="60" height="3" fill="#D0CCC2"/>
+        <!-- amber pill bottle body -->
+        <path d="M 30 28 L 30 200 Q 30 215 60 215 Q 90 215 90 200 L 90 28 Z" fill="url(#liq-${e.id})"/>
+        <!-- glass outline -->
+        <path d="M 30 28 L 30 200 Q 30 215 60 215 Q 90 215 90 200 L 90 28" fill="none" stroke="#1B1A17" stroke-opacity="0.22" stroke-width="1.5"/>
+        <!-- shine -->
+        <rect x="36" y="40" width="4" height="160" rx="2" fill="rgba(255,255,255,0.35)"/>
+        <!-- prescription label -->
+        <rect x="24" y="80" width="72" height="100" rx="3" fill="rgba(248,243,234,0.96)" stroke="rgba(27,26,23,0.12)" stroke-width="0.5"/>
+        <line x1="28" y1="92" x2="92" y2="92" stroke="${c2}" stroke-width="0.8"/>
+        <line x1="28" y1="166" x2="92" y2="166" stroke="${c2}" stroke-width="0.5" stroke-opacity="0.5"/>
+        <text x="60" y="103" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="6" letter-spacing="2" fill="#5C5346" font-weight="700">SORA RX · ${id3}</text>
+        <text x="60" y="135" text-anchor="middle" font-family="Instrument Serif, Georgia, serif" font-size="22" font-style="italic" fill="${c2}">№ ${String(num).padStart(2,'0')}</text>
+        <text x="60" y="156" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="5" letter-spacing="1.5" fill="#9A8E7A">FOR RESEARCH</text>
+        <line x1="44" y1="172" x2="76" y2="172" stroke="${c2}" stroke-width="0.4" stroke-opacity="0.3"/>
+        <line x1="44" y1="176" x2="76" y2="176" stroke="${c2}" stroke-width="0.4" stroke-opacity="0.3"/>
+      </svg>`;
+  }
+  function parseSteps(r){return r?r.split(/(?<=[.!?])\s+(?=[A-ZÁÉÍÓÚÑÜ])/g).map(s=>s.trim()).filter(s=>s.length>=12).slice(0,10):[]}
+  function getEta(item,lang){
+    const u=(item.url||'').toLowerCase();
+    if(/farmacia|gnc\.com\.pa|ribasmith|puntapacifica/.test(u))return{days:0,label:lang==='es'?'HOY · LOCAL':'TODAY · LOCAL'};
+    if(/honeyhill|mindbloom|fieldtriphealth|nue\.life|spravato|lifeforce|marekhealth|henrymeds|agelessrx|gethealthspan|joinmochi|tryeden|lillydirect/.test(u))return{days:7,label:'Rx · 5-10D'};
+    if(/iherb/.test(u))return{days:10,label:'7-14D PA'};
+    if(/bluebrainboost|troscriptions|prohealthlongevity|renuebyscience|nootropicsdepot|liftmode|spermidinelife|doublewoodsupplements|donotage|thorne|pureencapsulations|designsforhealth|nnbnutrition|umbrellalabs|nootropicsource|intellimeds|oxyhealth|skipsrxonline|belmarpharmacy/.test(u))return{days:8,label:'7-10D · USA'};
+    if(/afinilexpress|buymoda/.test(u))return{days:12,label:'10-15D India'};
+    if(/cosmicnootropic|servier|farmaciasguadalajara|aviv-clinics|assuta|ldnresearchtrust|emsam|uhms\.org/.test(u))return{days:18,label:'14-21D INTL'};
+    return{days:14,label:'~10-21D'};
+  }
+
+  function setLang(l){document.documentElement.lang=l;document.querySelectorAll('.lang button').forEach(b=>b.classList.remove('active'));document.querySelector(`.lang button[onclick="setLang('${l}')"]`).classList.add('active');try{localStorage.setItem('sora.lang',l)}catch(e){}render()}
+  try{const s=localStorage.getItem('sora.lang');if(s){document.documentElement.lang=s;document.querySelector(`.lang button[onclick="setLang('${s}')"]`)?.classList.add('active')}}catch(e){}
+  document.querySelectorAll('.fl').forEach(b=>b.addEventListener('click',()=>{currentFilter=b.dataset.cat;document.querySelectorAll('.fl').forEach(x=>x.classList.toggle('on',x.dataset.cat===currentFilter));render()}));
+
+  function render(){
+    const lang=document.documentElement.lang||'es';
+    const all=window.MEDICINES||[];
+    const items=all.filter(e=>currentFilter==='all'||e.category===currentFilter);
+    document.getElementById('shelf-now').textContent=items.length;
+    document.getElementById('shelf-total').textContent=all.length;
+    document.getElementById('shelf').innerHTML=items.map(e=>{
+      const idx=all.indexOf(e);
+      return `<button class="potion cat-${e.category}" onclick="openModal(${idx})">
+        <div class="potion-cat">${CATS[e.category][lang]}</div>
+        <div class="potion-bottle">${bottleSVG(e,idx+1)}</div>
+        <div class="potion-meta">
+          <h3>${e.name[lang]}</h3>
+          <div class="potion-origin">${e.origin[lang]}</div>
+          <p class="potion-one">${e.one[lang]}</p>
+          <div class="potion-tap">${lang==='es'?'TAP PARA PROTOCOLO →':'TAP FOR PROTOCOL →'}</div>
+        </div>
+      </button>`;
+    }).join('');
+    updateShelfNav();
+  }
+  function scrollShelf(d){document.getElementById('shelf').scrollBy({left:d*(248+18)*2,behavior:'smooth'})}
+  function updateShelfNav(){const sh=document.getElementById('shelf');const p=document.querySelector('.shelf-nav.prev');const n=document.querySelector('.shelf-nav.next');if(!sh||!p||!n)return;const u=()=>{p.disabled=sh.scrollLeft<=4;n.disabled=sh.scrollLeft>=sh.scrollWidth-sh.clientWidth-4};sh.addEventListener('scroll',u,{passive:true});setTimeout(u,100)}
+  function openModal(idx){
+    const lang=document.documentElement.lang||'es';
+    const e=window.MEDICINES[idx];if(!e)return;
+    const m=document.getElementById('modal');m.className='modal cat-'+e.category;
+    const steps=parseSteps(e.recipe[lang]);
+    const all=[...(e.sourcing.local||[]),...(e.sourcing.intl||[])].map(s=>({...s,_eta:getEta(s,lang)})).sort((a,b)=>a._eta.days-b._eta.days);
+    document.getElementById('m-body').innerHTML=`
+      <div class="m-cat">${CATS[e.category][lang]}</div>
+      <h2 class="m-title">${e.name[lang]}</h2>
+      <div class="m-origin">${e.origin[lang]}</div>
+      <p class="m-one">${e.one[lang]}</p>
+      <div class="m-block"><div class="m-label">${lang==='es'?'01 · HISTORIA':'01 · HISTORY'}</div><p>${e.story[lang]}</p></div>
+      <div class="m-block"><div class="m-label">${lang==='es'?'02 · ESTRUCTURA + MECANISMO':'02 · STRUCTURE + MECHANISM'}</div><div class="m-compounds">${e.compounds}</div><p style="margin-top:10px">${e.effect[lang]}</p></div>
+      <div class="m-block"><div class="m-label">${lang==='es'?'03 · MATERIAL':'03 · MATERIALS'}</div><ul>${e.ingredients[lang].map(i=>`<li>${i}</li>`).join('')}</ul></div>
+      <div class="m-block"><div class="m-label">${lang==='es'?'04 · PROTOCOLO':'04 · PROTOCOL'}</div><ol class="step-list">${steps.map(s=>`<li>${s}</li>`).join('')}</ol></div>
+      <div class="m-block"><div class="m-label">${lang==='es'?'05 · ACCESO · POR VELOCIDAD':'05 · ACCESS · BY SPEED'}</div><ul class="src-list">${all.map(s=>{const nt=(typeof s.note==='string')?s.note:((s.note&&(s.note[lang]||s.note.es||s.note.en))||'');return `<li class="src-row"><div class="src-eta">${s._eta.label}</div><div class="src-main"><a href="${s.url}" target="_blank" rel="noopener">${s.name}</a>${nt?`<span class="src-note">${nt}</span>`:''}</div></li>`}).join('')}</ul></div>
+    `;
+    document.getElementById('modal-bg').classList.add('on');document.body.style.overflow='hidden';
+  }
+  function closeModal(){document.getElementById('modal-bg').classList.remove('on');document.body.style.overflow=''}
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();if(!document.getElementById('modal-bg').classList.contains('on')){if(e.key==='ArrowRight')scrollShelf(1);if(e.key==='ArrowLeft')scrollShelf(-1)}});
+  function init(){if(window.MEDICINES&&window.MEDICINES.length){render()}else{setTimeout(init,80)}}init();
+</script>
+</body>
+</html>

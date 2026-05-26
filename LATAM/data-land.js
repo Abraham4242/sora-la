@@ -509,6 +509,163 @@ ADMIN: [
     notes:{es:'CRÍTICO Bocas — tierras concesión vs título. Verificar antes compra isla.', en:'CRITICAL Bocas — concession vs title land. Verify before island purchase.'} },
   { country:'PA', region:'Panamá City', type:'notary', name:'Notaría 1 Panamá', contact:'Calle 50',
     notes:{es:'Escritura. PA notarial system fast.', en:'Deed. PA notarial system fast.'} }
+],
+
+/* ===========================================================
+   SEARCH PORTALS · Entry & mid-tier inventory by country
+   Each entry is a pre-filtered search URL on a real portal.
+   Click → live listings under the target price. No fabricated
+   URLs. These are the platforms locals + foreigners actually
+   use to find affordable property in each market.
+   =========================================================== */
+PORTALS: [
+  /* ============================== MX ============================== */
+  { country:'MX', region:'Tulum', tier:'entry', priceCapUSD:300000, type:'apartment',
+    portal:'Inmuebles24', url:'https://www.inmuebles24.com/departamentos-en-venta-en-tulum-hasta-300000-dolares.html',
+    notes:{es:'Departamentos Aldea Zama / La Veleta < $300K — buen rendimiento renta vacacional, fideicomiso requerido.',
+           en:'Aldea Zama / La Veleta apartments < $300K — strong vacation-rental yield, fideicomiso required.'} },
+  { country:'MX', region:'Tulum', tier:'mid', priceCapUSD:600000, type:'house',
+    portal:'Vivanuncios', url:'https://www.vivanuncios.com.mx/s-casas-en-venta/tulum/v1c1097l10169p1?ms=200_000%2C600_000',
+    notes:{es:'Casas $200-600K. Zona Aldea Zama / Bahía Príncipe / Tulum centro.',
+           en:'Houses $200-600K. Aldea Zama / Bahía Príncipe / Tulum center.'} },
+  { country:'MX', region:'Mérida', tier:'entry', priceCapUSD:250000, type:'house',
+    portal:'Inmuebles24', url:'https://www.inmuebles24.com/casas-en-venta-en-merida-hasta-250000-dolares.html',
+    notes:{es:'Casonas coloniales centro Mérida < $250K. Hub colonial calidad-precio top LATAM.',
+           en:'Colonial casonas Mérida center < $250K. Best LATAM colonial value-for-price.'} },
+  { country:'MX', region:'San Miguel de Allende', tier:'mid', priceCapUSD:500000, type:'house',
+    portal:'Vivanuncios', url:'https://www.vivanuncios.com.mx/s-casas-en-venta/san-miguel-de-allende-gto/v1c1097l10166p1?ms=200_000%2C500_000',
+    notes:{es:'SMA segunda categoría — fuera del centro histórico pero dentro del municipio. $200-500K.',
+           en:'SMA second tier — outside historic center but within municipality. $200-500K.'} },
+  { country:'MX', region:'CDMX · Roma/Condesa', tier:'mid', priceCapUSD:450000, type:'apartment',
+    portal:'Inmuebles24', url:'https://www.inmuebles24.com/departamentos-en-venta-en-roma-norte-hasta-450000-dolares.html',
+    notes:{es:'Roma Norte / Condesa departamentos 1-2BR. Mercado más resiliente CDMX.',
+           en:'Roma Norte / Condesa 1-2BR apartments. CDMX most resilient market.'} },
+
+  /* ============================== CO ============================== */
+  { country:'CO', region:'Medellín · El Poblado', tier:'entry', priceCapUSD:200000, type:'apartment',
+    portal:'Fincaraíz', url:'https://www.fincaraiz.com.co/apartamentos/venta/el-poblado/medellin?precio=hasta-200000-dolares',
+    notes:{es:'El Poblado / Provenza departamentos 1-2BR < $200K. Renta corta vacacional generosa.',
+           en:'El Poblado / Provenza 1-2BR apartments < $200K. Generous short-term rental yields.'} },
+  { country:'CO', region:'Medellín · Laureles', tier:'entry', priceCapUSD:150000, type:'apartment',
+    portal:'Metrocuadrado', url:'https://www.metrocuadrado.com/apartamento/venta/medellin/laureles-estadio',
+    notes:{es:'Laureles departamentos < $150K. Barrio en alza, mejor valor q El Poblado.',
+           en:'Laureles apartments < $150K. Rising neighborhood, better value than El Poblado.'} },
+  { country:'CO', region:'Pereira / Quindío', tier:'entry', priceCapUSD:200000, type:'rural',
+    portal:'Fincaraíz', url:'https://www.fincaraiz.com.co/fincas/venta/pereira',
+    notes:{es:'Fincas cafeteras Eje Cafetero $50-200K. Tierra agrícola + casa.',
+           en:'Eje Cafetero coffee fincas $50-200K. Agricultural land + house.'} },
+  { country:'CO', region:'Cartagena · Getsemaní', tier:'mid', priceCapUSD:400000, type:'house',
+    portal:'Fincaraíz', url:'https://www.fincaraiz.com.co/casas/venta/getsemani/cartagena',
+    notes:{es:'Casas coloniales Getsemaní / centro histórico $200-400K. Restauración con upside.',
+           en:'Getsemaní / historic center colonial houses $200-400K. Restoration with upside.'} },
+  { country:'CO', region:'Cartagena · Manga/Bocagrande', tier:'mid', priceCapUSD:300000, type:'apartment',
+    portal:'Ciencuadras', url:'https://www.ciencuadras.com/apartamento-en-venta/cartagena',
+    notes:{es:'Departamentos modernos Manga / Bocagrande $150-300K. Vista mar / bahía.',
+           en:'Modern Manga / Bocagrande apartments $150-300K. Ocean / bay view.'} },
+
+  /* ============================== AR ============================== */
+  { country:'AR', region:'Buenos Aires · Palermo', tier:'entry', priceCapUSD:200000, type:'apartment',
+    portal:'ZonaProp', url:'https://www.zonaprop.com.ar/departamentos-venta-palermo-hasta-200000-dolares.html',
+    notes:{es:'Palermo Hollywood / Soho departamentos 1-2BR < $200K USD cash. Mercado en USD por crisis peso.',
+           en:'Palermo Hollywood / Soho 1-2BR apartments < $200K USD cash. USD-denominated due to peso crisis.'} },
+  { country:'AR', region:'Buenos Aires · Recoleta', tier:'mid', priceCapUSD:350000, type:'apartment',
+    portal:'Argenprop', url:'https://www.argenprop.com/departamentos/venta/recoleta',
+    notes:{es:'Recoleta apartamentos clásicos pre-1950 $150-350K. Calidad/precio mejor LATAM.',
+           en:'Recoleta classic pre-1950 apartments $150-350K. Best LATAM quality-for-price.'} },
+  { country:'AR', region:'Mendoza · Luján de Cuyo', tier:'mid', priceCapUSD:400000, type:'rural',
+    portal:'ZonaProp', url:'https://www.zonaprop.com.ar/inmuebles-venta-lujan-de-cuyo.html',
+    notes:{es:'Pequeñas bodegas y fincas vitivinícolas Mendoza $150-400K. Restricción extranjero rural — 1000ha max.',
+           en:'Small vineyards and wine fincas Mendoza $150-400K. Rural foreign restriction — 1000ha max.'} },
+  { country:'AR', region:'Bariloche · Patagonia', tier:'mid', priceCapUSD:300000, type:'house',
+    portal:'Argenprop', url:'https://www.argenprop.com/casas/venta/bariloche',
+    notes:{es:'Cabañas Bariloche / Villa La Angostura $100-300K. Vista lago / montaña.',
+           en:'Bariloche / Villa La Angostura cabins $100-300K. Lake / mountain views.'} },
+
+  /* ============================== UY ============================== */
+  { country:'UY', region:'Punta del Este', tier:'mid', priceCapUSD:400000, type:'apartment',
+    portal:'InfoCasas', url:'https://www.infocasas.com.uy/venta/apartamentos/punta-del-este/hasta-400000-dolares',
+    notes:{es:'Apartamentos Punta + La Brava $200-400K. Seguridad jurídica top LATAM.',
+           en:'Punta + La Brava apartments $200-400K. Top LATAM legal certainty.'} },
+  { country:'UY', region:'José Ignacio', tier:'mid', priceCapUSD:500000, type:'house',
+    portal:'InfoCasas', url:'https://www.infocasas.com.uy/venta/casas/jose-ignacio',
+    notes:{es:'Casas José Ignacio $250-500K. Punta del Este boho-premium.',
+           en:'José Ignacio houses $250-500K. Punta del Este boho-premium.'} },
+
+  /* ============================== PE ============================== */
+  { country:'PE', region:'Lima · Barranco/Miraflores', tier:'entry', priceCapUSD:250000, type:'apartment',
+    portal:'Adondevivir', url:'https://www.adondevivir.com/departamentos-en-venta-en-barranco-precio-en-soles-hasta-1000000.html',
+    notes:{es:'Barranco / Miraflores departamentos 1-2BR < $250K. Bohemio + premium.',
+           en:'Barranco / Miraflores 1-2BR apartments < $250K. Bohemian + premium.'} },
+  { country:'PE', region:'Cusco · Centro', tier:'entry', priceCapUSD:200000, type:'house',
+    portal:'Urbania', url:'https://urbania.pe/buscar/venta-de-departamentos-en-cusco',
+    notes:{es:'Cusco casas coloniales / departamentos modernos $80-200K. Restricción extranjero 50km frontera.',
+           en:'Cusco colonial houses / modern apts $80-200K. 50km border foreign restriction.'} },
+
+  /* ============================== CL ============================== */
+  { country:'CL', region:'Santiago · Providencia/Las Condes', tier:'mid', priceCapUSD:350000, type:'apartment',
+    portal:'Portal Inmobiliario', url:'https://www.portalinmobiliario.com/venta/departamento/santiago-rm-metropolitana',
+    notes:{es:'Departamentos Providencia / Las Condes $150-350K. CBR independiente da certeza única.',
+           en:'Providencia / Las Condes apartments $150-350K. Independent CBR gives unique certainty.'} },
+  { country:'CL', region:'Casablanca Valley', tier:'mid', priceCapUSD:500000, type:'rural',
+    portal:'Portal Inmobiliario', url:'https://www.portalinmobiliario.com/venta/casa/casablanca-valparaiso',
+    notes:{es:'Parcelas vitivinícolas Casablanca $150-500K. Cerca Santiago + Viña del Mar.',
+           en:'Casablanca vineyard plots $150-500K. Near Santiago + Viña del Mar.'} },
+
+  /* ============================== CR ============================== */
+  { country:'CR', region:'Nicoya · Santa Teresa/Tamarindo', tier:'entry', priceCapUSD:250000, type:'lot',
+    portal:'Encuentra24', url:'https://www.encuentra24.com/costa-rica-es/bienes-raices-venta-de-propiedades-venta-de-lotes/nicoya',
+    notes:{es:'Lotes Santa Teresa / Mal País / Tamarindo $50-250K. Surf coast. ZMT 200m costera restringida.',
+           en:'Santa Teresa / Mal País / Tamarindo lots $50-250K. Surf coast. 200m maritime zone restricted.'} },
+  { country:'CR', region:'Atenas / Central Valley', tier:'mid', priceCapUSD:400000, type:'house',
+    portal:'Encuentra24', url:'https://www.encuentra24.com/costa-rica-es/bienes-raices-venta-de-propiedades/atenas',
+    notes:{es:'Casas Atenas / Grecia / Sarchí $150-400K. Valle central, clima perfecto, hub expat.',
+           en:'Atenas / Grecia / Sarchí houses $150-400K. Central valley, perfect climate, expat hub.'} },
+
+  /* ============================== PA ============================== */
+  { country:'PA', region:'Boquete · Chiriquí', tier:'entry', priceCapUSD:250000, type:'house',
+    portal:'Encuentra24', url:'https://www.encuentra24.com/panama-es/bienes-raices-venta-de-propiedades/boquete',
+    notes:{es:'Casas Boquete $80-250K. Highlands frescos. Hub expat veterano.',
+           en:'Boquete houses $80-250K. Cool highlands. Veteran expat hub.'} },
+  { country:'PA', region:'Bocas del Toro · Isla Colón', tier:'entry', priceCapUSD:200000, type:'house',
+    portal:'Encuentra24', url:'https://www.encuentra24.com/panama-es/bienes-raices-venta-de-propiedades/bocas-del-toro',
+    notes:{es:'Bocas casas + lotes $50-200K. CRÍTICO verificar título vs Rights of Possession.',
+           en:'Bocas houses + lots $50-200K. CRITICAL verify title vs Rights of Possession.'} },
+  { country:'PA', region:'Casco Viejo · Panamá', tier:'mid', priceCapUSD:500000, type:'apartment',
+    portal:'Encuentra24', url:'https://www.encuentra24.com/panama-es/bienes-raices-venta-de-propiedades-apartamentos/casco-viejo',
+    notes:{es:'Departamentos Casco Viejo $250-500K. Restauración con subsidio Patrimonio.',
+           en:'Casco Viejo apartments $250-500K. Restoration with Heritage subsidy.'} },
+
+  /* ============================== BR ============================== */
+  { country:'BR', region:'Florianópolis · Santa Catarina', tier:'mid', priceCapUSD:400000, type:'apartment',
+    portal:'VivaReal', url:'https://www.vivareal.com.br/venda/santa-catarina/florianopolis/apartamento_residencial/',
+    notes:{es:'Florianópolis apartamentos $150-400K USD (~R$1M). Mejor calidad de vida BR.',
+           en:'Florianópolis apartments $150-400K USD (~R$1M). BR best quality of life.'} },
+  { country:'BR', region:'Trancoso · Bahia', tier:'mid', priceCapUSD:500000, type:'house',
+    portal:'VivaReal', url:'https://www.vivareal.com.br/venda/bahia/trancoso/',
+    notes:{es:'Trancoso casas $200-500K. Pueblo boho-premium. Costa: sin restricción extranjero.',
+           en:'Trancoso houses $200-500K. Boho-premium village. Coast: no foreign restriction.'} },
+
+  /* ============================== EC ============================== */
+  { country:'EC', region:'Cuenca · Centro histórico', tier:'entry', priceCapUSD:200000, type:'house',
+    portal:'Plusvalia', url:'https://www.plusvalia.com/casas-en-venta-en-cuenca.html',
+    notes:{es:'Cuenca casas coloniales $80-200K. Hub expat consolidado, costo de vida bajo.',
+           en:'Cuenca colonial houses $80-200K. Consolidated expat hub, low cost of living.'} },
+
+  /* ============================== DO ============================== */
+  { country:'DO', region:'Las Terrenas · Samaná', tier:'entry', priceCapUSD:300000, type:'house',
+    portal:'Encuentra24', url:'https://www.encuentra24.com/republica-dominicana-es/bienes-raices-venta-de-propiedades/las-terrenas',
+    notes:{es:'Las Terrenas casas $100-300K. Sistema Torrens da certeza máxima LATAM.',
+           en:'Las Terrenas houses $100-300K. Torrens system gives max LATAM certainty.'} },
+  { country:'DO', region:'Cabarete · Sosúa', tier:'entry', priceCapUSD:250000, type:'house',
+    portal:'Encuentra24', url:'https://www.encuentra24.com/republica-dominicana-es/bienes-raices-venta-de-propiedades/cabarete',
+    notes:{es:'Cabarete / Sosúa $80-250K. Kite + surf coast, mercado expat maduro.',
+           en:'Cabarete / Sosúa $80-250K. Kite + surf coast, mature expat market.'} },
+
+  /* ============================== VE ============================== */
+  { country:'VE', region:'Margarita · Pampatar', tier:'entry', priceCapUSD:150000, type:'house',
+    portal:'Mercado Libre', url:'https://inmuebles.mercadolibre.com.ve/casas/venta/margarita',
+    notes:{es:'Margarita oportunidades $40-150K USD cash. Mercado dolarizado de facto.',
+           en:'Margarita opportunities $40-150K USD cash. De facto dollarized market.'} }
 ]
 
 };

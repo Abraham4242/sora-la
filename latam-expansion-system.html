@@ -1,0 +1,1174 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SORA · Sistema de Expansión LATAM · 6 meses</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Instrument+Serif&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F8F3EA; --cream-2:#F2EBDD; --cream-3:#E9DFCA;
+    --ink:#1B1A17; --ink-2:#3A352D; --ink-3:#5C5346; --faint:#9A8E7A;
+    --line:rgba(27,26,23,.10); --line-2:rgba(27,26,23,.06);
+    --coral:#D9573B; --gold:#B58F4D; --mango:#E2A24A; --green:#3F5F45; --rose:#B8616B; --teal:#2C6E7F;
+    --serif:'Fraunces',Georgia,serif; --display:'Instrument Serif',Georgia,serif;
+    --sans:'Inter',-apple-system,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--cream);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;font-size:15px;line-height:1.55;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.08  0 0 0 0 0.07  0 0 0 0 0.05  0 0 0 0.020 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--coral);color:var(--cream)}
+
+  [data-en]{display:none}
+  html[lang="en"] [data-es]{display:none}
+  html[lang="en"] [data-en]{display:inline}
+  html[lang="en"] li[data-en],html[lang="en"] p[data-en],html[lang="en"] div[data-en],html[lang="en"] h1[data-en],html[lang="en"] h2[data-en],html[lang="en"] h3[data-en],html[lang="en"] td[data-en],html[lang="en"] th[data-en],html[lang="en"] span[data-en].block{display:block}
+  html[lang="en"] td[data-en],html[lang="en"] th[data-en]{display:table-cell}
+
+  /* Top bar */
+  .top{position:sticky;top:0;z-index:50;background:rgba(248,243,234,.92);backdrop-filter:blur(14px);border-bottom:0.5px solid var(--line)}
+  .top-in{max-width:1180px;margin:0 auto;padding:14px 28px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .brand{font-family:var(--serif);font-weight:600;font-size:16px;letter-spacing:.16em;color:var(--ink)}
+  .brand em{font-style:italic;color:var(--coral)}
+  .top-tag{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--rose);text-transform:uppercase;padding:4px 10px;background:rgba(184,97,107,.10);border-radius:4px}
+  .spacer{flex:1}
+  .lang{display:inline-flex;border:0.5px solid var(--line);border-radius:5px;overflow:hidden}
+  .lang button{padding:6px 11px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;background:transparent;border:0;color:var(--faint);cursor:pointer;font-weight:500}
+  .lang button.active{background:var(--ink);color:var(--cream)}
+
+  /* Hero */
+  .hero{padding:80px 32px 56px;max-width:1180px;margin:0 auto;text-align:center}
+  .hero-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--coral);font-weight:600;margin-bottom:24px}
+  .hero h1{font-family:var(--display);font-weight:400;font-size:clamp(54px,9vw,112px);line-height:.94;letter-spacing:-.025em;color:var(--ink);margin-bottom:18px}
+  .hero h1 em{font-style:italic;color:var(--coral)}
+  .hero-lede{font-family:var(--serif);font-size:20px;color:var(--ink-2);font-weight:300;max-width:760px;margin:0 auto 36px;line-height:1.5}
+  .hero-lede strong{color:var(--ink);font-weight:500}
+
+  /* Stat strip */
+  .strip{max-width:1180px;margin:0 auto 24px;padding:0 32px;display:grid;grid-template-columns:repeat(5,1fr);gap:0;border-top:0.5px solid var(--line);border-bottom:0.5px solid var(--line)}
+  .strip > div{padding:22px 18px;text-align:center;border-right:0.5px solid var(--line)}
+  .strip > div:last-child{border-right:0}
+  .strip .n{font-family:var(--display);font-size:36px;color:var(--coral);line-height:1;margin-bottom:6px}
+  .strip .l{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
+
+  section{max-width:1180px;margin:0 auto;padding:64px 32px}
+  .sec-head{margin-bottom:36px;text-align:center}
+  .sec-num{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--coral);font-weight:600;margin-bottom:14px}
+  .sec-num em{font-style:normal;color:var(--ink-3)}
+  .sec-head h2{font-family:var(--display);font-weight:400;font-size:clamp(36px,5vw,56px);line-height:1.04;letter-spacing:-.02em;color:var(--ink);margin-bottom:14px}
+  .sec-head h2 em{font-style:italic;color:var(--coral)}
+  .sec-sub{font-family:var(--serif);font-size:17px;color:var(--ink-3);font-weight:300;max-width:680px;margin:0 auto;line-height:1.55}
+
+  /* Pillars */
+  .pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:14px;margin-top:32px}
+  .pillar{background:var(--cream);border:0.5px solid var(--line);border-radius:10px;padding:28px 26px 26px;position:relative}
+  .pillar .pn{font-family:var(--mono);font-size:10px;letter-spacing:.20em;color:var(--coral);text-transform:uppercase;font-weight:600;margin-bottom:10px}
+  .pillar h3{font-family:var(--display);font-size:24px;font-weight:400;color:var(--ink);letter-spacing:-.005em;line-height:1.15;margin-bottom:10px}
+  .pillar h3 em{font-style:italic;color:var(--coral)}
+  .pillar p{font-family:var(--serif);font-size:14.5px;line-height:1.55;color:var(--ink-2);margin-bottom:12px}
+  .pillar ul{list-style:none;padding:0}
+  .pillar li{font-family:var(--sans);font-size:13px;color:var(--ink-2);padding:6px 0 6px 16px;position:relative;line-height:1.45}
+  .pillar li::before{content:'';position:absolute;left:0;top:13px;width:6px;height:1px;background:var(--coral)}
+
+  /* Waves timeline */
+  .waves{margin-top:32px}
+  .wave{background:var(--cream);border:0.5px solid var(--line);border-radius:10px;padding:24px 28px;margin-bottom:14px;display:grid;grid-template-columns:180px 1fr;gap:24px;align-items:start}
+  .wave-meta .when{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--coral);font-weight:600;margin-bottom:4px}
+  .wave-meta .num{font-family:var(--display);font-size:38px;color:var(--ink);line-height:1}
+  .wave-meta .num em{font-style:italic;color:var(--coral)}
+  .wave-body h3{font-family:var(--display);font-size:22px;font-weight:400;color:var(--ink);margin-bottom:8px;line-height:1.2}
+  .wave-body h3 em{font-style:italic;color:var(--coral)}
+  .wave-body .countries{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+  .wave-body .c{font-family:var(--mono);font-size:10.5px;letter-spacing:.10em;padding:4px 9px;border-radius:4px;background:var(--cream-2);border:0.5px solid var(--line);color:var(--ink-2);text-transform:uppercase}
+  .wave-body .c.warm{background:rgba(217,87,59,.10);border-color:rgba(217,87,59,.20);color:var(--coral)}
+  .wave-body .c.cold{background:transparent}
+  .wave-body p{font-family:var(--serif);font-size:14.5px;line-height:1.55;color:var(--ink-2);margin-top:8px}
+  .wave-body .goal{font-family:var(--mono);font-size:10.5px;letter-spacing:.10em;text-transform:uppercase;color:var(--green);font-weight:600;margin-top:12px;padding-top:12px;border-top:0.5px solid var(--line)}
+
+  /* Process steps */
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-top:28px}
+  .step{background:var(--cream);border:0.5px solid var(--line);border-radius:10px;padding:24px 24px 22px;position:relative}
+  .step-n{font-family:var(--display);font-size:32px;color:var(--coral);line-height:1;margin-bottom:10px;font-style:italic}
+  .step h4{font-family:var(--display);font-size:19px;font-weight:400;color:var(--ink);margin-bottom:10px;line-height:1.2}
+  .step p{font-family:var(--serif);font-size:14px;line-height:1.55;color:var(--ink-2);margin-bottom:10px}
+  .step .tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);padding:3px 7px;background:var(--cream-2);border-radius:3px;display:inline-block}
+
+  /* Profile card (ideal host) */
+  .profile{background:var(--cream-2);border:0.5px solid var(--line);border-left:3px solid var(--coral);border-radius:10px;padding:32px 36px;margin-top:32px}
+  .profile h3{font-family:var(--display);font-size:24px;font-weight:400;color:var(--ink);margin-bottom:18px}
+  .profile h3 em{font-style:italic;color:var(--coral)}
+  .profile-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:14px}
+  .profile-grid > div{}
+  .profile-grid h5{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--coral);font-weight:600;margin-bottom:8px}
+  .profile-grid ul{list-style:none;padding:0}
+  .profile-grid li{font-family:var(--sans);font-size:13.5px;color:var(--ink-2);padding:4px 0 4px 14px;position:relative;line-height:1.5}
+  .profile-grid li::before{content:'·';position:absolute;left:0;top:3px;color:var(--coral);font-weight:600}
+
+  /* Script / outreach block */
+  .script{background:var(--ink);color:var(--cream);border-radius:10px;padding:28px 32px;margin-top:24px;font-family:var(--mono);font-size:13.5px;line-height:1.7;white-space:pre-wrap}
+  .script .hdr{color:var(--mango);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:14px;font-weight:600}
+
+  /* Tables */
+  table{width:100%;border-collapse:collapse;margin-top:24px;background:var(--cream);border:0.5px solid var(--line);border-radius:10px;overflow:hidden}
+  th{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);font-weight:600;text-align:left;padding:14px 18px;background:var(--cream-2);border-bottom:0.5px solid var(--line)}
+  td{padding:14px 18px;font-size:14px;color:var(--ink-2);border-bottom:0.5px solid var(--line-2);font-family:var(--sans)}
+  tr:last-child td{border-bottom:0}
+  td.n{font-family:var(--mono);font-size:13px;color:var(--coral);font-feature-settings:"tnum"}
+  td.country{font-family:var(--display);font-style:italic;font-size:16px;color:var(--ink)}
+  .tbl-wrap{overflow-x:auto;border-radius:10px}
+
+  /* Cadence cards */
+  .cadence{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:28px}
+  .cad{background:var(--cream);border:0.5px solid var(--line);border-radius:10px;padding:22px 22px 20px}
+  .cad .when{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);font-weight:600;margin-bottom:8px}
+  .cad h4{font-family:var(--display);font-size:18px;font-weight:400;color:var(--ink);margin-bottom:8px;line-height:1.2}
+  .cad p{font-family:var(--serif);font-size:13.5px;line-height:1.5;color:var(--ink-2)}
+  .cad ul{list-style:none;padding:0;margin-top:8px}
+  .cad li{font-family:var(--sans);font-size:12.5px;color:var(--ink-2);padding:4px 0 4px 14px;position:relative;line-height:1.45}
+  .cad li::before{content:'';position:absolute;left:0;top:11px;width:6px;height:1px;background:var(--coral)}
+
+  /* Math box (compounding) */
+  .math{background:var(--cream-2);border:0.5px solid var(--line);border-radius:10px;padding:32px 36px;margin-top:28px}
+  .math-row{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center;padding:16px 0;border-bottom:0.5px solid var(--line-2)}
+  .math-row:last-child{border-bottom:0}
+  .math-row .lbl{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+  .math-row .val{font-family:var(--display);font-size:32px;color:var(--coral);line-height:1;text-align:right}
+  .math-row .val em{font-style:italic;color:var(--ink)}
+
+  /* KPI grid */
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-top:28px}
+  .kpi{background:var(--cream);border:0.5px solid var(--line);border-radius:10px;padding:22px 22px 20px;text-align:center}
+  .kpi .n{font-family:var(--display);font-size:42px;color:var(--coral);line-height:1;margin-bottom:6px}
+  .kpi .l{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:8px}
+  .kpi .desc{font-family:var(--serif);font-size:13px;color:var(--ink-2);line-height:1.45}
+
+  /* CTA */
+  .cta{max-width:780px;margin:80px auto 60px;padding:48px 40px;text-align:center;background:var(--cream-2);border:0.5px solid var(--line);border-radius:14px}
+  .cta h2{font-family:var(--display);font-weight:400;font-size:clamp(34px,5vw,52px);line-height:1.04;color:var(--ink);margin-bottom:16px;letter-spacing:-.02em}
+  .cta h2 em{font-style:italic;color:var(--coral)}
+  .cta p{font-family:var(--serif);font-size:17px;color:var(--ink-2);line-height:1.55;margin-bottom:24px;max-width:560px;margin-left:auto;margin-right:auto}
+  .cta-btn{display:inline-block;padding:14px 32px;background:var(--ink);color:var(--cream);font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;border-radius:6px;font-weight:600;transition:all .18s}
+  .cta-btn:hover{background:var(--coral);transform:translateY(-1px)}
+
+  /* Footer */
+  footer{max-width:1180px;margin:40px auto 0;padding:40px 32px;border-top:0.5px solid var(--line);text-align:center}
+  footer .brand{font-size:14px;letter-spacing:.22em;margin-bottom:8px;display:block}
+  footer p{font-family:var(--mono);font-size:11px;letter-spacing:.10em;color:var(--ink-3)}
+
+  @media (max-width: 760px){
+    .strip{grid-template-columns:repeat(2,1fr)}
+    .strip > div:nth-child(2n){border-right:0}
+    .strip > div{border-bottom:0.5px solid var(--line)}
+    .wave{grid-template-columns:1fr;gap:12px}
+    .math-row{grid-template-columns:1fr;gap:6px}
+    .math-row .val{text-align:left;font-size:28px}
+  }
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="top-in">
+    <span class="brand">SORA<em>°</em></span>
+    <span class="top-tag" data-es>SISTEMA · EXPANSIÓN LATAM</span>
+    <span class="top-tag" data-en>SYSTEM · LATAM EXPANSION</span>
+    <span class="spacer"></span>
+    <div class="lang">
+      <button class="active" onclick="setLang('es')">ES</button>
+      <button onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-eyebrow" data-es>PLAN MAESTRO · JUN → NOV 2026 · 6 MESES</div>
+  <div class="hero-eyebrow" data-en>MASTER PLAN · JUN → NOV 2026 · 6 MONTHS</div>
+  <h1 data-es>Toda <em>latinoamérica</em>.<br>Antes de fin de año.</h1>
+  <h1 data-en>All of <em>Latin America</em>.<br>By year's end.</h1>
+  <p class="hero-lede" data-es>Diecinueve países. Una agencia. Un sistema repetible para encontrar al <strong>anfitrión correcto</strong>, mandar a un compañero en persona, lanzar el primer evento, y abrir la red entera del país a través de las conexiones de segundo grado.</p>
+  <p class="hero-lede" data-en>Nineteen countries. One agency. One repeatable system to find the <strong>right host</strong>, send a partner in person, launch the opening event, and crack open every other business in that country via second-degree connections.</p>
+</header>
+
+<div class="strip">
+  <div><div class="n">19</div><div class="l" data-es>Países</div><div class="l" data-en>Countries</div></div>
+  <div><div class="n">6</div><div class="l" data-es>Meses</div><div class="l" data-en>Months</div></div>
+  <div><div class="n">5</div><div class="l" data-es>Olas</div><div class="l" data-en>Waves</div></div>
+  <div><div class="n">4</div><div class="l" data-es>Pilares</div><div class="l" data-en>Pillars</div></div>
+  <div><div class="n">38</div><div class="l" data-es>Anfitriones meta</div><div class="l" data-en>Host target</div></div>
+</div>
+
+<!-- 01 · LA TESIS -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es>01 · LA TESIS</div>
+    <div class="sec-num" data-en>01 · THE THESIS</div>
+    <h2 data-es>Cada país se abre <em>por una persona</em>.</h2>
+    <h2 data-en>Every country opens <em>through one person</em>.</h2>
+    <p class="sec-sub" data-es>No se conquista un país hablando con su gobierno ni comprando publicidad. Se conquista encontrando al ser humano específico que ya conoce a los anfitriones de hoteles boutique, dueños de viñedos, chefs respetados, fotógrafos en demanda — y haciéndolo nuestro. De ahí, la red propia hace el resto.</p>
+    <p class="sec-sub" data-en>You don't crack a country by talking to its government or buying ads. You crack it by finding the specific human who already knows the boutique hotel owners, vintners, respected chefs, in-demand photographers — and making them ours. From there, their network does the rest.</p>
+  </div>
+
+  <div class="pillars">
+    <div class="pillar">
+      <div class="pn">01 · TALENTO</div>
+      <h3 data-es>Cazar al <em>anfitrión correcto</em></h3>
+      <h3 data-en>Hunt the <em>right host</em></h3>
+      <p data-es>Una persona por país, perfil específico: bilingüe, hospitalidad o capital social, vive ahí 3+ años, red propia activa.</p>
+      <p data-en>One person per country, specific profile: bilingual, hospitality or social capital, lives there 3+ years, active personal network.</p>
+    </div>
+    <div class="pillar">
+      <div class="pn">02 · PRESENCIA</div>
+      <h3 data-es>Botas en <em>el suelo</em></h3>
+      <h3 data-en>Boots on <em>the ground</em></h3>
+      <p data-es>Un miembro de La Compañía vuela y vive 7–14 días con el anfitrión nuevo. Le abre puertas, conecta con La Compañía global, valida.</p>
+      <p data-en>A La Compañía member flies in and lives 7–14 days with the new host. Opens doors, connects them to the global team, validates.</p>
+    </div>
+    <div class="pillar">
+      <div class="pn">03 · EVENTOS</div>
+      <h3 data-es>Conocer a <em>muchos</em>, rápido</h3>
+      <h3 data-en>Meet <em>many</em>, fast</h3>
+      <p data-es>El primer evento es el catalizador: 25–40 invitados curados. Cena, asado, cata, brunch. Una sola noche reemplaza 6 meses de café.</p>
+      <p data-en>The opening event is the catalyst: 25–40 curated guests. Dinner, asado, tasting, brunch. One night replaces six months of coffee meetings.</p>
+    </div>
+    <div class="pillar">
+      <div class="pn">04 · SEGUNDO GRADO</div>
+      <h3 data-es>La <em>gente de su gente</em></h3>
+      <h3 data-en>Their <em>people's people</em></h3>
+      <p data-es>Cada anfitrión presenta 2 nuevos contactos por semana. En 26 semanas son 52 conexiones de primer grado y ~520 de segundo. Eso es el país.</p>
+      <p data-en>Each host introduces 2 new contacts weekly. Over 26 weeks: 52 first-degree, ~520 second-degree. That is the country.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 02 · LAS CINCO OLAS -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es>02 · LAS CINCO OLAS</div>
+    <div class="sec-num" data-en>02 · THE FIVE WAVES</div>
+    <h2 data-es>Despliegue <em>secuencial</em>, no simultáneo.</h2>
+    <h2 data-en>Sequential <em>rollout</em>, not simultaneous.</h2>
+    <p class="sec-sub" data-es>Cinco olas de país. Cada una construye sobre la anterior. La red en CO acelera la apertura de PE; la red en MX abre GT y SV. Compuesto, no paralelo.</p>
+    <p class="sec-sub" data-en>Five country waves. Each builds on the prior. The CO network accelerates PE; the MX network opens GT and SV. Compounded, not parallel.</p>
+  </div>
+
+  <div class="waves">
+
+    <div class="wave">
+      <div class="wave-meta">
+        <div class="when" data-es>OLA 1 · JUNIO</div>
+        <div class="when" data-en>WAVE 1 · JUNE</div>
+        <div class="num"><em>04</em> países</div>
+      </div>
+      <div class="wave-body">
+        <h3 data-es>Núcleo <em>conocido</em></h3>
+        <h3 data-en>The <em>known</em> core</h3>
+        <div class="countries">
+          <span class="c warm">PA · Panamá</span>
+          <span class="c warm">CO · Colombia</span>
+          <span class="c warm">MX · México</span>
+          <span class="c warm">VE · Venezuela</span>
+        </div>
+        <p data-es>Donde ya tenemos manuales, contactos y al menos un anfitrión identificado. Activación rápida — el objetivo es lanzar el primer evento en cada uno antes del 30 de junio.</p>
+        <p data-en>Where playbooks, contacts, and at least one identified host already exist. Fast activation — goal is to launch the opening event in each before June 30.</p>
+        <div class="goal" data-es>Meta · 4 anfitriones firmados · 4 eventos lanzados · 120+ contactos nuevos</div>
+        <div class="goal" data-en>Target · 4 hosts signed · 4 events launched · 120+ new contacts</div>
+      </div>
+    </div>
+
+    <div class="wave">
+      <div class="wave-meta">
+        <div class="when" data-es>OLA 2 · JULIO</div>
+        <div class="when" data-en>WAVE 2 · JULY</div>
+        <div class="num"><em>04</em> países</div>
+      </div>
+      <div class="wave-body">
+        <h3 data-es>Andes <em>+</em> Brasil</h3>
+        <h3 data-en>Andes <em>+</em> Brazil</h3>
+        <div class="countries">
+          <span class="c">PE · Perú</span>
+          <span class="c">CL · Chile</span>
+          <span class="c">EC · Ecuador</span>
+          <span class="c">BR · Brasil</span>
+        </div>
+        <p data-es>Tres países con cocina y cultura magnéticas (PE, BR, CL) + Ecuador como puente entre Colombia y Perú. Brasil exige un anfitrión que hable portugués + inglés; presupuesto extra para reclutamiento.</p>
+        <p data-en>Three countries with magnetic food and culture (PE, BR, CL) + Ecuador as a Colombia–Peru bridge. Brazil requires a Portuguese + English speaking host; extra recruitment budget.</p>
+        <div class="goal" data-es>Meta · 4 anfitriones · 4 eventos · primer cruce de redes (CO ↔ PE)</div>
+        <div class="goal" data-en>Target · 4 hosts · 4 events · first cross-pollination (CO ↔ PE)</div>
+      </div>
+    </div>
+
+    <div class="wave">
+      <div class="wave-meta">
+        <div class="when" data-es>OLA 3 · AGOSTO</div>
+        <div class="when" data-en>WAVE 3 · AUGUST</div>
+        <div class="num"><em>04</em> países</div>
+      </div>
+      <div class="wave-body">
+        <h3 data-es>Caribe <em>+</em> Centroamérica norte</h3>
+        <h3 data-en>Caribbean <em>+</em> Northern Central America</h3>
+        <div class="countries">
+          <span class="c">CR · Costa Rica</span>
+          <span class="c">GT · Guatemala</span>
+          <span class="c">DO · República Dominicana</span>
+          <span class="c">PR · Puerto Rico</span>
+        </div>
+        <p data-es>Mercados turísticos maduros, infraestructura aceptable, viajeros americanos ya familiares con la región. CR y DO son los más fáciles de operar; GT y PR son culturales-premium.</p>
+        <p data-en>Mature tourist markets, decent infrastructure, US travelers already familiar with the region. CR and DO are easiest to operate; GT and PR are cultural-premium.</p>
+        <div class="goal" data-es>Meta · 4 anfitriones · 4 eventos · 12 países activos (63% del total)</div>
+        <div class="goal" data-en>Target · 4 hosts · 4 events · 12 countries active (63% of total)</div>
+      </div>
+    </div>
+
+    <div class="wave">
+      <div class="wave-meta">
+        <div class="when" data-es>OLA 4 · SEPTIEMBRE</div>
+        <div class="when" data-en>WAVE 4 · SEPTEMBER</div>
+        <div class="num"><em>04</em> países</div>
+      </div>
+      <div class="wave-body">
+        <h3 data-es>Cono Sur <em>+</em> Centroamérica sur</h3>
+        <h3 data-en>Southern Cone <em>+</em> Southern Central America</h3>
+        <div class="countries">
+          <span class="c">AR · Argentina</span>
+          <span class="c">UY · Uruguay</span>
+          <span class="c">PY · Paraguay</span>
+          <span class="c">SV · El Salvador</span>
+        </div>
+        <p data-es>Argentina y Uruguay tienen circuitos premium ya establecidos (vinos, estancias, polo). Paraguay y El Salvador son frontera — anfitrión joven, ambicioso, con visión de construir desde cero.</p>
+        <p data-en>Argentina and Uruguay have established premium circuits (wines, estancias, polo). Paraguay and El Salvador are frontier — find a young, ambitious host willing to build from scratch.</p>
+        <div class="goal" data-es>Meta · 4 anfitriones · 4 eventos · 16 países activos</div>
+        <div class="goal" data-en>Target · 4 hosts · 4 events · 16 countries active</div>
+      </div>
+    </div>
+
+    <div class="wave">
+      <div class="wave-meta">
+        <div class="when" data-es>OLA 5 · OCT–NOV</div>
+        <div class="when" data-en>WAVE 5 · OCT–NOV</div>
+        <div class="num"><em>03</em> países</div>
+      </div>
+      <div class="wave-body">
+        <h3 data-es>Última <em>milla</em></h3>
+        <h3 data-en>Last <em>mile</em></h3>
+        <div class="countries">
+          <span class="c">HN · Honduras</span>
+          <span class="c">NI · Nicaragua</span>
+          <span class="c">BO · Bolivia</span>
+        </div>
+        <p data-es>Los más difíciles operacionalmente. Aprovechamos cinco meses de aprendizaje, una red regional que ya respira, y mandamos a los miembros más experimentados. Roatán (HN), Granada (NI), Salar de Uyuni (BO) son los anclas.</p>
+        <p data-en>Operationally the hardest. We leverage five months of learning, a regional network already breathing, and send the most experienced members. Roatán (HN), Granada (NI), Salar de Uyuni (BO) are the anchors.</p>
+        <div class="goal" data-es>Meta · 3 anfitriones · 3 eventos · 19/19 países = LATAM completo el 30 de noviembre</div>
+        <div class="goal" data-en>Target · 3 hosts · 3 events · 19/19 countries = full LATAM by November 30</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- 03 · PILAR 1 · TALENTO -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es>03 · PILAR 1 · RECLUTAMIENTO DE TALENTO</div>
+    <div class="sec-num" data-en>03 · PILLAR 1 · TALENT RECRUITMENT</div>
+    <h2 data-es>Encontrar a la <em>persona correcta</em>.</h2>
+    <h2 data-en>Find the <em>right person</em>.</h2>
+    <p class="sec-sub" data-es>Un mal anfitrión cuesta tres meses. El anfitrión correcto compone interés durante años. Por eso este proceso es lento, deliberado, y rechaza más que acepta.</p>
+    <p class="sec-sub" data-en>A bad host costs three months. The right host compounds for years. That's why this process is slow, deliberate, and rejects more than it accepts.</p>
+  </div>
+
+  <!-- Ideal host profile -->
+  <div class="profile">
+    <h3 data-es>Perfil del <em>anfitrión ideal</em></h3>
+    <h3 data-en>The <em>ideal host</em> profile</h3>
+    <div class="profile-grid">
+      <div>
+        <h5 data-es>NO NEGOCIABLE</h5>
+        <h5 data-en>NON-NEGOTIABLE</h5>
+        <ul>
+          <li data-es>Bilingüe español + inglés fluido (entrevista en ambos)</li>
+          <li data-en>Bilingual Spanish + fluent English (interview in both)</li>
+          <li data-es>Vive en el país hace 3+ años</li>
+          <li data-en>Lives in the country 3+ years</li>
+          <li data-es>Tiene red propia activa (no empieza de cero)</li>
+          <li data-en>Has an active personal network (not starting from zero)</li>
+          <li data-es>Disponibilidad mín. 25 hrs/semana</li>
+          <li data-en>Minimum 25 hrs/week availability</li>
+        </ul>
+      </div>
+      <div>
+        <h5 data-es>FUERTEMENTE PREFERIDO</h5>
+        <h5 data-en>STRONGLY PREFERRED</h5>
+        <ul>
+          <li data-es>Background en hospitalidad, eventos, viajes o medios</li>
+          <li data-en>Background in hospitality, events, travel, or media</li>
+          <li data-es>Presencia en Instagram con engagement real (no follower count)</li>
+          <li data-en>Instagram presence with real engagement (not follower count)</li>
+          <li data-es>Auto propio o acceso fácil a transporte</li>
+          <li data-en>Owns a car or easy access to transport</li>
+          <li data-es>Habla un tercer idioma (portugués, francés, italiano)</li>
+          <li data-en>Speaks a third language (Portuguese, French, Italian)</li>
+        </ul>
+      </div>
+      <div>
+        <h5 data-es>BANDERAS ROJAS</h5>
+        <h5 data-en>RED FLAGS</h5>
+        <ul>
+          <li data-es>"Trabajo desde mi casa de mis papás" sin plan de salida</li>
+          <li data-en>"I work from my parents' house" with no exit plan</li>
+          <li data-es>Solo habla del dinero en la primera llamada</li>
+          <li data-en>Only talks about money in the first call</li>
+          <li data-es>No tiene una persona de referencia local que lo respalde</li>
+          <li data-en>No local reference person who vouches for them</li>
+          <li data-es>Cambió de trabajo más de 4 veces en 3 años</li>
+          <li data-en>Switched jobs 4+ times in 3 years</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sourcing channels -->
+  <div class="sec-head" style="margin-top:64px;margin-bottom:24px">
+    <div class="sec-num" data-es>DÓNDE BUSCAR</div>
+    <div class="sec-num" data-en>WHERE TO LOOK</div>
+    <h2 data-es>Cinco <em>canales</em>, en este orden.</h2>
+    <h2 data-en>Five <em>channels</em>, in this order.</h2>
+  </div>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-n">01</div>
+      <span class="tag" data-es>MÁS ALTO ROI</span>
+      <span class="tag" data-en>HIGHEST ROI</span>
+      <h4 data-es>Referencias de anfitriones existentes</h4>
+      <h4 data-en>Referrals from existing hosts</h4>
+      <p data-es>El anfitrión de Colombia conoce a alguien en Ecuador. El de México conoce a alguien en Guatemala. Preguntar: <em>"¿Quién es la versión de ti en X país?"</em></p>
+      <p data-en>The Colombia host knows someone in Ecuador. Mexico knows someone in Guatemala. Ask: <em>"Who is the version of you in X country?"</em></p>
+    </div>
+    <div class="step">
+      <div class="step-n">02</div>
+      <span class="tag">INSTAGRAM</span>
+      <h4 data-es>Búsqueda dirigida en IG</h4>
+      <h4 data-en>Targeted IG search</h4>
+      <p data-es>Hashtags: #boutiquehotels[país], #fincaslujo[país], #weddingplanner[país]. Buscar 5–10K seguidores, perfil bilingüe, comentarios reales. Lista de 30 candidatos por país.</p>
+      <p data-en>Hashtags: #boutiquehotels[country], #fincaslujo[country], #weddingplanner[country]. Look for 5–10K followers, bilingual profile, real comments. 30 candidates per country.</p>
+    </div>
+    <div class="step">
+      <div class="step-n">03</div>
+      <span class="tag">LINKEDIN</span>
+      <h4 data-es>Búsqueda silenciosa en LinkedIn</h4>
+      <h4 data-en>Quiet LinkedIn search</h4>
+      <p data-es>Job titles: hospitality manager, F&B director, event producer, concierge. Filtrar por ciudad y idioma. Mensaje InMail directo, sin spam.</p>
+      <p data-en>Titles: hospitality manager, F&B director, event producer, concierge. Filter by city and language. Direct InMail, no spam.</p>
+    </div>
+    <div class="step">
+      <div class="step-n">04</div>
+      <span class="tag" data-es>EN PERSONA</span>
+      <span class="tag" data-en>IN PERSON</span>
+      <h4 data-es>Preguntar en hospitalidad local</h4>
+      <h4 data-en>Ask local hospitality</h4>
+      <p data-es>El miembro de La Compañía que viaja pregunta en cada hotel boutique, cada restaurante curado: <em>"¿Quién organiza las cenas privadas más interesantes de la ciudad?"</em> Tres nombres se repiten siempre.</p>
+      <p data-en>The traveling La Compañía member asks at each boutique hotel, each curated restaurant: <em>"Who organizes the most interesting private dinners in town?"</em> Three names always repeat.</p>
+    </div>
+    <div class="step">
+      <div class="step-n">05</div>
+      <span class="tag" data-es>JOB POST</span>
+      <span class="tag" data-en>JOB POST</span>
+      <h4 data-es>Publicación pagada en plataformas locales</h4>
+      <h4 data-en>Paid post on local platforms</h4>
+      <p data-es>Último recurso. Computrabajo (CO/PE), Bumeran (AR), OCC (MX), CompuJobs (CR). El título es <em>"Anfitrión de experiencias premium"</em>, no "marketing manager".</p>
+      <p data-en>Last resort. Computrabajo (CO/PE), Bumeran (AR), OCC (MX), CompuJobs (CR). Job title is <em>"Premium experiences host"</em>, never "marketing manager."</p>
+    </div>
+  </div>
+
+  <!-- Outreach script -->
+  <div class="script">
+<div class="hdr" data-es>GUIÓN · PRIMER CONTACTO (ESPAÑOL)</div>
+<div class="hdr" data-en>SCRIPT · FIRST OUTREACH (SPANISH)</div>
+<span data-es>Hola [Nombre],
+
+Soy Abraham, fundador de Sora — una agencia de viajes premium que opera en LATAM. Tu trabajo en [referencia específica: el restaurante X, el evento Y, la finca Z] llamó nuestra atención.
+
+Estamos buscando una persona — una sola — que sea la cara de Sora en [país]. No es un trabajo de oficina. Es una asociación: tú abres tu red, nosotros traemos huéspedes premium y dinero. Comisión, no salario fijo en la primera fase.
+
+Si te suena, te invito a una llamada de 30 min esta semana. Cuéntame cuándo te queda bien.
+
+Abraham
+La Compañía</span><span data-en>Hi [Name],
+
+I'm Abraham, founder of Sora — a premium travel agency operating across LATAM. Your work at [specific reference: restaurant X, event Y, finca Z] caught our attention.
+
+We're looking for one person — just one — to be the face of Sora in [country]. Not an office job. A partnership: you open your network, we bring premium guests and money. Commission, not salary, in the first phase.
+
+If that resonates, I'd like a 30-minute call this week. Let me know when works.
+
+Abraham
+La Compañía</span>
+  </div>
+
+  <!-- Interview funnel -->
+  <div class="sec-head" style="margin-top:64px;margin-bottom:24px">
+    <div class="sec-num" data-es>EMBUDO DE ENTREVISTA</div>
+    <div class="sec-num" data-en>INTERVIEW FUNNEL</div>
+    <h2 data-es>De 30 candidatos <em>a 1</em>, en 3 semanas.</h2>
+    <h2 data-en>From 30 candidates <em>to 1</em>, in 3 weeks.</h2>
+  </div>
+
+  <div class="tbl-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th data-es>SEMANA</th><th data-en>WEEK</th>
+        <th data-es>ETAPA</th><th data-en>STAGE</th>
+        <th data-es>FORMATO</th><th data-en>FORMAT</th>
+        <th data-es>FILTRO</th><th data-en>FILTER</th>
+        <th data-es>QUEDAN</th><th data-en>REMAINING</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="n">S0</td>
+        <td data-es>Sourcing</td><td data-en>Sourcing</td>
+        <td data-es>Lista de 30 desde 5 canales</td><td data-en>List of 30 from 5 channels</td>
+        <td data-es>Bilingüe, vive ahí, red visible</td><td data-en>Bilingual, lives there, visible network</td>
+        <td class="n">30</td>
+      </tr>
+      <tr>
+        <td class="n">S1</td>
+        <td data-es>Mensaje + respuesta</td><td data-en>Message + reply</td>
+        <td data-es>DM / InMail / WhatsApp</td><td data-en>DM / InMail / WhatsApp</td>
+        <td data-es>Responde &lt; 72 hrs, tono profesional</td><td data-en>Replies &lt; 72 hrs, professional tone</td>
+        <td class="n">10–12</td>
+      </tr>
+      <tr>
+        <td class="n">S1</td>
+        <td data-es>Llamada de 30 min</td><td data-en>30-min call</td>
+        <td data-es>Zoom · 50% en inglés</td><td data-en>Zoom · 50% in English</td>
+        <td data-es>Energía, claridad, hace preguntas</td><td data-en>Energy, clarity, asks questions</td>
+        <td class="n">5–6</td>
+      </tr>
+      <tr>
+        <td class="n">S2</td>
+        <td data-es>Tarea con paga</td><td data-en>Paid task</td>
+        <td data-es>$100 USD por curar lista de 20 lugares premium en su ciudad</td><td data-en>$100 USD to curate list of 20 premium spots in their city</td>
+        <td data-es>Calidad de criterio, no de cantidad</td><td data-en>Quality of judgment, not quantity</td>
+        <td class="n">3</td>
+      </tr>
+      <tr>
+        <td class="n">S3</td>
+        <td data-es>Visita en persona</td><td data-en>In-person visit</td>
+        <td data-es>Miembro de La Compañía vuela 3 días</td><td data-en>La Compañía member flies in for 3 days</td>
+        <td data-es>Química, cómo trata al staff, su gente</td><td data-en>Chemistry, how they treat staff, their people</td>
+        <td class="n">1–2</td>
+      </tr>
+      <tr>
+        <td class="n">S3</td>
+        <td data-es>Oferta + firma</td><td data-en>Offer + signing</td>
+        <td data-es>Contrato, comisiones, KPIs claros</td><td data-en>Contract, commissions, clear KPIs</td>
+        <td data-es>Acepta sin negociar la visión, solo los números</td><td data-en>Accepts vision without negotiating, only numbers</td>
+        <td class="n">1</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- 04 · PILAR 2 · BOTAS EN EL SUELO -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es>04 · PILAR 2 · BOTAS EN EL SUELO</div>
+    <div class="sec-num" data-en>04 · PILLAR 2 · BOOTS ON THE GROUND</div>
+    <h2 data-es>La Compañía va, <em>en persona</em>.</h2>
+    <h2 data-en>La Compañía shows up <em>in person</em>.</h2>
+    <p class="sec-sub" data-es>Ningún anfitrión nuevo opera solo en sus primeros 30 días. Un miembro de La Compañía vuela, vive con el anfitrión, le abre puertas, valida el primer evento, y se queda hasta que la máquina arranque sola.</p>
+    <p class="sec-sub" data-en>No new host operates alone in their first 30 days. A La Compañía member flies in, lives with the host, opens doors, validates the first event, and stays until the engine runs itself.</p>
+  </div>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-n">D1–3</div>
+      <h4 data-es>Aterrizaje y mapeo</h4>
+      <h4 data-en>Landing and mapping</h4>
+      <p data-es>El miembro llega, se hospeda donde el anfitrión recomienda, recorre la ciudad con él. Mapea hoteles, restaurantes, fincas, fotógrafos, chefs. Conoce a la familia del anfitrión.</p>
+      <p data-en>Member lands, stays where host recommends, tours the city together. Maps hotels, restaurants, fincas, photographers, chefs. Meets the host's family.</p>
+    </div>
+    <div class="step">
+      <div class="step-n">D4–7</div>
+      <h4 data-es>Diseño del primer evento</h4>
+      <h4 data-en>Design the opening event</h4>
+      <p data-es>Definen juntos lugar, fecha, formato, lista de invitados. El miembro aporta el formato probado (cena curada de 28 personas); el anfitrión aporta los nombres locales.</p>
+      <p data-en>They define venue, date, format, guest list together. Member brings the proven format (curated 28-person dinner); host brings the local names.</p>
+    </div>
+    <div class="step">
+      <div class="step-n">D8–11</div>
+      <h4 data-es>Reuniones uno-a-uno</h4>
+      <h4 data-en>One-on-one meetings</h4>
+      <p data-es>El anfitrión presenta al miembro de La Compañía a sus 15 contactos más fuertes. Café, almuerzo, walk-and-talk. Validación social cruzada.</p>
+      <p data-en>Host introduces the La Compañía member to their 15 strongest contacts. Coffee, lunch, walk-and-talks. Cross social validation.</p>
+    </div>
+    <div class="step">
+      <div class="step-n">D12–14</div>
+      <h4 data-es>Evento + entrega</h4>
+      <h4 data-en>Event + handoff</h4>
+      <p data-es>El primer evento se ejecuta. El miembro de La Compañía facilita, pero el anfitrión es el rostro. Al día siguiente: revisión, próximos 90 días, partida.</p>
+      <p data-en>The opening event runs. La Compañía member facilitates, but host is the face. Next day: review, next 90 days, departure.</p>
+    </div>
+  </div>
+
+  <!-- Roles -->
+  <div class="sec-head" style="margin-top:64px;margin-bottom:24px">
+    <div class="sec-num" data-es>QUIÉN VA A DÓNDE</div>
+    <div class="sec-num" data-en>WHO GOES WHERE</div>
+    <h2 data-es>Asignación por <em>química</em>, no por geografía.</h2>
+    <h2 data-en>Assigned by <em>chemistry</em>, not geography.</h2>
+  </div>
+
+  <div class="tbl-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th data-es>MIEMBRO</th><th data-en>MEMBER</th>
+        <th data-es>FORTALEZA</th><th data-en>STRENGTH</th>
+        <th data-es>OLAS</th><th data-en>WAVES</th>
+        <th data-es>PAÍSES PRIORITARIOS</th><th data-en>PRIORITY COUNTRIES</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="country">Abraham</td>
+        <td data-es>Visión, cierre, estrategia</td><td data-en>Vision, closing, strategy</td>
+        <td class="n">1, 2, 4</td>
+        <td data-es>PA · CO · MX · VE · AR</td><td data-en>PA · CO · MX · VE · AR</td>
+      </tr>
+      <tr>
+        <td class="country">Marcos Vallejos</td>
+        <td data-es>BD, ventas, partners</td><td data-en>BD, sales, partners</td>
+        <td class="n">1, 2, 3, 5</td>
+        <td data-es>CO · PE · CL · CR · DO · PR</td><td data-en>CO · PE · CL · CR · DO · PR</td>
+      </tr>
+      <tr>
+        <td class="country">Fercho</td>
+        <td data-es>Operaciones, terreno, hospedaje</td><td data-en>Ops, ground, lodging</td>
+        <td class="n">1, 3, 5</td>
+        <td data-es>PA · CR · GT · HN · NI</td><td data-en>PA · CR · GT · HN · NI</td>
+      </tr>
+      <tr>
+        <td class="country">Minor</td>
+        <td data-es>Producción, eventos, logística</td><td data-en>Production, events, logistics</td>
+        <td class="n">2, 3, 4</td>
+        <td data-es>BR · DO · PR · UY · PY</td><td data-en>BR · DO · PR · UY · PY</td>
+      </tr>
+      <tr>
+        <td class="country" data-es>+ rotativo</td><td class="country" data-en>+ rotating</td>
+        <td data-es>Anfitrión existente cruzando frontera</td><td data-en>Existing host crossing borders</td>
+        <td class="n">2–5</td>
+        <td data-es>El anfitrión de CO ayuda a abrir EC; el de MX abre GT</td><td data-en>CO host helps open EC; MX host opens GT</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- 05 · PILAR 3 · EVENTOS -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es>05 · PILAR 3 · EVENTOS COMO ACELERADORES</div>
+    <div class="sec-num" data-en>05 · PILLAR 3 · EVENTS AS ACCELERATORS</div>
+    <h2 data-es>Una sola noche <em>reemplaza</em> seis meses de café.</h2>
+    <h2 data-en>One night <em>replaces</em> six months of coffee meetings.</h2>
+    <p class="sec-sub" data-es>Cada país abre con un evento. No se hace branding, no se hace marketing — se reúne en una mesa a quienes ya importan, y dejamos que la palabra se mueva sola.</p>
+    <p class="sec-sub" data-en>Every country opens with an event. No branding, no marketing — we gather the people who already matter at one table and let word move on its own.</p>
+  </div>
+
+  <div class="pillars">
+    <div class="pillar">
+      <div class="pn" data-es>FORMATO 1 · CENA CURADA</div>
+      <div class="pn" data-en>FORMAT 1 · CURATED DINNER</div>
+      <h3 data-es>28 <em>personas</em>, una mesa larga</h3>
+      <h3 data-en>28 <em>people</em>, one long table</h3>
+      <p data-es>Restaurante boutique o casa privada. Menú diseñado con chef local. 4 horas, máximo. Cada invitado trae a una persona que valga la pena conocer.</p>
+      <p data-en>Boutique restaurant or private home. Menu designed with local chef. 4 hours max. Each guest brings one person worth meeting.</p>
+      <ul>
+        <li data-es>$2,800–4,500 USD por evento</li>
+        <li data-en>$2,800–4,500 USD per event</li>
+        <li data-es>Default para todos los países en Ola 1–3</li>
+        <li data-en>Default for all Wave 1–3 countries</li>
+      </ul>
+    </div>
+    <div class="pillar">
+      <div class="pn" data-es>FORMATO 2 · ASADO / PARRILLA</div>
+      <div class="pn" data-en>FORMAT 2 · ASADO / GRILL</div>
+      <h3 data-es>40–60 <em>personas</em>, día completo</h3>
+      <h3 data-en>40–60 <em>people</em>, full day</h3>
+      <p data-es>Finca o estancia, todo el día. Vinos, carne, fuego. Ideal para AR, UY, CO, MX. Más casual, más volumen, mejor para tejido amplio.</p>
+      <p data-en>Finca or estancia, whole day. Wines, meat, fire. Ideal for AR, UY, CO, MX. More casual, higher volume, better for broad weaving.</p>
+      <ul>
+        <li data-es>$4,000–7,000 USD por evento</li>
+        <li data-en>$4,000–7,000 USD per event</li>
+        <li data-es>Olas 4–5 + segundo evento de país</li>
+        <li data-en>Waves 4–5 + country's second event</li>
+      </ul>
+    </div>
+    <div class="pillar">
+      <div class="pn" data-es>FORMATO 3 · CATA / TASTING</div>
+      <div class="pn" data-en>FORMAT 3 · TASTING</div>
+      <h3 data-es>16 <em>personas</em>, íntimo</h3>
+      <h3 data-en>16 <em>people</em>, intimate</h3>
+      <p data-es>Vino (CL, AR, UY), café (CO, BR, CR), mezcal (MX), cacao (EC, VE). Producto local elevado. Para invitados de nicho, no masivo.</p>
+      <p data-en>Wine (CL, AR, UY), coffee (CO, BR, CR), mezcal (MX), cacao (EC, VE). Elevated local product. For niche guests, not mass.</p>
+      <ul>
+        <li data-es>$1,400–2,400 USD por evento</li>
+        <li data-en>$1,400–2,400 USD per event</li>
+        <li data-es>Mensual recurrente una vez establecido</li>
+        <li data-en>Monthly recurring once established</li>
+      </ul>
+    </div>
+    <div class="pillar">
+      <div class="pn" data-es>FORMATO 4 · BRUNCH</div>
+      <div class="pn" data-en>FORMAT 4 · BRUNCH</div>
+      <h3 data-es>20 <em>personas</em>, domingo</h3>
+      <h3 data-en>20 <em>people</em>, Sunday</h3>
+      <p data-es>El formato más fácil para mercados nuevos. Bajo riesgo, alta asistencia, energía relajada. Bueno para PR, DO, CR, EC, PY, SV.</p>
+      <p data-en>Easiest format for new markets. Low risk, high attendance, relaxed energy. Good for PR, DO, CR, EC, PY, SV.</p>
+      <ul>
+        <li data-es>$1,200–2,000 USD por evento</li>
+        <li data-en>$1,200–2,000 USD per event</li>
+        <li data-es>Default para Ola 3 (Caribe + Centroamérica)</li>
+        <li data-en>Default for Wave 3 (Caribbean + Central Am)</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Guest list logic -->
+  <div class="sec-head" style="margin-top:64px;margin-bottom:24px">
+    <div class="sec-num" data-es>LA LISTA DE INVITADOS</div>
+    <div class="sec-num" data-en>THE GUEST LIST</div>
+    <h2 data-es>Curaduría es <em>todo</em>.</h2>
+    <h2 data-en>Curation is <em>everything</em>.</h2>
+    <p class="sec-sub" data-es>El evento no fracasa por la comida. Fracasa por la mesa. La fórmula: tres tipos de invitado, en proporciones específicas.</p>
+    <p class="sec-sub" data-en>The event doesn't fail because of food. It fails because of the table. The formula: three types of guest, in specific proportions.</p>
+  </div>
+
+  <div class="cadence">
+    <div class="cad">
+      <div class="when" data-es>40% · CONECTORES</div>
+      <div class="when" data-en>40% · CONNECTORS</div>
+      <h4 data-es>Los que conocen a todos</h4>
+      <h4 data-en>The ones who know everyone</h4>
+      <p data-es>Chefs respetados, dueños de hoteles boutique, organizadores de fiestas, periodistas culturales, fotógrafos en demanda.</p>
+      <p data-en>Respected chefs, boutique hotel owners, party organizers, cultural journalists, in-demand photographers.</p>
+    </div>
+    <div class="cad">
+      <div class="when" data-es>40% · COMPRADORES</div>
+      <div class="when" data-en>40% · BUYERS</div>
+      <h4 data-es>Los que pueden comprar Sora</h4>
+      <h4 data-en>The ones who can buy Sora</h4>
+      <p data-es>Profesionales 30–50 con ingreso disponible, family offices, expats con buen capital, parejas que viajan dos veces al año premium.</p>
+      <p data-en>Professionals 30–50 with disposable income, family offices, well-capitalized expats, couples who travel premium twice a year.</p>
+    </div>
+    <div class="cad">
+      <div class="when" data-es>20% · TALENTO</div>
+      <div class="when" data-en>20% · TALENT</div>
+      <h4 data-es>Los que podrían ser próximos anfitriones</h4>
+      <h4 data-en>The ones who could be next hosts</h4>
+      <p data-es>Personas que vimos en el sourcing pero no contratamos para este país. Quedaron observándonos. Las semillas para olas futuras.</p>
+      <p data-en>People we saw during sourcing but didn't hire for this country. They keep watching us. Seeds for future waves.</p>
+    </div>
+  </div>
+
+  <!-- Event cadence after launch -->
+  <div class="sec-head" style="margin-top:64px;margin-bottom:24px">
+    <div class="sec-num" data-es>CADENCIA POST-LANZAMIENTO</div>
+    <div class="sec-num" data-en>POST-LAUNCH CADENCE</div>
+    <h2 data-es>Mes 1 fuerte, después <em>ritmo constante</em>.</h2>
+    <h2 data-en>Strong month 1, then <em>steady rhythm</em>.</h2>
+  </div>
+
+  <div class="tbl-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th data-es>FASE</th><th data-en>PHASE</th>
+        <th data-es>FRECUENCIA</th><th data-en>FREQUENCY</th>
+        <th data-es>FORMATO</th><th data-en>FORMAT</th>
+        <th data-es>PRESUPUESTO/MES</th><th data-en>BUDGET/MO</th>
+        <th data-es>OBJETIVO</th><th data-en>GOAL</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="country" data-es>Lanzamiento (D14)</td><td class="country" data-en>Launch (D14)</td>
+        <td data-es>Único</td><td data-en>One-off</td>
+        <td data-es>Cena curada (28 pax)</td><td data-en>Curated dinner (28 pax)</td>
+        <td class="n">$3,500</td>
+        <td data-es>Romper hielo, validar</td><td data-en>Break ice, validate</td>
+      </tr>
+      <tr>
+        <td class="country" data-es>Mes 1–2</td><td class="country" data-en>Month 1–2</td>
+        <td data-es>2× por mes</td><td data-en>2× monthly</td>
+        <td data-es>Brunch + cata</td><td data-en>Brunch + tasting</td>
+        <td class="n">$3,000</td>
+        <td data-es>Profundizar 50 contactos clave</td><td data-en>Deepen 50 key contacts</td>
+      </tr>
+      <tr>
+        <td class="country" data-es>Mes 3–6</td><td class="country" data-en>Month 3–6</td>
+        <td data-es>1× cena + 1× casual</td><td data-en>1× dinner + 1× casual</td>
+        <td data-es>Cena curada + brunch</td><td data-en>Curated dinner + brunch</td>
+        <td class="n">$4,500</td>
+        <td data-es>Conversión a clientes pagantes</td><td data-en>Convert to paying clients</td>
+      </tr>
+      <tr>
+        <td class="country" data-es>Estable</td><td class="country" data-en>Steady</td>
+        <td data-es>Mensual</td><td data-en>Monthly</td>
+        <td data-es>Rotación de los 4 formatos</td><td data-en>Rotation of all 4 formats</td>
+        <td class="n">$3,200</td>
+        <td data-es>Mantener red viva</td><td data-en>Keep network alive</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- 06 · PILAR 4 · SEGUNDO GRADO -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es>06 · PILAR 4 · SEGUNDO GRADO</div>
+    <div class="sec-num" data-en>06 · PILLAR 4 · SECOND DEGREE</div>
+    <h2 data-es>La gente <em>de su gente</em>.</h2>
+    <h2 data-en>Their <em>people's people</em>.</h2>
+    <p class="sec-sub" data-es>Aquí es donde el sistema se vuelve compuesto. Cada anfitrión introduce 2 contactos nuevos a la semana. Eso es 52 al año por anfitrión. Si esos 52 introducen 2 cada uno, son ~520 personas tocadas — y todos los negocios de ese país pasan por algunas de ellas.</p>
+    <p class="sec-sub" data-en>This is where the system goes compound. Each host introduces 2 new contacts weekly. That's 52 per year per host. If those 52 each introduce 2 more, ~520 people touched — and every business in that country passes through some of them.</p>
+  </div>
+
+  <!-- The math -->
+  <div class="math">
+    <div class="math-row">
+      <div class="lbl" data-es>Anfitrión presenta por semana</div>
+      <div class="lbl" data-en>Host introduces per week</div>
+      <div class="val">2 <em data-es>personas</em><em data-en>people</em></div>
+    </div>
+    <div class="math-row">
+      <div class="lbl" data-es>Después de 26 semanas (6 meses)</div>
+      <div class="lbl" data-en>After 26 weeks (6 months)</div>
+      <div class="val">52 <em data-es>primer grado</em><em data-en>first-degree</em></div>
+    </div>
+    <div class="math-row">
+      <div class="lbl" data-es>Cada uno presenta otros 2 a su red</div>
+      <div class="lbl" data-en>Each introduces 2 more from their network</div>
+      <div class="val">520 <em data-es>segundo grado</em><em data-en>second-degree</em></div>
+    </div>
+    <div class="math-row">
+      <div class="lbl" data-es>Por 19 países al año cerrado</div>
+      <div class="lbl" data-en>× 19 countries by year-end</div>
+      <div class="val">9,880 <em data-es>red total LATAM</em><em data-en>total LATAM network</em></div>
+    </div>
+  </div>
+
+  <!-- Conversion to other businesses -->
+  <div class="sec-head" style="margin-top:64px;margin-bottom:24px">
+    <div class="sec-num" data-es>QUÉ ABRE LA RED</div>
+    <div class="sec-num" data-en>WHAT THE NETWORK OPENS</div>
+    <h2 data-es>Sora primero. Después, <em>todo lo demás</em>.</h2>
+    <h2 data-en>Sora first. Then, <em>everything else</em>.</h2>
+    <p class="sec-sub" data-es>Una red de 9,880 personas premium en LATAM no es solo para viajes. Es la plataforma para todos los negocios de La Compañía: real estate, inversiones, productos físicos, capital. La pregunta nunca más es "¿cómo entro a este país?" — es "¿con quién hablo primero?".</p>
+    <p class="sec-sub" data-en>A network of 9,880 premium LATAM people isn't only for travel. It's the platform for every La Compañía business: real estate, investing, physical products, capital. The question is never "how do I enter this country?" again — it's "who do I talk to first?"</p>
+  </div>
+
+  <div class="pillars">
+    <div class="pillar">
+      <div class="pn">→ REAL ESTATE</div>
+      <h3 data-es>46 propiedades <em>ya en CRM</em></h3>
+      <h3 data-en>46 listings <em>already in CRM</em></h3>
+      <p data-es>Cada anfitrión es un canal de venta de fincas, casas y terrenos. Comisión compartida. $119M USD en inventario inicial.</p>
+      <p data-en>Each host is a sales channel for fincas, homes, and land. Shared commission. $119M USD in initial inventory.</p>
+    </div>
+    <div class="pillar">
+      <div class="pn">→ INVERSIONES</div>
+      <h3 data-es>Family offices <em>locales</em></h3>
+      <h3 data-en>Local <em>family offices</em></h3>
+      <p data-es>El 40% de invitados a eventos son compradores premium. De ahí salen LPs para fondos, co-inversores en compras de negocios, capital privado.</p>
+      <p data-en>40% of event guests are premium buyers. From there come LPs for funds, co-investors in business acquisitions, private capital.</p>
+    </div>
+    <div class="pillar">
+      <div class="pn">→ PRODUCTOS</div>
+      <h3 data-es>Cacao, café, mezcal, vinos</h3>
+      <h3 data-en>Cacao, coffee, mezcal, wines</h3>
+      <p data-es>La red identifica productores boutique. La Compañía los exporta o crea marcas conjuntas. Margen alto, contenedor único.</p>
+      <p data-en>The network identifies boutique producers. La Compañía exports or co-brands. High margin, unique container.</p>
+    </div>
+    <div class="pillar">
+      <div class="pn">→ TALENTO</div>
+      <h3 data-es>Próxima generación <em>de fundadores</em></h3>
+      <h3 data-en>Next generation <em>of founders</em></h3>
+      <p data-es>El 20% talento de cada lista de invitados es el pool de los próximos anfitriones, operadores, partners. Nunca dejamos de cazar.</p>
+      <p data-en>The 20% talent slot in each guest list is the pool for the next hosts, operators, partners. The hunt never stops.</p>
+    </div>
+  </div>
+
+  <!-- The Ask -->
+  <div class="profile" style="margin-top:48px">
+    <h3 data-es>La <em>pregunta</em> que abre todo</h3>
+    <h3 data-en>The <em>question</em> that opens everything</h3>
+    <p data-es style="font-family:var(--serif);font-style:italic;font-size:17px;color:var(--ink-2);line-height:1.6;margin-bottom:16px">Después de cada evento, cada cena, cada café — el anfitrión cierra con una sola frase, en privado, sin presión:</p>
+    <p data-en style="font-family:var(--serif);font-style:italic;font-size:17px;color:var(--ink-2);line-height:1.6;margin-bottom:16px">After every event, every dinner, every coffee — the host closes with one phrase, in private, without pressure:</p>
+    <div style="background:var(--ink);color:var(--cream);padding:24px 28px;border-radius:8px;font-family:var(--display);font-style:italic;font-size:22px;line-height:1.4">
+      <span data-es>"Si hubiera una sola persona en [ciudad] con quien debiera estar hablando ahora mismo — ¿quién es?"</span>
+      <span data-en>"If there's one person in [city] I should be talking to right now — who is it?"</span>
+    </div>
+    <p data-es style="font-family:var(--serif);font-size:14.5px;color:var(--ink-3);margin-top:14px">No funciona pedir "presentaciones". Funciona pedir <strong>la mejor</strong>. La gente quiere ser quien recomienda al genio, no quien envía cinco contactos al azar.</p>
+    <p data-en style="font-family:var(--serif);font-size:14.5px;color:var(--ink-3);margin-top:14px">Asking for "introductions" doesn't work. Asking for <strong>the single best one</strong> does. People want to be the one who recommended the genius, not the one who sent five random contacts.</p>
+  </div>
+</section>
+
+<!-- 07 · OPERATING CADENCE -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es>07 · CADENCIA OPERATIVA</div>
+    <div class="sec-num" data-en>07 · OPERATING CADENCE</div>
+    <h2 data-es>Contacto <em>constante</em>, sin micromanagement.</h2>
+    <h2 data-en><em>Constant</em> contact, no micromanagement.</h2>
+    <p class="sec-sub" data-es>Los anfitriones son independientes — viven a miles de kilómetros. La cadencia tiene que ser religiosa: si nos saltamos una semana, ellos se sienten solos; si revisamos todos los días, los sofocamos. Este es el ritmo.</p>
+    <p class="sec-sub" data-en>Hosts are independent — they live thousands of kilometers away. The cadence must be religious: skip a week and they feel alone; check in daily and we suffocate them. This is the rhythm.</p>
+  </div>
+
+  <div class="cadence">
+    <div class="cad">
+      <div class="when" data-es>LUNES · SEMANAL</div>
+      <div class="when" data-en>MONDAY · WEEKLY</div>
+      <h4 data-es>Check-in 1:1 (20 min)</h4>
+      <h4 data-en>1:1 check-in (20 min)</h4>
+      <p data-es>Llamada con el líder asignado de La Compañía. Tres preguntas fijas, una libre.</p>
+      <p data-en>Call with their assigned La Compañía lead. Three fixed questions, one open.</p>
+      <ul>
+        <li data-es>¿Qué movió la aguja esta semana?</li>
+        <li data-en>What moved the needle this week?</li>
+        <li data-es>¿Qué te frenó? ¿Necesitas algo?</li>
+        <li data-en>What blocked you? Do you need anything?</li>
+        <li data-es>¿Próximas dos presentaciones de la semana?</li>
+        <li data-en>Next two introductions for the week?</li>
+      </ul>
+    </div>
+    <div class="cad">
+      <div class="when" data-es>MIÉRCOLES · SEMANAL</div>
+      <div class="when" data-en>WEDNESDAY · WEEKLY</div>
+      <h4 data-es>Update asíncrono</h4>
+      <h4 data-en>Async update</h4>
+      <p data-es>Loom de 3 minutos del anfitrión, ve cualquier momento. Estado de eventos, contactos, ventas.</p>
+      <p data-en>3-min Loom from host, watchable any time. Status of events, contacts, sales.</p>
+    </div>
+    <div class="cad">
+      <div class="when" data-es>VIERNES · SEMANAL</div>
+      <div class="when" data-en>FRIDAY · WEEKLY</div>
+      <h4 data-es>Grupo WhatsApp LATAM</h4>
+      <h4 data-en>WhatsApp LATAM group</h4>
+      <p data-es>Todos los anfitriones + La Compañía. Cada uno comparte una victoria + un pedido. Cross-pollinación pura.</p>
+      <p data-en>All hosts + La Compañía. Each shares one win + one ask. Pure cross-pollination.</p>
+    </div>
+    <div class="cad">
+      <div class="when" data-es>PRIMER LUNES DEL MES</div>
+      <div class="when" data-en>FIRST MONDAY OF MONTH</div>
+      <h4 data-es>All-hands LATAM (60 min)</h4>
+      <h4 data-en>LATAM all-hands (60 min)</h4>
+      <p data-es>Toda la red en Zoom. Métricas del mes anterior, mejor caso de uso, próxima ola.</p>
+      <p data-en>Whole network on Zoom. Prior month metrics, best use case, next wave.</p>
+    </div>
+    <div class="cad">
+      <div class="when" data-es>CADA 90 DÍAS</div>
+      <div class="when" data-en>EVERY 90 DAYS</div>
+      <h4 data-es>Revisita en persona</h4>
+      <h4 data-en>In-person revisit</h4>
+      <p data-es>Un miembro de La Compañía vuelve al país por 3–5 días. Refresca relaciones, cierra negocios, audita calidad.</p>
+      <p data-en>A La Compañía member returns for 3–5 days. Refreshes relationships, closes deals, audits quality.</p>
+    </div>
+    <div class="cad">
+      <div class="when" data-es>RETIRO ANUAL</div>
+      <div class="when" data-en>ANNUAL RETREAT</div>
+      <h4 data-es>Toda la red en un lugar</h4>
+      <h4 data-en>Whole network, one place</h4>
+      <p data-es>Diciembre 2026 (objetivo): los 19 anfitriones + La Compañía, 4 días, en Cartagena. Costo: $35K, ROI: incalculable.</p>
+      <p data-en>December 2026 (target): all 19 hosts + La Compañía, 4 days, Cartagena. Cost: $35K, ROI: incalculable.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 08 · COMPENSATION -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es>08 · COMPENSACIÓN DEL ANFITRIÓN</div>
+    <div class="sec-num" data-en>08 · HOST COMPENSATION</div>
+    <h2 data-es>Skin in the game, <em>real</em>.</h2>
+    <h2 data-en>Real <em>skin in the game</em>.</h2>
+    <p class="sec-sub" data-es>Nada de salarios fijos en la primera fase. Si el anfitrión no produce, no gana. Si produce, gana mucho más que un salario. Eso filtra al adecuado en los primeros 60 días.</p>
+    <p class="sec-sub" data-en>No fixed salaries in phase one. If the host doesn't produce, they don't earn. If they do, they make far more than a salary. That filters the right person within 60 days.</p>
+  </div>
+
+  <div class="tbl-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th data-es>FASE</th><th data-en>PHASE</th>
+        <th data-es>DURACIÓN</th><th data-en>DURATION</th>
+        <th data-es>BASE</th><th data-en>BASE</th>
+        <th data-es>COMISIÓN</th><th data-en>COMMISSION</th>
+        <th data-es>UPSIDE</th><th data-en>UPSIDE</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="country" data-es>Trial</td><td class="country" data-en>Trial</td>
+        <td data-es>Mes 1–2</td><td data-en>Month 1–2</td>
+        <td class="n">$0</td>
+        <td class="n" data-es>25% de viajes vendidos</td><td class="n" data-en>25% of trips sold</td>
+        <td data-es>Skin in game alto</td><td data-en>High skin in game</td>
+      </tr>
+      <tr>
+        <td class="country" data-es>Probado</td><td class="country" data-en>Proven</td>
+        <td data-es>Mes 3–6</td><td data-en>Month 3–6</td>
+        <td class="n">$800/mo</td>
+        <td class="n" data-es>20% viajes + 15% real estate</td><td class="n" data-en>20% trips + 15% real estate</td>
+        <td data-es>Cubre vivir, comisión ilimitada</td><td data-en>Covers living, uncapped commission</td>
+      </tr>
+      <tr>
+        <td class="country" data-es>Partner</td><td class="country" data-en>Partner</td>
+        <td data-es>Mes 7+</td><td data-en>Month 7+</td>
+        <td class="n">$1,500/mo</td>
+        <td class="n" data-es>20% viajes + 15% RE + 10% productos</td><td class="n" data-en>20% trips + 15% RE + 10% products</td>
+        <td data-es>Equity opcional en empresa-país</td><td data-en>Optional equity in country-entity</td>
+      </tr>
+      <tr>
+        <td class="country" data-es>Country Director</td><td class="country" data-en>Country Director</td>
+        <td data-es>Año 2+</td><td data-en>Year 2+</td>
+        <td class="n">$3,000/mo</td>
+        <td class="n" data-es>15% override de todo</td><td class="n" data-en>15% override on everything</td>
+        <td data-es>Recluta al siguiente anfitrión</td><td data-en>Recruits next host</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- 09 · KPIs -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es>09 · MÉTRICAS DE ÉXITO · 6 MESES</div>
+    <div class="sec-num" data-en>09 · SUCCESS METRICS · 6 MONTHS</div>
+    <h2 data-es>Lo que <em>cuenta</em>.</h2>
+    <h2 data-en>What <em>counts</em>.</h2>
+    <p class="sec-sub" data-es>Si llegamos al 30 de noviembre con estos cinco números, ganamos.</p>
+    <p class="sec-sub" data-en>If we reach November 30 with these five numbers, we win.</p>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi">
+      <div class="n">19/19</div>
+      <div class="l" data-es>Países activos</div><div class="l" data-en>Active countries</div>
+      <div class="desc" data-es>Con anfitrión firmado y primer evento ejecutado</div>
+      <div class="desc" data-en>With signed host and opening event executed</div>
+    </div>
+    <div class="kpi">
+      <div class="n">76+</div>
+      <div class="l" data-es>Eventos</div><div class="l" data-en>Events</div>
+      <div class="desc" data-es>Aprox. 4 por país en los primeros 6 meses</div>
+      <div class="desc" data-en>~4 per country in first 6 months</div>
+    </div>
+    <div class="kpi">
+      <div class="n">988</div>
+      <div class="l" data-es>Contactos directos</div><div class="l" data-en>Direct contacts</div>
+      <div class="desc" data-es>~52 nuevos por anfitrión × 19 países</div>
+      <div class="desc" data-en>~52 new per host × 19 countries</div>
+    </div>
+    <div class="kpi">
+      <div class="n">$1.8M</div>
+      <div class="l" data-es>GMV viajes</div><div class="l" data-en>Trip GMV</div>
+      <div class="desc" data-es>~3 viajes promedio × 19 países × $30K</div>
+      <div class="desc" data-en>~3 trips avg × 19 countries × $30K</div>
+    </div>
+    <div class="kpi">
+      <div class="n">$24M</div>
+      <div class="l" data-es>Pipeline real estate</div><div class="l" data-en>Real estate pipeline</div>
+      <div class="desc" data-es>20% de 46 propiedades cerrando · comisión 6%</div>
+      <div class="desc" data-en>20% of 46 listings closing · 6% commission</div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 · RISKS / GUARDRAILS -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es>10 · LO QUE NOS PUEDE TUMBAR</div>
+    <div class="sec-num" data-en>10 · WHAT CAN TAKE US DOWN</div>
+    <h2 data-es>Riesgos <em>conocidos</em>, mitigados.</h2>
+    <h2 data-en><em>Known</em> risks, mitigated.</h2>
+  </div>
+
+  <div class="pillars">
+    <div class="pillar">
+      <div class="pn" data-es>RIESGO · ANFITRIÓN MALO</div>
+      <div class="pn" data-en>RISK · BAD HOST</div>
+      <h3 data-es>Pierde 3 meses</h3>
+      <h3 data-en>3 months lost</h3>
+      <p data-es><strong>Mitigación:</strong> proceso de entrevista de 3 semanas + visita en persona obligatoria + período de prueba sin base. Si en 60 días no hay primer evento ejecutado, terminamos.</p>
+      <p data-en><strong>Mitigation:</strong> 3-week interview process + mandatory in-person visit + no-base trial period. If no opening event in 60 days, we terminate.</p>
+    </div>
+    <div class="pillar">
+      <div class="pn" data-es>RIESGO · BURNOUT DE LA COMPAÑÍA</div>
+      <div class="pn" data-en>RISK · LA COMPAÑÍA BURNOUT</div>
+      <h3 data-es>4 personas, 19 países</h3>
+      <h3 data-en>4 people, 19 countries</h3>
+      <p data-es><strong>Mitigación:</strong> rotación estricta. Nadie viaja más de 3 olas. Anfitriones de olas anteriores ayudan a abrir las siguientes. Lo construimos como sistema, no como dependencia.</p>
+      <p data-en><strong>Mitigation:</strong> strict rotation. No one travels more than 3 waves. Earlier-wave hosts help open later ones. Built as system, not dependency.</p>
+    </div>
+    <div class="pillar">
+      <div class="pn" data-es>RIESGO · CAPITAL</div>
+      <div class="pn" data-en>RISK · CAPITAL</div>
+      <h3 data-es>~$300K en 6 meses</h3>
+      <h3 data-en>~$300K over 6 months</h3>
+      <p data-es><strong>Mitigación:</strong> el GMV de viajes Olas 1–2 (target $400K) financia Olas 3–5. Si Ola 1 no produce mínimo $120K en 60 días, pausamos antes de gastar más.</p>
+      <p data-en><strong>Mitigation:</strong> Wave 1–2 trip GMV (target $400K) funds Waves 3–5. If Wave 1 doesn't produce minimum $120K in 60 days, we pause before spending more.</p>
+    </div>
+    <div class="pillar">
+      <div class="pn" data-es>RIESGO · CALIDAD DE MARCA</div>
+      <div class="pn" data-en>RISK · BRAND QUALITY</div>
+      <h3 data-es>Mal evento = daño nacional</h3>
+      <h3 data-en>Bad event = country-wide damage</h3>
+      <p data-es><strong>Mitigación:</strong> el primer evento de cada país lo facilita siempre un miembro de La Compañía, presencialmente. No se delega. Después de eso, el anfitrión vuela solo.</p>
+      <p data-en><strong>Mitigation:</strong> the opening event in every country is always facilitated by a La Compañía member, in person. Never delegated. After that, the host flies solo.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta">
+  <h2 data-es>Empezamos el <em>1 de junio</em>.</h2>
+  <h2 data-en>We start <em>June 1</em>.</h2>
+  <p data-es>Ola 1 arranca con cuatro países donde ya tenemos manuales escritos. Cuatro semanas para tener cuatro anfitriones firmados y cuatro primeras cenas en el calendario.</p>
+  <p data-en>Wave 1 kicks off with four countries where playbooks are already written. Four weeks to have four hosts signed and four opening dinners on the calendar.</p>
+  <a href="sora-hq.html" class="cta-btn" data-es>VOLVER A SORA HQ →</a>
+  <a href="sora-hq.html" class="cta-btn" data-en>BACK TO SORA HQ →</a>
+</div>
+
+<footer>
+  <span class="brand">LA COMPAÑÍA<em>°</em> MMXXVI</span>
+  <p data-es>Documento interno · Sora Travel Agency · Sistema de expansión LATAM v1.0</p>
+  <p data-en>Internal document · Sora Travel Agency · LATAM expansion system v1.0</p>
+</footer>
+
+<script>
+  function setLang(lang){
+    document.documentElement.lang = lang;
+    document.querySelectorAll('.lang button').forEach(b => b.classList.remove('active'));
+    document.querySelector(`.lang button[onclick="setLang('${lang}')"]`).classList.add('active');
+    try { localStorage.setItem('sora.lang', lang); } catch(e){}
+  }
+  try {
+    const saved = localStorage.getItem('sora.lang');
+    if (saved) setLang(saved);
+  } catch(e){}
+</script>
+
+</body>
+</html>

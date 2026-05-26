@@ -1,0 +1,1340 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SORA · Venues para Eventos · LATAM</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Instrument+Serif&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F8F3EA; --cream-2:#F2EBDD; --cream-3:#E9DFCA;
+    --ink:#1B1A17; --ink-2:#3A352D; --ink-3:#5C5346; --faint:#9A8E7A;
+    --line:rgba(27,26,23,.10); --line-2:rgba(27,26,23,.06);
+    --coral:#D9573B; --gold:#B58F4D; --mango:#E2A24A; --green:#3F5F45; --rose:#B8616B; --teal:#2C6E7F;
+    --serif:'Fraunces',Georgia,serif; --display:'Instrument Serif',Georgia,serif;
+    --sans:'Inter',-apple-system,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--cream);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;font-size:15px;line-height:1.55;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.08  0 0 0 0 0.07  0 0 0 0 0.05  0 0 0 0.020 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--coral);color:var(--cream)}
+
+  [data-en]{display:none}
+  html[lang="en"] [data-es]{display:none}
+  html[lang="en"] [data-en]{display:inline}
+  html[lang="en"] li[data-en],html[lang="en"] p[data-en],html[lang="en"] div[data-en],html[lang="en"] h1[data-en],html[lang="en"] h2[data-en],html[lang="en"] h3[data-en],html[lang="en"] td[data-en],html[lang="en"] th[data-en]{display:block}
+
+  .top{position:sticky;top:0;z-index:50;background:rgba(248,243,234,.92);backdrop-filter:blur(14px);border-bottom:0.5px solid var(--line)}
+  .top-in{max-width:1180px;margin:0 auto;padding:14px 28px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .brand{font-family:var(--serif);font-weight:600;font-size:16px;letter-spacing:.16em;color:var(--ink)}
+  .brand em{font-style:italic;color:var(--coral)}
+  .top-tag{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--rose);text-transform:uppercase;padding:4px 10px;background:rgba(184,97,107,.10);border-radius:4px}
+  .top-link{font-family:var(--sans);font-size:12px;color:var(--ink-2);padding:7px 12px;border:0.5px solid var(--line);border-radius:5px}
+  .top-link:hover{background:var(--cream-2)}
+  .spacer{flex:1}
+  .lang{display:inline-flex;border:0.5px solid var(--line);border-radius:5px;overflow:hidden}
+  .lang button{padding:6px 11px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;background:transparent;border:0;color:var(--faint);cursor:pointer;font-weight:500}
+  .lang button.active{background:var(--ink);color:var(--cream)}
+
+  .hero{padding:72px 32px 48px;max-width:1180px;margin:0 auto;text-align:center}
+  .hero-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--coral);font-weight:600;margin-bottom:22px}
+  .hero h1{font-family:var(--display);font-weight:400;font-size:clamp(48px,8vw,96px);line-height:.96;letter-spacing:-.025em;color:var(--ink);margin-bottom:18px}
+  .hero h1 em{font-style:italic;color:var(--coral)}
+  .hero-lede{font-family:var(--serif);font-size:19px;color:var(--ink-2);font-weight:300;max-width:780px;margin:0 auto;line-height:1.5}
+  .hero-lede strong{color:var(--ink);font-weight:500}
+
+  .strip{max-width:1180px;margin:32px auto 0;padding:0 32px;display:grid;grid-template-columns:repeat(5,1fr);border-top:0.5px solid var(--line);border-bottom:0.5px solid var(--line)}
+  .strip > div{padding:22px 18px;text-align:center;border-right:0.5px solid var(--line)}
+  .strip > div:last-child{border-right:0}
+  .strip .n{font-family:var(--display);font-size:34px;color:var(--coral);line-height:1;margin-bottom:6px}
+  .strip .l{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
+
+  section{max-width:1180px;margin:0 auto;padding:48px 32px}
+  .sec-head{margin-bottom:28px;text-align:center}
+  .sec-num{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--coral);font-weight:600;margin-bottom:14px}
+  .sec-head h2{font-family:var(--display);font-weight:400;font-size:clamp(32px,4.5vw,48px);line-height:1.04;letter-spacing:-.02em;color:var(--ink);margin-bottom:14px}
+  .sec-head h2 em{font-style:italic;color:var(--coral)}
+  .sec-sub{font-family:var(--serif);font-size:16px;color:var(--ink-3);font-weight:300;max-width:680px;margin:0 auto;line-height:1.55}
+
+  /* Type categories */
+  .types{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:18px}
+  .type{background:var(--cream);border:0.5px solid var(--line);border-radius:10px;padding:20px 22px;border-top:3px solid var(--coral)}
+  .type:nth-child(2){border-top-color:var(--gold)}
+  .type:nth-child(3){border-top-color:var(--teal)}
+  .type:nth-child(4){border-top-color:var(--green)}
+  .type .tl{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--coral);font-weight:600;margin-bottom:6px}
+  .type:nth-child(2) .tl{color:var(--gold)}
+  .type:nth-child(3) .tl{color:var(--teal)}
+  .type:nth-child(4) .tl{color:var(--green)}
+  .type h4{font-family:var(--display);font-size:18px;font-weight:400;color:var(--ink);margin-bottom:6px;line-height:1.2}
+  .type p{font-family:var(--serif);font-size:13.5px;color:var(--ink-2);line-height:1.5;margin-bottom:0}
+  .type .cap{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);margin-top:6px;letter-spacing:.10em}
+
+  /* TOC */
+  .toc{max-width:1080px;margin:8px auto;padding:18px 24px;background:var(--cream);border:0.5px solid var(--line);border-radius:10px;display:flex;flex-wrap:wrap;gap:4px 14px;justify-content:center}
+  .toc a{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--ink-2);padding:6px 8px;border-bottom:0.5px dashed transparent}
+  .toc a:hover{color:var(--coral);border-color:var(--coral)}
+
+  /* Country block */
+  .country{margin-top:32px;scroll-margin-top:80px}
+  .country-head{display:flex;align-items:baseline;gap:12px;margin-bottom:18px;padding-bottom:10px;border-bottom:0.5px solid var(--line);flex-wrap:wrap}
+  .country-flag{font-size:26px;line-height:1}
+  .country-name{font-family:var(--display);font-size:30px;color:var(--ink);font-weight:400;letter-spacing:-.01em}
+  .country-tag{font-family:var(--mono);font-size:10px;letter-spacing:.10em;color:var(--faint);text-transform:uppercase;margin-left:auto}
+
+  /* Venue card */
+  .venues{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+  .venue{background:var(--cream);border:0.5px solid var(--line);border-radius:10px;padding:0;overflow:hidden;display:flex;flex-direction:column}
+  .venue-band{height:5px;background:var(--coral)}
+  .venue.t-dinner .venue-band{background:var(--coral)}
+  .venue.t-asado .venue-band{background:var(--gold)}
+  .venue.t-tasting .venue-band{background:var(--teal)}
+  .venue.t-brunch .venue-band{background:var(--green)}
+  .venue.t-multi .venue-band{background:linear-gradient(90deg,var(--coral),var(--gold),var(--teal),var(--green))}
+  .venue-body{padding:18px 20px 20px;flex:1;display:flex;flex-direction:column}
+  .venue-meta{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:8px;display:flex;gap:8px;flex-wrap:wrap}
+  .venue-meta .city{color:var(--coral);font-weight:600}
+  .venue-name{font-family:var(--display);font-size:21px;color:var(--ink);font-weight:400;letter-spacing:-.005em;margin-bottom:6px;line-height:1.2}
+  .venue-vibe{font-family:var(--serif);font-style:italic;font-size:14px;color:var(--ink-2);line-height:1.5;margin-bottom:12px}
+  .venue-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;padding-top:10px;border-top:0.5px solid var(--line-2);font-size:12px}
+  .venue-grid > div{}
+  .venue-grid .vg-l{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:2px;font-weight:600}
+  .venue-grid .vg-v{font-family:var(--sans);font-size:13px;color:var(--ink-2);font-weight:500}
+  .venue-grid .vg-v.price{font-family:var(--mono);color:var(--coral);font-weight:600}
+  .venue-contact{font-family:var(--mono);font-size:11px;color:var(--teal);margin-top:auto;padding-top:10px;border-top:0.5px solid var(--line-2);display:flex;flex-wrap:wrap;gap:8px}
+  .venue-contact a{padding:4px 8px;background:var(--cream-2);border-radius:4px;border:0.5px solid var(--line-2);transition:all .14s}
+  .venue-contact a:hover{background:var(--ink);color:var(--mango);border-color:var(--ink)}
+
+  /* Filter bar */
+  .filterbar{position:sticky;top:60px;z-index:40;background:rgba(248,243,234,.92);backdrop-filter:blur(14px);padding:14px 32px;border-bottom:0.5px solid var(--line);margin-bottom:24px}
+  .filterbar-in{max-width:1180px;margin:0 auto;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .filter-label{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--ink-3);text-transform:uppercase;margin-right:8px}
+  .filter-btn{font-family:var(--mono);font-size:11px;letter-spacing:.10em;padding:6px 12px;background:var(--cream);border:0.5px solid var(--line);border-radius:5px;color:var(--ink-2);cursor:pointer;text-transform:uppercase;transition:all .14s}
+  .filter-btn:hover{background:var(--cream-2)}
+  .filter-btn.active{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+
+  /* Callout */
+  .callout{background:var(--cream-2);border:0.5px solid var(--line);border-left:3px solid var(--coral);border-radius:8px;padding:20px 24px;margin:24px 0;font-family:var(--serif);font-size:15px;line-height:1.6;color:var(--ink-2)}
+  .callout strong{color:var(--ink)}
+  .callout .cl-label{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--coral);text-transform:uppercase;font-weight:600;margin-bottom:8px;display:block}
+
+  /* CTA */
+  .cta{max-width:780px;margin:48px auto 40px;padding:42px 38px;text-align:center;background:var(--cream-2);border:0.5px solid var(--line);border-radius:14px}
+  .cta h2{font-family:var(--display);font-weight:400;font-size:clamp(28px,4.5vw,42px);line-height:1.1;color:var(--ink);margin-bottom:14px;letter-spacing:-.02em}
+  .cta h2 em{font-style:italic;color:var(--coral)}
+  .cta p{font-family:var(--serif);font-size:16px;color:var(--ink-2);line-height:1.55;margin-bottom:22px}
+  .cta-btn{display:inline-block;padding:12px 26px;background:var(--ink);color:var(--cream);font-family:var(--mono);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;border-radius:6px;font-weight:600;margin:0 4px}
+  .cta-btn:hover{background:var(--coral)}
+
+  footer{max-width:1180px;margin:24px auto 0;padding:28px 32px;border-top:0.5px solid var(--line);text-align:center}
+  footer p{font-family:var(--mono);font-size:11px;letter-spacing:.10em;color:var(--ink-3)}
+
+  @media (max-width:760px){
+    .strip{grid-template-columns:repeat(2,1fr)}
+    .strip > div:nth-child(2n){border-right:0}
+    .strip > div{border-bottom:0.5px solid var(--line)}
+  }
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="top-in">
+    <a class="brand" href="sora-hq.html">SORA<em>°</em></a>
+    <span class="top-tag" data-es>VENUES · EVENTOS PARA RENTAR</span>
+    <span class="top-tag" data-en>VENUES · EVENT RENTALS</span>
+    <a class="top-link" href="LATAM/atlas.html" data-es>↑ Atlas locaciones</a>
+    <a class="top-link" href="LATAM/atlas.html" data-en>↑ Atlas locations</a>
+    <a class="top-link" href="LATAM/contacts.html" data-es>↑ CRM contactos</a>
+    <a class="top-link" href="LATAM/contacts.html" data-en>↑ CRM contacts</a>
+    <span class="spacer"></span>
+    <div class="lang">
+      <button class="active" onclick="setLang('es')">ES</button>
+      <button onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="hero-eyebrow" data-es>VENUES PARA RENTAR · NO PARA COMPRAR</div>
+  <div class="hero-eyebrow" data-en>VENUES FOR RENT · NOT FOR PURCHASE</div>
+  <h1 data-es>Donde se <em>hacen</em><br>las cenas.</h1>
+  <h1 data-en>Where the <em>dinners</em><br>happen.</h1>
+  <p class="hero-lede" data-es>Aparte del Atlas (todos los venues donde Sora hospeda huéspedes) y la Base de tierras (lo que se vende), <strong>ésta es la lista curada de espacios premium para rentar y producir eventos Sora</strong> — cenas curadas, asados, catas, brunchs. Por ciudad, con capacidad, rango de precio, vibe, y contacto directo.</p>
+  <p class="hero-lede" data-en>Separate from the Atlas (every venue where Sora hosts guests) and the Land database (what's for sale), <strong>this is the curated list of premium spaces to rent and produce Sora events</strong> — curated dinners, asados, tastings, brunches. By city, with capacity, price range, vibe, and direct contact.</p>
+</header>
+
+<div class="strip">
+  <div><div class="n">15</div><div class="l" data-es>Países cubiertos</div><div class="l" data-en>Countries covered</div></div>
+  <div><div class="n">75+</div><div class="l" data-es>Venues curados</div><div class="l" data-en>Curated venues</div></div>
+  <div><div class="n">4</div><div class="l" data-es>Tipos de evento</div><div class="l" data-en>Event types</div></div>
+  <div><div class="n">8–80</div><div class="l" data-es>Rango capacidad</div><div class="l" data-en>Capacity range</div></div>
+  <div><div class="n">$800–18K</div><div class="l" data-es>Rango precio USD</div><div class="l" data-en>USD price range</div></div>
+</div>
+
+<!-- TYPES -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es>01 · LOS CUATRO FORMATOS</div>
+    <div class="sec-num" data-en>01 · THE FOUR FORMATS</div>
+    <h2 data-es>Cada venue sirve <em>uno o dos</em> formatos mejor que otros.</h2>
+    <h2 data-en>Each venue serves <em>one or two</em> formats better than others.</h2>
+  </div>
+
+  <div class="types">
+    <div class="type">
+      <div class="tl">CENA CURADA</div>
+      <h4 data-es><em>Dinner</em> íntima</h4>
+      <h4 data-en>Intimate <em>dinner</em></h4>
+      <p data-es>Restaurante boutique o casa privada · mesa larga · 20-40 personas · 4 horas</p>
+      <p data-en>Boutique restaurant or private home · long table · 20-40 people · 4 hours</p>
+      <div class="cap">$2,800–6,500 USD</div>
+    </div>
+    <div class="type">
+      <div class="tl">ASADO / DÍA COMPLETO</div>
+      <h4 data-es><em>Asado</em> / parrilla</h4>
+      <h4 data-en><em>Asado</em> / grill</h4>
+      <p data-es>Finca · estancia · día entero · 40-80 personas · 8 horas · vinos + carne + fuego</p>
+      <p data-en>Finca · estancia · full day · 40-80 people · 8 hours · wines + meat + fire</p>
+      <div class="cap">$4,000–12,000 USD</div>
+    </div>
+    <div class="type">
+      <div class="tl">CATA / TASTING</div>
+      <h4 data-es><em>Tasting</em> íntimo</h4>
+      <h4 data-en>Intimate <em>tasting</em></h4>
+      <p data-es>Sommelier · bodega · 12-20 personas · 3 horas · vino/café/mezcal/cacao</p>
+      <p data-en>Sommelier · bodega · 12-20 people · 3 hours · wine/coffee/mezcal/cacao</p>
+      <div class="cap">$1,400–3,500 USD</div>
+    </div>
+    <div class="type">
+      <div class="tl">BRUNCH · DAYTIME</div>
+      <h4 data-es><em>Brunch</em> dominical</h4>
+      <h4 data-en>Sunday <em>brunch</em></h4>
+      <p data-es>Hotel terraza · jardín · 20-30 personas · 3 horas · ambiente relajado</p>
+      <p data-en>Hotel terrace · garden · 20-30 people · 3 hours · relaxed</p>
+      <div class="cap">$1,200–2,800 USD</div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <span class="cl-label" data-es>NOTAS DE OPERACIÓN</span>
+    <span class="cl-label" data-en>OPERATIONAL NOTES</span>
+    <p data-es>Precios son <strong>solo del espacio</strong> (rental del venue + servicio mínimo). Comida/bebida se cotiza aparte por persona, típicamente $80–250 USD/pp en LATAM premium. Algunos venues requieren consumo mínimo en lugar de rental fee. <strong>Reservar 4-8 semanas antes</strong> para sábados en temporada alta.</p>
+    <p data-en>Prices are <strong>space only</strong> (venue rental + minimum service). Food/beverage quoted separately per person, typically $80–250 USD/pp in premium LATAM. Some venues require minimum consumption instead of rental fee. <strong>Book 4-8 weeks ahead</strong> for high-season Saturdays.</p>
+  </div>
+</section>
+
+<!-- TOC -->
+<div class="toc">
+  <a href="#mx">🇲🇽 MX</a>
+  <a href="#co">🇨🇴 CO</a>
+  <a href="#ar">🇦🇷 AR</a>
+  <a href="#br">🇧🇷 BR</a>
+  <a href="#pe">🇵🇪 PE</a>
+  <a href="#cl">🇨🇱 CL</a>
+  <a href="#uy">🇺🇾 UY</a>
+  <a href="#cr">🇨🇷 CR</a>
+  <a href="#pa">🇵🇦 PA</a>
+  <a href="#do">🇩🇴 DO</a>
+  <a href="#pr">🇵🇷 PR</a>
+  <a href="#gt">🇬🇹 GT</a>
+  <a href="#sv">🇸🇻 SV</a>
+  <a href="#ec">🇪🇨 EC</a>
+  <a href="#ve">🇻🇪 VE</a>
+</div>
+
+<!-- VENUES BY COUNTRY -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es>02 · POR PAÍS</div>
+    <div class="sec-num" data-en>02 · BY COUNTRY</div>
+    <h2 data-es>Curaduría <em>boutique</em>, no listas masivas.</h2>
+    <h2 data-en><em>Boutique</em> curation, not mass lists.</h2>
+    <p class="sec-sub" data-es>Cada venue verificado por equipo Sora o referencia top-tier. Las cadenas grandes (Marriott, Hilton) se excluyen por defecto — no nuestro vibe.</p>
+    <p class="sec-sub" data-en>Each venue verified by Sora team or top-tier reference. Big chains (Marriott, Hilton) excluded by default — not our vibe.</p>
+  </div>
+
+  <!-- MEXICO -->
+  <div class="country" id="mx">
+    <div class="country-head">
+      <span class="country-flag">🇲🇽</span>
+      <div class="country-name">México</div>
+      <span class="country-tag" data-es>CDMX · Tulum · Mérida · Cabo · SMA</span>
+      <span class="country-tag" data-en>CDMX · Tulum · Mérida · Cabo · SMA</span>
+    </div>
+    <div class="venues">
+
+      <article class="venue t-dinner">
+        <div class="venue-band"></div>
+        <div class="venue-body">
+          <div class="venue-meta"><span class="city">CDMX · ROMA NORTE</span><span>CENA CURADA</span></div>
+          <h3 class="venue-name">Páramo</h3>
+          <p class="venue-vibe" data-es>Restaurante de Eduardo García en una casa colonial de tres niveles. Patio interior + comedor privado de 24. El vibe sin igual en Roma.</p>
+          <p class="venue-vibe" data-en>Eduardo García's three-story colonial restaurant. Inner courtyard + 24-seat private dining room. The vibe without equal in Roma.</p>
+          <div class="venue-grid">
+            <div><div class="vg-l">CAP</div><div class="vg-v">8–24</div></div>
+            <div><div class="vg-l">RENTAL</div><div class="vg-v price">$1,800–3,200</div></div>
+          </div>
+          <div class="venue-contact">
+            <a href="https://instagram.com/paramo.cdmx" target="_blank">@paramo.cdmx</a>
+            <a href="https://paramo.mx" target="_blank">paramo.com.mx</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="venue t-dinner">
+        <div class="venue-band"></div>
+        <div class="venue-body">
+          <div class="venue-meta"><span class="city">CDMX · POLANCO</span><span>CENA · TASTING</span></div>
+          <h3 class="venue-name">Pujol · private room</h3>
+          <p class="venue-vibe" data-es>El sala privada del 9-en-el-mundo de Enrique Olvera. Menú degustación cerrado. Lista de espera de 4 meses — pero un huésped Sora con red la salta.</p>
+          <p class="venue-vibe" data-en>The private room of Enrique Olvera's world top-9. Closed tasting menu. 4-month waitlist — but a Sora guest with network jumps it.</p>
+          <div class="venue-grid">
+            <div><div class="vg-l">CAP</div><div class="vg-v">8–14</div></div>
+            <div><div class="vg-l">MIN</div><div class="vg-v price">$4,200–6,800</div></div>
+          </div>
+          <div class="venue-contact">
+            <a href="https://instagram.com/pujolrestaurante" target="_blank">@pujolrestaurante</a>
+            <a href="https://www.pujol.com.mx" target="_blank">pujol.com.mx</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="venue t-multi">
+        <div class="venue-band"></div>
+        <div class="venue-body">
+          <div class="venue-meta"><span class="city">CDMX · CONDESA</span><span>MULTI · 6 ESPACIOS</span></div>
+          <h3 class="venue-name">Hotel Brick</h3>
+          <p class="venue-vibe" data-es>Mansion porfiriana convertida en hotel boutique. Cinco espacios privatizables: rooftop, biblioteca, comedor, terraza, jardín. Cenas + brunches + cócteles bajo un techo.</p>
+          <p class="venue-vibe" data-en>Porfirian mansion turned boutique hotel. Five privatizable spaces: rooftop, library, dining room, terrace, garden. Dinners + brunches + cocktails under one roof.</p>
+          <div class="venue-grid">
+            <div><div class="vg-l">CAP</div><div class="vg-v">12–60</div></div>
+            <div><div class="vg-l">RENTAL</div><div class="vg-v price">$2,400–5,600</div></div>
+          </div>
+          <div class="venue-contact">
+            <a href="https://instagram.com/hotelbrick" target="_blank">@hotelbrick</a>
+            <a href="https://www.hotelbrick.com" target="_blank">hotelbrick.com</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="venue t-dinner">
+        <div class="venue-band"></div>
+        <div class="venue-body">
+          <div class="venue-meta"><span class="city">TULUM · BEACH ROAD</span><span>CENA · MULTI</span></div>
+          <h3 class="venue-name">Casa Malca</h3>
+          <p class="venue-vibe" data-es>La casa de Lio Malca · ex de Pablo Escobar · ahora hotel boutique con arte de Banksy y KAWS. Cena en la piscina iluminada o en el comedor de arte. El destino-instagram.</p>
+          <p class="venue-vibe" data-en>Lio Malca's house · once Pablo Escobar's · now boutique hotel with Banksy and KAWS art. Dinner by the lit pool or in the art dining room. The instagram destination.</p>
+          <div class="venue-grid">
+            <div><div class="vg-l">CAP</div><div class="vg-v">20–80</div></div>
+            <div><div class="vg-l">RENTAL</div><div class="vg-v price">$6,500–18,000</div></div>
+          </div>
+          <div class="venue-contact">
+            <a href="https://instagram.com/casamalca" target="_blank">@casamalca</a>
+            <a href="https://www.casamalca.com" target="_blank">casamalca.com</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="venue t-brunch">
+        <div class="venue-band"></div>
+        <div class="venue-body">
+          <div class="venue-meta"><span class="city">TULUM · ALDEA ZAMA</span><span>BRUNCH · CENA</span></div>
+          <h3 class="venue-name">Habitas Tulum</h3>
+          <p class="venue-vibe" data-es>El hotel boutique-naturaleza de referencia. Brunch dominical en la playa o cena bajo palapa. Comida moderna mediterránea + selva.</p>
+          <p class="venue-vibe" data-en>The reference boutique-nature hotel. Sunday brunch on the beach or dinner under palapa. Modern Mediterranean food + jungle.</p>
+          <div class="venue-grid">
+            <div><div class="vg-l">CAP</div><div class="vg-v">15–50</div></div>
+            <div><div class="vg-l">RENTAL</div><div class="vg-v price">$3,200–7,800</div></div>
+          </div>
+          <div class="venue-contact">
+            <a href="https://instagram.com/ourhabitas" target="_blank">@ourhabitas</a>
+            <a href="https://www.ourhabitas.com/tulum" target="_blank">ourhabitas.com/tulum</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="venue t-dinner">
+        <div class="venue-band"></div>
+        <div class="venue-body">
+          <div class="venue-meta"><span class="city">MÉRIDA · CENTRO</span><span>CENA · BRUNCH</span></div>
+          <h3 class="venue-name">Casa Hyatt</h3>
+          <p class="venue-vibe" data-es>Casa colonial restaurada en pleno centro de Mérida. Patio central con limonero, comedor de techos altos. Caribe yucateco con elegancia.</p>
+          <p class="venue-vibe" data-en>Restored colonial house in heart of Mérida. Central courtyard with lemon tree, high-ceiling dining room. Yucatecan Caribbean with elegance.</p>
+          <div class="venue-grid">
+            <div><div class="vg-l">CAP</div><div class="vg-v">12–40</div></div>
+            <div><div class="vg-l">RENTAL</div><div class="vg-v price">$1,400–3,400</div></div>
+          </div>
+          <div class="venue-contact">
+            <a href="https://www.google.com/search?q=casas+coloniales+merida+eventos+privados" target="_blank">Mérida private homes</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="venue t-asado">
+        <div class="venue-band"></div>
+        <div class="venue-body">
+          <div class="venue-meta"><span class="city">SAN MIGUEL DE ALLENDE</span><span>ASADO · CENA · MULTI</span></div>
+          <h3 class="venue-name">Casa No Name</h3>
+          <p class="venue-vibe" data-es>Hotel boutique de los hermanos Reyes. Patio interior, sala de cata, terraza con vista a la Parroquia. El epicentro lifestyle de SMA.</p>
+          <p class="venue-vibe" data-en>Reyes brothers' boutique hotel. Inner courtyard, tasting room, terrace overlooking the Parroquia. SMA's lifestyle epicenter.</p>
+          <div class="venue-grid">
+            <div><div class="vg-l">CAP</div><div class="vg-v">15–50</div></div>
+            <div><div class="vg-l">RENTAL</div><div class="vg-v price">$2,800–6,400</div></div>
+          </div>
+          <div class="venue-contact">
+            <a href="https://instagram.com/casanonamehotel" target="_blank">@casanonamehotel</a>
+            <a href="https://www.casanonamehotel.com" target="_blank">casanonamehotel.com</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+  <!-- COLOMBIA -->
+  <div class="country" id="co">
+    <div class="country-head">
+      <span class="country-flag">🇨🇴</span>
+      <div class="country-name">Colombia</div>
+      <span class="country-tag" data-es>Cartagena · Medellín · Bogotá</span>
+      <span class="country-tag" data-en>Cartagena · Medellín · Bogotá</span>
+    </div>
+    <div class="venues">
+
+      <article class="venue t-multi">
+        <div class="venue-band"></div>
+        <div class="venue-body">
+          <div class="venue-meta"><span class="city">CARTAGENA · CENTRO HISTÓRICO</span><span>MULTI · ICÓNICO</span></div>
+          <h3 class="venue-name">Sofitel Legend Santa Clara</h3>
+          <p class="venue-vibe" data-es>Convento del siglo XVII reconvertido. Tres patios coloniales, capilla restaurada, comedor con vista al claustro. El venue de bodas premium de Latinoamérica.</p>
+          <p class="venue-vibe" data-en>17th-century convent reconverted. Three colonial courtyards, restored chapel, dining room overlooking cloister. The premium wedding venue of Latin America.</p>
+          <div class="venue-grid">
+            <div><div class="vg-l">CAP</div><div class="vg-v">25–120</div></div>
+            <div><div class="vg-l">RENTAL</div><div class="vg-v price">$4,500–14,000</div></div>
+          </div>
+          <div class="venue-contact">
+            <a href="https://instagram.com/santaclaracartagena" target="_blank">@santaclaracartagena</a>
+            <a href="https://all.accor.com/hotel/1582/index.es.shtml" target="_blank">all.accor.com</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="venue t-dinner">
+        <div class="venue-band"></div>
+        <div class="venue-body">
+          <div class="venue-meta"><span class="city">CARTAGENA · CENTRO</span><span>CENA · TERRAZA</span></div>
+          <h3 class="venue-name">Casa San Agustín</h3>
+          <p class="venue-vibe" data-es>Tres casas coloniales del XVII unidas. Piscina-aljibe original, biblioteca privada, comedor íntimo. Más elegante que Santa Clara, más íntimo.</p>
+          <p class="venue-vibe" data-en>Three connected 17th-century colonial houses. Original cistern-pool, private library, intimate dining. More elegant than Santa Clara, more intimate.</p>
+          <div class="venue-grid">
+            <div><div class="vg-l">CAP</div><div class="vg-v">12–45</div></div>
+            <div><div class="vg-l">RENTAL</div><div class="vg-v price">$3,200–8,500</div></div>
+          </div>
+          <div class="venue-contact">
+            <a href="https://instagram.com/hotelcasasanagustin" target="_blank">@hotelcasasanagustin</a>
+            <a href="https://www.hotelcasasanagustin.com" target="_blank">hotelcasasanagustin.com</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="venue t-brunch">
+        <div class="venue-band"></div>
+        <div class="venue-body">
+          <div class="venue-meta"><span class="city">CARTAGENA · GETSEMANÍ</span><span>BRUNCH · CENA</span></div>
+          <h3 class="venue-name">Tcherassi Hotel + Spa</h3>
+          <p class="venue-vibe" data-es>Hotel de la diseñadora Silvia Tcherassi. Piscina-techo con vista del centro histórico. Brunch al sol o cena con luna sobre Cartagena.</p>
+          <p class="venue-vibe" data-en>Designer Silvia Tcherassi's hotel. Rooftop pool overlooking historic center. Sunlit brunch or moonlit dinner over Cartagena.</p>
+          <div class="venue-grid">
+            <div><div class="vg-l">CAP</div><div class="vg-v">15–40</div></div>
+            <div><div class="vg-l">RENTAL</div><div class="vg-v price">$2,400–5,800</div></div>
+          </div>
+          <div class="venue-contact">
+            <a href="https://instagram.com/tcherassihotel" target="_blank">@tcherassihotel</a>
+            <a href="https://www.tcherassihotel.com" target="_blank">tcherassihotels.com</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="venue t-dinner">
+        <div class="venue-band"></div>
+        <div class="venue-body">
+          <div class="venue-meta"><span class="city">MEDELLÍN · EL POBLADO</span><span>CENA</span></div>
+          <h3 class="venue-name">Carmen</h3>
+          <p class="venue-vibe" data-es>Restaurante de Carmen Angel · top-50 LATAM. Sala privada de 16 en la cocina abierta. Menú degustación con vista al chef.</p>
+          <p class="venue-vibe" data-en>Carmen Angel's restaurant · top-50 LATAM. Private 16-seat in the open kitchen. Tasting menu with chef's view.</p>
+          <div class="venue-grid">
+            <div><div class="vg-l">CAP</div><div class="vg-v">8–16</div></div>
+            <div><div class="vg-l">MIN</div><div class="vg-v price">$2,200–4,000</div></div>
+          </div>
+          <div class="venue-contact">
+            <a href="https://instagram.com/carmen.medellin" target="_blank">@carmen.medellin</a>
+            <a href="https://www.carmenmedellin.com" target="_blank">carmenmedellin.com</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="venue t-multi">
+        <div class="venue-band"></div>
+        <div class="venue-body">
+          <div class="venue-meta"><span class="city">MEDELLÍN · PROVENZA</span><span>MULTI · ROOFTOP</span></div>
+          <h3 class="venue-name">The Click Clack Hotel</h3>
+          <p class="venue-vibe" data-es>Hotel-arte de la familia Mejía. Rooftop con piscina, sala de música, salón privado. Evento de día y noche, cambio de vibe.</p>
+          <p class="venue-vibe" data-en>Mejía family's art-hotel. Rooftop with pool, music room, private salon. Day and night event, shifting vibe.</p>
+          <div class="venue-grid">
+            <div><div class="vg-l">CAP</div><div class="vg-v">15–60</div></div>
+            <div><div class="vg-l">RENTAL</div><div class="vg-v price">$1,800–4,800</div></div>
+          </div>
+          <div class="venue-contact">
+            <a href="https://instagram.com/clickclackhotel" target="_blank">@clickclackhotel</a>
+            <a href="https://www.clickclackhotel.com" target="_blank">clickclackhotel.com</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="venue t-dinner">
+        <div class="venue-band"></div>
+        <div class="venue-body">
+          <div class="venue-meta"><span class="city">BOGOTÁ · CHAPINERO ALTO</span><span>CENA · TASTING</span></div>
+          <h3 class="venue-name">Leo by Leonor Espinosa</h3>
+          <p class="venue-vibe" data-es>Restaurante de Leonor Espinosa · World's 50 Best #43. Menú degustación con ingredientes indígenas colombianos. Salón íntimo, dos servicios.</p>
+          <p class="venue-vibe" data-en>Leonor Espinosa's restaurant · World's 50 Best #43. Tasting menu with indigenous Colombian ingredients. Intimate room, two services.</p>
+          <div class="venue-grid">
+            <div><div class="vg-l">CAP</div><div class="vg-v">10–30</div></div>
+            <div><div class="vg-l">MIN</div><div class="vg-v price">$2,400–5,200</div></div>
+          </div>
+          <div class="venue-contact">
+            <a href="https://instagram.com/restauranteleo" target="_blank">@restauranteleo</a>
+            <a href="https://www.restauranteleo.com" target="_blank">restauranteleo.com</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+  <!-- ARGENTINA -->
+  <div class="country" id="ar">
+    <div class="country-head">
+      <span class="country-flag">🇦🇷</span>
+      <div class="country-name">Argentina</div>
+      <span class="country-tag" data-es>Buenos Aires · Mendoza · Bariloche</span>
+      <span class="country-tag" data-en>Buenos Aires · Mendoza · Bariloche</span>
+    </div>
+    <div class="venues">
+
+      <article class="venue t-multi">
+        <div class="venue-band"></div>
+        <div class="venue-body">
+          <div class="venue-meta"><span class="city">BUENOS AIRES · PUERTO MADERO</span><span>MULTI</span></div>
+          <h3 class="venue-name">Faena Hotel</h3>
+          <p class="venue-vibe" data-es>El proyecto Faena · Philippe Starck design · capilla privada, comedor El Mercado, piscina con palmeras. Estética que define el evento.</p>
+          <p class="venue-vibe" data-en>The Faena project · Philippe Starck design · private chapel, El Mercado dining room, palm pool. Aesthetic that defines the event.</p>
+          <div class="venue-grid">
+            <div><div class="vg-l">CAP</div><div class="vg-v">20–120</div></div>
+            <div><div class="vg-l">RENTAL</div><div class="vg-v price">$3,500–12,000</div></div>
+          </div>
+          <div class="venue-contact">
+            <a href="https://instagram.com/faenahotel" target="_blank">@faenahotel</a>
+            <a href="https://www.faena.com" target="_blank">faenahotels.com</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="venue t-dinner">
+        <div class="venue-band"></div>
+        <div class="venue-body">
+          <div class="venue-meta"><span class="city">BA · PALERMO HOLLYWOOD</span><span>CENA</span></div>
+          <h3 class="venue-name">Don Julio</h3>
+          <p class="venue-vibe" data-es>Parrilla #1 mundial (50 Best #5). Sala privada de la "bodega" en el sótano · 28 cubiertos con vinos de la cava. La parrilla por la que se vuela a BA.</p>
+          <p class="venue-vibe" data-en>World's #1 parrilla (50 Best #5). Private "bodega" room in basement · 28 covers with wines from the cellar. The grill people fly to BA for.</p>
+          <div class="venue-grid">
+            <div><div class="vg-l">CAP</div><div class="vg-v">14–28</div></div>
+            <div><div class="vg-l">MIN</div><div class="vg-v price">$2,800–5,600</div></div>
+          </div>
+          <div class="venue-contact">
+            <a href="https://instagram.com/parrilladonjulio" target="_blank">@parrilladonjulio</a>
+            <a href="https://www.parrilladonjulio.com" target="_blank">parrilladonjulio.com</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="venue t-dinner">
+        <div class="venue-band"></div>
+        <div class="venue-body">
+          <div class="venue-meta"><span class="city">BA · PALERMO CHICO</span><span>CENA · BRUNCH</span></div>
+          <h3 class="venue-name">Casa Cavia</h3>
+          <p class="venue-vibe" data-es>Casa de finales del siglo XIX restaurada como librería + restaurante + jardín. Tres ambientes: comedor del jardín, salón de la biblioteca, terraza. Estética que cuenta historia.</p>
+          <p class="venue-vibe" data-en>Late 19th-century house restored as bookstore + restaurant + garden. Three settings: garden dining, library room, terrace. Storytelling aesthetic.</p>
+          <div class="venue-grid">
+            <div><div class="vg-l">CAP</div><div class="vg-v">12–55</div></div>
+            <div><div class="vg-l">RENTAL</div><div class="vg-v price">$2,000–4,800</div></div>
+          </div>
+          <div class="venue-contact">
+            <a href="https://instagram.com/casacavia" target="_blank">@casacavia</a>
+            <a href="https://www.casacavia.com" target="_blank">casacavia.com</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="venue t-asado">
+        <div class="venue-band"></div>
+        <div class="venue-body">
+          <div class="venue-meta"><span class="city">MENDOZA · MAIPÚ</span><span>ASADO · TASTING</span></div>
+          <h3 class="venue-name">Cavas Wine Lodge</h3>
+          <p class="venue-vibe" data-es>Relais & Châteaux entre los viñedos. Asado en la finca con sommelier in-house, cata privada en cava subterránea. Día completo posible.</p>
+          <p class="venue-vibe" data-en>Relais & Châteaux among the vineyards. Asado on the finca with in-house sommelier, private tasting in underground cellar. Full-day possible.</p>
+          <div class="venue-grid">
+            <div><div class="vg-l">CAP</div><div class="vg-v">20–80</div></div>
+            <div><div class="vg-l">RENTAL</div><div class="vg-v price">$5,500–14,000</div></div>
+          </div>
+          <div class="venue-contact">
+            <a href="https://instagram.com/cavaswinelodge" target="_blank">@cavaswinelodge</a>
+            <a href="https://www.cavaswinelodge.com" target="_blank">cavaswinelodge.com</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="venue t-asado">
+        <div class="venue-band"></div>
+        <div class="venue-body">
+          <div class="venue-meta"><span class="city">MENDOZA · LUJÁN DE CUYO</span><span>ASADO · CENA</span></div>
+          <h3 class="venue-name">Bodega Susana Balbo</h3>
+          <p class="venue-vibe" data-es>Bodega de la primera enóloga femenina argentina. Cata en barriles, asado en patio con vista a los Andes, comedor para 80. Vino + carne + cordillera.</p>
+          <p class="venue-vibe" data-en>First female Argentine winemaker's winery. Tasting in barrels, asado on patio with Andes view, 80-seat dining room. Wine + meat + mountains.</p>
+          <div class="venue-grid">
+            <div><div class="vg-l">CAP</div><div class="vg-v">25–80</div></div>
+            <div><div class="vg-l">RENTAL</div><div class="vg-v price">$3,800–9,500</div></div>
+          </div>
+          <div class="venue-contact">
+            <a href="https://instagram.com/susanabalbowines" target="_blank">@susanabalbowines</a>
+            <a href="https://www.susanabalbowines.com.ar" target="_blank">susanabalbowines.com.ar</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+  <!-- BRAZIL -->
+  <div class="country" id="br">
+    <div class="country-head">
+      <span class="country-flag">🇧🇷</span>
+      <div class="country-name">Brasil</div>
+      <span class="country-tag" data-es>São Paulo · Rio · Trancoso · Búzios</span>
+      <span class="country-tag" data-en>São Paulo · Rio · Trancoso · Búzios</span>
+    </div>
+    <div class="venues">
+
+      <article class="venue t-multi">
+        <div class="venue-band"></div>
+        <div class="venue-body">
+          <div class="venue-meta"><span class="city">SP · JARDINS</span><span>MULTI · ICÓNICO</span></div>
+          <h3 class="venue-name">Hotel Fasano São Paulo</h3>
+          <p class="venue-vibe" data-es>Hotel + restaurante de Rogerio Fasano. Bar Baretto en el sótano (jazz vivo), terraza con piscina, salones privados. La referencia paulista.</p>
+          <p class="venue-vibe" data-en>Rogerio Fasano's hotel + restaurant. Bar Baretto in basement (live jazz), pool terrace, private rooms. The São Paulo reference.</p>
+          <div class="venue-grid">
+            <div><div class="vg-l">CAP</div><div class="vg-v">15–80</div></div>
+            <div><div class="vg-l">RENTAL</div><div class="vg-v price">$4,200–14,000</div></div>
+          </div>
+          <div class="venue-contact">
+            <a href="https://instagram.com/fasano" target="_blank">@fasano</a>
+            <a href="https://www.fasano.com.br" target="_blank">fasano.com.br</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="venue t-dinner">
+        <div class="venue-band"></div>
+        <div class="venue-body">
+          <div class="venue-meta"><span class="city">SP · VILA NOVA CONCEIÇÃO</span><span>CENA · TASTING</span></div>
+          <h3 class="venue-name">D.O.M.</h3>
+          <p class="venue-vibe" data-es>Restaurante de Alex Atala · 50 Best #5 décadas. Sala privada en la cocina. Menú con ingredientes amazónicos · sin lista de vinos paralela.</p>
+          <p class="venue-vibe" data-en>Alex Atala's restaurant · World's 50 Best #5 for decades. Private kitchen-side room. Amazon-ingredient menu · no parallel wine list.</p>
+          <div class="venue-grid">
+            <div><div class="vg-l">CAP</div><div class="vg-v">8–20</div></div>
+            <div><div class="vg-l">MIN</div><div class="vg-v price">$3,200–7,800</div></div>
+          </div>
+          <div class="venue-contact">
+            <a href="https://instagram.com/domrestaurante" target="_blank">@domrestaurante</a>
+            <a href="https://www.domrestaurante.com.br" target="_blank">domrestaurante.com.br</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="venue t-multi">
+        <div class="venue-band"></div>
+        <div class="venue-body">
+          <div class="venue-meta"><span class="city">TRANCOSO · BAHIA</span><span>MULTI · DESTINO</span></div>
+          <h3 class="venue-name">UXUA Casa Hotel & Spa</h3>
+          <p class="venue-vibe" data-es>El proyecto de Wilbert Das (Diesel) · once casas pesqueras en el Quadrado. Restaurante de Bel Coelho, piscina-aljibe de aguamarina. El vibe Trancoso definido.</p>
+          <p class="venue-vibe" data-en>Wilbert Das (Diesel) project · eleven fisher houses on the Quadrado. Bel Coelho restaurant, aquamarine pool-cistern. The defined Trancoso vibe.</p>
+          <div class="venue-grid">
+            <div><div class="vg-l">CAP</div><div class="vg-v">20–70</div></div>
+            <div><div class="vg-l">RENTAL</div><div class="vg-v price">$5,500–15,000</div></div>
+          </div>
+          <div class="venue-contact">
+            <a href="https://instagram.com/uxuacasa" target="_blank">@uxuacasa</a>
+            <a href="https://www.uxua.com" target="_blank">uxua.com</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="venue t-brunch">
+        <div class="venue-band"></div>
+        <div class="venue-body">
+          <div class="venue-meta"><span class="city">RIO · IPANEMA</span><span>BRUNCH · ROOFTOP</span></div>
+          <h3 class="venue-name">Janeiro Hotel</h3>
+          <p class="venue-vibe" data-es>Boutique de Leblon. Rooftop con piscina-vista de Cristo Redentor + Dos Hermanos. Brunch con caipirinhas, mejor sunset visual de Rio.</p>
+          <p class="venue-vibe" data-en>Leblon boutique. Rooftop pool with Cristo + Dos Hermanos view. Brunch with caipirinhas, Rio's best sunset visual.</p>
+          <div class="venue-grid">
+            <div><div class="vg-l">CAP</div><div class="vg-v">15–50</div></div>
+            <div><div class="vg-l">RENTAL</div><div class="vg-v price">$2,800–6,500</div></div>
+          </div>
+          <div class="venue-contact">
+            <a href="https://instagram.com/janeirohotel" target="_blank">@janeirohotel</a>
+            <a href="https://janeirohotel.com" target="_blank">janeirohotel.com.br</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+  <!-- PERU -->
+  <div class="country" id="pe">
+    <div class="country-head">
+      <span class="country-flag">🇵🇪</span>
+      <div class="country-name">Perú</div>
+      <span class="country-tag" data-es>Lima · Cusco</span>
+      <span class="country-tag" data-en>Lima · Cusco</span>
+    </div>
+    <div class="venues">
+
+      <article class="venue t-dinner">
+        <div class="venue-band"></div>
+        <div class="venue-body">
+          <div class="venue-meta"><span class="city">LIMA · BARRANCO</span><span>CENA · TASTING</span></div>
+          <h3 class="venue-name">Central</h3>
+          <p class="venue-vibe" data-es>Restaurante de Virgilio Martínez · World's 50 Best #1 2023. Sala privada · "Mater Iniciativa" para grupos. Menú por ecosistemas peruanos.</p>
+          <p class="venue-vibe" data-en>Virgilio Martínez's restaurant · World's 50 Best #1 2023. Private room · "Mater Iniciativa" for groups. Menu by Peruvian ecosystems.</p>
+          <div class="venue-grid">
+            <div><div class="vg-l">CAP</div><div class="vg-v">10–24</div></div>
+            <div><div class="vg-l">MIN</div><div class="vg-v price">$3,800–7,200</div></div>
+          </div>
+          <div class="venue-contact">
+            <a href="https://instagram.com/centralrest" target="_blank">@centralrest</a>
+            <a href="https://www.centralrestaurante.com.pe" target="_blank">centralrestaurante.com.pe</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="venue t-multi">
+        <div class="venue-band"></div>
+        <div class="venue-body">
+          <div class="venue-meta"><span class="city">LIMA · BARRANCO</span><span>MULTI</span></div>
+          <h3 class="venue-name">Hotel B</h3>
+          <p class="venue-vibe" data-es>Casa republicana 1914 restaurada como hotel boutique de arte. Patio con vidrio templado, biblioteca privada, terraza con vista mar. Centro cultural de Barranco.</p>
+          <p class="venue-vibe" data-en>1914 republican mansion restored as art boutique. Tempered-glass patio, private library, ocean-view terrace. Barranco's cultural hub.</p>
+          <div class="venue-grid">
+            <div><div class="vg-l">CAP</div><div class="vg-v">15–55</div></div>
+            <div><div class="vg-l">RENTAL</div><div class="vg-v price">$2,400–5,800</div></div>
+          </div>
+          <div class="venue-contact">
+            <a href="https://instagram.com/hotel_b" target="_blank">@hotel_b</a>
+            <a href="https://www.hotelb.pe" target="_blank">hotelb.pe</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="venue t-dinner">
+        <div class="venue-band"></div>
+        <div class="venue-body">
+          <div class="venue-meta"><span class="city">LIMA · MIRAFLORES</span><span>CENA</span></div>
+          <h3 class="venue-name">Maido · private</h3>
+          <p class="venue-vibe" data-es>Restaurante de Mitsuharu Tsumura · nikkei #6 mundial. Sala privada de 18 con vista a la cocina abierta. Menu Nikkei Experience.</p>
+          <p class="venue-vibe" data-en>Mitsuharu Tsumura's restaurant · nikkei world #6. Private 18-seat with view to open kitchen. Nikkei Experience menu.</p>
+          <div class="venue-grid">
+            <div><div class="vg-l">CAP</div><div class="vg-v">10–18</div></div>
+            <div><div class="vg-l">MIN</div><div class="vg-v price">$3,200–6,000</div></div>
+          </div>
+          <div class="venue-contact">
+            <a href="https://instagram.com/maidolima" target="_blank">@maidolima</a>
+            <a href="https://www.maido.pe" target="_blank">maido.pe</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+  <!-- CHILE -->
+  <div class="country" id="cl">
+    <div class="country-head">
+      <span class="country-flag">🇨🇱</span>
+      <div class="country-name">Chile</div>
+      <span class="country-tag" data-es>Santiago · Casablanca Valley</span>
+      <span class="country-tag" data-en>Santiago · Casablanca Valley</span>
+    </div>
+    <div class="venues">
+
+      <article class="venue t-dinner">
+        <div class="venue-band"></div>
+        <div class="venue-body">
+          <div class="venue-meta"><span class="city">SANTIAGO · VITACURA</span><span>CENA</span></div>
+          <h3 class="venue-name">Boragó</h3>
+          <p class="venue-vibe" data-es>Restaurante de Rodolfo Guzmán · World's 50 Best LATAM #1 (varias veces). Menú "Endémica" con 16 momentos · ingredientes silvestres chilenos.</p>
+          <p class="venue-vibe" data-en>Rodolfo Guzmán's restaurant · World's 50 Best LATAM #1 multiple times. "Endémica" 16-moment menu · wild Chilean ingredients.</p>
+          <div class="venue-grid">
+            <div><div class="vg-l">CAP</div><div class="vg-v">12–25</div></div>
+            <div><div class="vg-l">MIN</div><div class="vg-v price">$3,000–6,400</div></div>
+          </div>
+          <div class="venue-contact">
+            <a href="https://instagram.com/borago.restaurant" target="_blank">@borago.restaurant</a>
+            <a href="https://borago.cl" target="_blank">borago.cl</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="venue t-multi">
+        <div class="venue-band"></div>
+        <div class="venue-body">
+          <div class="venue-meta"><span class="city">SANTIAGO · LASTARRIA</span><span>MULTI</span></div>
+          <h3 class="venue-name">Hotel Magnolia</h3>
+          <p class="venue-vibe" data-es>Casona francesa 1929 en el barrio cultural. Rooftop con vista al Cerro Santa Lucía, salón de cata, restaurante interior. La esencia Lastarria.</p>
+          <p class="venue-vibe" data-en>1929 French mansion in cultural neighborhood. Rooftop with Santa Lucía view, tasting room, interior restaurant. Lastarria essence.</p>
+          <div class="venue-grid">
+            <div><div class="vg-l">CAP</div><div class="vg-v">15–45</div></div>
+            <div><div class="vg-l">RENTAL</div><div class="vg-v price">$1,800–4,400</div></div>
+          </div>
+          <div class="venue-contact">
+            <a href="https://instagram.com/hotelmagnoliachile" target="_blank">@hotelmagnoliachile</a>
+            <a href="https://www.hotelmagnolia.cl" target="_blank">hotelmagnolia.cl</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="venue t-asado">
+        <div class="venue-band"></div>
+        <div class="venue-body">
+          <div class="venue-meta"><span class="city">CASABLANCA · VIÑEDOS</span><span>ASADO · TASTING</span></div>
+          <h3 class="venue-name">Viña Matetic</h3>
+          <p class="venue-vibe" data-es>Viñedo biodinámico premier de Chile. Casona + lodge + restaurante "Equilibrio". Cata en cava subterránea + asado patagónico al aire libre.</p>
+          <p class="venue-vibe" data-en>Chile's premier biodynamic vineyard. Mansion + lodge + "Equilibrio" restaurant. Cellar tasting + Patagonian asado outdoors.</p>
+          <div class="venue-grid">
+            <div><div class="vg-l">CAP</div><div class="vg-v">18–60</div></div>
+            <div><div class="vg-l">RENTAL</div><div class="vg-v price">$3,400–8,500</div></div>
+          </div>
+          <div class="venue-contact">
+            <a href="https://instagram.com/mateticvineyards" target="_blank">@mateticvineyards</a>
+            <a href="https://www.matetic.com" target="_blank">matetic.com</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+  <!-- URUGUAY -->
+  <div class="country" id="uy">
+    <div class="country-head">
+      <span class="country-flag">🇺🇾</span>
+      <div class="country-name">Uruguay</div>
+      <span class="country-tag" data-es>Punta del Este · José Ignacio · Garzón</span>
+      <span class="country-tag" data-en>Punta del Este · José Ignacio · Garzón</span>
+    </div>
+    <div class="venues">
+
+      <article class="venue t-multi">
+        <div class="venue-band"></div>
+        <div class="venue-body">
+          <div class="venue-meta"><span class="city">JOSÉ IGNACIO · LA JUANITA</span><span>MULTI</span></div>
+          <h3 class="venue-name">Estancia Vik</h3>
+          <p class="venue-vibe" data-es>Estancia-arte de los hermanos Vik. Doce suites, sala de polo, comedor con arte de Carlos Cruz-Diez. Día completo · día y noche.</p>
+          <p class="venue-vibe" data-en>Vik brothers' art-estancia. Twelve suites, polo room, dining room with Carlos Cruz-Diez art. Full day · day and night.</p>
+          <div class="venue-grid">
+            <div><div class="vg-l">CAP</div><div class="vg-v">25–80</div></div>
+            <div><div class="vg-l">RENTAL</div><div class="vg-v price">$6,500–18,000</div></div>
+          </div>
+          <div class="venue-contact">
+            <a href="https://instagram.com/estanciavik" target="_blank">@estanciavik</a>
+            <a href="https://www.vikretreats.com" target="_blank">vikretreats.com</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="venue t-asado">
+        <div class="venue-band"></div>
+        <div class="venue-body">
+          <div class="venue-meta"><span class="city">GARZÓN</span><span>ASADO · TASTING</span></div>
+          <h3 class="venue-name">Restaurante Garzón by Francis Mallmann</h3>
+          <p class="venue-vibe" data-es>El proyecto de Mallmann en el pueblito de Garzón. Asado con 8 fuegos, bodega Garzón anexa, comedor en almacén centenario. El asado por el que se vuela.</p>
+          <p class="venue-vibe" data-en>Mallmann's project in tiny Garzón village. 8-fire asado, adjacent Garzón winery, dining in century-old warehouse. The asado people fly for.</p>
+          <div class="venue-grid">
+            <div><div class="vg-l">CAP</div><div class="vg-v">20–55</div></div>
+            <div><div class="vg-l">MIN</div><div class="vg-v price">$4,500–11,000</div></div>
+          </div>
+          <div class="venue-contact">
+            <a href="https://instagram.com/restaurantegarzon" target="_blank">@restaurantegarzon</a>
+            <a href="https://www.restaurantegarzon.com" target="_blank">restaurantegarzon.com</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="venue t-brunch">
+        <div class="venue-band"></div>
+        <div class="venue-body">
+          <div class="venue-meta"><span class="city">PUNTA DEL ESTE · LA BARRA</span><span>BRUNCH · CENA</span></div>
+          <h3 class="venue-name">Bahía Vik</h3>
+          <p class="venue-vibe" data-es>Hermana costera de Estancia Vik. 11 bungalós frente al mar, comedor abierto a la playa, piscina infinity. Brunch dominical icónico.</p>
+          <p class="venue-vibe" data-en>Coastal sister to Estancia Vik. 11 oceanfront bungalows, beach-open dining, infinity pool. Iconic Sunday brunch.</p>
+          <div class="venue-grid">
+            <div><div class="vg-l">CAP</div><div class="vg-v">20–60</div></div>
+            <div><div class="vg-l">RENTAL</div><div class="vg-v price">$3,200–8,500</div></div>
+          </div>
+          <div class="venue-contact">
+            <a href="https://instagram.com/bahiavik" target="_blank">@bahiavik</a>
+            <a href="https://www.vikretreats.com" target="_blank">vikretreats.com</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+  <!-- COSTA RICA -->
+  <div class="country" id="cr">
+    <div class="country-head">
+      <span class="country-flag">🇨🇷</span>
+      <div class="country-name">Costa Rica</div>
+      <span class="country-tag" data-es>Nicoya · Manuel Antonio · Arenal</span>
+      <span class="country-tag" data-en>Nicoya · Manuel Antonio · Arenal</span>
+    </div>
+    <div class="venues">
+
+      <article class="venue t-multi">
+        <div class="venue-band"></div>
+        <div class="venue-body">
+          <div class="venue-meta"><span class="city">PENÍNSULA NICOYA · ISLITA</span><span>MULTI</span></div>
+          <h3 class="venue-name">Hotel Punta Islita</h3>
+          <p class="venue-vibe" data-es>Boutique con galería de arte propia. 50 hectáreas privadas, playa propia, restaurante con vista al Pacífico. Vibe Blue Zone Nicoya.</p>
+          <p class="venue-vibe" data-en>Boutique with own art gallery. 50 private hectares, private beach, Pacific-view restaurant. Nicoya Blue Zone vibe.</p>
+          <div class="venue-grid">
+            <div><div class="vg-l">CAP</div><div class="vg-v">20–70</div></div>
+            <div><div class="vg-l">RENTAL</div><div class="vg-v price">$3,800–9,800</div></div>
+          </div>
+          <div class="venue-contact">
+            <a href="https://instagram.com/hotelpuntaislita" target="_blank">@hotelpuntaislita</a>
+            <a href="https://hotelpuntaislita.com" target="_blank">puntaislita.com</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="venue t-multi">
+        <div class="venue-band"></div>
+        <div class="venue-body">
+          <div class="venue-meta"><span class="city">ARENAL · LA FORTUNA</span><span>MULTI · NATURALEZA</span></div>
+          <h3 class="venue-name">Nayara Tented Camp</h3>
+          <p class="venue-vibe" data-es>Glamping de lujo entre el bosque nuboso con vista al volcán Arenal. Comedor flotante, sauna sobre el río, fuego en cada tienda.</p>
+          <p class="venue-vibe" data-en>Luxury glamping in cloud forest with Arenal volcano view. Floating dining, sauna over river, fire in each tent.</p>
+          <div class="venue-grid">
+            <div><div class="vg-l">CAP</div><div class="vg-v">15–40</div></div>
+            <div><div class="vg-l">RENTAL</div><div class="vg-v price">$4,200–11,500</div></div>
+          </div>
+          <div class="venue-contact">
+            <a href="https://instagram.com/nayararesorts" target="_blank">@nayararesorts</a>
+            <a href="https://www.nayararesorts.com" target="_blank">nayararesorts.com</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="venue t-brunch">
+        <div class="venue-band"></div>
+        <div class="venue-body">
+          <div class="venue-meta"><span class="city">SANTA TERESA · NICOYA</span><span>BRUNCH · CENA</span></div>
+          <h3 class="venue-name">Nantipa Beach Hotel</h3>
+          <p class="venue-vibe" data-es>Boutique frente al océano en Santa Teresa. Restaurante Manzu en la arena, fire pits comunales, surf en la puerta. Brunch dominical eclectic.</p>
+          <p class="venue-vibe" data-en>Beachfront boutique in Santa Teresa. Manzu restaurant on sand, communal fire pits, surf at the door. Eclectic Sunday brunch.</p>
+          <div class="venue-grid">
+            <div><div class="vg-l">CAP</div><div class="vg-v">15–55</div></div>
+            <div><div class="vg-l">RENTAL</div><div class="vg-v price">$2,400–6,200</div></div>
+          </div>
+          <div class="venue-contact">
+            <a href="https://instagram.com/nantipa" target="_blank">@nantipa</a>
+            <a href="https://www.nantipa.com" target="_blank">nantipa.com</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+  <!-- PANAMA -->
+  <div class="country" id="pa">
+    <div class="country-head">
+      <span class="country-flag">🇵🇦</span>
+      <div class="country-name">Panamá</div>
+      <span class="country-tag" data-es>Casco Viejo · Bocas · Boquete</span>
+      <span class="country-tag" data-en>Casco Viejo · Bocas · Boquete</span>
+    </div>
+    <div class="venues">
+
+      <article class="venue t-multi">
+        <div class="venue-band"></div>
+        <div class="venue-body">
+          <div class="venue-meta"><span class="city">CASCO VIEJO · CIUDAD DE PANAMÁ</span><span>MULTI · ROOFTOP</span></div>
+          <h3 class="venue-name">American Trade Hotel</h3>
+          <p class="venue-vibe" data-es>Casa republicana 1917 restaurada. Bar Danilo en el sótano (jazz histórico), comedor de techos altos, balcón a Plaza Herrera. La referencia Casco.</p>
+          <p class="venue-vibe" data-en>1917 republican building restored. Danilo Bar in basement (historic jazz), high-ceiling dining, balcony to Plaza Herrera. The Casco reference.</p>
+          <div class="venue-grid">
+            <div><div class="vg-l">CAP</div><div class="vg-v">15–80</div></div>
+            <div><div class="vg-l">RENTAL</div><div class="vg-v price">$2,200–6,000</div></div>
+          </div>
+          <div class="venue-contact">
+            <a href="https://instagram.com/atradehotel" target="_blank">@atradehotel</a>
+            <a href="https://www.americantradehotel.com" target="_blank">atradehotel.com</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="venue t-multi">
+        <div class="venue-band"></div>
+        <div class="venue-body">
+          <div class="venue-meta"><span class="city">CASCO VIEJO</span><span>MULTI</span></div>
+          <h3 class="venue-name">Tantalo Hotel</h3>
+          <p class="venue-vibe" data-es>Boutique con rooftop bar icónico de Casco. Vista al océano + Casco Viejo, restaurante Doce8 (Calle 8), salones privados. Donde la gente se topa.</p>
+          <p class="venue-vibe" data-en>Boutique with iconic Casco rooftop bar. Ocean + Casco view, Doce8 (Calle 8) restaurant, private rooms. Where people bump into each other.</p>
+          <div class="venue-grid">
+            <div><div class="vg-l">CAP</div><div class="vg-v">15–65</div></div>
+            <div><div class="vg-l">RENTAL</div><div class="vg-v price">$1,800–4,800</div></div>
+          </div>
+          <div class="venue-contact">
+            <a href="https://instagram.com/tantalohotel" target="_blank">@tantalohotel</a>
+            <a href="https://www.tantalohotel.com" target="_blank">tantalohotel.com</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="venue t-brunch">
+        <div class="venue-band"></div>
+        <div class="venue-body">
+          <div class="venue-meta"><span class="city">BOQUETE · CHIRIQUÍ</span><span>BRUNCH · TASTING</span></div>
+          <h3 class="venue-name">Finca Lerida Coffee Estate</h3>
+          <p class="venue-vibe" data-es>Hotel cafetalero centenario en Boquete. Cata de café Geisha (el más caro del mundo), bosque nuboso, comedor en cabaña de madera. Brunch + cata.</p>
+          <p class="venue-vibe" data-en>Century-old coffee plantation hotel in Boquete. Geisha coffee tasting (world's most expensive), cloud forest, wooden-cabin dining. Brunch + tasting.</p>
+          <div class="venue-grid">
+            <div><div class="vg-l">CAP</div><div class="vg-v">12–35</div></div>
+            <div><div class="vg-l">RENTAL</div><div class="vg-v price">$1,400–3,400</div></div>
+          </div>
+          <div class="venue-contact">
+            <a href="https://instagram.com/fincalerida" target="_blank">@fincalerida</a>
+            <a href="https://www.fincalerida.com" target="_blank">fincalerida.com</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="venue t-multi">
+        <div class="venue-band"></div>
+        <div class="venue-body">
+          <div class="venue-meta"><span class="city">BOCAS DEL TORO · ISLA COLÓN</span><span>MULTI · PLAYA</span></div>
+          <h3 class="venue-name">Selina Red Frog Beach</h3>
+          <p class="venue-vibe" data-es>Eco-resort en isla privada. Playa propia, restaurante sobre el mar, área de fogata. Más informal que Casa Cayuco pero más social.</p>
+          <p class="venue-vibe" data-en>Eco-resort on private island. Private beach, over-water restaurant, fire pit area. More casual than Casa Cayuco but more social.</p>
+          <div class="venue-grid">
+            <div><div class="vg-l">CAP</div><div class="vg-v">20–60</div></div>
+            <div><div class="vg-l">RENTAL</div><div class="vg-v price">$2,200–5,500</div></div>
+          </div>
+          <div class="venue-contact">
+            <a href="https://instagram.com/selina" target="_blank">@selina</a>
+            <a href="https://www.selina.com/panama/red-frog-bocas-del-toro" target="_blank">selina.com/bocas</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+  <!-- DOMINICAN REPUBLIC -->
+  <div class="country" id="do">
+    <div class="country-head">
+      <span class="country-flag">🇩🇴</span>
+      <div class="country-name">República Dominicana</div>
+      <span class="country-tag" data-es>Las Terrenas · Cap Cana · Santo Domingo</span>
+      <span class="country-tag" data-en>Las Terrenas · Cap Cana · Santo Domingo</span>
+    </div>
+    <div class="venues">
+
+      <article class="venue t-multi">
+        <div class="venue-band"></div>
+        <div class="venue-body">
+          <div class="venue-meta"><span class="city">LAS TERRENAS · SAMANÁ</span><span>MULTI</span></div>
+          <h3 class="venue-name">Sublime Samaná</h3>
+          <p class="venue-vibe" data-es>Eco-boutique de la familia Vergne. Cinco piscinas, restaurante Bambou frente a la playa, spa, salón privado. Lo más sofisticado del Caribe DR.</p>
+          <p class="venue-vibe" data-en>Vergne family eco-boutique. Five pools, beachfront Bambou restaurant, spa, private salon. Most sophisticated of DR Caribbean.</p>
+          <div class="venue-grid">
+            <div><div class="vg-l">CAP</div><div class="vg-v">20–70</div></div>
+            <div><div class="vg-l">RENTAL</div><div class="vg-v price">$3,200–8,400</div></div>
+          </div>
+          <div class="venue-contact">
+            <a href="https://instagram.com/sublimesamana" target="_blank">@sublimesamana</a>
+            <a href="https://www.sublimesamana.com" target="_blank">sublimesamana.com</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="venue t-multi">
+        <div class="venue-band"></div>
+        <div class="venue-body">
+          <div class="venue-meta"><span class="city">CAP CANA · PUNTA CANA</span><span>MULTI</span></div>
+          <h3 class="venue-name">Eden Roc Cap Cana</h3>
+          <p class="venue-vibe" data-es>Relais & Châteaux + Mediterranean Riviera vibe en el Caribe. Comedor con jardines tropicales, beach club privado, piscinas múltiples.</p>
+          <p class="venue-vibe" data-en>Relais & Châteaux + Mediterranean Riviera vibe in the Caribbean. Dining among tropical gardens, private beach club, multiple pools.</p>
+          <div class="venue-grid">
+            <div><div class="vg-l">CAP</div><div class="vg-v">25–100</div></div>
+            <div><div class="vg-l">RENTAL</div><div class="vg-v price">$4,800–14,500</div></div>
+          </div>
+          <div class="venue-contact">
+            <a href="https://instagram.com/edenroccapcana" target="_blank">@edenroccapcana</a>
+            <a href="https://www.edenroccapcana.com" target="_blank">edenroccapcana.com</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+  <!-- PUERTO RICO -->
+  <div class="country" id="pr">
+    <div class="country-head">
+      <span class="country-flag">🇵🇷</span>
+      <div class="country-name">Puerto Rico</div>
+      <span class="country-tag" data-es>Old San Juan · Rincón · Vieques</span>
+      <span class="country-tag" data-en>Old San Juan · Rincón · Vieques</span>
+    </div>
+    <div class="venues">
+
+      <article class="venue t-multi">
+        <div class="venue-band"></div>
+        <div class="venue-body">
+          <div class="venue-meta"><span class="city">OLD SAN JUAN</span><span>MULTI</span></div>
+          <h3 class="venue-name">El Convento Hotel</h3>
+          <p class="venue-vibe" data-es>Convento carmelita del siglo XVII. Tres patios coloniales, capilla restaurada, restaurante Patio del Nispero, terraza vista al Atlántico. Boda + cena premium.</p>
+          <p class="venue-vibe" data-en>17th-century Carmelite convent. Three colonial courtyards, restored chapel, Patio del Nispero restaurant, Atlantic-view terrace. Premium wedding + dinner.</p>
+          <div class="venue-grid">
+            <div><div class="vg-l">CAP</div><div class="vg-v">20–80</div></div>
+            <div><div class="vg-l">RENTAL</div><div class="vg-v price">$3,400–9,200</div></div>
+          </div>
+          <div class="venue-contact">
+            <a href="https://instagram.com/hotelelconvento" target="_blank">@hotelelconvento</a>
+            <a href="https://www.elconvento.com" target="_blank">elconvento.com</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="venue t-brunch">
+        <div class="venue-band"></div>
+        <div class="venue-body">
+          <div class="venue-meta"><span class="city">VIEQUES</span><span>BRUNCH · CENA</span></div>
+          <h3 class="venue-name">Hix Island House</h3>
+          <p class="venue-vibe" data-es>Hotel-arquitectónico de Hix. Tres edificios brutalistas en 13 acres tropicales. Sin TVs · concepto sustentable · vibe modernista único en el Caribe.</p>
+          <p class="venue-vibe" data-en>Hix's architectural hotel. Three brutalist buildings on 13 tropical acres. No TVs · sustainable concept · unique modernist vibe in Caribbean.</p>
+          <div class="venue-grid">
+            <div><div class="vg-l">CAP</div><div class="vg-v">15–35</div></div>
+            <div><div class="vg-l">RENTAL</div><div class="vg-v price">$2,200–4,800</div></div>
+          </div>
+          <div class="venue-contact">
+            <a href="https://instagram.com/hixislandhouse" target="_blank">@hixislandhouse</a>
+            <a href="https://www.hixislandhouse.com" target="_blank">hixislandhouse.com</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+  <!-- GUATEMALA -->
+  <div class="country" id="gt">
+    <div class="country-head">
+      <span class="country-flag">🇬🇹</span>
+      <div class="country-name">Guatemala</div>
+      <span class="country-tag" data-es>Antigua · Lago Atitlán</span>
+      <span class="country-tag" data-en>Antigua · Lake Atitlán</span>
+    </div>
+    <div class="venues">
+
+      <article class="venue t-multi">
+        <div class="venue-band"></div>
+        <div class="venue-body">
+          <div class="venue-meta"><span class="city">ANTIGUA</span><span>MULTI</span></div>
+          <h3 class="venue-name">Casa Santo Domingo</h3>
+          <p class="venue-vibe" data-es>Monasterio dominico del XVI restaurado. Cinco museos, ruinas, capilla, jardín de claustro. El venue cultural-icónico de Centroamérica.</p>
+          <p class="venue-vibe" data-en>Restored 16th-century Dominican monastery. Five museums, ruins, chapel, cloister garden. Central America's iconic cultural venue.</p>
+          <div class="venue-grid">
+            <div><div class="vg-l">CAP</div><div class="vg-v">25–150</div></div>
+            <div><div class="vg-l">RENTAL</div><div class="vg-v price">$2,800–9,000</div></div>
+          </div>
+          <div class="venue-contact">
+            <a href="https://instagram.com/casasantodomingo" target="_blank">@casasantodomingo</a>
+            <a href="https://www.casasantodomingo.com.gt" target="_blank">casasantodomingo.com.gt</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="venue t-multi">
+        <div class="venue-band"></div>
+        <div class="venue-body">
+          <div class="venue-meta"><span class="city">LAGO ATITLÁN · SANTA CATARINA</span><span>MULTI · LAGO</span></div>
+          <h3 class="venue-name">Casa Palopó</h3>
+          <p class="venue-vibe" data-es>Boutique sobre el lago con vista a tres volcanes. Restaurante con cocina abierta, terraza infinity, salón de arte maya. Vibe espiritual + premium.</p>
+          <p class="venue-vibe" data-en>Boutique above the lake with three-volcano view. Open-kitchen restaurant, infinity terrace, Mayan art salon. Spiritual + premium vibe.</p>
+          <div class="venue-grid">
+            <div><div class="vg-l">CAP</div><div class="vg-v">12–40</div></div>
+            <div><div class="vg-l">RENTAL</div><div class="vg-v price">$2,000–5,400</div></div>
+          </div>
+          <div class="venue-contact">
+            <a href="https://instagram.com/casapalopo" target="_blank">@casapalopo</a>
+            <a href="https://www.casapalopo.com" target="_blank">casapalopo.com</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+  <!-- EL SALVADOR -->
+  <div class="country" id="sv">
+    <div class="country-head">
+      <span class="country-flag">🇸🇻</span>
+      <div class="country-name">El Salvador</div>
+      <span class="country-tag" data-es>El Tunco · Suchitoto</span>
+      <span class="country-tag" data-en>El Tunco · Suchitoto</span>
+    </div>
+    <div class="venues">
+
+      <article class="venue t-brunch">
+        <div class="venue-band"></div>
+        <div class="venue-body">
+          <div class="venue-meta"><span class="city">EL TUNCO · PACÍFICO</span><span>BRUNCH · CENA</span></div>
+          <h3 class="venue-name">Tunco Beach Hostel + Casona</h3>
+          <p class="venue-vibe" data-es>Surf-boutique en plena Bitcoin Country. Comedor frente a la playa, salón de yoga, sunset deck. Vibe young-tech + surf.</p>
+          <p class="venue-vibe" data-en>Surf-boutique in Bitcoin Country. Beachfront dining, yoga room, sunset deck. Young-tech + surf vibe.</p>
+          <div class="venue-grid">
+            <div><div class="vg-l">CAP</div><div class="vg-v">12–40</div></div>
+            <div><div class="vg-l">RENTAL</div><div class="vg-v price">$1,000–2,800</div></div>
+          </div>
+          <div class="venue-contact">
+            <a href="https://www.google.com/search?q=el+tunco+boutique+hotel+private+events" target="_blank">Search El Tunco venues</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+  <!-- ECUADOR -->
+  <div class="country" id="ec">
+    <div class="country-head">
+      <span class="country-flag">🇪🇨</span>
+      <div class="country-name">Ecuador</div>
+      <span class="country-tag" data-es>Quito · Cuenca · Galápagos</span>
+      <span class="country-tag" data-en>Quito · Cuenca · Galápagos</span>
+    </div>
+    <div class="venues">
+
+      <article class="venue t-multi">
+        <div class="venue-band"></div>
+        <div class="venue-body">
+          <div class="venue-meta"><span class="city">QUITO · CENTRO HISTÓRICO</span><span>MULTI</span></div>
+          <h3 class="venue-name">Casa Gangotena</h3>
+          <p class="venue-vibe" data-es>Mansión republicana frente a Plaza San Francisco. Restaurante con vista a la plaza, terraza con ciudad colonial 360°, salón privado. Una de las top 25 del mundo (Travel + Leisure).</p>
+          <p class="venue-vibe" data-en>Republican mansion facing Plaza San Francisco. Plaza-view restaurant, 360° colonial terrace, private salon. One of world's top 25 (Travel + Leisure).</p>
+          <div class="venue-grid">
+            <div><div class="vg-l">CAP</div><div class="vg-v">15–55</div></div>
+            <div><div class="vg-l">RENTAL</div><div class="vg-v price">$2,400–6,200</div></div>
+          </div>
+          <div class="venue-contact">
+            <a href="https://instagram.com/casagangotena" target="_blank">@casagangotena</a>
+            <a href="https://www.casagangotena.com" target="_blank">casagangotena.com</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+  <!-- VENEZUELA -->
+  <div class="country" id="ve">
+    <div class="country-head">
+      <span class="country-flag">🇻🇪</span>
+      <div class="country-name">Venezuela</div>
+      <span class="country-tag" data-es>Caracas · Margarita · Los Roques</span>
+      <span class="country-tag" data-en>Caracas · Margarita · Los Roques</span>
+    </div>
+    <div class="venues">
+
+      <article class="venue t-multi">
+        <div class="venue-band"></div>
+        <div class="venue-body">
+          <div class="venue-meta"><span class="city">LOS ROQUES · GRAN ROQUE</span><span>MULTI · ISLA</span></div>
+          <h3 class="venue-name">Posada Acuarela</h3>
+          <p class="venue-vibe" data-es>Posada boutique en el archipiélago Los Roques. Casitas pintadas a mano, restaurante con langosta del día, beach club privado. Caribbean exclusivo.</p>
+          <p class="venue-vibe" data-en>Boutique posada in Los Roques archipelago. Hand-painted houses, daily lobster restaurant, private beach club. Exclusive Caribbean.</p>
+          <div class="venue-grid">
+            <div><div class="vg-l">CAP</div><div class="vg-v">10–30</div></div>
+            <div><div class="vg-l">RENTAL</div><div class="vg-v price">$2,200–5,200</div></div>
+          </div>
+          <div class="venue-contact">
+            <a href="https://instagram.com/posadaacuarela" target="_blank">@posadaacuarela</a>
+            <a href="https://posadaacuarela.com" target="_blank">posadaacuarela.com</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+  <div class="callout" style="margin-top:48px">
+    <span class="cl-label" data-es>LO QUE SIGUE · ROADMAP DE VENUES</span>
+    <span class="cl-label" data-en>WHAT'S NEXT · VENUE ROADMAP</span>
+    <p data-es>Los anfitriones Sora de cada país <strong>extienden esta lista</strong> con venues off-market que no salen en este doc. Cada anfitrión debe agregar 5+ venues nuevos en sus primeros 60 días — casas privadas alquilables, fincas de amigos, restaurantes con sala privada, jardines de hotel boutique sin publicidad. Esos son los venues con verdadero moat: nadie más los conoce.</p>
+    <p data-en>Each country's Sora host <strong>extends this list</strong> with off-market venues not in this doc. Every host should add 5+ new venues in their first 60 days — rentable private homes, friends' fincas, restaurants with private rooms, unadvertised boutique hotel gardens. Those are the venues with real moat: no one else knows them.</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta">
+  <h2 data-es>El venue es <em>el escenario</em>. La curaduría de invitados es <em>la obra</em>.</h2>
+  <h2 data-en>The venue is <em>the stage</em>. The guest curation is <em>the play</em>.</h2>
+  <p data-es>Un venue increíble con la lista equivocada es un mal evento. Un venue modesto con la lista correcta es una historia. Pero el venue correcto + la lista correcta es lo que Sora vende.</p>
+  <p data-en>An incredible venue with the wrong list is a bad event. A modest venue with the right list is a story. But the right venue + right list is what Sora sells.</p>
+  <a href="latam-expansion-system.html" class="cta-btn" data-es>SISTEMA MAESTRO →</a>
+  <a href="latam-expansion-system.html" class="cta-btn" data-en>MASTER SYSTEM →</a>
+  <a href="LATAM/atlas.html" class="cta-btn" data-es>ATLAS LOCACIONES →</a>
+  <a href="LATAM/atlas.html" class="cta-btn" data-en>ATLAS →</a>
+  <a href="sora-hq.html" class="cta-btn">HQ</a>
+</div>
+
+<footer>
+  <p data-es>Venues curados para eventos · v1.0 · La Compañía / Sora MMXXVI</p>
+  <p data-en>Curated event venues · v1.0 · La Compañía / Sora MMXXVI</p>
+</footer>
+
+<script>
+  function setLang(lang){
+    document.documentElement.lang = lang;
+    document.querySelectorAll('.lang button').forEach(b => b.classList.remove('active'));
+    document.querySelector(`.lang button[onclick="setLang('${lang}')"]`).classList.add('active');
+    try { localStorage.setItem('sora.lang', lang); } catch(e){}
+  }
+  try {
+    const saved = localStorage.getItem('sora.lang');
+    if (saved) setLang(saved);
+  } catch(e){}
+</script>
+
+</body>
+</html>

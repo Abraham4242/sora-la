@@ -164,7 +164,8 @@
 </div>
 
 <div class="modes">
-  <div class="mode active" data-mode="listings"><span data-es>Listings</span><span data-en>Listings</span></div>
+  <div class="mode active" data-mode="listings"><span data-es>Premium · Listings</span><span data-en>Premium · Listings</span></div>
+  <div class="mode" data-mode="portals"><span data-es>★ Entry & mid tier · Portales</span><span data-en>★ Entry & mid tier · Portals</span></div>
   <div class="mode" data-mode="admin"><span data-es>Admin & contactos legales</span><span data-en>Admin & legal contacts</span></div>
 </div>
 
@@ -201,6 +202,28 @@
   </table>
 </main>
 
+<main class="table-wrap" id="portals-wrap" style="padding-top:24px">
+  <div style="max-width:1480px;margin:0 auto;padding:0 24px 24px">
+    <p style="font-family:var(--serif);font-size:15px;color:var(--ink-3);line-height:1.55;max-width:880px;font-weight:300;font-style:italic">
+      <span data-es>Búsquedas pre-filtradas en los portales locales reales de cada país. Click → ves inventario en vivo del tier entry/mid. Los listings Premium arriba son la curaduría top-tier de $1M+ (Sotheby's, LuxuryEstate). Estos portales son donde compra el operador local con presupuesto $50K–$500K.</span>
+      <span data-en>Pre-filtered searches on the real local portals per country. Click → see live entry/mid-tier inventory. Premium Listings above are top-tier $1M+ curation (Sotheby's, LuxuryEstate). These portals are where the local operator buys with $50K–$500K budgets.</span>
+    </p>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th><span data-es>País / Región</span><span data-en>Country / Region</span></th>
+        <th><span data-es>Tier</span><span data-en>Tier</span></th>
+        <th><span data-es>Tipo</span><span data-en>Type</span></th>
+        <th><span data-es>Tope precio USD</span><span data-en>USD price cap</span></th>
+        <th><span data-es>Portal</span><span data-en>Portal</span></th>
+        <th><span data-es>Notas</span><span data-en>Notes</span></th>
+      </tr>
+    </thead>
+    <tbody id="portals-rows"></tbody>
+  </table>
+</main>
+
 <script src="./data-land.js"></script>
 <script>
 (function(){
@@ -209,7 +232,16 @@
     BR:{flag:'🇧🇷',es:'Brasil',en:'Brazil'}, AR:{flag:'🇦🇷',es:'Argentina',en:'Argentina'},
     CR:{flag:'🇨🇷',es:'Costa Rica',en:'Costa Rica'}, PE:{flag:'🇵🇪',es:'Perú',en:'Peru'},
     CL:{flag:'🇨🇱',es:'Chile',en:'Chile'}, UY:{flag:'🇺🇾',es:'Uruguay',en:'Uruguay'},
-    PA:{flag:'🇵🇦',es:'Panamá',en:'Panama'}, VE:{flag:'🇻🇪',es:'Venezuela',en:'Venezuela'}
+    PA:{flag:'🇵🇦',es:'Panamá',en:'Panama'}, VE:{flag:'🇻🇪',es:'Venezuela',en:'Venezuela'},
+    DO:{flag:'🇩🇴',es:'República Dominicana',en:'Dominican Republic'},
+    EC:{flag:'🇪🇨',es:'Ecuador',en:'Ecuador'},
+    GT:{flag:'🇬🇹',es:'Guatemala',en:'Guatemala'},
+    SV:{flag:'🇸🇻',es:'El Salvador',en:'El Salvador'},
+    HN:{flag:'🇭🇳',es:'Honduras',en:'Honduras'},
+    NI:{flag:'🇳🇮',es:'Nicaragua',en:'Nicaragua'},
+    PR:{flag:'🇵🇷',es:'Puerto Rico',en:'Puerto Rico'},
+    PY:{flag:'🇵🇾',es:'Paraguay',en:'Paraguay'},
+    BO:{flag:'🇧🇴',es:'Bolivia',en:'Bolivia'}
   };
   const TYPES_LISTINGS = [
     {k:'apartment',es:'Departamento',en:'Apartment'},
@@ -246,17 +278,22 @@
     document.querySelectorAll('.mode').forEach(x=>x.classList.toggle('active', x===m));
     document.getElementById('listings-wrap').style.display = state.mode==='listings'?'block':'none';
     document.getElementById('admin-wrap').classList.toggle('active', state.mode==='admin');
+    document.getElementById('portals-wrap').classList.toggle('active', state.mode==='portals');
     buildChips(); render();
   }));
 
   /* chips */
   function buildChips(){
     const lang = document.documentElement.getAttribute('lang') || 'es';
-    const data = state.mode==='listings' ? window.SORA_LAND.LISTINGS : window.SORA_LAND.ADMIN;
-    const TYPES = state.mode==='listings' ? TYPES_LISTINGS : TYPES_ADMIN;
+    const data = state.mode==='listings' ? window.SORA_LAND.LISTINGS
+               : state.mode==='admin'    ? window.SORA_LAND.ADMIN
+               : window.SORA_LAND.PORTALS;
+    const TYPES = state.mode==='listings' ? TYPES_LISTINGS
+               : state.mode==='admin'    ? TYPES_ADMIN
+               : TYPES_LISTINGS;
 
     const cc = {}; data.forEach(d=>{ cc[d.country] = (cc[d.country]||0)+1; });
-    const orderedC = ['MX','CO','BR','AR','CR','PE','CL','UY','PA','VE'].filter(c=>cc[c]);
+    const orderedC = ['MX','CO','BR','AR','CR','PE','CL','UY','PA','VE','DO','EC','GT','SV','HN','NI','PR','PY','BO'].filter(c=>cc[c]);
     document.getElementById('f-country').innerHTML =
       `<button class="chip ${state.country==='ALL'?'on':''}" data-v="ALL">${lang==='es'?'Todos':'All'} <span class="ct">${data.length}</span></button>` +
       orderedC.map(c=>`<button class="chip ${state.country===c?'on':''}" data-v="${c}">${COUNTRIES[c].flag} ${c} <span class="ct">${cc[c]}</span></button>`).join('');
@@ -376,7 +413,7 @@
           </div>
         </article>`;
       }).join('');
-    } else {
+    } else if(state.mode==='admin') {
       const filtered = admin.filter(a=>{
         if(state.country!=='ALL' && a.country!==state.country) return false;
         if(state.type!=='ALL' && a.type!==state.type) return false;
@@ -395,6 +432,33 @@
           <td><span class="col-type type-${a.type}">${typeLabel(a.type)}</span></td>
           <td class="col-name">${a.name}</td>
           <td class="col-contact">${a.contact||''}</td>
+          <td class="col-notes">${note}</td>
+        </tr>`;
+      }).join('');
+    } else {
+      /* PORTALS MODE */
+      const portals = window.SORA_LAND.PORTALS || [];
+      const filtered = portals.filter(p=>{
+        if(state.country!=='ALL' && p.country!==state.country) return false;
+        if(state.type!=='ALL' && p.type!==state.type) return false;
+        if(state.q){
+          const blob = `${p.region} ${p.country} ${p.portal||''} ${p.tier||''} ${(p.notes&&p.notes[lang])||''}`.toLowerCase();
+          if(!blob.includes(state.q)) return false;
+        }
+        return true;
+      });
+      const typeLabel = k => (TYPES_LISTINGS.find(x=>x.k===k)||{})[lang] || k;
+      document.getElementById('portals-rows').innerHTML = filtered.map(p=>{
+        const cc = COUNTRIES[p.country] || {flag:''};
+        const note = (p.notes && p.notes[lang]) || '';
+        const tierColor = p.tier==='entry' ? 'color:var(--green)' : 'color:var(--gold)';
+        const tierLabel = p.tier==='entry' ? 'ENTRY' : 'MID';
+        return `<tr>
+          <td class="col-country"><span class="fl">${cc.flag}</span>${p.country}<div class="col-region">${p.region}</div></td>
+          <td><span class="col-type" style="${tierColor}">${tierLabel}</span></td>
+          <td><span class="col-type" style="color:var(--teal)">${typeLabel(p.type)}</span></td>
+          <td style="font-family:var(--mono);font-size:12px;color:var(--coral);font-weight:600">≤ $${(p.priceCapUSD/1000).toFixed(0)}K</td>
+          <td><a href="${p.url}" target="_blank" rel="noopener" style="font-family:var(--mono);font-size:11.5px;color:var(--ink);border-bottom:0.5px dashed var(--ink-3);padding-bottom:1px"><strong>${p.portal}</strong> ↗</a></td>
           <td class="col-notes">${note}</td>
         </tr>`;
       }).join('');

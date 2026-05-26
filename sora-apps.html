@@ -1,0 +1,681 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SORA · Applications · Internal Tooling</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Instrument+Serif&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F8F3EA; --cream-2:#F2EBDD; --cream-3:#E9DFCA;
+    --ink:#1B1A17; --ink-2:#3A352D; --ink-3:#5C5346; --faint:#9A8E7A;
+    --line:rgba(27,26,23,.10); --line-2:rgba(27,26,23,.06);
+    --coral:#D9573B; --gold:#B58F4D; --mango:#E2A24A; --green:#3F5F45; --rose:#B8616B; --teal:#2C6E7F;
+    --serif:'Fraunces',Georgia,serif; --display:'Instrument Serif',Georgia,serif;
+    --sans:'Inter',-apple-system,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--cream);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;font-size:15px;line-height:1.55}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--coral);color:var(--cream)}
+
+  [data-en]{display:none}
+  html[lang="en"] [data-es]{display:none}
+  html[lang="en"] [data-en]{display:inline}
+  html[lang="en"] li[data-en],html[lang="en"] p[data-en],html[lang="en"] div[data-en],html[lang="en"] h1[data-en],html[lang="en"] h2[data-en],html[lang="en"] h3[data-en],html[lang="en"] td[data-en],html[lang="en"] th[data-en]{display:block}
+
+  .top{position:sticky;top:0;z-index:50;background:rgba(248,243,234,.92);backdrop-filter:blur(14px);border-bottom:0.5px solid var(--line)}
+  .top-in{max-width:1180px;margin:0 auto;padding:14px 28px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .brand{font-family:var(--serif);font-weight:600;font-size:16px;letter-spacing:.16em;color:var(--ink)}
+  .brand em{font-style:italic;color:var(--coral)}
+  .top-tag{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--rose);text-transform:uppercase;padding:4px 10px;background:rgba(184,97,107,.10);border-radius:4px}
+  .top-link{font-family:var(--sans);font-size:12px;color:var(--ink-2);padding:7px 12px;border:0.5px solid var(--line);border-radius:5px}
+  .top-link:hover{background:var(--cream-2)}
+  .spacer{flex:1}
+  .lang{display:inline-flex;border:0.5px solid var(--line);border-radius:5px;overflow:hidden}
+  .lang button{padding:6px 11px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;background:transparent;border:0;color:var(--faint);cursor:pointer;font-weight:500}
+  .lang button.active{background:var(--ink);color:var(--cream)}
+
+  .hero{padding:72px 32px 48px;max-width:1180px;margin:0 auto;text-align:center}
+  .hero-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--coral);font-weight:600;margin-bottom:22px}
+  .hero h1{font-family:var(--display);font-weight:400;font-size:clamp(48px,8vw,96px);line-height:.96;letter-spacing:-.025em;color:var(--ink);margin-bottom:18px}
+  .hero h1 em{font-style:italic;color:var(--coral)}
+  .hero-lede{font-family:var(--serif);font-size:19px;color:var(--ink-2);font-weight:300;max-width:780px;margin:0 auto;line-height:1.5}
+  .hero-lede strong{color:var(--ink);font-weight:500}
+
+  .strip{max-width:1180px;margin:32px auto 0;padding:0 32px;display:grid;grid-template-columns:repeat(5,1fr);border-top:0.5px solid var(--line);border-bottom:0.5px solid var(--line)}
+  .strip > div{padding:22px 18px;text-align:center;border-right:0.5px solid var(--line)}
+  .strip > div:last-child{border-right:0}
+  .strip .n{font-family:var(--display);font-size:34px;color:var(--coral);line-height:1;margin-bottom:6px}
+  .strip .l{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
+
+  section{max-width:1180px;margin:0 auto;padding:48px 32px}
+  .sec-head{margin-bottom:24px}
+  .sec-num{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--coral);font-weight:600;margin-bottom:12px}
+  .sec-head h2{font-family:var(--display);font-weight:400;font-size:clamp(30px,4.5vw,46px);line-height:1.06;letter-spacing:-.02em;color:var(--ink);margin-bottom:10px}
+  .sec-head h2 em{font-style:italic;color:var(--coral)}
+  .sec-sub{font-family:var(--serif);font-size:16px;color:var(--ink-3);font-weight:300;max-width:740px;line-height:1.55}
+
+  /* App cards */
+  .apps{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px;margin-top:24px}
+  .app{background:var(--cream);border:0.5px solid var(--line);border-radius:10px;padding:0;overflow:hidden;display:flex;flex-direction:column}
+  .app-band{height:4px}
+  .app.status-live .app-band{background:var(--green)}
+  .app.status-beta .app-band{background:var(--gold)}
+  .app.status-plan .app-band{background:var(--faint)}
+  .app-body{padding:22px 24px 22px;flex:1;display:flex;flex-direction:column}
+  .app-top{display:flex;align-items:start;justify-content:space-between;gap:12px;margin-bottom:12px}
+  .app-status{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;padding:3px 8px;border-radius:3px;white-space:nowrap}
+  .app.status-live .app-status{color:var(--green);background:rgba(63,95,69,.10)}
+  .app.status-beta .app-status{color:var(--gold);background:rgba(181,143,77,.12)}
+  .app.status-plan .app-status{color:var(--faint);background:var(--cream-2)}
+  .app-cat{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--coral);font-weight:600;margin-bottom:4px}
+  .app h3{font-family:var(--display);font-size:22px;font-weight:400;color:var(--ink);margin-bottom:6px;line-height:1.2;letter-spacing:-.005em}
+  .app h3 em{font-style:italic;color:var(--coral)}
+  .app .tagline{font-family:var(--serif);font-style:italic;font-size:14.5px;color:var(--ink-3);line-height:1.4;margin-bottom:14px}
+  .app p{font-family:var(--serif);font-size:14px;color:var(--ink-2);line-height:1.55;margin-bottom:12px}
+  .app ul{list-style:none;padding:0;margin-top:8px;margin-bottom:14px}
+  .app li{font-family:var(--sans);font-size:13px;color:var(--ink-2);padding:4px 0 4px 16px;position:relative;line-height:1.45}
+  .app li::before{content:'';position:absolute;left:0;top:11px;width:8px;height:1px;background:var(--coral)}
+  .app li code{font-family:var(--mono);font-size:11.5px;background:var(--cream-2);padding:1px 6px;border-radius:3px}
+
+  .app-meta{margin-top:auto;padding-top:14px;border-top:0.5px solid var(--line-2);display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:11.5px}
+  .app-meta div{font-family:var(--mono);color:var(--ink-3)}
+  .app-meta .label{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-bottom:2px}
+  .app-meta .val{color:var(--ink-2);font-weight:500}
+
+  .app-action{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+  .app-action a{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;padding:8px 14px;border-radius:5px;border:0.5px solid var(--line)}
+  .app-action a.primary{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+  .app-action a.primary:hover{background:var(--coral);border-color:var(--coral)}
+  .app-action a.secondary{background:var(--cream-2);color:var(--ink-2)}
+  .app-action a.secondary:hover{background:var(--cream-3)}
+
+  /* code block */
+  pre.code{background:var(--ink);color:var(--cream);padding:18px 22px;border-radius:8px;font-family:var(--mono);font-size:12.5px;line-height:1.7;margin:12px 0;overflow-x:auto;white-space:pre-wrap}
+  pre.code .h{color:var(--mango)}
+  pre.code .c{color:var(--faint);font-style:italic}
+  pre.code .g{color:#A0CFA0}
+
+  /* category section heading */
+  .cat-head{font-family:var(--display);font-size:28px;color:var(--ink);font-weight:400;font-style:italic;margin:32px 0 8px;letter-spacing:-.01em}
+  .cat-head em{color:var(--coral);font-style:normal;font-family:var(--mono);font-size:11px;letter-spacing:.14em;margin-left:14px;font-weight:600;text-transform:uppercase;vertical-align:middle}
+
+  /* Callout */
+  .callout{background:var(--cream-2);border:0.5px solid var(--line);border-left:3px solid var(--coral);border-radius:8px;padding:20px 24px;margin:24px 0;font-family:var(--serif);font-size:15px;line-height:1.6;color:var(--ink-2)}
+  .callout strong{color:var(--ink)}
+  .callout .cl-label{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--coral);text-transform:uppercase;font-weight:600;margin-bottom:8px;display:block}
+
+  /* CTA */
+  .cta{max-width:780px;margin:48px auto 40px;padding:42px 38px;text-align:center;background:var(--cream-2);border:0.5px solid var(--line);border-radius:14px}
+  .cta h2{font-family:var(--display);font-weight:400;font-size:clamp(28px,4.5vw,42px);line-height:1.1;color:var(--ink);margin-bottom:14px}
+  .cta h2 em{font-style:italic;color:var(--coral)}
+  .cta p{font-family:var(--serif);font-size:16px;color:var(--ink-2);line-height:1.55;margin-bottom:22px}
+  .cta-btn{display:inline-block;padding:12px 26px;background:var(--ink);color:var(--cream);font-family:var(--mono);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;border-radius:6px;font-weight:600;margin:0 4px}
+  .cta-btn:hover{background:var(--coral)}
+
+  footer{max-width:1180px;margin:24px auto 0;padding:28px 32px;border-top:0.5px solid var(--line);text-align:center}
+  footer p{font-family:var(--mono);font-size:11px;letter-spacing:.10em;color:var(--ink-3)}
+
+  @media (max-width:760px){
+    .strip{grid-template-columns:repeat(2,1fr)}
+    .strip > div:nth-child(2n){border-right:0}
+    .strip > div{border-bottom:0.5px solid var(--line)}
+  }
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="top-in">
+    <a class="brand" href="sora-hq.html">SORA<em>°</em></a>
+    <span class="top-tag" data-es>APPLICATIONS · TOOLING INTERNO</span>
+    <span class="top-tag" data-en>APPLICATIONS · INTERNAL TOOLING</span>
+    <a class="top-link" href="sora-design.html" data-es>↗ Diseño</a>
+    <a class="top-link" href="sora-design.html" data-en>↗ Design</a>
+    <a class="top-link" href="latam-expansion-system.html" data-es>↗ Sistema maestro</a>
+    <a class="top-link" href="latam-expansion-system.html" data-en>↗ Master system</a>
+    <span class="spacer"></span>
+    <div class="lang">
+      <button class="active" onclick="setLang('es')">ES</button>
+      <button onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="hero-eyebrow" data-es>APPLICATIONS · LO QUE LA COMPAÑÍA HA CONSTRUIDO</div>
+  <div class="hero-eyebrow" data-en>APPLICATIONS · WHAT LA COMPAÑÍA HAS BUILT</div>
+  <h1 data-es>Las <em>herramientas</em><br>internas.</h1>
+  <h1 data-en>The <em>internal</em><br>tools.</h1>
+  <p class="hero-lede" data-es>Sora opera como un <strong>equipo pequeño con apalancamiento gigante</strong>. Las herramientas multiplican personas. Aquí están las que ya están construidas, las que están en beta, y las que vienen — desde scrapers de redes sociales hasta generación automatizada de contenido y briefs.</p>
+  <p class="hero-lede" data-en>Sora operates as a <strong>small team with giant leverage</strong>. Tools multiply people. Here are the ones built, the ones in beta, and what's coming — from social-media scrapers to automated content generation and briefs.</p>
+</header>
+
+<div class="strip">
+  <div><div class="n">3</div><div class="l" data-es>Apps en producción</div><div class="l" data-en>Production apps</div></div>
+  <div><div class="n">4</div><div class="l" data-es>En beta</div><div class="l" data-en>In beta</div></div>
+  <div><div class="n">6</div><div class="l" data-es>En roadmap</div><div class="l" data-en>On roadmap</div></div>
+  <div><div class="n">13</div><div class="l" data-es>Herramientas MCP</div><div class="l" data-en>MCP tools</div></div>
+  <div><div class="n">100%</div><div class="l" data-es>Open source interno</div><div class="l" data-en>Internal open source</div></div>
+</div>
+
+<!-- ============ 01 · SOURCING ============ -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es>01 · SOURCING DE TALENTO + DATOS</div>
+    <div class="sec-num" data-en>01 · TALENT + DATA SOURCING</div>
+    <h2 data-es>Para <em>encontrar</em> personas y propiedades.</h2>
+    <h2 data-en>To <em>find</em> people and properties.</h2>
+    <p class="sec-sub" data-es>Conectan a Sora con redes sociales, mercados laborales, listings inmobiliarios. Cero scraping manual — todo se llama desde Claude Code via MCP server.</p>
+    <p class="sec-sub" data-en>Connect Sora to social media, job markets, real estate listings. Zero manual scraping — everything is called from Claude Code via MCP server.</p>
+  </div>
+
+  <div class="apps">
+
+    <article class="app status-live">
+      <div class="app-band"></div>
+      <div class="app-body">
+        <div class="app-top">
+          <div>
+            <div class="app-cat">MCP · SOCIAL MINING</div>
+            <h3 data-es>Sora <em>Instagram</em> + multi-platform MCP</h3>
+            <h3 data-en>Sora <em>Instagram</em> + multi-platform MCP</h3>
+          </div>
+          <span class="app-status">LIVE</span>
+        </div>
+        <p class="tagline" data-es>13 herramientas. Minería de IG · TikTok · Twitter · Facebook desde una sola interfaz.</p>
+        <p class="tagline" data-en>13 tools. IG · TikTok · Twitter · Facebook mining from one interface.</p>
+        <p data-es>MCP server (Model Context Protocol) corriendo via stdio. Conecta Claude Code directo a Apify para minería de redes sociales con cost-cap guards. Llama tools desde cualquier sesión de Claude Code después de registrar.</p>
+        <p data-en>MCP server (Model Context Protocol) running via stdio. Connects Claude Code directly to Apify for social-media mining with cost-cap guards. Call tools from any Claude Code session after registration.</p>
+        <ul>
+          <li><code>ig_mine_seed_commenters</code> — comentaristas de una cuenta semilla</li>
+          <li><code>ig_mine_tagged_at_venue</code> — perfiles taggeados en venue específico</li>
+          <li><code>ig_mine_hashtag_top</code> — top posts por hashtag</li>
+          <li><code>tt_mine_user_videos</code> — videos TikTok de usuario</li>
+          <li><code>tw_mine_search</code> — Twitter search con filtros</li>
+          <li><code>fb_mine_page_posts</code> — posts de página Facebook</li>
+          <li><code>score_profile</code> — rúbrica 0-20 automática</li>
+          <li>+ 6 herramientas más (followers, location, full mining flow)</li>
+        </ul>
+        <div class="app-meta">
+          <div><div class="label" data-es>Ubicación</div><div class="label" data-en>Location</div><div class="val">~/sora-instagram-mcp</div></div>
+          <div><div class="label" data-es>Stack</div><div class="label" data-en>Stack</div><div class="val">Node · @modelcontextprotocol/sdk · apify-client</div></div>
+          <div><div class="label" data-es>Costo</div><div class="label" data-en>Cost</div><div class="val">~$0.30 / 1K perfiles · cap $5/sesión</div></div>
+          <div><div class="label" data-es>Req. auth</div><div class="label" data-en>Auth req.</div><div class="val">APIFY_TOKEN env</div></div>
+        </div>
+        <div class="app-action">
+          <a class="primary" href="LATAM/insta-playbook.html" data-es>PLAYBOOK IG →</a>
+          <a class="primary" href="LATAM/insta-playbook.html" data-en>IG PLAYBOOK →</a>
+          <a class="secondary" href="file:///Users/jacobeid/sora-instagram-mcp/README.md" data-es>README</a>
+          <a class="secondary" href="file:///Users/jacobeid/sora-instagram-mcp/README.md" data-en>README</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="app status-live">
+      <div class="app-band"></div>
+      <div class="app-body">
+        <div class="app-top">
+          <div>
+            <div class="app-cat">DATA · CRM</div>
+            <h3 data-es><em>CRM</em> interno con localStorage</h3>
+            <h3 data-en>Internal <em>CRM</em> with localStorage</h3>
+          </div>
+          <span class="app-status">LIVE</span>
+        </div>
+        <p class="tagline" data-es>52+ contactos categorizados · estado editable · sin servidor.</p>
+        <p class="tagline" data-en>52+ categorized contacts · editable status · no server.</p>
+        <p data-es>Sistema CRM ligero corriendo 100% en navegador. Datos en localStorage — cada operador tiene su vista. Roles: chefs, hoteleros, abogados, brokers, talento, anfitriones. Estado warm/cold/partnered, último toque, owner.</p>
+        <p data-en>Lightweight CRM running 100% in browser. localStorage data — each operator has their view. Roles: chefs, hoteliers, lawyers, brokers, talent, hosts. Status warm/cold/partnered, last-touched, owner.</p>
+        <ul>
+          <li data-es>52+ contactos curados pre-cargados</li>
+          <li data-en>52+ curated contacts pre-loaded</li>
+          <li data-es>Filtros por país (15) + categoría (11)</li>
+          <li data-en>Filters by country (15) + category (11)</li>
+          <li data-es>Persistencia en localStorage por operador</li>
+          <li data-en>Per-operator localStorage persistence</li>
+          <li data-es>Export JSON para sync compartido</li>
+          <li data-en>JSON export for shared sync</li>
+        </ul>
+        <div class="app-meta">
+          <div><div class="label">URL</div><div class="val">/LATAM/contacts.html</div></div>
+          <div><div class="label" data-es>Datos</div><div class="label" data-en>Data</div><div class="val">data-ops.js</div></div>
+        </div>
+        <div class="app-action">
+          <a class="primary" href="LATAM/contacts.html">OPEN CRM →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="app status-live">
+      <div class="app-band"></div>
+      <div class="app-body">
+        <div class="app-top">
+          <div>
+            <div class="app-cat">DATA · LAND</div>
+            <h3 data-es><em>Land</em> database + portales</h3>
+            <h3 data-en><em>Land</em> database + portals</h3>
+          </div>
+          <span class="app-status">LIVE</span>
+        </div>
+        <p class="tagline" data-es>3 modos · listings premium · entry/mid portales · admin legal.</p>
+        <p class="tagline" data-en>3 modes · premium listings · entry/mid portals · legal admin.</p>
+        <p data-es>Base de propiedades en venta + integración con portales locales (Computrabajo, Inmuebles24, Fincaraíz, etc.) con búsquedas pre-filtradas por tier de precio. Plus contactos administrativos (registro público, catastro, notario, planificación) para due diligence.</p>
+        <p data-en>For-sale property database + integration with local portals (Computrabajo, Inmuebles24, Fincaraíz, etc.) with tier-filtered presets. Plus administrative contacts (public registry, cadastre, notary, planning) for due diligence.</p>
+        <ul>
+          <li data-es>47 listings premium verificados (Sotheby's / LuxuryEstate)</li>
+          <li data-en>47 verified premium listings (Sotheby's / LuxuryEstate)</li>
+          <li data-es>27 portales entry/mid con búsqueda filtrada por precio</li>
+          <li data-en>27 entry/mid portals with price-filtered search</li>
+          <li data-es>32 contactos legales por país (registro · catastro · notario)</li>
+          <li data-en>32 legal contacts per country (registry · cadastre · notary)</li>
+        </ul>
+        <div class="app-meta">
+          <div><div class="label">URL</div><div class="val">/LATAM/land.html</div></div>
+          <div><div class="label" data-es>Sister doc</div><div class="label" data-en>Sister doc</div><div class="val">land-registries.html</div></div>
+        </div>
+        <div class="app-action">
+          <a class="primary" href="LATAM/land.html" data-es>OPEN BASE →</a>
+          <a class="primary" href="LATAM/land.html" data-en>OPEN DATABASE →</a>
+          <a class="secondary" href="land-registries.html" data-es>REGISTROS →</a>
+          <a class="secondary" href="land-registries.html" data-en>REGISTRIES →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="app status-beta">
+      <div class="app-band"></div>
+      <div class="app-body">
+        <div class="app-top">
+          <div>
+            <div class="app-cat">MCP · LINKEDIN</div>
+            <h3 data-es>Sora <em>LinkedIn</em> miner</h3>
+            <h3 data-en>Sora <em>LinkedIn</em> miner</h3>
+          </div>
+          <span class="app-status">BETA</span>
+        </div>
+        <p class="tagline" data-es>Búsqueda booleana de perfiles hospitalidad + sales nav scraping.</p>
+        <p class="tagline" data-en>Boolean profile search hospitality + sales nav scraping.</p>
+        <p data-es>Extensión del MCP server para LinkedIn. Búsquedas avanzadas booleanas, parseo de perfiles, detección de "open to work". Riesgo: ToS LinkedIn — usar desde IP separada del LinkedIn corporativo.</p>
+        <p data-en>MCP server extension for LinkedIn. Advanced boolean searches, profile parsing, "open to work" detection. Risk: LinkedIn ToS — use from IP separate from corporate LinkedIn.</p>
+        <ul>
+          <li><code>li_boolean_search</code> — query con filtros país/idioma/título</li>
+          <li><code>li_profile_parse</code> — extrae experiencia + skills</li>
+          <li data-es>Integra con sourcing-linkedin.html (no broadcast)</li>
+          <li data-en>Integrates with sourcing-linkedin.html (no broadcast)</li>
+        </ul>
+        <div class="app-meta">
+          <div><div class="label" data-es>Estado</div><div class="label" data-en>Status</div><div class="val">Beta · testing</div></div>
+          <div><div class="label">ETA</div><div class="val">Junio 2026</div></div>
+        </div>
+        <div class="app-action">
+          <a class="primary" href="sourcing-linkedin.html" data-es>PLAYBOOK LINKEDIN →</a>
+          <a class="primary" href="sourcing-linkedin.html" data-en>LINKEDIN PLAYBOOK →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="app status-plan">
+      <div class="app-band"></div>
+      <div class="app-body">
+        <div class="app-top">
+          <div>
+            <div class="app-cat">MCP · JOB BOARDS</div>
+            <h3 data-es>Multi-board <em>job poster</em></h3>
+            <h3 data-en>Multi-board <em>job poster</em></h3>
+          </div>
+          <span class="app-status">ROADMAP</span>
+        </div>
+        <p class="tagline" data-es>Postear vacante en 8 bolsas LATAM con un comando.</p>
+        <p class="tagline" data-en>Post vacancy to 8 LATAM job boards with one command.</p>
+        <p data-es>Tool MCP que toma una vacante Sora y la postea automáticamente en Computrabajo + Bumeran + Encuentra24 + Tecoloco + OCC + Catho · por país. Recibe aplicaciones en email centralizado o WhatsApp.</p>
+        <p data-en>MCP tool that takes a Sora vacancy and auto-posts to Computrabajo + Bumeran + Encuentra24 + Tecoloco + OCC + Catho · by country. Receives applications in central email or WhatsApp.</p>
+        <ul>
+          <li><code>jb_post_multi</code> — postea a N plataformas</li>
+          <li><code>jb_status_check</code> — verifica que cada post quedó publicado</li>
+          <li><code>jb_pull_applicants</code> — descarga aplicaciones por día</li>
+          <li data-es>Plataformas captcha-pesadas (LinkedIn Jobs) excluidas — manual</li>
+          <li data-en>Captcha-heavy platforms (LinkedIn Jobs) excluded — manual</li>
+        </ul>
+        <div class="app-meta">
+          <div><div class="label">ETA</div><div class="val">Q3 2026</div></div>
+          <div><div class="label" data-es>Owner</div><div class="label" data-en>Owner</div><div class="val">Abraham</div></div>
+        </div>
+        <div class="app-action">
+          <a class="secondary" href="sourcing-jobboards.html" data-es>BOLSAS DOC →</a>
+          <a class="secondary" href="sourcing-jobboards.html" data-en>BOARDS DOC →</a>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============ 02 · CONTENT + OPS ============ -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es>02 · CONTENIDO + OPERACIONES</div>
+    <div class="sec-num" data-en>02 · CONTENT + OPS</div>
+    <h2 data-es>Para <em>producir</em> y orquestar.</h2>
+    <h2 data-en>To <em>produce</em> and orchestrate.</h2>
+    <p class="sec-sub" data-es>Generación de copy y briefs · gestión de eventos · sync entre canales de team.</p>
+    <p class="sec-sub" data-en>Copy and brief generation · event management · team-channel sync.</p>
+  </div>
+
+  <div class="apps">
+
+    <article class="app status-beta">
+      <div class="app-band"></div>
+      <div class="app-body">
+        <div class="app-top">
+          <div>
+            <div class="app-cat">CONTENT · COPYWRITER</div>
+            <h3 data-es>Sora <em>copy</em> generator</h3>
+            <h3 data-en>Sora <em>copy</em> generator</h3>
+          </div>
+          <span class="app-status">BETA</span>
+        </div>
+        <p class="tagline" data-es>Voz de marca · DM · email · descripción evento · IG caption.</p>
+        <p class="tagline" data-en>Brand voice · DM · email · event description · IG caption.</p>
+        <p data-es>Tool que genera copy Sora-voice de cualquier tipo. Entrena con la "voz" embedida en los docs (no emojis, frases cortas, italics para nuance). Prompt locked con guía de estilo de marca.</p>
+        <p data-en>Tool generating Sora-voice copy of any type. Trained on the "voice" embedded in docs (no emojis, short sentences, italics for nuance). Brand-style prompt-locked.</p>
+        <ul>
+          <li><code>copy_dm</code> — DM IG personalizado con referencia específica</li>
+          <li><code>copy_email_outreach</code> — outreach a partner</li>
+          <li><code>copy_event_description</code> — descripción del evento próximo</li>
+          <li><code>copy_ig_caption</code> — caption del IG con CTA</li>
+          <li data-es>Modo "draft" da 3 variantes para elegir</li>
+          <li data-en>"Draft" mode gives 3 variants to choose</li>
+        </ul>
+        <div class="app-meta">
+          <div><div class="label" data-es>Estado</div><div class="label" data-en>Status</div><div class="val">Beta · prompts iterando</div></div>
+          <div><div class="label">ETA live</div><div class="val">Junio 2026</div></div>
+        </div>
+        <div class="app-action">
+          <a class="secondary" href="sora-design.html" data-es>VER DESIGN →</a>
+          <a class="secondary" href="sora-design.html" data-en>SEE DESIGN →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="app status-beta">
+      <div class="app-band"></div>
+      <div class="app-body">
+        <div class="app-top">
+          <div>
+            <div class="app-cat">OPS · EVENTS</div>
+            <h3 data-es><em>Event brief</em> generator</h3>
+            <h3 data-en><em>Event brief</em> generator</h3>
+          </div>
+          <span class="app-status">BETA</span>
+        </div>
+        <p class="tagline" data-es>Brief completo de evento de 28 personas en 30 segundos.</p>
+        <p class="tagline" data-en>Full 28-person event brief in 30 seconds.</p>
+        <p data-es>Input: ciudad, fecha, presupuesto, tipo. Output: brief completo · lista de venues recomendados (de event-venues.html) · checklist de logística · timeline · guest list framework con composición 40/40/20.</p>
+        <p data-en>Input: city, date, budget, type. Output: full brief · recommended venues (from event-venues.html) · logistics checklist · timeline · 40/40/20 guest-list framework.</p>
+        <ul>
+          <li><code>brief_event</code> — input → brief en 1 llamada</li>
+          <li><code>brief_venue_match</code> — match al venue ideal del país</li>
+          <li><code>brief_guest_logic</code> — lógica composición 40 conectores / 40 compradores / 20 talento</li>
+        </ul>
+        <div class="app-meta">
+          <div><div class="label">ETA</div><div class="val">Junio 2026</div></div>
+          <div><div class="label" data-es>Owner</div><div class="label" data-en>Owner</div><div class="val">Minor + Abraham</div></div>
+        </div>
+        <div class="app-action">
+          <a class="secondary" href="event-venues.html" data-es>VENUES →</a>
+          <a class="secondary" href="event-venues.html" data-en>VENUES →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="app status-plan">
+      <div class="app-band"></div>
+      <div class="app-body">
+        <div class="app-top">
+          <div>
+            <div class="app-cat">OPS · WHATSAPP</div>
+            <h3 data-es>Sora <em>WhatsApp</em> bot</h3>
+            <h3 data-en>Sora <em>WhatsApp</em> bot</h3>
+          </div>
+          <span class="app-status">ROADMAP</span>
+        </div>
+        <p class="tagline" data-es>Auto-respuesta primer filtro · routing inteligente · sync CRM.</p>
+        <p class="tagline" data-en>Auto-reply first filter · smart routing · CRM sync.</p>
+        <p data-es>Cuando un candidato responde a un anuncio de Sora vía WhatsApp, el bot: (1) auto-responde con 3 preguntas de filtro, (2) clasifica según calidad de respuesta, (3) si pasa → agenda Calendly con Minor, (4) sync al CRM. Si no pasa → rechazo amable automático.</p>
+        <p data-en>When a candidate replies to a Sora ad via WhatsApp, the bot: (1) auto-replies with 3 filter questions, (2) classifies by response quality, (3) if passes → Calendly schedules with Minor, (4) syncs CRM. If fails → automated kind rejection.</p>
+        <ul>
+          <li data-es>Reduce trabajo manual de filtro 70%</li>
+          <li data-en>Reduces manual filter work 70%</li>
+          <li data-es>WhatsApp Business API · ~$0.005/mensaje</li>
+          <li data-en>WhatsApp Business API · ~$0.005/message</li>
+          <li data-es>Brand voice locked</li>
+          <li data-en>Brand voice locked</li>
+        </ul>
+        <div class="app-meta">
+          <div><div class="label">ETA</div><div class="val">Q3 2026</div></div>
+          <div><div class="label" data-es>Costo</div><div class="label" data-en>Cost</div><div class="val">~$20/mes · low-volume</div></div>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============ 03 · ANALYTICS + DASHBOARDS ============ -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es>03 · ANALYTICS + DASHBOARDS</div>
+    <div class="sec-num" data-en>03 · ANALYTICS + DASHBOARDS</div>
+    <h2 data-es>Para <em>ver</em> el negocio.</h2>
+    <h2 data-en>To <em>see</em> the business.</h2>
+  </div>
+
+  <div class="apps">
+
+    <article class="app status-live">
+      <div class="app-band"></div>
+      <div class="app-body">
+        <div class="app-top">
+          <div>
+            <div class="app-cat">DASHBOARD · LIVE</div>
+            <h3 data-es><em>LATAM</em> dashboard en vivo</h3>
+            <h3 data-en>Live <em>LATAM</em> dashboard</h3>
+          </div>
+          <span class="app-status">LIVE</span>
+        </div>
+        <p class="tagline" data-es>15 países lado a lado · noticias Google News · KPIs por capítulo.</p>
+        <p class="tagline" data-en>15 countries side by side · Google News · KPIs per chapter.</p>
+        <p data-es>Vista de comparativa multi-país. Click un país → expande con noticias en vivo de 5 categorías + 8 deep links autoritativos. Para escanear quincenalmente.</p>
+        <p data-en>Multi-country comparison view. Click a country → expands with live news across 5 categories + 8 authoritative deep links. Scan biweekly.</p>
+        <div class="app-action">
+          <a class="primary" href="LATAM/dashboard.html">OPEN →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="app status-live">
+      <div class="app-band"></div>
+      <div class="app-body">
+        <div class="app-top">
+          <div>
+            <div class="app-cat">DASHBOARD · AUDIENCE</div>
+            <h3 data-es><em>Audience</em> + turismo</h3>
+            <h3 data-en><em>Audience</em> + tourism</h3>
+          </div>
+          <span class="app-status">LIVE</span>
+        </div>
+        <p class="tagline" data-es>Datos UNWTO + STR Hotels · llegadas internacionales · ticket promedio.</p>
+        <p class="tagline" data-en>UNWTO + STR Hotels data · international arrivals · avg ticket.</p>
+        <p data-es>Línea base 2024-2025 por país: llegadas, top-5 mercados, segmento premium, ocupación hotelera, ticket promedio, estacionalidad, demografía. Para sizing del mercado Sora.</p>
+        <p data-en>2024-2025 baseline per country: arrivals, top-5 markets, premium segment, hotel occupancy, avg ticket, seasonality, demographics. For Sora market sizing.</p>
+        <div class="app-action">
+          <a class="primary" href="LATAM/audience.html">OPEN →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="app status-plan">
+      <div class="app-band"></div>
+      <div class="app-body">
+        <div class="app-top">
+          <div>
+            <div class="app-cat">DASHBOARD · HOSTS</div>
+            <h3 data-es><em>Host</em> performance live</h3>
+            <h3 data-en>Live <em>host</em> performance</h3>
+          </div>
+          <span class="app-status">ROADMAP</span>
+        </div>
+        <p class="tagline" data-es>19 anfitriones · KPIs semanales · revenue · pipeline · health score.</p>
+        <p class="tagline" data-en>19 hosts · weekly KPIs · revenue · pipeline · health score.</p>
+        <p data-es>Dashboard que cada lunes muestra el estado de cada anfitrión: nuevos contactos esa semana, eventos próximos, viajes vendidos, salud de la relación (calls semanales hechas). Si un anfitrión cae en rojo 3 semanas, alerta automática a Abraham.</p>
+        <p data-en>Dashboard that every Monday shows each host's state: new contacts that week, upcoming events, trips sold, relationship health (weekly calls done). If a host stays red for 3 weeks, automatic alert to Abraham.</p>
+        <ul>
+          <li data-es>Vista grid de 19 anfitriones con semáforos verde/amarillo/rojo</li>
+          <li data-en>Grid view of 19 hosts with green/yellow/red lights</li>
+          <li data-es>Sync con Notion / Google Sheets si lo añadimos</li>
+          <li data-en>Notion / Google Sheets sync if added</li>
+          <li data-es>Notificaciones push semanales</li>
+          <li data-en>Weekly push notifications</li>
+        </ul>
+        <div class="app-meta">
+          <div><div class="label">ETA</div><div class="val">Agosto 2026 (post-Wave 2)</div></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="app status-plan">
+      <div class="app-band"></div>
+      <div class="app-body">
+        <div class="app-top">
+          <div>
+            <div class="app-cat">DASHBOARD · FINANZAS</div>
+            <h3 data-es><em>Sora P&amp;L</em> en vivo</h3>
+            <h3 data-en>Live <em>Sora P&amp;L</em></h3>
+          </div>
+          <span class="app-status">ROADMAP</span>
+        </div>
+        <p class="tagline" data-es>Revenue por país · burn rate · runway · margen por evento.</p>
+        <p class="tagline" data-en>Revenue by country · burn rate · runway · margin per event.</p>
+        <p data-es>P&amp;L unificado en vivo. Cada evento ejecutado se sincroniza al dashboard: revenue, costos directos, margen. Burn rate proyectado, runway, y proyección Wave 4-5.</p>
+        <p data-en>Unified live P&amp;L. Each executed event syncs to dashboard: revenue, direct costs, margin. Projected burn rate, runway, Wave 4-5 projection.</p>
+        <div class="app-meta">
+          <div><div class="label">ETA</div><div class="val">Q4 2026</div></div>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============ 04 · USE THE MCP ============ -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es>04 · CÓMO USAR EL MCP</div>
+    <div class="sec-num" data-en>04 · HOW TO USE THE MCP</div>
+    <h2 data-es>Conectar Claude Code <em>en 30 segundos</em>.</h2>
+    <h2 data-en>Connect Claude Code <em>in 30 seconds</em>.</h2>
+    <p class="sec-sub" data-es>El MCP server ya está construido. Solo falta registrarlo en Claude Code y proveer el token Apify.</p>
+    <p class="sec-sub" data-en>The MCP server is already built. Just register it in Claude Code and provide the Apify token.</p>
+  </div>
+
+  <pre class="code"><span class="c"># 1. Obtener APIFY_TOKEN (gratis ~$5 credito inicial)</span>
+<span class="c">#    → apify.com → sign up → console → settings → integrations → API token</span>
+
+<span class="c"># 2. Setup local del MCP</span>
+<span class="g">cd</span> ~/sora-instagram-mcp
+<span class="g">cp</span> .env.example .env
+<span class="c"># Editar .env con tu APIFY_TOKEN</span>
+
+<span class="g">npm</span> install
+<span class="g">node</span> server.js <span class="c"># validar que arranca sin error</span>
+
+<span class="c"># 3. Registrar en Claude Code</span>
+<span class="g">claude</span> mcp add sora-mining <span class="h">"node"</span> <span class="h">"/Users/jacobeid/sora-instagram-mcp/server.js"</span>
+
+<span class="c"># 4. Verificar</span>
+<span class="g">claude</span> mcp list <span class="c"># debería mostrar sora-mining</span>
+
+<span class="c"># 5. Usar desde cualquier sesión Claude Code</span>
+<span class="g">claude</span> <span class="c"># abre sesión nueva</span>
+<span class="c">→ "minar comentaristas de @habitas_tulum últimos 10 posts"</span>
+<span class="c">→ MCP corre · regresa lista scored</span></pre>
+
+  <div class="callout">
+    <span class="cl-label" data-es>NOTA · COST-CAP GUARDS</span>
+    <span class="cl-label" data-en>NOTE · COST-CAP GUARDS</span>
+    <p data-es>El MCP tiene <strong>SORA_COST_CAP_USD</strong> environment var (default $5/sesión). Si una llamada va a exceder eso, el server rehúsa y avisa. Para llamadas mayores: <code>SORA_COST_CAP_USD=20 node server.js</code>. Protege contra accidentes de scraping caro.</p>
+    <p data-en>The MCP has a <strong>SORA_COST_CAP_USD</strong> env var (default $5/session). If a call would exceed that, the server refuses and warns. For bigger calls: <code>SORA_COST_CAP_USD=20 node server.js</code>. Protects against accidental expensive scraping.</p>
+  </div>
+</section>
+
+<!-- ============ 05 · ROADMAP ============ -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es>05 · LO QUE VIENE</div>
+    <div class="sec-num" data-en>05 · WHAT'S COMING</div>
+    <h2 data-es>Prioridades de <em>tooling</em> Q2–Q4 2026.</h2>
+    <h2 data-en><em>Tooling</em> priorities Q2–Q4 2026.</h2>
+  </div>
+
+  <h3 class="cat-head" data-es>Q2 (May–Jun)<em>· Foundation</em></h3>
+  <h3 class="cat-head" data-en>Q2 (May–Jun)<em>· Foundation</em></h3>
+  <ul style="font-family:var(--serif);font-size:15.5px;line-height:1.7;color:var(--ink-2);padding-left:18px;list-style:none">
+    <li style="padding:5px 0 5px 22px;position:relative"><span style="position:absolute;left:0;top:14px;width:12px;height:1px;background:var(--green)"></span><strong data-es>Sora copy generator (beta → live)</strong><strong data-en>Sora copy generator (beta → live)</strong> — <span data-es>DM · email · captions · event briefs</span><span data-en>DMs · emails · captions · event briefs</span></li>
+    <li style="padding:5px 0 5px 22px;position:relative"><span style="position:absolute;left:0;top:14px;width:12px;height:1px;background:var(--green)"></span><strong data-es>LinkedIn miner (beta → live)</strong><strong data-en>LinkedIn miner (beta → live)</strong> — <span data-es>extensión del MCP server</span><span data-en>MCP server extension</span></li>
+    <li style="padding:5px 0 5px 22px;position:relative"><span style="position:absolute;left:0;top:14px;width:12px;height:1px;background:var(--green)"></span><strong data-es>Event brief generator (beta → live)</strong><strong data-en>Event brief generator (beta → live)</strong></li>
+  </ul>
+
+  <h3 class="cat-head" data-es>Q3 (Jul–Sep)<em>· Scale</em></h3>
+  <h3 class="cat-head" data-en>Q3 (Jul–Sep)<em>· Scale</em></h3>
+  <ul style="font-family:var(--serif);font-size:15.5px;line-height:1.7;color:var(--ink-2);padding-left:18px;list-style:none">
+    <li style="padding:5px 0 5px 22px;position:relative"><span style="position:absolute;left:0;top:14px;width:12px;height:1px;background:var(--gold)"></span><strong>Multi-board job poster</strong> — <span data-es>Computrabajo + Bumeran + Encuentra24 + OCC en un comando</span><span data-en>Computrabajo + Bumeran + Encuentra24 + OCC in one command</span></li>
+    <li style="padding:5px 0 5px 22px;position:relative"><span style="position:absolute;left:0;top:14px;width:12px;height:1px;background:var(--gold)"></span><strong>Sora WhatsApp bot</strong> — <span data-es>filtro automático candidatos</span><span data-en>automated candidate filtering</span></li>
+    <li style="padding:5px 0 5px 22px;position:relative"><span style="position:absolute;left:0;top:14px;width:12px;height:1px;background:var(--gold)"></span><strong>Host performance dashboard</strong> — <span data-es>19 anfitriones · KPIs semanales</span><span data-en>19 hosts · weekly KPIs</span></li>
+    <li style="padding:5px 0 5px 22px;position:relative"><span style="position:absolute;left:0;top:14px;width:12px;height:1px;background:var(--gold)"></span><strong>Design generator</strong> — <span data-es>logo refresh · IG promos · event reels</span><span data-en>logo refresh · IG promos · event reels</span> (<a href="sora-design.html" style="color:var(--coral)">ver design hub</a>)</li>
+  </ul>
+
+  <h3 class="cat-head" data-es>Q4 (Oct–Dec)<em>· Compounding</em></h3>
+  <h3 class="cat-head" data-en>Q4 (Oct–Dec)<em>· Compounding</em></h3>
+  <ul style="font-family:var(--serif);font-size:15.5px;line-height:1.7;color:var(--ink-2);padding-left:18px;list-style:none">
+    <li style="padding:5px 0 5px 22px;position:relative"><span style="position:absolute;left:0;top:14px;width:12px;height:1px;background:var(--coral)"></span><strong data-es>P&amp;L en vivo</strong><strong data-en>Live P&amp;L</strong> — <span data-es>revenue por país · burn · runway</span><span data-en>revenue by country · burn · runway</span></li>
+    <li style="padding:5px 0 5px 22px;position:relative"><span style="position:absolute;left:0;top:14px;width:12px;height:1px;background:var(--coral)"></span><strong data-es>Guest LTV cross-country</strong><strong data-en>Cross-country guest LTV</strong> — <span data-es>el moat real de Sora</span><span data-en>Sora's real moat</span></li>
+    <li style="padding:5px 0 5px 22px;position:relative"><span style="position:absolute;left:0;top:14px;width:12px;height:1px;background:var(--coral)"></span><strong>Sora app</strong> — <span data-es>PWA para invitados, con código de acceso. Calendario, swipe Cerca + Conecta, mensajes.</span><span data-en>PWA for invited guests. Calendar, Near + Connect swipe, messages.</span></li>
+  </ul>
+</section>
+
+<!-- CTA -->
+<div class="cta">
+  <h2 data-es>Las herramientas son <em>el moat</em>.</h2>
+  <h2 data-en>The tooling is <em>the moat</em>.</h2>
+  <p data-es>Un equipo de 4 personas con tooling correcto opera como un equipo de 30. Cada herramienta documentada aquí se construye para que los próximos miembros entren rápido y aporten desde el día 1.</p>
+  <p data-en>A 4-person team with the right tooling operates like a 30-person team. Every tool documented here is built so new members onboard fast and contribute from day 1.</p>
+  <a href="sora-design.html" class="cta-btn" data-es>RECURSOS DE DISEÑO →</a>
+  <a href="sora-design.html" class="cta-btn" data-en>DESIGN RESOURCES →</a>
+  <a href="sora-hq.html" class="cta-btn">HQ</a>
+</div>
+
+<footer>
+  <p data-es>Applications · Internal tooling de Sora · v1.0 · La Compañía MMXXVI</p>
+  <p data-en>Applications · Sora internal tooling · v1.0 · La Compañía MMXXVI</p>
+</footer>
+
+<script>
+  function setLang(lang){
+    document.documentElement.lang = lang;
+    document.querySelectorAll('.lang button').forEach(b => b.classList.remove('active'));
+    document.querySelector(`.lang button[onclick="setLang('${lang}')"]`).classList.add('active');
+    try { localStorage.setItem('sora.lang', lang); } catch(e){}
+  }
+  try {
+    const saved = localStorage.getItem('sora.lang');
+    if (saved) setLang(saved);
+  } catch(e){}
+</script>
+
+</body>
+</html>
