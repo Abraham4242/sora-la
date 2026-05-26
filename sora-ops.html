@@ -1,0 +1,1156 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SORA · Ops Workspace · La Compañía</title>
+<meta name="description" content="Sora day-to-day workspace. Live status, outreach pipeline, weekly task list, system changelog.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23f7f0df'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Georgia,serif' font-size='20' font-weight='400' fill='%23e07a5f'%3ES%3C/text%3E%3C/svg%3E">
+<meta property="og:title" content="SORA · Ops Workspace">
+<meta property="og:description" content="Day-to-day workspace · live status · outreach pipeline · weekly tasks · changelog.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SORA · Ops Workspace">
+<meta name="theme-color" content="#1d3a2c">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f7f0df;
+    --paper-2: #fcf6e6;
+    --paper-3: #ede4ca;
+    --paper-deep: #e3d9c2;
+    --ink: #14110c;
+    --ink-2: #2a251d;
+    --ink-soft: #4a4337;
+    --ink-faint: #807761;
+    --ink-ghost: #b0a78e;
+    --line: rgba(20, 17, 12, 0.10);
+    --line-2: rgba(20, 17, 12, 0.18);
+    --line-strong: rgba(20, 17, 12, 0.40);
+    --green: #1d3a2c;
+    --green-2: #2a5440;
+    --green-deep: #0f2218;
+    --coral: #e07a5f;
+    --coral-deep: #b85439;
+    --mango: #f4b942;
+    --mango-deep: #b88a16;
+    --teal: #2e8a96;
+    --teal-deep: #1b6671;
+    --bronze: #a07b3e;
+    --gold: #d4b87a;
+    --gold-deep: #b39656;
+    --rose: #c64a5e;
+    --serif: "Fraunces", Georgia, serif;
+    --sans: "Inter", -apple-system, sans-serif;
+    --mono: "JetBrains Mono", Menlo, monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans); font-size: 14.5px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    background-image:
+      radial-gradient(ellipse at 12% 4%, rgba(160,123,62,0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 88% 96%, rgba(31,58,44,0.05) 0%, transparent 55%);
+  }
+  ::selection { background: var(--ink); color: var(--paper); }
+  a { color: inherit; text-decoration: none; }
+
+  .wrap { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+
+  /* ============ HEADER ============ */
+  header.top {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(247, 240, 223, 0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--line);
+    padding: 14px 32px;
+  }
+  .top-row {
+    max-width: 1280px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  }
+  .brand {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .brand .word {
+    font-family: var(--serif);
+    font-size: 22px; font-weight: 500;
+    letter-spacing: 0.18em; color: var(--ink);
+  }
+  .brand .sub {
+    font-family: var(--mono); font-size: 9.5px;
+    color: var(--gold-deep);
+    background: rgba(212,184,122,0.14);
+    border: 1px solid rgba(212,184,122,0.35);
+    padding: 4px 8px; border-radius: 6px;
+    letter-spacing: 1.5px; font-weight: 700;
+    text-transform: uppercase;
+  }
+  .top-right { display: flex; align-items: center; gap: 12px; }
+  .lang-toggle {
+    display: flex; gap: 0;
+    background: rgba(20,17,12,0.04);
+    border: 1px solid var(--line);
+    border-radius: 100px;
+    padding: 3px;
+  }
+  .lang-btn {
+    background: none; border: none;
+    padding: 6px 12px;
+    border-radius: 100px;
+    font-family: var(--sans);
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--ink-faint);
+    cursor: pointer;
+    transition: all .15s;
+  }
+  .lang-btn.active { background: var(--ink); color: var(--paper); }
+  .top-meta {
+    font-family: var(--mono);
+    font-size: 9.5px;
+    color: var(--ink-faint);
+    letter-spacing: 1.2px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .top-meta .dot {
+    width: 6px; height: 6px;
+    background: var(--coral); border-radius: 50%;
+    animation: pulse 1.8s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+  /* ============ HERO ============ */
+  .hero {
+    padding: 64px 0 28px;
+  }
+  .hero h1 {
+    font-family: var(--serif); font-weight: 300;
+    font-size: clamp(48px, 7vw, 84px);
+    line-height: 0.95;
+    letter-spacing: -0.025em;
+    margin-bottom: 14px;
+  }
+  .hero h1 em {
+    font-style: italic; font-weight: 400;
+    color: var(--coral);
+  }
+  .hero .lede {
+    font-size: 18px; line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 720px;
+    font-weight: 400;
+  }
+  .hero .meta-row {
+    margin-top: 24px;
+    display: flex; gap: 24px; flex-wrap: wrap;
+    font-family: var(--mono); font-size: 10.5px;
+    color: var(--ink-faint); letter-spacing: 1.4px;
+  }
+
+  /* ============ NOW PLAYING ============ */
+  .now-card {
+    background: linear-gradient(135deg, rgba(244,185,66,0.12), rgba(212,184,122,0.06));
+    border: 1px solid rgba(212,184,122,0.4);
+    border-left: 3px solid var(--coral);
+    border-radius: 18px;
+    padding: 28px 30px;
+    margin-top: 32px;
+  }
+  .now-card .now-label {
+    font-family: var(--mono); font-size: 10.5px;
+    color: var(--coral-deep); font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    margin-bottom: 14px;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .now-card .now-label::before {
+    content: ''; width: 6px; height: 6px;
+    background: var(--coral); border-radius: 50%;
+    animation: pulse 1.8s ease-in-out infinite;
+  }
+  .now-card h2 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: 28px; line-height: 1.15;
+    margin-bottom: 20px; letter-spacing: -0.01em;
+  }
+  .now-card h2 em { color: var(--coral-deep); font-style: italic; }
+  .now-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+  }
+  @media (max-width: 880px) { .now-grid { grid-template-columns: repeat(2, 1fr); } }
+  .now-stat .k {
+    font-family: var(--mono); font-size: 9.5px;
+    letter-spacing: 1.6px; text-transform: uppercase;
+    color: var(--ink-faint); margin-bottom: 6px;
+  }
+  .now-stat .v {
+    font-family: var(--serif); font-size: 22px; font-weight: 500;
+    color: var(--ink); line-height: 1;
+  }
+  .now-stat .s {
+    font-size: 12px; color: var(--ink-soft);
+    margin-top: 4px; line-height: 1.4;
+  }
+
+  /* ============ SECTION ============ */
+  section { padding: 60px 0; border-bottom: 1px solid var(--line); }
+  .sec-head {
+    margin-bottom: 32px;
+    display: flex; align-items: baseline; justify-content: space-between;
+    flex-wrap: wrap; gap: 12px;
+  }
+  .sec-head .sec-eyebrow {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--coral-deep); font-weight: 700;
+  }
+  .sec-head h3 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(28px, 4vw, 40px);
+    line-height: 1.05; letter-spacing: -0.02em;
+    margin-top: 8px;
+  }
+  .sec-head h3 em { font-style: italic; color: var(--coral); font-weight: 300; }
+  .sec-head .sec-sub {
+    font-size: 14.5px; color: var(--ink-soft);
+    margin-top: 6px; max-width: 520px;
+  }
+  .sec-head .sec-action {
+    align-self: flex-end;
+    font-family: var(--mono); font-size: 10.5px;
+    letter-spacing: 1.3px;
+    color: var(--ink-faint); font-weight: 600;
+  }
+
+  /* ============ SURFACES GRID ============ */
+  .surfaces {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  @media (max-width: 960px) { .surfaces { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .surfaces { grid-template-columns: 1fr; } }
+  .surface {
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 24px;
+    cursor: pointer;
+    transition: all .2s cubic-bezier(0.25, 1, 0.5, 1);
+    text-decoration: none; color: inherit;
+    display: flex; flex-direction: column;
+    min-height: 220px;
+  }
+  .surface:hover {
+    transform: translateY(-3px);
+    border-color: var(--line-strong);
+    box-shadow: 0 22px 50px -28px rgba(31,27,23,0.25);
+  }
+  .surface .label {
+    font-family: var(--mono); font-size: 10px;
+    color: var(--coral-deep); font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .surface h4 {
+    font-family: var(--serif); font-weight: 500;
+    font-size: 26px; line-height: 1.1; letter-spacing: -0.015em;
+    margin-bottom: 8px;
+  }
+  .surface h4 em { color: var(--coral); font-style: italic; font-weight: 400; }
+  .surface p {
+    font-size: 13.5px; color: var(--ink-soft);
+    line-height: 1.55;
+    flex: 1; margin-bottom: 16px;
+  }
+  .surface .foot {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-top: 12px;
+    border-top: 1px solid var(--line);
+    font-family: var(--mono); font-size: 10.5px;
+    color: var(--ink-faint); letter-spacing: 0.5px;
+  }
+  .surface .foot .open { color: var(--coral-deep); font-weight: 700; letter-spacing: 1.2px; }
+
+  /* ============ CHAPTERS GRID ============ */
+  .chapter-filter {
+    display: flex; gap: 8px;
+    margin-bottom: 22px;
+    flex-wrap: wrap;
+  }
+  .chapter-filter button {
+    background: rgba(20,17,12,0.04);
+    border: 1px solid var(--line);
+    color: var(--ink-soft);
+    padding: 7px 14px;
+    border-radius: 100px;
+    font-family: var(--mono); font-size: 10.5px;
+    letter-spacing: 1px;
+    cursor: pointer; transition: all .15s;
+    font-weight: 600;
+  }
+  .chapter-filter button:hover { color: var(--ink); border-color: var(--line-2); }
+  .chapter-filter button.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+  .chapters {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+  }
+  @media (max-width: 1080px) { .chapters { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 600px) { .chapters { grid-template-columns: repeat(2, 1fr); } }
+
+  .chapter {
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 18px 16px 16px;
+    cursor: pointer;
+    transition: all .2s;
+    text-decoration: none; color: inherit;
+    display: block;
+  }
+  .chapter:hover {
+    transform: translateY(-2px);
+    border-color: var(--line-strong);
+  }
+  .chapter .top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+  .chapter .flag { font-size: 28px; line-height: 1; }
+  .chapter .pill {
+    font-family: var(--mono); font-size: 8.5px;
+    padding: 3px 8px; border-radius: 100px;
+    letter-spacing: 1.4px; text-transform: uppercase;
+    font-weight: 700;
+  }
+  .pill.live      { background: rgba(74,125,99,0.18); color: var(--green); }
+  .pill.launching { background: rgba(244,185,66,0.20); color: var(--mango-deep); }
+  .pill.soon      { background: rgba(20,17,12,0.06); color: var(--ink-faint); }
+  .pill.gated     { background: rgba(198,74,94,0.16); color: var(--rose); }
+  .chapter .name {
+    font-family: var(--serif); font-size: 17px; font-weight: 500;
+    color: var(--ink); margin-bottom: 4px; letter-spacing: -0.005em;
+  }
+  .chapter .hero {
+    font-size: 11px; color: var(--ink-faint);
+    line-height: 1.4; min-height: 30px;
+  }
+  .chapter .tier {
+    font-family: var(--mono); font-size: 9.5px;
+    color: var(--ink-faint); letter-spacing: 1px;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--line);
+    display: flex; justify-content: space-between;
+  }
+
+  /* ============ OUTREACH PIPELINE ============ */
+  .outreach {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+  @media (max-width: 900px) { .outreach { grid-template-columns: 1fr; } }
+  .outreach-card {
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 22px;
+  }
+  .outreach-card .head {
+    display: flex; align-items: baseline; justify-content: space-between;
+    margin-bottom: 18px; padding-bottom: 12px;
+    border-bottom: 1px solid var(--line);
+  }
+  .outreach-card .head h4 {
+    font-family: var(--serif); font-weight: 500; font-size: 20px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .outreach-card .head .when {
+    font-family: var(--mono); font-size: 10px;
+    color: var(--coral-deep); letter-spacing: 1.4px;
+    font-weight: 700;
+  }
+  .outreach-step {
+    display: flex; align-items: center; gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px dotted var(--line);
+  }
+  .outreach-step:last-child { border-bottom: none; }
+  .outreach-step .check {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    border: 1.5px solid var(--line-2);
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; color: var(--ink-faint);
+    background: var(--paper);
+    cursor: pointer;
+  }
+  .outreach-step.done .check {
+    background: var(--green); color: var(--paper);
+    border-color: var(--green);
+  }
+  .outreach-step .body { flex: 1; }
+  .outreach-step .body .step-name {
+    font-family: var(--sans); font-size: 13px; font-weight: 600;
+    color: var(--ink); line-height: 1.3;
+  }
+  .outreach-step .body .step-sub {
+    font-size: 11.5px; color: var(--ink-faint);
+    margin-top: 2px;
+  }
+  .outreach-step .body .step-sub a {
+    color: var(--coral-deep); border-bottom: 1px dotted var(--coral);
+  }
+  .outreach-step.done .body .step-name { color: var(--ink-faint); text-decoration: line-through; }
+
+  /* ============ KNOWLEDGE BASE ============ */
+  .kb {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+  @media (max-width: 760px) { .kb { grid-template-columns: 1fr; } }
+  .kb-group {
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 24px;
+  }
+  .kb-group h4 {
+    font-family: var(--mono); font-size: 10px;
+    color: var(--coral-deep); font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    margin-bottom: 16px; padding-bottom: 12px;
+    border-bottom: 1px solid var(--line);
+  }
+  .kb-list { list-style: none; }
+  .kb-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .kb-list li:last-child { border-bottom: none; }
+  .kb-list a {
+    display: flex; align-items: center; justify-content: space-between;
+    color: var(--ink); font-size: 14px; font-weight: 500;
+    transition: color .15s;
+  }
+  .kb-list a:hover { color: var(--coral-deep); }
+  .kb-list a .desc {
+    font-size: 12px; color: var(--ink-faint);
+    margin-top: 3px; font-weight: 400;
+    display: block;
+  }
+  .kb-list a .arr {
+    font-family: var(--mono); font-size: 11px;
+    color: var(--ink-faint); flex-shrink: 0; margin-left: 12px;
+  }
+  .kb-list a:hover .arr { color: var(--coral-deep); }
+  .kb-list .row-content {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .kb-list .ico {
+    width: 32px; height: 32px;
+    background: rgba(20,17,12,0.04);
+    border: 1px solid var(--line);
+    border-radius: 9px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--mono); font-size: 12px;
+    color: var(--coral-deep); font-weight: 700;
+    flex-shrink: 0;
+  }
+  .kb-list .row-body { flex: 1; min-width: 0; }
+  .kb-list .row-body .name { font-size: 14px; font-weight: 600; }
+
+  /* ============ TASKS ============ */
+  .tasks {
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 24px 28px;
+  }
+  .tasks-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 18px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--line);
+  }
+  .tasks-head h4 {
+    font-family: var(--serif); font-weight: 500;
+    font-size: 20px;
+  }
+  .tasks-head .count {
+    font-family: var(--mono); font-size: 11px;
+    color: var(--ink-faint); letter-spacing: 1px;
+  }
+  .tasks-head .count strong { color: var(--coral-deep); }
+  #task-list { list-style: none; }
+  #task-list li {
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  #task-list li:last-child { border-bottom: none; }
+  #task-list .chk {
+    width: 22px; height: 22px;
+    border-radius: 6px;
+    border: 1.5px solid var(--line-2);
+    flex-shrink: 0;
+    background: var(--paper); cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    margin-top: 2px;
+    transition: all .15s;
+  }
+  #task-list li.done .chk {
+    background: var(--coral); color: #fff;
+    border-color: var(--coral);
+  }
+  #task-list li.done .chk::after { content: '✓'; font-size: 13px; font-weight: 700; }
+  #task-list .text {
+    flex: 1; font-size: 14px;
+    color: var(--ink); line-height: 1.5;
+  }
+  #task-list li.done .text { text-decoration: line-through; color: var(--ink-faint); }
+  #task-list .text .sub {
+    display: block; font-size: 12px; color: var(--ink-faint);
+    margin-top: 2px;
+  }
+  #task-list .del {
+    background: none; border: none; cursor: pointer;
+    color: var(--ink-ghost); font-family: var(--mono);
+    font-size: 14px; padding: 0 8px;
+    opacity: 0.4;
+    transition: opacity .15s, color .15s;
+  }
+  #task-list li:hover .del, #task-list .del:focus { opacity: 1; }
+  #task-list .del:hover { color: var(--rose); }
+  @media (hover: none) { #task-list .del { opacity: 0.6; } }
+  .task-add {
+    display: flex; gap: 10px;
+    margin-top: 16px;
+  }
+  .task-add input {
+    flex: 1;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 100px;
+    padding: 11px 18px;
+    font-family: var(--sans); font-size: 13.5px;
+    color: var(--ink); outline: none;
+  }
+  .task-add input:focus { border-color: var(--coral); }
+  .task-add button {
+    background: var(--coral); color: #fff;
+    border: none; padding: 11px 22px;
+    border-radius: 100px;
+    font-family: var(--sans); font-size: 12.5px;
+    font-weight: 700; letter-spacing: 0.04em;
+    cursor: pointer; transition: all .15s;
+  }
+  .task-add button:hover { background: var(--coral-deep); transform: translateY(-1px); }
+
+  /* ============ FOOTER ============ */
+  footer {
+    padding: 48px 0 80px;
+    background: var(--green-deep);
+    color: rgba(247,240,223,0.65);
+    margin-top: 60px;
+  }
+  footer h5 {
+    font-family: var(--mono); font-size: 10px;
+    color: var(--gold); font-weight: 700;
+    letter-spacing: 2.4px; text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .footer-grid {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 36px;
+    margin-bottom: 36px;
+  }
+  @media (max-width: 720px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; } }
+  .footer-grid .wordmark {
+    font-family: var(--serif); font-size: 28px;
+    color: var(--paper); font-weight: 400;
+    letter-spacing: 0.22em; margin-bottom: 8px;
+  }
+  .footer-grid .tagline {
+    font-family: var(--serif); font-style: italic;
+    font-size: 14px; line-height: 1.5;
+    color: rgba(247,240,223,0.7);
+    max-width: 280px;
+  }
+  .footer-grid ul { list-style: none; }
+  .footer-grid li { margin-bottom: 8px; font-size: 13px; }
+  .footer-grid a { color: rgba(247,240,223,0.7); transition: color .15s; }
+  .footer-grid a:hover { color: var(--mango); }
+  .footer-bottom {
+    padding-top: 24px;
+    border-top: 1px solid rgba(247,240,223,0.10);
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 16px;
+    font-family: var(--mono); font-size: 11px;
+    color: rgba(247,240,223,0.45);
+    letter-spacing: 0.06em;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="top">
+  <div class="top-row">
+    <div class="brand">
+      <a href="sora-hq.html" style="color:inherit;text-decoration:none"><span class="word">SORA</span></a>
+      <span class="sub">Ops · Day-to-day workspace</span>
+    </div>
+    <div class="top-right">
+      <div class="top-meta">
+        <span class="dot"></span>
+        <span data-es="Actualizado" data-en="Updated">Updated</span>
+        <span id="updated-stamp">just now</span>
+      </div>
+      <div class="lang-toggle">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="es">ES</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <h1 data-es-html="El <em>turno</em> de hoy." data-en-html="Today's <em>shift</em>.">Today's <em>shift</em>.</h1>
+  <p class="lede" data-es="Estado en vivo, pipeline de outreach por capítulo, tareas de la semana, y el changelog del sistema. El HQ es para navegar — esto es para trabajar." data-en="Live status, outreach pipeline per chapter, weekly tasks, and system changelog. HQ is for browsing — this is for working.">Live status, outreach pipeline per chapter, weekly tasks, and system changelog. HQ is for browsing — this is for working.</p>
+  <div class="meta-row">
+    <a href="sora-hq.html" style="color:inherit"><span data-es="← VOLVER AL HQ" data-en="← BACK TO HQ">← BACK TO HQ</span></a>
+    <span data-es="LA COMPAÑÍA · MMXXVI" data-en="LA COMPAÑÍA · MMXXVI">LA COMPAÑÍA · MMXXVI</span>
+    <span data-es="ABRAHAM · ABDIEL" data-en="ABRAHAM · ABDIEL">ABRAHAM · ABDIEL</span>
+  </div>
+</div>
+
+<!-- ============ MONDAY · TOP TASK ============ -->
+<style>
+  .monday-card{background:#0f0c0a;border:1px solid var(--coral);border-radius:12px;padding:28px 32px;margin-bottom:20px;position:relative;overflow:hidden}
+  .monday-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--coral),var(--mango),var(--coral))}
+  .monday-card .m-label{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--mango);font-weight:600;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+  .monday-card .m-label::before{content:'';display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--coral);box-shadow:0 0 0 4px rgba(217,87,59,.25)}
+  .monday-card .m-title{font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:30px;line-height:1.18;color:#F8F3EA !important;letter-spacing:-.01em;margin-bottom:24px}
+  .monday-card .m-title em{font-style:italic;color:var(--coral) !important;font-weight:500}
+  .monday-card .m-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .monday-card .m-step{background:rgba(255,255,255,.04);border:0.5px solid rgba(255,255,255,.10);border-radius:8px;padding:16px 18px}
+  .monday-card .m-step .ms-k{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:9.5px;letter-spacing:.18em;color:rgba(248,243,234,.5);text-transform:uppercase;font-weight:600;margin-bottom:8px}
+  .monday-card .m-step .ms-v{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;color:#F8F3EA;line-height:1.4;margin-bottom:6px;word-break:break-all}
+  .monday-card .m-step .ms-s{font-family:'Fraunces',serif;font-size:12px;color:rgba(248,243,234,.6);line-height:1.45;font-style:italic}
+  @media (max-width:720px){ .monday-card .m-steps{grid-template-columns:1fr} }
+</style>
+<div class="monday-card">
+  <div class="m-label" data-es="LUNES 25 MAYO · PRIMERA TAREA DEL DÍA" data-en="MONDAY MAY 25 · FIRST TASK OF THE DAY">MONDAY MAY 25 · FIRST TASK OF THE DAY</div>
+  <div class="m-title" data-es-html="Crear cuenta <em>Apify</em> · 90 segundos · desbloquea minado IG completo" data-en-html="Create <em>Apify</em> account · 90 seconds · unlocks full IG mining">Create <em>Apify</em> account · 90 seconds · unlocks full IG mining</div>
+  <div class="m-steps">
+    <div class="m-step">
+      <div class="ms-k" data-es="PASO 1" data-en="STEP 1">STEP 1</div>
+      <div class="ms-v">console.apify.com/sign-up</div>
+      <div class="ms-s" data-es="Email + password. Sin tarjeta. $5/mo crédito gratis." data-en="Email + password. No card. $5/mo free credit.">Email + password. No card. $5/mo free credit.</div>
+    </div>
+    <div class="m-step">
+      <div class="ms-k" data-es="PASO 2" data-en="STEP 2">STEP 2</div>
+      <div class="ms-v">Settings → API tokens → Create</div>
+      <div class="ms-s" data-es="Copiar token apify_api_..." data-en="Copy token apify_api_...">Copy token apify_api_...</div>
+    </div>
+    <div class="m-step">
+      <div class="ms-k" data-es="PASO 3" data-en="STEP 3">STEP 3</div>
+      <div class="ms-v">echo 'APIFY_TOKEN=...' &gt; .env</div>
+      <div class="ms-s" data-es="En /Users/jacobeid/sora-instagram-mcp/" data-en="In /Users/jacobeid/sora-instagram-mcp/">In /Users/jacobeid/sora-instagram-mcp/</div>
+    </div>
+    <div class="m-step">
+      <div class="ms-k" data-es="PASO 4" data-en="STEP 4">STEP 4</div>
+      <div class="ms-v">node run-end-to-end.js</div>
+      <div class="ms-s" data-es="Verificar: full bios + engagement por seed" data-en="Verify: full bios + engagement per seed">Verify: full bios + engagement per seed</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ NOW PLAYING ============ -->
+<div class="now-card">
+  <div class="now-label" data-es="EN VIVO · ESTA SEMANA" data-en="LIVE · THIS WEEK">LIVE · THIS WEEK</div>
+  <h2 data-es-html="Fase: <em>preparación México</em>. Apertura del segundo capítulo." data-en-html="Phase: <em>Mexico setup</em>. Opening of the second chapter.">Phase: <em>Mexico setup</em>. Opening of the second chapter.</h2>
+  <div class="now-grid">
+    <div class="now-stat">
+      <div class="k" data-es="Capítulos en vivo" data-en="Live chapters">Live chapters</div>
+      <div class="v">1</div>
+      <div class="s">🇵🇦 Panamá</div>
+    </div>
+    <div class="now-stat">
+      <div class="k" data-es="Lanzando 2026" data-en="Launching 2026">Launching 2026</div>
+      <div class="v">3</div>
+      <div class="s">🇲🇽 MX · 🇨🇴 CO · 🇻🇪 VE</div>
+    </div>
+    <div class="now-stat">
+      <div class="k" data-es="Outreach activo" data-en="Active outreach">Active outreach</div>
+      <div class="v">MX</div>
+      <div class="s" data-es="13 borradores listos en /outreach/MX/" data-en="13 drafts ready in /outreach/MX/">13 drafts ready in /outreach/MX/</div>
+    </div>
+    <div class="now-stat">
+      <div class="k" data-es="Próximo evento" data-en="Next event">Next event</div>
+      <div class="v">14 Jun</div>
+      <div class="s">Mirador Barú · Volcán</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ WHAT'S NEW · DIGEST ============ -->
+<section>
+  <div class="sec-head">
+    <div>
+      <div class="sec-eyebrow" data-es="Qué hay de nuevo" data-en="What's new">What's new</div>
+      <h3 data-es-html="<em>Cambios</em> recientes en el sistema." data-en-html="Recent <em>changes</em> in the system.">Recent <em>changes</em> in the system.</h3>
+      <p class="sec-sub" data-es="Resumen de lo que se construyó, ordenado por fecha. La lista crece automáticamente." data-en="Summary of what was built, by date. The list grows automatically.">Summary of what was built, by date. The list grows automatically.</p>
+    </div>
+  </div>
+  <div class="kb">
+    <div class="kb-group" id="changelog-card">
+      <h4 data-es="Changelog · últimos 30 días" data-en="Changelog · last 30 days">Changelog · last 30 days</h4>
+      <ul class="kb-list" id="changelog-list"></ul>
+    </div>
+    <div class="kb-group">
+      <h4 data-es="Estado del sistema" data-en="System status">System status</h4>
+      <ul class="kb-list">
+        <li><div class="row-content"><div class="ico" style="color:var(--green)">●</div><div class="row-body"><div class="name" data-es="data.js" data-en="data.js">data.js</div><div class="desc" data-es="15 países · 14 eventos · 18 experiencias · 10 propiedades" data-en="15 countries · 14 events · 18 experiences · 10 properties">15 countries · 14 events · 18 experiences · 10 properties</div></div></div><span class="arr">v0.4</span></li>
+        <li><div class="row-content"><div class="ico" style="color:var(--green)">●</div><div class="row-body"><div class="name" data-es="Outreach Mexico" data-en="Mexico outreach">Mexico outreach</div><div class="desc" data-es="13 borradores listos para enviar" data-en="13 drafts ready to send">13 drafts ready to send</div></div></div><span class="arr">/MX/</span></li>
+        <li><div class="row-content"><div class="ico" style="color:var(--green)">●</div><div class="row-body"><div class="name" data-es="Outreach Colombia" data-en="Colombia outreach">Colombia outreach</div><div class="desc" data-es="12 borradores listos · Cartagena Nov 20-23" data-en="12 drafts ready · Cartagena Nov 20-23">12 drafts ready · Cartagena Nov 20-23</div></div></div><span class="arr">/CO/</span></li>
+        <li><div class="row-content"><div class="ico" style="color:var(--green)">●</div><div class="row-body"><div class="name" data-es="Dashboard noticias en vivo" data-en="Live news dashboard">Live news dashboard</div><div class="desc" data-es="15 países · Google News + tasas de cambio en vivo" data-en="15 countries · Google News + live currency rates">15 countries · Google News + live currency rates</div></div></div><span class="arr">↗</span></li>
+        <li><div class="row-content"><div class="ico" style="color:var(--green)">●</div><div class="row-body"><div class="name" data-es="Brand Kit" data-en="Brand Kit">Brand Kit</div><div class="desc" data-es="Wordmark · paleta · tipografía · voz · fotografía" data-en="Wordmark · palette · typography · voice · photography">Wordmark · palette · typography · voice · photography</div></div></div><span class="arr">v1.0</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OUTREACH PIPELINE ============ -->
+<section>
+  <div class="sec-head">
+    <div>
+      <div class="sec-eyebrow" data-es="Pipeline de outreach" data-en="Outreach pipeline">Outreach pipeline</div>
+      <h3 data-es-html="Quién toca a <em>quién</em>." data-en-html="Who reaches <em>whom</em>.">Who reaches <em>whom</em>.</h3>
+      <p class="sec-sub" data-es="Cada capítulo en arranque sigue el mismo playbook de 4 pasos. Marcá las casillas a medida que avanzás." data-en="Every chapter in setup follows the same 4-step playbook. Check the boxes as you move.">Every chapter in setup follows the same 4-step playbook. Check the boxes as you move.</p>
+    </div>
+  </div>
+
+  <div class="outreach">
+
+    <div class="outreach-card">
+      <div class="head">
+        <h4>🇲🇽 México</h4>
+        <span class="when" data-es="Q3 2026 · ACTIVO" data-en="Q3 2026 · ACTIVE">Q3 2026 · ACTIVE</span>
+      </div>
+      <div class="outreach-step" data-key="mx-lawyers" onclick="toggleStep(this)">
+        <div class="check">1</div>
+        <div class="body">
+          <div class="step-name" data-es="Bufete legal contratado" data-en="Law firm engaged">Law firm engaged</div>
+          <div class="step-sub">Mijares / Galicia / De la Vega · <a href="LATAM/outreach/MX/_README.md" target="_blank">drafts</a></div>
+        </div>
+      </div>
+      <div class="outreach-step" data-key="mx-hosts" onclick="toggleStep(this)">
+        <div class="check">2</div>
+        <div class="body">
+          <div class="step-name" data-es="2 hosts contratados" data-en="2 hosts hired">2 hosts hired</div>
+          <div class="step-sub">CDMX + Tulum · <a href="LATAM/outreach/MX/hosts-cdmx-jobpost.md" target="_blank">job posts</a></div>
+        </div>
+      </div>
+      <div class="outreach-step" data-key="mx-lodging" onclick="toggleStep(this)">
+        <div class="check">3</div>
+        <div class="body">
+          <div class="step-name" data-es="5 lodgings confirmados" data-en="5 lodging partners signed">5 lodging partners signed</div>
+          <div class="step-sub">Casa Polanco · Habitas · Matilda · Sin Nombre · Bruma</div>
+        </div>
+      </div>
+      <div class="outreach-step" data-key="mx-talent" onclick="toggleStep(this)">
+        <div class="check">4</div>
+        <div class="body">
+          <div class="step-name" data-es="Talento + brokers" data-en="Talent + brokers">Talent + brokers</div>
+          <div class="step-sub" data-es="Chefs y brokers de bienes raíces" data-en="Chefs and real estate brokers">Chefs and real estate brokers</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="outreach-card">
+      <div class="head">
+        <h4>🇨🇴 Colombia</h4>
+        <span class="when" data-es="Q4 2026 · PRÓXIMO" data-en="Q4 2026 · NEXT">Q4 2026 · NEXT</span>
+      </div>
+      <div class="outreach-step" data-key="co-lawyers" onclick="toggleStep(this)">
+        <div class="check">1</div>
+        <div class="body">
+          <div class="step-name" data-es="SAS Brigard Urrutia" data-en="SAS via Brigard Urrutia">SAS via Brigard Urrutia</div>
+          <div class="step-sub"><a href="LATAM/outreach/CO/_README.md" target="_blank">drafts</a> · use MX template as base</div>
+        </div>
+      </div>
+      <div class="outreach-step" data-key="co-hosts" onclick="toggleStep(this)">
+        <div class="check">2</div>
+        <div class="body">
+          <div class="step-name" data-es="Hosts Medellín + Cartagena" data-en="Hosts Medellín + Cartagena">Hosts Medellín + Cartagena</div>
+          <div class="step-sub"><a href="LATAM/outreach/CO/hosts-medellin-jobpost.md" target="_blank">job posts</a></div>
+        </div>
+      </div>
+      <div class="outreach-step" data-key="co-lodging" onclick="toggleStep(this)">
+        <div class="check">3</div>
+        <div class="body">
+          <div class="step-name" data-es="Lodging Casa San Agustín + The Charlee + Bio Habitat" data-en="Lodging Casa San Agustín + The Charlee + Bio Habitat">Lodging Casa San Agustín + The Charlee + Bio Habitat</div>
+          <div class="step-sub" data-es="Pendiente" data-en="Pending">Pending</div>
+        </div>
+      </div>
+      <div class="outreach-step" data-key="co-brokers" onclick="toggleStep(this)">
+        <div class="check">4</div>
+        <div class="body">
+          <div class="step-name" data-es="Brokers Casacol + Hudson 32" data-en="Brokers Casacol + Hudson 32">Brokers Casacol + Hudson 32</div>
+          <div class="step-sub" data-es="Pendiente" data-en="Pending">Pending</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="outreach-card">
+      <div class="head">
+        <h4>🇻🇪 Venezuela</h4>
+        <span class="when" data-es="Q4 2026 · ABRAHAM" data-en="Q4 2026 · ABRAHAM">Q4 2026 · ABRAHAM</span>
+      </div>
+      <div class="outreach-step" data-key="ve-lawyers" onclick="toggleStep(this)">
+        <div class="check">1</div>
+        <div class="body">
+          <div class="step-name" data-es="C.A. con D'Empaire" data-en="C.A. with D'Empaire">C.A. with D'Empaire</div>
+          <div class="step-sub" data-es="Tras llegada de Abraham · OFAC counsel obligatorio" data-en="After Abraham arrives · OFAC counsel mandatory">After Abraham arrives · OFAC counsel mandatory</div>
+        </div>
+      </div>
+      <div class="outreach-step" data-key="ve-hosts" onclick="toggleStep(this)">
+        <div class="check">2</div>
+        <div class="body">
+          <div class="step-name" data-es="Anfitrión local Caracas" data-en="Local Caracas host">Local Caracas host</div>
+          <div class="step-sub" data-es="Vía AmCham VE / network local" data-en="Via AmCham VE / local network">Via AmCham VE / local network</div>
+        </div>
+      </div>
+      <div class="outreach-step" data-key="ve-lodging" onclick="toggleStep(this)">
+        <div class="check">3</div>
+        <div class="body">
+          <div class="step-name" data-es="Volcán Lodge + posada Los Roques + Mérida hostería" data-en="Volcán Lodge + Los Roques posada + Mérida hostería">Volcán Lodge + Los Roques posada + Mérida hostería</div>
+          <div class="step-sub" data-es="Pendiente" data-en="Pending">Pending</div>
+        </div>
+      </div>
+      <div class="outreach-step" data-key="ve-talent" onclick="toggleStep(this)">
+        <div class="check">4</div>
+        <div class="body">
+          <div class="step-name" data-es="Chef Carlos García (Alto) + brokers Las Mercedes" data-en="Chef Carlos García (Alto) + Las Mercedes brokers">Chef Carlos García (Alto) + Las Mercedes brokers</div>
+          <div class="step-sub" data-es="Real estate es prioridad alta" data-en="Real estate is high priority">Real estate is high priority</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ NEXT 7 DAYS ============ -->
+<section>
+  <div class="sec-head">
+    <div>
+      <div class="sec-eyebrow" data-es="Próximos 7 días" data-en="Next 7 days">Next 7 days</div>
+      <h3 data-es-html="Lo <em>concreto</em>." data-en-html="The <em>concrete</em>.">The <em>concrete</em>.</h3>
+      <p class="sec-sub" data-es="Tu lista de tareas. Se guarda en este navegador. Marcá lo hecho." data-en="Your task list. Saved in this browser. Check what's done.">Your task list. Saved in this browser. Check what's done.</p>
+    </div>
+  </div>
+
+  <div class="tasks">
+    <div class="tasks-head">
+      <h4 data-es="Lista de hoy" data-en="Today's list">Today's list</h4>
+      <div class="count"><strong id="task-done-ct">0</strong> / <span id="task-total-ct">0</span> <span data-es="completadas" data-en="done">done</span></div>
+    </div>
+    <ul id="task-list"></ul>
+    <div class="task-add">
+      <input id="task-input" placeholder="Add a task… (Enter to add)" data-placeholder-es="Agregar una tarea… (Enter para agregar)" data-placeholder-en="Add a task… (Enter to add)">
+      <button onclick="addTask()" data-es="Agregar" data-en="Add">Add</button>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="wordmark">SORA</div>
+        <div class="tagline" data-es="Fines de semana, experiencias y bienes raíces curados en Latinoamérica. Una colección de La Compañía." data-en="Curated weekends, experiences and real estate in Latin America. A La Compañía collection.">Curated weekends, experiences and real estate in Latin America. A La Compañía collection.</div>
+      </div>
+      <div>
+        <h5 data-es="Producto" data-en="Product">Product</h5>
+        <ul>
+          <li><a href="sora/web/index.html" target="_blank" data-es="Sitio público" data-en="Public site">Public site</a></li>
+          <li><a href="sora/app/index.html" target="_blank" data-es="App PWA" data-en="PWA app">PWA app</a></li>
+          <li><a href="sora/web/admin.html" target="_blank" data-es="Admin" data-en="Admin">Admin</a></li>
+          <li><a href="sora/app/preview.html" target="_blank">Preview</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5 data-es="Estrategia" data-en="Strategy">Strategy</h5>
+        <ul>
+          <li><a href="LATAM/_OVERVIEW.md" target="_blank">Atlas</a></li>
+          <li><a href="LATAM/dashboard.html" target="_blank">Dashboard</a></li>
+          <li><a href="SORA-ARCHITECTURE.md" target="_blank">Architecture</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5 data-es="Operaciones" data-en="Operations">Operations</h5>
+        <ul>
+          <li><a href="sora/app/DEPLOY.md" target="_blank">Deploy guide</a></li>
+          <li><a href="LATAM/outreach/MX/_README.md" target="_blank">MX outreach</a></li>
+          <li><a href="sora/events-playbook.html" target="_blank">Playbook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>SORA HQ · La Compañía 2026 · <span id="version-pill">v 0.4 · build 24 May</span></span>
+      <span data-es="HECHO EN BOQUETE · CARACAS PRÓXIMAMENTE" data-en="MADE IN BOQUETE · CARACAS COMING SOON">MADE IN BOQUETE · CARACAS COMING SOON</span>
+    </div>
+  </div>
+</footer>
+
+<script src="sora/data.js"></script>
+<script>
+// ============================================================
+//  i18n
+// ============================================================
+function getLang() { return localStorage.getItem('sora.lang') || 'en'; }
+function applyLang(lang) {
+  document.querySelectorAll('[data-es]').forEach(el => {
+    const v = el.getAttribute('data-' + lang);
+    if (v != null) el.textContent = v;
+  });
+  document.querySelectorAll('[data-es-html]').forEach(el => {
+    const v = el.getAttribute('data-' + lang + '-html');
+    if (v != null) el.innerHTML = v;
+  });
+  document.querySelectorAll('[data-placeholder-es]').forEach(el => {
+    const v = el.getAttribute('data-placeholder-' + lang);
+    if (v != null) el.placeholder = v;
+  });
+  document.documentElement.lang = lang;
+  localStorage.setItem('sora.lang', lang);
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+}
+document.querySelectorAll('.lang-btn').forEach(b => b.addEventListener('click', () => { applyLang(b.dataset.lang); renderChangelog(); renderChapters(); }));
+
+// ============================================================
+//  CHAPTERS GRID
+// ============================================================
+let chapterFilter = 'all';
+function filterChapters(f, btn) {
+  chapterFilter = f;
+  document.querySelectorAll('.chapter-filter button').forEach(x => x.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  renderChapters();
+}
+function renderChapters() {
+  const grid = document.getElementById('chapters-grid');
+  if (!grid || !window.SORA_DATA) return;
+  const lang = getLang();
+  let list = [...window.SORA_DATA.countries];
+  if (chapterFilter === 'tier1') list = list.filter(c => c.tier === 1);
+  if (chapterFilter === 'tier2') list = list.filter(c => c.tier === 2);
+  if (chapterFilter === 'tier3') list = list.filter(c => c.tier === 3);
+  if (chapterFilter === 'live')  list = list.filter(c => c.status === 'live' || c.status === 'launching');
+  // Sort: live > launching > soon > gated, then by name
+  const statusOrder = { live: 0, launching: 1, soon: 2, gated: 3 };
+  list.sort((a, b) => statusOrder[a.status] - statusOrder[b.status] || a.name.es.localeCompare(b.name.es));
+  const statusLabels = {
+    live:      lang === 'es' ? 'En vivo'   : 'Live',
+    launching: lang === 'es' ? 'Lanzando'  : 'Launching',
+    soon:      lang === 'es' ? 'Pronto'    : 'Soon',
+    gated:     lang === 'es' ? 'Gated'     : 'Gated'
+  };
+  const file = c => `LATAM/${c.code}-${({
+    PA:'panama', MX:'mexico', CO:'colombia', BR:'brazil', AR:'argentina',
+    CR:'costa-rica', PE:'peru', CL:'chile', UY:'uruguay', VE:'venezuela',
+    DO:'dominican-republic', GT:'guatemala', EC:'ecuador', PR:'puerto-rico', CU:'cuba'
+  })[c.code]}.md`;
+  grid.innerHTML = list.map(c => `
+    <a class="chapter" href="${file(c)}" target="_blank">
+      <div class="top">
+        <span class="flag">${c.flag}</span>
+        <span class="pill ${c.status}">${statusLabels[c.status]}</span>
+      </div>
+      <div class="name">${c.name[lang] || c.name.es}</div>
+      <div class="hero">${c.hero}</div>
+      <div class="tier">
+        <span>TIER ${c.tier}</span>
+        <span>${c.code}</span>
+      </div>
+    </a>
+  `).join('');
+}
+
+// ============================================================
+//  OUTREACH STEP TOGGLE (persisted)
+// ============================================================
+function loadStepsState() {
+  try { return JSON.parse(localStorage.getItem('sora.hq.steps') || '{}'); }
+  catch (e) { return {}; }
+}
+function saveStepsState(s) { localStorage.setItem('sora.hq.steps', JSON.stringify(s)); }
+// Save original step number on each .check so we can restore cleanly after toggle
+function initStepNumbers() {
+  document.querySelectorAll('.outreach-step .check').forEach(el => {
+    if (!el.dataset.num) el.dataset.num = el.textContent.trim();
+  });
+}
+function applyStepsState() {
+  const s = loadStepsState();
+  document.querySelectorAll('.outreach-step').forEach(el => {
+    const key = el.dataset.key;
+    const check = el.querySelector('.check');
+    const done = key && !!s[key];
+    el.classList.toggle('done', done);
+    check.textContent = done ? '✓' : (check.dataset.num || '');
+  });
+}
+function toggleStep(el) {
+  const key = el.dataset.key;
+  if (!key) return;
+  const s = loadStepsState();
+  s[key] = !s[key];
+  saveStepsState(s);
+  applyStepsState();
+}
+
+// ============================================================
+//  TASK LIST (persisted)
+// ============================================================
+const DEFAULT_TASKS = [
+  { text: 'Send Hotel Matilda outreach for San Miguel DDM block (inaugural MX event)', sub: 'lodging-hotel-matilda.md', done: false },
+  { text: 'Send Mijares + Galicia legal outreach in parallel', sub: '/LATAM/outreach/MX/', done: false },
+  { text: 'Post CDMX + Tulum host job postings to 8 channels', sub: 'hosts-cdmx-jobpost.md + hosts-tulum-jobpost.md', done: false },
+  { text: 'Buy Sora domain (Cloudflare Registrar)', sub: 'sorapanama.com / sora.travel / sora.la', done: false },
+  { text: 'Deploy /sora/web/ to Netlify (drag-drop)', sub: 'See DEPLOY.md', done: false },
+  { text: 'Add real Instagram + TikTok + Facebook URLs to admin Config', sub: 'admin.html → Configuración tab', done: false },
+  { text: 'Change admin password from default to permanent', sub: 'admin.html → Configuración → Cambiar usuario y contraseña', done: false }
+];
+function loadTasks() {
+  try {
+    const v = JSON.parse(localStorage.getItem('sora.hq.tasks') || 'null');
+    return Array.isArray(v) ? v : DEFAULT_TASKS;
+  } catch (e) { return DEFAULT_TASKS; }
+}
+function saveTasks(t) { localStorage.setItem('sora.hq.tasks', JSON.stringify(t)); }
+function renderTasks() {
+  const tasks = loadTasks();
+  const list = document.getElementById('task-list');
+  list.innerHTML = tasks.map((t, i) => `
+    <li class="${t.done ? 'done' : ''}">
+      <div class="chk" onclick="toggleTask(${i})"></div>
+      <div class="text">
+        ${escapeHtml(t.text)}
+        ${t.sub ? `<span class="sub">${escapeHtml(t.sub)}</span>` : ''}
+      </div>
+      <button class="del" onclick="deleteTask(${i})" title="Delete">×</button>
+    </li>
+  `).join('');
+  const done = tasks.filter(t => t.done).length;
+  document.getElementById('task-done-ct').textContent = done;
+  document.getElementById('task-total-ct').textContent = tasks.length;
+}
+function toggleTask(i) {
+  const t = loadTasks();
+  t[i].done = !t[i].done;
+  saveTasks(t);
+  renderTasks();
+}
+function deleteTask(i) {
+  const t = loadTasks();
+  t.splice(i, 1);
+  saveTasks(t);
+  renderTasks();
+}
+function addTask() {
+  const input = document.getElementById('task-input');
+  const text = input.value.trim();
+  if (!text) return;
+  const t = loadTasks();
+  t.push({ text, sub: '', done: false });
+  saveTasks(t);
+  input.value = '';
+  renderTasks();
+}
+document.getElementById('task-input').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') addTask();
+});
+function escapeHtml(s) { return String(s || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+// ============================================================
+//  CHANGELOG (manually curated, but easy to extend)
+//  When you ship something, add an entry at the top.
+// ============================================================
+const CHANGELOG = [
+  { date: '2026-05-24', ico: '◆', title: { es: 'Brand Kit publicado', en: 'Brand Kit published' }, desc: { es: 'Wordmark, paleta, tipografía, voz, fotografía — todo en un solo lugar', en: 'Wordmark, palette, typography, voice, photography — all in one place' }, href: 'sora/brand-kit.html' },
+  { date: '2026-05-24', ico: '◇', title: { es: 'Outreach Colombia (12 borradores)', en: 'Colombia outreach (12 drafts)' }, desc: { es: 'Lawyers · hosts · lodging · talent · brokers · listos para enviar', en: 'Lawyers · hosts · lodging · talent · brokers · ready to send' }, href: 'LATAM/outreach/CO/_README.md' },
+  { date: '2026-05-24', ico: '$', title: { es: 'Tasas de cambio en vivo en el dashboard', en: 'Live currency rates in dashboard' }, desc: { es: 'COP · MXN · BRL · ARS · CRC · todos los demás · auto-refresh cada 4h', en: 'COP · MXN · BRL · ARS · CRC · all others · auto-refresh every 4h' }, href: 'LATAM/dashboard.html' },
+  { date: '2026-05-24', ico: '⚐', title: { es: 'Open Graph + favicon + 404', en: 'Open Graph + favicon + 404' }, desc: { es: 'Vista previa al compartir en redes · favicon en todas las páginas · página 404 con Sora aesthetic', en: 'Share previews · favicons on all pages · branded 404 page' }, href: 'sora/web/404.html' },
+  { date: '2026-05-24', ico: '★', title: { es: 'HQ Command Center', en: 'HQ Command Center' }, desc: { es: 'Un solo punto de entrada para todo el sistema Sora', en: 'Single entry point for the whole Sora system' }, href: 'sora-hq.html' },
+  { date: '2026-05-24', ico: '◐', title: { es: 'Switcher de país en web + admin + PWA', en: 'Country switcher in web + admin + PWA' }, desc: { es: 'Mismo data.js · 15 países · localStorage compartido', en: 'Same data.js · 15 countries · shared localStorage' }, href: 'sora/web/index.html' },
+  { date: '2026-05-24', ico: '⤴', title: { es: 'Outreach México (13 borradores)', en: 'Mexico outreach (13 drafts)' }, desc: { es: 'Primer paquete completo · listo para enviar', en: 'First complete package · ready to send' }, href: 'LATAM/outreach/MX/_README.md' },
+  { date: '2026-05-24', ico: '⊛', title: { es: 'Dashboard LATAM live', en: 'LATAM live dashboard' }, desc: { es: '15 países · noticias de Google News · 8 deep links por país', en: '15 countries · Google News headlines · 8 deep links per country' }, href: 'LATAM/dashboard.html' },
+  { date: '2026-05-24', ico: '⌘', title: { es: '15 capítulos LATAM', en: '15 LATAM chapters' }, desc: { es: 'MX · CO · BR · AR · CR · PE · CL · UY · PA · VE · DO · GT · EC · PR · CU', en: 'MX · CO · BR · AR · CR · PE · CL · UY · PA · VE · DO · GT · EC · PR · CU' }, href: 'LATAM/_OVERVIEW.md' },
+  { date: '2026-05-23', ico: '◆', title: { es: 'SORA Travel Agency rebrand', en: 'SORA Travel Agency rebrand' }, desc: { es: 'Sub-tagline en wordmark · admin renombrado · página pública updated', en: 'Sub-tagline on wordmark · admin renamed · public page updated' }, href: 'sora/web/index.html' },
+  { date: '2026-05-23', ico: '⚭', title: { es: 'Admin con login (user + password)', en: 'Admin with login (user + password)' }, desc: { es: 'AEDMsora / AEDMempresa2026 default · cambiable en Configuración', en: 'AEDMsora / AEDMempresa2026 default · changeable in Configuración' }, href: 'sora/web/admin.html' },
+  { date: '2026-05-23', ico: '◑', title: { es: 'Registro de usuarios + sección bienes raíces', en: 'User registration + real estate section' }, desc: { es: 'Marketing site agregó formulario "Registrarse" + 3 listings demo en RE', en: 'Marketing site added "Registrarse" form + 3 demo RE listings' }, href: 'sora/web/index.html' },
+  { date: '2026-05-23', ico: 'P', title: { es: 'Marketing site v1', en: 'Marketing site v1' }, desc: { es: 'ES/EN · WhatsApp flotante · todo el ecosistema Sora público', en: 'ES/EN · floating WhatsApp · full public Sora ecosystem' }, href: 'sora/web/index.html' }
+];
+function renderChangelog() {
+  const lang = getLang();
+  const list = document.getElementById('changelog-list');
+  if (!list) return;
+  list.innerHTML = CHANGELOG.slice(0, 8).map(c => `
+    <li><a href="${c.href}" target="_blank">
+      <div class="row-content">
+        <div class="ico">${c.ico}</div>
+        <div class="row-body">
+          <div class="name">${c.title[lang] || c.title.es}</div>
+          <div class="desc"><span style="font-family: var(--mono); font-size: 10px; color: var(--coral-deep); margin-right: 6px; letter-spacing: 0.5px">${c.date}</span> · ${c.desc[lang] || c.desc.es}</div>
+        </div>
+      </div>
+      <span class="arr">↗</span>
+    </a></li>
+  `).join('');
+}
+
+// ============================================================
+//  TIMESTAMP
+// ============================================================
+function updateStamp() {
+  document.getElementById('updated-stamp').textContent = new Date().toLocaleString();
+}
+
+// ============================================================
+//  INIT
+// ============================================================
+applyLang(getLang());
+renderChapters();
+renderChangelog();
+initStepNumbers();
+applyStepsState();
+renderTasks();
+updateStamp();
+setInterval(updateStamp, 30000);
+</script>
+
+</body>
+</html>
