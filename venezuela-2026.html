@@ -1,0 +1,2281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Venezuela 2026 — Field Manual</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f5efe2;
+    --paper-2: #ede5d2;
+    --paper-3: #e8dec6;
+    --paper-card: #fbf6e9;
+    --paper-deep: #e3d9c2;
+    --paper-tint-blue: #eef0e8;
+    --paper-tint-warm: #f7ead4;
+
+    --ink: #14110c;
+    --ink-2: #2a251d;
+    --ink-soft: #4a4337;
+    --ink-faint: #807761;
+    --ink-ghost: #b0a78e;
+
+    --line: rgba(20, 17, 12, 0.10);
+    --line-2: rgba(20, 17, 12, 0.18);
+    --line-strong: rgba(20, 17, 12, 0.45);
+
+    --terracotta: #b04525;
+    --terracotta-2: #c8612f;
+    --terracotta-faint: rgba(176, 69, 37, 0.12);
+    --caribbean: #0a3d5f;
+    --caribbean-2: #155a87;
+    --caribbean-faint: rgba(10, 61, 95, 0.10);
+    --gold: #9c7a30;
+    --gold-2: #c5a05c;
+    --moss: #3b4f2b;
+    --wine: #6b1f2c;
+
+    --warn-bg: #faecd2;
+    --warn-line: #c08828;
+    --danger-bg: #f6e2d8;
+    --danger-line: #b04525;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.62;
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-feature-settings: "ss01", "ss02", "kern", "liga";
+    -webkit-font-smoothing: antialiased;
+    background-image:
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.08  0 0 0 0 0.07  0 0 0 0 0.05  0 0 0 0.025 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"),
+      radial-gradient(ellipse at 12% 6%, rgba(176, 69, 37, 0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 88% 95%, rgba(10, 61, 95, 0.06) 0%, transparent 55%);
+  }
+
+  ::selection { background: var(--ink); color: var(--paper); }
+
+  /* ============ READING PROGRESS BAR ============ */
+  .progress {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 2px;
+    background: rgba(20, 17, 12, 0.04);
+    z-index: 100;
+    pointer-events: none;
+  }
+  .progress .bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--terracotta), var(--terracotta-2));
+    transition: width 0.08s linear;
+  }
+
+  /* ============ CHAPTER RAIL ============ */
+  .rail {
+    position: fixed;
+    left: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 50;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .rail.visible { opacity: 1; pointer-events: auto; }
+  .rail ol {
+    list-style: none;
+    padding: 16px 12px;
+    margin: 0;
+    background: rgba(245, 239, 226, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .rail li {
+    counter-increment: railc;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    color: var(--ink-ghost);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 2px 2px 2px 0;
+    transition: color 0.15s ease;
+  }
+  .rail ol { counter-reset: railc; }
+  .rail li::before {
+    content: '';
+    width: 14px;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.5;
+    transition: all 0.2s ease;
+  }
+  .rail li .romnum {
+    font-weight: 600;
+    width: 22px;
+    text-align: left;
+  }
+  .rail li .name {
+    opacity: 0;
+    transform: translateX(-8px);
+    transition: all 0.2s ease;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 11px;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--ink-soft);
+    white-space: nowrap;
+  }
+  .rail:hover li .name { opacity: 0.7; transform: translateX(0); }
+  .rail li:hover { color: var(--ink); }
+  .rail li:hover::before { width: 22px; background: var(--terracotta); opacity: 1; }
+  .rail li:hover .name { opacity: 1; color: var(--ink); }
+  .rail li.active { color: var(--terracotta); }
+  .rail li.active::before { width: 22px; background: var(--terracotta); opacity: 1; }
+  .rail li.active .name { opacity: 1; color: var(--terracotta); }
+
+  /* ============ STICKY MINI MARK ============ */
+  .minimark {
+    position: fixed;
+    top: 18px;
+    right: 24px;
+    z-index: 50;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    background: rgba(245, 239, 226, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid var(--line);
+    padding: 8px 14px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .minimark.visible { opacity: 1; }
+  .minimark .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--terracotta); }
+
+  .doc { max-width: 1080px; margin: 0 auto; padding: 0 32px; position: relative; }
+
+  /* ============ COVER ============ */
+  .cover {
+    min-height: 100vh;
+    padding: 56px 64px 64px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    border-bottom: 1px solid var(--line-2);
+    overflow: hidden;
+  }
+  .cover::before, .cover::after {
+    content: '';
+    position: absolute;
+    pointer-events: none;
+    border: 1px solid var(--line-2);
+  }
+  .cover::before { top: 20px; left: 20px; right: 20px; bottom: 20px; }
+  .cover::after { top: 26px; left: 26px; right: 26px; bottom: 26px; }
+
+  .cover-art {
+    position: absolute;
+    bottom: 26px;
+    left: 26px;
+    right: 26px;
+    height: 38%;
+    overflow: hidden;
+    opacity: 0.16;
+    pointer-events: none;
+  }
+  .cover-art svg { width: 100%; height: 100%; display: block; }
+
+  .cover-bignum {
+    position: absolute;
+    bottom: 40px;
+    right: 60px;
+    font-family: 'Fraunces', serif;
+    font-weight: 200;
+    font-size: 320px;
+    line-height: 0.8;
+    color: var(--terracotta);
+    opacity: 0.04;
+    letter-spacing: -0.08em;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .cover-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0;
+    position: relative;
+    z-index: 2;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .cover-mark { display: flex; align-items: center; gap: 12px; }
+  .cover-mark .glyph {
+    width: 22px; height: 22px;
+    border: 1px solid var(--terracotta);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--terracotta);
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 11px;
+    font-style: italic;
+  }
+
+  .cover-seal {
+    position: absolute;
+    top: 56px;
+    right: 64px;
+    width: 110px;
+    height: 110px;
+    z-index: 3;
+    opacity: 0.85;
+    animation: spin-slow 80s linear infinite;
+  }
+  @keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  .cover-seal svg { width: 100%; height: 100%; }
+
+  .cover-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    padding-top: 40px;
+  }
+
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .eyebrow::before, .eyebrow::after {
+    content: '';
+    height: 1px;
+    background: var(--terracotta);
+    flex: 0 0 28px;
+  }
+  .eyebrow::after { flex: 1; opacity: 0.35; }
+
+  .cover-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(64px, 13vw, 168px);
+    line-height: 0.88;
+    letter-spacing: -0.04em;
+    color: var(--ink);
+    margin-bottom: 24px;
+    font-variation-settings: "opsz" 144;
+  }
+  .cover-title em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--caribbean);
+  }
+  .cover-title .year {
+    display: block;
+    font-weight: 700;
+    color: var(--terracotta);
+    font-variation-settings: "opsz" 144;
+    letter-spacing: -0.05em;
+  }
+
+  .cover-sub {
+    font-size: 21px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    max-width: 640px;
+    font-weight: 400;
+    margin-top: 12px;
+  }
+  .cover-sub::first-letter {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-style: italic;
+    color: var(--terracotta);
+  }
+
+  .cover-meta {
+    margin-top: auto;
+    padding-top: 36px;
+    border-top: 1px solid var(--line-2);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    position: relative;
+    z-index: 2;
+  }
+  .cover-meta .item .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 10px;
+  }
+  .cover-meta .item .value {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    color: var(--ink);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .cover-meta .item .value em { font-style: italic; color: var(--terracotta); font-weight: 400; }
+
+  /* Scroll cue */
+  .scroll-cue {
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ink-ghost);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    animation: float 2.4s ease-in-out infinite;
+    z-index: 3;
+  }
+  @keyframes float { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(6px); } }
+  .scroll-cue::after { content: '↓'; font-size: 16px; opacity: 0.6; }
+
+  /* ============ SECTION ============ */
+  section {
+    padding: 110px 64px 100px;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    overflow: hidden;
+  }
+  section.tint-warm { background: linear-gradient(180deg, var(--paper), var(--paper-tint-warm) 50%, var(--paper)); }
+  section.tint-cool { background: linear-gradient(180deg, var(--paper), var(--paper-tint-blue) 50%, var(--paper)); }
+
+  .ghost-num {
+    position: absolute;
+    top: 60px;
+    right: -20px;
+    font-family: 'Fraunces', serif;
+    font-weight: 200;
+    font-size: 280px;
+    line-height: 0.85;
+    color: var(--terracotta);
+    opacity: 0.04;
+    letter-spacing: -0.08em;
+    pointer-events: none;
+    z-index: 0;
+    font-variation-settings: "opsz" 144;
+  }
+
+  .chapter {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 48px;
+    margin-bottom: 56px;
+    align-items: start;
+    position: relative;
+    z-index: 1;
+  }
+  .chapter-num {
+    font-family: 'Fraunces', serif;
+    font-weight: 200;
+    font-size: 96px;
+    line-height: 0.85;
+    color: var(--terracotta);
+    letter-spacing: -0.04em;
+    font-variation-settings: "opsz" 144;
+    padding-top: 10px;
+    position: relative;
+  }
+  .chapter-num sup {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--ink-faint);
+    display: block;
+    margin-bottom: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+  .chapter-sigil {
+    margin-top: 24px;
+    width: 56px;
+    height: 56px;
+    border: 1px solid var(--terracotta);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+  }
+  .chapter-sigil svg { width: 100%; height: 100%; display: block; }
+  .chapter-sigil svg * { stroke: var(--terracotta); fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+  .chapter-sigil svg .fill { fill: var(--terracotta); stroke: none; }
+
+  .chapter-body { padding-top: 14px; }
+  .chapter-kicker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 16px;
+  }
+
+  h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(38px, 5.5vw, 64px);
+    line-height: 1.0;
+    letter-spacing: -0.025em;
+    margin-bottom: 24px;
+    color: var(--ink);
+    font-variation-settings: "opsz" 144;
+  }
+  h2 em { font-style: italic; color: var(--caribbean); font-weight: 300; }
+
+  .lede {
+    font-size: 20px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 760px;
+    font-weight: 400;
+  }
+  .lede.drop::first-letter {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-style: italic;
+    font-size: 70px;
+    line-height: 0.85;
+    float: left;
+    color: var(--terracotta);
+    margin: 4px 12px 0 0;
+    font-variation-settings: "opsz" 144;
+  }
+
+  h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 28px;
+    margin-top: 56px;
+    margin-bottom: 20px;
+    color: var(--ink);
+    letter-spacing: -0.015em;
+    line-height: 1.2;
+    max-width: 760px;
+  }
+  h3:first-child { margin-top: 0; }
+  h3::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 2px;
+    background: var(--terracotta);
+    margin-bottom: 14px;
+  }
+
+  h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-top: 36px;
+    margin-bottom: 12px;
+  }
+
+  p {
+    margin-bottom: 18px;
+    max-width: 760px;
+    color: var(--ink-2);
+  }
+  p strong { font-weight: 600; color: var(--ink); }
+  p em { font-style: italic; color: var(--ink-soft); }
+
+  ul, ol { margin-bottom: 24px; max-width: 760px; padding-left: 24px; color: var(--ink-2); }
+  li { margin-bottom: 9px; padding-left: 6px; }
+  li::marker { color: var(--terracotta); }
+  ol li::marker { font-family: 'JetBrains Mono', monospace; font-weight: 500; font-size: 13px; }
+  li strong { color: var(--ink); font-weight: 600; }
+
+  a {
+    color: var(--caribbean);
+    text-decoration: none;
+    border-bottom: 1px solid var(--caribbean);
+    transition: all 0.15s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+  a:hover { color: var(--terracotta); border-bottom-color: var(--terracotta); }
+
+  /* ============ REVEAL ANIMATION ============ */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s cubic-bezier(0.25, 1, 0.5, 1), transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+  .reveal.shown { opacity: 1; transform: translateY(0); }
+
+  /* ============ HERO STATS ============ */
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin: 48px 0;
+    border-top: 1px solid var(--line-strong);
+    border-bottom: 1px solid var(--line-strong);
+    position: relative;
+    z-index: 1;
+  }
+  .hero-stats .stat {
+    padding: 28px 24px 32px;
+    border-right: 1px solid var(--line);
+    position: relative;
+  }
+  .hero-stats .stat:last-child { border-right: none; }
+  .hero-stats .stat .num {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 44px;
+    color: var(--ink);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    font-variation-settings: "opsz" 144;
+    font-feature-settings: "tnum";
+  }
+  .hero-stats .stat .num em { font-style: italic; font-weight: 300; color: var(--caribbean); }
+  .hero-stats .stat .lbl {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-top: 14px;
+    line-height: 1.4;
+  }
+  .hero-stats .stat .delta {
+    position: absolute;
+    top: 28px;
+    right: 24px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--terracotta);
+    font-weight: 500;
+  }
+  .hero-stats .stat .sparkline {
+    margin-top: 12px;
+    height: 18px;
+    width: 100%;
+  }
+  .hero-stats .stat .sparkline svg { width: 100%; height: 100%; display: block; }
+  .hero-stats .stat .sparkline path { fill: none; stroke: var(--terracotta); stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round; }
+  .hero-stats .stat .sparkline path.fill { fill: var(--terracotta-faint); stroke: none; }
+
+  /* ============ CARDS / CALLOUTS ============ */
+  .card {
+    background: var(--paper-card);
+    border: 1px solid var(--line-2);
+    padding: 28px 32px;
+    margin: 32px 0;
+    border-left: 3px solid var(--caribbean);
+    position: relative;
+  }
+  .card.warn { border-left-color: var(--warn-line); background: var(--warn-bg); }
+  .card.danger { border-left-color: var(--danger-line); background: var(--danger-bg); }
+  .card .card-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--caribbean);
+    margin-bottom: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .card .card-label::before {
+    content: '';
+    width: 18px;
+    height: 1px;
+    background: currentColor;
+  }
+  .card.warn .card-label { color: #8a5a14; }
+  .card.danger .card-label { color: #8a2a14; }
+  .card p:last-child { margin-bottom: 0; }
+  .card p { max-width: none; }
+
+  /* ============ TABLES ============ */
+  .table-wrap {
+    margin: 32px 0 40px;
+    border: 1px solid var(--line-2);
+    background: var(--paper-card);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14.5px;
+    font-family: 'Inter', sans-serif;
+  }
+  th {
+    text-align: left;
+    padding: 14px 20px;
+    background: var(--paper-deep);
+    border-bottom: 1px solid var(--line-strong);
+    font-weight: 600;
+    color: var(--ink);
+    font-size: 10.5px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  th:not(:last-child) { border-right: 1px solid var(--line-2); }
+  td {
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+    color: var(--ink-soft);
+  }
+  td:not(:last-child) { border-right: 1px solid var(--line); }
+  tr:last-child td { border-bottom: none; }
+  td strong { color: var(--ink); font-weight: 600; }
+  td.num, td .num { font-family: 'JetBrains Mono', monospace; font-feature-settings: "tnum"; color: var(--ink); }
+  tr:hover td { background: rgba(255, 250, 235, 0.6); }
+
+  /* ============ GRID ============ */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin: 32px 0;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin: 32px 0;
+  }
+
+  .tile {
+    background: var(--paper-card);
+    border: 1px solid var(--line-2);
+    padding: 24px 26px 26px;
+    transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+    position: relative;
+  }
+  .tile:hover {
+    border-color: var(--line-strong);
+    transform: translateY(-1px);
+  }
+  .tile .tile-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+  .tile .tile-title {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: var(--ink);
+    letter-spacing: -0.015em;
+    line-height: 1.15;
+  }
+  .tile .tile-body {
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    font-family: 'Fraunces', serif;
+  }
+  .tile .tile-price {
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid var(--line);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--moss);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    font-feature-settings: "tnum";
+  }
+
+  /* ============ BAR CHART (BURN) ============ */
+  .barchart {
+    margin: 36px 0 44px;
+    background: var(--paper-card);
+    border: 1px solid var(--line-2);
+    padding: 36px 40px;
+  }
+  .barchart .bc-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 28px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--line);
+  }
+  .barchart .bc-title {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: -0.015em;
+  }
+  .barchart .bc-total {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--terracotta);
+    font-weight: 600;
+    font-feature-settings: "tnum";
+  }
+  .barchart .bc-total strong { font-family: 'Fraunces', serif; font-size: 20px; font-weight: 500; color: var(--ink); margin-left: 12px; }
+  .barchart .bc-row {
+    display: grid;
+    grid-template-columns: 200px 1fr 80px;
+    gap: 18px;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px dotted var(--line);
+  }
+  .barchart .bc-row:last-child { border-bottom: none; }
+  .barchart .bc-row .bc-lbl {
+    font-family: 'Fraunces', serif;
+    font-size: 14.5px;
+    color: var(--ink-soft);
+  }
+  .barchart .bc-row .bc-bar {
+    height: 8px;
+    background: rgba(20, 17, 12, 0.04);
+    position: relative;
+    overflow: hidden;
+  }
+  .barchart .bc-row .bc-bar::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    width: var(--w, 0%);
+    background: linear-gradient(90deg, var(--caribbean), var(--caribbean-2));
+    transition: width 1.1s cubic-bezier(0.25, 1, 0.5, 1) 0.2s;
+    transform-origin: left;
+  }
+  .barchart .bc-row.highlight .bc-bar::after { background: linear-gradient(90deg, var(--terracotta), var(--terracotta-2)); }
+  .barchart .bc-row .bc-val {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--ink);
+    font-weight: 600;
+    text-align: right;
+    font-feature-settings: "tnum";
+  }
+  .barchart .bc-row.total {
+    margin-top: 12px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line-strong);
+    border-bottom: none;
+  }
+  .barchart .bc-row.total .bc-lbl {
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .barchart .bc-row.total .bc-val {
+    color: var(--terracotta);
+    font-size: 16px;
+  }
+
+  /* ============ NEIGHBORHOOD MAP ============ */
+  .neighmap {
+    margin: 40px 0;
+    background: var(--paper-card);
+    border: 1px solid var(--line-2);
+    padding: 40px;
+    position: relative;
+  }
+  .neighmap .nm-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 24px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--line);
+  }
+  .neighmap .nm-title {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: -0.015em;
+  }
+  .neighmap .nm-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .neighmap svg { width: 100%; height: auto; display: block; }
+  .neighmap .nm-legend {
+    margin-top: 20px;
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    color: var(--ink-soft);
+    letter-spacing: 0.05em;
+  }
+  .neighmap .nm-legend .lg { display: flex; align-items: center; gap: 8px; }
+  .neighmap .nm-legend .lg .swatch { width: 10px; height: 10px; border-radius: 50%; }
+
+  /* ============ PULL QUOTE ============ */
+  .pullquote {
+    margin: 72px 0 72px;
+    padding: 0 80px;
+    text-align: center;
+  }
+  .pullquote .mark {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 80px;
+    line-height: 0.6;
+    color: var(--terracotta);
+    margin-bottom: 16px;
+    font-weight: 300;
+  }
+  .pullquote p {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 28px;
+    line-height: 1.4;
+    color: var(--ink);
+    max-width: 720px;
+    margin: 0 auto;
+    letter-spacing: -0.01em;
+  }
+  .pullquote p em { font-style: normal; color: var(--caribbean); font-weight: 400; }
+
+  /* ============ TOC ============ */
+  .toc {
+    background: var(--paper-card);
+    border: 1px solid var(--line-2);
+    padding: 40px 44px;
+    margin: 48px 0 0;
+    position: relative;
+  }
+  .toc::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 60px;
+    height: 3px;
+    background: var(--terracotta);
+  }
+  .toc-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--line);
+  }
+  .toc-head .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .toc-head .count {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--terracotta);
+    font-weight: 600;
+  }
+  .toc ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    columns: 2;
+    column-gap: 48px;
+  }
+  .toc ol li {
+    padding: 12px 0;
+    border-bottom: 1px dotted var(--line-2);
+    counter-increment: toc;
+    break-inside: avoid;
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+  }
+  .toc ol li::before {
+    content: counter(toc, decimal-leading-zero);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    color: var(--terracotta);
+    font-weight: 600;
+    flex: 0 0 auto;
+  }
+  .toc ol { counter-reset: toc; }
+  .toc a {
+    border-bottom: none;
+    color: var(--ink);
+    font-size: 16px;
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+  }
+  .toc a:hover { color: var(--terracotta); }
+
+  /* ============ KEYLIST ============ */
+  .keylist {
+    list-style: none;
+    padding: 0;
+    margin: 24px 0;
+    max-width: 760px;
+  }
+  .keylist li {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 28px;
+    align-items: baseline;
+  }
+  .keylist li:last-child { border-bottom: none; }
+  .keylist .k {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    font-weight: 600;
+  }
+  .keylist .v {
+    font-family: 'Fraunces', serif;
+    color: var(--ink-2);
+    font-size: 16px;
+  }
+  .keylist .v strong { color: var(--ink); font-weight: 600; }
+
+  /* ============ RULES ============ */
+  hr {
+    border: none;
+    height: 1px;
+    background: var(--line);
+    margin: 48px 0;
+    max-width: 760px;
+  }
+  hr.diamond {
+    background: none;
+    text-align: center;
+    height: auto;
+    margin: 56px 0;
+  }
+  hr.diamond::after {
+    content: '◇   ◆   ◇';
+    color: var(--terracotta);
+    letter-spacing: 1.6em;
+    font-size: 10px;
+  }
+
+  /* ============ CLOSER ============ */
+  .closer {
+    padding: 140px 64px 100px;
+    text-align: center;
+    background: var(--paper-2);
+    position: relative;
+    border-top: 1px solid var(--line-2);
+    overflow: hidden;
+  }
+  .closer .closer-art {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 40%;
+    opacity: 0.08;
+    pointer-events: none;
+  }
+  .closer .closer-art svg { width: 100%; height: 100%; display: block; }
+  .closer::before {
+    content: '';
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 60px;
+    border: 1px solid var(--terracotta);
+    border-radius: 50%;
+    opacity: 0.5;
+  }
+  .closer::after {
+    content: '⌘';
+    position: absolute;
+    top: 45px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    color: var(--terracotta);
+  }
+  .closer .quote {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 32px;
+    line-height: 1.35;
+    color: var(--ink);
+    max-width: 720px;
+    margin: 0 auto 32px;
+    letter-spacing: -0.015em;
+    position: relative;
+    z-index: 1;
+  }
+  .closer .quote em { font-style: normal; color: var(--terracotta); font-weight: 400; }
+  .closer .attr {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    position: relative;
+    z-index: 1;
+  }
+  .closer .attr::before, .closer .attr::after {
+    content: '';
+    width: 28px;
+    height: 1px;
+    background: var(--ink-faint);
+    opacity: 0.4;
+  }
+
+  @media (max-width: 1180px) {
+    .rail { display: none; }
+  }
+  @media (max-width: 900px) {
+    .cover { padding: 32px 24px 32px; }
+    section { padding: 64px 24px 56px; }
+    .closer { padding: 80px 24px 60px; }
+    .cover-meta { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    .hero-stats { grid-template-columns: repeat(2, 1fr); }
+    .hero-stats .stat:nth-child(2) { border-right: none; }
+    .toc ol { columns: 1; }
+    .chapter { grid-template-columns: 1fr; gap: 16px; }
+    .chapter-num { font-size: 64px; padding-top: 0; }
+    .chapter-sigil { display: none; }
+    .ghost-num { font-size: 180px; top: 30px; }
+    .pullquote { padding: 0 16px; }
+    .pullquote p { font-size: 22px; }
+    .cover-seal { width: 70px; height: 70px; top: 32px; right: 32px; }
+    .keylist li { grid-template-columns: 1fr; gap: 4px; }
+    .barchart { padding: 24px 20px; }
+    .barchart .bc-row { grid-template-columns: 120px 1fr 64px; gap: 12px; }
+    .neighmap { padding: 24px 20px; }
+    .minimark { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ FIXED CHROME ============ -->
+<div class="progress"><div class="bar"></div></div>
+
+<div class="minimark" id="minimark">
+  <span class="dot"></span>
+  <span id="minimark-text">CHAPTER I · The Moment</span>
+</div>
+
+<nav class="rail" id="rail">
+  <ol>
+    <li data-target="snapshot"><span class="romnum">I</span><span class="name">The Moment</span></li>
+    <li data-target="safety"><span class="romnum">II</span><span class="name">Safety &amp; Neighborhoods</span></li>
+    <li data-target="money"><span class="romnum">III</span><span class="name">Money</span></li>
+    <li data-target="realestate"><span class="romnum">IV</span><span class="name">Real Estate</span></li>
+    <li data-target="office"><span class="romnum">V</span><span class="name">Office</span></li>
+    <li data-target="business"><span class="romnum">VI</span><span class="name">Business</span></li>
+    <li data-target="visa"><span class="romnum">VII</span><span class="name">Visa</span></li>
+    <li data-target="crypto"><span class="romnum">VIII</span><span class="name">Crypto &amp; OFAC</span></li>
+    <li data-target="tax"><span class="romnum">IX</span><span class="name">U.S. Tax</span></li>
+    <li data-target="lifestyle"><span class="romnum">X</span><span class="name">Lifestyle</span></li>
+    <li data-target="protocols"><span class="romnum">XI</span><span class="name">Protocols</span></li>
+    <li data-target="first90"><span class="romnum">XII</span><span class="name">First 90 Days</span></li>
+  </ol>
+</nav>
+
+<div class="doc">
+
+<!-- ============================== COVER ============================== -->
+<header class="cover">
+  <div class="cover-bignum">26</div>
+  <div class="cover-art" aria-hidden="true">
+    <svg viewBox="0 0 1000 300" preserveAspectRatio="none">
+      <path d="M0,300 L0,210 L60,180 L120,200 L180,160 L240,180 L300,120 L360,150 L420,90 L480,140 L540,70 L600,110 L660,80 L720,140 L780,100 L840,150 L900,120 L960,170 L1000,140 L1000,300 Z" fill="#14110c"/>
+      <path d="M0,300 L0,240 L80,220 L160,240 L240,215 L320,235 L400,210 L480,230 L560,205 L640,225 L720,200 L800,220 L880,200 L960,225 L1000,210 L1000,300 Z" fill="#14110c" opacity="0.6"/>
+    </svg>
+  </div>
+
+  <div class="cover-seal" aria-hidden="true">
+    <svg viewBox="0 0 110 110">
+      <circle cx="55" cy="55" r="52" fill="none" stroke="#b04525" stroke-width="0.8"/>
+      <circle cx="55" cy="55" r="46" fill="none" stroke="#b04525" stroke-width="0.4"/>
+      <path id="circle-text" d="M 55,55 m -38,0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0" fill="none"/>
+      <text font-family="JetBrains Mono, monospace" font-size="7.5" fill="#b04525" letter-spacing="2.5">
+        <textPath href="#circle-text" startOffset="2%">FIELD MANUAL · CARACAS · MMXXVI · CONFIDENTIAL · </textPath>
+      </text>
+      <text x="55" y="50" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-weight="500" font-size="22" fill="#b04525">VE</text>
+      <text x="55" y="68" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="6.5" fill="#b04525" letter-spacing="1">2026</text>
+    </svg>
+  </div>
+
+  <div class="cover-head">
+    <div class="cover-mark">
+      <span class="glyph">A</span>
+      <span>Private Briefing · Not for Distribution</span>
+    </div>
+    <div>Volume I · May 2026</div>
+  </div>
+
+  <div class="cover-body">
+    <div class="eyebrow">Relocation Dossier &mdash; Caracas · Crypto · 30s</div>
+    <h1 class="cover-title">Venezuela<em>,</em><span class="year">2026</span></h1>
+    <p class="cover-sub">A field manual for a moment that did not exist a year ago. Caracas after Maduro, the dollar de facto, real estate at 15% of its peak, the embassy reopening. What to do with all of it &mdash; in twelve chapters.</p>
+  </div>
+
+  <div class="cover-meta">
+    <div class="item">
+      <div class="label">Prepared For</div>
+      <div class="value">Abraham &middot; <em>30</em></div>
+    </div>
+    <div class="item">
+      <div class="label">Country Risk</div>
+      <div class="value">Level <em>3</em> &middot; Reconsider</div>
+    </div>
+    <div class="item">
+      <div class="label">Currency of Record</div>
+      <div class="value">USD &middot; <em>de facto</em></div>
+    </div>
+    <div class="item">
+      <div class="label">Government</div>
+      <div class="value">Interim &middot; <em>D. Rodríguez</em></div>
+    </div>
+  </div>
+
+  <div class="scroll-cue">Begin</div>
+</header>
+
+<!-- ============================== 01 ============================== -->
+<section id="snapshot">
+  <div class="ghost-num">01</div>
+  <div class="chapter">
+    <div class="chapter-num">
+      <sup>Chapter I</sup>01
+      <div class="chapter-sigil" aria-hidden="true">
+        <svg viewBox="0 0 32 32">
+          <circle cx="16" cy="16" r="13"/>
+          <path d="M16 8 L16 16 L21 19"/>
+          <circle cx="16" cy="16" r="0.8" class="fill"/>
+        </svg>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="chapter-kicker">The Moment You're Walking Into</div>
+      <h2>The country is <em>mid&#8209;transition</em>.</h2>
+      <p class="lede drop">May 2026 Venezuela is unlike any prior year. Maduro was extracted by U.S. forces on January 3, 2026. Delcy Rodríguez is acting president and has now passed the 90-day constitutional limit without an Assembly vote. The State Department dropped its advisory from Level 4 to Level 3 on March 19. American Airlines resumed Miami–Caracas service on April 30. The dollar is the unit of account. The bolivar is bleeding 480% YoY but inflation is decelerating fast. <strong>This is a window.</strong></p>
+    </div>
+  </div>
+
+  <div class="hero-stats reveal">
+    <div class="stat">
+      <span class="delta">VES</span>
+      <div class="num" data-count="530">0</div>
+      <div class="lbl">Bolívars / USD · BCV</div>
+      <div class="sparkline"><svg viewBox="0 0 100 18" preserveAspectRatio="none"><path d="M0,16 L20,15 L40,13 L60,11 L75,8 L90,5 L100,3" /></svg></div>
+    </div>
+    <div class="stat">
+      <span class="delta">+</span>
+      <div class="num">~<em data-count="80" data-suffix="">0</em>%</div>
+      <div class="lbl">Transactions in USD</div>
+      <div class="sparkline"><svg viewBox="0 0 100 18" preserveAspectRatio="none"><path d="M0,16 L20,14 L40,10 L60,7 L80,4 L100,2" /></svg></div>
+    </div>
+    <div class="stat">
+      <span class="delta">YoY</span>
+      <div class="num"><span data-count="612">0</span>%</div>
+      <div class="lbl">Annual inflation · Apr</div>
+      <div class="sparkline"><svg viewBox="0 0 100 18" preserveAspectRatio="none"><path d="M0,2 L20,3 L40,5 L60,8 L80,12 L100,14" /></svg></div>
+    </div>
+    <div class="stat">
+      <span class="delta">US&nbsp;Dept</span>
+      <div class="num">Lvl <em>3</em></div>
+      <div class="lbl">Travel advisory</div>
+      <div class="sparkline"><svg viewBox="0 0 100 18" preserveAspectRatio="none"><path d="M0,3 L25,3 L25,5 L50,5 L50,8 L75,8 L75,11 L100,11" /></svg></div>
+    </div>
+  </div>
+
+  <div class="card warn reveal">
+    <div class="card-label">Political Risk · Live</div>
+    <p>Rodríguez's interim presidency lacks formal U.S. recognition. The single biggest variable for H2 2026 is whether an extension or snap election is announced. <strong>Plan for sudden disruption to flights, banking, and movement.</strong> Keep enough USD cash at hand to weather a 30-day exit window without bank access.</p>
+  </div>
+
+  <div class="toc reveal">
+    <div class="toc-head">
+      <span class="label">Contents</span>
+      <span class="count">XII Chapters</span>
+    </div>
+    <ol>
+      <li><a href="#snapshot">The Moment</a></li>
+      <li><a href="#safety">Safety &amp; Neighborhoods</a></li>
+      <li><a href="#money">What Your Money Buys</a></li>
+      <li><a href="#realestate">Renting &amp; Buying</a></li>
+      <li><a href="#office">Office &amp; Coworking</a></li>
+      <li><a href="#business">Setting Up a Business</a></li>
+      <li><a href="#visa">Visa &amp; Residency</a></li>
+      <li><a href="#crypto">Crypto Rails &amp; OFAC</a></li>
+      <li><a href="#tax">U.S. Tax Reality</a></li>
+      <li><a href="#lifestyle">Lifestyle &amp; Scene</a></li>
+      <li><a href="#protocols">Daily Safety Protocols</a></li>
+      <li><a href="#first90">First Ninety Days</a></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============================== 02 ============================== -->
+<section id="safety" class="tint-warm">
+  <div class="ghost-num">02</div>
+  <div class="chapter">
+    <div class="chapter-num">
+      <sup>Chapter II</sup>02
+      <div class="chapter-sigil" aria-hidden="true">
+        <svg viewBox="0 0 32 32">
+          <circle cx="16" cy="16" r="13"/>
+          <path d="M16 3 L18 16 L16 29 L14 16 Z" class="fill"/>
+          <path d="M3 16 L29 16" stroke-dasharray="1 3"/>
+          <circle cx="16" cy="16" r="1.4" class="fill"/>
+        </svg>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="chapter-kicker">Where to Live</div>
+      <h2>All viable life is <em>east of downtown</em>.</h2>
+      <p class="lede drop">Caracas's homicide rate has fallen sharply from the 2017 peak (~109/100k → ~45/100k in 2025), partly because the murderous have left, partly because so many residents have. The texture of risk shifted: less random street violence, more <strong>express kidnapping, targeted armed robbery of foreigners (4.3× the rate of locals), and political/checkpoint risk.</strong> The fix isn't bravery &mdash; it's geography and habit.</p>
+    </div>
+  </div>
+
+  <div class="neighmap reveal">
+    <div class="nm-head">
+      <div class="nm-title">Caracas · East &amp; West, Abstracted</div>
+      <div class="nm-tag">North up · not to scale</div>
+    </div>
+    <svg viewBox="0 0 800 320" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="hatch" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
+          <line x1="0" y1="0" x2="0" y2="6" stroke="#b04525" stroke-width="1" opacity="0.35"/>
+        </pattern>
+      </defs>
+      <!-- Ávila mountain band north -->
+      <path d="M0,0 L800,0 L800,55 Q700,40 600,60 Q500,50 400,65 Q300,55 200,70 Q100,60 0,55 Z" fill="#14110c" opacity="0.06"/>
+      <text x="400" y="34" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="13" fill="#14110c" opacity="0.45">Cerro El Ávila</text>
+
+      <!-- WEST (no-go) -->
+      <rect x="20" y="100" width="280" height="200" fill="url(#hatch)" opacity="0.4"/>
+      <rect x="20" y="100" width="280" height="200" fill="none" stroke="#b04525" stroke-width="0.8" stroke-dasharray="4 3"/>
+      <text x="35" y="125" font-family="JetBrains Mono, monospace" font-size="9" fill="#b04525" letter-spacing="2">NO-GO · WEST</text>
+      <text x="35" y="165" font-family="Fraunces, serif" font-size="13" fill="#14110c">Petare</text>
+      <text x="35" y="185" font-family="Fraunces, serif" font-size="13" fill="#14110c">23 de Enero</text>
+      <text x="35" y="205" font-family="Fraunces, serif" font-size="13" fill="#14110c">Cota 905</text>
+      <text x="35" y="225" font-family="Fraunces, serif" font-size="13" fill="#14110c">Catia · El Valle</text>
+      <text x="35" y="245" font-family="Fraunces, serif" font-size="13" fill="#14110c">La Vega · Antímano</text>
+      <text x="35" y="275" font-family="JetBrains Mono, monospace" font-size="8.5" fill="#807761" letter-spacing="1">Pre-booked car only · day only</text>
+
+      <!-- divider -->
+      <line x1="320" y1="100" x2="320" y2="300" stroke="#14110c" opacity="0.18" stroke-dasharray="2 3"/>
+
+      <!-- EAST (live zones) -->
+      <text x="340" y="125" font-family="JetBrains Mono, monospace" font-size="9" fill="#0a3d5f" letter-spacing="2">EAST · LIVE ZONES</text>
+
+      <!-- The Golden Triangle -->
+      <circle cx="420" cy="170" r="40" fill="#0a3d5f" opacity="0.10" stroke="#0a3d5f" stroke-width="1"/>
+      <text x="420" y="160" text-anchor="middle" font-family="Fraunces, serif" font-weight="500" font-size="12" fill="#14110c">Altamira</text>
+      <text x="420" y="175" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="#0a3d5f">$900–1500</text>
+
+      <circle cx="520" cy="195" r="40" fill="#0a3d5f" opacity="0.10" stroke="#0a3d5f" stroke-width="1"/>
+      <text x="520" y="185" text-anchor="middle" font-family="Fraunces, serif" font-weight="500" font-size="12" fill="#14110c">LPG</text>
+      <text x="520" y="200" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="#0a3d5f">recommended</text>
+
+      <circle cx="380" cy="225" r="40" fill="#0a3d5f" opacity="0.10" stroke="#0a3d5f" stroke-width="1"/>
+      <text x="380" y="217" text-anchor="middle" font-family="Fraunces, serif" font-weight="500" font-size="12" fill="#14110c">La Castellana</text>
+      <text x="380" y="232" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="#0a3d5f">corporate</text>
+
+      <!-- Las Mercedes (nightlife) -->
+      <circle cx="480" cy="265" r="36" fill="#b04525" opacity="0.12" stroke="#b04525" stroke-width="1.2"/>
+      <text x="480" y="262" text-anchor="middle" font-family="Fraunces, serif" font-weight="500" font-style="italic" font-size="12" fill="#14110c">Las Mercedes</text>
+      <text x="480" y="278" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="#b04525">nightlife</text>
+
+      <!-- Suburbs SE -->
+      <circle cx="650" cy="180" r="26" fill="none" stroke="#807761" stroke-width="0.8" stroke-dasharray="3 2"/>
+      <text x="650" y="184" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="10.5" fill="#4a4337">El Hatillo</text>
+
+      <circle cx="720" cy="240" r="22" fill="none" stroke="#807761" stroke-width="0.8" stroke-dasharray="3 2"/>
+      <text x="720" y="244" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="10" fill="#4a4337">Lagunita</text>
+
+      <circle cx="650" cy="270" r="22" fill="none" stroke="#807761" stroke-width="0.8" stroke-dasharray="3 2"/>
+      <text x="650" y="274" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="10" fill="#4a4337">Country Club</text>
+
+      <!-- Connecting line, Triangle -->
+      <path d="M420,170 L520,195 L380,225 Z" fill="none" stroke="#0a3d5f" stroke-width="0.6" opacity="0.5"/>
+      <text x="442" y="195" font-family="JetBrains Mono, monospace" font-size="8" fill="#0a3d5f" letter-spacing="1.5" opacity="0.7">GOLDEN TRIANGLE</text>
+    </svg>
+    <div class="nm-legend">
+      <div class="lg"><span class="swatch" style="background:#0a3d5f;opacity:0.5"></span>Live zone (east)</div>
+      <div class="lg"><span class="swatch" style="background:#b04525;opacity:0.5"></span>Nightlife / office hybrid</div>
+      <div class="lg"><span class="swatch" style="border:1px dashed #807761;background:none"></span>Suburban / gated</div>
+      <div class="lg"><span class="swatch" style="background:url(#hatch);background-color:#b04525;opacity:0.4"></span>No-go</div>
+    </div>
+  </div>
+
+  <h3>The Chacao Golden Triangle</h3>
+  <p>These three contiguous neighborhoods are where 90% of returning expats and serious foreigners live. Walkable, tree-lined, dense restaurant/cafe scene, Metro access, the safest place in the country to walk in daylight.</p>
+
+  <div class="grid-3">
+    <div class="tile">
+      <div class="tile-tag">Default Pick</div>
+      <div class="tile-title">Altamira</div>
+      <div class="tile-body">Modern high-rises around Plaza Altamira/Francia. British School, top clinics, diplomatic mix. Most "set up and forget" of the three.</div>
+      <div class="tile-price">2BR LUX &middot; $900–1,500/mo</div>
+    </div>
+    <div class="tile">
+      <div class="tile-tag">Most Livable</div>
+      <div class="tile-title">Los Palos Grandes</div>
+      <div class="tile-body">Quieter, residential, café-dense around the plaza. Where the best new restaurants are opening (Amapola, Noraneko, Setenta). Best for a 30-year-old who wants walkability.</div>
+      <div class="tile-price">2BR LUX &middot; $900–1,400/mo</div>
+    </div>
+    <div class="tile">
+      <div class="tile-tag">Corporate</div>
+      <div class="tile-title">La Castellana</div>
+      <div class="tile-body">Diplomatic district (Spain, UK, Netherlands embassies). Office towers, Centro San Ignacio. Slightly more business-suit than the other two.</div>
+      <div class="tile-price">2BR LUX &middot; $1,000–1,600/mo</div>
+    </div>
+  </div>
+
+  <h3>If You Want Nightlife First</h3>
+  <p><strong>Las Mercedes</strong> &mdash; 93 hectares of restaurants, rooftop bars, and clubs. Heavier foot traffic than Altamira, the social epicenter, where Caracas's affluent and the expat crowd actually drink. One of the few zones safe-ish to walk in the evening (with vigilance). Probably the strongest mix of office, nightlife, and security in the city.</p>
+
+  <h3>If You Want Suburbs &amp; Privacy</h3>
+  <div class="grid-2">
+    <div class="tile">
+      <div class="tile-title">El Hatillo</div>
+      <div class="tile-body">Colonial-village vibe in the hills 15 km southeast. Family-heavy, quieter, cheaper. Trade-off: car-dependent, named on kidnap-target lists for wealthy residents &mdash; choose a gated complex.</div>
+    </div>
+    <div class="tile">
+      <div class="tile-title">Country Club / La Lagunita</div>
+      <div class="tile-body">The two wealthiest enclaves. Gated golf-club communities, maximum security, zero walkability. Beautiful but isolating. Only worth it if you want suburban living, not city.</div>
+    </div>
+    <div class="tile">
+      <div class="tile-title">La Trinidad / La Boyera</div>
+      <div class="tile-body">Upscale southeastern residential, mostly families. Restaurants concentrated on La Trinidad's commercial strips. Car-required.</div>
+    </div>
+    <div class="tile">
+      <div class="tile-title">San Bernardino</div>
+      <div class="tile-body"><strong>Don't.</strong> Old-money downtown enclave with rising kidnap rate; the safety bubble has eroded badly.</div>
+    </div>
+  </div>
+
+  <div class="pullquote">
+    <div class="mark">&ldquo;</div>
+    <p>The lifestyle is excellent <em>inside</em> the bubble. The bubble exists because everyone follows the same protocols.</p>
+  </div>
+
+  <h3>Honest Recommendation</h3>
+  <div class="card">
+    <div class="card-label">Best fit for you</div>
+    <p><strong>Los Palos Grandes</strong> for daily life &mdash; café walkability, dense scene, less noise than Las Mercedes. Pick a 2BR in a building with 24/7 guard, generator, and water tank (these are standard at the price point). <strong>Office in Las Mercedes</strong>, 10-minute drive. Use Las Mercedes for dinners and nights out. Avoid moving into Country Club or Lagunita unless you specifically want a country-club life &mdash; the isolation works against the experience you're going there for.</p>
+  </div>
+
+  <h3>Cities Outside Caracas</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>City</th><th>Verdict</th><th>Best for</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Mérida</strong></td><td>Safest by a wide margin. Andean university town, cable car, paragliding, low cost. Limited international services.</td><td>Quiet lifestyle, hiking, low burn</td></tr>
+        <tr><td><strong>Margarita Island</strong></td><td>Pearl of the Caribbean. Tourist infrastructure, lower violent crime, beach focus. Worse blackouts/water issues than Caracas.</td><td>Beach + nightlife combo</td></tr>
+        <tr><td><strong>Valencia</strong></td><td>Industrial. Expat zones El Trigal and Prebo. Practical if work demands; uninteresting otherwise.</td><td>Skip unless required</td></tr>
+        <tr><td><strong>Maracaibo</strong></td><td><strong>Avoid in 2026.</strong> Kidnappings up 34% Q1, Zulia border instability with Colombian armed groups.</td><td>Hard no</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Hard No-Go Zones</h3>
+  <p>West and south Caracas. Burn this list into your memory: <strong>Petare, 23 de Enero, Cota 905, Catia, El Valle, La Vega, Antímano, Los Magallanes de Catia, El Cementerio, Macaracuay, Santa Cruz del Este.</strong> Also the airport-area town of <strong>Catia La Mar</strong> at night. Don't drive yourself through any of these in daylight either &mdash; pre-booked car only.</p>
+  <p>Outside Caracas: the entire Colombian border belt &mdash; <strong>Táchira, Apure, Zulia</strong> &mdash; remains Level 4. Cross-border armed-group activity up 67% in early 2026.</p>
+</section>
+
+<!-- ============================== 03 ============================== -->
+<section id="money">
+  <div class="ghost-num">03</div>
+  <div class="chapter">
+    <div class="chapter-num">
+      <sup>Chapter III</sup>03
+      <div class="chapter-sigil" aria-hidden="true">
+        <svg viewBox="0 0 32 32">
+          <ellipse cx="16" cy="9" rx="9" ry="2.6"/>
+          <path d="M7 9 L7 14 Q7 16.6 16 16.6 Q25 16.6 25 14 L25 9"/>
+          <path d="M7 14 L7 19 Q7 21.6 16 21.6 Q25 21.6 25 19 L25 14"/>
+          <path d="M7 19 L7 24 Q7 26.6 16 26.6 Q25 26.6 25 24 L25 19"/>
+        </svg>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="chapter-kicker">What Your Money Buys</div>
+      <h2>You will live in the <em>top 1%</em> on $4,200/mo.</h2>
+      <p class="lede drop">Venezuela is de facto dollarized. ~80% of meaningful transactions clear in USD. Bolivars are for street vendors, fuel, payroll, and government fees. Cards work at upscale Caracas hotels and restaurants but drop off fast everywhere else. <strong>Zelle and USDT are the real settlement rails.</strong> Cash USD bills must be in good condition &mdash; banks and shops routinely reject damaged notes, so request fresh sequential bills at your U.S. bank before leaving.</p>
+    </div>
+  </div>
+
+  <h3>Monthly Burn &mdash; Caracas East, Comfortable</h3>
+
+  <div class="barchart reveal" id="burnchart">
+    <div class="bc-head">
+      <div class="bc-title">Monthly burn breakdown</div>
+      <div class="bc-total">Run-rate <strong>~$4,200</strong></div>
+    </div>
+    <div class="bc-row highlight" style="--w: 100%"><div class="bc-lbl">Luxury 2BR rent</div><div class="bc-bar"></div><div class="bc-val">$1,200</div></div>
+    <div class="bc-row" style="--w: 67%"><div class="bc-lbl">Dining / bars</div><div class="bc-bar"></div><div class="bc-val">$800</div></div>
+    <div class="bc-row" style="--w: 58%"><div class="bc-lbl">Maid + driver</div><div class="bc-bar"></div><div class="bc-val">$700</div></div>
+    <div class="bc-row" style="--w: 50%"><div class="bc-lbl">Groceries</div><div class="bc-bar"></div><div class="bc-val">$600</div></div>
+    <div class="bc-row" style="--w: 25%"><div class="bc-lbl">Health insurance</div><div class="bc-bar"></div><div class="bc-val">$300</div></div>
+    <div class="bc-row" style="--w: 25%"><div class="bc-lbl">Transport / fuel</div><div class="bc-bar"></div><div class="bc-val">$300</div></div>
+    <div class="bc-row" style="--w: 17%"><div class="bc-lbl">Condo + utilities</div><div class="bc-bar"></div><div class="bc-val">$200</div></div>
+    <div class="bc-row" style="--w: 7%"><div class="bc-lbl">Gym</div><div class="bc-bar"></div><div class="bc-val">$80</div></div>
+    <div class="bc-row total"><div class="bc-lbl">Total · monthly</div><div class="bc-bar"></div><div class="bc-val">$4,180</div></div>
+  </div>
+
+  <p>At ~$50k/year all-in, your $1.5M liquid runs for <strong>30+ years</strong> without working. With Chainlink income still flowing, you're compounding. The country is a cheat code if you don't need to earn locally.</p>
+
+  <h3>Itemized Costs Worth Knowing</h3>
+  <div class="grid-2">
+    <div class="tile">
+      <div class="tile-tag">Eating Out</div>
+      <div class="tile-title">$2 → $50/person</div>
+      <div class="tile-body">Street arepa $2–5. Casual sit-down $8–15. Mid-range $15–25. Upscale Las Mercedes $25–50. Dinner for two with wine at Alto or Amapola: ~$120–150.</div>
+    </div>
+    <div class="tile">
+      <div class="tile-tag">Internet</div>
+      <div class="tile-title">$30–110/mo</div>
+      <div class="tile-body">Inter cable $30–60. Movistar fiber 100GB $82 or 250GB $110. Caracas average residential 49.9 Mbps down / 48.5 up.</div>
+    </div>
+    <div class="tile">
+      <div class="tile-tag">Mobile</div>
+      <div class="tile-title">$25–75/mo</div>
+      <div class="tile-body">Digitel 30GB $25, 100GB $75. 5G launched late 2025 (Digitel + Movistar) &mdash; viable backup pipe.</div>
+    </div>
+    <div class="tile">
+      <div class="tile-tag">Driver</div>
+      <div class="tile-title">$300–600/mo</div>
+      <div class="tile-body">Full-time personal driver. Most expats prefer this to self-driving for the airport run and night moves. On-demand armored car $30–80/day.</div>
+    </div>
+    <div class="tile">
+      <div class="tile-tag">Maid / Housekeeper</div>
+      <div class="tile-title">$150–400/mo</div>
+      <div class="tile-body">Live-out full-time $150–300. Cook $200–400. Live-in service ~$400–700 plus room/board. Paid in USD by expats.</div>
+    </div>
+    <div class="tile">
+      <div class="tile-tag">Healthcare</div>
+      <div class="tile-title">$30–150 / visit</div>
+      <div class="tile-body">GP $30–60. Specialist $50–150. Dental cleaning $20–40. Hospitals: Clínica El Ávila (Altamira), CMDLT, Hospital de Clínicas Caracas. Pay upfront, get reimbursed via insurance.</div>
+    </div>
+  </div>
+
+  <div class="card warn">
+    <div class="card-label">Insurance · Non-negotiable</div>
+    <p>Get an international health plan from Cigna, Allianz, BUPA, or William Russell. <strong>$2,000–5,000/year per adult.</strong> Must include medevac to Bogotá or Miami. Confirm Venezuela isn't on the exclusion list &mdash; some insurers added it during the crisis years. Local Venezuelan plans aren't sufficient for serious incidents.</p>
+  </div>
+</section>
+
+<!-- ============================== 04 ============================== -->
+<section id="realestate" class="tint-cool">
+  <div class="ghost-num">04</div>
+  <div class="chapter">
+    <div class="chapter-num">
+      <sup>Chapter IV</sup>04
+      <div class="chapter-sigil" aria-hidden="true">
+        <svg viewBox="0 0 32 32">
+          <path d="M4 16 L16 6 L28 16"/>
+          <path d="M7 14 L7 26 L25 26 L25 14"/>
+          <path d="M13 26 L13 19 L19 19 L19 26"/>
+        </svg>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="chapter-kicker">Renting &amp; Buying</div>
+      <h2>Buy if you stay <em>three or more years</em>.</h2>
+      <p class="lede drop">Rent first. Always. The six-month rule: live in Caracas at least six months before signing a purchase. Real estate is deeply depressed &mdash; ~85% below 2010 peak in USD terms. Foreigners can legally own (constitutional right) and there's no special permit for urban Caracas. But it's an illiquid market, no foreign financing exists, and the OFAC angle (next chapter) makes seller due diligence mandatory.</p>
+    </div>
+  </div>
+
+  <h3>Rent Bands · Safe Neighborhoods (USD/month)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Type</th><th>Mid-Range</th><th>Luxury</th></tr></thead>
+      <tbody>
+        <tr><td>1BR &mdash; Altamira / LPG / Las Mercedes</td><td class="num">$400–700</td><td class="num">$700–1,200</td></tr>
+        <tr><td>2BR &mdash; same zones</td><td class="num">$500–900</td><td class="num">$900–1,500</td></tr>
+        <tr><td>3BR &mdash; secure complex</td><td class="num">$600–1,200</td><td class="num">$1,500–3,000+</td></tr>
+        <tr><td>3BR penthouse</td><td class="num">&mdash;</td><td class="num">$3,000–5,000</td></tr>
+        <tr><td>El Hatillo (gated)</td><td colspan="2">10–20% below Altamira for comparable space</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Leases run 1–2 years. Expect to pay <strong>3–6 months upfront</strong> in lieu of guarantor (this is normal, not a scam). USD only, wire or cash, signed before a notary.</p>
+
+  <h3>Buying &mdash; What $200k Gets You</h3>
+  <ul class="keylist">
+    <li><span class="k">Entry / Bargain</span><span class="v">$30k–65k buys older, larger units in fringe-but-safe zones.</span></li>
+    <li><span class="k">Nice 2BR Condo</span><span class="v">$80k–200k in Altamira / Los Palos Grandes / Las Mercedes.</span></li>
+    <li><span class="k">Nice 3BR Home</span><span class="v">$150k–250k in El Hatillo or hillside.</span></li>
+    <li><span class="k">Premium</span><span class="v">$200k–500k+ for fully renovated, modern, Ávila-view units in Altamira or Castellana.</span></li>
+  </ul>
+
+  <h3>Buying Process &mdash; Compressed</h3>
+  <ol>
+    <li>Get non-tourist visa (Transeúnte) and RIF tax ID first. Buying as tourist creates problems.</li>
+    <li>SIEX foreign-investment registration + SAREN pre-verification of title.</li>
+    <li>Attorney-led due diligence (use D'Empaire, Hoet Peláez Castillo &amp; Duque, or Baker McKenzie &mdash; not a referral from the seller).</li>
+    <li>OFAC SDN screen on the seller &mdash; if seller appears on the U.S. Treasury list, walk. Strict liability for you as a U.S. person.</li>
+    <li>Registration fees 0.5–2% of sale value, paid in bolivars at official rate.</li>
+    <li>All transactions in USD wire to a documented account. Cash purchases over $10k flag FinCEN exposure.</li>
+  </ol>
+
+  <div class="card danger">
+    <div class="card-label">Risk · Real</div>
+    <p><strong>Expropriation precedent exists.</strong> Chavez/Maduro nationalized hundreds of properties. The post-Maduro government has not formally renounced the power. <strong>Squatters are a recovery nightmare</strong> &mdash; never buy unoccupied units in non-premium zones. <strong>Resale is illiquid</strong> &mdash; expect 3–7 year hold to sell at price. The math only works if you actually want to live there.</p>
+  </div>
+</section>
+
+<!-- ============================== 05 ============================== -->
+<section id="office">
+  <div class="ghost-num">05</div>
+  <div class="chapter">
+    <div class="chapter-num">
+      <sup>Chapter V</sup>05
+      <div class="chapter-sigil" aria-hidden="true">
+        <svg viewBox="0 0 32 32">
+          <rect x="4" y="4" width="24" height="24"/>
+          <line x1="16" y1="4" x2="16" y2="28"/>
+          <line x1="4" y1="16" x2="28" y2="16"/>
+          <rect x="6" y="6" width="8" height="8" class="fill" opacity="0.15"/>
+        </svg>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="chapter-kicker">Office &amp; Coworking</div>
+      <h2>Start at <em>Impact Hub</em>. Upgrade later.</h2>
+      <p class="lede drop">Day one is not a private office. Day one is a desk in the room where the crypto and tech founders already hang. Caracas has a real community despite (or because of) the years of crisis &mdash; and you can plug in immediately.</p>
+    </div>
+  </div>
+
+  <h3>Coworking &mdash; The Short List</h3>
+  <div class="grid-2">
+    <div class="tile">
+      <div class="tile-tag">Recommended Start</div>
+      <div class="tile-title">Impact Hub Caracas</div>
+      <div class="tile-body">Edif. Parque Ávila, Torre A, Piso 17, Chacao. Plugged into the 60-country Impact Hub network. Mentor network, events, hot desks ~$150/mo. The default founder onboarding.</div>
+    </div>
+    <div class="tile">
+      <div class="tile-tag">Crypto-Native</div>
+      <div class="tile-title">We Code / FinHack</div>
+      <div class="tile-body">5-story fintech-focused space. Three floors of coworking + auditorium + YouTuber studio. Founded by Fedor Saldivia and Luis Bevilacqua. ~$200/mo. Where the crypto scene actually works.</div>
+    </div>
+    <div class="tile">
+      <div class="tile-tag">Las Mercedes</div>
+      <div class="tile-title">Minds Coworking CCS</div>
+      <div class="tile-body">Torre Empresarial HTO, Calle Nueva York, Las Mercedes. Modern fit-out, central Las Mercedes location, walking distance to dinner.</div>
+    </div>
+    <div class="tile">
+      <div class="tile-tag">Design-Forward</div>
+      <div class="tile-title">loccal.club</div>
+      <div class="tile-body">Calle New York con Madrid, Edif. The Box, Piso 6, Las Mercedes. Younger crowd, design-conscious, good for creative-adjacent work.</div>
+    </div>
+  </div>
+
+  <h3>Private Office &mdash; Las Mercedes / Altamira</h3>
+  <p>Real listings as of May 2026 &mdash; benchmark is <strong>$20–25/m²/month</strong> for prime Las Mercedes and Altamira. Class A buildings: Centro San Ignacio (La Castellana), Torre Británica de Seguros (Altamira), Torre Europa, Centro Lido. Parking usually billed separately ($30/mo per spot).</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Configuration</th><th>USD / month</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td>70 m² Las Mercedes, central A/C, valet</td><td class="num"><strong>$1,600</strong></td><td>Concrete listing</td></tr>
+        <tr><td>40–50 m² with planta eléctrica</td><td class="num">$800–1,100</td><td>Solo or 2–3 person</td></tr>
+        <tr><td>150 m² Las Mercedes</td><td class="num">$3,000–3,500</td><td>Small team space</td></tr>
+        <tr><td>233 m² Los Palos Grandes furnished</td><td class="num">$4,500+</td><td>Executive floor</td></tr>
+        <tr><td>Regus / serviced virtual office</td><td class="num">$199–500</td><td>Address + mail + occasional access</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card warn">
+    <div class="card-label">Non-negotiable lease terms</div>
+    <p>Every office lease must include <strong>planta eléctrica (diesel generator) + dual fiber (CANTV business + Movistar/Inter)</strong>. CORPOELEC rationed ~1,800 MW at peak and the Jan 3 U.S. operation briefly took out Caracas substations. Caracas gets priority restoration vs. the interior, but failures still happen unpredictably. Without backup power your business stops on outage days, period.</p>
+  </div>
+
+  <h3>The Scene</h3>
+  <p>Anchor event: <strong>Caracas Blockchain Week.</strong> Recurring <strong>Se Habla Crypto</strong> meetups. Hive community gatherings on Av. Francisco de Miranda. The local crypto crowd actually transacts &mdash; Venezuela ranks top-10 globally on crypto adoption. Showing up at one CBW alone gets you most of the relationships you need in the first month.</p>
+</section>
+
+<!-- ============================== 06 ============================== -->
+<section id="business" class="tint-warm">
+  <div class="ghost-num">06</div>
+  <div class="chapter">
+    <div class="chapter-num">
+      <sup>Chapter VI</sup>06
+      <div class="chapter-sigil" aria-hidden="true">
+        <svg viewBox="0 0 32 32">
+          <circle cx="16" cy="16" r="11"/>
+          <circle cx="16" cy="16" r="7"/>
+          <path d="M16 5 L18 10 L23 10 L19 13 L21 18 L16 15 L11 18 L13 13 L9 10 L14 10 Z" class="fill" opacity="0.6"/>
+        </svg>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="chapter-kicker">Setting Up a Business</div>
+      <h2>C.A. via attorney. <em>Four to eight weeks.</em></h2>
+      <p class="lede drop">Foreign ownership is unrestricted under Decree 1,438. No local partner required in most sectors. Two vehicles matter: <strong>Compañía Anónima (C.A.)</strong> for credibility with banks and clients, <strong>SRL</strong> for minimal setup. Budget $2,000–5,000 in attorney fees and 4–8 weeks elapsed.</p>
+    </div>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th></th><th>C.A. / S.A.</th><th>S.R.L.</th></tr></thead>
+      <tbody>
+        <tr><td>Minimum shareholders</td><td>2 (or 1 for SAU)</td><td>1</td></tr>
+        <tr><td>Capital floor</td><td>No fixed minimum</td><td class="num">$4–400 USD equivalent</td></tr>
+        <tr><td>Best for</td><td>Medium operations, bank-facing</td><td>SME, joint ventures, holding</td></tr>
+        <tr><td>What expats use</td><td><strong>Default choice</strong></td><td>Lean alternative</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Setup Sequence</h3>
+  <ol>
+    <li><strong>Name reservation</strong> at SAREN (Registro Mercantil)</li>
+    <li><strong>Notarized articles of incorporation</strong></li>
+    <li><strong>Bank capital deposit</strong> (most banks need RIF first &mdash; chicken/egg, attorney handles)</li>
+    <li><strong>Registry filing</strong> at the local Registro Mercantil</li>
+    <li><strong>Newspaper publication</strong> of the formation</li>
+    <li><strong>Corporate books</strong> issued + sealed</li>
+    <li><strong>RIF</strong> (tax ID) from SENIAT</li>
+    <li><strong>AML "Declaración Jurada"</strong></li>
+    <li><strong>Municipal business license</strong></li>
+  </ol>
+  <p>1% tax on subscribed capital at registration. Total elapsed: 4–8 weeks if attorney is competent.</p>
+
+  <h3>Recommended Counsel</h3>
+  <div class="grid-3">
+    <div class="tile"><div class="tile-tag">Premium</div><div class="tile-title">D'Empaire</div><div class="tile-body">Tier-1 Venezuelan firm. Corporate + tax + sanctions advisory. Most expensive option, most defensible.</div></div>
+    <div class="tile"><div class="tile-tag">Foreign-Investor Focus</div><div class="tile-title">Hoet Peláez Castillo &amp; Duque</div><div class="tile-body">Local powerhouse for foreign investors. Strong on M&amp;A and real estate.</div></div>
+    <div class="tile"><div class="tile-tag">U.S.-Aligned</div><div class="tile-title">Baker McKenzie Caracas</div><div class="tile-body">U.S.-comfortable, English-speaking, integrates with Sullivan &amp; Cromwell / Morgan Lewis on OFAC.</div></div>
+  </div>
+
+  <h3>Hiring Local Staff &mdash; The Reality</h3>
+  <p>Statutory minimum wage has been frozen at <strong>VES 130/month (~$0.50) since March 2022.</strong> Real compensation is the "ingreso integral" &mdash; bono de guerra económica $200 + cestaticket $40 = <strong>$240/mo</strong> as of April 30, 2026. This is a critical trap: <strong>because bonuses are non-salary, IVSS/pension/prestaciones calculations are still based on the VES 130 base.</strong> Expat employers ignore this and pay $400–1,500/mo in USD anyway via Zinli or transfer. Use written contracts, register IVSS within 3 days of hire, and budget for the seniority payments (15 days/quarter accrued).</p>
+</section>
+
+<!-- ============================== 07 ============================== -->
+<section id="visa">
+  <div class="ghost-num">07</div>
+  <div class="chapter">
+    <div class="chapter-num">
+      <sup>Chapter VII</sup>07
+      <div class="chapter-sigil" aria-hidden="true">
+        <svg viewBox="0 0 32 32">
+          <rect x="7" y="4" width="18" height="24"/>
+          <line x1="11" y1="9" x2="21" y2="9"/>
+          <circle cx="16" cy="16" r="3"/>
+          <line x1="11" y1="23" x2="21" y2="23"/>
+          <line x1="13" y1="25.5" x2="19" y2="25.5"/>
+        </svg>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="chapter-kicker">Visa &amp; Residency</div>
+      <h2>Enter on eVisa. Apply for <em>Rentista</em> or <em>Inversionista</em>.</h2>
+      <p class="lede drop">As of April 6, 2026, Americans must pre-apply for the mandatory <strong>eVisa</strong> through the MPPRE portal. No interview, no visas on arrival. Tourist visa: 1 year multiple-entry, max 90 days per stay. For actual residence, two practical paths:</p>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="tile">
+      <div class="tile-tag">If You Set Up a Company</div>
+      <div class="tile-title">TR-I Investor Visa</div>
+      <div class="tile-body">3-year temporary residence, extendable +5 after year 2. Requirement: own ≥20% of a Venezuelan company. Triggers automatically once your C.A. is registered with you as principal.</div>
+    </div>
+    <div class="tile">
+      <div class="tile-tag">Cleanest Path</div>
+      <div class="tile-title">Rentista Visa</div>
+      <div class="tile-body">1-year renewable. Requirement: $1,200/month foreign-source income, documented. Trivially met with crypto + Chainlink salary. Lowest friction, fastest issuance.</div>
+    </div>
+  </div>
+
+  <h3>The Sequence That Works</h3>
+  <ol>
+    <li>Apply for eVisa, enter on tourist status.</li>
+    <li>Scout, sign lease, prove address.</li>
+    <li>Exit to Bogotá or Miami → apply for <strong>Transeúnte Rentista or Inversionista</strong> at Venezuelan consulate. Residence visa must be issued before re-entering as resident.</li>
+    <li>Re-enter on new visa → <strong>SAIME for Cédula de Extranjero</strong> (yellow card, "E" prefix).</li>
+    <li><strong>SENIAT online → personal RIF.</strong> Needed for everything.</li>
+    <li>Then incorporate, open bank accounts, etc.</li>
+  </ol>
+  <p>SAIME processing: 1–3 months typical, 6–12 for long-term status. Path to citizenship: 10 years continuous residence.</p>
+</section>
+
+<!-- ============================== 08 ============================== -->
+<section id="crypto" class="tint-cool">
+  <div class="ghost-num">08</div>
+  <div class="chapter">
+    <div class="chapter-num">
+      <sup>Chapter VIII</sup>08
+      <div class="chapter-sigil" aria-hidden="true">
+        <svg viewBox="0 0 32 32">
+          <path d="M10 16 a4 4 0 0 1 4 -4 L18 12"/>
+          <path d="M22 16 a4 4 0 0 1 -4 4 L14 20"/>
+          <rect x="6" y="10" width="10" height="12" rx="2"/>
+          <rect x="16" y="10" width="10" height="12" rx="2"/>
+        </svg>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="chapter-kicker">Crypto Rails &amp; OFAC</div>
+      <h2>Operate as if <em>every counterparty is screened</em>.</h2>
+      <p class="lede drop">Crypto in Venezuela is legal to hold, trade, and use. SUNACRIP &mdash; the former regulator &mdash; was gutted in March 2023 after the Petro scandal and remains in "restructuring" paralysis through 2026. There's no functional enforcement and stablecoins have exploded; the state itself reportedly uses USDT for ~80% of oil sales. That's the easy half. The hard half is OFAC, and it's where U.S. citizens lose money or freedom.</p>
+    </div>
+  </div>
+
+  <h3>The Rails People Actually Use</h3>
+  <div class="grid-2">
+    <div class="tile">
+      <div class="tile-tag">#1 by volume</div>
+      <div class="tile-title">Binance P2P</div>
+      <div class="tile-body">$100M+/mo VES/USDT volume. KYC required. Pays out via Mercantil, Banesco, BNC bolívar transfers. USDT on TRC20 is the default rail (cheap fees).</div>
+    </div>
+    <div class="tile">
+      <div class="tile-tag">Spend Without Off-Ramp</div>
+      <div class="tile-title">Zinli</div>
+      <div class="tile-body">Banco Mercantil Panama prepaid Visa, funded with USDT. Accepted at Farmatodo, supermarkets, Netflix, Spotify. The clean expat hack.</div>
+    </div>
+    <div class="tile">
+      <div class="tile-tag">Backups</div>
+      <div class="tile-title">Bitget, BingX, CoinEx</div>
+      <div class="tile-body">All support VES pairs. Smaller than Binance but useful when liquidity at Binance is tight or specific counterparties want them.</div>
+    </div>
+    <div class="tile">
+      <div class="tile-tag">RIP</div>
+      <div class="tile-title">El Dorado P2P</div>
+      <div class="tile-body">Shut down Venezuela operations (Goncalvez announcement). Don't rely on it. Airtm and Reserve App still operate but at much smaller volume.</div>
+    </div>
+  </div>
+
+  <div class="card danger">
+    <div class="card-label">OFAC · Strict Liability for U.S. Persons</div>
+    <p>The sanctions framework is mostly intact. Many Maduro-era officials remain on the SDN list. <strong>You cannot transact with any SDN-listed Venezuelan individual or entity, period, even unwittingly.</strong></p>
+    <p style="margin-top: 14px;">Specific exposures for your situation:</p>
+    <ul style="margin-top: 12px;">
+      <li><strong>Banco de Venezuela:</strong> state-owned, sanctioned. Binance removed it from P2P in 2023. Don't transact with anyone paying from it.</li>
+      <li><strong>P2P counterparties:</strong> screen the named individual / business against the SDN list before accepting payment. The OFAC consolidated search is free.</li>
+      <li><strong>USDT mixed with PdVSA-origin liquidity</strong> is a real risk vector. Tether froze 41 Venezuelan wallets in 2024. Use exchanges with serious AML.</li>
+      <li><strong>Property purchases:</strong> seller SDN screen mandatory. Cash deals with anyone government-connected are the highest-risk transaction you can make.</li>
+      <li><strong>Chainlink Labs exposure:</strong> as a U.S. employer they have their own compliance program. If you become a Venezuelan tax resident while employed, loop their legal team in early &mdash; don't surprise them.</li>
+    </ul>
+    <p style="margin-top: 14px;"><strong>Retain OFAC counsel before structuring anything material.</strong> Sullivan &amp; Cromwell, Morgan Lewis, and Holland &amp; Knight all publish current Venezuela General License updates and take individual engagements.</p>
+  </div>
+
+  <h3>Banking &mdash; USD Accounts Are Real Now</h3>
+  <p>Since <strong>Convenio Cambiario No. 1</strong> (Sept 2018), Venezuelan banks can open USD accounts for residents and non-residents, individuals and companies. Post-Maduro, this expanded: in January 2026, $300M was channeled through Venezuelan private banking for BCV USD auctions.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Bank</th><th>Product</th><th>Minimum</th></tr></thead>
+      <tbody>
+        <tr><td>BBVA Provincial</td><td>USD auction module</td><td class="num">$251</td></tr>
+        <tr><td>BNC</td><td>USD account</td><td class="num">$1,000</td></tr>
+        <tr><td>Banesco</td><td>Cuenta Verde Electrónica</td><td class="num">&mdash;</td></tr>
+        <tr><td>Mercantil</td><td>USD individual</td><td class="num">$500/qtr cap, $2,000/yr</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Standard onboarding requirements: passport, Cédula, RIF, utility bill, personal + commercial reference, opening deposit. Cédula must come first &mdash; your attorney can walk this through faster than DIY.</p>
+</section>
+
+<!-- ============================== 09 ============================== -->
+<section id="tax">
+  <div class="ghost-num">09</div>
+  <div class="chapter">
+    <div class="chapter-num">
+      <sup>Chapter IX</sup>09
+      <div class="chapter-sigil" aria-hidden="true">
+        <svg viewBox="0 0 32 32">
+          <line x1="16" y1="5" x2="16" y2="27"/>
+          <line x1="8" y1="9" x2="24" y2="9"/>
+          <path d="M8 9 L4 17 L12 17 Z"/>
+          <path d="M24 9 L20 17 L28 17 Z"/>
+          <line x1="12" y1="27" x2="20" y2="27"/>
+        </svg>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="chapter-kicker">U.S. Tax Reality</div>
+      <h2>You owe U.S. tax on <em>worldwide income forever</em>.</h2>
+      <p class="lede drop">U.S. citizenship is the tax trap. You file U.S. returns regardless of where you live. The fixes are real but limited, and Venezuela has no tax treaty with the U.S. &mdash; you'll use the Foreign Tax Credit rather than a treaty article. Plan structure before moving, not after.</p>
+    </div>
+  </div>
+
+  <h3>What You Owe / Must File</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Item</th><th>Threshold / Rate</th><th>Note</th></tr></thead>
+      <tbody>
+        <tr><td><strong>FEIE</strong> (Form 2555)</td><td class="num">$132,900 for TY 2026</td><td>Earned income only. Crypto gains and passive income do NOT qualify. Requires 330 days physical presence or Bona Fide Residence.</td></tr>
+        <tr><td><strong>FBAR</strong> (FinCEN 114)</td><td class="num">$10k aggregate, any point in year</td><td>Due Apr 15, auto-extends to Oct 15. Willful penalty 50% of balance + criminal.</td></tr>
+        <tr><td><strong>FATCA</strong> (Form 8938)</td><td class="num">$200k single filer abroad year-end</td><td>Reports foreign financial assets.</td></tr>
+        <tr><td><strong>Self-employment tax</strong></td><td class="num">15.3%</td><td>NOT excluded by FEIE. Route income through your C.A. to avoid.</td></tr>
+        <tr><td><strong>Foreign Tax Credit</strong> (Form 1116)</td><td>Dollar-for-dollar offset</td><td>Use to credit Venezuelan ISLR paid against U.S. tax.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card danger">
+    <div class="card-label">The 183-Day Trap</div>
+    <p>Venezuelan tax residency triggers at <strong>&gt;183 days in current OR prior calendar year</strong>, or by establishing a habitual abode without proving residency elsewhere. Once you're a Venezuelan resident, you owe Venezuelan tax on <strong>worldwide income</strong> at 6–34% progressive rates. That includes U.S.-source crypto gains. You then use Form 1116 to credit it back on the U.S. side, but the cash flow and admin are real. <strong>Track days deliberately for the first 18 months</strong> &mdash; IRS deployed AI passport entry/exit cross-referencing in 2026, so keep your travel log airtight.</p>
+  </div>
+
+  <h3>Crypto-Specific Notes</h3>
+  <ul>
+    <li><strong>Sales of crypto are U.S.-source capital gains regardless of where you live.</strong> Long-term (≥1 year) gets the 0/15/20% rate; short-term is ordinary income.</li>
+    <li>Once you're a Venezuelan tax resident, those same gains are also Venezuelan-taxable. Coordinate via FTC.</li>
+    <li><strong>Don't try to "expatriate via Venezuela."</strong> Renouncing U.S. citizenship for an Andean tax window is a path to permanent regret given the political volatility. Stay a U.S. citizen.</li>
+    <li>Use a U.S. expat-specialist CPA. Greenback, Bright!Tax, MyExpatTaxes &mdash; pick one that handles crypto and Venezuela specifically.</li>
+  </ul>
+
+  <h3>Venezuelan Corporate Side (if you incorporate)</h3>
+  <ul class="keylist">
+    <li><span class="k">ISLR Corporate</span><span class="v"><strong>15–34%</strong> progressive, 34% standard, 50% oil/gas. Filed by March 31.</span></li>
+    <li><span class="k">IVA (VAT)</span><span class="v"><strong>16%</strong> standard.</span></li>
+    <li><span class="k">Municipal Tax</span><span class="v"><strong>0.1–10%</strong> depending on activity/municipality.</span></li>
+    <li><span class="k">LOCTI</span><span class="v"><strong>0.5–2%</strong> of gross if revenue &gt;10,000 UT.</span></li>
+    <li><span class="k">Dividend WHT</span><span class="v"><strong>34%</strong>, creditable.</span></li>
+  </ul>
+</section>
+
+<!-- ============================== 10 ============================== -->
+<section id="lifestyle" class="tint-warm">
+  <div class="ghost-num">10</div>
+  <div class="chapter">
+    <div class="chapter-num">
+      <sup>Chapter X</sup>10
+      <div class="chapter-sigil" aria-hidden="true">
+        <svg viewBox="0 0 32 32">
+          <path d="M7 6 L25 6 L17 17 L15 17 Z"/>
+          <line x1="16" y1="17" x2="16" y2="26"/>
+          <line x1="11" y1="26" x2="21" y2="26"/>
+          <circle cx="22" cy="9" r="1" class="fill"/>
+        </svg>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="chapter-kicker">Lifestyle &amp; Scene</div>
+      <h2>The bubble is <em>excellent</em>.</h2>
+      <p class="lede drop">Inside the eastern Caracas bubble, life is dense, social, and well-fed. Returning chefs, returning capital, and a city that knows how to enjoy itself. Here's where to actually spend your weeks.</p>
+    </div>
+  </div>
+
+  <h3>Where to Eat</h3>
+  <div class="grid-3">
+    <div class="tile">
+      <div class="tile-tag">Special Occasion</div>
+      <div class="tile-title">Alto</div>
+      <div class="tile-body">Chef Carlos García (ex-El Bulli, El Celler de Can Roca). On Latin America's 50 Best since 2013. The single best meal in the country.</div>
+    </div>
+    <div class="tile">
+      <div class="tile-tag">Best Venezuelan</div>
+      <div class="tile-title">Amapola</div>
+      <div class="tile-body">Los Palos Grandes. Chef Mercedes Oropeza. Gold standard for traditional Venezuelan. Order the asado negro.</div>
+    </div>
+    <div class="tile">
+      <div class="tile-tag">Most Innovative</div>
+      <div class="tile-title">Noraneko</div>
+      <div class="tile-body">Chef José Monsalve. Daily-changing single ramen with kombu/katsuobushi over Caribbean fish. Book via Instagram only.</div>
+    </div>
+    <div class="tile">
+      <div class="tile-tag">Date Night</div>
+      <div class="tile-title">Moreno</div>
+      <div class="tile-body">Half Peruvian-influenced menu, valet parking, on World's 50 Best Discovery. Reliable showpiece.</div>
+    </div>
+    <div class="tile">
+      <div class="tile-tag">Steak</div>
+      <div class="tile-title">Maute Grill</div>
+      <div class="tile-body">The steak crowd's default. Argentinian-style, classic.</div>
+    </div>
+    <div class="tile">
+      <div class="tile-tag">Atmosphere</div>
+      <div class="tile-title">Tarzilandia</div>
+      <div class="tile-body">Foot of the Ávila. Parakeets at the windows. Sunday brunch institution.</div>
+    </div>
+  </div>
+
+  <h3>Nights Out</h3>
+  <p>Action starts at 11pm, clubs fill at 1, close at 5. <strong>360° Roof Bar</strong> (Las Mercedes) and <strong>El Beso / 360°</strong> atop Altamira Suites (19th floor) for views. Cocktails at <strong>Setenta</strong> in Los Palos Grandes. <strong>Holic</strong> for two-level electro in Las Mercedes. <strong>Rosalinda</strong> has serious face control. <strong>La Quinta</strong> for live salsa. <strong>Juan Sebastián Bar</strong> in El Rosal for the most consistent live jazz in the city.</p>
+
+  <hr class="diamond">
+
+  <h3>Gym &amp; Country Clubs</h3>
+  <p><strong>Gold's Gym</strong> at Centro San Ignacio &mdash; 460 m² boutique terrace gym with city views, the prestige spot ($55/mo). Powerhouse Gym and Gym Fitness Caracas (LPG) are alternatives. Multiple CrossFit boxes via the official locator.</p>
+  <p>Country clubs require member sponsorship plus an initiation fee &mdash; but with crypto wealth and patience, accessible. <strong>Caracas Country Club, Lagunita Country Club, Valle Arriba Athletic Club, Caracas Racquet Club, Izcaragua.</strong> Easier entry through ethnic clubs: <strong>Centro Italiano Venezolano, Centro Portugués, Hebraica</strong> &mdash; all have excellent padel courts. Padel is the social sport of choice for the under-40 affluent set.</p>
+
+  <h3>Weekends Out of Caracas</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Where</th><th>How</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Chichiriviche de la Costa</strong></td><td>1.5 hr drive</td><td>Quickest beach/dive escape</td></tr>
+        <tr><td><strong>Choroní / Puerto Colombia</strong></td><td>~4 hr via Henri Pittier road</td><td>Colonial village, Playa Grande, boat to Chuao for legendary cacao</td></tr>
+        <tr><td><strong>Los Roques</strong></td><td>35-min flight from Maiquetía ($250–385 RT)</td><td>National park. Posadas $80–250/night. Budget $600–1,500 for 3–4 nights.</td></tr>
+        <tr><td><strong>Margarita Island</strong></td><td>~1 hr flight</td><td>Best value sun + resort</td></tr>
+        <tr><td><strong>Canaima / Angel Falls</strong></td><td>Fly only, 3–4 days</td><td>Hammocks at base camp, no signal. Bucket list.</td></tr>
+        <tr><td><strong>Mérida</strong></td><td>~$35 one way, ~1 hr</td><td>Andes, cooler weather, university town</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Solo Weekend in Caracas</h3>
+  <p><strong>Sabas Nieves trail</strong> in Ávila National Park &mdash; entrance in Altamira near Tarzilandia, 2.5 miles, ~1,200 ft elevation, 2–2.5 hours, 4.8 stars on AllTrails. Start before 7am to beat the sun and meet locals. For the full day: Sabas Nieves → Banquito → No Te Apures → Pico Occidental → cable car down to Humboldt Hotel. Lazier option: <strong>Ávila Mágica teleférico</strong> from Maripérez.</p>
+
+  <h3>Community &amp; Spanish</h3>
+  <p>Smaller foreign-passport expat scene than you'd think, but rapidly expanding via the Doral/Madrid return wave. Realistically you'll spend more time with bilingual returnee Venezuelans than with born-American expats &mdash; they're the more interesting crowd anyway. <strong>AmCham Venezuela</strong> is the business-networking core; <strong>InterNations</strong> chapter is active; the reopened U.S. embassy under Ambassador Laura Dogu (arrived January 2026) hosts events again.</p>
+  <p>Spanish: B1 minimum for daily life, B2 to enjoy nightlife and humor. Drop the Spain <em>vosotros</em> immediately. Key slang: <em>chamo</em> (dude), <em>pana</em> (buddy), <em>chévere</em> (cool), <em>vaina</em> (thing &mdash; universal), <em>burda</em> (a lot), <em>fino</em> (great), <em>arrecho</em> (pissed or awesome depending on tone), <em>bululú</em> (crowd).</p>
+</section>
+
+<!-- ============================== 11 ============================== -->
+<section id="protocols">
+  <div class="ghost-num">11</div>
+  <div class="chapter">
+    <div class="chapter-num">
+      <sup>Chapter XI</sup>11
+      <div class="chapter-sigil" aria-hidden="true">
+        <svg viewBox="0 0 32 32">
+          <circle cx="11" cy="16" r="5"/>
+          <line x1="16" y1="16" x2="28" y2="16"/>
+          <line x1="22" y1="16" x2="22" y2="22"/>
+          <line x1="26" y1="16" x2="26" y2="20"/>
+        </svg>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="chapter-kicker">Daily Safety Protocols</div>
+      <h2>The bubble is <em>non-negotiable</em>.</h2>
+      <p class="lede drop">The lifestyle is excellent <em>inside</em> the eastern Caracas bubble. The bubble exists because everyone follows the same protocols. Treat these as muscle memory, not paranoia. Most expat incidents come from one missed step on this list.</p>
+    </div>
+  </div>
+
+  <h4>Cash &amp; Cards</h4>
+  <ul>
+    <li><strong>USD only,</strong> small undamaged post-2009 bills. Bring at least $5k cash on first trip in $20/$50 mix.</li>
+    <li><strong>Skip ATMs entirely.</strong> Express-kidnap vector. Use Zelle (set up before departure), Binance P2P, or in-person USD top-ups.</li>
+    <li><strong>Decoy wallet</strong> with $20–40 + an expired card to hand over if mugged.</li>
+    <li>Cash distributed across pockets / bag / apartment safe. Never carry the full bankroll.</li>
+  </ul>
+
+  <h4>Phone</h4>
+  <ul>
+    <li><strong>Pocket only.</strong> Never in your hand walking on the street. No earbuds in either ear.</li>
+    <li>eSIM for data + local SIM for app verification.</li>
+    <li>Download Google Maps offline for Caracas, Maiquetía, and weekend routes.</li>
+  </ul>
+
+  <h4>Transport</h4>
+  <ul>
+    <li><strong>Never street-hail a taxi.</strong> Use <strong>Ridery, Yummy Rides, inDrive,</strong> or Uber (Uber is unreliable at the airport &mdash; use Ridery there).</li>
+    <li><strong>Maiquetía-to-Caracas road is the single highest-risk corridor in the country.</strong> Pre-arrange airport transfer through a known service. <strong>Never drive that road after dark</strong> for any reason.</li>
+    <li>Schedule all moves between 7am and 6pm where possible. Las Mercedes nightlife is fine via pre-booked ride directly to the venue door.</li>
+  </ul>
+
+  <h4>Profile</h4>
+  <ul>
+    <li><strong>No watches, no jewelry, no DSLR, no visible laptop bag.</strong> Dress local: clean t-shirt, jeans, sneakers. Save the fits for inside venues.</li>
+    <li>Don't speak loud English in public spaces.</li>
+    <li>Don't film checkpoints or military. Don't argue. Hand over passport politely.</li>
+  </ul>
+
+  <h4>2026-Specific</h4>
+  <ul>
+    <li><strong>Armed militias have set up checkpoints checking for U.S. citizens.</strong> Carry your passport, be polite, keep moving. If aggressive, mention you're a resident with Cédula and call your attorney.</li>
+    <li>Political tension can spike fast. If you see signs of unrest, stay home for 24–48 hours.</li>
+  </ul>
+
+  <h4>Building Standards</h4>
+  <ul>
+    <li><strong>24/7 guard, electric perimeter, controlled entry, planta eléctrica, water tank.</strong> All standard at your price point. Don't compromise on any of them.</li>
+    <li>Get to know the building staff. Tip the guards at Christmas. They're your first line of intel.</li>
+  </ul>
+</section>
+
+<!-- ============================== 12 ============================== -->
+<section id="first90" class="tint-cool">
+  <div class="ghost-num">12</div>
+  <div class="chapter">
+    <div class="chapter-num">
+      <sup>Chapter XII</sup>12
+      <div class="chapter-sigil" aria-hidden="true">
+        <svg viewBox="0 0 32 32">
+          <rect x="5" y="7" width="22" height="20"/>
+          <line x1="5" y1="13" x2="27" y2="13"/>
+          <line x1="11" y1="5" x2="11" y2="10"/>
+          <line x1="21" y1="5" x2="21" y2="10"/>
+          <circle cx="11" cy="19" r="1.2" class="fill"/>
+          <circle cx="16" cy="19" r="1.2" class="fill"/>
+          <circle cx="21" cy="19" r="1.2" class="fill"/>
+          <circle cx="11" cy="23" r="1.2" class="fill"/>
+          <circle cx="16" cy="23" r="1.2" class="fill"/>
+        </svg>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="chapter-kicker">First Ninety Days</div>
+      <h2>The sequence that <em>doesn't waste time</em>.</h2>
+      <p class="lede drop">Done in the right order, the bureaucratic setup compresses to ninety days. Done in the wrong order, it stretches to a year and costs you twice. This is the path that works.</p>
+    </div>
+  </div>
+
+  <h3>Before You Fly</h3>
+  <ol>
+    <li>Apply for eVisa via MPPRE portal. Allow 2–3 weeks.</li>
+    <li>Get $5–10k clean USD cash in $20/$50 bills from your U.S. bank.</li>
+    <li>Set up Zelle, Binance, Zinli accounts. Verify KYC on all three.</li>
+    <li>Engage U.S. expat CPA. Engage Venezuelan attorney from the short list (D'Empaire, Hoet, Baker).</li>
+    <li>Engage OFAC counsel for an intro call &mdash; even if you don't retain yet, get the framework in your head.</li>
+    <li>Buy international health insurance with medevac to Bogotá or Miami.</li>
+    <li>Tell Chainlink Labs Legal you're relocating to Venezuela. Don't surprise them.</li>
+    <li>Book Ridery for airport pickup before you land. Pay in advance.</li>
+  </ol>
+
+  <h3>Days 1–30 · Scouting</h3>
+  <ul>
+    <li>Stay at Renaissance Caracas La Castellana or Embassy Suites Altamira (week 1).</li>
+    <li>Walk Los Palos Grandes, Altamira, Las Mercedes morning + evening. See for yourself.</li>
+    <li>Book a desk at Impact Hub. Show up. Introduce yourself.</li>
+    <li>Attend the next Se Habla Crypto meetup or Hive gathering.</li>
+    <li>Tour 6–10 apartments in target zones with two different agents (Rent-A-House, RE/MAX). Note generator + water tank + guard.</li>
+    <li>Test ride Ridery, Yummy, inDrive across different times of day.</li>
+  </ul>
+
+  <h3>Days 31–60 · Settling</h3>
+  <ul>
+    <li>Sign apartment lease. 3–6 months upfront in USD via notary.</li>
+    <li>Exit to Bogotá → apply for Rentista or Inversionista visa at the Venezuelan consulate.</li>
+    <li>Re-enter → SAIME for Cédula → SENIAT for RIF.</li>
+    <li>Open USD account at Mercantil or BBVA Provincial.</li>
+    <li>Hire driver. Try one for a month before committing long-term.</li>
+    <li>Start Spanish tutor (3x/week minimum).</li>
+  </ul>
+
+  <h3>Days 61–90 · Operating</h3>
+  <ul>
+    <li>Incorporate C.A. if you've decided on a business structure. ($2–5k via attorney.)</li>
+    <li>Sign office lease or upgrade coworking plan.</li>
+    <li>Hire maid (2–3x/week).</li>
+    <li>Attend Caracas Blockchain Week if calendar aligns.</li>
+    <li>Book Los Roques weekend.</li>
+    <li>Tax check-in with U.S. CPA &mdash; confirm day count and structure for the year.</li>
+  </ul>
+
+  <div class="card">
+    <div class="card-label">Day 90 Sanity Check</div>
+    <p>By day 90 you should have: residence visa in hand, Cédula + RIF issued, USD bank account open, lease signed, driver retained, two confirmed peer groups (one crypto, one social), and a U.S. tax day-count under 90. If any of those is missing, fix it before adding the next ambition.</p>
+  </div>
+</section>
+
+</div>
+
+<!-- ============================== CLOSER ============================== -->
+<div class="closer">
+  <div class="closer-art" aria-hidden="true">
+    <svg viewBox="0 0 1000 200" preserveAspectRatio="none">
+      <path d="M0,200 L0,140 L60,120 L120,135 L180,100 L240,120 L300,75 L360,100 L420,55 L480,90 L540,40 L600,75 L660,55 L720,95 L780,65 L840,105 L900,80 L960,115 L1000,95 L1000,200 Z" fill="#14110c"/>
+    </svg>
+  </div>
+  <p class="quote">The country is in a <em>window</em> &mdash; between regime change and whatever comes next. Crypto wealth, U.S. passport, fluency in remote work, partner who's Latin-fluent. These are the tools that make the window navigable. Stay inside the bubble, don't display, document everything &mdash; the rest is just texture.</p>
+  <p class="attr">Field Manual &middot; Vol. I &middot; Caracas &middot; MMXXVI</p>
+</div>
+
+<script>
+(function() {
+  // Progress bar
+  var bar = document.querySelector('.progress .bar');
+  var rail = document.getElementById('rail');
+  var minimark = document.getElementById('minimark');
+  var minimarkText = document.getElementById('minimark-text');
+
+  var sections = Array.from(document.querySelectorAll('section[id]'));
+  var railLis = Array.from(document.querySelectorAll('.rail li'));
+
+  var sectionTitles = {
+    'snapshot': 'I · The Moment',
+    'safety': 'II · Neighborhoods',
+    'money': 'III · Money',
+    'realestate': 'IV · Real Estate',
+    'office': 'V · Office',
+    'business': 'VI · Business',
+    'visa': 'VII · Visa',
+    'crypto': 'VIII · Crypto & OFAC',
+    'tax': 'IX · U.S. Tax',
+    'lifestyle': 'X · Lifestyle',
+    'protocols': 'XI · Protocols',
+    'first90': 'XII · First 90 Days'
+  };
+
+  function update() {
+    var doc = document.documentElement;
+    var top = window.scrollY;
+    var max = (doc.scrollHeight - doc.clientHeight);
+    var pct = max > 0 ? (top / max) * 100 : 0;
+    bar.style.width = pct + '%';
+
+    // Rail visibility
+    if (top > window.innerHeight * 0.5) {
+      rail.classList.add('visible');
+      minimark.classList.add('visible');
+    } else {
+      rail.classList.remove('visible');
+      minimark.classList.remove('visible');
+    }
+
+    // Active section
+    var current = null;
+    var viewportMid = top + window.innerHeight * 0.35;
+    for (var i = 0; i < sections.length; i++) {
+      var s = sections[i];
+      var sTop = s.offsetTop;
+      var sBot = sTop + s.offsetHeight;
+      if (viewportMid >= sTop && viewportMid < sBot) {
+        current = s.id;
+        break;
+      }
+    }
+    if (!current && sections.length) {
+      current = sections[sections.length - 1].id;
+    }
+
+    railLis.forEach(function(li) {
+      if (li.dataset.target === current) li.classList.add('active');
+      else li.classList.remove('active');
+    });
+    if (current && sectionTitles[current]) {
+      minimarkText.textContent = 'CHAPTER ' + sectionTitles[current];
+    }
+  }
+
+  // Click handlers on rail
+  railLis.forEach(function(li) {
+    li.addEventListener('click', function() {
+      var t = document.getElementById(li.dataset.target);
+      if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+
+  // Reveal on scroll
+  var revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('shown');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealEls.forEach(function(el) { io.observe(el); });
+  } else {
+    revealEls.forEach(function(el) { el.classList.add('shown'); });
+  }
+
+  // Animate counters
+  var counters = document.querySelectorAll('[data-count]');
+  if ('IntersectionObserver' in window) {
+    var co = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          var el = e.target;
+          var target = parseInt(el.dataset.count, 10);
+          var start = null;
+          var dur = 1300;
+          function step(ts) {
+            if (start === null) start = ts;
+            var p = Math.min((ts - start) / dur, 1);
+            var eased = 1 - Math.pow(1 - p, 3);
+            var val = Math.floor(eased * target);
+            el.textContent = val.toLocaleString();
+            if (p < 1) requestAnimationFrame(step);
+            else el.textContent = target.toLocaleString();
+          }
+          requestAnimationFrame(step);
+          co.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(function(el) { co.observe(el); });
+  }
+})();
+</script>
+
+</body>
+</html>

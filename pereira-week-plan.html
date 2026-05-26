@@ -1,0 +1,1194 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<title>SORA · Pereira · Plan de Semana</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Instrument+Serif&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F8F3EA; --cream-2:#F2EBDD; --cream-3:#E9DFCA;
+    --ink:#1B1A17; --ink-2:#3A352D; --ink-3:#5C5346; --faint:#9A8E7A;
+    --line:rgba(27,26,23,.10); --line-2:rgba(27,26,23,.06);
+    --coral:#D9573B; --gold:#B58F4D; --mango:#E2A24A; --green:#3F5F45; --rose:#B8616B; --teal:#2C6E7F;
+    --serif:'Fraunces',Georgia,serif; --display:'Instrument Serif',Georgia,serif;
+    --sans:'Inter',-apple-system,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--cream);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;font-size:15px;line-height:1.55}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--coral);color:var(--cream)}
+  [data-en]{display:none}
+  html[lang="en"] [data-es]{display:none}
+  html[lang="en"] [data-en]{display:inline}
+  html[lang="en"] li[data-en],html[lang="en"] div[data-en],html[lang="en"] p[data-en],html[lang="en"] h1[data-en],html[lang="en"] h2[data-en],html[lang="en"] h3[data-en],html[lang="en"] h4[data-en]{display:block}
+
+  .top{position:sticky;top:0;z-index:50;background:rgba(248,243,234,.95);backdrop-filter:blur(14px);border-bottom:0.5px solid var(--line)}
+  .top-in{max-width:980px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .brand{font-family:var(--serif);font-weight:600;font-size:16px;letter-spacing:.16em;color:var(--ink)}
+  .brand em{font-style:normal;color:var(--coral)}
+  .top-tag{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--rose);text-transform:uppercase;padding:4px 10px;background:rgba(184,97,107,.10);border-radius:4px}
+  .spacer{flex:1}
+  .top-link{font-family:var(--sans);font-size:12px;color:var(--ink-2);padding:6px 11px;border:0.5px solid var(--line);border-radius:5px}
+  .top-link:hover{background:var(--cream-2)}
+  .lang{display:inline-flex;border:0.5px solid var(--line);border-radius:5px;overflow:hidden}
+  .lang button{padding:6px 10px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;background:transparent;border:0;color:var(--faint);cursor:pointer;font-weight:500}
+  .lang button.active{background:var(--ink);color:var(--cream)}
+
+  .hdr{max-width:980px;margin:0 auto;padding:40px 28px 24px}
+  .hdr-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--coral);font-weight:600;margin-bottom:14px}
+  .hdr h1{font-family:var(--display);font-weight:400;font-size:clamp(40px,7vw,72px);line-height:.95;letter-spacing:-.02em;color:var(--ink);margin-bottom:14px}
+  .hdr h1 em{font-style:italic;color:var(--coral)}
+  .hdr-sub{font-family:var(--serif);font-size:17px;color:var(--ink-3);font-weight:300;max-width:720px;line-height:1.5;margin-bottom:24px}
+
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;padding:18px 24px;background:var(--cream-2);border:0.5px solid var(--line);border-radius:10px}
+  .stat-cell{display:flex;flex-direction:column;gap:4px}
+  .stat-k{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;color:var(--faint);text-transform:uppercase}
+  .stat-v{font-family:var(--display);font-size:22px;color:var(--ink);font-weight:400;letter-spacing:-.005em;line-height:1}
+  .stat-s{font-family:var(--mono);font-size:11px;color:var(--ink-3);letter-spacing:.04em}
+
+  .progress-row{display:flex;align-items:center;gap:14px;padding:14px 24px;background:var(--cream);border:0.5px solid var(--line);border-radius:8px;margin:18px 0 8px}
+  .progress-bar{flex:1;height:6px;background:var(--cream-3);border-radius:3px;overflow:hidden}
+  .progress-fill{height:100%;background:linear-gradient(90deg,var(--coral),var(--mango));border-radius:3px;transition:width .25s ease;width:0%}
+  .progress-text{font-family:var(--mono);font-size:11.5px;color:var(--ink-2);font-weight:600;letter-spacing:.06em;min-width:100px;text-align:right}
+
+  main{max-width:980px;margin:0 auto;padding:8px 28px 96px}
+  .block{margin:24px 0;background:var(--cream);border:0.5px solid var(--line);border-radius:12px;overflow:hidden}
+  .block-head{display:flex;align-items:baseline;justify-content:space-between;padding:18px 24px;border-bottom:0.5px solid var(--line);background:var(--cream-2);flex-wrap:wrap;gap:8px}
+  .block-title{font-family:var(--display);font-size:24px;color:var(--ink);font-weight:400;letter-spacing:-.01em;display:flex;align-items:center;gap:10px}
+  .block-title .badge{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--cream);background:var(--ink);padding:4px 9px;border-radius:3px;font-weight:600}
+  .block-title .badge.priority{background:var(--coral)}
+  .block-title .badge.warn{background:var(--gold)}
+  .block-title .badge.zone{background:var(--teal)}
+  .block-title em{font-style:italic;color:var(--coral)}
+  .block-sub{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--faint);text-transform:uppercase}
+
+  .tasks{padding:8px 0}
+  .task{display:flex;align-items:flex-start;gap:14px;padding:14px 24px;border-bottom:0.5px solid var(--line-2);transition:background .14s ease;cursor:pointer}
+  .task:last-child{border-bottom:0}
+  .task:hover{background:var(--cream-2)}
+  .task input[type=checkbox]{flex-shrink:0;width:18px;height:18px;border:1.5px solid var(--line-2);border-radius:4px;appearance:none;cursor:pointer;margin-top:2px;background:white;position:relative;transition:all .15s ease}
+  .task input[type=checkbox]:hover{border-color:var(--coral)}
+  .task input[type=checkbox]:checked{background:var(--green);border-color:var(--green)}
+  .task input[type=checkbox]:checked::after{content:'✓';color:white;position:absolute;left:3px;top:-2px;font-size:14px;font-weight:bold}
+  .task-body{flex:1}
+  .task-text{font-family:var(--serif);font-size:15.5px;color:var(--ink);line-height:1.45}
+  .task input:checked ~ .task-body .task-text{color:var(--faint);text-decoration:line-through}
+  .task-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;align-items:center}
+  .task-meta a{font-family:var(--mono);font-size:11px;color:var(--teal);padding:3px 8px;background:rgba(44,110,127,.08);border-radius:3px;border:0.5px solid rgba(44,110,127,.18);letter-spacing:.04em;transition:all .14s ease}
+  .task-meta a:hover{background:var(--teal);color:var(--cream)}
+  .task-meta a.wa{color:#25d366;background:rgba(37,211,102,.10);border-color:rgba(37,211,102,.30)}
+  .task-meta a.wa:hover{background:#25d366;color:white}
+  .task-meta a.email{color:var(--coral);background:rgba(217,87,59,.08);border-color:rgba(217,87,59,.22)}
+  .task-meta a.email:hover{background:var(--coral);color:white}
+  .task-meta a.book{color:var(--rose);background:rgba(184,97,107,.10);border-color:rgba(184,97,107,.25);font-weight:600}
+  .task-meta .when{font-family:var(--mono);font-size:10px;color:var(--faint);letter-spacing:.06em;text-transform:uppercase;font-weight:500;padding:3px 7px;background:var(--cream-2);border-radius:3px}
+  .task-meta .when.mon{color:var(--coral)} .task-meta .when.tue{color:var(--gold)}
+  .task-meta .when.wed{color:var(--teal)} .task-meta .when.thu{color:var(--rose)}
+  .task-meta .when.fri{color:var(--green)} .task-meta .when.weekend{color:var(--ink)}
+  .task-note{font-family:var(--serif);font-size:13px;color:var(--ink-3);font-style:italic;margin-top:4px;line-height:1.45}
+
+  .block.priority{border-color:var(--coral)}
+  .block.priority .block-head{background:linear-gradient(135deg,rgba(217,87,59,.12),rgba(217,87,59,.04))}
+
+  /* Option cards (for spaces / fincas) */
+  .opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;padding:18px 24px}
+  .opt{background:var(--cream-2);border:0.5px solid var(--line);border-radius:8px;padding:16px 18px;display:flex;flex-direction:column;gap:6px}
+  .opt h4{font-family:var(--serif);font-size:16px;font-weight:600;color:var(--ink);line-height:1.2}
+  .opt .opt-meta{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--ink-3);text-transform:uppercase;font-weight:500}
+  .opt .opt-meta .price{color:var(--coral);font-weight:600;font-size:13px}
+  .opt p{font-family:var(--serif);font-size:13.5px;line-height:1.45;color:var(--ink-2);font-style:italic;margin-top:2px}
+  .opt-links{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+  .opt-links a{font-family:var(--mono);font-size:10.5px;color:var(--cream);background:var(--ink);padding:6px 10px;border-radius:4px;letter-spacing:.06em;text-transform:uppercase;font-weight:500}
+  .opt-links a:hover{background:var(--green)}
+  .opt-links a.alt{background:transparent;color:var(--ink-2);border:0.5px solid var(--line)}
+  .opt-links a.alt:hover{background:var(--cream-2)}
+
+  .foot{margin:48px 0 0;padding:24px;text-align:center;font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--faint);text-transform:uppercase}
+
+  @media (max-width:640px){
+    .hdr{padding:28px 18px 16px}
+    main{padding:8px 18px 64px}
+    .task{padding:12px 18px}
+    .stats{padding:14px 16px}
+    .opts{padding:14px 18px}
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="sora-hq.html">SORA · <em>PEREIRA</em></a>
+    <span class="top-tag" data-es>Semana 25-31 Mayo</span>
+    <span class="top-tag" data-en>Week May 25-31</span>
+    <div class="spacer"></div>
+    <a class="top-link" href="sora-pa-hoy.html">↗ Hoy PA</a>
+    <a class="top-link" href="LATAM/chapter.html#CO">🇨🇴 CO</a>
+    <a class="top-link" href="sora-hq.html">HQ</a>
+    <button class="top-link" onclick="resetAll()" title="Reiniciar">↻</button>
+    <div class="lang">
+      <button class="active" data-lang="es">ES</button>
+      <button data-lang="en">EN</button>
+    </div>
+  </div>
+</header>
+
+<div class="hdr">
+  <div class="hdr-eyebrow" data-es>LUNES 25 MAYO → DOMINGO 31 MAYO · 3 PERSONAS · PTY → PEI</div>
+  <div class="hdr-eyebrow" data-en>MONDAY MAY 25 → SUNDAY MAY 31 · 3 PEOPLE · PTY → PEI</div>
+  <h1><span data-es>Llegar a <em>Pereira</em> esta semana</span><span data-en>Reach <em>Pereira</em> this week</span></h1>
+  <p class="hdr-sub" data-es>Plan de 6 días para mover al equipo (Abraham + Fercho + Minor) a Pereira, contratar un anfitrión bilingüe local desde el día uno, y asegurar espacio comercial + finca para el mes. Eje Cafetero como base alternativa a Boquete para escalar Sora-CO + ventures paralelos.</p>
+  <p class="hdr-sub" data-en>6-day plan to move the team (Abraham + Fercho + Minor) to Pereira, hire a local bilingual host from day one, and secure commercial space + finca for the month. Coffee Region as alternative base to Boquete for scaling Sora-CO + parallel ventures.</p>
+
+  <div class="stats">
+    <div class="stat-cell"><span class="stat-k" data-es>Salida ideal</span><span class="stat-k" data-en>Ideal departure</span><span class="stat-v">Vie 29</span><span class="stat-s" data-es>Copa CM200 · 10:10 PTY</span><span class="stat-s" data-en>Copa CM200 · 10:10 PTY</span></div>
+    <div class="stat-cell"><span class="stat-k" data-es>Vuelo</span><span class="stat-k" data-en>Flight</span><span class="stat-v">1h 26min</span><span class="stat-s" data-es>~$175-300 por persona</span><span class="stat-s" data-en>~$175-300 per person</span></div>
+    <div class="stat-cell"><span class="stat-k" data-es>Equipo</span><span class="stat-k" data-en>Team</span><span class="stat-v">3 pax</span><span class="stat-s">Abraham · Fercho · Minor</span></div>
+    <div class="stat-cell"><span class="stat-k" data-es>Frecuencia Copa</span><span class="stat-k" data-en>Copa frequency</span><span class="stat-v">12/sem</span><span class="stat-s" data-es>2 vuelos diarios L-D</span><span class="stat-s" data-en>2 daily flights M-Sun</span></div>
+    <div class="stat-cell"><span class="stat-k" data-es>Clima Pereira</span><span class="stat-k" data-en>Pereira weather</span><span class="stat-v">~22°C</span><span class="stat-s" data-es>Lluvias esporádicas</span><span class="stat-s" data-en>Light rain expected</span></div>
+  </div>
+
+  <div class="progress-row">
+    <div class="progress-bar"><div class="progress-fill" id="pf"></div></div>
+    <div class="progress-text" id="pt">0 / 0</div>
+  </div>
+</div>
+
+<main>
+
+<!-- ============ 1 · TRAVEL ============ -->
+<div class="block priority">
+  <div class="block-head">
+    <div class="block-title"><span class="badge priority">✈</span><span data-es>Viaje · primero porque bloquea todo</span><span data-en>Travel · first because it blocks everything</span></div>
+    <div class="block-sub" data-es>Hoy / mañana</div>
+    <div class="block-sub" data-en>Today / tomorrow</div>
+  </div>
+  <div class="tasks">
+    <label class="task">
+      <input type="checkbox" data-task="t1">
+      <div class="task-body">
+        <div class="task-text" data-es><strong>Comprar 3 boletos Copa CM200</strong> · PTY → PEI · viernes 29 mayo · vuelo 10:10am (arriba PEI 11:35am) · clase económica · pasaportes US/PA listos</div>
+        <div class="task-text" data-en><strong>Book 3 Copa CM200 tickets</strong> · PTY → PEI · Friday May 29 · 10:10am flight (arrive PEI 11:35am) · economy · US/PA passports ready</div>
+        <div class="task-meta">
+          <a class="book" href="https://www.copaair.com/en/flights-from-panama-city-to-pereira" target="_blank">↗ Copa Airlines</a>
+          <a href="https://www.kayak.com/flight-routes/Panama-City-Tocumen-Intl-PTY/Pereira-Matecana-PEI" target="_blank">↗ Kayak comparar</a>
+          <span class="when mon" data-es>HOY</span>
+          <span class="when mon" data-en>TODAY</span>
+        </div>
+        <div class="task-note" data-es>Reservar hoy ahorra ~10% vs últimos días. Total estimado para 3 pax: $525-900 ida.</div>
+        <div class="task-note" data-en>Book today saves ~10% vs last-minute. Estimated 3 pax one-way: $525-900.</div>
+      </div>
+    </label>
+
+    <label class="task">
+      <input type="checkbox" data-task="t2">
+      <div class="task-body">
+        <div class="task-text" data-es>Verificar <strong>pasaportes</strong> de Fercho y Minor · 6+ meses validez · si son colombianos solo cédula es suficiente desde PA</div>
+        <div class="task-text" data-en>Verify <strong>passports</strong> for Fercho and Minor · 6+ months validity · if Colombian, cédula alone is enough from PA</div>
+        <div class="task-meta">
+          <span class="when mon" data-es>HOY</span><span class="when mon" data-en>TODAY</span>
+        </div>
+      </div>
+    </label>
+
+    <label class="task">
+      <input type="checkbox" data-task="t3">
+      <div class="task-body">
+        <div class="task-text" data-es>Reservar <strong>traslado PTY aeropuerto</strong> para viernes 29 · pickup Casco/Boquete + 6:30am salida</div>
+        <div class="task-text" data-en>Book <strong>PTY airport transfer</strong> for Friday May 29 · pickup Casco/Boquete + 6:30am departure</div>
+        <div class="task-meta">
+          <span class="when thu" data-es>Jueves</span><span class="when thu" data-en>Thursday</span>
+        </div>
+      </div>
+    </label>
+
+    <label class="task">
+      <input type="checkbox" data-task="t4">
+      <div class="task-body">
+        <div class="task-text" data-es>Reservar <strong>hotel base 2 noches</strong> en Pereira centro para llegada · sugerencia: Movich Pereira (mejor del centro) ó Sonesta · viernes 29 + sábado 30 · 3 hab simples</div>
+        <div class="task-text" data-en>Book <strong>2-night base hotel</strong> in Pereira center for arrival · suggestion: Movich Pereira (best in center) or Sonesta · Fri 29 + Sat 30 · 3 single rooms</div>
+        <div class="task-meta">
+          <a href="https://www.movichhotels.com/en/our-hotels/movich-pereira/" target="_blank">↗ Movich Pereira</a>
+          <a href="https://www.sonesta.com/es-co/colombia/pereira/sonesta-hotel-pereira" target="_blank">↗ Sonesta Pereira</a>
+          <span class="when tue" data-es>Martes</span><span class="when tue" data-en>Tuesday</span>
+        </div>
+      </div>
+    </label>
+
+    <label class="task">
+      <input type="checkbox" data-task="t5">
+      <div class="task-body">
+        <div class="task-text" data-es>Coordinar <strong>llegada PEI 11:35am viernes</strong> · pickup vehículo (Uber/Cabify funciona en Pereira) · 25 min al centro</div>
+        <div class="task-text" data-en>Coordinate <strong>PEI arrival 11:35am Friday</strong> · Uber/Cabify pickup (works in Pereira) · 25 min to center</div>
+        <div class="task-meta">
+          <span class="when fri" data-es>Viernes</span><span class="when fri" data-en>Friday</span>
+        </div>
+      </div>
+    </label>
+  </div>
+</div>
+
+<!-- ============ 2 · HIRE THE HOST ============ -->
+<div class="block">
+  <div class="block-head">
+    <div class="block-title"><span class="badge zone">👤</span><span data-es>Anfitrión Pereira · contratar antes de llegar</span><span data-en>Pereira host · hire before arrival</span></div>
+    <div class="block-sub" data-es>Salario $1,200-1,500/mes USD · bilingüe full</div>
+    <div class="block-sub" data-en>Salary $1,200-1,500/mo USD · full bilingual</div>
+  </div>
+  <div class="tasks">
+    <label class="task">
+      <input type="checkbox" data-task="h1">
+      <div class="task-body">
+        <div class="task-text" data-es>WhatsApp <strong>Pedro Echavarría</strong> (Pergamino Café Medellín) · pedir referencia bilingüe Pereira con red en Eje Cafetero · explicar que necesitamos host operativo La Compañía empezando viernes</div>
+        <div class="task-text" data-en>WhatsApp <strong>Pedro Echavarría</strong> (Pergamino Café Medellín) · ask for Pereira bilingual referral with Eje Cafetero network · explain we need La Compañía operational host starting Friday</div>
+        <div class="task-meta">
+          <a class="wa" href="https://wa.me/573147208800" target="_blank">↗ WhatsApp</a>
+          <a class="email" href="mailto:pedro@pergamino.co">✉ pedro@pergamino.co</a>
+          <a href="https://instagram.com/pergaminocafe" target="_blank">↗ @pergaminocafe</a>
+          <span class="when mon" data-es>HOY</span><span class="when mon" data-en>TODAY</span>
+        </div>
+        <div class="task-note" data-es>Pedro es ya partner Sora. Su red en Eje Cafetero es el #1 atajo para encontrar a alguien serio rápido.</div>
+        <div class="task-note" data-en>Pedro is already a Sora partner. His Eje Cafetero network is the #1 shortcut to find someone serious fast.</div>
+      </div>
+    </label>
+
+    <label class="task">
+      <input type="checkbox" data-task="h2">
+      <div class="task-body">
+        <div class="task-text" data-es>Contactar <strong>Hacienda Bambusa</strong> (Eje Cafetero) y <strong>Bio Habitat</strong> (Salento) · preguntar staff bilingüe disponible o referencias · ambos en CRM Sora ya</div>
+        <div class="task-text" data-en>Contact <strong>Hacienda Bambusa</strong> (Eje Cafetero) and <strong>Bio Habitat</strong> (Salento) · ask about bilingual staff available or referrals · both in Sora CRM already</div>
+        <div class="task-meta">
+          <a class="email" href="mailto:info@haciendabambusa.com">✉ Hacienda Bambusa</a>
+          <a class="email" href="mailto:info@biohabitat.com.co">✉ Bio Habitat</a>
+          <span class="when mon" data-es>HOY · tarde</span>
+          <span class="when mon" data-en>TODAY · afternoon</span>
+        </div>
+      </div>
+    </label>
+
+    <label class="task">
+      <input type="checkbox" data-task="h3">
+      <div class="task-body">
+        <div class="task-text" data-es>Publicar en <strong>3 canales bilingües Pereira</strong>: (1) Computrabajo COL filtrando "bilingüe Pereira" (2) Magneto365 (3) LinkedIn Colombia con boost · puesto: "Operations Manager bilingüe · La Compañía · $1,200-1,500/mes USD"</div>
+        <div class="task-text" data-en>Post on <strong>3 bilingual Pereira channels</strong>: (1) Computrabajo COL filter "bilingüe Pereira" (2) Magneto365 (3) LinkedIn Colombia with boost · role: "Bilingual Operations Manager · La Compañía · $1,200-1,500/mo USD"</div>
+        <div class="task-meta">
+          <a href="https://www.computrabajo.com.co/empresas/ofertas-de-trabajo/?p_iso=CO&q=bilingue+pereira" target="_blank">↗ Computrabajo</a>
+          <a href="https://www.magneto365.com" target="_blank">↗ Magneto365</a>
+          <a href="https://www.linkedin.com" target="_blank">↗ LinkedIn</a>
+          <span class="when tue" data-es>Martes</span><span class="when tue" data-en>Tuesday</span>
+        </div>
+      </div>
+    </label>
+
+    <label class="task">
+      <input type="checkbox" data-task="h4">
+      <div class="task-body">
+        <div class="task-text" data-es>Postear en <strong>grupos Facebook "Pereira Expats" + "Bilingual Pereira" + "Eje Cafetero Profesionales"</strong> · usar el draft que viene abajo</div>
+        <div class="task-text" data-en>Post in <strong>Facebook groups "Pereira Expats" + "Bilingual Pereira" + "Eje Cafetero Profesionales"</strong> · use draft below</div>
+        <div class="task-meta">
+          <span class="when tue" data-es>Martes</span><span class="when tue" data-en>Tuesday</span>
+        </div>
+      </div>
+    </label>
+
+    <label class="task">
+      <input type="checkbox" data-task="h5">
+      <div class="task-body">
+        <div class="task-text" data-es>Contactar <strong>Universidad Tecnológica de Pereira (UTP)</strong> · Programa de Lenguas Modernas · pedir contacto con egresados disponibles · email: jose.bilbao@utp.edu.co (director)</div>
+        <div class="task-text" data-en>Contact <strong>Universidad Tecnológica de Pereira (UTP)</strong> · Modern Languages Program · request contact with available graduates · email: jose.bilbao@utp.edu.co (director)</div>
+        <div class="task-meta">
+          <a class="email" href="mailto:jose.bilbao@utp.edu.co">✉ UTP Lenguas</a>
+          <span class="when tue" data-es>Martes</span><span class="when tue" data-en>Tuesday</span>
+        </div>
+      </div>
+    </label>
+
+    <label class="task">
+      <input type="checkbox" data-task="h6">
+      <div class="task-body">
+        <div class="task-text" data-es>Hacer <strong>3-5 entrevistas en inglés vía Zoom</strong> · jueves antes del vuelo · solo en inglés primer minuto · 3 preguntas: (1) experiencia con clientes internacionales (2) red local Eje Cafetero (3) disponibilidad inmediata viernes</div>
+        <div class="task-text" data-en>Run <strong>3-5 English Zoom interviews</strong> · Thursday before flight · English-only first minute · 3 questions: (1) international client experience (2) Eje Cafetero local network (3) immediate Friday availability</div>
+        <div class="task-meta">
+          <span class="when thu" data-es>Jueves</span><span class="when thu" data-en>Thursday</span>
+        </div>
+      </div>
+    </label>
+
+    <label class="task">
+      <input type="checkbox" data-task="h7">
+      <div class="task-body">
+        <div class="task-text" data-es>Ofrecer <strong>contrato trial 30 días</strong> $1,200/mes USD + bonus por meta · pago semanal via Wise o Yappy · start lunes 1 junio en oficina/coliving</div>
+        <div class="task-text" data-en>Offer <strong>30-day trial contract</strong> $1,200/mo USD + KPI bonus · weekly pay via Wise or Yappy · start Monday June 1 at office/coliving</div>
+        <div class="task-meta">
+          <span class="when fri" data-es>Viernes (después vuelo)</span>
+          <span class="when fri" data-en>Friday (after flight)</span>
+        </div>
+      </div>
+    </label>
+  </div>
+</div>
+
+<!-- ============ 2.5 · IDENTIFIED HOST CANDIDATES ============ -->
+<div class="block">
+  <div class="block-head">
+    <div class="block-title"><span class="badge zone">🎯</span><span data-es>Candidatos &amp; conectores · identificados</span><span data-en>Candidates &amp; connectors · identified</span></div>
+    <div class="block-sub" data-es>Personas reales con datos verificados · contactar todos esta semana</div>
+    <div class="block-sub" data-en>Real people with verified data · contact all this week</div>
+  </div>
+  <div class="opts">
+
+    <div class="opt" style="border-left:3px solid var(--green)">
+      <h4>Carolina · GM Hacienda Bambusa</h4>
+      <div class="opt-meta">Manager hotel boutique · <span class="price">CONFIRMADO bilingüe ES/EN/FR</span></div>
+      <p data-es>Hacienda Bambusa es ya partner Sora. Carolina dirige la operación con guías bilingües (Camilo, Sebastián). Mejor referencia + posible candidata directa o referidos en su red.</p>
+      <p data-en>Hacienda Bambusa is already Sora partner. Carolina runs the operation with bilingual guides (Camilo, Sebastián). Best referral + possible direct candidate or her network referrals.</p>
+      <div class="opt-links">
+        <a class="book" href="https://wa.me/573016398727" target="_blank">WhatsApp +57 301 6398727</a>
+        <a class="alt" href="mailto:bambusa@haciendabambusa.com">✉ Email</a>
+        <a class="alt" href="https://www.haciendabambusa.com" target="_blank">Web</a>
+      </div>
+    </div>
+
+    <div class="opt" style="border-left:3px solid var(--green)">
+      <h4>Pedro Echavarría · Pergamino Café Medellín</h4>
+      <div class="opt-meta">Owner · <span class="price">YA PARTNER SORA · red Eje Cafetero</span></div>
+      <p data-es>Su red en café especialidad cruza Pereira/Salento/Manizales. Ruta más rápida a un referido bilingüe que conoce a todos los fincateros premium.</p>
+      <p data-en>His specialty-coffee network spans Pereira/Salento/Manizales. Fastest route to a bilingual referral who knows every premium finquero.</p>
+      <div class="opt-links">
+        <a class="book" href="https://wa.me/573147208800" target="_blank">WhatsApp +57 314 720 8800</a>
+        <a class="alt" href="mailto:pedro@pergamino.co">✉ Email</a>
+        <a class="alt" href="https://instagram.com/pergaminocafe" target="_blank">↗ @pergaminocafe</a>
+      </div>
+    </div>
+
+    <div class="opt" style="border-left:3px solid var(--gold)">
+      <h4>Rodrigo Atuesta · Impulse Travel · Bogotá HQ</h4>
+      <div class="opt-meta">Co-founder + CIO · <span class="price">VERIFICADO · B Corp · Booking Booster €400k · UNWTO · 15+ años</span></div>
+      <p data-es><strong>Tier-1 strategic connector — no candidato local Pereira.</strong> Bogotá-based pero opera todo Colombia. Ex-Universidad Andes industrial engineer. Ex-president ACOTUR (red 200+ empresas turismo CO). Mejor uso: pedirle 2-3 referidos en Eje Cafetero de su red.</p>
+      <p data-en><strong>Tier-1 strategic connector — not local Pereira candidate.</strong> Bogotá-based but operates all Colombia. Ex-Universidad Andes industrial engineer. Ex-president ACOTUR (200+ tourism company network). Best use: ask for 2-3 Eje Cafetero referrals from his network.</p>
+      <div class="opt-links">
+        <a class="book" href="https://www.linkedin.com/in/rodrigoatuesta/" target="_blank">↗ LinkedIn DM</a>
+        <a class="alt" href="mailto:info@impulsetravel.co">✉ info@impulsetravel.co</a>
+        <a class="alt" href="https://wa.me/573205827252" target="_blank">WhatsApp +57 320 582 7252</a>
+        <a class="alt" href="https://impulsetravel.co" target="_blank">Web</a>
+      </div>
+    </div>
+
+    <div class="opt" style="border-left:3px solid var(--gold)">
+      <h4>Don Carlos · Don Gabo Coffee Tour Pereira</h4>
+      <div class="opt-meta">Owner-host · finca a 10 min centro Pereira · <span class="price">Tipo de host Sora perfecto</span></div>
+      <p data-es>Recibe huéspedes en finca familiar a 3 min de la circunvalar. Reviews destacan calidez y trato personal. Si no es candidato él directamente, conoce todo el ecosistema cafetero local.</p>
+      <p data-en>Hosts guests at family finca 3 min from circunvalar. Reviews highlight warmth and personal touch. If not direct candidate, he knows the entire local coffee ecosystem.</p>
+      <div class="opt-links">
+        <a class="book" href="https://instagram.com/dongabocoffeetourpereira" target="_blank">↗ DM @dongabocoffeetourpereira</a>
+        <a class="alt" href="https://instagram.com/cafedongabo" target="_blank">↗ @cafedongabo</a>
+      </div>
+    </div>
+
+    <div class="opt" style="border-left:3px solid var(--gold)">
+      <h4>Eje Cafetero Tours Colombia · Armenia HQ</h4>
+      <div class="opt-meta">Tour operator desde 1993 · 28K IG · <span class="price">Armenia (40 min Pereira)</span></div>
+      <p data-es>Base Armenia (Quindío) NO Pereira pero el corredor es 40 min. Reconocidos "El Colombiano Ejemplar". Operan Complejo Bosques de Cócora. Equipo grande de guías bilingües que podrían pivotar a Operations Manager $1,200-1,500.</p>
+      <p data-en>Armenia (Quindío) base NOT Pereira but corridor is 40 min. Recognized "El Colombiano Ejemplar". Operate Bosques de Cócora complex. Big bilingual guide team that could pivot to Operations Manager $1,200-1,500.</p>
+      <div class="opt-links">
+        <a class="book" href="https://wa.me/573004815795" target="_blank">WhatsApp +57 300 481 5795</a>
+        <a class="alt" href="https://ejecafeterotourscolombia.com/" target="_blank">Web</a>
+        <a class="alt" href="https://www.facebook.com/EjeCafeteroTours/" target="_blank">FB</a>
+      </div>
+    </div>
+
+    <div class="opt" style="border-left:3px solid var(--rose)">
+      <h4>AREWA Biohabitat · Pijao</h4>
+      <div class="opt-meta">Eco-architecture sanctuary · <span class="price">Cittaslow · staff curado bilingüe</span></div>
+      <p data-es>Sanctuario eco-arquitectura premium en Pijao (Quindío). Staff curado para huéspedes internacionales. Aliado natural Sora + posible referencia anfitrión.</p>
+      <p data-en>Premium eco-architecture sanctuary in Pijao (Quindío). Staff curated for international guests. Natural Sora ally + possible host referral.</p>
+      <div class="opt-links">
+        <a class="alt" href="https://www.instagram.com/explore/locations" target="_blank">↗ Buscar IG</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============ 2.6 · OUTREACH CHANNELS ============ -->
+<div class="block">
+  <div class="block-head">
+    <div class="block-title"><span class="badge">📡</span><span data-es>Canales de outreach · postear esta semana</span><span data-en>Outreach channels · post this week</span></div>
+    <div class="block-sub" data-es>Grupos Facebook + escuelas bilingües + plataformas</div>
+    <div class="block-sub" data-en>Facebook groups + bilingual schools + platforms</div>
+  </div>
+  <div class="opts">
+
+    <div class="opt">
+      <h4>Expats in Pereira (Facebook)</h4>
+      <div class="opt-meta">PereiraGringos · <span class="price">~2-5k miembros activos</span></div>
+      <p data-es>Grupo principal expat Pereira. Posts de "hiring bilingual" reciben 15-30 respuestas en 48h.</p>
+      <p data-en>Main Pereira expat group. "Hiring bilingual" posts get 15-30 replies in 48h.</p>
+      <div class="opt-links">
+        <a class="book" href="https://www.facebook.com/groups/PereiraGringos/members/" target="_blank">↗ Postear</a>
+      </div>
+    </div>
+
+    <div class="opt">
+      <h4>Choose Colombia Expats Eje Cafetero (Facebook)</h4>
+      <div class="opt-meta">coffeeregion · <span class="price">Pereira + Manizales + Armenia</span></div>
+      <p data-es>Cobertura toda la región cafetera. Útil si el candidato puede venir de Manizales o Armenia.</p>
+      <p data-en>Whole coffee region coverage. Useful if candidate can relocate from Manizales or Armenia.</p>
+      <div class="opt-links">
+        <a class="book" href="https://www.facebook.com/groups/coffeeregion/" target="_blank">↗ Postear</a>
+      </div>
+    </div>
+
+    <div class="opt">
+      <h4>Let's Talk Pereira · Language Exchange</h4>
+      <div class="opt-meta">Meetup semanal · <span class="price">~50-80 asistentes/sesión</span></div>
+      <p data-es>Intercambio español-inglés. Vino el viernes 30 mayo — todos los bilingües de Pereira van. Best in-person scouting.</p>
+      <p data-en>Spanish-English exchange. Go Friday May 30 — every Pereira bilingual goes. Best in-person scouting.</p>
+      <div class="opt-links">
+        <a class="book" href="https://openmindedtraveler.com/2016/03/30/lets-talk-pereira/" target="_blank">↗ Detalles</a>
+      </div>
+    </div>
+
+    <div class="opt">
+      <h4>The Columbus School Pereira</h4>
+      <div class="opt-meta">Colegio bilingüe top · <span class="price">Padres + egresados</span></div>
+      <p data-es>Padres de familia Columbus son 90% bilingües, profesionales locales. Email dirección pidiendo compartir con community newsletter.</p>
+      <p data-en>Columbus parents are 90% bilingual local professionals. Email admin asking to share with community newsletter.</p>
+      <div class="opt-links">
+        <a class="alt" href="https://columbusschool.edu.co" target="_blank">Columbus School</a>
+      </div>
+    </div>
+
+    <div class="opt">
+      <h4>UTP · Programa Lenguas Modernas</h4>
+      <div class="opt-meta">Universidad Tecnológica Pereira · <span class="price">Egresados disponibles</span></div>
+      <p data-es>Programa de Lenguas. Egresados recientes son los mejor calibrados bilingües locales sin enganche corporativo. Email director.</p>
+      <p data-en>Languages program. Recent grads are best-calibrated local bilinguals without corporate lock-in. Email director.</p>
+      <div class="opt-links">
+        <a class="book" href="mailto:jose.bilbao@utp.edu.co">✉ UTP Lenguas</a>
+        <a class="alt" href="https://utp.edu.co" target="_blank">UTP web</a>
+      </div>
+    </div>
+
+    <div class="opt">
+      <h4>Computrabajo Colombia</h4>
+      <div class="opt-meta">Plataforma #1 jobs · <span class="price">Filtro "bilingüe Pereira"</span></div>
+      <p data-es>Volumen alto. Filtrar por palabras clave: bilingüe, English, operations manager. Posting ~$80 USD/mes destacado.</p>
+      <p data-en>High volume. Filter keywords: bilingüe, English, operations manager. Featured post ~$80 USD/mo.</p>
+      <div class="opt-links">
+        <a class="book" href="https://www.computrabajo.com.co/empresas/ofertas-de-trabajo/?p_iso=CO&q=bilingue+pereira" target="_blank">↗ Postear</a>
+      </div>
+    </div>
+
+    <div class="opt">
+      <h4>Magneto365</h4>
+      <div class="opt-meta">Plataforma profesional · <span class="price">Sesgo a perfiles mid-senior</span></div>
+      <p data-es>Mejor calidad de aplicantes que Computrabajo. Filtros English-fluent existen. Más caro pero mejor ratio.</p>
+      <p data-en>Higher applicant quality than Computrabajo. English-fluent filters exist. Pricier, better ratio.</p>
+      <div class="opt-links">
+        <a class="book" href="https://www.magneto365.com" target="_blank">↗ Postear</a>
+      </div>
+    </div>
+
+    <div class="opt">
+      <h4>LinkedIn Colombia + boost</h4>
+      <div class="opt-meta">~$60-150 boost · <span class="price">Mejor para senior bilingues</span></div>
+      <p data-es>Boost a posting La Compañía page (crear si no existe). Filtrar por Pereira location + "bilingual" en perfil.</p>
+      <p data-en>Boost La Compañía page post (create if doesn't exist). Filter Pereira location + "bilingual" in profile.</p>
+      <div class="opt-links">
+        <a class="book" href="https://www.linkedin.com" target="_blank">↗ LinkedIn</a>
+      </div>
+    </div>
+
+  </div>
+  <div class="tasks">
+    <label class="task">
+      <input type="checkbox" data-task="h8">
+      <div class="task-body">
+        <div class="task-text" data-es><strong>WhatsApp Carolina (Bambusa)</strong> hoy · script: "Hola Carolina, soy [Abraham] de La Compañía / Sora — busco Operations Manager bilingüe en Pereira, $1,200-1,500/mes, start viernes. ¿Tienes referencia o staff que quiera el pivot?"</div>
+        <div class="task-text" data-en><strong>WhatsApp Carolina (Bambusa)</strong> today · script: "Hi Carolina, this is [Abraham] from La Compañía / Sora — I'm looking for bilingual Operations Manager in Pereira, $1,200-1,500/mo, start Friday. Any referral or staff wanting the pivot?"</div>
+        <div class="task-meta">
+          <a class="wa" href="https://wa.me/573016398727" target="_blank">↗ WA Carolina</a>
+          <span class="when mon" data-es>HOY</span><span class="when mon" data-en>TODAY</span>
+        </div>
+      </div>
+    </label>
+
+    <label class="task">
+      <input type="checkbox" data-task="h9">
+      <div class="task-body">
+        <div class="task-text" data-es><strong>DM Rodrigo Atuesta</strong> en LinkedIn · explicar que ya somos partners con Pergamino / Bambusa · pedir referencia operations manager bilingüe Pereira-base · su red es top calidad</div>
+        <div class="task-text" data-en><strong>DM Rodrigo Atuesta</strong> on LinkedIn · explain we're already partners with Pergamino / Bambusa · ask for bilingual operations manager referral Pereira-based · his network is top quality</div>
+        <div class="task-meta">
+          <a class="book" href="https://www.linkedin.com/in/rodrigoatuesta/" target="_blank">↗ LinkedIn Rodrigo</a>
+          <span class="when mon" data-es>HOY</span><span class="when mon" data-en>TODAY</span>
+        </div>
+      </div>
+    </label>
+
+    <label class="task">
+      <input type="checkbox" data-task="h10">
+      <div class="task-body">
+        <div class="task-text" data-es><strong>DM Don Gabo Coffee Tour</strong> en IG · saludar a Don Carlos · explicar Sora · pedir si conoce bilingüe local Pereira que quiera operations role</div>
+        <div class="task-text" data-en><strong>DM Don Gabo Coffee Tour</strong> on IG · greet Don Carlos · explain Sora · ask if he knows local Pereira bilingual wanting operations role</div>
+        <div class="task-meta">
+          <a class="book" href="https://instagram.com/dongabocoffeetourpereira" target="_blank">↗ @dongabocoffeetourpereira</a>
+          <span class="when tue" data-es>Mar</span><span class="when tue" data-en>Tue</span>
+        </div>
+      </div>
+    </label>
+
+    <label class="task">
+      <input type="checkbox" data-task="h11">
+      <div class="task-body">
+        <div class="task-text" data-es><strong>WhatsApp Eje Cafetero Tours</strong> al +57 300 481 5795 · oferta directa a guías senior bilingües suyos · ascenso a OM con $1,200-1,500 + bonus</div>
+        <div class="task-text" data-en><strong>WhatsApp Eje Cafetero Tours</strong> at +57 300 481 5795 · direct offer to their senior bilingual guides · pivot to OM with $1,200-1,500 + bonus</div>
+        <div class="task-meta">
+          <a class="wa" href="https://wa.me/573004815795" target="_blank">↗ WA Eje Cafetero Tours</a>
+          <span class="when tue" data-es>Mar</span><span class="when tue" data-en>Tue</span>
+        </div>
+      </div>
+    </label>
+
+    <label class="task">
+      <input type="checkbox" data-task="h12">
+      <div class="task-body">
+        <div class="task-text" data-es><strong>Postear en Expats in Pereira + Choose Colombia Eje Cafetero</strong> en Facebook · usar job template del bloque 7</div>
+        <div class="task-text" data-en><strong>Post on Expats in Pereira + Choose Colombia Eje Cafetero</strong> on Facebook · use job template from block 7</div>
+        <div class="task-meta">
+          <a class="book" href="https://www.facebook.com/groups/PereiraGringos/members/" target="_blank">↗ PereiraGringos</a>
+          <a class="alt" href="https://www.facebook.com/groups/coffeeregion/" target="_blank">↗ coffeeregion</a>
+          <span class="when tue" data-es>Mar</span><span class="when tue" data-en>Tue</span>
+        </div>
+      </div>
+    </label>
+
+    <label class="task">
+      <input type="checkbox" data-task="h13">
+      <div class="task-body">
+        <div class="task-text" data-es><strong>Asistir Let's Talk Pereira</strong> viernes 30 mayo · si todavía buscando · scouting bilingüe en persona — todos los bilingües locales van</div>
+        <div class="task-text" data-en><strong>Attend Let's Talk Pereira</strong> Friday May 30 · if still searching · in-person bilingual scouting — every local bilingual attends</div>
+        <div class="task-meta">
+          <span class="when fri" data-es>Vie · noche</span><span class="when fri" data-en>Fri · night</span>
+        </div>
+      </div>
+    </label>
+  </div>
+</div>
+
+<!-- ============ 3 · COMMERCIAL SPACES ============ -->
+<div class="block">
+  <div class="block-head">
+    <div class="block-title"><span class="badge zone">🏢</span><span data-es>Espacios comerciales · oficina/coworking</span><span data-en>Commercial spaces · office/coworking</span></div>
+    <div class="block-sub" data-es>Para arrancar operación esta semana</div>
+    <div class="block-sub" data-en>To start operations this week</div>
+  </div>
+  <div class="opts">
+
+    <div class="opt">
+      <h4>Social & Co · Pereira Plaza</h4>
+      <div class="opt-meta">Coworking premium · <span class="price">~$220/mes</span> · escritorios + privados + salas</div>
+      <p>Cadena nacional CO. Ergonómico, oficinas privadas disponibles, salas reuniones. Mejor opción "instalarse ya" para 3 personas.</p>
+      <div class="opt-links">
+        <a href="https://pluria.co/coworking-spaces/colombia/pereira/143--social--co-coworking-pereira" target="_blank">Reservar visita</a>
+        <a class="alt" href="tel:+5736012345678">Llamar</a>
+      </div>
+    </div>
+
+    <div class="opt">
+      <h4>Social & Co · Sede Pinares</h4>
+      <div class="opt-meta">Coworking · Cra. 17 #9-70 · <span class="price">~$200/mes</span></div>
+      <p>Segunda sede S&Co. Más residencial, vibras boutique. Tienen oficinas privadas para 3-4 pax.</p>
+      <div class="opt-links">
+        <a href="https://pluria.co/coworking-spaces/colombia/pereira/146--social--co" target="_blank">Reservar visita</a>
+      </div>
+    </div>
+
+    <div class="opt">
+      <h4>Elite Coworking</h4>
+      <div class="opt-meta">Coworking · networking corporativo · <span class="price">~$180/mes</span></div>
+      <p>Comunidad de emprendedores. Boardroom premium para presentaciones. Bueno para hacer red Pereira rápido.</p>
+      <div class="opt-links">
+        <a href="https://pluria.co/coworking-spaces/colombia/pereira/693--elite-coworking" target="_blank">Reservar visita</a>
+      </div>
+    </div>
+
+    <div class="opt">
+      <h4>CNC Coworking · Galicia</h4>
+      <div class="opt-meta">Coworking quiet · Cr 15 #138-25 · <span class="price">~$170/mes</span></div>
+      <p>10 escritorios, 3 salas. Más íntimo, naturaleza, terraza. Lunes a viernes 8-5. Mejor para foco profundo.</p>
+      <div class="opt-links">
+        <a href="https://pluria.co/coworking-spaces/colombia/pereira/156--cnc-coworking" target="_blank">Reservar visita</a>
+      </div>
+    </div>
+
+    <div class="opt">
+      <h4>Pluria Network (multi-pase)</h4>
+      <div class="opt-meta">Una suscripción · 3 espacios Pereira · <span class="price">~$150/mes</span></div>
+      <p>Acceso simultáneo Elite + Social & Co + CNC. Mejor flexibilidad. Probar todos primera semana, decidir base.</p>
+      <div class="opt-links">
+        <a href="https://pluria.co/coworking-spaces/colombia/pereira" target="_blank">Pluria Pereira</a>
+      </div>
+    </div>
+
+    <div class="opt">
+      <h4>Oficina privada · plug-and-play</h4>
+      <div class="opt-meta">Av. Circunvalar · 50-80m² · <span class="price">$800-1,400/mes</span></div>
+      <p>Si quieres dirección propia La Compañía. Pluria + Compass + agencias locales tienen 50+ opciones. Coordinar visita semana 1 después de llegar.</p>
+      <div class="opt-links">
+        <a href="https://www.compass.com.co/inmuebles/pereira" target="_blank">Compass Pereira</a>
+        <a class="alt" href="https://casas.trovit.com.co/arriendo-oficina-pereira" target="_blank">Trovit oficinas</a>
+      </div>
+    </div>
+
+  </div>
+  <div class="tasks">
+    <label class="task">
+      <input type="checkbox" data-task="c1">
+      <div class="task-body">
+        <div class="task-text" data-es>Reservar <strong>Pluria multi-pase ($150)</strong> hoy desde Pereira · activa al llegar viernes · permite probar 3 coworkings primera semana antes de decidir base mensual</div>
+        <div class="task-text" data-en>Reserve <strong>Pluria multi-pass ($150)</strong> today from Pereira · activates on Friday arrival · allows trying 3 coworkings first week before deciding monthly base</div>
+        <div class="task-meta">
+          <a class="book" href="https://pluria.co/coworking-spaces/colombia/pereira" target="_blank">↗ Pluria reservar</a>
+          <span class="when tue" data-es>Martes</span><span class="when tue" data-en>Tuesday</span>
+        </div>
+      </div>
+    </label>
+  </div>
+</div>
+
+<!-- ============ 4 · FINCA / LODGING ============ -->
+<div class="block">
+  <div class="block-head">
+    <div class="block-title"><span class="badge zone">🌿</span><span data-es>Finca / alojamiento mensual</span><span data-en>Finca / monthly lodging</span></div>
+    <div class="block-sub" data-es>Cerca Pereira · 30 días · 3 pax</div>
+    <div class="block-sub" data-en>Near Pereira · 30 days · 3 pax</div>
+  </div>
+  <div class="opts">
+
+    <div class="opt">
+      <h4>Finca vía Pereira-Alcalá · amoblada</h4>
+      <div class="opt-meta">6 hab · 3 baños · piscina · BBQ · <span class="price">$7.000.000 COP/mes ($1,750 USD)</span></div>
+      <p>Totalmente amoblada con menaje completo. Incluye agua, energía, mantenimiento piscina + jardines. Mejor relación full-stack para 3 pax + huéspedes ocasionales.</p>
+      <div class="opt-links">
+        <a class="book" href="https://casas.mitula.com.co/casas/arriendo-fincas-pereira" target="_blank">Buscar Mitula</a>
+        <a class="alt" href="https://casas.trovit.com.co/arriendo-finca-pereira" target="_blank">Buscar Trovit</a>
+      </div>
+    </div>
+
+    <div class="opt">
+      <h4>Finca Combia · uso comercial/resi</h4>
+      <div class="opt-meta">Vía Marsella · <span class="price">$5.500.000 COP/mes ($1,380 USD)</span></div>
+      <p>Ubicación estratégica vía Marsella. Permite uso comercial — bueno si La Compañía hace eventos o reuniones grandes el mes.</p>
+      <div class="opt-links">
+        <a class="book" href="https://casas.mitula.com.co/casas/arriendo-fincas-pereira" target="_blank">Buscar Mitula</a>
+      </div>
+    </div>
+
+    <div class="opt">
+      <h4>Casa campestre Pueblito Cafetero</h4>
+      <div class="opt-meta">Sector exclusivo Pereira · <span class="price">$5.000.000-7.000.000 COP/mes</span></div>
+      <p>Entorno natural premium dentro Pereira. Acceso rápido a coworking + restaurantes + aeropuerto. Ideal si quieres balance ciudad + finca.</p>
+      <div class="opt-links">
+        <a class="book" href="https://casas.mitula.com.co/casas/arriendo-fincas-pereira" target="_blank">Buscar Mitula</a>
+      </div>
+    </div>
+
+    <div class="opt">
+      <h4>Casa campestre Filandia · amoblada</h4>
+      <div class="opt-meta">Quindío · 300m² · 3 alc · <span class="price">$3.500.000-5.000.000 COP/mes</span></div>
+      <p>Pueblo más bonito Eje Cafetero. 45 min Pereira. Menos oferta mensual, hay que negociar directo. Excelente para foco creativo + ambiente.</p>
+      <div class="opt-links">
+        <a class="book" href="https://casas.mitula.com.co/casas/arriendo-casas-filandia" target="_blank">Buscar Mitula</a>
+      </div>
+    </div>
+
+    <div class="opt">
+      <h4>Casa Circasia (cerca Salento)</h4>
+      <div class="opt-meta">5 min Circasia · 2 hab + cabaña · <span class="price">$2.500.000-4.000.000 COP/mes</span></div>
+      <p>Casa principal + cabaña independiente. 10 min Salento, 20 min Filandia. Mejor opción budget-conscious con encanto.</p>
+      <div class="opt-links">
+        <a class="book" href="https://casas.mitula.com.co/casas/arriendo-salento" target="_blank">Buscar Mitula</a>
+      </div>
+    </div>
+
+    <div class="opt">
+      <h4>Hacienda Bambusa long-stay</h4>
+      <div class="opt-meta">Eje Cafetero boutique · ya partner Sora · <span class="price">~$6,000-9,000/mes (negociado)</span></div>
+      <p>Tomar la finca completa (8 hab). Si La Compañía hace retreat de un mes — esta es la versión "todo incluido" más rica. Ya partner Sora-CO, posible descuento.</p>
+      <div class="opt-links">
+        <a class="email" href="mailto:info@haciendabambusa.com">✉ Email Bambusa</a>
+        <a class="alt" href="https://www.haciendabambusa.com" target="_blank">Web</a>
+      </div>
+    </div>
+
+  </div>
+  <div class="tasks">
+    <label class="task">
+      <input type="checkbox" data-task="f1">
+      <div class="task-body">
+        <div class="task-text" data-es>Pre-seleccionar <strong>2 fincas top + 1 alternativa</strong> de la lista arriba · WhatsApp/llamar dueños/agentes para confirmar disponibilidad junio + agendar visita sábado 30 mayo</div>
+        <div class="task-text" data-en>Pre-select <strong>top 2 fincas + 1 alternative</strong> from list above · WhatsApp/call owners/agents to confirm June availability + schedule Saturday May 30 visit</div>
+        <div class="task-meta">
+          <span class="when wed" data-es>Miércoles</span><span class="when wed" data-en>Wednesday</span>
+        </div>
+      </div>
+    </label>
+
+    <label class="task">
+      <input type="checkbox" data-task="f2">
+      <div class="task-body">
+        <div class="task-text" data-es>Sábado 30 mayo · <strong>visitar las 2-3 fincas pre-seleccionadas</strong> con anfitrión Pereira (si ya contratado) · cerrar contrato 30 días + 30% depósito · check-in domingo 31</div>
+        <div class="task-text" data-en>Saturday May 30 · <strong>visit the 2-3 pre-selected fincas</strong> with Pereira host (if hired) · close 30-day contract + 30% deposit · check-in Sunday 31</div>
+        <div class="task-meta">
+          <span class="when weekend" data-es>Sábado</span><span class="when weekend" data-en>Saturday</span>
+        </div>
+      </div>
+    </label>
+  </div>
+</div>
+
+<!-- ============ 5 · TIMELINE ============ -->
+<div class="block">
+  <div class="block-head">
+    <div class="block-title"><span class="badge">📅</span><span data-es>Timeline · día por día</span><span data-en>Timeline · day by day</span></div>
+    <div class="block-sub" data-es>Lun 25 → Dom 31</div>
+    <div class="block-sub" data-en>Mon 25 → Sun 31</div>
+  </div>
+  <div class="tasks">
+    <label class="task">
+      <input type="checkbox" data-task="d-mon">
+      <div class="task-body">
+        <div class="task-text" data-es><strong>LUN 25 · HOY</strong> — Comprar vuelos · WhatsApp Pedro Echavarría + Hacienda Bambusa · escribir job posting · empezar Apify (la tarea pinned)</div>
+        <div class="task-text" data-en><strong>MON 25 · TODAY</strong> — Book flights · WhatsApp Pedro Echavarría + Hacienda Bambusa · write job posting · start Apify (pinned task)</div>
+        <div class="task-meta"><span class="when mon">MON</span></div>
+      </div>
+    </label>
+    <label class="task">
+      <input type="checkbox" data-task="d-tue">
+      <div class="task-body">
+        <div class="task-text" data-es><strong>MAR 26</strong> — Publicar job posting Computrabajo + Magneto + LinkedIn + Facebook · reservar Pluria $150 · reservar hotel base Movich/Sonesta 2 noches · contactar UTP Lenguas Modernas</div>
+        <div class="task-text" data-en><strong>TUE 26</strong> — Publish job posting on Computrabajo + Magneto + LinkedIn + Facebook · book Pluria $150 · book Movich/Sonesta base hotel 2 nights · contact UTP Modern Languages</div>
+        <div class="task-meta"><span class="when tue">TUE</span></div>
+      </div>
+    </label>
+    <label class="task">
+      <input type="checkbox" data-task="d-wed">
+      <div class="task-body">
+        <div class="task-text" data-es><strong>MIE 27</strong> — Revisar primeros 20-40 CVs · short-list 8 · agendar 5 Zooms jueves · pre-seleccionar 2 fincas + 1 oficina · llamar dueños</div>
+        <div class="task-text" data-en><strong>WED 27</strong> — Review first 20-40 CVs · short-list 8 · schedule 5 Thursday Zooms · pre-select 2 fincas + 1 office · call owners</div>
+        <div class="task-meta"><span class="when wed">WED</span></div>
+      </div>
+    </label>
+    <label class="task">
+      <input type="checkbox" data-task="d-thu">
+      <div class="task-body">
+        <div class="task-text" data-es><strong>JUE 28</strong> — Hacer 5 entrevistas Zoom inglés · empacar · arreglar pendientes Sora-PA (Tuti, Bambi, Chef Hassan) · confirmar transporte aeropuerto</div>
+        <div class="task-text" data-en><strong>THU 28</strong> — Run 5 English Zoom interviews · pack · close Sora-PA loose ends (Tuti, Bambi, Chef Hassan) · confirm airport transfer</div>
+        <div class="task-meta"><span class="when thu">THU</span></div>
+      </div>
+    </label>
+    <label class="task">
+      <input type="checkbox" data-task="d-fri">
+      <div class="task-body">
+        <div class="task-text" data-es><strong>VIE 29 · VUELO</strong> — 6:30am pickup → 10:10am Copa CM200 → 11:35am PEI · Uber a hotel base · check-in · primera cena con anfitrión finalista en restaurante centro Pereira</div>
+        <div class="task-text" data-en><strong>FRI 29 · FLIGHT DAY</strong> — 6:30am pickup → 10:10am Copa CM200 → 11:35am PEI · Uber to base hotel · check-in · first dinner with finalist host at Pereira center restaurant</div>
+        <div class="task-meta"><span class="when fri">FRI</span></div>
+      </div>
+    </label>
+    <label class="task">
+      <input type="checkbox" data-task="d-sat">
+      <div class="task-body">
+        <div class="task-text" data-es><strong>SAB 30</strong> — Probar 2 coworkings (Social&Co Plaza + Elite) en mañana · tarde visitar 2-3 fincas con anfitrión · cerrar finca + firmar contrato + depósito 30%</div>
+        <div class="task-text" data-en><strong>SAT 30</strong> — Try 2 coworkings (Social&Co Plaza + Elite) morning · afternoon visit 2-3 fincas with host · close finca + sign contract + 30% deposit</div>
+        <div class="task-meta"><span class="when weekend">SAT</span></div>
+      </div>
+    </label>
+    <label class="task">
+      <input type="checkbox" data-task="d-sun">
+      <div class="task-body">
+        <div class="task-text" data-es><strong>DOM 31</strong> — Check-out hotel · check-in finca · setup cocina + workspaces · cena en finca con anfitrión + planificación semana 1 junio</div>
+        <div class="task-text" data-en><strong>SUN 31</strong> — Check out hotel · check in finca · setup kitchen + workspaces · finca dinner with host + Week-1 June planning</div>
+        <div class="task-meta"><span class="when weekend">SUN</span></div>
+      </div>
+    </label>
+  </div>
+</div>
+
+<!-- ============ 6 · BUDGET ============ -->
+<div class="block">
+  <div class="block-head">
+    <div class="block-title"><span class="badge warn">💵</span><span data-es>Presupuesto · semana llegada + mes 1</span><span data-en>Budget · arrival week + Month 1</span></div>
+    <div class="block-sub" data-es>USD aprox para 3 pax</div>
+    <div class="block-sub" data-en>USD approx for 3 pax</div>
+  </div>
+  <div class="opts">
+    <div class="opt">
+      <h4 data-es>Vuelos 3 pax</h4>
+      <h4 data-en>Flights 3 pax</h4>
+      <div class="opt-meta"><span class="price">$525-900</span> · ida</div>
+      <p data-es>Copa CM200 viernes. Booking hoy es el mejor precio.</p>
+      <p data-en>Copa CM200 Friday. Booking today gets best price.</p>
+    </div>
+    <div class="opt">
+      <h4 data-es>Hotel base 2 noches</h4>
+      <h4 data-en>Base hotel 2 nights</h4>
+      <div class="opt-meta"><span class="price">$180-280</span> · 3 hab</div>
+      <p data-es>Movich/Sonesta centro Pereira. Pago al check-in.</p>
+      <p data-en>Movich/Sonesta Pereira center. Pay at check-in.</p>
+    </div>
+    <div class="opt">
+      <h4 data-es>Finca mes</h4>
+      <h4 data-en>Finca month</h4>
+      <div class="opt-meta"><span class="price">$1,380-1,750</span> · amoblada</div>
+      <p data-es>30% depósito + 70% al check-in. Incluye servicios.</p>
+      <p data-en>30% deposit + 70% at check-in. Services included.</p>
+    </div>
+    <div class="opt">
+      <h4 data-es>Coworking mes</h4>
+      <h4 data-en>Coworking month</h4>
+      <div class="opt-meta"><span class="price">$150-220</span> · Pluria multi</div>
+      <p data-es>3 espacios incluidos para probar. Decide mes 2.</p>
+      <p data-en>3 spaces included to try. Decide month 2.</p>
+    </div>
+    <div class="opt">
+      <h4 data-es>Anfitrión salario</h4>
+      <h4 data-en>Host salary</h4>
+      <div class="opt-meta"><span class="price">$1,200-1,500</span> · trial 30d</div>
+      <p data-es>Wise/Yappy semanal. Bonus por KPI mes 2.</p>
+      <p data-en>Weekly Wise/Yappy. KPI bonus from month 2.</p>
+    </div>
+    <div class="opt">
+      <h4 data-es>Operativos primera semana</h4>
+      <h4 data-en>First week ops</h4>
+      <div class="opt-meta"><span class="price">$400-700</span> · comida + Uber + suministros</div>
+      <p data-es>Mercado + Carulla + restaurantes mientras setup finca.</p>
+      <p data-en>Market + Carulla + restaurants while finca setup.</p>
+    </div>
+    <div class="opt" style="border:2px solid var(--coral)">
+      <h4 data-es>TOTAL semana llegada + mes 1</h4>
+      <h4 data-en>TOTAL arrival week + month 1</h4>
+      <div class="opt-meta"><span class="price">~$3,800-5,300</span> · all-in</div>
+      <p data-es>No incluye business setup (RUT, Bancolombia, asesoría legal) — eso lo arrancamos semana 2.</p>
+      <p data-en>Excludes business setup (RUT, Bancolombia, legal advisory) — that starts week 2.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 6.5 · THINGS TO DO + LIFESTYLE ============ -->
+<div class="block">
+  <div class="block-head">
+    <div class="block-title"><span class="badge zone">🍷</span><span data-es>Pereira lifestyle · qué hacer cuando lleguen</span><span data-en>Pereira lifestyle · what to do when you arrive</span></div>
+    <div class="block-sub" data-es>Restaurantes verificados · noche · day trips Eje Cafetero</div>
+    <div class="block-sub" data-en>Verified restaurants · nightlife · Eje Cafetero day trips</div>
+  </div>
+
+  <div style="padding:18px 24px 8px"><h3 style="font-family:var(--display);font-size:20px;font-weight:400;color:var(--ink);margin-bottom:4px"><span data-es>🍽 Restaurantes top · Pinares + Circunvalar</span><span data-en>🍽 Top restaurants · Pinares + Circunvalar</span></h3></div>
+  <div class="opts">
+
+    <div class="opt" style="border-left:3px solid var(--coral)">
+      <h4>Ambar by Diego Panesso</h4>
+      <div class="opt-meta">Pinares/Los Alamos · Calle 14 #18-18 · <span class="price">$$$$ Top fine dining</span></div>
+      <p data-es>Probablemente el mejor de Pereira. Chef Diego Panesso formado en Barcelona. Contemporary Colombian fusion. Reservar primera noche para calibrar el nivel premium local.</p>
+      <p data-en>Probably best in Pereira. Chef Diego Panesso Barcelona-trained. Contemporary Colombian fusion. Book first night to calibrate local premium tier.</p>
+    </div>
+
+    <div class="opt">
+      <h4>La Piura · Peruvian fine dining</h4>
+      <div class="opt-meta">Pinares · <span class="price">$$$ Chef Juan Carlos Salazar</span></div>
+      <p data-es>Cocina peruana high-end. Mariscos + spices + presentación moderna. Top-3 Pereira garantizado.</p>
+      <p data-en>High-end Peruvian. Seafood + spices + modern presentation. Guaranteed Pereira top-3.</p>
+    </div>
+
+    <div class="opt">
+      <h4>Octavo Restaurante Giratorio</h4>
+      <div class="opt-meta">Restaurante rotativo · <span class="price">$$$ Vistas 360°</span></div>
+      <p data-es>Restaurante que gira 360° con vista de Pereira completa. Mejor para impresionar a invitados.</p>
+      <p data-en>360° rotating restaurant with full Pereira view. Best for impressing guests.</p>
+    </div>
+
+    <div class="opt">
+      <h4>Patagonia Mía · steakhouse</h4>
+      <div class="opt-meta">La Perla · <span class="price">$$$ Carnes argentinas</span></div>
+      <p data-es>Steakhouse top con carnes preparadas estilo argentino-brasileño. Cuando se cansen del rice-and-beans local.</p>
+      <p data-en>Top steakhouse with Argentine-Brazilian style meats. When you tire of local rice-and-beans.</p>
+    </div>
+
+    <div class="opt">
+      <h4>Cherry Hill Food Hall</h4>
+      <div class="opt-meta">Parque Arboleda · Circunvalar · <span class="price">$$ Mix internacional</span></div>
+      <p data-es>Food hall con Japanese + Mexican + Italian. Manager Robert es bilingüe — útil para invitados sin español.</p>
+      <p data-en>Food hall with Japanese + Mexican + Italian. Manager Robert is bilingual — useful for non-Spanish guests.</p>
+    </div>
+
+    <div class="opt">
+      <h4>Kilaba · Lebanese/Syrian</h4>
+      <div class="opt-meta">Circunvalar + Calle 11 · <span class="price">$$ Auténtico</span></div>
+      <p data-es>Owner Samir personaliza la experiencia. Cocina libanesa-siria auténtica. Casual pero memorable.</p>
+      <p data-en>Owner Samir personalizes the experience. Authentic Lebanese-Syrian. Casual but memorable.</p>
+    </div>
+
+    <div class="opt">
+      <h4>Lola Resto &amp; Café</h4>
+      <div class="opt-meta">Pinares · <span class="price">$$ Brunch + casual upscale</span></div>
+      <p data-es>Urban-chic. Pizza + pasta + sandwiches + café excelente. Default brunch/almuerzo trabajo.</p>
+      <p data-en>Urban-chic. Pizza + pasta + sandwiches + excellent coffee. Default brunch/working lunch.</p>
+    </div>
+
+    <div class="opt">
+      <h4>Restaurante Sumo · Asian fusion</h4>
+      <div class="opt-meta">Circunvalar · <span class="price">$$$ Sushi + fusion</span></div>
+      <p data-es>Sushi de calidad + fusion asiático. Ocean Crispy roll es signature. Tranquilo, elegante.</p>
+      <p data-en>Quality sushi + Asian fusion. Ocean Crispy roll is signature. Quiet, elegant.</p>
+    </div>
+
+  </div>
+
+  <div style="padding:18px 24px 8px"><h3 style="font-family:var(--display);font-size:20px;font-weight:400;color:var(--ink);margin-bottom:4px"><span data-es>🍸 Noche · cocktails + clubs</span><span data-en>🍸 Nightlife · cocktails + clubs</span></h3></div>
+  <div class="opts">
+
+    <div class="opt" style="border-left:3px solid var(--rose)">
+      <h4>The Tipsy Bird · Hotel Movich</h4>
+      <div class="opt-meta">Carrera 15 #15-71 (Circunvalar) · <span class="price">$$$ Cocktails top NYC-tier</span></div>
+      <p data-es>Cocktails curados temáticos jardines asiáticos. Live music casi todos los viernes. La opción más sofisticada de Pereira. Si están en Movich los primeros 2 noches, primera cena cocktail acá.</p>
+      <p data-en>Curated Asian garden-themed cocktails. Live music most Fridays. Most sophisticated option in Pereira. If staying at Movich first 2 nights, first cocktail night here.</p>
+    </div>
+
+    <div class="opt">
+      <h4>El Parnaso</h4>
+      <div class="opt-meta">Circunvalar · <span class="price">$$ Cocktail bar + live music</span></div>
+      <p data-es>Decoración chic. Craft beers + cocktails tropicales. Live music. Ambiente para conversaciones de trabajo nocturnas.</p>
+      <p data-en>Chic decor. Craft beers + tropical cocktails. Live music. Vibe for late-night work conversations.</p>
+    </div>
+
+    <div class="opt">
+      <h4>Malabar</h4>
+      <div class="opt-meta">Circunvalar · <span class="price">$$$ Cocktails + lounge</span></div>
+      <p data-es>Para velada exclusiva. Cocktails innovadores + lounge music. Atrae locales y turistas premium.</p>
+      <p data-en>For an exclusive evening. Innovative cocktails + lounge music. Attracts locals and premium tourists.</p>
+    </div>
+
+    <div class="opt">
+      <h4>Pin Bar</h4>
+      <div class="opt-meta">Av. Circunvalar · <span class="price">$$ Vibrant energy</span></div>
+      <p data-es>Vibrante, ecléctico, arte colorido. Mezcla locales + turistas. Mid-budget. La opción "salir a divertirse sin pretensiones."</p>
+      <p data-en>Vibrant, eclectic, colorful art. Mix of locals + tourists. Mid-budget. The "go out and have fun, no pretense" option.</p>
+    </div>
+
+    <div class="opt">
+      <h4>Kolibri Hostal Bar</h4>
+      <div class="opt-meta">Calle 4 #16-35 (Circunvalar) · <span class="price">$ Backpacker mix internacional</span></div>
+      <p data-es><strong>Miércoles: yoga. Jueves: intercambio inglés-español "Verbal Jenga".</strong> Mejor scouting in-person para conocer bilingües Pereira. Llegar jueves antes de cierre.</p>
+      <p data-en><strong>Wed: yoga. Thu: English-Spanish exchange "Verbal Jenga".</strong> Best in-person scouting for Pereira bilinguals. Arrive Thursday before closing.</p>
+    </div>
+
+    <div class="opt">
+      <h4>Discoteca Paradise</h4>
+      <div class="opt-meta">Circunvalar · <span class="price">$$$ Club grande EDM/reggaeton</span></div>
+      <p data-es>El club más grande de Pereira. EDM + reggaeton. DJs locales e internacionales. Sábado noche default.</p>
+      <p data-en>Biggest club in Pereira. EDM + reggaeton. Local + international DJs. Default Saturday night.</p>
+    </div>
+
+    <div class="opt">
+      <h4>La Obra · Parque Arboleda rooftop</h4>
+      <div class="opt-meta">Último piso Parque Arboleda · <span class="price">$$$ Viernes-sábado</span></div>
+      <p data-es>Rooftop del centro comercial Parque Arboleda. Sábado noche con vista. Crowd mid-30s premium.</p>
+      <p data-en>Parque Arboleda mall rooftop. Saturday night with view. Mid-30s premium crowd.</p>
+    </div>
+
+    <div class="opt">
+      <h4>Cuba (barrio) · auténtico</h4>
+      <div class="opt-meta">Barrio tradicional · <span class="price">$ Vendedores + salsa</span></div>
+      <p data-es>Para experiencia local real: arepas + chuzos en la calle, bares con salsa. Más auténtico que Circunvalar. Llevar host para navegar.</p>
+      <p data-en>For real local experience: street arepas + chuzos, salsa bars. More authentic than Circunvalar. Bring host to navigate.</p>
+    </div>
+
+  </div>
+
+  <div style="padding:18px 24px 8px"><h3 style="font-family:var(--display);font-size:20px;font-weight:400;color:var(--ink);margin-bottom:4px"><span data-es>🌄 Day trips · Eje Cafetero</span><span data-en>🌄 Day trips · Eje Cafetero</span></h3></div>
+  <div class="opts">
+
+    <div class="opt" style="border-left:3px solid var(--green)">
+      <h4>Termales de Santa Rosa de Cabal</h4>
+      <div class="opt-meta">~45 min Pereira · <span class="price">$$ Capacidad 1,400 ppl/2h</span></div>
+      <p data-es>Aguas termales descendiendo desde montañas verdes. Cascada Santa Helena. Mejor llegar 9am entre semana — fines de semana saturado.</p>
+      <p data-en>Thermal waters descending green mountains. Santa Helena waterfall. Best to arrive 9am weekdays — weekends overcrowded.</p>
+    </div>
+
+    <div class="opt" style="border-left:3px solid var(--green)">
+      <h4>Salento + Valle del Cocora</h4>
+      <div class="opt-meta">~1h Pereira · <span class="price">$$$ Hike 15km o cabalgata</span></div>
+      <p data-es>Pueblo más visitado + Palmas de Cera (árbol nacional, 60m altura). Hike completo 5-6 horas. Jeep Willys desde Salento. ACAIME reserve cloud forest add-on.</p>
+      <p data-en>Most-visited pueblo + Wax Palms (national tree, 60m tall). Full hike 5-6 hours. Willys jeep from Salento. ACAIME reserve cloud forest add-on.</p>
+    </div>
+
+    <div class="opt" style="border-left:3px solid var(--green)">
+      <h4>Filandia</h4>
+      <div class="opt-meta">~45 min Pereira · <span class="price">$$ "Colina iluminada"</span></div>
+      <p data-es>Pueblo colonial más fotogénico EC. Balcones de colores. Menos crowd que Salento. Tour chocolate Cittaslow 4h, $147 USD.</p>
+      <p data-en>Most photogenic colonial pueblo EC. Colorful balconies. Less crowded than Salento. Chocolate Cittaslow tour 4h, $147 USD.</p>
+    </div>
+
+    <div class="opt" style="border-left:3px solid var(--green)">
+      <h4>Pijao · Cittaslow town</h4>
+      <div class="opt-meta">~1h Pereira · <span class="price">$$ Slow living capital LATAM</span></div>
+      <p data-es>Primer pueblo "Cittaslow" de LATAM (movimiento slow). AREWA Biohabitat acá. Perfecto para retreat de 2-3 días con clientes premium Sora.</p>
+      <p data-en>First LATAM "Cittaslow" town (slow-living movement). AREWA Biohabitat here. Perfect 2-3 day retreat with premium Sora clients.</p>
+    </div>
+
+    <div class="opt">
+      <h4>Buenavista · paragliding</h4>
+      <div class="opt-meta">~1.5h Pereira · <span class="price">$$ Adventure + viewpoints</span></div>
+      <p data-es>Pueblo mirador + parapente opcional. Tour 3-pueblos (Filandia + Buenavista + Pijao) cabe en un día.</p>
+      <p data-en>Viewpoint pueblo + optional paragliding. 3-pueblo tour (Filandia + Buenavista + Pijao) fits in a day.</p>
+    </div>
+
+    <div class="opt">
+      <h4>Parque del Café + PANACA</h4>
+      <div class="opt-meta">~1h Pereira · <span class="price">$$ Theme parks · family</span></div>
+      <p data-es>Theme park café (Parque del Café) + theme park animales (PANACA). Ambos en Quimbaya/Montenegro. Para guests con familias.</p>
+      <p data-en>Coffee theme park + animal theme park. Both in Quimbaya/Montenegro. For guests with families.</p>
+    </div>
+
+    <div class="opt">
+      <h4>Balsaje Río La Vieja</h4>
+      <div class="opt-meta">~1h Pereira · <span class="price">$$ Rafting en guadua</span></div>
+      <p data-es>Rafting tradicional en balsas de guadua atadas con fique. Bogas locales. Reserva El Ocaso bosque primario con monos aulladores.</p>
+      <p data-en>Traditional rafting on bamboo rafts tied with fique. Local bogas. El Ocaso primary forest reserve with howler monkeys.</p>
+    </div>
+
+    <div class="opt">
+      <h4>Café tour finca local</h4>
+      <div class="opt-meta">10-30 min Pereira · <span class="price">$ Don Gabo / La Divisa Don Juan</span></div>
+      <p data-es>Don Gabo: 10 min Pereira, familiar, Don Carlos. La Divisa Don Juan también local. Para guests Sora de un día.</p>
+      <p data-en>Don Gabo: 10 min Pereira, family-run, Don Carlos. La Divisa Don Juan also local. For Sora day-trip guests.</p>
+    </div>
+
+  </div>
+
+  <div style="padding:18px 24px 8px"><h3 style="font-family:var(--display);font-size:20px;font-weight:400;color:var(--ink);margin-bottom:4px"><span data-es>🧘 Wellness · café · co-living</span><span data-en>🧘 Wellness · café · coliving</span></h3></div>
+  <div class="opts">
+
+    <div class="opt">
+      <h4>Bodytech Pinares</h4>
+      <div class="opt-meta">Gym premium · <span class="price">~$90/mes</span></div>
+      <p data-es>Cadena nacional CO. Standard premium U.S.-tier. Default fitness Pinares.</p>
+      <p data-en>National CO chain. U.S.-tier premium standard. Default Pinares fitness.</p>
+    </div>
+
+    <div class="opt">
+      <h4>Coworking + Coliving Plaza U!</h4>
+      <div class="opt-meta">Airbnb listing · <span class="price">$$ Trabajo + dormir</span></div>
+      <p data-es>Setup mixto si la finca se atrasa. Hospedaje + coworking en mismo edificio.</p>
+      <p data-en>Mixed setup if finca delays. Lodging + coworking in same building.</p>
+    </div>
+
+    <div class="opt">
+      <h4>Café Tostao · La Castellana</h4>
+      <div class="opt-meta">Café especialidad · <span class="price">$ Free wifi</span></div>
+      <p data-es>Mejor café especialidad para trabajo casual. Wifi sólido. Ambiente bilingüe (algunos clientes expat).</p>
+      <p data-en>Best specialty café for casual work. Solid wifi. Bilingual environment (some expat customers).</p>
+    </div>
+
+    <div class="opt">
+      <h4>The Columbus School community events</h4>
+      <div class="opt-meta">Colegio bilingüe · <span class="price">Eventos comunidad</span></div>
+      <p data-es>Eventos open-house del colegio bilingüe. Allí están los padres bilingües profesionales (médicos, abogados, empresarios) que querés conocer.</p>
+      <p data-en>Open-house events of the bilingual school. The bilingual professional parents you want to meet (doctors, lawyers, entrepreneurs) are there.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============ 7 · JOB POSTING TEMPLATE ============ -->
+<div class="block">
+  <div class="block-head">
+    <div class="block-title"><span class="badge">📋</span><span data-es>Template · job posting</span><span data-en>Template · job posting</span></div>
+    <div class="block-sub" data-es>Copy-paste a 4 canales</div>
+    <div class="block-sub" data-en>Copy-paste to 4 channels</div>
+  </div>
+  <div style="padding:20px 24px">
+    <pre style="font-family:var(--mono);font-size:12.5px;line-height:1.6;background:var(--ink);color:var(--cream);padding:20px 24px;border-radius:8px;overflow-x:auto;white-space:pre-wrap"><span style="color:var(--mango)">Operations Manager bilingüe · La Compañía · Pereira</span>
+
+Grupo de empresas multi-vertical (turismo premium, café, real estate,
+servicios) busca <strong>Operations Manager bilingüe full-time</strong> basado
+en Pereira, empezando lunes 1 junio 2026.
+
+<span style="color:var(--mango)">Responsabilidades:</span>
+· Coordinación operativa diaria con fundador (Abraham, US/PA)
+· Vendor management Eje Cafetero (fincas, café, transporte, eventos)
+· Bookkeeping básico + reconciliación pagos USD/COP
+· Project follow-through proyectos paralelos
+· Red local Pereira/Salento/Filandia para activaciones
+
+<span style="color:var(--mango)">Requisitos NO-negociables:</span>
+· Inglés full nativo o near-nativo (test telefónico día 1)
+· Licencia de conducir + vehículo propio o confiable
+· WhatsApp Business + Google Workspace + Excel/Sheets
+· Discreción absoluta (verás números + vida personal)
+· Disponibilidad inmediata viernes 29 mayo (entrevista) ó lunes 1 junio (start)
+
+<span style="color:var(--mango)">Plus:</span>
+· Experiencia hospitalidad/café/eventos Eje Cafetero
+· Red existente con fincas / brokers / proveedores
+· QuickBooks o experiencia bookkeeping
+
+<span style="color:var(--mango)">Compensación:</span>
+· $1,200 USD/mes (trial 30 días) + bonus KPI desde mes 2
+· Pago semanal vía Wise o Yappy
+· $1,500 USD/mes confirmación post-trial
+· Equipo + transporte cubierto para gestiones
+
+<span style="color:var(--mango)">Aplicar:</span>
+WhatsApp +507 [tu número] con 1 párrafo en inglés explicando por qué
+este rol es para ti. Sin CV adjunto en primera ronda.</pre>
+  </div>
+</div>
+
+<div class="foot">SORA · La Compañía · MMXXVI · <span data-es>Plan Pereira semana 25-31 mayo</span><span data-en>Pereira plan week May 25-31</span></div>
+
+</main>
+
+<script>
+  const KEY = 'sora.pereira.20260525';
+  function getState(){ try { return JSON.parse(localStorage.getItem(KEY) || '{}'); } catch(e){ return {}; } }
+  function saveState(s){ try { localStorage.setItem(KEY, JSON.stringify(s)); } catch(e){} }
+  function updateProgress(){
+    const all = document.querySelectorAll('.task input[type=checkbox]');
+    const done = document.querySelectorAll('.task input[type=checkbox]:checked').length;
+    const pct = all.length ? (done / all.length) * 100 : 0;
+    document.getElementById('pf').style.width = pct + '%';
+    document.getElementById('pt').textContent = done + ' / ' + all.length;
+  }
+  const state = getState();
+  document.querySelectorAll('.task input[type=checkbox]').forEach(cb => {
+    if (state[cb.dataset.task]) cb.checked = true;
+    cb.addEventListener('change', () => {
+      const s = getState();
+      s[cb.dataset.task] = cb.checked;
+      saveState(s);
+      updateProgress();
+    });
+  });
+  updateProgress();
+  window.resetAll = function(){
+    if (!confirm('Reset all tasks?')) return;
+    localStorage.removeItem(KEY);
+    document.querySelectorAll('.task input[type=checkbox]').forEach(cb => cb.checked = false);
+    updateProgress();
+  };
+  const langBtns = document.querySelectorAll('.lang button');
+  function setLang(l){
+    document.documentElement.setAttribute('lang', l);
+    localStorage.setItem('sora.lang', l);
+    langBtns.forEach(b=>b.classList.toggle('active', b.dataset.lang===l));
+  }
+  langBtns.forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
+  setLang(localStorage.getItem('sora.lang') || 'es');
+</script>
+</body>
+</html>

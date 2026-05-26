@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mexico City 2026 — Field Manual</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper:#f5efe2; --paper-2:#ede5d2; --paper-3:#e8dec6; --paper-card:#fbf6e9; --paper-deep:#e3d9c2;
+    --paper-tint-rose:#f8e6e0; --paper-tint-warm:#f7ead4; --paper-tint-jade:#e8efe4;
+    --ink:#14110c; --ink-2:#2a251d; --ink-soft:#4a4337; --ink-faint:#807761; --ink-ghost:#b0a78e;
+    --line:rgba(20,17,12,.10); --line-2:rgba(20,17,12,.18); --line-strong:rgba(20,17,12,.45);
+    --rose:#a83f4f; --rose-2:#c25a6a; --rose-faint:rgba(168,63,79,.12);
+    --jade:#3e5f3d; --jade-2:#577b53; --jade-faint:rgba(62,95,61,.10);
+    --gold:#9c7a30; --gold-2:#c5a05c;
+    --wine:#6b1f2c; --terracotta:#b04525;
+    --warn-bg:#faecd2; --warn-line:#c08828;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);color:var(--ink);
+    font-family:'Fraunces',Georgia,serif;font-size:17px;line-height:1.62;
+    min-height:100vh;overflow-x:hidden;
+    font-feature-settings:"ss01","ss02","kern","liga";
+    -webkit-font-smoothing:antialiased;
+    background-image:
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.08  0 0 0 0 0.07  0 0 0 0 0.05  0 0 0 0.025 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"),
+      radial-gradient(ellipse at 12% 6%,rgba(168,63,79,.06) 0%,transparent 50%),
+      radial-gradient(ellipse at 88% 95%,rgba(62,95,61,.06) 0%,transparent 55%);
+  }
+  ::selection{background:var(--ink);color:var(--paper)}
+
+  /* progress + minimark + rail */
+  .progress{position:fixed;top:0;left:0;width:100%;height:2px;background:rgba(20,17,12,.04);z-index:100;pointer-events:none}
+  .progress .bar{height:100%;width:0%;background:linear-gradient(90deg,var(--rose),var(--rose-2));transition:width .08s linear}
+  .minimark{position:fixed;top:18px;right:24px;z-index:50;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-faint);background:rgba(245,239,226,.85);backdrop-filter:blur(8px);border:1px solid var(--line);padding:8px 14px;opacity:0;transition:opacity .3s ease;display:flex;align-items:center;gap:10px}
+  .minimark.visible{opacity:1}
+  .minimark .dot{width:6px;height:6px;border-radius:50%;background:var(--rose)}
+  .rail{position:fixed;left:24px;top:50%;transform:translateY(-50%);z-index:50;pointer-events:none;opacity:0;transition:opacity .3s ease}
+  .rail.visible{opacity:1;pointer-events:auto}
+  .rail ol{list-style:none;padding:16px 12px;background:rgba(245,239,226,.85);backdrop-filter:blur(8px);border:1px solid var(--line);display:flex;flex-direction:column;gap:6px}
+  .rail li{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.15em;color:var(--ink-ghost);cursor:pointer;display:flex;align-items:center;gap:8px;padding:2px 2px 2px 0;transition:color .15s ease}
+  .rail li::before{content:'';width:14px;height:1px;background:currentColor;opacity:.5;transition:all .2s ease}
+  .rail li .romnum{font-weight:600;width:22px}
+  .rail li .name{opacity:0;transform:translateX(-8px);transition:all .2s ease;font-family:'Fraunces',serif;font-style:italic;font-size:11px;letter-spacing:0;color:var(--ink-soft);white-space:nowrap}
+  .rail:hover li .name{opacity:.7;transform:translateX(0)}
+  .rail li:hover{color:var(--ink)}
+  .rail li:hover::before{width:22px;background:var(--rose);opacity:1}
+  .rail li.active{color:var(--rose)}
+  .rail li.active::before{width:22px;background:var(--rose);opacity:1}
+  .rail li.active .name{opacity:1;color:var(--rose)}
+
+  .doc{max-width:1080px;margin:0 auto;padding:0 32px;position:relative}
+
+  /* cover */
+  .cover{min-height:100vh;padding:56px 64px 64px;display:flex;flex-direction:column;position:relative;border-bottom:1px solid var(--line-2);overflow:hidden}
+  .cover::before,.cover::after{content:'';position:absolute;pointer-events:none;border:1px solid var(--line-2)}
+  .cover::before{top:20px;left:20px;right:20px;bottom:20px}
+  .cover::after{top:26px;left:26px;right:26px;bottom:26px}
+  .cover-head{display:flex;justify-content:space-between;align-items:flex-start;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:auto}
+  .cover-mark{display:flex;align-items:center;gap:14px}
+  .cover-mark .glyph{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border:1px solid var(--ink);font-family:'Fraunces',serif;font-style:italic;font-size:16px;text-transform:none;letter-spacing:0;color:var(--ink)}
+  .cover-body{margin:auto 0}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.30em;text-transform:uppercase;color:var(--rose);margin-bottom:36px;font-weight:600}
+  .cover-title{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(76px,12vw,176px);line-height:.88;letter-spacing:-.04em;color:var(--ink);margin-bottom:32px}
+  .cover-title em{font-style:italic;color:var(--rose);font-weight:400}
+  .cover-title .year{display:block;font-family:'Fraunces',serif;font-style:italic;font-weight:300;font-size:.42em;letter-spacing:-.02em;margin-top:14px;color:var(--ink-soft)}
+  .cover-sub{font-family:'Fraunces',serif;font-size:21px;line-height:1.45;color:var(--ink-2);font-weight:300;max-width:680px}
+  .cover-meta{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:64px;padding-top:32px;border-top:1px solid var(--line-2)}
+  .cover-meta .item{display:flex;flex-direction:column;gap:6px}
+  .cover-meta .label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint)}
+  .cover-meta .value{font-family:'Fraunces',serif;font-size:18px;color:var(--ink);font-weight:500}
+  .cover-meta .value em{font-style:italic;color:var(--rose)}
+  .scroll-cue{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.30em;text-transform:uppercase;color:var(--ink-faint);writing-mode:vertical-rl;transform:translateX(-50%) rotate(180deg)}
+
+  /* sections */
+  section{padding:96px 0;position:relative;border-bottom:1px solid var(--line)}
+  section.tint-warm{background:linear-gradient(180deg,var(--paper) 0%,var(--paper-tint-warm) 40%,var(--paper-tint-warm) 60%,var(--paper) 100%)}
+  section.tint-rose{background:linear-gradient(180deg,var(--paper) 0%,var(--paper-tint-rose) 40%,var(--paper-tint-rose) 60%,var(--paper) 100%)}
+  section.tint-jade{background:linear-gradient(180deg,var(--paper) 0%,var(--paper-tint-jade) 40%,var(--paper-tint-jade) 60%,var(--paper) 100%)}
+  .ghost-num{position:absolute;top:24px;right:42px;font-family:'Fraunces',serif;font-weight:300;font-size:240px;line-height:1;color:var(--ink);opacity:.04;letter-spacing:-.04em;pointer-events:none;user-select:none;font-style:italic}
+  .chapter{display:grid;grid-template-columns:130px 1fr;gap:48px;margin-bottom:56px;max-width:1080px;margin-left:auto;margin-right:auto;padding:0 32px}
+  .chapter-num{font-family:'Fraunces',serif;font-style:italic;font-weight:300;font-size:72px;line-height:1;color:var(--ink-soft);letter-spacing:-.02em;display:flex;flex-direction:column;align-items:flex-start;gap:18px}
+  .chapter-num sup{font-family:'JetBrains Mono',monospace;font-style:normal;font-size:10px;letter-spacing:.18em;color:var(--ink-faint);text-transform:uppercase;font-weight:600}
+  .chapter-sigil{width:42px;height:42px;display:flex;align-items:center;justify-content:center;opacity:.6}
+  .chapter-sigil svg{width:100%;height:100%;stroke:var(--ink-soft);stroke-width:1.3;fill:none}
+  .chapter-sigil svg .fill{fill:var(--ink-soft);stroke:none}
+  .chapter-body{padding-top:8px}
+  .chapter-kicker{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--rose);font-weight:600;margin-bottom:14px}
+  .chapter-body h2{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(38px,5vw,60px);line-height:1.04;letter-spacing:-.025em;color:var(--ink);margin-bottom:28px;text-wrap:balance}
+  .chapter-body h2 em{font-style:italic;color:var(--rose);font-weight:400}
+  .lede{font-family:'Fraunces',serif;font-size:20px;line-height:1.5;color:var(--ink-2);font-weight:300;max-width:680px}
+  .lede.drop::first-letter{font-family:'Fraunces',serif;font-style:italic;font-weight:300;font-size:84px;line-height:.72;float:left;margin:8px 14px 0 0;color:var(--rose)}
+  .lede strong{font-weight:600;color:var(--ink)}
+
+  .doc{max-width:1080px;margin:0 auto;padding:0 32px}
+  h3{font-family:'Fraunces',serif;font-weight:500;font-size:24px;line-height:1.2;color:var(--ink);margin:48px 0 18px;letter-spacing:-.015em}
+  h3 em{font-style:italic;color:var(--rose);font-weight:400}
+  p{margin-bottom:18px;color:var(--ink-2)}
+  p strong{color:var(--ink);font-weight:600}
+  p em{font-style:italic}
+  a{color:var(--rose-2);text-decoration:none;border-bottom:1px dashed var(--rose-faint)}
+  a:hover{color:var(--rose);border-color:var(--rose)}
+
+  /* hero stats */
+  .hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:1080px;margin:48px auto;padding:0 32px}
+  .stat{background:var(--paper-card);border:1px solid var(--line);padding:24px 22px;display:flex;flex-direction:column;gap:8px;position:relative;overflow:hidden}
+  .stat .delta{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);font-weight:600}
+  .stat .num{font-family:'Fraunces',serif;font-weight:300;font-size:42px;line-height:1;color:var(--ink);letter-spacing:-.02em}
+  .stat .num em{font-style:italic;color:var(--rose);font-weight:400}
+  .stat .lbl{font-family:'Inter',sans-serif;font-size:11.5px;color:var(--ink-soft);line-height:1.35}
+  .stat .sparkline{position:absolute;bottom:0;left:0;right:0;height:18px;opacity:.18}
+  .stat .sparkline svg{width:100%;height:100%}
+  .stat .sparkline path{fill:none;stroke:var(--rose);stroke-width:1.5}
+
+  /* cards */
+  .card{max-width:1080px;margin:32px auto;padding:24px 28px;background:var(--paper-card);border:1px solid var(--line);position:relative}
+  .card.warn{background:var(--warn-bg);border-color:var(--warn-line);border-left-width:3px}
+  .card.danger{background:var(--paper-tint-rose);border-color:var(--rose);border-left-width:3px}
+  .card.jade{background:var(--paper-tint-jade);border-color:var(--jade);border-left-width:3px}
+  .card-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);font-weight:600;margin-bottom:10px}
+  .card p{margin-bottom:0;font-size:15.5px}
+
+  /* TOC */
+  .toc{max-width:1080px;margin:48px auto 0;padding:32px;background:var(--paper-deep);border:1px solid var(--line-2)}
+  .toc-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+  .toc-head .label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft);font-weight:600}
+  .toc-head .count{font-family:'Fraunces',serif;font-style:italic;font-size:14px;color:var(--ink-faint)}
+  .toc ol{list-style:none;counter-reset:tocn;columns:2;column-gap:36px}
+  .toc li{counter-increment:tocn;display:flex;gap:14px;padding:6px 0;border-bottom:1px dashed var(--line);break-inside:avoid}
+  .toc li::before{content:counter(tocn,upper-roman);font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-faint);min-width:30px;letter-spacing:.06em;font-weight:600;padding-top:3px}
+  .toc li a{font-family:'Fraunces',serif;font-size:16px;color:var(--ink-2);border:0;flex:1;padding-top:1px}
+  .toc li a:hover{color:var(--rose)}
+
+  /* tables */
+  table.dt{width:100%;max-width:1080px;margin:18px auto 24px;border-collapse:collapse;font-size:14.5px}
+  table.dt th{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;text-align:left;padding:10px 12px;border-bottom:1px solid var(--line-strong)}
+  table.dt td{padding:10px 12px;border-bottom:1px solid var(--line);color:var(--ink-2);vertical-align:top}
+  table.dt td strong{color:var(--ink);font-weight:600}
+  table.dt td.num{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--rose);font-weight:500}
+  table.dt tr:last-child td{border-bottom:0}
+  table.dt tr.tot td{font-weight:600;color:var(--ink);border-top:1px solid var(--line-strong);padding-top:14px}
+
+  /* lists */
+  ul.bullets{max-width:1080px;margin:18px auto;padding:0 0 0 24px;list-style:none}
+  ul.bullets li{position:relative;padding-left:22px;margin-bottom:10px;font-size:15.5px;color:var(--ink-2);line-height:1.55}
+  ul.bullets li::before{content:'';position:absolute;left:0;top:11px;width:10px;height:1px;background:var(--rose)}
+  ul.bullets li strong{color:var(--ink);font-weight:600}
+
+  /* neighborhood map */
+  .neighmap{max-width:1080px;margin:32px auto;padding:32px;background:var(--paper-card);border:1px solid var(--line)}
+  .nm-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:18px}
+  .nm-title{font-family:'Fraunces',serif;font-size:16px;font-weight:500;color:var(--ink)}
+  .nm-tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint)}
+  .nm-legend{display:flex;flex-wrap:wrap;gap:24px;margin-top:18px;padding-top:18px;border-top:1px solid var(--line);font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.10em;text-transform:uppercase;color:var(--ink-soft)}
+  .nm-legend .lg{display:flex;align-items:center;gap:8px}
+  .nm-legend .swatch{width:12px;height:12px;display:inline-block}
+
+  /* footer */
+  .doc-foot{padding:64px 32px;text-align:center;background:var(--ink);color:var(--paper);margin-top:0}
+  .doc-foot .sig{font-family:'Fraunces',serif;font-style:italic;font-size:22px;margin-bottom:14px}
+  .doc-foot .meta{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:rgba(245,239,226,.5)}
+
+  @media (max-width:880px){
+    .cover{padding:36px 28px 48px}
+    .chapter{grid-template-columns:1fr;gap:18px;padding:0 22px}
+    .chapter-num{flex-direction:row;align-items:center;font-size:48px;gap:14px}
+    .chapter-sigil{width:30px;height:30px}
+    .hero-stats{grid-template-columns:repeat(2,1fr);padding:0 22px}
+    .toc ol{columns:1}
+    .doc{padding:0 22px}
+    section{padding:64px 0}
+    .ghost-num{font-size:140px;right:20px}
+  }
+</style>
+</head>
+<body>
+
+<div class="progress"><div class="bar" id="bar"></div></div>
+<div class="minimark" id="minimark"><span class="dot"></span><span>MX · 2026 · Field Manual</span></div>
+
+<nav class="rail" id="rail">
+  <ol>
+    <li data-target="snapshot"><span class="romnum">I</span><span class="name">The Moment</span></li>
+    <li data-target="safety"><span class="romnum">II</span><span class="name">Neighborhoods</span></li>
+    <li data-target="money"><span class="romnum">III</span><span class="name">What Your Money Buys</span></li>
+    <li data-target="realestate"><span class="romnum">IV</span><span class="name">Renting &amp; Buying</span></li>
+    <li data-target="office"><span class="romnum">V</span><span class="name">Office &amp; Coworking</span></li>
+    <li data-target="business"><span class="romnum">VI</span><span class="name">Setting Up the SAPI</span></li>
+    <li data-target="visa"><span class="romnum">VII</span><span class="name">Visa &amp; Residency</span></li>
+    <li data-target="banking"><span class="romnum">VIII</span><span class="name">Banking &amp; Pesos</span></li>
+    <li data-target="tax"><span class="romnum">IX</span><span class="name">U.S. Tax Reality</span></li>
+    <li data-target="lifestyle"><span class="romnum">X</span><span class="name">Lifestyle &amp; Scene</span></li>
+    <li data-target="protocols"><span class="romnum">XI</span><span class="name">Daily Protocols</span></li>
+    <li data-target="first90"><span class="romnum">XII</span><span class="name">First Ninety Days</span></li>
+  </ol>
+</nav>
+
+<header class="cover">
+  <div class="cover-head">
+    <div class="cover-mark">
+      <span class="glyph">A</span>
+      <span>Private Briefing · Not for Distribution</span>
+    </div>
+    <div>Volume II · May 2026</div>
+  </div>
+  <div class="cover-body">
+    <div class="eyebrow">Relocation Dossier — CDMX · Design Capital · 30s</div>
+    <h1 class="cover-title">México<em>,</em><span class="year">CDMX 2026</span></h1>
+    <p class="cover-sub">A field manual for the capital that quietly became Latin America's design, food, and creative-economy seat. Roma, Condesa, Polanco at premium without ostentation. Sora's MX launch base — and a place you could comfortably live for a decade.</p>
+  </div>
+  <div class="cover-meta">
+    <div class="item"><div class="label">Prepared For</div><div class="value">Abraham · <em>31</em></div></div>
+    <div class="item"><div class="label">Country Risk</div><div class="value">Level <em>2</em> · Increased caution</div></div>
+    <div class="item"><div class="label">Currency of Record</div><div class="value">MXN · <em>price USD</em></div></div>
+    <div class="item"><div class="label">Government</div><div class="value">Sheinbaum · <em>Morena</em></div></div>
+  </div>
+  <div class="scroll-cue">Begin</div>
+</header>
+
+<!-- ============ 01 SNAPSHOT ============ -->
+<section id="snapshot">
+  <div class="ghost-num">01</div>
+  <div class="chapter">
+    <div class="chapter-num"><sup>Chapter I</sup>01
+      <div class="chapter-sigil"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="13"/><path d="M16 8 L16 16 L21 19"/><circle cx="16" cy="16" r="0.8" class="fill"/></svg></div>
+    </div>
+    <div class="chapter-body">
+      <div class="chapter-kicker">The Moment You're Walking Into</div>
+      <h2>CDMX is the <em>quietly most important</em> capital in Latin America.</h2>
+      <p class="lede drop">May 2026 Mexico City sits at the strangest equilibrium it has ever held. Sheinbaum (Morena, López Obrador's anointed) is in year two of her six-year sexenio. Inflation is at 3.8%, the peso has stabilized at ~MXN 18/USD after the post-election shock of 2024, and Banxico is mid-cutting cycle. Roma Norte and Condesa have absorbed the largest single wave of U.S. expat migration in the city's history — 1.2M Americans in Mexico, 160K+ in CDMX alone, mostly under 40, mostly remote. <strong>This is the year the city stops being undiscovered and becomes part of the official premium-leisure circuit.</strong></p>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat"><span class="delta">MXN</span><div class="num">~<em>18</em></div><div class="lbl">Pesos / USD · stable</div><div class="sparkline"><svg viewBox="0 0 100 18" preserveAspectRatio="none"><path d="M0,6 L20,11 L40,14 L60,12 L80,10 L100,9"/></svg></div></div>
+    <div class="stat"><span class="delta">YoY</span><div class="num"><em>3.8</em>%</div><div class="lbl">Inflation · Apr · Banxico</div><div class="sparkline"><svg viewBox="0 0 100 18" preserveAspectRatio="none"><path d="M0,4 L20,7 L40,10 L60,12 L80,13 L100,14"/></svg></div></div>
+    <div class="stat"><span class="delta">US&nbsp;Dept</span><div class="num">Lvl <em>2</em></div><div class="lbl">Travel advisory (CDMX)</div><div class="sparkline"><svg viewBox="0 0 100 18" preserveAspectRatio="none"><path d="M0,5 L40,5 L40,8 L80,8 L80,11 L100,11"/></svg></div></div>
+    <div class="stat"><span class="delta">+</span><div class="num"><em>160</em>k</div><div class="lbl">U.S. expats in CDMX · 2026</div><div class="sparkline"><svg viewBox="0 0 100 18" preserveAspectRatio="none"><path d="M0,16 L20,14 L40,10 L60,7 L80,4 L100,2"/></svg></div></div>
+  </div>
+
+  <div class="card warn">
+    <div class="card-label">Political Risk · Live</div>
+    <p>Sheinbaum's judicial reform (June 2025) replaced ~7,000 judges via popular vote. Markets digested the shock through Q4 2025. The biggest 2026 variable is the next stage: <strong>autonomous body reform</strong> (energy regulator, telecoms, freedom-of-information). If passed, expect peso volatility and a brief expat-confidence dip. Have 30 days of pesos cash on hand and don't be USD-illiquid that week.</p>
+  </div>
+
+  <div class="toc">
+    <div class="toc-head"><span class="label">Contents</span><span class="count">XII Chapters</span></div>
+    <ol>
+      <li><a href="#snapshot">The Moment</a></li>
+      <li><a href="#safety">Safety &amp; Neighborhoods</a></li>
+      <li><a href="#money">What Your Money Buys</a></li>
+      <li><a href="#realestate">Renting &amp; Buying</a></li>
+      <li><a href="#office">Office &amp; Coworking</a></li>
+      <li><a href="#business">Setting Up the SAPI</a></li>
+      <li><a href="#visa">Visa &amp; Residency</a></li>
+      <li><a href="#banking">Banking &amp; Pesos</a></li>
+      <li><a href="#tax">U.S. Tax Reality</a></li>
+      <li><a href="#lifestyle">Lifestyle &amp; Scene</a></li>
+      <li><a href="#protocols">Daily Protocols</a></li>
+      <li><a href="#first90">First Ninety Days</a></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ 02 SAFETY / NEIGHBORHOODS ============ -->
+<section id="safety" class="tint-warm">
+  <div class="ghost-num">02</div>
+  <div class="chapter">
+    <div class="chapter-num"><sup>Chapter II</sup>02
+      <div class="chapter-sigil"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="13"/><path d="M16 3 L18 16 L16 29 L14 16 Z" class="fill"/><path d="M3 16 L29 16" stroke-dasharray="1 3"/><circle cx="16" cy="16" r="1.4" class="fill"/></svg></div>
+    </div>
+    <div class="chapter-body">
+      <div class="chapter-kicker">Where to Live</div>
+      <h2>The viable zone is <em>seven neighborhoods</em>, all west-central.</h2>
+      <p class="lede drop">CDMX's safety geography is the inverse of Caracas: <strong>downtown is safe, the periphery is the variable.</strong> The four boroughs you'll live in (Cuauhtémoc, Miguel Hidalgo, Benito Juárez, parts of Coyoacán) hold the bottom 15% of the city's homicide rate. The murder rate in Roma/Condesa/Polanco/Coyoacán is comparable to Brooklyn. The real risks are <strong>express kidnapping in unregistered taxis, distraction theft in restaurants, and pharmacy fentanyl in tourist zones — not violent street crime in the bubble.</strong></p>
+    </div>
+  </div>
+
+  <div class="neighmap">
+    <div class="nm-head">
+      <div class="nm-title">CDMX · The Viable Zone, Abstracted</div>
+      <div class="nm-tag">North up · not to scale</div>
+    </div>
+    <svg viewBox="0 0 800 320" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="mxhatch" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
+          <line x1="0" y1="0" x2="0" y2="6" stroke="#a83f4f" stroke-width="1" opacity=".35"/>
+        </pattern>
+      </defs>
+      <!-- Chapultepec park -->
+      <ellipse cx="220" cy="180" rx="80" ry="50" fill="#3e5f3d" opacity=".10" stroke="#3e5f3d" stroke-width=".6"/>
+      <text x="220" y="184" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="11" fill="#3e5f3d" opacity=".7">Bosque de Chapultepec</text>
+
+      <!-- Polanco -->
+      <circle cx="160" cy="120" r="36" fill="#9c7a30" opacity=".10" stroke="#9c7a30" stroke-width="1"/>
+      <text x="160" y="117" text-anchor="middle" font-family="Fraunces, serif" font-weight="500" font-size="12" fill="#14110c">Polanco</text>
+      <text x="160" y="131" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="#9c7a30">$2,000–4,500</text>
+
+      <!-- Roma Norte -->
+      <circle cx="370" cy="180" r="38" fill="#a83f4f" opacity=".12" stroke="#a83f4f" stroke-width="1.2"/>
+      <text x="370" y="177" text-anchor="middle" font-family="Fraunces, serif" font-weight="500" font-size="12" fill="#14110c">Roma Norte</text>
+      <text x="370" y="191" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="#a83f4f">recommended</text>
+
+      <!-- Condesa -->
+      <circle cx="310" cy="230" r="34" fill="#a83f4f" opacity=".10" stroke="#a83f4f" stroke-width="1"/>
+      <text x="310" y="227" text-anchor="middle" font-family="Fraunces, serif" font-weight="500" font-size="12" fill="#14110c">Condesa</text>
+      <text x="310" y="241" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="#a83f4f">$1,400–3,200</text>
+
+      <!-- Juárez -->
+      <circle cx="430" cy="140" r="28" fill="#3e5f3d" opacity=".10" stroke="#3e5f3d" stroke-width=".8"/>
+      <text x="430" y="138" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="10.5" fill="#14110c">Juárez</text>
+      <text x="430" y="152" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="#3e5f3d">emerging</text>
+
+      <!-- Centro -->
+      <circle cx="520" cy="190" r="32" fill="none" stroke="#807761" stroke-width=".8" stroke-dasharray="3 2"/>
+      <text x="520" y="188" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="11" fill="#4a4337">Centro Histórico</text>
+      <text x="520" y="202" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="#807761">day only</text>
+
+      <!-- Coyoacán -->
+      <circle cx="380" cy="290" r="26" fill="#0a3d5f" opacity=".10" stroke="#0a3d5f" stroke-width=".8"/>
+      <text x="380" y="288" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="10.5" fill="#14110c">Coyoacán</text>
+      <text x="380" y="302" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="#0a3d5f">quiet · long-term</text>
+
+      <!-- San Ángel -->
+      <circle cx="270" cy="290" r="22" fill="none" stroke="#807761" stroke-width=".8" stroke-dasharray="3 2"/>
+      <text x="270" y="293" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="10" fill="#4a4337">San Ángel</text>
+
+      <!-- No-go zones -->
+      <rect x="620" y="30" width="160" height="80" fill="url(#mxhatch)" opacity=".4"/>
+      <rect x="620" y="30" width="160" height="80" fill="none" stroke="#a83f4f" stroke-width=".8" stroke-dasharray="4 3"/>
+      <text x="700" y="48" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#a83f4f" letter-spacing="2">NO-GO · NIGHT</text>
+      <text x="700" y="68" text-anchor="middle" font-family="Fraunces, serif" font-size="11" fill="#14110c">Tepito · La Merced</text>
+      <text x="700" y="84" text-anchor="middle" font-family="Fraunces, serif" font-size="11" fill="#14110c">Iztapalapa · Doctores</text>
+      <text x="700" y="100" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8.5" fill="#807761">Pre-booked car · day only</text>
+    </svg>
+    <div class="nm-legend">
+      <div class="lg"><span class="swatch" style="background:#a83f4f;opacity:.5"></span>Live zone</div>
+      <div class="lg"><span class="swatch" style="background:#9c7a30;opacity:.5"></span>Corporate · families</div>
+      <div class="lg"><span class="swatch" style="background:#3e5f3d;opacity:.5"></span>Emerging</div>
+      <div class="lg"><span class="swatch" style="background:url(#mxhatch);background-color:#a83f4f;opacity:.4"></span>No-go after dark</div>
+    </div>
+  </div>
+
+  <div class="doc">
+    <h3>The Triangle</h3>
+    <p><strong>Roma Norte</strong> is the cultural epicenter. Galleries (Kurimanzutto annex, Labor, OMR), restaurants (Máximo, Lardo, Rosetta, Tetetlán), and the highest density of independent boutiques in Mexico. Streets are walkable, midblock parks (Plaza Río de Janeiro, Plaza Luis Cabrera) are safe day and night. Rent: $1,500–3,200/mo for a renovated 2BR. The expat default — and increasingly so saturated that locals call it "Gringolandia." If you arrive in 2026, you are arriving last to this party.</p>
+    <p><strong>Condesa</strong> is Roma's quieter sister, organized around two parks (Parque México, Parque España). More dogs, more couples, fewer galleries. The food is comparable (Sartoria, Lardo's twin, Pasillo de Humo). Rent: $1,400–3,000/mo. Pick Condesa over Roma if you want sleep, jogging, and a slightly older expat scene (35+).</p>
+    <p><strong>Polanco</strong> is corporate Mexico — Avenida Masaryk is the Champs-Élysées of LATAM (Hermès, Cartier, the entire luxury watch axis), the embassies, and the families who never left. Rent: $2,000–4,500/mo for high-floor 2BRs with concierge. Better for Sora's hotel anchor (Casa Polanco) and for clients than for you to live in. Too quiet.</p>
+
+    <h3>The Edge</h3>
+    <p><strong>Juárez</strong>, between Reforma and Roma, was the artsy underdog three years ago. Now it has Pujol-adjacent restaurants (Em, Esquina Común, Hugo el Wine Bar), excellent coffee, and rent 25% below Roma Norte. The downside: the eastern half (toward Cuauhtémoc) is still gentrifying and the street feel changes block-by-block. Pick a building, walk both directions at 10pm before signing.</p>
+    <p><strong>Cuauhtémoc</strong> (between Juárez and Anzures) is the smart bet for 2026. Same rent levels as Juárez, more residential, better light, and within a 10-minute walk of Reforma. Three or four boutique buildings (Casa Conde, Edificio Acrópolis) have opened in the last year.</p>
+    <p><strong>Coyoacán</strong> is for the long-term move. The most beautiful neighborhood in Mexico City — Frida Kahlo's house, Sunday markets, cobblestones, colonial squares. 45 minutes from Roma in traffic. Choose it if you want a year minimum and want the city to feel like a small town. Rent: $1,200–2,500/mo for charming 2BRs with patios.</p>
+
+    <h3>If You Want the Suburbs</h3>
+    <p><strong>Las Lomas</strong> (Lomas de Chapultepec) is old money. Walled gardens, embassies, $3M+ houses. Boring unless you have children. <strong>Bosques de las Lomas</strong> is corporate-Mexico-with-gates. <strong>San Ángel</strong> in the south is colonial-village-meets-academic, Saturday Bazaar Sábado is famous, slower pace.</p>
+
+    <h3>Hard No-Go Zones</h3>
+    <p>You will be told by your hotel concierge and you should listen: <strong>Tepito</strong> (market for everything stolen in Mexico), <strong>La Merced</strong> (after dark), <strong>Doctores</strong> (south of Roma — chop shops + pharmacy fentanyl), <strong>Iztapalapa</strong> (vast and complicated; daytime tourism OK, never solo at night), <strong>Ciudad Neza</strong>, anywhere in the Zona Oriente. If your map shows "Eje Central" or "Calzada de la Viga" you've drifted too far east.</p>
+
+    <h3>Honest Recommendation</h3>
+    <p>For Sora's launch base: <strong>Roma Norte or Cuauhtémoc</strong>, 2BR with a small terrace, walking distance to Pujol/Máximo and the gallery axis. $1,800–2,400/mo furnished. Sign for 6 months, extend to 12. By month 8 decide if you stay or pivot to Coyoacán for year 2.</p>
+  </div>
+</section>
+
+<!-- ============ 03 MONEY ============ -->
+<section id="money">
+  <div class="ghost-num">03</div>
+  <div class="chapter">
+    <div class="chapter-num"><sup>Chapter III</sup>03
+      <div class="chapter-sigil"><svg viewBox="0 0 32 32"><path d="M5 12 L27 12 M5 16 L27 16 M5 20 L27 20"/><circle cx="16" cy="16" r="13"/></svg></div>
+    </div>
+    <div class="chapter-body">
+      <div class="chapter-kicker">Cost of Living</div>
+      <h2>You will live <em>extremely well</em> on $5,200/mo.</h2>
+      <p class="lede drop">CDMX in 2026 is no longer cheap. The Roma/Condesa premium has compressed the gap to U.S. costs by 35% in five years. A Roma Norte 2BR + restaurants 3×/week + Pilates + driver-on-call + weekend trips is roughly Brooklyn at 65% — not Caracas at 25%. <strong>Budget accordingly.</strong> The good news: the quality is genuinely there. Pujol is a top-15 world restaurant 30 minutes from your apartment.</p>
+    </div>
+  </div>
+
+  <div class="doc">
+    <h3>Monthly Burn — Roma Norte, Comfortable</h3>
+    <table class="dt">
+      <thead><tr><th>Line</th><th>USD</th><th>Note</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Rent</strong> — Roma Norte furnished 2BR</td><td class="num">$2,000</td><td>Lower in Condesa/Cuauhtémoc; double in Polanco</td></tr>
+        <tr><td>Utilities (CFE + internet + gas + water)</td><td class="num">$140</td><td>Internet $50 alone; CFE varies seasonal</td></tr>
+        <tr><td>Phone — Telcel unlimited</td><td class="num">$25</td><td>Buy a local SIM day 1; AT&amp;T MX is fine alt</td></tr>
+        <tr><td>Groceries — Mercado Roma + La Comer</td><td class="num">$400</td><td>$500+ if Costco run / wine purchases</td></tr>
+        <tr><td>Restaurants — 3×/week mid · 1×/mo high</td><td class="num">$650</td><td>Cuts in half if you cook more</td></tr>
+        <tr><td>Coffee + casual eat — daily</td><td class="num">$220</td><td>Specialty coffee scene is Bay-Area-tier</td></tr>
+        <tr><td>Mobility — Uber + occasional driver</td><td class="num">$280</td><td>No car · Uber is excellent; driver $30/hr</td></tr>
+        <tr><td>Gym + studios — boutique fitness</td><td class="num">$180</td><td>Sersana + Reformer Pilates + climbing</td></tr>
+        <tr><td>Health insurance — international</td><td class="num">$220</td><td>AXA Mexico or international plan</td></tr>
+        <tr><td>Domestic help — 2×/week</td><td class="num">$160</td><td>Cleaning + light cooking</td></tr>
+        <tr><td>Going out + culture — bars + galleries</td><td class="num">$400</td><td>Variable; Sora event hosting eats this line</td></tr>
+        <tr><td>Misc — laundry + barber + small purchases</td><td class="num">$120</td><td>Buffer</td></tr>
+        <tr class="tot"><td>Total comfortable</td><td class="num">$4,795</td><td>Round to $5,000–5,200/mo</td></tr>
+      </tbody>
+    </table>
+
+    <h3>What That Buys You</h3>
+    <ul class="bullets">
+      <li><strong>Restaurant access</strong> at the top of the city — Pujol, Quintonil, Máximo, Rosetta, Em — without rationing.</li>
+      <li><strong>Mobility</strong> — Uber Black summons in 4 minutes; you don't own a car or worry about it.</li>
+      <li><strong>Time</strong> — cleaning, errands, and groceries can all be delegated for $200/mo combined.</li>
+      <li><strong>Social</strong> — a 2BR with terrace is your party venue for 20 guests; the Sora circle can rotate through.</li>
+      <li><strong>Travel</strong> — weekend trips to Valle de Bravo, Tepoztlán, San Miguel, Tulum at $200–600 each.</li>
+    </ul>
+
+    <h3>Where You'll Be Surprised by Price</h3>
+    <p><strong>Imported anything.</strong> A Korean skincare bottle is 2.5×. A bottle of Tito's at La Europea is $32. Apple products are $250 markup vs U.S. — fly with what you need. <strong>Wine is 40% more</strong> than the U.S. because Mexico has a 40% specific wine tax — drink mezcal and natural wine from Querétaro/Valle de Guadalupe instead. <strong>Boutique fitness</strong> is U.S.-priced ($180–220/mo for Sersana or Smartfit Black).</p>
+  </div>
+</section>
+
+<!-- ============ 04 REAL ESTATE ============ -->
+<section id="realestate" class="tint-rose">
+  <div class="ghost-num">04</div>
+  <div class="chapter">
+    <div class="chapter-num"><sup>Chapter IV</sup>04
+      <div class="chapter-sigil"><svg viewBox="0 0 32 32"><path d="M5 24 L5 14 L16 6 L27 14 L27 24 Z"/><path d="M13 24 L13 17 L19 17 L19 24"/></svg></div>
+    </div>
+    <div class="chapter-body">
+      <div class="chapter-kicker">Renting &amp; Buying</div>
+      <h2>Rent in year 1. Buy <em>only</em> if you stay three+.</h2>
+      <p class="lede drop">CDMX rentals are tenant-favorable, plentiful, and English-speaking-broker-rich. The market has shifted decisively to monthly Airbnb-style furnished rentals at premium versus 12-month unfurnished at 35% discount. <strong>For your first year, take a 6-month furnished lease through a broker, not Airbnb.</strong> Then evaluate buying — which only makes sense if you commit to 36+ months and you can navigate the SAT and the fideicomiso question.</p>
+    </div>
+  </div>
+
+  <div class="doc">
+    <h3>Rent Bands · USD per Month</h3>
+    <table class="dt">
+      <thead><tr><th>Neighborhood</th><th>Studio</th><th>1BR</th><th>2BR boutique</th><th>3BR / house</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Roma Norte · furnished</strong></td><td class="num">$1,100</td><td class="num">$1,500</td><td class="num">$2,200</td><td class="num">$3,800+</td></tr>
+        <tr><td>Roma Sur · furnished</td><td class="num">$850</td><td class="num">$1,200</td><td class="num">$1,700</td><td class="num">$2,800</td></tr>
+        <tr><td>Condesa · furnished</td><td class="num">$1,000</td><td class="num">$1,400</td><td class="num">$2,100</td><td class="num">$3,600</td></tr>
+        <tr><td>Polanco</td><td class="num">$1,300</td><td class="num">$2,000</td><td class="num">$3,200</td><td class="num">$5,500+</td></tr>
+        <tr><td>Juárez · Cuauhtémoc</td><td class="num">$750</td><td class="num">$1,100</td><td class="num">$1,700</td><td class="num">$2,900</td></tr>
+        <tr><td>Coyoacán</td><td class="num">$650</td><td class="num">$950</td><td class="num">$1,500</td><td class="num">$2,400</td></tr>
+        <tr><td>Centro Histórico · loft</td><td class="num">$700</td><td class="num">$1,000</td><td class="num">$1,500</td><td class="num">$2,600</td></tr>
+      </tbody>
+    </table>
+    <p style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-faint);letter-spacing:.04em">— Unfurnished 12-month lease typically 30–40% below these numbers. Add 1 month deposit + 1 month broker fee.</p>
+
+    <h3>Buying — What $300k Gets You</h3>
+    <ul class="bullets">
+      <li><strong>Roma Norte renovated 1BR</strong>, 60–80 m², high-floor, terrace — $280–340k. Tight but possible.</li>
+      <li><strong>Condesa pre-war 2BR</strong>, 90 m², parquet floors, classic — $280–360k. The sentimental buy.</li>
+      <li><strong>Juárez or Cuauhtémoc 2BR new build</strong>, 80 m² + amenities — $230–280k. Best yield (5–7% gross Airbnb).</li>
+      <li><strong>Coyoacán colonial casa with patio</strong>, 150 m² — $300–450k. The forever home, harder to flip.</li>
+      <li><strong>Centro Histórico restored loft</strong> — $200–280k for 100 m². Underrated; Airbnb yield is real.</li>
+    </ul>
+
+    <h3>Buying Process — Compressed</h3>
+    <ol style="max-width:1080px;margin:18px auto;padding-left:32px;font-size:15.5px;line-height:1.55;color:var(--ink-2)">
+      <li style="margin-bottom:10px"><strong>Pick a broker, not a website.</strong> Sotheby's CDMX, Engel &amp; Völkers, or Inmuebles24's verified agents. Avoid Airbnb-host-turned-broker.</li>
+      <li style="margin-bottom:10px"><strong>Notary is the only state actor that matters.</strong> Notarios públicos are licensed by the federal government and conduct all transfers. Use Notario #19 (Roma) or #45 (Polanco) — both English-speaking, both honest.</li>
+      <li style="margin-bottom:10px"><strong>RFC required.</strong> You need a Mexican tax ID before you buy. Through your immigration lawyer, ~$200 + 2 weeks. RFC alone does not trigger Mexican tax residency.</li>
+      <li style="margin-bottom:10px"><strong>Fideicomiso is irrelevant in CDMX.</strong> The restricted zone (50 km coast / 100 km border) doesn't include Mexico City. You buy directly in your name as a foreigner.</li>
+      <li style="margin-bottom:10px"><strong>Closing costs ~7%.</strong> Notary 1.5% + acquisition tax 4.5% + registration + appraisal + misc. Build into your offer.</li>
+      <li style="margin-bottom:10px"><strong>Pay in pesos at the notary.</strong> Wire USD to a Mexican brokerage account (Bitso or Banorte) and convert that day; close in MXN. Don't pay seller's USD account directly.</li>
+      <li style="margin-bottom:10px"><strong>15–25% capital gains on sale</strong> unless you use the principal-residence exemption (must hold 3+ years + RFC residency). Plan exit at purchase.</li>
+    </ol>
+
+    <div class="card jade">
+      <div class="card-label">Sora Use-Case</div>
+      <p>The Sora-CDMX play if you buy: a 2-bedroom in Roma/Cuauhtémoc that doubles as your CDMX base + the guest suite for Sora hosts visiting from out of state. Conservative numbers: $260k purchase, $1,200/mo rental income when you're not in it (Mexico stays at Sora rate), pays its own mortgage + ops.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 OFFICE ============ -->
+<section id="office">
+  <div class="ghost-num">05</div>
+  <div class="chapter">
+    <div class="chapter-num"><sup>Chapter V</sup>05
+      <div class="chapter-sigil"><svg viewBox="0 0 32 32"><rect x="5" y="9" width="22" height="16"/><path d="M5 14 L27 14"/><circle cx="9" cy="11.5" r=".7" class="fill"/><circle cx="12" cy="11.5" r=".7" class="fill"/></svg></div>
+    </div>
+    <div class="chapter-body">
+      <div class="chapter-kicker">Office &amp; Coworking</div>
+      <h2>Don't sign an office lease in year one. <em>Coworking is everywhere</em>.</h2>
+      <p class="lede drop">CDMX has the second-largest coworking inventory in LATAM (after São Paulo) and the highest-quality at the top end. Selina shut down in 2024; the gap was filled by local boutique operators. <strong>Start at Public.Co or WeWork Reforma Latino, evaluate at month 4, upgrade to a private suite or coffee-shop nomad pattern based on actual usage.</strong></p>
+    </div>
+  </div>
+
+  <div class="doc">
+    <h3>Coworking — The Short List</h3>
+    <ul class="bullets">
+      <li><strong>Public.Co</strong> (Roma Norte · two locations) — Best-designed in the city. Quiet, fast wifi, espresso bar, monthly hot desk $290, dedicated desk $440. The default for design-conscious operators.</li>
+      <li><strong>WeWork Reforma Latino</strong> — Iconic tower, top-floor views, premium amenities, English-speaking front desk. $320/mo hot desk. Best if you want big-corporation neighbors and meeting rooms.</li>
+      <li><strong>Selina (post-acquisition)</strong> — Now operated by Hotel Carlota group; coworking moved to Roma Norte location. $220/mo hot desk. Cheaper, scrappier, younger crowd.</li>
+      <li><strong>U-ERRE Roma</strong> — Underrated, $180/mo, library aesthetic, includes printing and coffee. Best value in the city.</li>
+      <li><strong>Casa Bosque</strong> (Polanco) — Boutique with members-only feel. $580/mo. Worth it only if you're Polanco-resident.</li>
+    </ul>
+
+    <h3>Private Office — Roma Norte / Cuauhtémoc</h3>
+    <p>Six-month furnished private offices (1–3 rooms) start at $1,400/mo through IWG or local brokers like Worth Capital. Beyond month 6 — sign a 12-month, build out yourself, $1,800–2,800/mo for a real 4-person space with conference room.</p>
+
+    <h3>The Café Pattern</h3>
+    <p>If your work is 70% solo and 30% calls, you can skip coworking entirely. <strong>Buna 42</strong> (Roma), <strong>Cardinal Casa de Café</strong> (Roma), <strong>Chiquitito</strong> (Condesa), <strong>Quentin Café</strong> (Cuauhtémoc), and <strong>Camino a Comala</strong> (Coyoacán) all have stable wifi, no-laptop-hate culture, and excellent espresso. Bring your own headphones — coffee shops here host meetings without shame.</p>
+  </div>
+</section>
+
+<!-- ============ 06 BUSINESS ============ -->
+<section id="business" class="tint-jade">
+  <div class="ghost-num">06</div>
+  <div class="chapter">
+    <div class="chapter-num"><sup>Chapter VI</sup>06
+      <div class="chapter-sigil"><svg viewBox="0 0 32 32"><rect x="6" y="10" width="20" height="16"/><path d="M11 10 L11 6 L21 6 L21 10"/><path d="M6 16 L26 16"/></svg></div>
+    </div>
+    <div class="chapter-body">
+      <div class="chapter-kicker">Setting Up the SAPI</div>
+      <h2>SAPI via attorney. Four to six weeks. <em>$4,500 all-in</em>.</h2>
+      <p class="lede drop">The Sociedad Anónima Promotora de Inversión (SAPI) is the right vehicle for Sora-México. It's a normal Sociedad Anónima with flexibility built in for foreign capital, share classes, and shareholder agreements. <strong>Faster, more investor-friendly, and the only structure your future U.S./LATAM capital will want to invest into.</strong></p>
+    </div>
+  </div>
+
+  <div class="doc">
+    <h3>Setup Sequence</h3>
+    <ol style="max-width:1080px;margin:18px auto;padding-left:32px;font-size:15.5px;line-height:1.55;color:var(--ink-2)">
+      <li style="margin-bottom:10px"><strong>Hire counsel.</strong> Mijares Angoitia ($5k all-in, Tier-1) or Galicia Abogados ($3.5k, mid-tier, faster). Initial meeting: name reservation, shareholder structure, share classes.</li>
+      <li style="margin-bottom:10px"><strong>Name reservation</strong> via Registro Público de Comercio — 48 hours, $40.</li>
+      <li style="margin-bottom:10px"><strong>Capital declaration.</strong> Minimum MXN 50,000 (~$2,800). Doesn't have to be paid-in at incorporation; declare on the statutes.</li>
+      <li style="margin-bottom:10px"><strong>Notarial constitution.</strong> Founders + notary sign the constitutive act. 1 week post-name-reservation.</li>
+      <li style="margin-bottom:10px"><strong>RFC (corporate tax ID)</strong> issued by SAT within 10 business days of notarial act.</li>
+      <li style="margin-bottom:10px"><strong>Bank account opening.</strong> BBVA, Santander, or Banregio for corporate. Foreign-owned SAPI requires the legal rep to be present in person (one of you flies in for half a day). 2 weeks from RFC.</li>
+      <li style="margin-bottom:10px"><strong>e.firma + CIEC</strong> — electronic signature and tax portal credentials. Required for all SAT filings. Counsel handles.</li>
+      <li style="margin-bottom:10px"><strong>Bitso Business</strong> — open in parallel for USDC ramp. KYC is identical to bank but faster (10 days post-RFC).</li>
+    </ol>
+
+    <h3>Recommended Counsel</h3>
+    <ul class="bullets">
+      <li><strong>Mijares Angoitia Cortés y Fuentes</strong> — Tier-1, English-speaking, handles ongoing tax/labor. Partner: <em>Pablo Mijares</em>. $5k incorporation + $400/mo retainer.</li>
+      <li><strong>Galicia Abogados</strong> — Mid-tier, faster, ideal for SRL or simple SAPI. Partner: <em>Andrés Galicia</em>. $3.5k incorporation + $300/mo.</li>
+      <li><strong>De la Vega &amp; Conde</strong> — Boutique with real estate specialty. Use for property transactions, not for general corporate.</li>
+      <li><strong>Konfio / Tofie</strong> — Online services, $1,500 lite SRL, 14 days. Acceptable only if Sora-MX will be a side entity that never raises outside capital.</li>
+    </ul>
+
+    <h3>Hiring Local Staff — The Reality</h3>
+    <p>The IMSS (social security) regime makes employer cost ~1.45× gross salary. For a $2,000/mo Sora MX host, total employer cost is ~$2,900/mo with IMSS, INFONAVIT (housing fund), aguinaldo (13th-month bonus, mandatory December), and vacation pay. <strong>Plan for 30% above gross when budgeting headcount.</strong></p>
+    <p>Alternative: hire as a freelance "asimilado a salarios" or via a PEO (Deel, Remote.com). PEO costs 12–15% on top of gross but removes payroll/IMSS friction and you can fire without severance (which Mexican employment law makes expensive: ~3 months pay + 20 days/year severance for terminations without cause).</p>
+
+    <div class="card warn">
+      <div class="card-label">Labor Law Reality</div>
+      <p>Mexico's federal labor law (LFT) is deeply employee-favorable. <strong>Termination "without cause" triggers ~3 months severance + 20 days per year of service, paid in lump sum.</strong> Even probationary terminations require documentation. Build your team via PEO for the first year; convert top performers to direct employment only after 12 months when you're sure.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 07 VISA ============ -->
+<section id="visa">
+  <div class="ghost-num">07</div>
+  <div class="chapter">
+    <div class="chapter-num"><sup>Chapter VII</sup>07
+      <div class="chapter-sigil"><svg viewBox="0 0 32 32"><rect x="8" y="6" width="16" height="20" rx="1"/><circle cx="16" cy="14" r="3"/><path d="M11 21 L21 21"/></svg></div>
+    </div>
+    <div class="chapter-body">
+      <div class="chapter-kicker">Visa &amp; Residency</div>
+      <h2>Enter on FMM. Apply for <em>Residente Temporal</em> via Mexican consulate <strong>abroad</strong>.</h2>
+      <p class="lede drop">Mexico's immigration path for solvent foreigners is the cleanest in LATAM: prove you make $4,300/mo or have $72,000 in liquid assets, get the visa at a Mexican consulate <strong>outside Mexico</strong> (Houston, Miami, or San Diego are fastest), enter on the visa, exchange at INM within 30 days, get your CURP and resident card. Total: 6–8 weeks, ~$700 in fees.</p>
+    </div>
+  </div>
+
+  <div class="doc">
+    <h3>The Sequence That Works</h3>
+    <ol style="max-width:1080px;margin:18px auto;padding-left:32px;font-size:15.5px;line-height:1.55;color:var(--ink-2)">
+      <li style="margin-bottom:10px"><strong>Schedule a Mexican consulate appointment</strong> in Houston, Miami, or San Diego. Houston has 5-day lead times; Miami 3-week; New York 6-month. Book Houston.</li>
+      <li style="margin-bottom:10px"><strong>Gather docs:</strong> passport (6+ months valid), 6 months bank statements showing $72k+ liquid OR 12 months showing $4,300+/mo income, passport photo, application form, $48 consular fee.</li>
+      <li style="margin-bottom:10px"><strong>Consulate interview</strong> — 30 minutes. They glance at the bank statements, ask why Mexico, sticker your passport with a "Residente Temporal" visa valid for 180 days entry.</li>
+      <li style="margin-bottom:10px"><strong>Fly to CDMX, enter as resident.</strong> At the airport, request "canje" stamp from INM, not the tourist FMM.</li>
+      <li style="margin-bottom:10px"><strong>INM exchange within 30 days.</strong> Go to INM CDMX (Insurgentes Sur), present visa + proof of address (utility bill or rental contract), pay ~MXN 5,300 (~$300), get your tarjeta de residencia in 2–3 weeks.</li>
+      <li style="margin-bottom:10px"><strong>Get your CURP and RFC.</strong> CURP via SEGOB online; RFC via SAT (in-person, 1 hour). With CURP and RFC you can open accounts, sign leases, buy property.</li>
+    </ol>
+
+    <h3>Residente Temporal vs Permanente</h3>
+    <p><strong>Temporal</strong>: 1-year initial, renewable up to 4 years total. Then convert to Permanente. Use this — Mexico tax residency is triggered by physical presence + economic center, not visa class.</p>
+    <p><strong>Permanente</strong>: After 4 years on Temporal, automatic. Also direct if income > $7,200/mo OR liquid > $290k. Skip unless you commit to Mexico long-term.</p>
+
+    <h3>Important: When Mexican Tax Residency Triggers</h3>
+    <p>Mexico considers you a tax resident if (a) your "casa habitación" (home with permanent character) is in Mexico AND it's your "centro de intereses vitales" (economic center). Holding a Residente Temporal visa + renting an apartment + working remotely for a U.S. employer typically does NOT trigger Mexican tax residency for the first year. <strong>But if you incorporate Sora-MX with you as legal rep + employees on payroll + bank accounts, the SAT may argue your center of interests has shifted.</strong> Discuss with counsel before crossing 6 months of presence.</p>
+
+    <div class="card warn">
+      <div class="card-label">Common Mistake</div>
+      <p>Do NOT enter as a tourist (FMM) and try to "exchange in Mexico" later. The Mexican consulate <strong>abroad</strong> issues the visa. There is no path from tourist to resident inside Mexico that doesn't require leaving and re-entering. Plan to do the consulate trip before you fly in.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 08 BANKING ============ -->
+<section id="banking" class="tint-warm">
+  <div class="ghost-num">08</div>
+  <div class="chapter">
+    <div class="chapter-num"><sup>Chapter VIII</sup>08
+      <div class="chapter-sigil"><svg viewBox="0 0 32 32"><path d="M5 28 L27 28"/><path d="M7 13 L7 25 M12 13 L12 25 M20 13 L20 25 M25 13 L25 25"/><path d="M4 13 L28 13 L16 5 Z"/></svg></div>
+    </div>
+    <div class="chapter-body">
+      <div class="chapter-kicker">Banking &amp; Pesos</div>
+      <h2>BBVA for the bank, <em>Bitso</em> for the rail.</h2>
+      <p class="lede drop">Mexican banking is fine. Not great, but functional — the apps work, SPEI (Mexican Zelle) settles in 30 seconds and is free. The real innovation is on the crypto side: <strong>Bitso is the Coinbase of LATAM and the regulated USDC on/off ramp Sora-MX will run on.</strong> Combine bank + Bitso and you have full optionality on USD, MXN, USDC, and SPEI.</p>
+    </div>
+  </div>
+
+  <div class="doc">
+    <h3>Banks — The Short List</h3>
+    <ul class="bullets">
+      <li><strong>BBVA México</strong> — Largest, best app, best ATM network. Personal account opens in 60 min with passport + CURP + proof of address. Corporate account 2 weeks. Default choice.</li>
+      <li><strong>Santander México</strong> — Solid #2. Better international wires (lower fees on EUR/USD), worse domestic app. Pick if you have Spain ties.</li>
+      <li><strong>Banorte</strong> — Mexican-owned national. Strong on credit (mortgage, auto). Weak app. Use if BBVA rejects you.</li>
+      <li><strong>HSBC México</strong> — Useful only if you have HSBC Premier from the U.S. and want global account view.</li>
+      <li><strong>Banregio</strong> — Boutique Monterrey bank. Best private banking in Mexico for $250k+ deposits. Niche but excellent service.</li>
+    </ul>
+
+    <h3>Crypto Rails — USDC, USDT, BTC</h3>
+    <p><strong>Bitso</strong> is the answer. Mexican-regulated (CNBV authorized), USD wire in/out, USDC native, SPEI integration. Open both personal and Bitso Business accounts. USDC → MXN at 0.5% spread, settles to BBVA in 10 minutes.</p>
+    <p>Alternative: <strong>Volabit</strong> for Bitcoin-focused, <strong>Belo</strong> (Argentine, now in MX) for stablecoin debit card. Avoid Binance MX — the regulator de-licensed them and the unregulated alternative carries counterparty risk.</p>
+
+    <h3>The Money Flow That Works</h3>
+    <ol style="max-width:1080px;margin:18px auto;padding-left:32px;font-size:15.5px;line-height:1.55;color:var(--ink-2)">
+      <li style="margin-bottom:8px">U.S. employer pays you USD → your U.S. bank account.</li>
+      <li style="margin-bottom:8px">Wire USD from U.S. bank → Bitso (free, 1 day).</li>
+      <li style="margin-bottom:8px">Convert USD → MXN on Bitso at the moment of need (0.5% spread).</li>
+      <li style="margin-bottom:8px">SPEI from Bitso → BBVA in 30 seconds, free.</li>
+      <li style="margin-bottom:8px">Spend pesos via BBVA debit, SPEI to landlords, etc.</li>
+    </ol>
+    <p>For Sora-MX revenue (guest payments in USD or MXN), the inverse: guest pays USD via Stripe → USD in U.S. account → Bitso → MXN for Mexican operations. Net effective cost: 1.5% all-in on cross-border flows.</p>
+  </div>
+</section>
+
+<!-- ============ 09 TAX ============ -->
+<section id="tax">
+  <div class="ghost-num">09</div>
+  <div class="chapter">
+    <div class="chapter-num"><sup>Chapter IX</sup>09
+      <div class="chapter-sigil"><svg viewBox="0 0 32 32"><path d="M8 8 L24 8 L24 24 L8 24 Z"/><path d="M12 13 L20 13 M12 17 L20 17 M12 21 L17 21"/></svg></div>
+    </div>
+    <div class="chapter-body">
+      <div class="chapter-kicker">U.S. Tax Reality</div>
+      <h2>Worldwide income forever. <em>Mexico residency is a separate question</em>.</h2>
+      <p class="lede drop">U.S. citizens owe U.S. tax on worldwide income regardless of where they live — that doesn't change in Mexico. The good news: the U.S.-Mexico tax treaty plus the Foreign Earned Income Exclusion (FEIE: $130,000 for 2025) means almost all of your "active" income up to that threshold is U.S.-tax-free if you qualify. <strong>The bad news: the SAT may consider you a Mexican tax resident after you cross certain thresholds, and Mexican tax rates top out at 35%.</strong></p>
+    </div>
+  </div>
+
+  <div class="doc">
+    <h3>What You Owe / Must File</h3>
+    <ul class="bullets">
+      <li><strong>U.S. Form 1040</strong> — every year regardless of residence. Worldwide income.</li>
+      <li><strong>FEIE (Form 2555)</strong> — exclude up to $130k of earned income if you're a bona fide Mexican resident (~330+ days outside U.S.) or pass the physical presence test.</li>
+      <li><strong>FTC (Form 1116)</strong> — credit for Mexican tax paid; stacks with FEIE for income above the exclusion threshold.</li>
+      <li><strong>FBAR (FinCEN 114)</strong> — required if Mexican bank accounts aggregate to $10k+ at any point in the year. Free, online, due April 15.</li>
+      <li><strong>FATCA (Form 8938)</strong> — required if foreign financial assets exceed $200k single / $400k married. Filed with 1040.</li>
+      <li><strong>Mexican RFC declaration</strong> — annual, due April 30, if you cross Mexican tax residency.</li>
+    </ul>
+
+    <h3>The Sweet Spot Structure</h3>
+    <ol style="max-width:1080px;margin:18px auto;padding-left:32px;font-size:15.5px;line-height:1.55;color:var(--ink-2)">
+      <li style="margin-bottom:10px"><strong>You stay U.S. tax resident.</strong> Maintain U.S. address (parents' or service like Earth Class Mail), U.S. driver's license, U.S. voter registration. File 1040.</li>
+      <li style="margin-bottom:10px"><strong>You hold a Mexican Residente Temporal visa</strong>, but spend &lt; 183 days/year in Mexico OR maintain that your center of vital interests is the U.S.</li>
+      <li style="margin-bottom:10px"><strong>Sora-MX is a Mexican SAPI</strong> with its own tax obligations to SAT. You're a shareholder, not an employee. Take distributions, not salary.</li>
+      <li style="margin-bottom:10px"><strong>Your U.S. compensation (Chainlink Labs) stays paid to U.S. bank, U.S. taxed.</strong> FEIE eligible if you qualify; W-2 income.</li>
+      <li style="margin-bottom:10px"><strong>SAPI dividends are subject to Mexican 10% withholding</strong> at distribution; U.S. taxes the same dividend at federal qualified rate (15–20%); the FTC offsets so you don't double-pay.</li>
+    </ol>
+
+    <div class="card warn">
+      <div class="card-label">Mexican Tax Trap</div>
+      <p><strong>If you cross 183 days/year of presence + your "centro de intereses vitales" is Mexico, SAT may declare you a Mexican tax resident retroactively to start of year.</strong> Mexican personal income tax tops out at 35% and applies to <em>worldwide</em> income. The U.S.-Mexico tax treaty resolves double-taxation via tie-breakers, but the audit process is painful. Coordinate with U.S. CPA + Mexican fiscal advisor before year 1 ends. Recommended: <strong>Greenback Tax</strong> (U.S. side) + <strong>Mijares Angoitia tax team</strong> (Mexican side).</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 10 LIFESTYLE ============ -->
+<section id="lifestyle" class="tint-jade">
+  <div class="ghost-num">10</div>
+  <div class="chapter">
+    <div class="chapter-num"><sup>Chapter X</sup>10
+      <div class="chapter-sigil"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="13"/><path d="M10 18 Q16 24 22 18"/><circle cx="12" cy="13" r="1.2" class="fill"/><circle cx="20" cy="13" r="1.2" class="fill"/></svg></div>
+    </div>
+    <div class="chapter-body">
+      <div class="chapter-kicker">Lifestyle &amp; Scene</div>
+      <h2>The food scene is the <em>actual reason</em> to move.</h2>
+      <p class="lede drop">Mexico City has 4 of the top 50 restaurants in the world (Pujol, Quintonil, Rosetta, Sud777), an espresso scene that rivals Melbourne, and the densest gallery + design week + concert calendar in Spanish-speaking America. If you commit to even moderate engagement — one cultural event a week, one new restaurant a week — your life enriches faster here than anywhere else on the continent.</p>
+    </div>
+  </div>
+
+  <div class="doc">
+    <h3>Where to Eat — The Bones of Your Restaurant Map</h3>
+    <table class="dt">
+      <thead><tr><th>Restaurant</th><th>Neighborhood</th><th>Why</th><th>Reservation</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Pujol</strong></td><td>Polanco</td><td>Top-15 world; mole madre served daily. Tasting menu only.</td><td>60 days</td></tr>
+        <tr><td><strong>Quintonil</strong></td><td>Polanco</td><td>Jorge Vallejo, top-10 world. The most consistent fine dining.</td><td>45 days</td></tr>
+        <tr><td><strong>Rosetta</strong></td><td>Roma</td><td>Elena Reygadas, Italian-Mexican, the casual-elegant default.</td><td>2 weeks</td></tr>
+        <tr><td><strong>Máximo Bistrot</strong></td><td>Roma</td><td>Eduardo García, French-Mexican, neighborhood gem with stars.</td><td>1 week</td></tr>
+        <tr><td><strong>Sud777</strong></td><td>Pedregal</td><td>Edgar Núñez, vegetable-forward; the chef's chef pick.</td><td>3 weeks</td></tr>
+        <tr><td><strong>Em</strong></td><td>Juárez</td><td>Lucho Martínez, new wave, $80 tasting menu, hardest-to-get.</td><td>30 days</td></tr>
+        <tr><td><strong>Esquina Común</strong></td><td>Juárez</td><td>Casual sister of Em; walk-in possible, mezcal program top-tier.</td><td>—</td></tr>
+        <tr><td><strong>Lardo</strong></td><td>Condesa</td><td>Elena Reygadas, brunch + dinner, the social default.</td><td>1 week</td></tr>
+        <tr><td><strong>Contramar</strong></td><td>Roma</td><td>Lunch only; tuna tostadas; the city's most-Instagrammed plate.</td><td>1 week (or sit at the bar)</td></tr>
+        <tr><td><strong>Lalo!</strong></td><td>Roma</td><td>Brunch by Eduardo García. No reservations, go early.</td><td>—</td></tr>
+        <tr><td><strong>Tetetlán</strong></td><td>Pedregal</td><td>Barragán-designed; Sunday brunch is the cultural event.</td><td>1 week</td></tr>
+        <tr><td><strong>El Califa de León</strong></td><td>San Rafael</td><td>Michelin-starred taquería. $4 tacos al pastor. Open until 4am.</td><td>—</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Nights Out</h3>
+    <ul class="bullets">
+      <li><strong>Hanky Panky</strong> (Juárez) — speakeasy entrance through Sit Down Tacos. World's 50 Best Bar perennial. $18 cocktails.</li>
+      <li><strong>Licorería Limantour</strong> (Roma) — World's 50 Best #1 LATAM, twice. Excellent late, never empty.</li>
+      <li><strong>Café de Nadie</strong> (Roma) — Natural wine + small plates. Two-person date default.</li>
+      <li><strong>Tokyo Music Bar</strong> (Roma) — Listening bar, no talking after 9pm, vinyl-only.</li>
+      <li><strong>Departamento</strong> (Juárez) — Rooftop, DJ-led, gets you the city skyline at 1am.</li>
+      <li><strong>Mercurio</strong> (Juárez) — Wine bar with rotating chef residencies. Order the bone marrow.</li>
+    </ul>
+
+    <h3>Gym &amp; Movement</h3>
+    <p><strong>Sersana</strong> (Condesa, Roma) — boutique reformer Pilates, $180/mo unlimited. The expat default. <strong>Smart Fit Black</strong> — high-end Smart Fit, $90/mo, decent for cardio + weights. <strong>Climbing Mexico</strong> (Roma) — bouldering gym, $25/day. <strong>Yoga Studio Roma</strong> for hot yoga.</p>
+
+    <h3>Weekends Out of CDMX</h3>
+    <ul class="bullets">
+      <li><strong>Valle de Bravo</strong> — 2h drive. Mexican Lake Como. Paragliding capital. $120/night airbnbs on the water.</li>
+      <li><strong>Tepoztlán</strong> — 1h drive. Magic town, indigenous mountain temple, Saturday market. $80/night casitas.</li>
+      <li><strong>San Miguel de Allende</strong> — 3.5h drive or 1h flight. UNESCO colonial town, expat-heavy, festival season Sept–Nov.</li>
+      <li><strong>Oaxaca</strong> — 1h flight. Food + mezcal + textiles trinity. The mandatory CDMX-resident pilgrimage.</li>
+      <li><strong>Tulum / Tulum-area</strong> — 2h flight to Cancún + 90 min drive. For Sora's chapter; check in on operations + 3 days off.</li>
+      <li><strong>Mexico City stays in</strong> — Sundays Coyoacán + Centro on foot, no Uber. Cars are banned on Reforma Sundays — bike Reforma + Chapultepec.</li>
+    </ul>
+
+    <h3>Community &amp; Spanish</h3>
+    <p>If your Spanish isn't strong, invest in it day 1. <strong>Walen / WalenLearn</strong> for online structured. In-person: <strong>Frida Spanish School</strong> (Condesa) or <strong>UNAM CEPE</strong> (UNAM extension, cheap, slower). Most operators around Sora-MX speak English; most chefs, drivers, helpers do not. Functional Spanish at month 3, comfortable by month 12.</p>
+  </div>
+</section>
+
+<!-- ============ 11 PROTOCOLS ============ -->
+<section id="protocols" class="tint-rose">
+  <div class="ghost-num">11</div>
+  <div class="chapter">
+    <div class="chapter-num"><sup>Chapter XI</sup>11
+      <div class="chapter-sigil"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="13"/><path d="M9 12 L12 16 L9 20"/><path d="M16 9 L16 23"/><path d="M23 12 L20 16 L23 20"/></svg></div>
+    </div>
+    <div class="chapter-body">
+      <div class="chapter-kicker">Daily Safety Protocols</div>
+      <h2>The bubble is <em>real</em>, not negotiable.</h2>
+      <p class="lede drop">CDMX is not Caracas. You will not need armed transport, you will not vary your routes, you will not strip your wrist of a watch. <strong>But you will adopt three or four habits that the average local has internalized, and the cost of breaking them is real.</strong></p>
+    </div>
+  </div>
+
+  <div class="doc">
+    <h3>The Habits Worth Keeping</h3>
+    <ul class="bullets">
+      <li><strong>Uber, not street taxis.</strong> Never flag a sitio or libre. Express kidnapping is the only common violent crime against foreigners and it almost always starts in an unregistered taxi. Uber's geolock + driver rating + cashless = no risk.</li>
+      <li><strong>iPhone in pocket on the street.</strong> Phone snatching by motorcyclists is up 40% YoY in Roma. Hand-held while walking = target. Pocket while moving, glance at the corner.</li>
+      <li><strong>No big bills at street tacos.</strong> Pay with MXN 100–200 notes. Vendors don't have change for 500s and the request gets you noticed.</li>
+      <li><strong>Don't drink anything you didn't see poured.</strong> Roma and Condesa scopolamine cases are real (rare, but real). Watch the bartender. Don't leave drinks unattended.</li>
+      <li><strong>Pharmacy fentanyl is real.</strong> Independent farmacias in tourist zones have sold counterfeit Xanax / Adderall / oxycodone laced with fentanyl. Use Farmacias del Ahorro, San Pablo, Benavides — chain pharmacies only. If you need a prescription, go through a doctor and a corporate chain.</li>
+      <li><strong>ATM only inside the bank.</strong> Skim attacks are common at standalone ATMs. Use BBVA / Santander branches during business hours.</li>
+      <li><strong>Don't drive at night in unfamiliar areas.</strong> If you have a car, daytime only on highways. Carjacking is rare in CDMX proper, common on the periferia and interstate.</li>
+      <li><strong>Earthquake plan.</strong> CDMX is on a lakebed. The Sept 7 + Sept 19 anniversaries are sober days. Know your building's exit. Don't live in the 1985-vintage stock that hasn't been retrofitted (any building marked with the seismic warning sticker).</li>
+    </ul>
+
+    <h3>What You Don't Need</h3>
+    <p>You do not need a bodyguard, a panic button, an armored car, or weapons training. You do not need to vary your morning route. You do not need to keep $5,000 in cash hidden in your apartment. CDMX in 2026 is a major North American capital with the same risk profile as Buenos Aires or Bogotá — manageable with attention, not vigilance.</p>
+  </div>
+</section>
+
+<!-- ============ 12 FIRST 90 ============ -->
+<section id="first90">
+  <div class="ghost-num">12</div>
+  <div class="chapter">
+    <div class="chapter-num"><sup>Chapter XII</sup>12
+      <div class="chapter-sigil"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="13"/><path d="M16 16 L16 9 M16 16 L23 16"/><circle cx="16" cy="16" r="1.4" class="fill"/></svg></div>
+    </div>
+    <div class="chapter-body">
+      <div class="chapter-kicker">First Ninety Days</div>
+      <h2>The sequence that <em>doesn't waste time</em>.</h2>
+      <p class="lede drop">CDMX rewards setup discipline. The visa, RFC, bank account, lease, and SAPI are sequential — each one unlocks the next. If you do them in the right order, you're operational in 90 days. Wrong order, 6 months.</p>
+    </div>
+  </div>
+
+  <div class="doc">
+    <h3>Before You Fly</h3>
+    <ul class="bullets">
+      <li><strong>Houston consulate appointment booked</strong> for Residente Temporal visa. Bank statements ready showing 6 months income or $72k liquid.</li>
+      <li><strong>Counsel engaged.</strong> Email Mijares Angoitia or Galicia — schedule kickoff call for week 1.</li>
+      <li><strong>U.S. tax cleanup.</strong> Get your prior-year 1040 in your hand. Schedule a 30-min consult with Greenback Tax about FEIE / FBAR.</li>
+      <li><strong>U.S. address solution.</strong> Earth Class Mail or family-of-record. Maintain U.S. driver's license, voter registration.</li>
+      <li><strong>USD liquidity.</strong> Move 4 months of burn (~$20k) to your U.S. account; ready to wire to Bitso once Mexico bank is open.</li>
+    </ul>
+
+    <h3>Days 1–30 — Scouting</h3>
+    <ul class="bullets">
+      <li><strong>Land on Residente Temporal.</strong> Request "canje" stamp at INM airport desk.</li>
+      <li><strong>Stay at Casa Polanco or Andaz Condesa for 10 nights.</strong> Hotel base for the first city tour.</li>
+      <li><strong>Walk Roma + Condesa + Cuauhtémoc + Juárez at 10am, 2pm, 8pm, 11pm</strong> — at least 8 times each. The neighborhood you commit to is the city you experience.</li>
+      <li><strong>Eat at Pujol, Quintonil, Rosetta, Máximo, Em</strong> within the first 3 weeks. Calibration matters.</li>
+      <li><strong>Meet 5 expat operators</strong> for coffee — InternationsCDMX network is the fastest route. Their first-year lessons save you 3 months.</li>
+      <li><strong>Choose your neighborhood.</strong> Sign a 6-month furnished lease through a broker (NotEnoughRooms.com, Inmuebles24 verified, or direct via Furnished Finder MX).</li>
+      <li><strong>INM exchange done by day 30.</strong> Resident card arriving by week 6.</li>
+    </ul>
+
+    <h3>Days 31–60 — Settling</h3>
+    <ul class="bullets">
+      <li><strong>CURP issued.</strong> Apply online via SEGOB.</li>
+      <li><strong>RFC issued.</strong> In-person at SAT office.</li>
+      <li><strong>BBVA personal account opened.</strong> Bring resident card + CURP + RFC + utility bill.</li>
+      <li><strong>Bitso personal opened</strong> in parallel (10 days post-RFC).</li>
+      <li><strong>Telcel SIM, Mexican phone number active.</strong> Forward U.S. number to Mexican via Google Voice.</li>
+      <li><strong>Join Sersana + a coffee shop "regular" relationship.</strong> The texture of daily life starts here.</li>
+      <li><strong>Sora-MX SAPI incorporation started</strong> with counsel. Notarial constitution + RFC corporate by day 60.</li>
+    </ul>
+
+    <h3>Days 61–90 — Operating</h3>
+    <ul class="bullets">
+      <li><strong>SAPI fully operational.</strong> Corporate bank + Bitso Business open. Legal rep + accountant onboarded.</li>
+      <li><strong>First Sora-MX weekend hosted</strong> — soft launch with 10 guests at Casa Polanco. Internal team only.</li>
+      <li><strong>Casa Polanco partnership formalized</strong> — bloque confirmed, contract signed.</li>
+      <li><strong>Habitas Tulum partnership review</strong> — fly down for 4-day on-site to plan Q4 Sian Ka'an weekend.</li>
+      <li><strong>CDMX host hired</strong> via PEO. $2,200/mo USD all-in.</li>
+      <li><strong>Decide</strong>: extend rental to 12 months and commit to Mexico for year 1, or pivot. Honest review before signing.</li>
+    </ul>
+
+    <div class="card jade">
+      <div class="card-label">The 90-Day Decision Point</div>
+      <p>By day 90, you'll know if CDMX is your year-1 base or a quarterly post. The honest test: are you eating new restaurants weekly, are you making local friends, are you choosing CDMX over a beach trip? If yes — extend. If no — keep the SAPI active and downgrade to quarterly visits while Sora-MX runs on your hosts + Casa Polanco partnership.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="doc-foot">
+  <div class="sig">· · ·</div>
+  <div class="sig">Volume II · Prepared for Abraham · May 2026</div>
+  <div class="meta" style="margin-top:14px">La Compañía · Field Manuals · Not for distribution · MMXXVI</div>
+</footer>
+
+<script>
+  // progress bar
+  const bar = document.getElementById('bar');
+  const minimark = document.getElementById('minimark');
+  const rail = document.getElementById('rail');
+  window.addEventListener('scroll', ()=>{
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    const p = (window.scrollY / h) * 100;
+    bar.style.width = p + '%';
+    const after = window.scrollY > 400;
+    minimark.classList.toggle('visible', after);
+    rail.classList.toggle('visible', after);
+  });
+
+  // rail click
+  document.querySelectorAll('.rail li').forEach(li=>{
+    li.addEventListener('click', ()=>{
+      const el = document.getElementById(li.dataset.target);
+      if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  });
+
+  // active state
+  const sections = document.querySelectorAll('section[id]');
+  const railLis = document.querySelectorAll('.rail li');
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        railLis.forEach(li=>li.classList.toggle('active', li.dataset.target===e.target.id));
+      }
+    });
+  }, {rootMargin:'-30% 0% -60% 0%'});
+  sections.forEach(s=>obs.observe(s));
+</script>
+</body>
+</html>

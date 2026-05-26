@@ -647,6 +647,48 @@
   </div>
 </div>
 
+<!-- ============ MONDAY · TOP TASK ============ -->
+<style>
+  .monday-card{background:#0f0c0a;border:1px solid var(--coral);border-radius:12px;padding:28px 32px;margin-bottom:20px;position:relative;overflow:hidden}
+  .monday-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--coral),var(--mango),var(--coral))}
+  .monday-card .m-label{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--mango);font-weight:600;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+  .monday-card .m-label::before{content:'';display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--coral);box-shadow:0 0 0 4px rgba(217,87,59,.25)}
+  .monday-card .m-title{font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:30px;line-height:1.18;color:#F8F3EA !important;letter-spacing:-.01em;margin-bottom:24px}
+  .monday-card .m-title em{font-style:italic;color:var(--coral) !important;font-weight:500}
+  .monday-card .m-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .monday-card .m-step{background:rgba(255,255,255,.04);border:0.5px solid rgba(255,255,255,.10);border-radius:8px;padding:16px 18px}
+  .monday-card .m-step .ms-k{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:9.5px;letter-spacing:.18em;color:rgba(248,243,234,.5);text-transform:uppercase;font-weight:600;margin-bottom:8px}
+  .monday-card .m-step .ms-v{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;color:#F8F3EA;line-height:1.4;margin-bottom:6px;word-break:break-all}
+  .monday-card .m-step .ms-s{font-family:'Fraunces',serif;font-size:12px;color:rgba(248,243,234,.6);line-height:1.45;font-style:italic}
+  @media (max-width:720px){ .monday-card .m-steps{grid-template-columns:1fr} }
+</style>
+<div class="monday-card">
+  <div class="m-label" data-es="LUNES 25 MAYO · PRIMERA TAREA DEL DÍA" data-en="MONDAY MAY 25 · FIRST TASK OF THE DAY">MONDAY MAY 25 · FIRST TASK OF THE DAY</div>
+  <div class="m-title" data-es-html="Crear cuenta <em>Apify</em> · 90 segundos · desbloquea minado IG completo" data-en-html="Create <em>Apify</em> account · 90 seconds · unlocks full IG mining">Create <em>Apify</em> account · 90 seconds · unlocks full IG mining</div>
+  <div class="m-steps">
+    <div class="m-step">
+      <div class="ms-k" data-es="PASO 1" data-en="STEP 1">STEP 1</div>
+      <div class="ms-v">console.apify.com/sign-up</div>
+      <div class="ms-s" data-es="Email + password. Sin tarjeta. $5/mo crédito gratis." data-en="Email + password. No card. $5/mo free credit.">Email + password. No card. $5/mo free credit.</div>
+    </div>
+    <div class="m-step">
+      <div class="ms-k" data-es="PASO 2" data-en="STEP 2">STEP 2</div>
+      <div class="ms-v">Settings → API tokens → Create</div>
+      <div class="ms-s" data-es="Copiar token apify_api_..." data-en="Copy token apify_api_...">Copy token apify_api_...</div>
+    </div>
+    <div class="m-step">
+      <div class="ms-k" data-es="PASO 3" data-en="STEP 3">STEP 3</div>
+      <div class="ms-v">echo 'APIFY_TOKEN=...' &gt; .env</div>
+      <div class="ms-s" data-es="En /Users/jacobeid/sora-instagram-mcp/" data-en="In /Users/jacobeid/sora-instagram-mcp/">In /Users/jacobeid/sora-instagram-mcp/</div>
+    </div>
+    <div class="m-step">
+      <div class="ms-k" data-es="PASO 4" data-en="STEP 4">STEP 4</div>
+      <div class="ms-v">node run-end-to-end.js</div>
+      <div class="ms-s" data-es="Verificar: full bios + engagement por seed" data-en="Verify: full bios + engagement per seed">Verify: full bios + engagement per seed</div>
+    </div>
+  </div>
+</div>
+
 <!-- ============ NOW PLAYING ============ -->
 <div class="now-card">
   <div class="now-label" data-es="EN VIVO · ESTA SEMANA" data-en="LIVE · THIS WEEK">LIVE · THIS WEEK</div>
@@ -749,6 +791,100 @@
       <p data-es="Herramienta de demo. 3 modos: flujos guiados, interactivo (24 pantallas), galería (todas a la vez)." data-en="Demo tool. 3 modes: guided flows, interactive (24 screens), gallery (all at once).">Demo tool. 3 modes: guided flows, interactive (24 screens), gallery (all at once).</p>
       <div class="foot">
         <span>/sora/app/preview.html</span>
+        <span class="open">OPEN →</span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- ============ INTERNAL OPS RESOURCES ============ -->
+<section>
+  <div class="sec-head">
+    <div>
+      <div class="sec-eyebrow" data-es="Recursos internos · solo equipo" data-en="Internal resources · staff only">Internal resources · staff only</div>
+      <h3 data-es-html="Para <em>operar</em>." data-en-html="To <em>operate</em>.">To <em>operate</em>.</h3>
+      <p class="sec-sub" data-es="Todo lo que el equipo necesita para ejecutar — locaciones a hospedar en cada país, contactos a perseguir, estado de cada relación. Datos compartidos entre superficies." data-en="Everything the team needs to execute — locations to host at in each country, contacts to chase, status of every relationship. Shared data across surfaces.">Everything the team needs to execute — locations to host at in each country, contacts to chase, status of every relationship. Shared data across surfaces.</p>
+    </div>
+  </div>
+  <div class="surfaces">
+
+    <a href="LATAM/atlas.html" class="surface" target="_blank" style="grid-column: span 2">
+      <div class="label" data-es="Atlas de locaciones" data-en="Locations atlas">Locations atlas</div>
+      <h4 data-es-html="Todos los <em>venues</em>" data-en-html="Every <em>venue</em>">Every <em>venue</em></h4>
+      <p data-es="Cada hotel, restaurante, finca, playa y locación donde Sora hospeda o quiere hospedar. Filtrar por país (15), tipo (11 categorías), estado de la relación (partnered/pursuing/target). Tier de precio + capacidad + contacto + dirección por cada uno." data-en="Every hotel, restaurant, finca, beach and venue Sora hosts at or wants to. Filter by country (15), type (11 categories), relationship status (partnered/pursuing/target). Price tier + capacity + contact + address each.">Every hotel, restaurant, finca, beach and venue Sora hosts at or wants to. Filter by country (15), type (11 categories), relationship status (partnered/pursuing/target). Price tier + capacity + contact + address each.</p>
+      <div class="foot">
+        <span>/LATAM/atlas.html</span>
+        <span class="open">OPEN →</span>
+      </div>
+    </a>
+
+    <a href="LATAM/contacts.html" class="surface" target="_blank" style="grid-column: span 2">
+      <div class="label" data-es="CRM · contactos" data-en="CRM · contacts">CRM · contacts</div>
+      <h4 data-es-html="Quién <em>tocar</em>" data-en-html="Who to <em>reach</em>">Who to <em>reach</em></h4>
+      <p data-es="Cada persona a perseguir: chefs, hoteleros, abogados, brokers, banca cripto, talento, anfitriones. Email · WhatsApp · Instagram directo. Estado + último toque + owner editable — guarda en localStorage. Click en fila → panel detalle." data-en="Every person to chase: chefs, hoteliers, lawyers, brokers, crypto banking, talent, hosts. Direct email · WhatsApp · Instagram. Status + last-touched + owner editable — saved in localStorage. Click any row → detail panel.">Every person to chase: chefs, hoteliers, lawyers, brokers, crypto banking, talent, hosts. Direct email · WhatsApp · Instagram. Status + last-touched + owner editable — saved in localStorage. Click any row → detail panel.</p>
+      <div class="foot">
+        <span>/LATAM/contacts.html</span>
+        <span class="open">OPEN →</span>
+      </div>
+    </a>
+
+    <a href="LATAM/audience.html" class="surface" target="_blank" style="grid-column: span 2">
+      <div class="label" data-es="Audiencia & estadísticas de turismo" data-en="Audience & tourism stats">Audience &amp; tourism stats</div>
+      <h4 data-es-html="¿Para <em>quién</em> existe?" data-en-html="<em>Who</em> is the market?">¿Para <em>quién</em> existe?</h4>
+      <p data-es="Línea base 2024-2025 por país: llegadas internacionales, top 5 mercados origen con share/premium-flag/notas, segmento premium dimensionado, ocupación hotelera, ticket promedio, estacionalidad mes-por-mes, demografía (edad, solo/pareja/grupo/familia), LGBTQ+ tolerancia, idioma operativo. Bullseye Sora + saturación + competencia + ángulo diferenciador por país. Plus portfolio-level insight cross-país. Fuentes: UNWTO + STR Hotels + autoridades nacionales." data-en="2024-2025 baseline per country: international arrivals, top 5 origin markets with share/premium-flag/notes, sized premium segment, hotel occupancy, avg ticket, month-by-month seasonality, demographics (age, solo/couple/group/family), LGBTQ+ tolerance, operational language. Sora bullseye + saturation + competition + differentiation angle per country. Plus cross-country portfolio insight. Sources: UNWTO + STR Hotels + national authorities.">2024-2025 baseline per country: international arrivals, top 5 origin markets with share/premium-flag/notes, sized premium segment, hotel occupancy, avg ticket, month-by-month seasonality, demographics (age, solo/couple/group/family), LGBTQ+ tolerance, operational language. Sora bullseye + saturation + competition + differentiation angle per country. Plus cross-country portfolio insight. Sources: UNWTO + STR Hotels + national authorities.</p>
+      <div class="foot">
+        <span>/LATAM/audience.html</span>
+        <span class="open">OPEN →</span>
+      </div>
+    </a>
+
+    <a href="LATAM/land.html" class="surface" target="_blank" style="grid-column: span 2">
+      <div class="label" data-es="Tierras & propiedades" data-en="Land & property">Land &amp; property</div>
+      <h4 data-es-html="Base de <em>tierras</em>" data-en-html="<em>Land</em> database">Base de <em>tierras</em></h4>
+      <p data-es="Listings activos en 10 países (~45 propiedades, casas/lotes/fincas/departamentos) + contactos administrativos legales por región (registro público, catastro, planificación urbana, notarios). Filtro país/tipo + búsqueda. Brokers nombrados, precios USD reales, m²/ha, status pendiente/disponible." data-en="Active listings in 10 countries (~45 properties, houses/lots/fincas/apartments) + per-region legal admin contacts (public registry, cadastre, urban planning, notaries). Filter country/type + search. Named brokers, real USD prices, m²/ha, available/pending status.">Active listings in 10 countries (~45 properties, houses/lots/fincas/apartments) + per-region legal admin contacts (public registry, cadastre, urban planning, notaries). Filter country/type + search. Named brokers, real USD prices, m²/ha, available/pending status.</p>
+      <div class="foot">
+        <span>/LATAM/land.html</span>
+        <span class="open">OPEN →</span>
+      </div>
+    </a>
+
+    <a href="LATAM/hosts.html" class="surface" target="_blank" style="grid-column: span 2">
+      <div class="label" data-es="Host pipeline · candidatos" data-en="Host pipeline · candidates">Host pipeline · candidates</div>
+      <h4 data-es-html="Encontrar <em>anfitriones</em>" data-en-html="Finding <em>hosts</em>">Finding <em>hosts</em></h4>
+      <p data-es="Marco de búsqueda Instagram por país: hashtags, cuentas semilla, location tags, ciudades foco. Define el arquetipo Sora-host (chef privado, ex-hotelero independiente, fotógrafo, curador cultural, surf/yoga lead). Plus lista de candidatos warm/cold con status y owner editables." data-en="Per-country Instagram search framework: hashtags, seed accounts, location tags, focus cities. Defines the Sora-host archetype (private chef, independent ex-hotelier, photographer, cultural curator, surf/yoga lead). Plus warm/cold candidate list with editable status and owner.">Per-country Instagram search framework: hashtags, seed accounts, location tags, focus cities. Defines the Sora-host archetype (private chef, independent ex-hotelier, photographer, cultural curator, surf/yoga lead). Plus warm/cold candidate list with editable status and owner.</p>
+      <div class="foot">
+        <span>/LATAM/hosts.html</span>
+        <span class="open">OPEN →</span>
+      </div>
+    </a>
+
+    <a href="LATAM/insta-playbook.html" class="surface" target="_blank" style="grid-column: span 2">
+      <div class="label" data-es="IG mining · playbook + MCP" data-en="IG mining · playbook + MCP">IG mining · playbook + MCP</div>
+      <h4 data-es-html="Minar <em>Instagram</em>" data-en-html="Mining <em>Instagram</em>">Mining <em>Instagram</em></h4>
+      <p data-es="Las 6 rutas que funcionan (sin scraper) · stack de herramientas con precios · kits clickables de cuentas semilla + hashtags + venues por país · rúbrica de scoring 0-20 · workflow semanal de scroll-a-host. Plus el MCP server sora-instagram-mcp ya construido en /Users/jacobeid/sora-instagram-mcp — registra en Claude Code para minar IG directo desde cualquier sesión." data-en="The 6 routes that work (no scraper) · tool stack with pricing · clickable per-country starter kits (seed accounts + hashtags + venues) · 0-20 scoring rubric · weekly scroll-to-host workflow. Plus the sora-instagram-mcp server already built at /Users/jacobeid/sora-instagram-mcp — register in Claude Code to mine IG from any session.">The 6 routes that work (no scraper) · tool stack with pricing · clickable per-country starter kits (seed accounts + hashtags + venues) · 0-20 scoring rubric · weekly scroll-to-host workflow. Plus the sora-instagram-mcp server already built at /Users/jacobeid/sora-instagram-mcp — register in Claude Code to mine IG from any session.</p>
+      <div class="foot">
+        <span>/LATAM/insta-playbook.html · ~/sora-instagram-mcp</span>
+        <span class="open">OPEN →</span>
+      </div>
+    </a>
+
+    <a href="LATAM/chapter.html" class="surface" target="_blank" style="grid-column: span 2">
+      <div class="label" data-es="Capítulos interactivos" data-en="Interactive chapters">Interactive chapters</div>
+      <h4 data-es-html="Los 10 <em>capítulos</em> en vivo" data-en-html="The 10 <em>chapters</em> live">The 10 <em>chapters</em> live</h4>
+      <p data-es="MX, CO, BR, AR, CR, PE, CL, UY, PA, VE — cada uno con tesis, regiones ancla, weekends curados, experiencias de día, estrategia inmobiliaria, setup legal, economics y riesgos. Bilingüe ES/EN. Hash routing #MX #CO etc." data-en="MX, CO, BR, AR, CR, PE, CL, UY, PA, VE — each with thesis, anchor regions, curated weekends, day experiences, real estate strategy, legal setup, economics and risks. Bilingual ES/EN. Hash routing #MX #CO etc.">MX, CO, BR, AR, CR, PE, CL, UY, PA, VE — each with thesis, anchor regions, curated weekends, day experiences, real estate strategy, legal setup, economics and risks. Bilingual ES/EN. Hash routing #MX #CO etc.</p>
+      <div class="foot">
+        <span>/LATAM/chapter.html</span>
+        <span class="open">OPEN →</span>
+      </div>
+    </a>
+
+    <a href="../field-manuals.html" class="surface" target="_blank" style="grid-column: span 2">
+      <div class="label" data-es="Field manuals · país por país" data-en="Field manuals · country by country">Field manuals · country by country</div>
+      <h4 data-es-html="Cómo <em>vivir</em> allá" data-en-html="How to <em>actually live</em> there">How to <em>actually live</em> there</h4>
+      <p data-es="Cuatro dossiers de relocation 1,500–2,200 palabras: Venezuela, México (CDMX), Medellín, Buenos Aires. Cada uno con 12 capítulos — barrios, costos, real estate, coworking, setup legal, visa, banca/cripto, taxes, lifestyle, protocolos diarios, primeros 90 días. Para el operador en el terreno." data-en="Four 1,500–2,200-word relocation dossiers: Venezuela, Mexico City, Medellín, Buenos Aires. Each one 12 chapters — neighborhoods, costs, real estate, coworking, legal setup, visas, banking/crypto, taxes, lifestyle, daily protocols, first 90 days. For the operator on the ground.">Four 1,500–2,200-word relocation dossiers: Venezuela, Mexico City, Medellín, Buenos Aires. Each one 12 chapters — neighborhoods, costs, real estate, coworking, legal setup, visas, banking/crypto, taxes, lifestyle, daily protocols, first 90 days. For the operator on the ground.</p>
+      <div class="foot">
+        <span>/life/field-manuals.html</span>
         <span class="open">OPEN →</span>
       </div>
     </a>

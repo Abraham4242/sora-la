@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SORA · Host Pipeline</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Instrument+Serif&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F8F3EA; --cream-2:#F2EBDD; --cream-3:#E9DFCA;
+    --ink:#1B1A17; --ink-2:#3A352D; --ink-3:#5C5346; --faint:#9A8E7A;
+    --line:rgba(27,26,23,.10); --line-2:rgba(27,26,23,.06);
+    --coral:#D9573B; --gold:#B58F4D; --mango:#E2A24A; --green:#3F5F45; --rose:#B8616B; --teal:#2C6E7F;
+    --serif:'Fraunces',Georgia,serif; --display:'Instrument Serif',Georgia,serif;
+    --sans:'Inter',-apple-system,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--cream);color:var(--ink);font-family:var(--sans);font-size:14px;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--rose);color:var(--cream)}
+  [data-en]{display:none}
+  html[lang="en"] [data-es]{display:none}
+  html[lang="en"] [data-en]{display:inline}
+
+  .top{position:sticky;top:0;z-index:40;background:rgba(248,243,234,.96);backdrop-filter:blur(14px);border-bottom:0.5px solid var(--line)}
+  .top-in{max-width:1280px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .brand{font-family:var(--serif);font-weight:600;font-size:16px;letter-spacing:.16em;color:var(--ink)}
+  .brand em{font-style:normal;color:var(--rose)}
+  .top-tag{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--rose);text-transform:uppercase;padding:4px 10px;background:rgba(184,97,107,.10);border-radius:4px}
+  .top-spacer{flex:1}
+  .top-link{font-family:var(--sans);font-size:12px;color:var(--ink-2);padding:7px 12px;border:0.5px solid var(--line);border-radius:5px}
+  .top-link:hover{background:var(--cream-2)}
+  .lang{display:inline-flex;border:0.5px solid var(--line);border-radius:5px;overflow:hidden}
+  .lang button{padding:7px 11px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;background:transparent;border:0;color:var(--faint);cursor:pointer;font-weight:500}
+  .lang button.active{background:var(--ink);color:var(--cream)}
+
+  .hdr{padding:48px 32px 32px;max-width:1280px;margin:0 auto;width:100%;border-bottom:0.5px solid var(--line)}
+  .hdr h1{font-family:var(--display);font-weight:400;font-size:clamp(40px,5vw,64px);line-height:1;letter-spacing:-.02em;color:var(--ink);margin-bottom:14px}
+  .hdr h1 em{font-style:italic;color:var(--rose)}
+  .hdr-lede{font-family:var(--serif);font-size:17px;color:var(--ink-3);font-weight:300;max-width:760px;line-height:1.55;margin-bottom:24px}
+
+  .archetype{max-width:1280px;margin:32px auto 0;padding:28px 32px;background:linear-gradient(135deg,var(--cream-2),var(--cream-3));border:0.5px solid var(--line);border-radius:12px}
+  .archetype h3{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--rose);margin-bottom:12px}
+  .archetype p{font-family:var(--serif);font-size:16px;line-height:1.65;color:var(--ink-2);font-weight:400}
+  .archetype p em{font-style:italic;color:var(--ink);font-weight:500}
+
+  section{padding:64px 32px;border-bottom:0.5px solid var(--line);max-width:1280px;margin:0 auto;width:100%}
+  h2{font-family:var(--display);font-weight:400;font-size:clamp(28px,4vw,42px);line-height:1.05;letter-spacing:-.02em;color:var(--ink);margin-bottom:24px}
+  h2 em{font-style:italic;color:var(--rose)}
+  .sub{font-family:var(--serif);font-size:15px;color:var(--ink-3);font-weight:300;font-style:italic;margin-bottom:32px;max-width:680px}
+
+  .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+  .chip{display:inline-flex;align-items:center;gap:6px;font-family:var(--sans);font-size:11.5px;font-weight:500;color:var(--ink-3);padding:6px 11px;border:0.5px solid var(--line);border-radius:14px;background:transparent;cursor:pointer;transition:all .14s ease;white-space:nowrap}
+  .chip:hover{background:var(--cream-2)}
+  .chip.on{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+  .chip .ct{font-family:var(--mono);font-size:9.5px;opacity:.55;margin-left:2px}
+
+  /* country search blocks */
+  .search-blocks{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:14px}
+  .sblock{background:var(--cream);border:0.5px solid var(--line);border-radius:12px;padding:24px 26px;display:flex;flex-direction:column;gap:12px}
+  .sblock-head{display:flex;align-items:baseline;justify-content:space-between}
+  .sblock-flag{font-size:22px;line-height:1}
+  .sblock-cn{font-family:var(--display);font-size:24px;color:var(--ink);font-weight:400;letter-spacing:-.01em}
+  .sblock h4{font-family:var(--mono);font-size:9.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--rose);margin-top:8px;margin-bottom:4px}
+  .sblock .tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:4px}
+  .sblock .tags span{font-family:var(--mono);font-size:10px;color:var(--ink-3);background:var(--cream-2);padding:3px 7px;border-radius:3px;border:0.5px solid var(--line-2)}
+  .sblock .tags span.acct{color:var(--teal)}
+  .sblock .tags span.loc{color:var(--gold)}
+  .sblock .cities{font-family:var(--serif);font-size:13.5px;color:var(--ink-2);line-height:1.5;font-style:italic;margin-top:4px}
+
+  /* candidates list */
+  .cands{display:flex;flex-direction:column;gap:1px;background:var(--line);border:0.5px solid var(--line);border-radius:10px;overflow:hidden}
+  .cand{background:var(--cream);padding:18px 22px;display:grid;grid-template-columns:48px 1fr 160px 120px 100px 1.6fr;gap:18px;align-items:start;transition:background .14s ease}
+  .cand:hover{background:var(--cream-2)}
+  .cand .cflag{font-size:24px;line-height:1}
+  .cand .cname{font-family:var(--serif);font-size:16px;font-weight:500;color:var(--ink);letter-spacing:-.01em;line-height:1.2}
+  .cand .creg{font-family:var(--mono);font-size:10.5px;color:var(--faint);letter-spacing:.04em;margin-top:2px;text-transform:uppercase}
+  .cand .carch{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--rose);font-weight:600}
+  .cand .cig{font-family:var(--mono);font-size:11.5px;color:var(--teal)}
+  .cand .cig a{color:var(--teal);border-bottom:0.5px dashed var(--teal)}
+  .cand .cig a:hover{color:var(--rose);border-color:var(--rose)}
+  .cstatus{font-family:var(--mono);font-size:9.5px;letter-spacing:.10em;text-transform:uppercase;padding:4px 8px;border-radius:3px;font-weight:600;text-align:center;align-self:flex-start}
+  .cstatus.cold{background:rgba(44,110,127,.10);color:var(--teal)}
+  .cstatus.warm{background:rgba(184,97,107,.13);color:var(--rose)}
+  .cstatus.partnered{background:rgba(63,95,69,.12);color:var(--green)}
+  .cstatus.active{background:rgba(63,95,69,.18);color:var(--green)}
+  .cand .cnote{font-family:var(--serif);font-size:13px;color:var(--ink-2);line-height:1.5;font-style:italic}
+
+  @media (max-width:980px){
+    .cand{grid-template-columns:32px 1fr 1fr;gap:10px}
+    .cand .carch,.cand .cstatus,.cand .cig,.cand .cnote{grid-column:span 3}
+    .search-blocks{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="../sora-hq.html">SORA · <em>HOSTS</em></a>
+    <span class="top-tag" data-es>Pipeline interna</span>
+    <span class="top-tag" data-en>Internal pipeline</span>
+    <div class="top-spacer"></div>
+    <a class="top-link" href="./atlas.html">↗ Atlas</a>
+    <a class="top-link" href="./contacts.html">↗ CRM</a>
+    <a class="top-link" href="./land.html">↗ <span data-es>Tierras</span><span data-en>Land</span></a>
+    <a class="top-link" href="../sora-hq.html">HQ</a>
+    <div class="lang">
+      <button class="active" data-lang="es">ES</button>
+      <button data-lang="en">EN</button>
+    </div>
+  </div>
+</header>
+
+<div class="hdr">
+  <h1><span data-es>Pipeline de <em>anfitriones</em></span><span data-en>Host <em>pipeline</em></span></h1>
+  <p class="hdr-lede" data-es>Marco de búsqueda + candidatos por país para los anfitriones que harán girar cada chapter Sora. Un host no es un guía turístico — leer el arquetipo abajo antes de cualquier acercamiento.</p>
+  <p class="hdr-lede" data-en>Search framework + per-country candidates for the hosts who will run each Sora chapter. A host is not a tour guide — read the archetype below before any outreach.</p>
+</div>
+
+<div class="archetype">
+  <h3 data-es>El arquetipo Sora · qué estamos buscando</h3>
+  <h3 data-en>The Sora archetype · what we're looking for</h3>
+  <p id="archetype-text"></p>
+</div>
+
+<section>
+  <h2><span data-es>Marco de <em>búsqueda</em> por país</span><span data-en>Per-country <em>search</em> framework</span></h2>
+  <p class="sub" data-es>Hashtags, locations y cuentas semilla para minar Instagram. Empezá por las cuentas semilla — sus comentaristas frecuentes y los tagged-in son los candidatos.</p>
+  <p class="sub" data-en>Hashtags, locations and seed accounts to mine Instagram. Start with seed accounts — their frequent commenters and tagged-in users are the candidates.</p>
+  <div class="search-blocks" id="search-blocks"></div>
+</section>
+
+<section>
+  <h2><span data-es>Candidatos <em>identificados</em></span><span data-en>Identified <em>candidates</em></span></h2>
+  <p class="sub" data-es>Leads warm + cold targets. Estado y owner editables — guardar siguiendo el flujo del CRM.</p>
+  <p class="sub" data-en>Warm leads + cold targets. Status and owner editable — save following CRM flow.</p>
+
+  <div class="filters" id="cand-filters"></div>
+  <div class="cands" id="cands"></div>
+</section>
+
+<script src="./data-hosts.js"></script>
+<script>
+(function(){
+  const COUNTRIES = {
+    MX:{flag:'🇲🇽',es:'México',en:'Mexico'}, CO:{flag:'🇨🇴',es:'Colombia',en:'Colombia'},
+    BR:{flag:'🇧🇷',es:'Brasil',en:'Brazil'}, AR:{flag:'🇦🇷',es:'Argentina',en:'Argentina'},
+    CR:{flag:'🇨🇷',es:'Costa Rica',en:'Costa Rica'}, PE:{flag:'🇵🇪',es:'Perú',en:'Peru'},
+    CL:{flag:'🇨🇱',es:'Chile',en:'Chile'}, UY:{flag:'🇺🇾',es:'Uruguay',en:'Uruguay'},
+    PA:{flag:'🇵🇦',es:'Panamá',en:'Panama'}, VE:{flag:'🇻🇪',es:'Venezuela',en:'Venezuela'}
+  };
+
+  const langBtns = document.querySelectorAll('.lang button');
+  function setLang(l){
+    document.documentElement.setAttribute('lang', l);
+    localStorage.setItem('sora.lang', l);
+    langBtns.forEach(b=>b.classList.toggle('active', b.dataset.lang===l));
+    render();
+  }
+  langBtns.forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
+  const initLang = localStorage.getItem('sora.lang') || 'es';
+  document.documentElement.setAttribute('lang', initLang);
+  langBtns.forEach(b=>b.classList.toggle('active', b.dataset.lang===initLang));
+
+  let countryFilter = 'ALL';
+
+  function render(){
+    const lang = document.documentElement.getAttribute('lang') || 'es';
+    document.getElementById('archetype-text').textContent = window.SORA_HOSTS.ARCHETYPE[lang];
+
+    // search blocks
+    const blocks = Object.keys(window.SORA_HOSTS.SEARCH).map(code=>{
+      const c = COUNTRIES[code]; if(!c) return '';
+      const s = window.SORA_HOSTS.SEARCH[code];
+      return `<div class="sblock">
+        <div class="sblock-head">
+          <span class="sblock-cn">${c[lang]}</span>
+          <span class="sblock-flag">${c.flag}</span>
+        </div>
+        <div>
+          <h4>${lang==='es'?'Hashtags':'Hashtags'}</h4>
+          <div class="tags">${s.hashtags.map(h=>`<span>${h}</span>`).join('')}</div>
+        </div>
+        <div>
+          <h4>${lang==='es'?'Cuentas semilla (mine commenters + tagged)':'Seed accounts (mine commenters + tagged)'}</h4>
+          <div class="tags">${s.seedAccounts.map(a=>`<span class="acct">${a}</span>`).join('')}</div>
+        </div>
+        <div>
+          <h4>${lang==='es'?'Locations a buscar':'Locations to search'}</h4>
+          <div class="tags">${s.locations.map(l=>`<span class="loc">${l}</span>`).join('')}</div>
+        </div>
+        <div>
+          <h4>${lang==='es'?'Ciudades foco':'Focus cities'}</h4>
+          <div class="cities">${s.cityFocus.join(' · ')}</div>
+        </div>
+      </div>`;
+    }).join('');
+    document.getElementById('search-blocks').innerHTML = blocks;
+
+    // candidate filters
+    const cc = {}; window.SORA_HOSTS.CANDIDATES.forEach(c=>{ const k=c.country.split('/')[0]; cc[k]=(cc[k]||0)+1; });
+    const orderedC = ['MX','CO','BR','AR','CR','PE','CL','UY','PA','VE'].filter(x=>cc[x]);
+    document.getElementById('cand-filters').innerHTML =
+      `<button class="chip ${countryFilter==='ALL'?'on':''}" data-v="ALL">${lang==='es'?'Todos':'All'} <span class="ct">${window.SORA_HOSTS.CANDIDATES.length}</span></button>` +
+      orderedC.map(k=>`<button class="chip ${countryFilter===k?'on':''}" data-v="${k}">${COUNTRIES[k].flag} ${k} <span class="ct">${cc[k]}</span></button>`).join('');
+    document.getElementById('cand-filters').querySelectorAll('.chip').forEach(b=>b.addEventListener('click',()=>{countryFilter=b.dataset.v;render();}));
+
+    // candidates
+    const filtered = window.SORA_HOSTS.CANDIDATES.filter(c=>{
+      if(countryFilter==='ALL') return true;
+      return c.country.split('/').includes(countryFilter);
+    });
+    document.getElementById('cands').innerHTML = filtered.map(c=>{
+      const ck = c.country.split('/')[0];
+      const cc2 = COUNTRIES[ck] || {flag:''};
+      const note = (c.notes && c.notes[lang]) || '';
+      const ig = c.instagram ? `<a href="https://instagram.com/${c.instagram.replace('@','')}" target="_blank">${c.instagram}</a>` : (lang==='es' ? '<span style="color:var(--faint)">— sin IG</span>' : '<span style="color:var(--faint)">— no IG yet</span>');
+      return `<div class="cand">
+        <span class="cflag">${cc2.flag}</span>
+        <div>
+          <div class="cname">${c.name}</div>
+          <div class="creg">${c.country} · ${c.region||''}</div>
+        </div>
+        <span class="carch">${(c.archetype||'').replace(/-/g,' ')}</span>
+        <span class="cig">${ig}</span>
+        <span class="cstatus ${c.status}">${c.status}</span>
+        <span class="cnote">${note} <span style="color:var(--faint);font-family:var(--mono);font-size:10px;display:block;margin-top:4px">${lang==='es'?'asignado':'owner'}: ${c.owner||'—'}</span></span>
+      </div>`;
+    }).join('');
+  }
+
+  render();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SORA · CRM de contactos</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Instrument+Serif&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F8F3EA; --cream-2:#F2EBDD; --cream-3:#E9DFCA;
+    --ink:#1B1A17; --ink-2:#3A352D; --ink-3:#5C5346; --faint:#9A8E7A;
+    --line:rgba(27,26,23,.10); --line-2:rgba(27,26,23,.06);
+    --coral:#D9573B; --gold:#B58F4D; --mango:#E2A24A; --green:#3F5F45; --rose:#B8616B; --teal:#2C6E7F;
+    --serif:'Fraunces',Georgia,serif; --display:'Instrument Serif',Georgia,serif;
+    --sans:'Inter',-apple-system,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--cream);color:var(--ink);font-family:var(--sans);font-size:13.5px;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--coral);color:var(--cream)}
+
+  [data-en]{display:none}
+  html[lang="en"] [data-es]{display:none}
+  html[lang="en"] [data-en]{display:inline}
+
+  /* ====== top bar ====== */
+  .top{position:sticky;top:0;z-index:40;background:rgba(248,243,234,.96);backdrop-filter:blur(14px);border-bottom:0.5px solid var(--line)}
+  .top-in{max-width:1480px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .brand{font-family:var(--serif);font-weight:600;font-size:16px;letter-spacing:.16em;color:var(--ink)}
+  .brand em{font-style:normal;color:var(--coral)}
+  .top-tag{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--rose);text-transform:uppercase;padding:4px 10px;background:rgba(184,97,107,.10);border-radius:4px}
+  .top-spacer{flex:1}
+  .top-link{font-family:var(--sans);font-size:12px;color:var(--ink-2);padding:7px 12px;border:0.5px solid var(--line);border-radius:5px;transition:all .14s ease}
+  .top-link:hover{background:var(--cream-2)}
+  .lang{display:inline-flex;border:0.5px solid var(--line);border-radius:5px;overflow:hidden}
+  .lang button{padding:7px 11px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;background:transparent;border:0;color:var(--faint);cursor:pointer;font-weight:500}
+  .lang button.active{background:var(--ink);color:var(--cream)}
+
+  /* ====== header ====== */
+  .hdr{padding:48px 32px 32px;border-bottom:0.5px solid var(--line);max-width:1480px;margin:0 auto;width:100%}
+  .hdr h1{font-family:var(--display);font-weight:400;font-size:clamp(40px,5vw,64px);line-height:1;letter-spacing:-.02em;color:var(--ink);margin-bottom:14px}
+  .hdr h1 em{font-style:italic;color:var(--coral)}
+  .hdr p{font-family:var(--serif);font-size:17px;color:var(--ink-3);font-weight:300;max-width:660px;line-height:1.5}
+  .hdr-stats{display:flex;gap:36px;margin-top:24px;flex-wrap:wrap}
+  .hdr-stats div{display:flex;flex-direction:column;gap:4px}
+  .hdr-stats .k{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--faint);text-transform:uppercase}
+  .hdr-stats .v{font-family:var(--display);font-size:28px;color:var(--ink);line-height:1}
+
+  /* ====== filters ====== */
+  .filters{position:sticky;top:51px;z-index:35;background:var(--cream);border-bottom:0.5px solid var(--line);padding:14px 24px}
+  .filters-in{max-width:1480px;margin:0 auto;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .fil-label{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--faint);text-transform:uppercase;margin-right:4px}
+  .chip{display:inline-flex;align-items:center;gap:6px;font-family:var(--sans);font-size:11.5px;font-weight:500;color:var(--ink-3);padding:6px 11px;border:0.5px solid var(--line);border-radius:14px;background:transparent;cursor:pointer;transition:all .14s ease;white-space:nowrap}
+  .chip:hover{background:var(--cream-2);border-color:rgba(27,26,23,.20)}
+  .chip.on{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+  .chip .ct{font-family:var(--mono);font-size:9.5px;opacity:.55;margin-left:2px}
+  .chip.on .ct{opacity:.7}
+  .fil-divider{width:1px;height:18px;background:var(--line);margin:0 4px}
+  .search{flex:1;min-width:220px;display:flex;align-items:center;gap:8px;padding:6px 12px;border:0.5px solid var(--line);border-radius:6px;background:var(--cream-2)}
+  .search input{flex:1;border:0;background:transparent;font-family:var(--sans);font-size:13px;color:var(--ink);outline:none}
+  .search input::placeholder{color:var(--faint)}
+  .search-icon{font-size:13px;color:var(--faint)}
+
+  /* ====== table ====== */
+  .table-wrap{max-width:1480px;margin:0 auto;padding:24px 24px 96px;overflow-x:auto}
+  table{width:100%;border-collapse:collapse;font-size:13px;background:var(--cream);border:0.5px solid var(--line);border-radius:8px;overflow:hidden}
+  thead th{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);text-align:left;padding:14px 14px;border-bottom:0.5px solid var(--line);background:var(--cream-2);cursor:pointer;user-select:none;white-space:nowrap}
+  thead th:hover{color:var(--ink-2)}
+  thead th .ix{margin-left:4px;color:var(--coral);opacity:0;font-size:9px}
+  thead th.sorted .ix{opacity:1}
+  tbody tr{border-bottom:0.5px solid var(--line-2);transition:background .14s ease;cursor:pointer}
+  tbody tr:hover{background:var(--cream-2)}
+  tbody td{padding:14px 14px;vertical-align:top;color:var(--ink-2)}
+  tbody td.col-name{min-width:170px}
+  .cn-name{font-family:var(--serif);font-size:15.5px;font-weight:500;color:var(--ink);letter-spacing:-.01em;line-height:1.2}
+  .cn-org{font-family:var(--serif);font-size:12.5px;color:var(--faint);font-style:italic;margin-top:2px}
+  .col-country{font-family:var(--mono);font-size:11px;letter-spacing:.10em;color:var(--ink-3);white-space:nowrap}
+  .col-country .fl{font-size:14px;margin-right:4px;letter-spacing:0}
+  .col-region{font-family:var(--mono);font-size:10.5px;color:var(--faint);letter-spacing:.04em}
+  .col-role{font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;font-weight:600}
+  .role-chef{color:var(--coral)} .role-hotelier{color:var(--teal)} .role-lawyer{color:var(--ink-3)}
+  .role-broker{color:var(--gold)} .role-banker{color:var(--green)} .role-musician{color:var(--rose)}
+  .role-talent{color:var(--rose)} .role-artist{color:var(--rose)} .role-photographer{color:var(--rose)}
+  .role-host{color:var(--coral)} .role-designer{color:var(--rose)}
+  .col-contact{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);line-height:1.5}
+  .col-contact a{color:var(--ink-2);border-bottom:0.5px dashed var(--line)}
+  .col-contact a:hover{color:var(--coral);border-color:var(--coral)}
+  .pill{font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;padding:4px 8px;border-radius:3px;background:var(--cream-2);color:var(--ink-3);border:0.5px solid var(--line-2);font-weight:600;white-space:nowrap}
+  .pill.partnered{background:rgba(63,95,69,.12);color:var(--green);border-color:rgba(63,95,69,.18)}
+  .pill.pursuing{background:rgba(226,162,74,.15);color:var(--gold);border-color:rgba(226,162,74,.22)}
+  .pill.target{background:rgba(154,142,122,.18);color:var(--ink-3)}
+  .pill.warm{background:rgba(184,97,107,.13);color:var(--rose);border-color:rgba(184,97,107,.20)}
+  .pill.cold{background:rgba(44,110,127,.10);color:var(--teal)}
+  .pill.booked{background:rgba(63,95,69,.18);color:var(--green)}
+  .pill.declined{background:rgba(217,87,59,.10);color:var(--coral)}
+  .col-touched{font-family:var(--mono);font-size:10.5px;color:var(--faint);white-space:nowrap}
+  .col-owner{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);font-weight:500}
+  .col-notes{font-family:var(--serif);font-size:13px;color:var(--ink-2);line-height:1.45;min-width:240px;max-width:380px;font-style:italic}
+
+  .empty{padding:64px 24px;text-align:center;font-family:var(--serif);font-size:17px;color:var(--faint);font-style:italic}
+
+  /* ====== drawer (detail) ====== */
+  .drawer-bg{position:fixed;inset:0;background:rgba(27,26,23,.30);backdrop-filter:blur(2px);z-index:60;display:none}
+  .drawer-bg.open{display:block}
+  .drawer{position:fixed;top:0;right:0;bottom:0;width:min(480px,92vw);background:var(--cream);box-shadow:-8px 0 24px rgba(0,0,0,.10);z-index:61;transform:translateX(100%);transition:transform .25s cubic-bezier(0.25,1,0.5,1);overflow-y:auto}
+  .drawer.open{transform:translateX(0)}
+  .dr-head{padding:24px 24px 16px;border-bottom:0.5px solid var(--line);display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+  .dr-close{font-family:var(--mono);font-size:14px;color:var(--faint);background:transparent;border:0;cursor:pointer;padding:4px 8px;border-radius:4px;transition:all .14s ease}
+  .dr-close:hover{background:var(--cream-2);color:var(--ink)}
+  .dr-body{padding:20px 24px}
+  .dr-body h2{font-family:var(--display);font-size:32px;font-weight:400;line-height:1;color:var(--ink);letter-spacing:-.01em;margin-bottom:6px}
+  .dr-body .role-tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--coral);font-weight:600;margin-bottom:18px;display:block}
+  .dr-section{margin:24px 0}
+  .dr-section h4{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);font-weight:500;margin-bottom:10px}
+  .dr-row{display:flex;gap:12px;padding:8px 0;border-bottom:0.5px dashed var(--line-2)}
+  .dr-row:last-child{border-bottom:0}
+  .dr-row .dk{font-family:var(--mono);font-size:11px;color:var(--faint);min-width:80px;text-transform:uppercase;letter-spacing:.04em}
+  .dr-row .dv{font-family:var(--serif);font-size:14.5px;color:var(--ink-2);flex:1}
+  .dr-row .dv a{color:var(--ink);border-bottom:0.5px solid var(--line)}
+  .dr-row .dv a:hover{color:var(--coral);border-color:var(--coral)}
+  .dr-note{font-family:var(--serif);font-size:15px;line-height:1.5;color:var(--ink);background:var(--cream-2);padding:18px;border-radius:6px;border-left:2px solid var(--coral)}
+
+  @media (max-width:720px){
+    .hdr{padding:32px 18px 24px}
+    .filters{padding:10px 18px;top:48px}
+    .table-wrap{padding:18px 0 64px}
+    table{font-size:12px}
+    thead{display:none}
+    tbody tr{display:block;padding:14px 16px;border-bottom:0.5px solid var(--line)}
+    tbody td{display:block;padding:3px 0}
+    tbody td.col-name{margin-bottom:6px}
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="../sora-hq.html">SORA · <em>CRM</em></a>
+    <span class="top-tag" data-es>Interno · La Compañía</span>
+    <span class="top-tag" data-en>Internal · La Compañía</span>
+    <div class="top-spacer"></div>
+    <a class="top-link" href="./atlas.html" data-es>↗ Atlas</a>
+    <a class="top-link" href="./atlas.html" data-en>↗ Atlas</a>
+    <a class="top-link" href="./chapter.html#MX" data-es>↗ Capítulos</a>
+    <a class="top-link" href="./chapter.html#MX" data-en>↗ Chapters</a>
+    <a class="top-link" href="../sora-hq.html">HQ</a>
+    <div class="lang">
+      <button class="active" data-lang="es">ES</button>
+      <button data-lang="en">EN</button>
+    </div>
+  </div>
+</header>
+
+<div class="hdr">
+  <h1><span data-es>CRM de <em>contactos</em></span><span data-en>Contacts <em>CRM</em></span></h1>
+  <p data-es>Cada persona o entidad que Sora persigue, ya tiene relación, o necesita activar — por país, por rol, por estado. Click en cualquier fila para ver detalle, notas y siguiente paso. Edita estado y owner desde el panel.</p>
+  <p data-en>Every person or entity Sora is pursuing, has a relationship with, or needs to activate — by country, role, status. Click any row for detail, notes and next step. Edit status and owner from the side panel.</p>
+  <div class="hdr-stats">
+    <div><span class="k" data-es>Total</span><span class="k" data-en>Total</span><span class="v" id="stat-total">—</span></div>
+    <div><span class="k" data-es>Países</span><span class="k" data-en>Countries</span><span class="v" id="stat-countries">—</span></div>
+    <div><span class="k" data-es>Partnered</span><span class="k" data-en>Partnered</span><span class="v" id="stat-partnered">—</span></div>
+    <div><span class="k" data-es>En pursuit</span><span class="k" data-en>In pursuit</span><span class="v" id="stat-pursuing">—</span></div>
+    <div><span class="k" data-es>Warm</span><span class="k" data-en>Warm</span><span class="v" id="stat-warm">—</span></div>
+    <div><span class="k" data-es>Cold targets</span><span class="k" data-en>Cold targets</span><span class="v" id="stat-cold">—</span></div>
+  </div>
+</div>
+
+<div class="filters">
+  <div class="filters-in">
+    <span class="fil-label" data-es>País</span><span class="fil-label" data-en>Country</span>
+    <div id="f-country" class="chips"></div>
+    <span class="fil-divider"></span>
+    <span class="fil-label" data-es>Rol</span><span class="fil-label" data-en>Role</span>
+    <div id="f-role" class="chips"></div>
+    <span class="fil-divider"></span>
+    <span class="fil-label" data-es>Estado</span><span class="fil-label" data-en>Status</span>
+    <div id="f-status" class="chips"></div>
+    <span class="fil-divider"></span>
+    <div class="search"><span class="search-icon">⌕</span><input id="q" type="text" placeholder="Buscar nombre, org, notas…"></div>
+  </div>
+</div>
+
+<main class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th data-sort="name"><span data-es>Persona</span><span data-en>Person</span><span class="ix">↓</span></th>
+        <th data-sort="role"><span data-es>Rol</span><span data-en>Role</span><span class="ix">↓</span></th>
+        <th data-sort="country"><span data-es>País</span><span data-en>Country</span><span class="ix">↓</span></th>
+        <th><span data-es>Contacto</span><span data-en>Contact</span></th>
+        <th data-sort="status"><span data-es>Estado</span><span data-en>Status</span><span class="ix">↓</span></th>
+        <th data-sort="lastTouched"><span data-es>Último toque</span><span data-en>Last touched</span><span class="ix">↓</span></th>
+        <th data-sort="owner">Owner</th>
+        <th><span data-es>Notas</span><span data-en>Notes</span></th>
+      </tr>
+    </thead>
+    <tbody id="rows"></tbody>
+  </table>
+  <div id="empty" class="empty" style="display:none">
+    <span data-es>Ningún contacto coincide.</span>
+    <span data-en>No contact matches.</span>
+  </div>
+</main>
+
+<div class="drawer-bg" id="drawer-bg"></div>
+<aside class="drawer" id="drawer">
+  <div id="drawer-content"></div>
+</aside>
+
+<script src="./data-ops.js"></script>
+<script>
+(function(){
+  const COUNTRIES = {
+    MX:{flag:'🇲🇽',es:'México',en:'Mexico'}, CO:{flag:'🇨🇴',es:'Colombia',en:'Colombia'},
+    BR:{flag:'🇧🇷',es:'Brasil',en:'Brazil'}, AR:{flag:'🇦🇷',es:'Argentina',en:'Argentina'},
+    CR:{flag:'🇨🇷',es:'Costa Rica',en:'Costa Rica'}, PE:{flag:'🇵🇪',es:'Perú',en:'Peru'},
+    CL:{flag:'🇨🇱',es:'Chile',en:'Chile'}, UY:{flag:'🇺🇾',es:'Uruguay',en:'Uruguay'},
+    PA:{flag:'🇵🇦',es:'Panamá',en:'Panama'}, VE:{flag:'🇻🇪',es:'Venezuela',en:'Venezuela'},
+    DO:{flag:'🇩🇴',es:'Rep. Dom.',en:'D.R.'}, GT:{flag:'🇬🇹',es:'Guatemala',en:'Guatemala'},
+    EC:{flag:'🇪🇨',es:'Ecuador',en:'Ecuador'}, PR:{flag:'🇵🇷',es:'Puerto Rico',en:'Puerto Rico'}
+  };
+  const ROLES = [
+    {k:'chef', es:'Chef', en:'Chef'},
+    {k:'hotelier', es:'Hotelero', en:'Hotelier'},
+    {k:'lawyer', es:'Abogado', en:'Lawyer'},
+    {k:'broker', es:'Broker RE', en:'Broker'},
+    {k:'banker', es:'Banca · cripto', en:'Banking · crypto'},
+    {k:'musician', es:'Música', en:'Music'},
+    {k:'photographer', es:'Foto · video', en:'Photo · video'},
+    {k:'host', es:'Anfitrión', en:'Host'},
+    {k:'talent', es:'Talento', en:'Talent'},
+    {k:'artist', es:'Artista', en:'Artist'},
+    {k:'designer', es:'Diseño', en:'Designer'},
+    {k:'government', es:'Gobierno', en:'Government'}
+  ];
+  const STATUSES = [
+    {k:'partnered', es:'Partnered', en:'Partnered'},
+    {k:'pursuing', es:'En pursuit', en:'Pursuing'},
+    {k:'warm', es:'Warm', en:'Warm'},
+    {k:'cold', es:'Cold', en:'Cold'},
+    {k:'target', es:'Target', en:'Target'},
+    {k:'booked', es:'Booked', en:'Booked'},
+    {k:'declined', es:'Declined', en:'Declined'}
+  ];
+
+  const LS_KEY = 'sora.contacts.edits';
+  function loadEdits(){ try{ return JSON.parse(localStorage.getItem(LS_KEY)||'{}'); }catch(e){ return {}; } }
+  function saveEdits(e){ localStorage.setItem(LS_KEY, JSON.stringify(e)); }
+  function applyEdits(){
+    const edits = loadEdits();
+    return window.SORA_CONTACTS.map(c=>{
+      const e = edits[c.id];
+      return e ? {...c, ...e} : c;
+    });
+  }
+
+  const state = { country:'ALL', role:'ALL', status:'ALL', q:'', sort:'lastTouched', dir:'desc' };
+  const rowsEl = document.getElementById('rows');
+  const empty = document.getElementById('empty');
+  const search = document.getElementById('q');
+
+  /* ---- lang ---- */
+  const langBtns = document.querySelectorAll('.lang button');
+  function setLang(l){
+    document.documentElement.setAttribute('lang', l);
+    localStorage.setItem('sora.lang', l);
+    langBtns.forEach(b=>b.classList.toggle('active', b.dataset.lang===l));
+    buildChips(); render();
+  }
+  langBtns.forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
+  const initLang = localStorage.getItem('sora.lang') || 'es';
+  document.documentElement.setAttribute('lang', initLang);
+  langBtns.forEach(b=>b.classList.toggle('active', b.dataset.lang===initLang));
+
+  /* ---- chips ---- */
+  function buildChips(){
+    const lang = document.documentElement.getAttribute('lang') || 'es';
+    const data = applyEdits();
+
+    const cc = {}; data.forEach(c=>{ const k=c.country.split('/')[0]; cc[k]=(cc[k]||0)+1; });
+    const orderedC = ['MX','CO','BR','AR','CR','PE','CL','UY','PA','VE','DO','GT','EC','PR'].filter(c=>cc[c]);
+    document.getElementById('f-country').innerHTML =
+      `<button class="chip ${state.country==='ALL'?'on':''}" data-v="ALL">${lang==='es'?'Todos':'All'} <span class="ct">${data.length}</span></button>` +
+      orderedC.map(c=>`<button class="chip ${state.country===c?'on':''}" data-v="${c}">${COUNTRIES[c].flag} ${c} <span class="ct">${cc[c]}</span></button>`).join('');
+
+    const rc = {}; data.forEach(c=>{ rc[c.role]=(rc[c.role]||0)+1; });
+    document.getElementById('f-role').innerHTML =
+      `<button class="chip ${state.role==='ALL'?'on':''}" data-v="ALL">${lang==='es'?'Todos':'All'}</button>` +
+      ROLES.filter(r=>rc[r.k]).map(r=>`<button class="chip ${state.role===r.k?'on':''}" data-v="${r.k}">${r[lang]} <span class="ct">${rc[r.k]}</span></button>`).join('');
+
+    const sc = {}; data.forEach(c=>{ sc[c.status]=(sc[c.status]||0)+1; });
+    document.getElementById('f-status').innerHTML =
+      `<button class="chip ${state.status==='ALL'?'on':''}" data-v="ALL">${lang==='es'?'Todos':'All'}</button>` +
+      STATUSES.filter(s=>sc[s.k]).map(s=>`<button class="chip ${state.status===s.k?'on':''}" data-v="${s.k}">${s[lang]} <span class="ct">${sc[s.k]}</span></button>`).join('');
+
+    document.getElementById('f-country').querySelectorAll('.chip').forEach(b=>b.addEventListener('click',()=>{state.country=b.dataset.v;buildChips();render();}));
+    document.getElementById('f-role').querySelectorAll('.chip').forEach(b=>b.addEventListener('click',()=>{state.role=b.dataset.v;buildChips();render();}));
+    document.getElementById('f-status').querySelectorAll('.chip').forEach(b=>b.addEventListener('click',()=>{state.status=b.dataset.v;buildChips();render();}));
+  }
+
+  /* ---- search + sort ---- */
+  search.addEventListener('input', e=>{ state.q = e.target.value.toLowerCase().trim(); render(); });
+  document.querySelectorAll('thead th[data-sort]').forEach(th=>{
+    th.addEventListener('click', ()=>{
+      const f = th.dataset.sort;
+      if(state.sort===f) state.dir = state.dir==='asc' ? 'desc' : 'asc';
+      else { state.sort = f; state.dir = 'asc'; }
+      document.querySelectorAll('thead th').forEach(t=>t.classList.remove('sorted'));
+      th.classList.add('sorted');
+      render();
+    });
+  });
+
+  /* ---- render ---- */
+  function roleLabel(k, lang){ const r = ROLES.find(x=>x.k===k); return r? r[lang] : k; }
+  function statusLabel(k, lang){ const s = STATUSES.find(x=>x.k===k); return s? s[lang] : k; }
+
+  function render(){
+    const lang = document.documentElement.getAttribute('lang') || 'es';
+    const data = applyEdits();
+    let filtered = data.filter(c=>{
+      if(state.country!=='ALL' && !c.country.split('/').includes(state.country)) return false;
+      if(state.role!=='ALL' && c.role!==state.role) return false;
+      if(state.status!=='ALL' && c.status!==state.status) return false;
+      if(state.q){
+        const blob = `${c.name} ${c.org||''} ${c.region||''} ${c.country} ${c.email||''} ${c.whatsapp||''} ${c.instagram||''} ${(c.notes&&c.notes[lang])||''}`.toLowerCase();
+        if(!blob.includes(state.q)) return false;
+      }
+      return true;
+    });
+
+    filtered.sort((a,b)=>{
+      const av = (a[state.sort]||'').toString().toLowerCase();
+      const bv = (b[state.sort]||'').toString().toLowerCase();
+      if(av < bv) return state.dir==='asc'? -1 : 1;
+      if(av > bv) return state.dir==='asc'? 1 : -1;
+      return 0;
+    });
+
+    // stats
+    document.getElementById('stat-total').textContent = data.length;
+    const countries = {}; data.forEach(c=>c.country.split('/').forEach(k=>countries[k]=1));
+    document.getElementById('stat-countries').textContent = Object.keys(countries).length;
+    document.getElementById('stat-partnered').textContent = data.filter(c=>c.status==='partnered').length;
+    document.getElementById('stat-pursuing').textContent = data.filter(c=>c.status==='pursuing').length;
+    document.getElementById('stat-warm').textContent = data.filter(c=>c.status==='warm').length;
+    document.getElementById('stat-cold').textContent = data.filter(c=>c.status==='cold' || c.status==='target').length;
+
+    if(!filtered.length){ rowsEl.innerHTML=''; empty.style.display='block'; return; }
+    empty.style.display='none';
+
+    rowsEl.innerHTML = filtered.map(c=>{
+      const countryKey = c.country.split('/')[0];
+      const cc = COUNTRIES[countryKey] || {flag:'',es:c.country,en:c.country};
+      const contactBits = [];
+      if(c.email) contactBits.push(`<a href="mailto:${c.email}">${c.email}</a>`);
+      if(c.whatsapp) contactBits.push(`<a href="https://wa.me/${c.whatsapp.replace(/\D/g,'')}" target="_blank">${c.whatsapp}</a>`);
+      if(c.instagram) contactBits.push(`<a href="https://instagram.com/${c.instagram.replace('@','')}" target="_blank">${c.instagram}</a>`);
+      const note = (c.notes && c.notes[lang]) || '';
+      return `<tr data-id="${c.id}">
+        <td class="col-name">
+          <div class="cn-name">${c.name}</div>
+          <div class="cn-org">${c.org||''}</div>
+        </td>
+        <td><span class="col-role role-${c.role}">${roleLabel(c.role, lang)}</span></td>
+        <td class="col-country"><span class="fl">${cc.flag}</span>${c.country}<div class="col-region">${c.region||''}</div></td>
+        <td class="col-contact">${contactBits.join('<br>') || '<span style="color:var(--faint)">—</span>'}</td>
+        <td><span class="pill ${c.status}">${statusLabel(c.status, lang)}</span></td>
+        <td class="col-touched">${c.lastTouched||'—'}</td>
+        <td class="col-owner">${c.owner||'—'}</td>
+        <td class="col-notes">${note}</td>
+      </tr>`;
+    }).join('');
+
+    rowsEl.querySelectorAll('tr').forEach(tr=>tr.addEventListener('click',()=>openDrawer(tr.dataset.id)));
+  }
+
+  /* ---- drawer ---- */
+  const drawer = document.getElementById('drawer');
+  const drawerBg = document.getElementById('drawer-bg');
+  const drawerContent = document.getElementById('drawer-content');
+  function closeDrawer(){ drawer.classList.remove('open'); drawerBg.classList.remove('open'); }
+  drawerBg.addEventListener('click', closeDrawer);
+  document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeDrawer(); });
+
+  function openDrawer(id){
+    const lang = document.documentElement.getAttribute('lang') || 'es';
+    const c = applyEdits().find(x=>x.id===id);
+    if(!c) return;
+    const countryKey = c.country.split('/')[0];
+    const cc = COUNTRIES[countryKey] || {flag:''};
+    const note = (c.notes && c.notes[lang]) || '';
+
+    drawerContent.innerHTML = `
+      <div class="dr-head">
+        <div>
+          <div style="font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin-bottom:6px">${cc.flag} ${c.country} · ${c.region||''}</div>
+        </div>
+        <button class="dr-close" id="dr-close-btn">×</button>
+      </div>
+      <div class="dr-body">
+        <h2>${c.name}</h2>
+        <span class="role-tag">${roleLabel(c.role, lang)} · ${c.org||''}</span>
+
+        <div class="dr-section">
+          <h4>${lang==='es'?'Contacto':'Contact'}</h4>
+          ${c.email ? `<div class="dr-row"><div class="dk">Email</div><div class="dv"><a href="mailto:${c.email}">${c.email}</a></div></div>` : ''}
+          ${c.whatsapp ? `<div class="dr-row"><div class="dk">WhatsApp</div><div class="dv"><a href="https://wa.me/${c.whatsapp.replace(/\D/g,'')}" target="_blank">${c.whatsapp}</a></div></div>` : ''}
+          ${c.instagram ? `<div class="dr-row"><div class="dk">Instagram</div><div class="dv"><a href="https://instagram.com/${c.instagram.replace('@','')}" target="_blank">${c.instagram}</a></div></div>` : ''}
+          ${(!c.email&&!c.whatsapp&&!c.instagram)?`<div class="dr-row"><div class="dv" style="color:var(--faint);font-style:italic">${lang==='es'?'Sin contacto registrado todavía':'No contact info yet'}</div></div>`:''}
+        </div>
+
+        <div class="dr-section">
+          <h4>${lang==='es'?'Estado · Owner · Último toque':'Status · Owner · Last touched'}</h4>
+          <div class="dr-row"><div class="dk">Status</div><div class="dv">
+            <select id="dr-status" style="font-family:var(--sans);font-size:13px;padding:6px 10px;border:0.5px solid var(--line);border-radius:4px;background:var(--cream-2);color:var(--ink)">
+              ${STATUSES.map(s=>`<option value="${s.k}" ${c.status===s.k?'selected':''}>${s[lang]}</option>`).join('')}
+            </select>
+          </div></div>
+          <div class="dr-row"><div class="dk">Owner</div><div class="dv">
+            <input id="dr-owner" value="${c.owner||''}" style="font-family:var(--sans);font-size:13px;padding:6px 10px;border:0.5px solid var(--line);border-radius:4px;background:var(--cream-2);color:var(--ink);width:160px">
+          </div></div>
+          <div class="dr-row"><div class="dk">${lang==='es'?'Último':'Last'}</div><div class="dv">
+            <input id="dr-touched" type="date" value="${c.lastTouched||''}" style="font-family:var(--sans);font-size:13px;padding:6px 10px;border:0.5px solid var(--line);border-radius:4px;background:var(--cream-2);color:var(--ink)">
+          </div></div>
+          <div style="margin-top:14px">
+            <button id="dr-save" style="font-family:var(--mono);font-size:11px;letter-spacing:.10em;padding:9px 18px;background:var(--ink);color:var(--cream);border:0;border-radius:5px;cursor:pointer;text-transform:uppercase">${lang==='es'?'Guardar':'Save'}</button>
+          </div>
+        </div>
+
+        <div class="dr-section">
+          <h4>${lang==='es'?'Notas':'Notes'}</h4>
+          <div class="dr-note">${note || (lang==='es'?'Sin notas todavía.':'No notes yet.')}</div>
+        </div>
+      </div>`;
+
+    document.getElementById('dr-close-btn').addEventListener('click', closeDrawer);
+    document.getElementById('dr-save').addEventListener('click', ()=>{
+      const edits = loadEdits();
+      edits[c.id] = {
+        status: document.getElementById('dr-status').value,
+        owner: document.getElementById('dr-owner').value,
+        lastTouched: document.getElementById('dr-touched').value
+      };
+      saveEdits(edits);
+      buildChips(); render(); closeDrawer();
+    });
+
+    drawer.classList.add('open');
+    drawerBg.classList.add('open');
+  }
+
+  buildChips();
+  render();
+})();
+</script>
+</body>
+</html>

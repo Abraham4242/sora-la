@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buenos Aires 2026 — Field Manual</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper:#f4eee0; --paper-2:#ece4ce; --paper-3:#e5dbbf; --paper-card:#fbf6e6; --paper-deep:#ddd3ba;
+    --paper-tint-wine:#f5e3e3; --paper-tint-warm:#f7ead4; --paper-tint-sky:#e5edf2;
+    --ink:#13120e; --ink-2:#27241b; --ink-soft:#494638; --ink-faint:#7a7560; --ink-ghost:#aca689;
+    --line:rgba(19,18,14,.10); --line-2:rgba(19,18,14,.18); --line-strong:rgba(19,18,14,.45);
+    --wine:#7d1f30; --wine-2:#9a3245; --wine-faint:rgba(125,31,48,.12);
+    --sky:#365b78; --sky-2:#4f7896; --sky-faint:rgba(54,91,120,.10);
+    --gold:#9c7a30; --gold-2:#c5a05c;
+    --terracotta:#b04525;
+    --warn-bg:#faecd2; --warn-line:#c08828;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);color:var(--ink);
+    font-family:'Fraunces',Georgia,serif;font-size:17px;line-height:1.62;
+    min-height:100vh;overflow-x:hidden;
+    font-feature-settings:"ss01","ss02","kern","liga";
+    -webkit-font-smoothing:antialiased;
+    background-image:
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.08  0 0 0 0 0.07  0 0 0 0 0.05  0 0 0 0.025 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"),
+      radial-gradient(ellipse at 12% 6%,rgba(125,31,48,.06) 0%,transparent 50%),
+      radial-gradient(ellipse at 88% 95%,rgba(54,91,120,.06) 0%,transparent 55%);
+  }
+  ::selection{background:var(--ink);color:var(--paper)}
+
+  .progress{position:fixed;top:0;left:0;width:100%;height:2px;background:rgba(19,18,14,.04);z-index:100;pointer-events:none}
+  .progress .bar{height:100%;width:0%;background:linear-gradient(90deg,var(--wine),var(--wine-2));transition:width .08s linear}
+  .minimark{position:fixed;top:18px;right:24px;z-index:50;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-faint);background:rgba(244,238,224,.85);backdrop-filter:blur(8px);border:1px solid var(--line);padding:8px 14px;opacity:0;transition:opacity .3s ease;display:flex;align-items:center;gap:10px}
+  .minimark.visible{opacity:1}
+  .minimark .dot{width:6px;height:6px;border-radius:50%;background:var(--wine)}
+  .rail{position:fixed;left:24px;top:50%;transform:translateY(-50%);z-index:50;pointer-events:none;opacity:0;transition:opacity .3s ease}
+  .rail.visible{opacity:1;pointer-events:auto}
+  .rail ol{list-style:none;padding:16px 12px;background:rgba(244,238,224,.85);backdrop-filter:blur(8px);border:1px solid var(--line);display:flex;flex-direction:column;gap:6px}
+  .rail li{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.15em;color:var(--ink-ghost);cursor:pointer;display:flex;align-items:center;gap:8px;padding:2px 2px 2px 0;transition:color .15s ease}
+  .rail li::before{content:'';width:14px;height:1px;background:currentColor;opacity:.5;transition:all .2s ease}
+  .rail li .romnum{font-weight:600;width:22px}
+  .rail li .name{opacity:0;transform:translateX(-8px);transition:all .2s ease;font-family:'Fraunces',serif;font-style:italic;font-size:11px;letter-spacing:0;color:var(--ink-soft);white-space:nowrap}
+  .rail:hover li .name{opacity:.7;transform:translateX(0)}
+  .rail li:hover{color:var(--ink)}
+  .rail li:hover::before{width:22px;background:var(--wine);opacity:1}
+  .rail li.active{color:var(--wine)}
+  .rail li.active::before{width:22px;background:var(--wine);opacity:1}
+  .rail li.active .name{opacity:1;color:var(--wine)}
+
+  .doc{max-width:1080px;margin:0 auto;padding:0 32px}
+
+  .cover{min-height:100vh;padding:56px 64px 64px;display:flex;flex-direction:column;position:relative;border-bottom:1px solid var(--line-2);overflow:hidden}
+  .cover::before,.cover::after{content:'';position:absolute;pointer-events:none;border:1px solid var(--line-2)}
+  .cover::before{top:20px;left:20px;right:20px;bottom:20px}
+  .cover::after{top:26px;left:26px;right:26px;bottom:26px}
+  .cover-head{display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:auto}
+  .cover-mark{display:flex;align-items:center;gap:14px}
+  .cover-mark .glyph{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border:1px solid var(--ink);font-family:'Fraunces',serif;font-style:italic;font-size:16px;text-transform:none;color:var(--ink)}
+  .cover-body{margin:auto 0}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.30em;text-transform:uppercase;color:var(--wine);margin-bottom:36px;font-weight:600}
+  .cover-title{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(60px,10vw,144px);line-height:.92;letter-spacing:-.04em;color:var(--ink);margin-bottom:32px}
+  .cover-title em{font-style:italic;color:var(--wine);font-weight:400}
+  .cover-title .year{display:block;font-family:'Fraunces',serif;font-style:italic;font-weight:300;font-size:.42em;letter-spacing:-.02em;margin-top:14px;color:var(--ink-soft)}
+  .cover-sub{font-family:'Fraunces',serif;font-size:21px;line-height:1.45;color:var(--ink-2);font-weight:300;max-width:680px}
+  .cover-meta{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:64px;padding-top:32px;border-top:1px solid var(--line-2)}
+  .cover-meta .item{display:flex;flex-direction:column;gap:6px}
+  .cover-meta .label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint)}
+  .cover-meta .value{font-family:'Fraunces',serif;font-size:18px;color:var(--ink);font-weight:500}
+  .cover-meta .value em{font-style:italic;color:var(--wine)}
+  .scroll-cue{position:absolute;bottom:36px;left:50%;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.30em;text-transform:uppercase;color:var(--ink-faint);writing-mode:vertical-rl;transform:translateX(-50%) rotate(180deg)}
+
+  section{padding:96px 0;position:relative;border-bottom:1px solid var(--line)}
+  section.tint-warm{background:linear-gradient(180deg,var(--paper) 0%,var(--paper-tint-warm) 40%,var(--paper-tint-warm) 60%,var(--paper) 100%)}
+  section.tint-wine{background:linear-gradient(180deg,var(--paper) 0%,var(--paper-tint-wine) 40%,var(--paper-tint-wine) 60%,var(--paper) 100%)}
+  section.tint-sky{background:linear-gradient(180deg,var(--paper) 0%,var(--paper-tint-sky) 40%,var(--paper-tint-sky) 60%,var(--paper) 100%)}
+  .ghost-num{position:absolute;top:24px;right:42px;font-family:'Fraunces',serif;font-weight:300;font-size:240px;line-height:1;color:var(--ink);opacity:.04;letter-spacing:-.04em;pointer-events:none;user-select:none;font-style:italic}
+  .chapter{display:grid;grid-template-columns:130px 1fr;gap:48px;margin-bottom:56px;max-width:1080px;margin-left:auto;margin-right:auto;padding:0 32px}
+  .chapter-num{font-family:'Fraunces',serif;font-style:italic;font-weight:300;font-size:72px;line-height:1;color:var(--ink-soft);display:flex;flex-direction:column;align-items:flex-start;gap:18px}
+  .chapter-num sup{font-family:'JetBrains Mono',monospace;font-style:normal;font-size:10px;letter-spacing:.18em;color:var(--ink-faint);text-transform:uppercase;font-weight:600}
+  .chapter-sigil{width:42px;height:42px;display:flex;align-items:center;justify-content:center;opacity:.6}
+  .chapter-sigil svg{width:100%;height:100%;stroke:var(--ink-soft);stroke-width:1.3;fill:none}
+  .chapter-sigil svg .fill{fill:var(--ink-soft);stroke:none}
+  .chapter-body{padding-top:8px}
+  .chapter-kicker{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--wine);font-weight:600;margin-bottom:14px}
+  .chapter-body h2{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(38px,5vw,60px);line-height:1.04;letter-spacing:-.025em;color:var(--ink);margin-bottom:28px;text-wrap:balance}
+  .chapter-body h2 em{font-style:italic;color:var(--wine);font-weight:400}
+  .lede{font-family:'Fraunces',serif;font-size:20px;line-height:1.5;color:var(--ink-2);font-weight:300;max-width:680px}
+  .lede.drop::first-letter{font-family:'Fraunces',serif;font-style:italic;font-weight:300;font-size:84px;line-height:.72;float:left;margin:8px 14px 0 0;color:var(--wine)}
+  .lede strong{font-weight:600;color:var(--ink)}
+
+  h3{font-family:'Fraunces',serif;font-weight:500;font-size:24px;line-height:1.2;color:var(--ink);margin:48px 0 18px;letter-spacing:-.015em}
+  h3 em{font-style:italic;color:var(--wine);font-weight:400}
+  p{margin-bottom:18px;color:var(--ink-2)}
+  p strong{color:var(--ink);font-weight:600}
+  p em{font-style:italic}
+  a{color:var(--sky);text-decoration:none;border-bottom:1px dashed var(--sky-faint)}
+  a:hover{color:var(--sky-2);border-color:var(--sky)}
+
+  .hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:1080px;margin:48px auto;padding:0 32px}
+  .stat{background:var(--paper-card);border:1px solid var(--line);padding:24px 22px;display:flex;flex-direction:column;gap:8px;position:relative;overflow:hidden}
+  .stat .delta{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);font-weight:600}
+  .stat .num{font-family:'Fraunces',serif;font-weight:300;font-size:42px;line-height:1;color:var(--ink);letter-spacing:-.02em}
+  .stat .num em{font-style:italic;color:var(--wine);font-weight:400}
+  .stat .lbl{font-family:'Inter',sans-serif;font-size:11.5px;color:var(--ink-soft);line-height:1.35}
+  .stat .sparkline{position:absolute;bottom:0;left:0;right:0;height:18px;opacity:.18}
+  .stat .sparkline svg{width:100%;height:100%}
+  .stat .sparkline path{fill:none;stroke:var(--wine);stroke-width:1.5}
+
+  .card{max-width:1080px;margin:32px auto;padding:24px 28px;background:var(--paper-card);border:1px solid var(--line);position:relative}
+  .card.warn{background:var(--warn-bg);border-color:var(--warn-line);border-left-width:3px}
+  .card.danger{background:var(--paper-tint-wine);border-color:var(--wine);border-left-width:3px}
+  .card.sky{background:var(--paper-tint-sky);border-color:var(--sky);border-left-width:3px}
+  .card-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);font-weight:600;margin-bottom:10px}
+  .card p{margin-bottom:0;font-size:15.5px}
+
+  .toc{max-width:1080px;margin:48px auto 0;padding:32px;background:var(--paper-deep);border:1px solid var(--line-2)}
+  .toc-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+  .toc-head .label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft);font-weight:600}
+  .toc-head .count{font-family:'Fraunces',serif;font-style:italic;font-size:14px;color:var(--ink-faint)}
+  .toc ol{list-style:none;counter-reset:tocn;columns:2;column-gap:36px}
+  .toc li{counter-increment:tocn;display:flex;gap:14px;padding:6px 0;border-bottom:1px dashed var(--line);break-inside:avoid}
+  .toc li::before{content:counter(tocn,upper-roman);font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-faint);min-width:30px;letter-spacing:.06em;font-weight:600;padding-top:3px}
+  .toc li a{font-family:'Fraunces',serif;font-size:16px;color:var(--ink-2);border:0;flex:1}
+  .toc li a:hover{color:var(--wine)}
+
+  table.dt{width:100%;max-width:1080px;margin:18px auto 24px;border-collapse:collapse;font-size:14.5px}
+  table.dt th{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;text-align:left;padding:10px 12px;border-bottom:1px solid var(--line-strong)}
+  table.dt td{padding:10px 12px;border-bottom:1px solid var(--line);color:var(--ink-2);vertical-align:top}
+  table.dt td strong{color:var(--ink);font-weight:600}
+  table.dt td.num{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--wine);font-weight:500}
+  table.dt tr:last-child td{border-bottom:0}
+  table.dt tr.tot td{font-weight:600;color:var(--ink);border-top:1px solid var(--line-strong);padding-top:14px}
+
+  ul.bullets{max-width:1080px;margin:18px auto;padding:0 0 0 24px;list-style:none}
+  ul.bullets li{position:relative;padding-left:22px;margin-bottom:10px;font-size:15.5px;color:var(--ink-2);line-height:1.55}
+  ul.bullets li::before{content:'';position:absolute;left:0;top:11px;width:10px;height:1px;background:var(--wine)}
+  ul.bullets li strong{color:var(--ink);font-weight:600}
+
+  .neighmap{max-width:1080px;margin:32px auto;padding:32px;background:var(--paper-card);border:1px solid var(--line)}
+  .nm-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:18px}
+  .nm-title{font-family:'Fraunces',serif;font-size:16px;font-weight:500;color:var(--ink)}
+  .nm-tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint)}
+  .nm-legend{display:flex;flex-wrap:wrap;gap:24px;margin-top:18px;padding-top:18px;border-top:1px solid var(--line);font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.10em;text-transform:uppercase;color:var(--ink-soft)}
+  .nm-legend .lg{display:flex;align-items:center;gap:8px}
+  .nm-legend .swatch{width:12px;height:12px;display:inline-block}
+
+  .doc-foot{padding:64px 32px;text-align:center;background:var(--ink);color:var(--paper)}
+  .doc-foot .sig{font-family:'Fraunces',serif;font-style:italic;font-size:22px;margin-bottom:14px}
+  .doc-foot .meta{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:rgba(244,238,224,.5)}
+
+  @media (max-width:880px){
+    .cover{padding:36px 28px 48px}
+    .chapter{grid-template-columns:1fr;gap:18px;padding:0 22px}
+    .chapter-num{flex-direction:row;align-items:center;font-size:48px;gap:14px}
+    .chapter-sigil{width:30px;height:30px}
+    .hero-stats{grid-template-columns:repeat(2,1fr);padding:0 22px}
+    .toc ol{columns:1}
+    .doc{padding:0 22px}
+    section{padding:64px 0}
+    .ghost-num{font-size:140px;right:20px}
+  }
+</style>
+</head>
+<body>
+
+<div class="progress"><div class="bar" id="bar"></div></div>
+<div class="minimark" id="minimark"><span class="dot"></span><span>BA · 2026 · Field Manual</span></div>
+
+<nav class="rail" id="rail">
+  <ol>
+    <li data-target="snapshot"><span class="romnum">I</span><span class="name">The Moment</span></li>
+    <li data-target="safety"><span class="romnum">II</span><span class="name">Barrios</span></li>
+    <li data-target="money"><span class="romnum">III</span><span class="name">What Your Money Buys</span></li>
+    <li data-target="realestate"><span class="romnum">IV</span><span class="name">Renting &amp; Buying</span></li>
+    <li data-target="office"><span class="romnum">V</span><span class="name">Office &amp; Coworking</span></li>
+    <li data-target="business"><span class="romnum">VI</span><span class="name">Setting Up the SA</span></li>
+    <li data-target="visa"><span class="romnum">VII</span><span class="name">Visa &amp; Residency</span></li>
+    <li data-target="banking"><span class="romnum">VIII</span><span class="name">Banking &amp; Pesos</span></li>
+    <li data-target="tax"><span class="romnum">IX</span><span class="name">U.S. + AR Tax</span></li>
+    <li data-target="lifestyle"><span class="romnum">X</span><span class="name">Lifestyle &amp; Scene</span></li>
+    <li data-target="protocols"><span class="romnum">XI</span><span class="name">Daily Protocols</span></li>
+    <li data-target="first90"><span class="romnum">XII</span><span class="name">First Ninety Days</span></li>
+  </ol>
+</nav>
+
+<header class="cover">
+  <div class="cover-head">
+    <div class="cover-mark">
+      <span class="glyph">A</span>
+      <span>Private Briefing · Not for Distribution</span>
+    </div>
+    <div>Volume IV · May 2026</div>
+  </div>
+  <div class="cover-body">
+    <div class="eyebrow">Relocation Dossier — BA · Capital of Taste · 30s</div>
+    <h1 class="cover-title">Buenos Aires<em>,</em><span class="year">2026</span></h1>
+    <p class="cover-sub">A field manual for the Milei-era capital of taste — wine, beef, books, design — at 30% the dollar cost of New York. Palermo, Recoleta, San Telmo. The chapter where Sora's margin is highest and your money goes furthest.</p>
+  </div>
+  <div class="cover-meta">
+    <div class="item"><div class="label">Prepared For</div><div class="value">Abraham · <em>31</em></div></div>
+    <div class="item"><div class="label">Country Risk</div><div class="value">Level <em>1</em> · Exercise normal</div></div>
+    <div class="item"><div class="label">Currency of Record</div><div class="value">ARS · <em>price USD</em></div></div>
+    <div class="item"><div class="label">Government</div><div class="value">Milei · <em>libertarian</em></div></div>
+  </div>
+  <div class="scroll-cue">Begin</div>
+</header>
+
+<!-- ============ 01 ============ -->
+<section id="snapshot">
+  <div class="ghost-num">01</div>
+  <div class="chapter">
+    <div class="chapter-num"><sup>Chapter I</sup>01
+      <div class="chapter-sigil"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="13"/><path d="M16 8 L16 16 L21 19"/><circle cx="16" cy="16" r="0.8" class="fill"/></svg></div>
+    </div>
+    <div class="chapter-body">
+      <div class="chapter-kicker">The Moment You're Walking Into</div>
+      <h2>The Milei <em>stabilization</em> is real — but fragile.</h2>
+      <p class="lede drop">May 2026 Buenos Aires is post-shock. Milei's first 30 months produced the most extreme economic stabilization any LATAM country has seen this century: monthly inflation crashed from 25% (Dec 2023) to 1.6% (Apr 2026), the cepo (currency controls) was lifted in March 2025, the official peso unified with the blue at ARS 1,180/USD, and Argentina exited IMF program 22 with reserves of $50B+. <strong>The cost was real: poverty hit 52% before easing back to 38%; the middle class shrank by a third.</strong> The country in 2026 feels chastened, expensive again, but functional. The blue-dollar arbitrage that defined the prior decade is gone. Prices in BA in USD now sit at 65% of NYC — up from 25% at the trough.</p>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat"><span class="delta">ARS</span><div class="num">~<em>1.18</em>k</div><div class="lbl">Pesos / USD · unified rate</div><div class="sparkline"><svg viewBox="0 0 100 18" preserveAspectRatio="none"><path d="M0,2 L20,4 L40,6 L60,9 L80,11 L100,12"/></svg></div></div>
+    <div class="stat"><span class="delta">MoM</span><div class="num"><em>1.6</em>%</div><div class="lbl">Inflation · Apr · INDEC</div><div class="sparkline"><svg viewBox="0 0 100 18" preserveAspectRatio="none"><path d="M0,2 L20,3 L40,5 L60,8 L80,11 L100,13"/></svg></div></div>
+    <div class="stat"><span class="delta">US&nbsp;Dept</span><div class="num">Lvl <em>1</em></div><div class="lbl">Travel advisory (CABA)</div><div class="sparkline"><svg viewBox="0 0 100 18" preserveAspectRatio="none"><path d="M0,9 L25,9 L50,9 L75,9 L100,9"/></svg></div></div>
+    <div class="stat"><span class="delta">+</span><div class="num"><em>$50</em>B</div><div class="lbl">BCRA reserves · stabilized</div><div class="sparkline"><svg viewBox="0 0 100 18" preserveAspectRatio="none"><path d="M0,16 L20,13 L40,10 L60,7 L80,4 L100,3"/></svg></div></div>
+  </div>
+
+  <div class="card warn">
+    <div class="card-label">Political Risk · Live</div>
+    <p>Milei's midterm elections (October 2025) produced La Libertad Avanza's first majority bloc but with thin margins. The 2027 presidential race has already begun and the peso remains sensitive to any policy slippage. <strong>The single biggest 2026 risk is a re-imposition of capital controls if reserves slip below $30B.</strong> Hold operating capital in USDC, not pesos. The peso is officially unified but the volatility of belief is real.</p>
+  </div>
+
+  <div class="toc">
+    <div class="toc-head"><span class="label">Contents</span><span class="count">XII Chapters</span></div>
+    <ol>
+      <li><a href="#snapshot">The Moment</a></li>
+      <li><a href="#safety">Barrios &amp; Safety</a></li>
+      <li><a href="#money">What Your Money Buys</a></li>
+      <li><a href="#realestate">Renting &amp; Buying</a></li>
+      <li><a href="#office">Office &amp; Coworking</a></li>
+      <li><a href="#business">Setting Up the SA</a></li>
+      <li><a href="#visa">Visa &amp; Residency</a></li>
+      <li><a href="#banking">Banking &amp; Crypto</a></li>
+      <li><a href="#tax">U.S. + AR Tax</a></li>
+      <li><a href="#lifestyle">Lifestyle &amp; Scene</a></li>
+      <li><a href="#protocols">Daily Protocols</a></li>
+      <li><a href="#first90">First Ninety Days</a></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ 02 SAFETY ============ -->
+<section id="safety" class="tint-warm">
+  <div class="ghost-num">02</div>
+  <div class="chapter">
+    <div class="chapter-num"><sup>Chapter II</sup>02
+      <div class="chapter-sigil"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="13"/><path d="M16 3 L18 16 L16 29 L14 16 Z" class="fill"/><path d="M3 16 L29 16" stroke-dasharray="1 3"/><circle cx="16" cy="16" r="1.4" class="fill"/></svg></div>
+    </div>
+    <div class="chapter-body">
+      <div class="chapter-kicker">Where to Live</div>
+      <h2>Live in <em>Palermo</em>. The rest is geography.</h2>
+      <p class="lede drop">Buenos Aires is the safest major capital in South America. Homicide rate is ~5 per 100k — comparable to NYC. The risks are <strong>phone snatching (motochorros), distraction theft in tourist zones, and the night-time fringe of Constitución / Once.</strong> The "live zone" is enormous by LATAM standards: Palermo, Recoleta, Belgrano, Las Cañitas, Puerto Madero, Núñez. Half the city is comfortably livable.</p>
+    </div>
+  </div>
+
+  <div class="neighmap">
+    <div class="nm-head">
+      <div class="nm-title">BA · The Northern Corridor</div>
+      <div class="nm-tag">North up · Río de la Plata east · not to scale</div>
+    </div>
+    <svg viewBox="0 0 800 320" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="bahatch" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
+          <line x1="0" y1="0" x2="0" y2="6" stroke="#7d1f30" stroke-width="1" opacity=".35"/>
+        </pattern>
+      </defs>
+      <!-- river -->
+      <path d="M730,0 L800,0 L800,320 L740,320 Q745,160 730,0 Z" fill="#365b78" opacity=".15"/>
+      <text x="765" y="170" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="11" fill="#365b78" opacity=".7" transform="rotate(90, 765, 170)">Río de la Plata</text>
+
+      <!-- Belgrano / Núñez (north) -->
+      <circle cx="640" cy="80" r="32" fill="#365b78" opacity=".10" stroke="#365b78" stroke-width=".8"/>
+      <text x="640" y="78" text-anchor="middle" font-family="Fraunces, serif" font-weight="500" font-size="11" fill="#13120e">Belgrano</text>
+      <text x="640" y="92" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="#365b78">families · quiet</text>
+
+      <circle cx="690" cy="40" r="22" fill="none" stroke="#7a7560" stroke-width=".8" stroke-dasharray="3 2"/>
+      <text x="690" y="44" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="9" fill="#494638">Núñez</text>
+
+      <!-- Palermo cluster -->
+      <circle cx="500" cy="130" r="42" fill="#7d1f30" opacity=".12" stroke="#7d1f30" stroke-width="1.4"/>
+      <text x="500" y="125" text-anchor="middle" font-family="Fraunces, serif" font-weight="500" font-size="13" fill="#13120e">Palermo</text>
+      <text x="500" y="139" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="#7d1f30">recommended</text>
+
+      <circle cx="450" cy="170" r="20" fill="#7d1f30" opacity=".10" stroke="#7d1f30" stroke-width="1"/>
+      <text x="450" y="168" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="9" fill="#13120e">Soho</text>
+      <text x="450" y="180" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7.5" fill="#7d1f30">design</text>
+
+      <circle cx="550" cy="170" r="20" fill="#7d1f30" opacity=".10" stroke="#7d1f30" stroke-width="1"/>
+      <text x="550" y="168" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="9" fill="#13120e">Hollywood</text>
+      <text x="550" y="180" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7.5" fill="#7d1f30">night</text>
+
+      <!-- Recoleta -->
+      <circle cx="430" cy="100" r="32" fill="#9c7a30" opacity=".10" stroke="#9c7a30" stroke-width="1"/>
+      <text x="430" y="98" text-anchor="middle" font-family="Fraunces, serif" font-weight="500" font-size="11" fill="#13120e">Recoleta</text>
+      <text x="430" y="112" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="#9c7a30">old money</text>
+
+      <!-- Las Cañitas -->
+      <circle cx="600" cy="160" r="22" fill="#7d1f30" opacity=".08" stroke="#7d1f30" stroke-width=".8"/>
+      <text x="600" y="158" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="10" fill="#13120e">Las Cañitas</text>
+      <text x="600" y="170" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7.5" fill="#7d1f30">walkable</text>
+
+      <!-- Puerto Madero -->
+      <rect x="640" y="180" width="80" height="40" fill="#0e6478" opacity=".10" stroke="#0e6478" stroke-width="1"/>
+      <text x="680" y="198" text-anchor="middle" font-family="Fraunces, serif" font-weight="500" font-size="11" fill="#13120e">Puerto Madero</text>
+      <text x="680" y="212" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="#0e6478">towers · expensive</text>
+
+      <!-- San Telmo (midtown south, accept) -->
+      <circle cx="460" cy="240" r="26" fill="#9c7a30" opacity=".10" stroke="#9c7a30" stroke-width=".8"/>
+      <text x="460" y="238" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="11" fill="#13120e">San Telmo</text>
+      <text x="460" y="252" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="#9c7a30">colonial · day</text>
+
+      <!-- Centro / Constitución -->
+      <rect x="280" y="180" width="120" height="80" fill="url(#bahatch)" opacity=".4"/>
+      <rect x="280" y="180" width="120" height="80" fill="none" stroke="#7d1f30" stroke-width=".8" stroke-dasharray="4 3"/>
+      <text x="340" y="200" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#7d1f30" letter-spacing="2">CAREFUL · NIGHT</text>
+      <text x="340" y="220" text-anchor="middle" font-family="Fraunces, serif" font-size="11" fill="#13120e">Once · Constitución</text>
+      <text x="340" y="236" text-anchor="middle" font-family="Fraunces, serif" font-size="11" fill="#13120e">Microcentro after 9pm</text>
+
+      <!-- La Boca -->
+      <circle cx="500" cy="290" r="22" fill="none" stroke="#7d1f30" stroke-width=".8" stroke-dasharray="3 2"/>
+      <text x="500" y="288" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="10" fill="#13120e">La Boca</text>
+      <text x="500" y="302" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7.5" fill="#7d1f30">Caminito only · day</text>
+    </svg>
+    <div class="nm-legend">
+      <div class="lg"><span class="swatch" style="background:#7d1f30;opacity:.5"></span>Live · recommended</div>
+      <div class="lg"><span class="swatch" style="background:#9c7a30;opacity:.5"></span>Quieter alternative</div>
+      <div class="lg"><span class="swatch" style="background:#365b78;opacity:.5"></span>Families · north</div>
+      <div class="lg"><span class="swatch" style="background:url(#bahatch);background-color:#7d1f30;opacity:.4"></span>Caution at night</div>
+    </div>
+  </div>
+
+  <div class="doc">
+    <h3>The Triangle</h3>
+    <p><strong>Palermo</strong> is enormous and divides into clear sub-zones. <strong>Palermo Soho</strong> (around Plaza Serrano) is design + boutiques + restaurants — the daytime hub. <strong>Palermo Hollywood</strong> (north of Soho) is bars + nightlife + film studios. <strong>Palermo Chico</strong> (east, near Recoleta) is residential gold. <strong>Las Cañitas</strong> (east of Hollywood) is the quietest sub-zone, mostly residential, walkable. For a Sora base, pick <strong>Palermo Soho or Palermo Chico</strong>. Rent: $1,200–2,400/mo for a renovated 2BR.</p>
+    <p><strong>Recoleta</strong> is old money. The Belle Époque mansions, the cemetery, Café Tortoni, the Alvear Palace. Slower, older, more formal. Live here if you want the most-European feel of BA. Rent: $1,400–3,000/mo for a 2BR in a French-style building.</p>
+    <p><strong>Belgrano + Núñez</strong> are the family neighborhoods. Cleaner, quieter, more parks. Better if you have a partner or kids; otherwise too far from the action. Rent: $900–1,800/mo.</p>
+
+    <h3>The Underrated</h3>
+    <p><strong>San Telmo</strong> is the colonial heart — cobblestone streets, antique markets, the Sunday Feria de San Pedro Telmo. Bohemian, slowly gentrifying, real character. Live here only if you want to commit to old BA — the night is sometimes rough on the edges. Rent: $700–1,400/mo for a colonial 2BR.</p>
+    <p><strong>Villa Crespo</strong> (north of Palermo) is the new Soho — cheaper, less polished, excellent ramen + craft beer scene. The smart bet for 2026. Rent: $700–1,200/mo for a renovated 2BR.</p>
+    <p><strong>Puerto Madero</strong> is the towers + corporate + Madonna's apartment. Sterile but safe and clean. Rent: $1,800–4,000/mo. Skip unless you want concierge living and don't care about street life.</p>
+
+    <h3>Hard No-Go Zones</h3>
+    <p><strong>Once</strong> (textile district, after dark), <strong>Constitución</strong> (train station, after dark), <strong>microcentro</strong> after 9pm (deserted, occasional muggings), <strong>La Boca beyond Caminito</strong> (5-block radius around the painted street is the daytime tourist zone; venture outside that and risk increases dramatically), <strong>villas miseria</strong> (Villa 31, Villa 1-11-14) under any circumstances.</p>
+
+    <h3>Honest Recommendation</h3>
+    <p>For Sora's launch base: <strong>Palermo Soho or Palermo Chico</strong>, 2BR renovated apartment with high ceilings + balcony, walking distance to Don Julio. $1,500–2,000/mo. Sign for 6 months in USD, extend to 24. Year 2 — consider buying.</p>
+  </div>
+</section>
+
+<!-- ============ 03 MONEY ============ -->
+<section id="money">
+  <div class="ghost-num">03</div>
+  <div class="chapter">
+    <div class="chapter-num"><sup>Chapter III</sup>03
+      <div class="chapter-sigil"><svg viewBox="0 0 32 32"><path d="M5 12 L27 12 M5 16 L27 16 M5 20 L27 20"/><circle cx="16" cy="16" r="13"/></svg></div>
+    </div>
+    <div class="chapter-body">
+      <div class="chapter-kicker">Cost of Living</div>
+      <h2>Comfortable on <em>$3,800/mo</em>, opulent on <em>$5,500</em>.</h2>
+      <p class="lede drop">BA in 2026 is no longer the steal it was in 2023. The unified peso, sticky inflation, and tourist recovery pushed prices in USD terms up 90% in two years. But against NYC or London, you're still paying 35% for a comparable Palermo Soho life. The meaningful steals remain: leather goods, books, wine, theater. The areas where prices match U.S.: real estate, beauty, gym.</p>
+    </div>
+  </div>
+
+  <div class="doc">
+    <h3>Monthly Burn — Palermo, Comfortable</h3>
+    <table class="dt">
+      <thead><tr><th>Line</th><th>USD</th><th>Note</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Rent</strong> — Palermo furnished 2BR USD lease</td><td class="num">$1,500</td><td>$1,000 unfurnished 24-mo · $2,200 Recoleta same spec</td></tr>
+        <tr><td>Utilities (Edenor + internet + gas)</td><td class="num">$120</td><td>Internet $40; Edenor electricity unsubsidized now</td></tr>
+        <tr><td>Phone — Personal / Movistar</td><td class="num">$22</td><td>Local SIM essential; 20GB plan</td></tr>
+        <tr><td>Groceries — Coto + Carrefour</td><td class="num">$350</td><td>Wine + steak are cheap; imports expensive</td></tr>
+        <tr><td>Restaurants — 3×/week mid · 1×/mo high</td><td class="num">$520</td><td>Don Julio $90/person; mid bistro $40; lunch parrilla $20</td></tr>
+        <tr><td>Coffee + cafés — daily</td><td class="num">$160</td><td>BA coffee scene caught up — $4–6/cortado is normal</td></tr>
+        <tr><td>Mobility — Subte + Uber + Cabify</td><td class="num">$140</td><td>Subte cheap ($0.40/ride); Uber $4–10 cross-Palermo</td></tr>
+        <tr><td>Gym — Megatlon or boutique</td><td class="num">$110</td><td>Megatlon $60/mo; boutique studios $130–180</td></tr>
+        <tr><td>Health insurance — Swiss Medical</td><td class="num">$280</td><td>Premium private; OSDE alternative</td></tr>
+        <tr><td>Domestic help — 2×/week</td><td class="num">$140</td><td>Cleaning + light cooking</td></tr>
+        <tr><td>Going out — bars + cultura</td><td class="num">$280</td><td>Teatro Colón $80/seat; milonga $15; wine bars $25</td></tr>
+        <tr><td>Misc — laundry + barber + small</td><td class="num">$110</td><td>Buffer</td></tr>
+        <tr class="tot"><td>Total comfortable</td><td class="num">$3,732</td><td>Round to $3,800/mo</td></tr>
+      </tbody>
+    </table>
+
+    <h3>What That Buys You</h3>
+    <ul class="bullets">
+      <li><strong>The world's best beef</strong> — Don Julio is a 10-min walk from Palermo Soho. The ranch-to-plate gap is smaller than anywhere on Earth.</li>
+      <li><strong>Wine education</strong> — Mendoza is a 90-min flight, Cafayate 2h. BA wine bars carry verticals you can't find in NYC.</li>
+      <li><strong>Cultural calendar</strong> — Teatro Colón world-class opera at $80/seat. Public theater, milongas, jazz at El Faro.</li>
+      <li><strong>Books + leather goods</strong> — El Ateneo Grand Splendid (the world's most beautiful bookshop). Custom leather $200 jackets at Casa Aviador.</li>
+      <li><strong>Time</strong> — domestic help, dry cleaning, errands fully delegable for $200/mo.</li>
+    </ul>
+
+    <h3>Where You'll Be Surprised by Price</h3>
+    <p><strong>Imported tech / cosmetics</strong> = 2–3× U.S. Bring with you. <strong>Pharmacies</strong> are subsidized for generic but premium brands are pricey. <strong>Real estate</strong> in Palermo / Recoleta in USD has caught up — buying $/m² is now ~60% of NYC, not 30%. <strong>Gym + Pilates</strong> at boutiques = U.S.-priced; Megatlon at $60/mo is the budget option.</p>
+  </div>
+</section>
+
+<!-- ============ 04 RE ============ -->
+<section id="realestate" class="tint-wine">
+  <div class="ghost-num">04</div>
+  <div class="chapter">
+    <div class="chapter-num"><sup>Chapter IV</sup>04
+      <div class="chapter-sigil"><svg viewBox="0 0 32 32"><path d="M5 24 L5 14 L16 6 L27 14 L27 24 Z"/><path d="M13 24 L13 17 L19 17 L19 24"/></svg></div>
+    </div>
+    <div class="chapter-body">
+      <div class="chapter-kicker">Renting &amp; Buying</div>
+      <h2>Rent year 1 in USD. <em>Buy</em> when you're sure.</h2>
+      <p class="lede drop">BA's rental market post-Milei is dual-track: long-term unfurnished in ARS (cheap if you can sign a 24-month contract and accept indexation) versus furnished short-stay in USD (expensive, flexible, what you'll do year 1). <strong>Buying makes sense if you stay 4+ years</strong> — apartment yields are 5–7% USD, appreciation 3–5%/year, and the BA Belle Époque architecture is the closest thing to Paris in the Americas at half the price.</p>
+    </div>
+  </div>
+
+  <div class="doc">
+    <h3>Rent Bands · USD/month</h3>
+    <table class="dt">
+      <thead><tr><th>Neighborhood</th><th>Studio</th><th>1BR</th><th>2BR boutique</th><th>3BR / house</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Palermo Soho · furnished USD</strong></td><td class="num">$900</td><td class="num">$1,300</td><td class="num">$1,800</td><td class="num">$3,000+</td></tr>
+        <tr><td>Palermo Chico</td><td class="num">$1,100</td><td class="num">$1,600</td><td class="num">$2,400</td><td class="num">$4,200</td></tr>
+        <tr><td>Palermo Hollywood</td><td class="num">$800</td><td class="num">$1,200</td><td class="num">$1,700</td><td class="num">$2,800</td></tr>
+        <tr><td>Recoleta</td><td class="num">$1,000</td><td class="num">$1,400</td><td class="num">$2,200</td><td class="num">$3,800</td></tr>
+        <tr><td>Las Cañitas</td><td class="num">$700</td><td class="num">$1,100</td><td class="num">$1,600</td><td class="num">$2,500</td></tr>
+        <tr><td>Villa Crespo</td><td class="num">$500</td><td class="num">$800</td><td class="num">$1,200</td><td class="num">$2,000</td></tr>
+        <tr><td>San Telmo · colonial</td><td class="num">$450</td><td class="num">$700</td><td class="num">$1,100</td><td class="num">$1,800</td></tr>
+        <tr><td>Puerto Madero · tower</td><td class="num">$1,400</td><td class="num">$2,000</td><td class="num">$2,800</td><td class="num">$4,500+</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Buying — What $250k Gets You</h3>
+    <ul class="bullets">
+      <li><strong>Palermo Soho renovated 2BR</strong>, 70–90 m², high ceilings, balcony — $220–280k. The mid-market sweet spot. USD Airbnb yield 7–10% gross.</li>
+      <li><strong>Recoleta classic 2BR</strong>, 80–110 m², parquet floors, French-style — $230–320k. Romantic; slower appreciation but stable.</li>
+      <li><strong>Palermo Chico 2BR</strong>, 90–120 m², modern — $300–420k. Top-tier BA real estate. Best store of value.</li>
+      <li><strong>Villa Crespo 2BR new build</strong>, 65 m², amenities — $150–200k. Best yield, $1,200/mo Airbnb potential.</li>
+      <li><strong>San Telmo colonial 2BR loft</strong>, 100 m² — $150–220k. Unique product; smaller buyer pool but devoted.</li>
+    </ul>
+
+    <h3>Buying Process — Compressed</h3>
+    <ol style="max-width:1080px;margin:18px auto;padding-left:32px;font-size:15.5px;line-height:1.55;color:var(--ink-2)">
+      <li style="margin-bottom:10px"><strong>Get a CDI (tax ID for non-residents)</strong> via your lawyer. 1 week, $300.</li>
+      <li style="margin-bottom:10px"><strong>Pick a broker.</strong> Mantra Real Estate, BA Properties, or Bullrich (the dynastic one). Argentine brokers are unlicensed but reputation-driven.</li>
+      <li style="margin-bottom:10px"><strong>Reserva</strong> — sign a reservation + 5% deposit. Locks the price.</li>
+      <li style="margin-bottom:10px"><strong>Boleto de compraventa</strong> — preliminary contract, 30% paid. Signed at escribanía (notary) of your choice (NOT seller's).</li>
+      <li style="margin-bottom:10px"><strong>Escritura</strong> — final deed, 30–60 days post-boleto. 100% paid in <strong>USD cash</strong> at the escribanía. The Argentine real estate market runs on USD billete (physical hundred-dollar bills).</li>
+      <li style="margin-bottom:10px"><strong>Closing costs ~6%</strong> including escribanía 1.5% + ITI tax 1.5% + stamp tax 2.5% + broker commission 3% (often split with seller).</li>
+      <li style="margin-bottom:10px"><strong>Bring USD physically.</strong> Argentina's real estate culture is still cash-USD-at-the-table. Bring $10k+ at a time per traveler (declare at customs &gt; $10k); use Wire to Argentine "casa de cambio" partnered with escribanía.</li>
+    </ol>
+
+    <div class="card sky">
+      <div class="card-label">Sora Use-Case</div>
+      <p>The Sora-BA play: a Palermo Soho 2BR (75 m², $230k purchase, $1,400/mo furnished USD rental when not occupied). Net yield 7–8% USD plus 3–5% local appreciation. Pays for itself in 4 years vs renting at $1,500/mo.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 OFFICE ============ -->
+<section id="office">
+  <div class="ghost-num">05</div>
+  <div class="chapter">
+    <div class="chapter-num"><sup>Chapter V</sup>05
+      <div class="chapter-sigil"><svg viewBox="0 0 32 32"><rect x="5" y="9" width="22" height="16"/><path d="M5 14 L27 14"/><circle cx="9" cy="11.5" r=".7" class="fill"/><circle cx="12" cy="11.5" r=".7" class="fill"/></svg></div>
+    </div>
+    <div class="chapter-body">
+      <div class="chapter-kicker">Office &amp; Coworking</div>
+      <h2>WeWork Microcentro or AreaTres. <em>Café culture is your real office</em>.</h2>
+      <p class="lede drop">BA has the most café-friendly remote-work culture in LATAM. Most boutique cafés have stable wifi and welcome 4-hour laptop sessions. Coworking inventory is decent but expensive in USD terms post-Milei. <strong>Start at AreaTres or WeWork month-to-month; expect to use cafés 60% of the time anyway.</strong></p>
+    </div>
+  </div>
+
+  <div class="doc">
+    <h3>Coworking — The Short List</h3>
+    <ul class="bullets">
+      <li><strong>AreaTres Palermo</strong> — $250/mo hot desk. The Argentine coworking gold standard. Designed, quiet, fast wifi, includes coffee + espresso.</li>
+      <li><strong>WeWork Microcentro / Olga Cossettini (Puerto Madero)</strong> — $310/mo hot desk. Best if client-facing or if you want skyline views.</li>
+      <li><strong>HIT Cowork (Palermo)</strong> — $190/mo hot desk. Younger, scrappier, more nomads.</li>
+      <li><strong>Espacio Cabrera (Villa Crespo)</strong> — $160/mo. The hidden gem; quietest, best wifi, no Airbnb-host energy.</li>
+      <li><strong>La Maquinita</strong> — Multiple locations, $200/mo. Reliable, well-distributed across BA.</li>
+    </ul>
+
+    <h3>Private Office</h3>
+    <p>For Sora-AR with 2–4 person team: $1,200–2,000/mo for a 3-room private suite through IWG (Regus) or local broker like Mantra. 6-month leases standard. Buenos Aires office market is over-supplied — negotiate hard.</p>
+
+    <h3>The Café Pattern</h3>
+    <p>The BA café network is exceptional. <strong>Cuervo Café</strong> (Palermo Soho), <strong>Felix Felicis</strong> (Palermo Hollywood), <strong>LAB Tostadores</strong> (Palermo), <strong>Notable Café</strong> (Recoleta), <strong>Cossab</strong> (Villa Crespo), <strong>Bistró Berlín</strong> (San Telmo). All wifi-friendly, all serve full breakfast/lunch, none object to 3-hour stays.</p>
+  </div>
+</section>
+
+<!-- ============ 06 BUSINESS ============ -->
+<section id="business" class="tint-sky">
+  <div class="ghost-num">06</div>
+  <div class="chapter">
+    <div class="chapter-num"><sup>Chapter VI</sup>06
+      <div class="chapter-sigil"><svg viewBox="0 0 32 32"><rect x="6" y="10" width="20" height="16"/><path d="M11 10 L11 6 L21 6 L21 10"/><path d="M6 16 L26 16"/></svg></div>
+    </div>
+    <div class="chapter-body">
+      <div class="chapter-kicker">Setting Up the SA</div>
+      <h2>SA via Marval. <em>Six weeks</em>. $6,500 all-in.</h2>
+      <p class="lede drop">Argentina's Sociedad Anónima is the bureaucratically heaviest setup in LATAM, but the Milei-era reforms (BUI 2024, Decreto 70/2023) cut the timeline by ~40%. Modern alternative: SAS (Sociedad por Acciones Simplificada, separate from Colombia's), introduced in 2017 — faster, simpler, single-shareholder OK. Use SAS unless you're raising institutional capital.</p>
+    </div>
+  </div>
+
+  <div class="doc">
+    <h3>Setup Sequence — SAS Track</h3>
+    <ol style="max-width:1080px;margin:18px auto;padding-left:32px;font-size:15.5px;line-height:1.55;color:var(--ink-2)">
+      <li style="margin-bottom:10px"><strong>Hire counsel.</strong> Marval O'Farrell Mairal ($4,500 all-in, Tier-1) or Bruchou &amp; Funes de Rioja ($2,800, mid-tier).</li>
+      <li style="margin-bottom:10px"><strong>CDI / CUIT</strong> — tax ID. CDI for non-residents (1 week, $300); CUIT for residents (after DNI, 2 weeks).</li>
+      <li style="margin-bottom:10px"><strong>Statutes draft</strong> — counsel writes; you review. 5–7 days. Define objeto social broadly.</li>
+      <li style="margin-bottom:10px"><strong>IGJ registration</strong> (Inspección General de Justicia). 15–30 days. The historical bottleneck — Milei's Decreto 70 cut this in half.</li>
+      <li style="margin-bottom:10px"><strong>AFIP registration</strong> (tax authority). Auto after IGJ. 1 week.</li>
+      <li style="margin-bottom:10px"><strong>Bank account opening.</strong> Galicia, Santander Río, or HSBC. 2–3 weeks. In-person legal rep required.</li>
+      <li style="margin-bottom:10px"><strong>Lemon / Belo Business</strong> in parallel for USDC rail. 10 days.</li>
+      <li style="margin-bottom:10px"><strong>AFIP IIBB</strong> (gross receipts) registration in CABA. Required if commercial activity in city.</li>
+    </ol>
+
+    <h3>Recommended Counsel</h3>
+    <ul class="bullets">
+      <li><strong>Marval O'Farrell Mairal</strong> — Tier-1. English-speaking M&amp;A team. Partner: <em>Sebastián Ferrero</em>. $4,500 incorporation + $400/mo retainer. Best for serious raise paths.</li>
+      <li><strong>Bruchou &amp; Funes de Rioja</strong> — Mid-tier, faster. Partner: <em>Mariano Carricart</em>. $2,800 + $250/mo.</li>
+      <li><strong>Pérez Alati Grondona</strong> — Real estate + boutique. Use for property transactions.</li>
+      <li><strong>Estudio Beccar Varela</strong> — Tier-1 alternative; deeper banking expertise.</li>
+    </ul>
+
+    <h3>Hiring Local Staff — The Reality</h3>
+    <p>Argentine labor law is the heaviest in LATAM. Employer cost is ~1.55× gross (aportes patronales 23%, ART workers comp 4%, vacation 4.16%, aguinaldo 8.33%). For a $1,500/mo Sora-AR host, total employer cost is ~$2,325/mo. <strong>Termination "without cause" requires severance of 1 month per year of service + accumulated vacation + aguinaldo, paid lump sum.</strong> Indemnización doble (double severance) periodically reinstated by governments under economic stress.</p>
+    <p>Alternative: <strong>monotributo</strong> contractor — flat-tax independent contractor regime, employer pays no aportes. Limits: monotributista must control work + tools + have other clients. AFIP audits this. PEO via Deel ~12% on top is the safest path.</p>
+
+    <div class="card warn">
+      <div class="card-label">Labor Law Reality</div>
+      <p>Even in Milei's deregulation era, Argentine labor law remains employee-favorable. The 2024 reforms reduced severance multipliers and simplified some terminations but didn't eliminate them. <strong>Use monotributo contractors or PEO for year 1. Convert top performers to direct employment only after 12 months when you're sure.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 07 VISA ============ -->
+<section id="visa">
+  <div class="ghost-num">07</div>
+  <div class="chapter">
+    <div class="chapter-num"><sup>Chapter VII</sup>07
+      <div class="chapter-sigil"><svg viewBox="0 0 32 32"><rect x="8" y="6" width="16" height="20" rx="1"/><circle cx="16" cy="14" r="3"/><path d="M11 21 L21 21"/></svg></div>
+    </div>
+    <div class="chapter-body">
+      <div class="chapter-kicker">Visa &amp; Residency</div>
+      <h2>Visa Rentista or <em>Digital Nomad</em>. Both work.</h2>
+      <p class="lede drop">Argentina launched a digital nomad visa in 2022 — 1-year, $250, proof of $2,500/mo income. The Rentista (passive income) requires $2,000/mo proven for 2 years. Either gets you DNI (the resident ID), which unlocks everything. <strong>Tourist Argentinian stay is also generous: 90 days on entry, free 90-day extension at any Migraciones office.</strong> You can do an extended scout (180 days as tourist) before committing to residency.</p>
+    </div>
+  </div>
+
+  <div class="doc">
+    <h3>The Sequence That Works</h3>
+    <ol style="max-width:1080px;margin:18px auto;padding-left:32px;font-size:15.5px;line-height:1.55;color:var(--ink-2)">
+      <li style="margin-bottom:10px"><strong>Land in BA as tourist.</strong> 90-day stamp on entry (free, automatic for U.S./EU passports).</li>
+      <li style="margin-bottom:10px"><strong>Extend to 180 days</strong> at Migraciones Antártida Argentina office (downtown). $50, same day.</li>
+      <li style="margin-bottom:10px"><strong>Apply for Visa Nomada Digital or Rentista</strong> from inside Argentina via Migraciones online portal.</li>
+      <li style="margin-bottom:10px"><strong>Submit docs:</strong> apostilled birth certificate, apostilled FBI background check (or local equivalent), 6 months bank statements, employment contract (Nomada) or passive income proof (Rentista).</li>
+      <li style="margin-bottom:10px"><strong>Pay fees:</strong> $250 (Nomada) or $300 (Rentista).</li>
+      <li style="margin-bottom:10px"><strong>Approval in 30–60 days.</strong> Visa issued digitally.</li>
+      <li style="margin-bottom:10px"><strong>Get your DNI.</strong> Appointment at RENAPER (national registry) in Once. $30, 2-week wait. <strong>DNI is the document you use for everything else — bank, lease, CUIT, services.</strong></li>
+      <li style="margin-bottom:10px"><strong>CUIT</strong> (tax ID) from AFIP. Required for: monotributo, lease in your name, CDI upgrade, bank account.</li>
+    </ol>
+
+    <h3>Visa Pathways Compared</h3>
+    <table class="dt">
+      <thead><tr><th>Visa</th><th>Income required</th><th>Duration</th><th>Best for</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Nomada Digital</strong></td><td class="num">$2,500/mo</td><td>1 year + 1 renewal</td><td>Remote workers; faster process</td></tr>
+        <tr><td><strong>Rentista</strong></td><td class="num">$2,000/mo</td><td>3 years renewable</td><td>Passive income holders</td></tr>
+        <tr><td><strong>Inversionista</strong></td><td class="num">$50k+ investment</td><td>3 years renewable</td><td>Property purchase or Sora-AR investment</td></tr>
+        <tr><td><strong>Trabajador</strong></td><td class="num">Argentine employer</td><td>3 years renewable</td><td>Sora-AR as employer</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Tax Residency — The 183-Day Question</h3>
+    <p>Argentina applies the 183-day rule loosely. AFIP considers you a tax resident if (a) you stay 12+ months in 24 (continuous or not), OR (b) you obtain permanent residency, OR (c) your "centro de intereses" is Argentina. <strong>A Nomada Digital visa holder typically doesn't trigger tax residency for the first year unless presence + economic activity combine.</strong> Resident tax brackets go to 35%; non-resident withholding rules apply to local-source income only.</p>
+
+    <div class="card warn">
+      <div class="card-label">The Apostille Trap (Again)</div>
+      <p>FBI background check + state-issued apostille required. FBI report 4–6 weeks; apostille +2 weeks. Start before flying. Without it, your tourist stamp expires while you wait — extension counter buys time but not unlimited.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 08 BANKING ============ -->
+<section id="banking" class="tint-warm">
+  <div class="ghost-num">08</div>
+  <div class="chapter">
+    <div class="chapter-num"><sup>Chapter VIII</sup>08
+      <div class="chapter-sigil"><svg viewBox="0 0 32 32"><path d="M5 28 L27 28"/><path d="M7 13 L7 25 M12 13 L12 25 M20 13 L20 25 M25 13 L25 25"/><path d="M4 13 L28 13 L16 5 Z"/></svg></div>
+    </div>
+    <div class="chapter-body">
+      <div class="chapter-kicker">Banking &amp; Pesos</div>
+      <h2>Galicia for the bank, <em>Lemon</em> for the rail.</h2>
+      <p class="lede drop">Argentine banking has fully digitized in the Milei era. Apps are excellent, transfers via CVU/CBU rails are instant and free, and the cepo lift means you can now buy and sell USD on the official market. Crypto is fully legal and stablecoin adoption is the highest in LATAM (40%+ of urban adults hold USDT/USDC). <strong>The stack: Galicia + Lemon Cash + Belo for the three jobs.</strong></p>
+    </div>
+  </div>
+
+  <div class="doc">
+    <h3>Banks — The Short List</h3>
+    <ul class="bullets">
+      <li><strong>Banco Galicia</strong> — Largest private, best app (Galicia Move), best digital UX. Default choice. Account opens in 1 visit with DNI + CUIT + proof of address.</li>
+      <li><strong>Santander Río</strong> — Solid #2. Better international wire pricing. Pick if you have Spain ties.</li>
+      <li><strong>BBVA Argentina</strong> — Decent app, good if you have BBVA elsewhere. Cuenta DNI for non-residents.</li>
+      <li><strong>HSBC Argentina</strong> — Best for $250k+ deposits; Premier banking globally.</li>
+      <li><strong>Banco Nación</strong> — Public bank. Skip unless you have a specific reason; service inconsistent.</li>
+    </ul>
+
+    <h3>Crypto Rails — USDC, USDT, BTC</h3>
+    <p>Argentina is the LATAM stablecoin capital. <strong>Lemon Cash</strong> is the consumer leader — wallet + crypto debit card + USDC/USDT/BTC. <strong>Belo</strong> is the Argentine fintech with a Visa prepaid linked to crypto balances. <strong>Buenbit</strong> is the Coinbase analogue, regulated by CNV (since Milei's 2024 reforms).</p>
+
+    <h3>The Money Flow That Works</h3>
+    <ol style="max-width:1080px;margin:18px auto;padding-left:32px;font-size:15.5px;line-height:1.55;color:var(--ink-2)">
+      <li style="margin-bottom:8px">U.S. employer pays USD → U.S. bank.</li>
+      <li style="margin-bottom:8px">Wire USD → Lemon or Belo Business (1 day, free for crypto-side incoming).</li>
+      <li style="margin-bottom:8px">Convert to USDC + hold most balance in USDC.</li>
+      <li style="margin-bottom:8px">When pesos needed: USDC → ARS on Lemon or Buenbit, 0.5–1% spread.</li>
+      <li style="margin-bottom:8px">CVU transfer from Lemon → Galicia, instant + free.</li>
+      <li style="margin-bottom:8px">Spend pesos via Galicia debit + Belo Visa prepaid.</li>
+    </ol>
+    <p>For Sora-AR revenue: guest pays USD via Stripe → U.S. bank → Lemon Business → USDC reserves OR ARS for local ops. Net cost: 1.5–2.5% all-in.</p>
+
+    <div class="card sky">
+      <div class="card-label">USD Account at Argentine Bank</div>
+      <p>Post-cepo lift, BCRA permits USD accounts ("Cuenta en Dólares") for residents and non-residents. Galicia + Santander Río + HSBC all offer them. Funds are held domestically, accessible via ATM in USD bills (Bancos Galicia + Santander have USD-dispensing ATMs in CABA). <strong>This is the safer way to hold large peso amounts</strong> — exchange small batches to USD periodically rather than holding pesos through any future inflation re-flare.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 09 TAX ============ -->
+<section id="tax">
+  <div class="ghost-num">09</div>
+  <div class="chapter">
+    <div class="chapter-num"><sup>Chapter IX</sup>09
+      <div class="chapter-sigil"><svg viewBox="0 0 32 32"><path d="M8 8 L24 8 L24 24 L8 24 Z"/><path d="M12 13 L20 13 M12 17 L20 17 M12 21 L17 21"/></svg></div>
+    </div>
+    <div class="chapter-body">
+      <div class="chapter-kicker">U.S. + AR Tax Reality</div>
+      <h2>U.S. tax forever. <em>AR tax</em> if you stay 12+ months in 24.</h2>
+      <p class="lede drop">The U.S.-Argentina tax treaty does not exist — both countries have been "in discussions" since 2013. This makes Argentine tax residency expensive for U.S. citizens because the Foreign Tax Credit (FTC) has to do all the work without treaty tie-breakers. <strong>If you cross AR tax residency, your worldwide income is taxable at progressive rates to 35%.</strong> Plan accordingly.</p>
+    </div>
+  </div>
+
+  <div class="doc">
+    <h3>What You Owe / Must File</h3>
+    <ul class="bullets">
+      <li><strong>U.S. Form 1040</strong> — every year regardless of residence. Worldwide income.</li>
+      <li><strong>FEIE (Form 2555)</strong> — exclude up to $130k earned income if you pass bona fide residence (~330+ days outside U.S.) or physical presence test.</li>
+      <li><strong>FTC (Form 1116)</strong> — credit for Argentine tax paid. Critical absent treaty.</li>
+      <li><strong>FBAR (FinCEN 114)</strong> — required if Argentine accounts &gt; $10k aggregate. Free, online.</li>
+      <li><strong>FATCA (Form 8938)</strong> — if foreign financial assets &gt; $200k single / $400k married.</li>
+      <li><strong>AFIP Bienes Personales</strong> — annual wealth tax on Argentine residents' worldwide assets &gt; $25k (2026 threshold). Progressive 0.5–1.25%.</li>
+      <li><strong>AFIP Ganancias</strong> — income tax if AR resident. Progressive to 35%.</li>
+    </ul>
+
+    <h3>The Sweet Spot Structure</h3>
+    <ol style="max-width:1080px;margin:18px auto;padding-left:32px;font-size:15.5px;line-height:1.55;color:var(--ink-2)">
+      <li style="margin-bottom:10px"><strong>Stay U.S. tax resident.</strong> Maintain U.S. address, license, voter registration.</li>
+      <li style="margin-bottom:10px"><strong>Maintain &lt; 12 months of presence in any 24-month window</strong> to avoid AR tax residency. Track via Migraciones entry stamps + your own ledger. Spend remainder in Uruguay (winter), the U.S. (summer), or Mexico.</li>
+      <li style="margin-bottom:10px"><strong>Sora-AR SAS is its own tax entity</strong> — corporate tax 25–35% on Argentine-source income. You're a shareholder, not employee.</li>
+      <li style="margin-bottom:10px"><strong>U.S. compensation</strong> stays paid to U.S. bank, U.S. taxed. FEIE eligible if you qualify; W-2 income.</li>
+      <li style="margin-bottom:10px"><strong>SAS dividends</strong> — 7% withholding on distribution. U.S. recipient taxes at qualified-dividend rate. FTC offsets.</li>
+    </ol>
+
+    <div class="card danger">
+      <div class="card-label">The Worldwide-Income Trap</div>
+      <p><strong>Argentina taxes resident citizens and resident foreigners on worldwide income.</strong> The Bienes Personales wealth tax includes assets outside Argentina (e.g., your U.S. investment accounts, crypto holdings, foreign real estate). <strong>If you cross AR residency, this gets expensive fast.</strong> The absence of a U.S.-Argentina tax treaty means double-taxation relief is FTC-only. Recommended counsel: <strong>Greenback Tax</strong> (US) + <strong>Marval tax team</strong> (Argentine).</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 10 LIFESTYLE ============ -->
+<section id="lifestyle" class="tint-sky">
+  <div class="ghost-num">10</div>
+  <div class="chapter">
+    <div class="chapter-num"><sup>Chapter X</sup>10
+      <div class="chapter-sigil"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="13"/><path d="M10 18 Q16 24 22 18"/><circle cx="12" cy="13" r="1.2" class="fill"/><circle cx="20" cy="13" r="1.2" class="fill"/></svg></div>
+    </div>
+    <div class="chapter-body">
+      <div class="chapter-kicker">Lifestyle &amp; Scene</div>
+      <h2>The case for BA is <em>cultural density</em>.</h2>
+      <p class="lede drop">Buenos Aires has more bookshops per capita than any city on Earth, 4,000+ active theaters, the most-photographed library (El Ateneo Grand Splendid), a tango economy that supports thousands of musicians, and Don Julio (#1 World's 50 Best 2024) on Calle Guatemala. Within a 90-min flight: Mendoza wine country, Iguazú falls, Bariloche lakes. The culture is European-density with Latin American warmth.</p>
+    </div>
+  </div>
+
+  <div class="doc">
+    <h3>Where to Eat — The Bones</h3>
+    <table class="dt">
+      <thead><tr><th>Restaurant</th><th>Neighborhood</th><th>Why</th><th>Reservation</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Don Julio</strong></td><td>Palermo</td><td>#1 World's 50 Best 2024. Mariné Pizarro chivito + bife de chorizo.</td><td>60 days</td></tr>
+        <tr><td><strong>Tegui</strong></td><td>Palermo</td><td>Germán Martitegui. Chef's counter. Modernist Argentine.</td><td>45 days</td></tr>
+        <tr><td><strong>Anchoita</strong></td><td>Chacarita</td><td>Enrique Piñeyro. 7-course $90 tasting. Excellent value-for-quality.</td><td>30 days</td></tr>
+        <tr><td><strong>Mishiguene</strong></td><td>Palermo</td><td>Tomás Kalika. Best Jewish-Argentine food in the world.</td><td>1 week</td></tr>
+        <tr><td><strong>Sucre</strong></td><td>Belgrano</td><td>Quietly excellent, Italian-leaning, the family-day restaurant.</td><td>1 week</td></tr>
+        <tr><td><strong>El Preferido</strong></td><td>Palermo</td><td>Casual bistro classic; lunch sandwiches; the Tuesday dependable.</td><td>walk-in</td></tr>
+        <tr><td><strong>Niño Gordo</strong></td><td>Palermo</td><td>Pan-Asian, very loud, very good. Group dinner default.</td><td>2 weeks</td></tr>
+        <tr><td><strong>Proper</strong></td><td>Palermo</td><td>Live-fire cooking, small plates. The brunch ambition pick.</td><td>1 week</td></tr>
+        <tr><td><strong>El Baqueano</strong></td><td>San Telmo</td><td>Native Argentine ingredients (llama, yacaré). Tasting only.</td><td>2 weeks</td></tr>
+        <tr><td><strong>La Cabrera</strong></td><td>Palermo</td><td>Parrilla classic. Touristy but the bife ancho is real. 7pm sitting.</td><td>walk-in</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Nights Out</h3>
+    <ul class="bullets">
+      <li><strong>Florería Atlántico</strong> (Retiro) — World's 50 Best Bar #1 LATAM, perennial. Speakeasy behind a flower shop. The bucket-list cocktail bar.</li>
+      <li><strong>Tres Monos</strong> (Palermo) — Top-50 World's. Smaller, more local than Atlántico.</li>
+      <li><strong>Verne Club</strong> (Palermo) — Steampunk speakeasy, mid-tier, never empty.</li>
+      <li><strong>El Faro Bar de Cocteles</strong> (Palermo) — Jazz Tuesdays, expert classic cocktails.</li>
+      <li><strong>Niceto Club</strong> (Palermo) — Live music + DJ; the Friday-night dependable.</li>
+      <li><strong>La Catedral Club</strong> (Almagro) — Abandoned-warehouse tango milonga. Mondays/Tuesdays. The most cinematic night of the week.</li>
+    </ul>
+
+    <h3>Gym &amp; Movement</h3>
+    <p><strong>Megatlon</strong> at $60/mo for U.S.-tier facilities. <strong>Bodytech BA</strong> as alternative. <strong>SportClub Premium</strong> in Recoleta. <strong>Boutique studios:</strong> Be.Pilates (Palermo) for reformer, Mate Movement for yoga, Boxeo Argentino (Almagro) for boxing. <strong>Run in Bosques de Palermo or along the Costanera Norte</strong> — both safe day + evening.</p>
+
+    <h3>Weekends Out of BA</h3>
+    <ul class="bullets">
+      <li><strong>Tigre Delta</strong> — 1h drive. River delta + boat lunch. Day trip default.</li>
+      <li><strong>Mar del Plata</strong> — 4h drive. Argentine coast town. Summer only (Dec–Feb).</li>
+      <li><strong>Mendoza</strong> — 1.5h flight. Wine + Andes + steak. The most-repeatable trip.</li>
+      <li><strong>Iguazú</strong> — 1.5h flight. Falls + jungle. Once-a-year mandatory.</li>
+      <li><strong>Bariloche</strong> — 2h flight. Patagonia north, lakes, summer hiking + winter ski. Twice-a-year ideal.</li>
+      <li><strong>Punta del Este / José Ignacio</strong> (Uruguay) — 1h flight or 3h ferry via Colonia. Dec–Feb summer weekend, the BA elite migration.</li>
+      <li><strong>Colonia del Sacramento</strong> — 1h ferry. UNESCO colonial town. Sunday day trip.</li>
+    </ul>
+
+    <h3>Community &amp; Spanish</h3>
+    <p>BA Spanish (rioplatense) uses <em>vos</em> instead of <em>tú</em> and replaces "ll/y" with "sh." Functional Spanish at month 3, accent-aware at month 12. <strong>Expanish</strong> and <strong>Vamos Spanish Academy</strong> for in-person. <strong>InternationsBA</strong> for English-speaking expat events. Local culture is more European in formality than Caribbean LATAM — expect first names + handshakes, not back-slapping.</p>
+  </div>
+</section>
+
+<!-- ============ 11 PROTOCOLS ============ -->
+<section id="protocols" class="tint-wine">
+  <div class="ghost-num">11</div>
+  <div class="chapter">
+    <div class="chapter-num"><sup>Chapter XI</sup>11
+      <div class="chapter-sigil"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="13"/><path d="M9 12 L12 16 L9 20"/><path d="M16 9 L16 23"/><path d="M23 12 L20 16 L23 20"/></svg></div>
+    </div>
+    <div class="chapter-body">
+      <div class="chapter-kicker">Daily Safety Protocols</div>
+      <h2>The bubble is <em>most of the city</em>.</h2>
+      <p class="lede drop">BA is the safest major capital in South America. The risks are specific: motochorros (motorcycle-borne phone snatchers), distraction theft (mustard squirted on your shirt, then "helpful" stranger lifts your wallet), Once/Constitución after dark, and the occasional secuestro express (rare but real). Daily life is calmer than Bogotá or São Paulo; comparable to Madrid with more theft-of-opportunity.</p>
+    </div>
+  </div>
+
+  <div class="doc">
+    <h3>The Habits Worth Keeping</h3>
+    <ul class="bullets">
+      <li><strong>Phone in pocket walking, hand-held in cafés only.</strong> Motochorros are the dominant petty crime. Side-streets in Palermo can have a fast pickup.</li>
+      <li><strong>Uber or Cabify, not street taxis.</strong> Cabify is the local rival; both safe. Subte (subway) is fine until ~9pm, after that switch to Uber.</li>
+      <li><strong>No backpack on subway after dark.</strong> Slash-thefts of unattended packs happen on Línea B and Línea D.</li>
+      <li><strong>Mustard-trick awareness.</strong> If someone "accidentally" spills something on you on the street and another stranger "helps clean up," the second person is lifting your wallet. Walk away, deal with the spill yourself.</li>
+      <li><strong>Don't show large cash withdrawals.</strong> ATMs inside banks during business hours. Multiple smaller withdrawals over weeks vs one large.</li>
+      <li><strong>Carry photo of DNI, not original.</strong> DNI photo on phone enough for most checks. Original in apartment.</li>
+      <li><strong>Avoid Once + Constitución after 9pm.</strong> Both are train hub districts that empty fast and feel rough.</li>
+      <li><strong>Boca del Río beyond Caminito.</strong> 5-block radius around the painted street is daytime tourist; outside that, real risk.</li>
+    </ul>
+
+    <h3>What You Don't Need</h3>
+    <p>No armed escort, no varying routes, no panic button. BA in 2026 is genuinely safer than U.S. peer cities. The risk profile is European-style theft of opportunity — manageable with the habits above.</p>
+  </div>
+</section>
+
+<!-- ============ 12 FIRST 90 ============ -->
+<section id="first90">
+  <div class="ghost-num">12</div>
+  <div class="chapter">
+    <div class="chapter-num"><sup>Chapter XII</sup>12
+      <div class="chapter-sigil"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="13"/><path d="M16 16 L16 9 M16 16 L23 16"/><circle cx="16" cy="16" r="1.4" class="fill"/></svg></div>
+    </div>
+    <div class="chapter-body">
+      <div class="chapter-kicker">First Ninety Days</div>
+      <h2>The sequence that <em>doesn't waste pesos</em>.</h2>
+      <p class="lede drop">BA rewards patience. The bureaucracy is heaviest in LATAM but it doesn't have to be slow — if you stack the right counsel + Nomada visa + Lemon Cash + Galicia, you're operational in 75 days. The mistake is trying to do AFIP, DNI, and SAS in parallel — sequence them.</p>
+    </div>
+  </div>
+
+  <div class="doc">
+    <h3>Before You Fly</h3>
+    <ul class="bullets">
+      <li><strong>FBI background check</strong> + state apostille — start 8 weeks ahead. Required for visa.</li>
+      <li><strong>Apostilled birth certificate</strong> — start 6 weeks ahead. Required for visa.</li>
+      <li><strong>Counsel pre-engaged.</strong> Email Marval or Bruchou — kickoff call for week 1.</li>
+      <li><strong>U.S. tax cleanup.</strong> Last 1040 ready. 30-min consult with Greenback re: FEIE / FBAR / FTC absent treaty.</li>
+      <li><strong>U.S. address solution.</strong> Earth Class Mail or family. License + voter registration in U.S.</li>
+      <li><strong>USD liquidity.</strong> Move 4 months burn ($16k) to U.S. bank, ready to wire to Lemon once setup. Bring $5k physical USD for cash needs.</li>
+    </ul>
+
+    <h3>Days 1–30 — Scouting</h3>
+    <ul class="bullets">
+      <li><strong>Land on tourist stamp.</strong> 90 days automatic.</li>
+      <li><strong>10 nights at Faena or Casa Lucía.</strong> Hotel base for the first city tour.</li>
+      <li><strong>Walk Palermo Soho, Chico, Hollywood; Recoleta; Las Cañitas; Villa Crespo</strong> — 10am, 2pm, 8pm, 11pm. Multiple times.</li>
+      <li><strong>Eat at Don Julio, Tegui, Anchoita, El Preferido, Niño Gordo</strong> in first 3 weeks. Calibration.</li>
+      <li><strong>Meet 5 expat operators</strong> via InternationsBA. First-year lessons save 3 months.</li>
+      <li><strong>Sign 6-month furnished lease in Palermo</strong>, USD-denominated. Through Mantra or BA Properties.</li>
+      <li><strong>Apply for Nomada or Rentista visa</strong> by day 60 (from inside the country).</li>
+    </ul>
+
+    <h3>Days 31–60 — Settling</h3>
+    <ul class="bullets">
+      <li><strong>Migraciones extension to 180 days</strong> if visa not approved yet.</li>
+      <li><strong>Visa approved.</strong> Apply for DNI at RENAPER.</li>
+      <li><strong>CDI obtained</strong> via Marval. $300, 1 week.</li>
+      <li><strong>Galicia personal account opened.</strong> 1 visit with DNI + CDI + lease.</li>
+      <li><strong>Lemon Cash + Belo accounts opened</strong> in parallel.</li>
+      <li><strong>Sora-AR SAS incorporation started</strong> with Marval. 6-week timeline.</li>
+      <li><strong>Join Megatlon + Cuervo Café regular relationship.</strong></li>
+    </ul>
+
+    <h3>Days 61–90 — Operating</h3>
+    <ul class="bullets">
+      <li><strong>DNI in hand.</strong></li>
+      <li><strong>CUIT issued by AFIP.</strong></li>
+      <li><strong>SAS fully operational.</strong> Corporate Galicia + Lemon Business open.</li>
+      <li><strong>First Sora-AR weekend hosted</strong> — soft launch with 12 guests at Faena. Internal team only.</li>
+      <li><strong>Don Julio partnership formalized</strong> — 14-top bloque 4 dates/year confirmed.</li>
+      <li><strong>Mendoza scout trip</strong> — fly down for 4 days to meet The Vines + Catena Zapata.</li>
+      <li><strong>BA host hired</strong> via PEO. $1,500/mo USD all-in.</li>
+      <li><strong>Decide</strong>: full-time BA (accept &gt; 12-mo-in-24 path to AR residency), or quarterly base (stay under). Honest review.</li>
+    </ul>
+
+    <div class="card sky">
+      <div class="card-label">The 90-Day Decision</div>
+      <p>By day 90, you'll know if BA is your year-1 base or your quarterly chapter. The honest test: do you crave the city when you leave? Are you sleeping better? Is the food still novel? <strong>BA is the LATAM capital that grows on people slowly — the first month feels familiar (European), the third month surprising (so much culture), the sixth month essential.</strong> If yes — extend, accept AR tax planning, possibly buy. If no — quarterly cadence with Sora-AR run by your host + Don Julio + Vines partnership.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="doc-foot">
+  <div class="sig">· · ·</div>
+  <div class="sig">Volume IV · Prepared for Abraham · May 2026</div>
+  <div class="meta" style="margin-top:14px">La Compañía · Field Manuals · Not for distribution · MMXXVI</div>
+</footer>
+
+<script>
+  const bar = document.getElementById('bar');
+  const minimark = document.getElementById('minimark');
+  const rail = document.getElementById('rail');
+  window.addEventListener('scroll', ()=>{
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (window.scrollY / h) * 100 + '%';
+    const after = window.scrollY > 400;
+    minimark.classList.toggle('visible', after);
+    rail.classList.toggle('visible', after);
+  });
+  document.querySelectorAll('.rail li').forEach(li=>{
+    li.addEventListener('click', ()=>{
+      const el = document.getElementById(li.dataset.target);
+      if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  });
+  const sections = document.querySelectorAll('section[id]');
+  const railLis = document.querySelectorAll('.rail li');
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        railLis.forEach(li=>li.classList.toggle('active', li.dataset.target===e.target.id));
+      }
+    });
+  }, {rootMargin:'-30% 0% -60% 0%'});
+  sections.forEach(s=>obs.observe(s));
+</script>
+</body>
+</html>

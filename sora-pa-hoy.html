@@ -1,0 +1,565 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<title>SORA · Hoy · Chiriquí + Bocas</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Instrument+Serif&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F8F3EA; --cream-2:#F2EBDD; --cream-3:#E9DFCA;
+    --ink:#1B1A17; --ink-2:#3A352D; --ink-3:#5C5346; --faint:#9A8E7A;
+    --line:rgba(27,26,23,.10); --line-2:rgba(27,26,23,.06);
+    --coral:#D9573B; --gold:#B58F4D; --mango:#E2A24A; --green:#3F5F45; --rose:#B8616B; --teal:#2C6E7F;
+    --serif:'Fraunces',Georgia,serif; --display:'Instrument Serif',Georgia,serif;
+    --sans:'Inter',-apple-system,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--cream);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;font-size:15px;line-height:1.55}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--coral);color:var(--cream)}
+  [data-en]{display:none}
+  html[lang="en"] [data-es]{display:none}
+  html[lang="en"] [data-en]{display:inline}
+  html[lang="en"] li[data-en],html[lang="en"] div[data-en],html[lang="en"] p[data-en],html[lang="en"] h1[data-en],html[lang="en"] h2[data-en],html[lang="en"] h3[data-en],html[lang="en"] h4[data-en]{display:block}
+
+  .top{position:sticky;top:0;z-index:50;background:rgba(248,243,234,.95);backdrop-filter:blur(14px);border-bottom:0.5px solid var(--line)}
+  .top-in{max-width:920px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .brand{font-family:var(--serif);font-weight:600;font-size:16px;letter-spacing:.16em;color:var(--ink)}
+  .brand em{font-style:normal;color:var(--coral)}
+  .top-tag{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--rose);text-transform:uppercase;padding:4px 10px;background:rgba(184,97,107,.10);border-radius:4px}
+  .spacer{flex:1}
+  .top-link{font-family:var(--sans);font-size:12px;color:var(--ink-2);padding:6px 11px;border:0.5px solid var(--line);border-radius:5px}
+  .top-link:hover{background:var(--cream-2)}
+  .lang{display:inline-flex;border:0.5px solid var(--line);border-radius:5px;overflow:hidden}
+  .lang button{padding:6px 10px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;background:transparent;border:0;color:var(--faint);cursor:pointer;font-weight:500}
+  .lang button.active{background:var(--ink);color:var(--cream)}
+
+  .hdr{max-width:920px;margin:0 auto;padding:48px 28px 24px}
+  .hdr-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--coral);font-weight:600;margin-bottom:16px}
+  .hdr h1{font-family:var(--display);font-weight:400;font-size:clamp(40px,7vw,80px);line-height:.95;letter-spacing:-.02em;color:var(--ink);margin-bottom:16px}
+  .hdr h1 em{font-style:italic;color:var(--coral)}
+  .hdr-sub{font-family:var(--serif);font-size:17px;color:var(--ink-3);font-weight:300;max-width:660px;line-height:1.5;margin-bottom:24px}
+
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;padding:18px 24px;background:var(--cream-2);border:0.5px solid var(--line);border-radius:10px;margin-bottom:8px}
+  .stat-cell{display:flex;flex-direction:column;gap:4px}
+  .stat-k{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;color:var(--faint);text-transform:uppercase}
+  .stat-v{font-family:var(--display);font-size:22px;color:var(--ink);font-weight:400;letter-spacing:-.005em;line-height:1}
+  .stat-s{font-family:var(--mono);font-size:11px;color:var(--ink-3);letter-spacing:.04em}
+
+  .progress-row{display:flex;align-items:center;gap:14px;padding:14px 24px;background:var(--cream);border:0.5px solid var(--line);border-radius:8px;margin:18px 0 8px}
+  .progress-bar{flex:1;height:6px;background:var(--cream-3);border-radius:3px;overflow:hidden}
+  .progress-fill{height:100%;background:linear-gradient(90deg,var(--coral),var(--mango));border-radius:3px;transition:width .25s ease;width:0%}
+  .progress-text{font-family:var(--mono);font-size:11.5px;color:var(--ink-2);font-weight:600;letter-spacing:.06em;min-width:100px;text-align:right}
+
+  /* Section blocks */
+  main{max-width:920px;margin:0 auto;padding:8px 28px 96px}
+  .block{margin:24px 0;background:var(--cream);border:0.5px solid var(--line);border-radius:12px;overflow:hidden}
+  .block-head{display:flex;align-items:baseline;justify-content:space-between;padding:18px 24px;border-bottom:0.5px solid var(--line);background:var(--cream-2);flex-wrap:wrap;gap:8px}
+  .block-title{font-family:var(--display);font-size:24px;color:var(--ink);font-weight:400;letter-spacing:-.01em;display:flex;align-items:center;gap:10px}
+  .block-title .badge{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--cream);background:var(--ink);padding:4px 9px;border-radius:3px;font-weight:600}
+  .block-title .badge.priority{background:var(--coral)}
+  .block-title .badge.warn{background:var(--gold)}
+  .block-title .badge.zone{background:var(--teal)}
+  .block-title em{font-style:italic;color:var(--coral)}
+  .block-sub{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--faint);text-transform:uppercase}
+
+  .tasks{padding:8px 0}
+  .task{display:flex;align-items:flex-start;gap:14px;padding:14px 24px;border-bottom:0.5px solid var(--line-2);transition:background .14s ease;cursor:pointer}
+  .task:last-child{border-bottom:0}
+  .task:hover{background:var(--cream-2)}
+  .task input[type=checkbox]{flex-shrink:0;width:18px;height:18px;border:1.5px solid var(--line-2);border-radius:4px;appearance:none;cursor:pointer;margin-top:2px;background:white;position:relative;transition:all .15s ease}
+  .task input[type=checkbox]:hover{border-color:var(--coral)}
+  .task input[type=checkbox]:checked{background:var(--green);border-color:var(--green)}
+  .task input[type=checkbox]:checked::after{content:'✓';color:white;position:absolute;left:3px;top:-2px;font-size:14px;font-weight:bold}
+  .task-body{flex:1}
+  .task-text{font-family:var(--serif);font-size:15.5px;color:var(--ink);line-height:1.45}
+  .task input:checked ~ .task-body .task-text{color:var(--faint);text-decoration:line-through}
+  .task-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;align-items:center}
+  .task-meta a{font-family:var(--mono);font-size:11px;color:var(--teal);padding:3px 8px;background:rgba(44,110,127,.08);border-radius:3px;border:0.5px solid rgba(44,110,127,.18);letter-spacing:.04em;transition:all .14s ease}
+  .task-meta a:hover{background:var(--teal);color:var(--cream)}
+  .task-meta a.wa{color:#25d366;background:rgba(37,211,102,.10);border-color:rgba(37,211,102,.30)}
+  .task-meta a.wa:hover{background:#25d366;color:white}
+  .task-meta a.email{color:var(--coral);background:rgba(217,87,59,.08);border-color:rgba(217,87,59,.22)}
+  .task-meta a.email:hover{background:var(--coral);color:white}
+  .task-meta .when{font-family:var(--mono);font-size:10px;color:var(--faint);letter-spacing:.06em;text-transform:uppercase;font-weight:500;padding:3px 7px;background:var(--cream-2);border-radius:3px}
+  .task-meta .when.morning{color:var(--gold)}
+  .task-meta .when.afternoon{color:var(--coral)}
+  .task-meta .when.evening{color:var(--rose)}
+  .task-note{font-family:var(--serif);font-size:13px;color:var(--ink-3);font-style:italic;margin-top:4px;line-height:1.45}
+
+  .block.priority{border-color:var(--coral)}
+  .block.priority .block-head{background:linear-gradient(135deg,rgba(217,87,59,.12),rgba(217,87,59,.04))}
+
+  /* footer */
+  .foot{margin:48px 0 0;padding:24px;text-align:center;font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--faint);text-transform:uppercase}
+
+  @media (max-width:640px){
+    .hdr{padding:32px 18px 16px}
+    main{padding:8px 18px 64px}
+    .task{padding:12px 18px}
+    .stats{padding:14px 16px}
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="sora-hq.html">SORA · <em>HOY</em></a>
+    <span class="top-tag" data-es>Operativa Panamá</span>
+    <span class="top-tag" data-en>Panama ops</span>
+    <div class="spacer"></div>
+    <a class="top-link" href="sora-hq.html">HQ</a>
+    <a class="top-link" href="LATAM/chapter.html#PA">🇵🇦 PA</a>
+    <a class="top-link" href="LATAM/atlas.html">Atlas</a>
+    <button class="top-link" onclick="resetAll()" title="Reiniciar lista">↻</button>
+    <div class="lang">
+      <button class="active" data-lang="es">ES</button>
+      <button data-lang="en">EN</button>
+    </div>
+  </div>
+</header>
+
+<div class="hdr">
+  <div class="hdr-eyebrow" data-es>LUNES 25 MAYO 2026 · CHIRIQUÍ + BOCAS DEL TORO</div>
+  <div class="hdr-eyebrow" data-en>MONDAY MAY 25 2026 · CHIRIQUÍ + BOCAS DEL TORO</div>
+  <h1><span data-es>Operar <em>Sora-PA</em> hoy</span><span data-en>Run <em>Sora-PA</em> today</span></h1>
+  <p class="hdr-sub" data-es>Lista enfocada. Empezás por la tarea bloqueada que desbloquea las demás (Apify), después por zona — Boquete primero, Bocas después. Cada tarea tiene contacto directo · WhatsApp/Email donde aplica.</p>
+  <p class="hdr-sub" data-en>Focused list. Start with the blocked task that unblocks the rest (Apify), then by zone — Boquete first, Bocas after. Each task has direct contact · WhatsApp/Email where applicable.</p>
+
+  <div class="stats">
+    <div class="stat-cell"><span class="stat-k" data-es>Próximo evento</span><span class="stat-k" data-en>Next event</span><span class="stat-v">14 Jun</span><span class="stat-s" data-es>Mirador Barú · 20 días</span><span class="stat-s" data-en>Mirador Barú · 20 days</span></div>
+    <div class="stat-cell"><span class="stat-k" data-es>Capítulos vivos PA</span><span class="stat-k" data-en>Live PA chapters</span><span class="stat-v">4</span><span class="stat-s" data-es>Boquete · Volcán · Bocas · Casco</span><span class="stat-s" data-en>Boquete · Volcán · Bocas · Casco</span></div>
+    <div class="stat-cell"><span class="stat-k" data-es>Partners activos</span><span class="stat-k" data-en>Active partners</span><span class="stat-v">7</span><span class="stat-s" data-es>Lodge · Lerida · Hassan · Bambi · Camila · Tranquilo · Bali</span><span class="stat-s" data-en>Lodge · Lerida · Hassan · Bambi · Camila · Tranquilo · Bali</span></div>
+    <div class="stat-cell"><span class="stat-k" data-es>Clima Boquete</span><span class="stat-k" data-en>Boquete weather</span><span class="stat-v">~19°C</span><span class="stat-s" data-es>Nublado · seca terminando</span><span class="stat-s" data-en>Cloudy · dry season ending</span></div>
+  </div>
+
+  <div class="progress-row">
+    <div class="progress-bar"><div class="progress-fill" id="pf"></div></div>
+    <div class="progress-text" id="pt">0 / 0</div>
+  </div>
+</div>
+
+<main>
+
+<!-- ============ 0 · PRIORITY BLOCKED ============ -->
+<div class="block priority">
+  <div class="block-head">
+    <div class="block-title"><span class="badge priority">⚠</span><span data-es>Bloqueante · primero</span><span data-en>Blocker · first</span></div>
+    <div class="block-sub">90 SEC</div>
+  </div>
+  <div class="tasks">
+    <label class="task">
+      <input type="checkbox" data-task="apify">
+      <div class="task-body">
+        <div class="task-text" data-es>Crear cuenta <strong>Apify</strong> · pegar token en <code style="font-family:var(--mono);font-size:12px;background:var(--cream-2);padding:1px 5px;border-radius:3px">/Users/jacobeid/sora-instagram-mcp/.env</code> · correr <code style="font-family:var(--mono);font-size:12px;background:var(--cream-2);padding:1px 5px;border-radius:3px">node run-end-to-end.js</code></div>
+        <div class="task-text" data-en>Create <strong>Apify</strong> account · paste token into <code style="font-family:var(--mono);font-size:12px;background:var(--cream-2);padding:1px 5px;border-radius:3px">/Users/jacobeid/sora-instagram-mcp/.env</code> · run <code style="font-family:var(--mono);font-size:12px;background:var(--cream-2);padding:1px 5px;border-radius:3px">node run-end-to-end.js</code></div>
+        <div class="task-meta">
+          <a href="https://console.apify.com/sign-up" target="_blank">↗ console.apify.com/sign-up</a>
+          <span class="when morning" data-es>Mañana · 90 seg</span>
+          <span class="when morning" data-en>Morning · 90 sec</span>
+        </div>
+        <div class="task-note" data-es>Desbloquea minado IG full → 9 seed accounts pasan de 5/9 datos a 9/9 datos completos.</div>
+        <div class="task-note" data-en>Unlocks full IG mining → 9 seed accounts go from 5/9 partial data to 9/9 full data.</div>
+      </div>
+    </label>
+  </div>
+</div>
+
+<!-- ============ 1 · BOQUETE / VOLCÁN ============ -->
+<div class="block">
+  <div class="block-head">
+    <div class="block-title"><span class="badge zone">🇵🇦 BOQ</span><span data-es>Boquete · Volcán · Chiriquí</span><span data-en>Boquete · Volcán · Chiriquí</span></div>
+    <div class="block-sub" data-es>Preparar evento Mirador Barú · 14-15 Jun</div>
+    <div class="block-sub" data-en>Prep Mirador Barú event · Jun 14-15</div>
+  </div>
+  <div class="tasks">
+    <label class="task">
+      <input type="checkbox" data-task="boq-tuti">
+      <div class="task-body">
+        <div class="task-text" data-es>WhatsApp <strong>Tuti Aguilera</strong> (GM Finca Lerida) · confirmar Geisha tasting para weekend del 22-23 Ago · ver si necesita ajustes de menú para Coffee Sunrise</div>
+        <div class="task-text" data-en>WhatsApp <strong>Tuti Aguilera</strong> (Finca Lerida GM) · confirm Geisha tasting for Aug 22-23 weekend · see if Coffee Sunrise menu needs adjustments</div>
+        <div class="task-meta">
+          <a class="wa" href="https://wa.me/50766778899" target="_blank">↗ WhatsApp +507 6677 8899</a>
+          <a class="email" href="mailto:tuti@fincalerida.com">✉ tuti@fincalerida.com</a>
+          <span class="when morning" data-es>Mañana</span><span class="when morning" data-en>Morning</span>
+        </div>
+      </div>
+    </label>
+
+    <label class="task">
+      <input type="checkbox" data-task="boq-hassan">
+      <div class="task-body">
+        <div class="task-text" data-es>WhatsApp <strong>Chef Hassan</strong> (Casa Hassan) · planificar cena privada 14 Jun para 12 invitados Mirador Barú · maridaje café Geisha post-cena</div>
+        <div class="task-text" data-en>WhatsApp <strong>Chef Hassan</strong> (Casa Hassan) · plan private dinner Jun 14 for 12 guests Mirador Barú · Geisha coffee post-dinner pairing</div>
+        <div class="task-meta">
+          <a class="wa" href="https://wa.me/50765551234" target="_blank">↗ WhatsApp +507 6555 1234</a>
+          <a class="email" href="mailto:chef@casahassan.com">✉ chef@casahassan.com</a>
+          <span class="when morning" data-es>Mañana</span><span class="when morning" data-en>Morning</span>
+        </div>
+      </div>
+    </label>
+
+    <label class="task">
+      <input type="checkbox" data-task="boq-volcan-lodge">
+      <div class="task-body">
+        <div class="task-text" data-es><strong>Volcán Lodge</strong> · llamar para confirmar bloque de 6 habitaciones noche 14 Jun · pedir lista de check-in actualizada</div>
+        <div class="task-text" data-en><strong>Volcán Lodge</strong> · call to confirm 6-room block for night of Jun 14 · request updated check-in list</div>
+        <div class="task-meta">
+          <a class="wa" href="https://wa.me/50763008008" target="_blank">↗ Volcán Lodge directo</a>
+          <span class="when morning" data-es>Mañana · 1° cosa post-Apify</span>
+          <span class="when morning" data-en>Morning · 1st thing post-Apify</span>
+        </div>
+      </div>
+    </label>
+
+    <label class="task">
+      <input type="checkbox" data-task="boq-bambi">
+      <div class="task-body">
+        <div class="task-text" data-es><strong>Bambi Roots</strong> · confirmar set acústico 14 Jun atardecer · setlist + horario llegada · adelantar deposito 30% si no se hizo</div>
+        <div class="task-text" data-en><strong>Bambi Roots</strong> · confirm acoustic set Jun 14 sunset · setlist + arrival time · pay 30% deposit if not yet sent</div>
+        <div class="task-meta">
+          <a class="wa" href="https://wa.me/50763005500" target="_blank">↗ WhatsApp +507 6300 5500</a>
+          <a href="https://instagram.com/bambirootsmusic" target="_blank">↗ @bambirootsmusic</a>
+          <span class="when morning" data-es>Mañana</span><span class="when morning" data-en>Morning</span>
+        </div>
+      </div>
+    </label>
+
+    <label class="task">
+      <input type="checkbox" data-task="boq-camila">
+      <div class="task-body">
+        <div class="task-text" data-es><strong>Camila Vega</strong> · sommelier — definir maridaje cena 14 Jun (4 tiempos) · confirmar inventario vinos boutique</div>
+        <div class="task-text" data-en><strong>Camila Vega</strong> · sommelier — finalize pairing for Jun 14 dinner (4 courses) · confirm boutique wine inventory</div>
+        <div class="task-meta">
+          <a class="wa" href="https://wa.me/50767004400" target="_blank">↗ WhatsApp +507 6700 4400</a>
+          <a href="https://instagram.com/camilasomm" target="_blank">↗ @camilasomm</a>
+          <span class="when afternoon" data-es>Tarde</span><span class="when afternoon" data-en>Afternoon</span>
+        </div>
+      </div>
+    </label>
+
+    <label class="task">
+      <input type="checkbox" data-task="boq-permits">
+      <div class="task-body">
+        <div class="task-text" data-es>Reply <strong>Yipsy Méndez</strong> (Alcaldesa Boquete) — confirmar permiso uso ladera para Mirador Barú · acompañar con plan de seguridad + capacidad max 12</div>
+        <div class="task-text" data-en>Reply <strong>Yipsy Méndez</strong> (Boquete Mayor) — confirm hillside-use permit for Mirador Barú · attach security plan + max-12 capacity</div>
+        <div class="task-meta">
+          <a class="email" href="mailto:municipio@boquete.gob.pa">✉ municipio@boquete.gob.pa</a>
+          <span class="when morning" data-es>Mañana</span><span class="when morning" data-en>Morning</span>
+        </div>
+      </div>
+    </label>
+
+    <label class="task">
+      <input type="checkbox" data-task="boq-transport">
+      <div class="task-body">
+        <div class="task-text" data-es>Coordinar <strong>transporte privado</strong> Boquete → Mirador Barú 14 Jun · 2 vans 4×4 · confirmar conductor de confianza · ETA pickup 4:30pm desde Volcán Lodge</div>
+        <div class="task-text" data-en>Coordinate <strong>private transport</strong> Boquete → Mirador Barú Jun 14 · 2 4×4 vans · confirm trusted driver · 4:30pm pickup ETA from Volcán Lodge</div>
+        <div class="task-meta">
+          <span class="when afternoon" data-es>Tarde</span><span class="when afternoon" data-en>Afternoon</span>
+        </div>
+      </div>
+    </label>
+
+    <label class="task">
+      <input type="checkbox" data-task="boq-content">
+      <div class="task-body">
+        <div class="task-text" data-es>Capturar <strong>contenido</strong> en Boquete hoy · 5-8 fotos golden hour (Finca Lerida ó camino al Mirador) para próximo post IG</div>
+        <div class="task-text" data-en>Capture <strong>content</strong> in Boquete today · 5-8 golden-hour photos (Finca Lerida or Mirador road) for next IG post</div>
+        <div class="task-meta">
+          <a href="https://instagram.com/soratravel" target="_blank">↗ @soratravel</a>
+          <span class="when evening" data-es>Atardecer · ~5:30pm</span>
+          <span class="when evening" data-en>Sunset · ~5:30pm</span>
+        </div>
+      </div>
+    </label>
+  </div>
+</div>
+
+<!-- ============ 2 · BOCAS DEL TORO ============ -->
+<div class="block">
+  <div class="block-head">
+    <div class="block-title"><span class="badge zone">🇵🇦 BOC</span><span data-es>Bocas del Toro</span><span data-en>Bocas del Toro</span></div>
+    <div class="block-sub" data-es>Caribbean Drift · 24-27 Jul · 60 días</div>
+    <div class="block-sub" data-en>Caribbean Drift · Jul 24-27 · 60 days</div>
+  </div>
+  <div class="tasks">
+    <label class="task">
+      <input type="checkbox" data-task="boc-tranquilo">
+      <div class="task-body">
+        <div class="task-text" data-es>Email <strong>Jay &amp; Renee Vias</strong> (Tranquilo Bay) — confirmar bloque 18 invitados Caribbean Drift Jul 24-27 · menu seafood final · transporte lancha desde Bocas Town</div>
+        <div class="task-text" data-en>Email <strong>Jay &amp; Renee Vias</strong> (Tranquilo Bay) — confirm 18-guest block Caribbean Drift Jul 24-27 · final seafood menu · boat transport from Bocas Town</div>
+        <div class="task-meta">
+          <a class="email" href="mailto:info@tranquilobay.com">✉ info@tranquilobay.com</a>
+          <span class="when morning" data-es>Mañana</span><span class="when morning" data-en>Morning</span>
+        </div>
+      </div>
+    </label>
+
+    <label class="task">
+      <input type="checkbox" data-task="boc-bali">
+      <div class="task-body">
+        <div class="task-text" data-es>WhatsApp <strong>Bocas Bali</strong> · pre-bloquear overwater bungalows para weekend Aug 8-10 (Isla Colón Sunset)</div>
+        <div class="task-text" data-en>WhatsApp <strong>Bocas Bali</strong> · pre-block overwater bungalows for Aug 8-10 weekend (Isla Colón Sunset)</div>
+        <div class="task-meta">
+          <a class="wa" href="https://wa.me/50763886000" target="_blank">↗ Bocas Bali directo</a>
+          <span class="when afternoon" data-es>Tarde</span><span class="when afternoon" data-en>Afternoon</span>
+        </div>
+      </div>
+    </label>
+
+    <label class="task">
+      <input type="checkbox" data-task="boc-zapatilla">
+      <div class="task-body">
+        <div class="task-text" data-es>Coordinar <strong>capitán de lancha privada</strong> para Cayos Zapatilla snorkel · día 2 de Caribbean Drift · confirmar gas + equipo</div>
+        <div class="task-text" data-en>Coordinate <strong>private boat captain</strong> for Cayos Zapatilla snorkel · day 2 of Caribbean Drift · confirm fuel + gear</div>
+        <div class="task-meta">
+          <span class="when afternoon" data-es>Tarde · sin urgencia</span>
+          <span class="when afternoon" data-en>Afternoon · low urgency</span>
+        </div>
+      </div>
+    </label>
+
+    <label class="task">
+      <input type="checkbox" data-task="boc-punta-caracol">
+      <div class="task-body">
+        <div class="task-text" data-es><strong>Punta Caracol</strong> overwater dinner · reservar mesa 18 invitados noche 2 (25 Jul) · menu mariscos + pescado del día</div>
+        <div class="task-text" data-en><strong>Punta Caracol</strong> overwater dinner · book table for 18 night 2 (Jul 25) · seafood + catch-of-day menu</div>
+        <div class="task-meta">
+          <span class="when afternoon" data-es>Tarde</span><span class="when afternoon" data-en>Afternoon</span>
+        </div>
+      </div>
+    </label>
+  </div>
+</div>
+
+<!-- ============ 3 · GUESTS / COMMS ============ -->
+<div class="block">
+  <div class="block-head">
+    <div class="block-title"><span class="badge">🧑‍🤝‍🧑</span><span data-es>Comunicación con invitados</span><span data-en>Guest communication</span></div>
+    <div class="block-sub" data-es>RSVPs · pre-evento · post-evento</div>
+    <div class="block-sub" data-en>RSVPs · pre-event · post-event</div>
+  </div>
+  <div class="tasks">
+    <label class="task">
+      <input type="checkbox" data-task="comms-rsvp">
+      <div class="task-body">
+        <div class="task-text" data-es>Revisar <strong>RSVPs Mirador Barú</strong> en admin panel · confirmar 12/12 guests · seguir-up con los que aún no respondieron</div>
+        <div class="task-text" data-en>Review <strong>Mirador Barú RSVPs</strong> in admin panel · confirm 12/12 guests · follow up with non-responders</div>
+        <div class="task-meta">
+          <a href="sora/web/admin.html" target="_blank">↗ Admin panel</a>
+          <span class="when morning" data-es>Mañana · 9am</span>
+          <span class="when morning" data-en>Morning · 9am</span>
+        </div>
+      </div>
+    </label>
+
+    <label class="task">
+      <input type="checkbox" data-task="comms-welcome">
+      <div class="task-body">
+        <div class="task-text" data-es>Enviar <strong>welcome packet</strong> Mirador Barú a los confirmados · qué traer · clima previsto · ETA llegada Volcán</div>
+        <div class="task-text" data-en>Send <strong>welcome packet</strong> Mirador Barú to confirmed guests · what to bring · expected weather · Volcán arrival ETA</div>
+        <div class="task-meta">
+          <span class="when afternoon" data-es>Tarde</span><span class="when afternoon" data-en>Afternoon</span>
+        </div>
+      </div>
+    </label>
+
+    <label class="task">
+      <input type="checkbox" data-task="comms-app">
+      <div class="task-body">
+        <div class="task-text" data-es>Actualizar app Sora · estado evento 14 Jun = SOLD-OUT o 1 plaza disponible · subir tres fotos nuevas del lugar</div>
+        <div class="task-text" data-en>Update Sora app · Jun 14 event status = SOLD-OUT or 1 spot left · upload three new location photos</div>
+        <div class="task-meta">
+          <a href="sora/app/index.html" target="_blank">↗ Open app</a>
+          <span class="when afternoon" data-es>Tarde</span><span class="when afternoon" data-en>Afternoon</span>
+        </div>
+      </div>
+    </label>
+  </div>
+</div>
+
+<!-- ============ 4 · MONEY ============ -->
+<div class="block">
+  <div class="block-head">
+    <div class="block-title"><span class="badge">💵</span><span data-es>Dinero · tesorería</span><span data-en>Money · treasury</span></div>
+    <div class="block-sub" data-es>Cuentas + USDC + pagos</div>
+    <div class="block-sub" data-en>Accounts + USDC + payments</div>
+  </div>
+  <div class="tasks">
+    <label class="task">
+      <input type="checkbox" data-task="money-tower">
+      <div class="task-body">
+        <div class="task-text" data-es>Login <strong>Towerbank</strong> · verificar balance + USDC reserves operativos · si <$5k USDC, mover desde Apify off-ramp o personal acc</div>
+        <div class="task-text" data-en>Login <strong>Towerbank</strong> · check balance + operational USDC reserves · if <$5k USDC, move from Apify off-ramp or personal acc</div>
+        <div class="task-meta">
+          <a href="https://www.towerbank.com" target="_blank">↗ Towerbank login</a>
+          <span class="when morning" data-es>Mañana</span><span class="when morning" data-en>Morning</span>
+        </div>
+      </div>
+    </label>
+
+    <label class="task">
+      <input type="checkbox" data-task="money-bambi-deposit">
+      <div class="task-body">
+        <div class="task-text" data-es>Pagar <strong>Bambi Roots deposit 30%</strong> (~$180 USD) vía Yappy/Towerbank · confirmar recibido por WhatsApp</div>
+        <div class="task-text" data-en>Pay <strong>Bambi Roots 30% deposit</strong> (~$180 USD) via Yappy/Towerbank · confirm receipt by WhatsApp</div>
+        <div class="task-meta">
+          <span class="when morning" data-es>Mañana</span><span class="when morning" data-en>Morning</span>
+        </div>
+      </div>
+    </label>
+
+    <label class="task">
+      <input type="checkbox" data-task="money-vans">
+      <div class="task-body">
+        <div class="task-text" data-es><strong>Reserva van 4×4</strong> 14 Jun · $80/van × 2 = $160 · prepago si lo piden, sino confirmar contrato vía WhatsApp</div>
+        <div class="task-text" data-en><strong>Reserve 4×4 vans</strong> Jun 14 · $80/van × 2 = $160 · prepay if required, otherwise confirm contract via WhatsApp</div>
+        <div class="task-meta">
+          <span class="when afternoon" data-es>Tarde</span><span class="when afternoon" data-en>Afternoon</span>
+        </div>
+      </div>
+    </label>
+  </div>
+</div>
+
+<!-- ============ 5 · MARKETING + OUTREACH ============ -->
+<div class="block">
+  <div class="block-head">
+    <div class="block-title"><span class="badge">📣</span><span data-es>Marketing + outreach</span><span data-en>Marketing + outreach</span></div>
+    <div class="block-sub" data-es>IG + WhatsApp Business + invitación lista</div>
+    <div class="block-sub" data-en>IG + WhatsApp Business + invite list</div>
+  </div>
+  <div class="tasks">
+    <label class="task">
+      <input type="checkbox" data-task="mkt-teaser">
+      <div class="task-body">
+        <div class="task-text" data-es>Postear <strong>teaser Mirador Barú</strong> en IG @soratravel · 3 fotos golden hour + caption bilingüe · CTA = "última plaza · DM @soratravel"</div>
+        <div class="task-text" data-en>Post <strong>Mirador Barú teaser</strong> on IG @soratravel · 3 golden-hour photos + bilingual caption · CTA = "last spot · DM @soratravel"</div>
+        <div class="task-meta">
+          <a href="https://instagram.com/soratravel" target="_blank">↗ @soratravel</a>
+          <span class="when evening" data-es>Tarde · 6pm hora local</span>
+          <span class="when evening" data-en>Evening · 6pm local</span>
+        </div>
+      </div>
+    </label>
+
+    <label class="task">
+      <input type="checkbox" data-task="mkt-dm">
+      <div class="task-body">
+        <div class="task-text" data-es>Replicar DMs pendientes en IG · cualquier consulta de invitación de las últimas 48h · usar template Sora-voice</div>
+        <div class="task-text" data-en>Reply pending IG DMs · any invitation inquiries from last 48h · use Sora-voice template</div>
+        <div class="task-meta">
+          <span class="when afternoon" data-es>Tarde</span><span class="when afternoon" data-en>Afternoon</span>
+        </div>
+      </div>
+    </label>
+
+    <label class="task">
+      <input type="checkbox" data-task="mkt-bocas-preheat">
+      <div class="task-body">
+        <div class="task-text" data-es>Pre-calentar <strong>Caribbean Drift</strong> (Jul 24-27) — story IG con "early member access · DM to apply"</div>
+        <div class="task-text" data-en>Pre-heat <strong>Caribbean Drift</strong> (Jul 24-27) — IG story "early member access · DM to apply"</div>
+        <div class="task-meta">
+          <span class="when evening" data-es>Tarde</span><span class="when evening" data-en>Evening</span>
+        </div>
+      </div>
+    </label>
+  </div>
+</div>
+
+<!-- ============ 6 · WRAP DAY ============ -->
+<div class="block">
+  <div class="block-head">
+    <div class="block-title"><span class="badge warn">🌙</span><span data-es>Cierre del día</span><span data-en>Day close</span></div>
+    <div class="block-sub" data-es>Antes de 8pm</div>
+    <div class="block-sub" data-en>Before 8pm</div>
+  </div>
+  <div class="tasks">
+    <label class="task">
+      <input type="checkbox" data-task="wrap-changelog">
+      <div class="task-body">
+        <div class="task-text" data-es>Anotar 3 cosas que se cerraron hoy en el <strong>HQ changelog</strong> · agregar línea Apify si se completó</div>
+        <div class="task-text" data-en>Note 3 things closed today in <strong>HQ changelog</strong> · add Apify line if completed</div>
+        <div class="task-meta">
+          <a href="sora-hq.html" target="_blank">↗ HQ</a>
+          <span class="when evening" data-es>Antes 8pm</span>
+          <span class="when evening" data-en>Before 8pm</span>
+        </div>
+      </div>
+    </label>
+
+    <label class="task">
+      <input type="checkbox" data-task="wrap-tomorrow">
+      <div class="task-body">
+        <div class="task-text" data-es>Setear las <strong>3 tareas top de mañana</strong> · Martes 26 · prioridad por bloqueo</div>
+        <div class="task-text" data-en>Set <strong>top 3 tasks for tomorrow</strong> · Tuesday 26 · priority by what's blocking</div>
+        <div class="task-meta">
+          <span class="when evening" data-es>Antes 8pm</span><span class="when evening" data-en>Before 8pm</span>
+        </div>
+      </div>
+    </label>
+
+    <label class="task">
+      <input type="checkbox" data-task="wrap-bocas-flight">
+      <div class="task-body">
+        <div class="task-text" data-es>Si Caribbean Drift necesita scout in-person · verificar vuelos Air Panama PTY ↔ Bocas para semana de Jun 16-20</div>
+        <div class="task-text" data-en>If Caribbean Drift needs in-person scout · check Air Panama PTY ↔ Bocas flights for week of Jun 16-20</div>
+        <div class="task-meta">
+          <a href="https://www.airpanama.com" target="_blank">↗ Air Panama</a>
+        </div>
+      </div>
+    </label>
+  </div>
+</div>
+
+<div class="foot">SORA · La Compañía · MMXXVI · <span data-es>Operativa Panamá</span><span data-en>Panama ops</span></div>
+
+</main>
+
+<script>
+  const KEY = 'sora.today.20260525';
+  function getState(){ try { return JSON.parse(localStorage.getItem(KEY) || '{}'); } catch(e){ return {}; } }
+  function saveState(s){ try { localStorage.setItem(KEY, JSON.stringify(s)); } catch(e){} }
+  function updateProgress(){
+    const all = document.querySelectorAll('.task input[type=checkbox]');
+    const done = document.querySelectorAll('.task input[type=checkbox]:checked').length;
+    const pct = all.length ? (done / all.length) * 100 : 0;
+    document.getElementById('pf').style.width = pct + '%';
+    document.getElementById('pt').textContent = done + ' / ' + all.length;
+  }
+  // load state
+  const state = getState();
+  document.querySelectorAll('.task input[type=checkbox]').forEach(cb => {
+    if (state[cb.dataset.task]) cb.checked = true;
+    cb.addEventListener('change', () => {
+      const s = getState();
+      s[cb.dataset.task] = cb.checked;
+      saveState(s);
+      updateProgress();
+    });
+  });
+  updateProgress();
+  window.resetAll = function(){
+    if (!confirm('Reset all tasks?')) return;
+    localStorage.removeItem(KEY);
+    document.querySelectorAll('.task input[type=checkbox]').forEach(cb => cb.checked = false);
+    updateProgress();
+  };
+  // lang
+  const langBtns = document.querySelectorAll('.lang button');
+  function setLang(l){
+    document.documentElement.setAttribute('lang', l);
+    localStorage.setItem('sora.lang', l);
+    langBtns.forEach(b=>b.classList.toggle('active', b.dataset.lang===l));
+  }
+  langBtns.forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
+  setLang(localStorage.getItem('sora.lang') || 'es');
+</script>
+</body>
+</html>

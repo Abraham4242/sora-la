@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SORA · Audience & Tourism Stats</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Instrument+Serif&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F8F3EA; --cream-2:#F2EBDD; --cream-3:#E9DFCA;
+    --ink:#1B1A17; --ink-2:#3A352D; --ink-3:#5C5346; --faint:#9A8E7A;
+    --line:rgba(27,26,23,.10); --line-2:rgba(27,26,23,.06);
+    --coral:#D9573B; --gold:#B58F4D; --mango:#E2A24A; --green:#3F5F45; --rose:#B8616B; --teal:#2C6E7F;
+    --serif:'Fraunces',Georgia,serif; --display:'Instrument Serif',Georgia,serif;
+    --sans:'Inter',-apple-system,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--cream);color:var(--ink);font-family:var(--sans);font-size:14px;-webkit-font-smoothing:antialiased;line-height:1.5}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--teal);color:var(--cream)}
+  [data-en]{display:none}
+  html[lang="en"] [data-es]{display:none}
+  html[lang="en"] [data-en]{display:inline}
+
+  .top{position:sticky;top:0;z-index:40;background:rgba(248,243,234,.96);backdrop-filter:blur(14px);border-bottom:0.5px solid var(--line)}
+  .top-in{max-width:1480px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .brand{font-family:var(--serif);font-weight:600;font-size:16px;letter-spacing:.16em;color:var(--ink)}
+  .brand em{font-style:normal;color:var(--teal)}
+  .top-tag{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--rose);text-transform:uppercase;padding:4px 10px;background:rgba(184,97,107,.10);border-radius:4px}
+  .top-spacer{flex:1}
+  .top-link{font-family:var(--sans);font-size:12px;color:var(--ink-2);padding:7px 12px;border:0.5px solid var(--line);border-radius:5px}
+  .top-link:hover{background:var(--cream-2)}
+  .lang{display:inline-flex;border:0.5px solid var(--line);border-radius:5px;overflow:hidden}
+  .lang button{padding:7px 11px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;background:transparent;border:0;color:var(--faint);cursor:pointer;font-weight:500}
+  .lang button.active{background:var(--ink);color:var(--cream)}
+
+  .hdr{padding:48px 32px 32px;max-width:1480px;margin:0 auto;width:100%;border-bottom:0.5px solid var(--line)}
+  .hdr h1{font-family:var(--display);font-weight:400;font-size:clamp(40px,5vw,64px);line-height:1;letter-spacing:-.02em;color:var(--ink);margin-bottom:14px}
+  .hdr h1 em{font-style:italic;color:var(--teal)}
+  .hdr-lede{font-family:var(--serif);font-size:17px;color:var(--ink-3);font-weight:300;max-width:740px;line-height:1.55}
+  .hdr-source{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--faint);text-transform:uppercase;margin-top:16px}
+
+  /* portfolio insight strip */
+  .portfolio{max-width:1480px;margin:24px auto 0;padding:0 32px}
+  .portfolio-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+  .p-stat{background:var(--cream-2);border:0.5px solid var(--line);border-radius:8px;padding:18px 20px}
+  .p-stat .pk{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--faint);text-transform:uppercase;margin-bottom:8px}
+  .p-stat .pv{font-family:var(--serif);font-size:14px;font-weight:500;color:var(--ink);line-height:1.4}
+  .p-stat .pv .flag{display:inline-block;margin-right:4px;font-size:14px}
+
+  /* country mode tabs */
+  .country-tabs{position:sticky;top:51px;z-index:35;background:var(--cream);border-bottom:0.5px solid var(--line);padding:14px 24px;display:flex;gap:6px;overflow-x:auto;max-width:1480px;margin:0 auto;justify-content:center;flex-wrap:wrap}
+  .ctab{display:inline-flex;align-items:center;gap:6px;font-family:var(--sans);font-size:13px;font-weight:500;color:var(--ink-3);padding:7px 14px;border:0.5px solid var(--line);border-radius:14px;background:transparent;cursor:pointer;transition:all .14s ease;white-space:nowrap}
+  .ctab:hover{background:var(--cream-2)}
+  .ctab.on{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+  .ctab .fg{font-size:14px;line-height:1}
+
+  /* country view */
+  .country-wrap{max-width:1480px;margin:0 auto;padding:32px 24px 96px}
+
+  /* macro stats */
+  .macro-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:var(--line);border:0.5px solid var(--line);border-radius:8px;overflow:hidden;margin-bottom:28px}
+  .macro-cell{background:var(--cream);padding:22px 22px;display:flex;flex-direction:column;gap:6px}
+  .macro-cell .mk{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--faint);text-transform:uppercase}
+  .macro-cell .mv{font-family:var(--display);font-size:34px;line-height:1;color:var(--ink);font-weight:400;letter-spacing:-.01em}
+  .macro-cell .mv .small{font-size:18px;color:var(--ink-3)}
+  .macro-cell .mn{font-family:var(--mono);font-size:11px;color:var(--green);letter-spacing:.04em;font-weight:500}
+  .macro-cell .mn.neg{color:var(--coral)}
+
+  /* sections */
+  .ablock{margin:28px 0;background:var(--cream);border:0.5px solid var(--line);border-radius:10px;padding:28px 32px}
+  .ab-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:18px;padding-bottom:14px;border-bottom:0.5px solid var(--line-2);gap:12px;flex-wrap:wrap}
+  .ab-title{font-family:var(--display);font-size:26px;color:var(--ink);font-weight:400;letter-spacing:-.01em}
+  .ab-title em{font-style:italic;color:var(--teal)}
+  .ab-sub{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--faint);text-transform:uppercase}
+
+  /* origins table */
+  .origins-table{width:100%;border-collapse:collapse;font-size:13.5px}
+  .origins-table th{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;color:var(--faint);text-transform:uppercase;font-weight:600;text-align:left;padding:10px 12px;border-bottom:0.5px solid var(--line)}
+  .origins-table td{padding:14px 12px;border-bottom:0.5px solid var(--line-2);vertical-align:top}
+  .origins-table tr:last-child td{border-bottom:0}
+  .origins-table .oc{font-family:var(--serif);font-size:16px;font-weight:500;color:var(--ink)}
+  .origins-table .obar{width:120px;height:8px;background:var(--cream-2);border-radius:2px;overflow:hidden;display:inline-block;vertical-align:middle;margin-right:8px}
+  .origins-table .obar-fill{height:100%;background:var(--teal);border-radius:2px}
+  .origins-table .op{font-family:var(--mono);font-size:12px;color:var(--teal);font-weight:600}
+  .origins-table .oa{font-family:var(--mono);font-size:11px;color:var(--ink-3)}
+  .origins-table .opr{font-family:var(--mono);font-size:9.5px;color:var(--gold);text-transform:uppercase;letter-spacing:.06em;font-weight:600;padding:3px 7px;background:rgba(181,143,77,.12);border-radius:3px;display:inline-block}
+  .origins-table .opr.no{color:var(--faint);background:var(--cream-2)}
+  .origins-table .on{font-family:var(--serif);font-size:13px;color:var(--ink-2);font-style:italic;line-height:1.5}
+
+  /* premium grid */
+  .premium-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1px;background:var(--line);border:0.5px solid var(--line);border-radius:8px;overflow:hidden}
+  .premium-cell{background:var(--cream);padding:18px 22px;display:flex;flex-direction:column;gap:4px}
+  .premium-cell .pk{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;color:var(--faint);text-transform:uppercase}
+  .premium-cell .pv{font-family:var(--display);font-size:24px;line-height:1.1;color:var(--ink);font-weight:400;letter-spacing:-.005em}
+  .premium-cell .pv.coral{color:var(--coral)}
+
+  /* sora fit */
+  .fit-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:16px}
+  .fit-cell{background:var(--cream-2);border:0.5px solid var(--line-2);padding:16px 18px;border-radius:6px}
+  .fit-cell .fk{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;color:var(--faint);text-transform:uppercase;margin-bottom:6px}
+  .fit-cell .fv{font-family:var(--display);font-size:22px;color:var(--ink);font-weight:400}
+  .fit-cell .fs{font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-top:4px}
+  .fit-cell .fs.tag{font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+  .fit-cell.sat-low .fs.tag{color:var(--green)}
+  .fit-cell.sat-medium .fs.tag{color:var(--gold)}
+  .fit-cell.sat-high .fs.tag{color:var(--coral)}
+  .fit-comp{margin:10px 0;padding:10px 14px;background:var(--cream-2);border-radius:4px;font-family:var(--mono);font-size:11px;color:var(--ink-3);line-height:1.5}
+  .fit-comp strong{color:var(--ink-2);font-weight:500}
+  .fit-note{font-family:var(--serif);font-size:15px;line-height:1.6;color:var(--ink-2);padding:18px 22px;background:linear-gradient(135deg,var(--cream-2),var(--cream-3));border-left:2px solid var(--teal);border-radius:6px;font-style:italic;margin-top:14px}
+
+  /* seasonality */
+  .calendar{display:grid;grid-template-columns:repeat(12,1fr);gap:6px;margin-bottom:14px}
+  .month{padding:14px 6px;text-align:center;border-radius:5px;border:0.5px solid var(--line)}
+  .month .mn{font-family:var(--mono);font-size:10px;letter-spacing:.10em;color:var(--ink-3);font-weight:600;text-transform:uppercase}
+  .month.peak{background:rgba(217,87,59,.18);border-color:var(--coral)}
+  .month.peak .mn{color:var(--coral)}
+  .month.shoulder{background:rgba(181,143,77,.15);border-color:var(--gold)}
+  .month.shoulder .mn{color:var(--gold)}
+  .month.low{background:rgba(44,110,127,.10);border-color:var(--teal)}
+  .month.low .mn{color:var(--teal)}
+
+  /* demographic */
+  .demo-row{display:flex;gap:14px;flex-wrap:wrap}
+  .demo-cell{flex:1;min-width:120px;background:var(--cream-2);padding:14px 16px;border-radius:6px;border:0.5px solid var(--line-2)}
+  .demo-cell .dk{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;color:var(--faint);text-transform:uppercase;margin-bottom:4px}
+  .demo-cell .dv{font-family:var(--display);font-size:24px;line-height:1;color:var(--ink);font-weight:400}
+  .demo-bars{display:flex;height:10px;border-radius:3px;overflow:hidden;margin:12px 0}
+  .demo-bar{height:100%;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:9px;color:white}
+  .demo-bar.solo{background:#7d4f8a}
+  .demo-bar.couple{background:var(--teal)}
+  .demo-bar.group{background:var(--coral)}
+  .demo-bar.family{background:var(--green)}
+  .demo-legend{display:flex;gap:18px;flex-wrap:wrap;font-family:var(--mono);font-size:10px;color:var(--ink-3)}
+  .demo-legend span::before{content:'';display:inline-block;width:10px;height:10px;margin-right:6px;vertical-align:middle;border-radius:2px}
+  .demo-legend .l-solo::before{background:#7d4f8a}
+  .demo-legend .l-couple::before{background:var(--teal)}
+  .demo-legend .l-group::before{background:var(--coral)}
+  .demo-legend .l-family::before{background:var(--green)}
+
+  /* insight box */
+  .insight-box{background:var(--ink);color:var(--cream);padding:28px 32px;border-radius:10px;margin-top:14px}
+  .insight-box .ik{font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--mango);text-transform:uppercase;font-weight:600;margin-bottom:12px}
+  .insight-box .iv{font-family:var(--display);font-style:italic;font-size:22px;line-height:1.45;color:var(--cream)}
+
+  @media (max-width:780px){
+    .country-wrap{padding:24px 18px 64px}
+    .hdr,.portfolio{padding-left:18px;padding-right:18px}
+    .country-tabs{padding:10px 18px;top:48px;justify-content:flex-start}
+    .calendar{grid-template-columns:repeat(6,1fr)}
+    .fit-row{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="../sora-hq.html">SORA · <em>AUDIENCE</em></a>
+    <span class="top-tag" data-es>Análisis interno</span>
+    <span class="top-tag" data-en>Internal analysis</span>
+    <div class="top-spacer"></div>
+    <a class="top-link" href="./atlas.html">↗ Atlas</a>
+    <a class="top-link" href="./contacts.html">↗ CRM</a>
+    <a class="top-link" href="./land.html">↗ <span data-es>Tierras</span><span data-en>Land</span></a>
+    <a class="top-link" href="./hosts.html">↗ Hosts</a>
+    <a class="top-link" href="./chapter.html#MX">↗ <span data-es>Capítulos</span><span data-en>Chapters</span></a>
+    <a class="top-link" href="../sora-hq.html">HQ</a>
+    <div class="lang">
+      <button class="active" data-lang="es">ES</button>
+      <button data-lang="en">EN</button>
+    </div>
+  </div>
+</header>
+
+<div class="hdr">
+  <h1><span data-es>Audiencia &amp; <em>estadísticas</em> de turismo</span><span data-en>Audience &amp; tourism <em>statistics</em></span></h1>
+  <p class="hdr-lede" data-es>Línea base 2024-2025 por país: llegadas internacionales, mercados origen, segmento premium, estacionalidad, demografía y dimensionamiento del bullseye Sora. Datos UNWTO + autoridades nacionales + STR Hotels + Skift. Para apoyar decisiones de expansión + pricing + product-mix.</p>
+  <p class="hdr-lede" data-en>2024-2025 baseline per country: international arrivals, origin markets, premium segment, seasonality, demographics, and Sora bullseye sizing. Data from UNWTO + national tourism authorities + STR Hotels + Skift. To support expansion + pricing + product-mix decisions.</p>
+  <div class="hdr-source">Fuentes · UNWTO 2024 · STR Hotels · National Tourism Boards · Statista · Skift Research</div>
+</div>
+
+<!-- portfolio insights -->
+<div class="portfolio">
+  <div class="portfolio-grid" id="portfolio-grid"></div>
+</div>
+
+<!-- country tabs -->
+<div class="country-tabs" id="ctabs"></div>
+
+<main class="country-wrap" id="country-wrap"></main>
+
+<script src="./data-audience.js"></script>
+<script>
+(function(){
+  const COUNTRIES = {
+    MX:{flag:'🇲🇽',es:'México',en:'Mexico'}, CO:{flag:'🇨🇴',es:'Colombia',en:'Colombia'},
+    BR:{flag:'🇧🇷',es:'Brasil',en:'Brazil'}, AR:{flag:'🇦🇷',es:'Argentina',en:'Argentina'},
+    CR:{flag:'🇨🇷',es:'Costa Rica',en:'Costa Rica'}, PE:{flag:'🇵🇪',es:'Perú',en:'Peru'},
+    CL:{flag:'🇨🇱',es:'Chile',en:'Chile'}, UY:{flag:'🇺🇾',es:'Uruguay',en:'Uruguay'},
+    PA:{flag:'🇵🇦',es:'Panamá',en:'Panama'}, VE:{flag:'🇻🇪',es:'Venezuela',en:'Venezuela'}
+  };
+  const ORDER = ['MX','CO','BR','AR','CR','PE','CL','UY','PA','VE'];
+
+  let currentCountry = 'MX';
+
+  const langBtns = document.querySelectorAll('.lang button');
+  function setLang(l){
+    document.documentElement.setAttribute('lang', l);
+    localStorage.setItem('sora.lang', l);
+    langBtns.forEach(b=>b.classList.toggle('active', b.dataset.lang===l));
+    render();
+  }
+  langBtns.forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
+  const initLang = localStorage.getItem('sora.lang') || 'es';
+  document.documentElement.setAttribute('lang', initLang);
+  langBtns.forEach(b=>b.classList.toggle('active', b.dataset.lang===initLang));
+
+  function fmtNum(n){
+    if(!n) return '?';
+    if(n >= 1e9) return '$' + (n/1e9).toFixed(1) + 'B';
+    if(n >= 1e6) return n >= 1e6 ? (n/1e6).toFixed(1) + 'M' : n.toLocaleString('en-US');
+    if(n >= 1e3) return (n/1e3).toFixed(0) + 'k';
+    return n.toLocaleString('en-US');
+  }
+  function fmtUSD(n){
+    if(!n) return '$?';
+    if(n >= 1e9) return '$' + (n/1e9).toFixed(1) + 'B';
+    if(n >= 1e6) return '$' + (n/1e6).toFixed(0) + 'M';
+    if(n >= 1e3) return '$' + (n/1e3).toFixed(0) + 'k';
+    return '$' + n.toLocaleString('en-US');
+  }
+
+  function renderPortfolio(){
+    const lang = document.documentElement.getAttribute('lang') || 'es';
+    const p = window.SORA_PORTFOLIO_INSIGHT;
+    function flags(codes){ return codes.map(c => `<span class="flag">${COUNTRIES[c].flag}</span>${c}`).join(' · '); }
+    document.getElementById('portfolio-grid').innerHTML = `
+      <div class="p-stat"><div class="pk">${lang==='es'?'Top volumen premium':'Top premium volume'}</div><div class="pv">${flags(p.topPremiumByVolume.slice(0,3))}</div></div>
+      <div class="p-stat"><div class="pk">${lang==='es'?'Top ticket promedio':'Top avg ticket'}</div><div class="pv">${flags(p.topAvgTicket.slice(0,3))}</div></div>
+      <div class="p-stat"><div class="pk">${lang==='es'?'Mayor crecimiento':'Fastest growing'}</div><div class="pv">${flags(p.fastestGrowing.slice(0,3))}</div></div>
+      <div class="p-stat"><div class="pk">${lang==='es'?'Menos saturados':'Least saturated'}</div><div class="pv">${flags(p.leastSaturated.slice(0,3))}</div></div>
+      <div class="p-stat"><div class="pk">${lang==='es'?'Audiencia origen US dominante':'US-dominant origin'}</div><div class="pv">${flags(p.highestUSOriginShare.slice(0,3))}</div></div>
+      <div class="p-stat"><div class="pk">${lang==='es'?'Audiencia origen AR dominante':'AR-dominant origin'}</div><div class="pv">${flags(p.highestArgOriginShare)}</div></div>
+    `;
+  }
+
+  function renderTabs(){
+    const lang = document.documentElement.getAttribute('lang') || 'es';
+    document.getElementById('ctabs').innerHTML = ORDER.map(code=>{
+      const c = COUNTRIES[code];
+      return `<button class="ctab ${currentCountry===code?'on':''}" data-c="${code}"><span class="fg">${c.flag}</span>${c[lang]}</button>`;
+    }).join('');
+    document.querySelectorAll('.ctab').forEach(b=>b.addEventListener('click',()=>{
+      currentCountry = b.dataset.c;
+      renderTabs();
+      renderCountry();
+    }));
+  }
+
+  function renderCountry(){
+    const lang = document.documentElement.getAttribute('lang') || 'es';
+    const d = window.SORA_AUDIENCE[currentCountry];
+    if(!d){ document.getElementById('country-wrap').innerHTML = '<p>No data</p>'; return; }
+    const c = COUNTRIES[currentCountry];
+
+    // macro
+    const m = d.macro;
+    const macro = `
+      <div class="macro-grid">
+        <div class="macro-cell"><div class="mk">${lang==='es'?'Llegadas internacionales · 2024':'Intl arrivals · 2024'}</div><div class="mv">${fmtNum(m.intlArrivals2024)}</div><div class="mn ${m.yoyGrowth.startsWith('-')?'neg':''}">${m.yoyGrowth} YoY</div></div>
+        <div class="macro-cell"><div class="mk">${lang==='es'?'Recaudación turismo':'Tourism receipts'}</div><div class="mv">${fmtUSD(m.receiptsUSD)}</div><div class="mn">${m.tourismPctGDP} GDP</div></div>
+        <div class="macro-cell"><div class="mk">${lang==='es'?'Gasto promedio / visitante':'Avg spend / visitor'}</div><div class="mv">$${m.avgSpendPerVisitor.toLocaleString()}</div><div class="mn">${m.avgStay} ${lang==='es'?'noches':'nights'}</div></div>
+        <div class="macro-cell"><div class="mk">${lang==='es'?'Ocupación hoteles top':'Top-hotel occupancy'}</div><div class="mv">${m.occupancyTopHotels}</div><div class="mn">${lang==='es'?'4-5★ · promedio nacional':'4-5★ · national avg'}</div></div>
+      </div>`;
+
+    // origins
+    const origins = `
+      <div class="ablock">
+        <div class="ab-head">
+          <div class="ab-title"><span data-es>Mercados <em>origen</em></span><span data-en>Origin <em>markets</em></span></div>
+          <div class="ab-sub" data-es>De dónde llegan</div><div class="ab-sub" data-en>Where they come from</div>
+        </div>
+        <table class="origins-table">
+          <thead><tr><th>${lang==='es'?'País origen':'Origin country'}</th><th>${lang==='es'?'Share':'Share'}</th><th>${lang==='es'?'Llegadas':'Arrivals'}</th><th>${lang==='es'?'Premium?':'Premium?'}</th><th>${lang==='es'?'Nota Sora':'Sora note'}</th></tr></thead>
+          <tbody>
+            ${d.origins.map(o=>{
+              const pct = parseFloat(o.share);
+              const note = (o.note && o.note[lang]) || '';
+              return `<tr>
+                <td class="oc">${o.country}</td>
+                <td><span class="obar"><span class="obar-fill" style="width:${Math.min(100,pct*1.7)}%"></span></span><span class="op">${o.share}</span></td>
+                <td class="oa">${fmtNum(o.arrivals)}</td>
+                <td><span class="opr ${o.premium?'':'no'}">${o.premium?(lang==='es'?'Sí':'Yes'):'·'}</span></td>
+                <td class="on">${note}</td>
+              </tr>`;
+            }).join('')}
+          </tbody>
+        </table>
+      </div>`;
+
+    // premium
+    const pr = d.premium;
+    const premium = `
+      <div class="ablock">
+        <div class="ab-head">
+          <div class="ab-title"><span data-es>Segmento <em>premium</em></span><span data-en>Premium <em>segment</em></span></div>
+          <div class="ab-sub" data-es>Tamaño y dinámica del nicho Sora</div><div class="ab-sub" data-en>Sora niche size and dynamics</div>
+        </div>
+        <div class="premium-grid">
+          <div class="premium-cell"><div class="pk">${lang==='es'?'Viajeros premium / año':'Premium travelers / yr'}</div><div class="pv">${fmtNum(pr.annualPremiumTravelers)}</div></div>
+          <div class="premium-cell"><div class="pk">${lang==='es'?'Gasto premium promedio':'Avg premium spend'}</div><div class="pv coral">$${pr.avgPremiumSpendTotal.toLocaleString()}</div></div>
+          <div class="premium-cell"><div class="pk">${lang==='es'?'Rango ticket Sora-fit':'Sora-fit ticket band'}</div><div class="pv" style="font-size:18px">${pr.targetSpendBand}</div></div>
+          <div class="premium-cell"><div class="pk">${lang==='es'?'Inventario hotelero luxury':'Luxury hotel inventory'}</div><div class="pv">${fmtNum(pr.luxuryHotelInventory)}</div></div>
+          <div class="premium-cell"><div class="pk">${lang==='es'?'Ocupación premium':'Premium occupancy'}</div><div class="pv">${pr.nationalPremiumOccupancy}</div></div>
+          <div class="premium-cell"><div class="pk">${lang==='es'?'Crecimiento 3 años':'3-year growth'}</div><div class="pv coral">${pr.growthLastThreeYears}</div></div>
+        </div>
+      </div>`;
+
+    // sora fit
+    const sf = d.soraFit;
+    const fit = `
+      <div class="ablock">
+        <div class="ab-head">
+          <div class="ab-title"><span data-es>Fit <em>Sora</em></span><span data-en><em>Sora</em> fit</span></div>
+          <div class="ab-sub" data-es>Bullseye, competencia, ángulo</div><div class="ab-sub" data-en>Bullseye, competition, angle</div>
+        </div>
+        <div class="fit-row">
+          <div class="fit-cell"><div class="fk">${lang==='es'?'Bullseye audiencia':'Bullseye audience'}</div><div class="fv">${fmtNum(sf.bullseyeSize)}</div><div class="fs">${lang==='es'?'guests Sora-fit core':'core Sora-fit guests'}</div></div>
+          <div class="fit-cell"><div class="fk">${lang==='es'?'Mercado direccionable':'Addressable market'}</div><div class="fv">${fmtNum(sf.addressableMarket)}</div><div class="fs">${lang==='es'?'expansión de bullseye':'bullseye expansion'}</div></div>
+          <div class="fit-cell sat-${sf.saturation.includes('low')?'low':sf.saturation.includes('high')?'high':'medium'}"><div class="fk">${lang==='es'?'Saturación':'Saturation'}</div><div class="fv">${sf.saturation}</div><div class="fs tag">${sf.saturation}</div></div>
+        </div>
+        <div class="fit-comp"><strong>${lang==='es'?'Competencia:':'Competition:'}</strong> ${sf.competitive.join(' · ')}</div>
+        <div class="fit-note">${(sf.fitNote && sf.fitNote[lang]) || ''}</div>
+      </div>`;
+
+    // seasonality
+    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const s = d.seasonality;
+    const seasonality = `
+      <div class="ablock">
+        <div class="ab-head">
+          <div class="ab-title"><span data-es>Estacionalidad <em>premium</em></span><span data-en>Premium <em>seasonality</em></span></div>
+          <div class="ab-sub" data-es>Cuándo opera Sora</div><div class="ab-sub" data-en>When Sora operates</div>
+        </div>
+        <div class="calendar">
+          ${months.map(m=>{
+            const cls = s.peak.includes(m) ? 'peak' : s.shoulder.includes(m) ? 'shoulder' : 'low';
+            return `<div class="month ${cls}"><div class="mn">${m}</div></div>`;
+          }).join('')}
+        </div>
+        <div class="fit-comp" style="margin-top:0"><strong>${lang==='es'?'Lectura:':'Read:'}</strong> ${(s.notes && s.notes[lang]) || ''}</div>
+      </div>`;
+
+    // demographic
+    const dg = d.demographic;
+    const solo = parseFloat(dg.soloShare);
+    const couple = parseFloat(dg.coupleShare);
+    const group = parseFloat(dg.groupFriendsShare);
+    const family = parseFloat(dg.familyShare);
+    const demo = `
+      <div class="ablock">
+        <div class="ab-head">
+          <div class="ab-title"><span data-es>Demografía del <em>guest premium</em></span><span data-en>Premium <em>guest</em> demographics</span></div>
+          <div class="ab-sub" data-es>Quién viaja</div><div class="ab-sub" data-en>Who travels</div>
+        </div>
+        <div class="demo-row" style="margin-bottom:16px">
+          <div class="demo-cell"><div class="dk">${lang==='es'?'Edad promedio':'Average age'}</div><div class="dv">${dg.avgAge}</div></div>
+          <div class="demo-cell"><div class="dk">${lang==='es'?'LGBTQ+ tolerancia':'LGBTQ+ tolerance'}</div><div class="dv" style="font-size:14px;font-family:var(--serif);font-weight:500">${dg.lgbtqIndex}</div></div>
+        </div>
+        <div class="demo-bars">
+          <div class="demo-bar solo" style="width:${solo}%">${solo}%</div>
+          <div class="demo-bar couple" style="width:${couple}%">${couple}%</div>
+          <div class="demo-bar group" style="width:${group}%">${group}%</div>
+          <div class="demo-bar family" style="width:${family}%">${family}%</div>
+        </div>
+        <div class="demo-legend">
+          <span class="l-solo">${lang==='es'?'Solo':'Solo'} ${dg.soloShare}</span>
+          <span class="l-couple">${lang==='es'?'Pareja':'Couple'} ${dg.coupleShare}</span>
+          <span class="l-group">${lang==='es'?'Amigos':'Friends'} ${dg.groupFriendsShare}</span>
+          <span class="l-family">${lang==='es'?'Familia':'Family'} ${dg.familyShare}</span>
+        </div>
+        <div class="fit-comp" style="margin-top:14px"><strong>${lang==='es'?'Idioma:':'Language:'}</strong> ${(dg.languageNote && dg.languageNote[lang]) || ''}</div>
+      </div>`;
+
+    // insight
+    const insight = `
+      <div class="insight-box">
+        <div class="ik">${lang==='es'?'Insight Sora':'Sora insight'}</div>
+        <div class="iv">"${(d.insight && d.insight[lang]) || ''}"</div>
+      </div>`;
+
+    document.getElementById('country-wrap').innerHTML = `
+      <h2 style="font-family:var(--display);font-size:48px;color:var(--ink);font-weight:400;letter-spacing:-.02em;margin-bottom:18px"><span style="font-size:32px;margin-right:10px">${c.flag}</span>${c[lang]}</h2>
+      ${macro}
+      ${origins}
+      ${premium}
+      ${fit}
+      ${seasonality}
+      ${demo}
+      ${insight}
+    `;
+  }
+
+  function render(){
+    renderPortfolio();
+    renderTabs();
+    renderCountry();
+  }
+  render();
+})();
+</script>
+</body>
+</html>

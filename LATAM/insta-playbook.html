@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SORA · Instagram Mining Playbook</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Instrument+Serif&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F8F3EA; --cream-2:#F2EBDD; --cream-3:#E9DFCA;
+    --ink:#1B1A17; --ink-2:#3A352D; --ink-3:#5C5346; --faint:#9A8E7A;
+    --line:rgba(27,26,23,.10); --line-2:rgba(27,26,23,.06);
+    --coral:#D9573B; --gold:#B58F4D; --mango:#E2A24A; --green:#3F5F45; --rose:#B8616B; --teal:#2C6E7F;
+    --serif:'Fraunces',Georgia,serif; --display:'Instrument Serif',Georgia,serif;
+    --sans:'Inter',-apple-system,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--cream);color:var(--ink);font-family:var(--sans);font-size:14px;-webkit-font-smoothing:antialiased;line-height:1.5}
+  a{color:var(--teal);text-decoration:none;border-bottom:0.5px dashed rgba(44,110,127,.30)}
+  a:hover{color:var(--rose);border-color:var(--rose)}
+  ::selection{background:var(--rose);color:var(--cream)}
+
+  [data-en]{display:none}
+  html[lang="en"] [data-es]{display:none}
+  html[lang="en"] [data-en]{display:inline}
+  html[lang="en"] p[data-en],html[lang="en"] li[data-en],html[lang="en"] div[data-en],html[lang="en"] h1[data-en],html[lang="en"] h2[data-en],html[lang="en"] h3[data-en],html[lang="en"] h4[data-en]{display:block}
+  html[lang="es"] p[data-es],html[lang="es"] li[data-es],html[lang="es"] div[data-es],html[lang="es"] h1[data-es],html[lang="es"] h2[data-es],html[lang="es"] h3[data-es],html[lang="es"] h4[data-es]{display:block}
+
+  /* nav */
+  .top{position:sticky;top:0;z-index:40;background:rgba(248,243,234,.96);backdrop-filter:blur(14px);border-bottom:0.5px solid var(--line)}
+  .top-in{max-width:1180px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .brand{font-family:var(--serif);font-weight:600;font-size:16px;letter-spacing:.16em;color:var(--ink)}
+  .brand em{font-style:normal;color:var(--rose)}
+  .top-tag{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--rose);text-transform:uppercase;padding:4px 10px;background:rgba(184,97,107,.10);border-radius:4px}
+  .top-spacer{flex:1}
+  .top-link{font-family:var(--sans);font-size:12px;color:var(--ink-2);padding:7px 12px;border:0.5px solid var(--line);border-radius:5px}
+  .top-link:hover{background:var(--cream-2)}
+  .lang{display:inline-flex;border:0.5px solid var(--line);border-radius:5px;overflow:hidden}
+  .lang button{padding:7px 11px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;background:transparent;border:0;color:var(--faint);cursor:pointer;font-weight:500}
+  .lang button.active{background:var(--ink);color:var(--cream)}
+
+  .hdr{padding:56px 32px 40px;max-width:1180px;margin:0 auto;width:100%;border-bottom:0.5px solid var(--line)}
+  .hdr-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--rose);font-weight:600;margin-bottom:18px}
+  .hdr h1{font-family:var(--display);font-weight:400;font-size:clamp(40px,5.5vw,72px);line-height:1;letter-spacing:-.02em;color:var(--ink);margin-bottom:16px}
+  .hdr h1 em{font-style:italic;color:var(--rose)}
+  .hdr-lede{font-family:var(--serif);font-size:18px;color:var(--ink-3);font-weight:300;max-width:720px;line-height:1.55}
+
+  .reality{max-width:1180px;margin:36px auto 0;padding:24px 28px;background:linear-gradient(135deg,var(--cream-2),var(--cream-3));border:0.5px solid var(--line);border-radius:10px;border-left:3px solid var(--coral)}
+  .reality .rlabel{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);font-weight:600;margin-bottom:10px}
+  .reality p{font-family:var(--serif);font-size:15.5px;line-height:1.6;color:var(--ink-2);font-weight:400;margin-bottom:10px}
+  .reality p:last-child{margin-bottom:0}
+  .reality strong{color:var(--ink);font-weight:600}
+
+  section{padding:64px 32px;max-width:1180px;margin:0 auto;width:100%;border-bottom:0.5px solid var(--line)}
+  section:last-child{border-bottom:0}
+  .snum{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--rose);font-weight:600;margin-bottom:14px}
+  .snum em{font-style:normal;color:var(--ink-3)}
+  h2{font-family:var(--display);font-weight:400;font-size:clamp(32px,4.5vw,52px);line-height:1.05;letter-spacing:-.02em;color:var(--ink);margin-bottom:14px}
+  h2 em{font-style:italic;color:var(--rose)}
+  .lede{font-family:var(--serif);font-size:17px;line-height:1.5;color:var(--ink-3);font-weight:300;font-style:italic;margin-bottom:32px;max-width:720px}
+
+  h3{font-family:var(--serif);font-weight:500;font-size:22px;color:var(--ink);letter-spacing:-.01em;margin:36px 0 14px;line-height:1.2}
+  h3 .order{font-family:var(--mono);font-style:normal;font-size:11px;letter-spacing:.18em;color:var(--rose);margin-right:10px;font-weight:600}
+  h4{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--coral);font-weight:600;margin:24px 0 10px}
+
+  p{font-family:var(--serif);font-size:15.5px;line-height:1.65;color:var(--ink-2);font-weight:400;margin-bottom:16px}
+  p strong{color:var(--ink);font-weight:600}
+  p em{font-style:italic}
+
+  /* route cards */
+  .routes{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:24px}
+  .route{background:var(--cream);border:0.5px solid var(--line);border-radius:8px;padding:20px 22px}
+  .route .rk{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--coral);font-weight:600;margin-bottom:6px}
+  .route h4{font-family:var(--serif);font-size:17px;font-weight:500;color:var(--ink);text-transform:none;letter-spacing:-.005em;margin:0 0 10px;color:var(--ink)}
+  .route p{font-size:14px;line-height:1.55;margin-bottom:8px;color:var(--ink-2)}
+  .route .effort{font-family:var(--mono);font-size:9.5px;letter-spacing:.10em;color:var(--green);text-transform:uppercase;padding:3px 7px;background:rgba(63,95,69,.10);border-radius:3px;display:inline-block;margin-top:4px}
+  .route .effort.med{color:var(--gold);background:rgba(181,143,77,.12)}
+  .route .effort.high{color:var(--rose);background:rgba(184,97,107,.12)}
+
+  /* tool stack table */
+  table.tools{width:100%;border-collapse:collapse;background:var(--cream);border:0.5px solid var(--line);border-radius:8px;overflow:hidden;font-size:13.5px;margin:18px 0}
+  table.tools th{font-family:var(--mono);font-size:9.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);background:var(--cream-2);text-align:left;padding:12px 14px;border-bottom:0.5px solid var(--line)}
+  table.tools td{padding:12px 14px;border-bottom:0.5px solid var(--line-2);vertical-align:top;color:var(--ink-2);line-height:1.5}
+  table.tools td.tname{font-family:var(--serif);font-weight:600;color:var(--ink);font-size:15px}
+  table.tools td.tname a{color:var(--ink);border:0}
+  table.tools td.tname a:hover{color:var(--rose)}
+  table.tools td.tprice{font-family:var(--mono);font-size:12px;color:var(--coral);font-weight:600;white-space:nowrap}
+  table.tools td.tcat{font-family:var(--mono);font-size:9.5px;letter-spacing:.10em;text-transform:uppercase;color:var(--teal);font-weight:600}
+  table.tools tr:last-child td{border-bottom:0}
+
+  /* country kits */
+  .country-kit{margin:28px 0;background:var(--cream);border:0.5px solid var(--line);border-radius:10px;padding:24px 28px}
+  .ck-head{display:flex;align-items:baseline;gap:14px;margin-bottom:16px;padding-bottom:12px;border-bottom:0.5px solid var(--line-2)}
+  .ck-flag{font-size:24px;line-height:1}
+  .ck-name{font-family:var(--display);font-size:26px;color:var(--ink);font-weight:400;letter-spacing:-.01em}
+  .ck-cities{font-family:var(--mono);font-size:10px;letter-spacing:.10em;color:var(--faint);text-transform:uppercase;margin-left:auto}
+  .ck-block{margin:14px 0}
+  .ck-block h5{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--rose);font-weight:600;margin-bottom:8px}
+  .ck-accts{display:flex;flex-wrap:wrap;gap:6px}
+  .ck-acct{font-family:var(--mono);font-size:11.5px;color:var(--teal);background:var(--cream-2);padding:6px 10px;border-radius:14px;border:0.5px solid var(--line-2);transition:all .14s ease}
+  .ck-acct:hover{background:var(--ink);color:var(--cream);border-color:var(--ink);text-decoration:none}
+  .ck-hashtags{font-family:var(--mono);font-size:11.5px;color:var(--ink-3);line-height:1.7}
+  .ck-hashtags a{color:var(--ink-3);border:0;margin-right:4px;padding:2px 6px;background:var(--cream-2);border-radius:3px;display:inline-block;margin-bottom:4px}
+  .ck-hashtags a:hover{background:var(--ink);color:var(--cream)}
+
+  /* scoring rubric */
+  .rubric{display:grid;grid-template-columns:80px 1fr 100px;gap:0;background:var(--cream);border:0.5px solid var(--line);border-radius:8px;overflow:hidden;margin:18px 0}
+  .rh{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);font-weight:600;background:var(--cream-2);padding:10px 14px;border-bottom:0.5px solid var(--line)}
+  .rcell{padding:12px 14px;border-bottom:0.5px solid var(--line-2);font-size:13.5px;color:var(--ink-2)}
+  .rcell.num{font-family:var(--mono);font-size:12px;color:var(--rose);font-weight:600}
+  .rcell.score{font-family:var(--mono);font-size:14px;color:var(--ink);font-weight:600;text-align:center}
+  .rubric > div:nth-last-child(-n+3){border-bottom:0}
+
+  /* workflow */
+  .flow{margin:24px 0;display:flex;flex-direction:column;gap:8px}
+  .flow-step{display:grid;grid-template-columns:48px 1fr;gap:18px;padding:18px 22px;background:var(--cream);border:0.5px solid var(--line);border-radius:8px;border-left:3px solid var(--coral)}
+  .flow-num{font-family:var(--display);font-size:32px;line-height:1;color:var(--coral);font-weight:400}
+  .flow-body h4{font-family:var(--serif);font-size:16px;font-weight:600;color:var(--ink);margin:0 0 6px;text-transform:none;letter-spacing:-.005em;color:var(--ink)}
+  .flow-body p{font-size:14px;line-height:1.55;color:var(--ink-2);margin-bottom:0}
+
+  /* search query templates */
+  pre.query{background:var(--ink);color:var(--cream);padding:14px 18px;border-radius:6px;font-family:var(--mono);font-size:12.5px;line-height:1.6;margin:10px 0;overflow-x:auto;white-space:pre-wrap}
+  pre.query .h{color:var(--mango)}
+  pre.query .c{color:var(--faint);font-style:italic}
+
+  @media (max-width:780px){
+    .routes{grid-template-columns:1fr}
+    .rubric{grid-template-columns:60px 1fr 80px}
+    .hdr,section{padding-left:22px;padding-right:22px}
+    .ck-head{flex-wrap:wrap}
+    .ck-cities{margin-left:0;width:100%}
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="../sora-hq.html">SORA · <em>IG MINING</em></a>
+    <span class="top-tag" data-es>Playbook interno</span>
+    <span class="top-tag" data-en>Internal playbook</span>
+    <div class="top-spacer"></div>
+    <a class="top-link" href="./hosts.html">↗ Host pipeline</a>
+    <a class="top-link" href="./contacts.html">↗ CRM</a>
+    <a class="top-link" href="./atlas.html">↗ Atlas</a>
+    <a class="top-link" href="../sora-hq.html">HQ</a>
+    <div class="lang">
+      <button class="active" data-lang="es">ES</button>
+      <button data-lang="en">EN</button>
+    </div>
+  </div>
+</header>
+
+<div class="hdr">
+  <div class="hdr-eyebrow" data-es>Cómo encontrar perfiles influyentes por región</div>
+  <div class="hdr-eyebrow" data-en>How to find influential profiles per region</div>
+  <h1><span data-es><em>Minado</em> de Instagram</span><span data-en>Instagram <em>mining</em></span></h1>
+  <p class="hdr-lede" data-es>Seis rutas concretas para encontrar candidatos a anfitrión Sora en cada región, el stack de herramientas (gratis y pagadas), kits de arranque clickables por país, y un rúbrica de scoring para no perder tiempo con perfiles que no van a convertir.</p>
+  <p class="hdr-lede" data-en>Six concrete routes to find Sora-host candidates in each region, the tool stack (free and paid), clickable country starter kits, and a scoring rubric so we don't waste time on profiles that won't convert.</p>
+</div>
+
+<div class="reality">
+  <div class="rlabel" data-es>Realidad operativa · leer primero</div>
+  <div class="rlabel" data-en>Operational reality · read first</div>
+  <p data-es>Instagram en 2026 <strong>no permite scraping serio sin saltarse términos</strong> — su anti-bot detecta requests automatizadas en 5 minutos. Tres caminos legítimos: <strong>(1) navegación manual</strong> (lo que un humano hace, 30-60 min por país), <strong>(2) APIs oficiales</strong> (Meta Brand Collabs Manager, limitada), y <strong>(3) herramientas pagadas</strong> que usan datos parciales legalmente comprados o lentamente raspados ($30-500/mes). Para Sora la combinación ganadora es: <em>navegación manual con cuentas semilla precisas</em> + 1-2 herramientas pagadas para verificar engagement de los finalistas. No te recomendamos scraping directo — riesgo de baneo IG + multas Meta vs ahorro de tiempo no compensa.</p>
+  <p data-en>Instagram in 2026 <strong>doesn't allow serious scraping without breaking TOS</strong> — anti-bot catches automated requests in 5 minutes. Three legitimate paths: <strong>(1) manual navigation</strong> (what a human does, 30-60 min per country), <strong>(2) official APIs</strong> (Meta Brand Collabs Manager, limited), and <strong>(3) paid tools</strong> that use legally-purchased partial data or slow legitimate scraping ($30-500/mo). For Sora the winning combo: <em>manual navigation with precise seed accounts</em> + 1-2 paid tools to verify engagement on finalists. We don't recommend direct scraping — IG ban risk + Meta fines vs time saved doesn't compensate.</p>
+</div>
+
+<!-- ============== 01 SIX ROUTES ============== -->
+<section>
+  <div class="snum"><em>01 ·</em> <span data-es>Las seis rutas que funcionan</span><span data-en>The six routes that work</span></div>
+  <h2><span data-es>Cómo <em>cazar</em> sin scraper</span><span data-en>How to <em>hunt</em> without a scraper</span></h2>
+  <p class="lede" data-es>Cada ruta toma 5-15 minutos por país y produce 5-20 candidatos. Hacer las seis cubre prácticamente todo el campo visible.</p>
+  <p class="lede" data-en>Each route takes 5-15 minutes per country and surfaces 5-20 candidates. Doing all six covers basically the whole visible field.</p>
+
+  <div class="routes">
+    <div class="route">
+      <div class="rk">Ruta 01 · seed-graph</div>
+      <h4 data-es>Cuentas semilla → comentaristas frecuentes</h4>
+      <h4 data-en>Seed accounts → frequent commenters</h4>
+      <p data-es>Abre las cuentas semilla del país (en el kit más abajo). En los últimos 10 posts, los 3-5 comentaristas que aparecen repetidamente son <em>el círculo cercano</em>. Esos perfiles son tus candidatos #1 — son locales, comprometidos, y ya están en la órbita del lugar.</p>
+      <p data-en>Open the country's seed accounts (kits below). Across the last 10 posts, the 3-5 commenters who appear repeatedly are the <em>inner circle</em>. Those profiles are your #1 candidates — local, engaged, already in the venue's orbit.</p>
+      <span class="effort" data-es>Esfuerzo · bajo · 10 min</span>
+      <span class="effort" data-en>Effort · low · 10 min</span>
+    </div>
+
+    <div class="route">
+      <div class="rk">Ruta 02 · tagged photos</div>
+      <h4 data-es>Fotos etiquetadas en venues clave</h4>
+      <h4 data-en>Tagged photos at key venues</h4>
+      <p data-es>Click en el hotel/restaurante (e.g. Habitas Tulum, Don Julio, UXUA) → tab "Tagged". Quién se etiqueta seguido es regular de ese venue. Filtrar por estética + bilingüe → top 5-10 candidatos por venue.</p>
+      <p data-en>Click the hotel/restaurant (e.g. Habitas Tulum, Don Julio, UXUA) → "Tagged" tab. Who tags themselves repeatedly is a regular at that venue. Filter for aesthetic + bilingual → top 5-10 candidates per venue.</p>
+      <span class="effort" data-es>Esfuerzo · bajo · 15 min</span>
+      <span class="effort" data-en>Effort · low · 15 min</span>
+    </div>
+
+    <div class="route">
+      <div class="rk">Ruta 03 · location pin</div>
+      <h4 data-es>Location tag · pin geográfico</h4>
+      <h4 data-en>Location tag · geographic pin</h4>
+      <p data-es>Busca un location pin (e.g. "Roma Norte", "Palermo Hollywood", "Praia do Espelho"). Top posts surface las cuentas con más engagement en esa ubicación específica. Crítico: la pestaña "Top" no "Recent" — Top filtra por engagement-quality.</p>
+      <p data-en>Search a location pin (e.g. "Roma Norte", "Palermo Hollywood", "Praia do Espelho"). Top posts surface accounts with the most engagement at that specific location. Critical: "Top" tab not "Recent" — Top filters for engagement quality.</p>
+      <span class="effort med" data-es>Esfuerzo · medio · 20 min</span>
+      <span class="effort med" data-en>Effort · medium · 20 min</span>
+    </div>
+
+    <div class="route">
+      <div class="rk">Ruta 04 · hashtag mining</div>
+      <h4 data-es>Hashtags hyper-regionales</h4>
+      <h4 data-en>Hyper-regional hashtags</h4>
+      <p data-es>Hashtags genéricos (#travel) son ruido. Los que funcionan son combinaciones lugar+vibe: <em>#romanorte</em>, <em>#cdmxcurated</em>, <em>#provenzamde</em>, <em>#palermo</em>, <em>#trancosolifestyle</em>. Top tab + scroll 30 posts → anotar autores que aparecen 2+ veces.</p>
+      <p data-en>Generic hashtags (#travel) are noise. What works are place+vibe combos: <em>#romanorte</em>, <em>#cdmxcurated</em>, <em>#provenzamde</em>, <em>#palermo</em>, <em>#trancosolifestyle</em>. Top tab + scroll 30 posts → note authors who appear 2+ times.</p>
+      <span class="effort med" data-es>Esfuerzo · medio · 15 min</span>
+      <span class="effort med" data-en>Effort · medium · 15 min</span>
+    </div>
+
+    <div class="route">
+      <div class="rk">Ruta 05 · cross-platform</div>
+      <h4 data-es>Reels populares + TikTok → IG</h4>
+      <h4 data-en>Popular Reels + TikTok → IG</h4>
+      <p data-es>El algoritmo de Reels surface lifestyle locales high-engagement. También TikTok: busca "best restaurants {city}" o "{city} luxury weekend" — top creadores casi siempre tienen IG en su bio. Lleva tiempo (45 min de scroll) pero produce candidatos que la búsqueda de IG-solo no encuentra.</p>
+      <p data-en>The Reels algorithm surfaces high-engagement local lifestyle. Also TikTok: search "best restaurants {city}" or "{city} luxury weekend" — top creators almost always have IG in bio. Takes time (45 min scroll) but surfaces candidates IG-only search doesn't find.</p>
+      <span class="effort high" data-es>Esfuerzo · alto · 45 min</span>
+      <span class="effort high" data-en>Effort · high · 45 min</span>
+    </div>
+
+    <div class="route">
+      <div class="rk">Ruta 06 · press mining</div>
+      <h4 data-es>Prensa regional → bios IG</h4>
+      <h4 data-en>Regional press → IG bios</h4>
+      <p data-es>Vogue México, Domestika featured, El Espectador Lifestyle, Folha SP Vogue Brasil, Apartamento magazine. Las features de "creadores a seguir" hechas por editores locales <em>ya filtraron por gusto</em>. Buscar artículos 2024-2026 listas "30 under 30" o "creadores del año" — cada uno con su IG handle.</p>
+      <p data-en>Vogue México, Domestika featured, El Espectador Lifestyle, Folha SP, Vogue Brazil, Apartamento magazine. Local-editor "creators to follow" features <em>already filtered for taste</em>. Search 2024-2026 articles "30 under 30" or "creators of the year" — each with their IG handle.</p>
+      <span class="effort" data-es>Esfuerzo · bajo · 20 min</span>
+      <span class="effort" data-en>Effort · low · 20 min</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============== 02 TOOL STACK ============== -->
+<section>
+  <div class="snum"><em>02 ·</em> <span data-es>Stack de herramientas</span><span data-en>Tool stack</span></div>
+  <h2><span data-es>Lo que <em>vale comprar</em></span><span data-en>What's <em>worth paying for</em></span></h2>
+  <p class="lede" data-es>Empezar gratis. Subir a pagado solo cuando el equipo identifique &gt; 50 candidatos/mes y necesite verificación de engagement masiva.</p>
+  <p class="lede" data-en>Start free. Upgrade to paid only when team identifies &gt;50 candidates/month and needs mass engagement verification.</p>
+
+  <h3 data-es><span class="order">A</span> Gratis · primera fase</h3>
+  <h3 data-en><span class="order">A</span> Free · first phase</h3>
+  <table class="tools">
+    <thead><tr>
+      <th><span data-es>Herramienta</span><span data-en>Tool</span></th>
+      <th><span data-es>Categoría</span><span data-en>Category</span></th>
+      <th><span data-es>Para qué</span><span data-en>What for</span></th>
+      <th>$</th>
+    </tr></thead>
+    <tbody>
+      <tr><td class="tname"><a href="https://socialblade.com/instagram/" target="_blank">Social Blade</a></td><td class="tcat">Analytics</td><td data-es>Stats públicas de cualquier IG — followers history, engagement rate.</td><td data-en>Public stats on any IG — followers history, engagement rate.</td><td class="tprice">$0</td></tr>
+      <tr><td class="tname"><a href="https://notjustanalytics.com/" target="_blank">Not Just Analytics</a></td><td class="tcat">Analytics</td><td data-es>Engagement + fake-follower analyzer rápido. 1 perfil por scan.</td><td data-en>Fast engagement + fake-follower analyzer. 1 profile per scan.</td><td class="tprice">$0</td></tr>
+      <tr><td class="tname"><a href="https://business.facebook.com/creatorstudio" target="_blank">Meta Creator Studio</a></td><td class="tcat">Oficial Meta</td><td data-es>Si Sora-IG es business account, acceso a creator insights + búsqueda creadores LATAM.</td><td data-en>If Sora-IG is business account, access to creator insights + LATAM creator search.</td><td class="tprice">$0</td></tr>
+      <tr><td class="tname"><a href="https://business.facebook.com/marketplace/creators/" target="_blank">Meta Brand Collabs Manager</a></td><td class="tcat">Oficial Meta</td><td data-es>Marketplace de creadores Meta. Filtros por país + categoría. Solo para business verified.</td><td data-en>Meta creator marketplace. Country + category filters. Verified business only.</td><td class="tprice">$0</td></tr>
+      <tr><td class="tname"><a href="https://heepsy.com/" target="_blank">Heepsy</a></td><td class="tcat">Discovery</td><td data-es>Búsqueda creadores con filtros país/ciudad/seguidores/engagement. Trial gratis 7 días.</td><td data-en>Creator search with country/city/follower/engagement filters. Free 7-day trial.</td><td class="tprice">trial · $49+</td></tr>
+    </tbody>
+  </table>
+
+  <h3 data-es><span class="order">B</span> Pagado · cuando escale</h3>
+  <h3 data-en><span class="order">B</span> Paid · once it scales</h3>
+  <table class="tools">
+    <thead><tr>
+      <th><span data-es>Herramienta</span><span data-en>Tool</span></th>
+      <th><span data-es>Categoría</span><span data-en>Category</span></th>
+      <th><span data-es>Para qué</span><span data-en>What for</span></th>
+      <th>$ /mes</th>
+    </tr></thead>
+    <tbody>
+      <tr><td class="tname"><a href="https://www.modash.io/" target="_blank">Modash</a></td><td class="tcat">Database</td><td data-es>Base 250M+ creadores. Filtros país/ciudad/idioma/edad/engagement. Mejor relación precio/datos LATAM.</td><td data-en>250M+ creator database. Country/city/language/age/engagement filters. Best LATAM price/data ratio.</td><td class="tprice">$99-499</td></tr>
+      <tr><td class="tname"><a href="https://hypeauditor.com/" target="_blank">HypeAuditor</a></td><td class="tcat">Audit</td><td data-es>Detección fake followers (crítico LATAM). Audiencia real por país + edad.</td><td data-en>Fake follower detection (critical LATAM). Real audience by country + age.</td><td class="tprice">$399+</td></tr>
+      <tr><td class="tname"><a href="https://klear.com/" target="_blank">Klear</a> (Meltwater)</td><td class="tcat">Discovery</td><td data-es>Búsqueda creadores con scoring AI. Strong Brasil + México coverage.</td><td data-en>AI-scored creator search. Strong Brazil + Mexico coverage.</td><td class="tprice">~$500</td></tr>
+      <tr><td class="tname"><a href="https://www.aspire.io/" target="_blank">Aspire</a></td><td class="tcat">Full CRM</td><td data-es>End-to-end: discovery → outreach → contract → pago → tracking. Enterprise.</td><td data-en>End-to-end: discovery → outreach → contract → payment → tracking. Enterprise.</td><td class="tprice">$600+</td></tr>
+      <tr><td class="tname"><a href="https://phantombuster.com/" target="_blank">Phantom Buster</a></td><td class="tcat">⚠ Gris</td><td data-es>Automatiza scraping IG/LinkedIn/TikTok. <strong>Viola TOS</strong>. Útil para extracción rápida pero riesgo ban Sora-IG.</td><td data-en>Automates IG/LinkedIn/TikTok scraping. <strong>Violates TOS</strong>. Useful for fast extraction but Sora-IG ban risk.</td><td class="tprice">$30-200</td></tr>
+      <tr><td class="tname"><a href="https://apify.com/topics/instagram-scraper" target="_blank">Apify IG Scraper</a></td><td class="tcat">⚠ Gris</td><td data-es>Scrapers prefabricados pay-per-use. <strong>Viola TOS</strong>. ~$0.30 por 1k perfiles. Usar desde IP separada de Sora-IG.</td><td data-en>Pay-per-use prebuilt scrapers. <strong>Violates TOS</strong>. ~$0.30 per 1k profiles. Use from IP separate from Sora-IG.</td><td class="tprice">~$30-50</td></tr>
+    </tbody>
+  </table>
+
+  <h4 data-es>Recomendación Sora 2026</h4>
+  <h4 data-en>Sora 2026 recommendation</h4>
+  <p data-es>Empezar con <strong>Heepsy trial</strong> (1 semana, sin tarjeta) — descubrir el formato + sembrar lista inicial 30-50 candidatos por país. A los 3 meses si volumen justifica, upgrade a <strong>Modash plan starter $99/mes</strong>. Saltarse Phantom Buster / Apify hasta que Sora-IG tenga 50k+ followers y pueda permitirse arriesgar ban temporal.</p>
+  <p data-en>Start with <strong>Heepsy trial</strong> (1 week, no card) — discover the format + seed initial 30-50 candidates per country. At 3 months if volume justifies, upgrade to <strong>Modash starter plan $99/mo</strong>. Skip Phantom Buster / Apify until Sora-IG has 50k+ followers and can afford temporary ban risk.</p>
+</section>
+
+<!-- ============== 03 COUNTRY KITS ============== -->
+<section>
+  <div class="snum"><em>03 ·</em> <span data-es>Kits de arranque por país</span><span data-en>Country starter kits</span></div>
+  <h2><span data-es>Click <em>directo</em> a cuentas + hashtags</span><span data-en><em>Direct click</em> to accounts + hashtags</span></h2>
+  <p class="lede" data-es>Cada kit abre IG en una pestaña nueva. Empezar por cuentas semilla → ruta 01 (comentaristas), después hashtags → ruta 04.</p>
+  <p class="lede" data-en>Each kit opens IG in a new tab. Start with seed accounts → route 01 (commenters), then hashtags → route 04.</p>
+
+  <div id="country-kits"></div>
+</section>
+
+<!-- ============== 04 SCORING RUBRIC ============== -->
+<section>
+  <div class="snum"><em>04 ·</em> <span data-es>Rúbrica de scoring</span><span data-en>Scoring rubric</span></div>
+  <h2><span data-es>Decidir en <em>90 segundos</em></span><span data-en>Decide in <em>90 seconds</em></span></h2>
+  <p class="lede" data-es>Cada candidato se evalúa con esta rúbrica al abrir su perfil. Total ≥ 14/20 → pasar al CRM. &lt; 14 → descartar.</p>
+  <p class="lede" data-en>Each candidate scored with this rubric on profile open. Total ≥ 14/20 → move to CRM. &lt; 14 → discard.</p>
+
+  <div class="rubric">
+    <div class="rh">#</div>
+    <div class="rh" data-es>Criterio</div><div class="rh" data-en>Criterion</div>
+    <div class="rh">Score</div>
+
+    <div class="rcell num">01</div>
+    <div class="rcell" data-es><strong>Estética visual</strong> — feed se ve curado, no random. Filtros consistentes. Composición pensada.</div>
+    <div class="rcell" data-en><strong>Visual aesthetic</strong> — feed looks curated, not random. Consistent filters. Thought-out composition.</div>
+    <div class="rcell score">/4</div>
+
+    <div class="rcell num">02</div>
+    <div class="rcell" data-es><strong>Gente real</strong> — fotos de personas reales (amigos, comidas, eventos), no stock. Las fotos transmiten que <em>ya organiza weekends</em>.</div>
+    <div class="rcell" data-en><strong>Real people</strong> — photos of real people (friends, meals, events), not stock. Photos signal that they <em>already host weekends</em>.</div>
+    <div class="rcell score">/4</div>
+
+    <div class="rcell num">03</div>
+    <div class="rcell" data-es><strong>Engagement rate</strong> — likes/followers. Sweet spot 3-8% (≥ 8% sospechoso de bots; ≤ 1.5% baja resonancia).</div>
+    <div class="rcell" data-en><strong>Engagement rate</strong> — likes/followers. Sweet spot 3-8% (≥ 8% suspect of bots; ≤ 1.5% low resonance).</div>
+    <div class="rcell score">/3</div>
+
+    <div class="rcell num">04</div>
+    <div class="rcell" data-es><strong>Audiencia local</strong> — comentarios en español + tags de ciudad. No audiencia 80% USA = no local.</div>
+    <div class="rcell" data-en><strong>Local audience</strong> — comments in Spanish + city tags. Not 80% US audience = not local.</div>
+    <div class="rcell score">/3</div>
+
+    <div class="rcell num">05</div>
+    <div class="rcell" data-es><strong>Bilingüe</strong> — captions en inglés también o bio en inglés. Crítico para Sora-guest internacional.</div>
+    <div class="rcell" data-en><strong>Bilingual</strong> — captions in English too or bio in English. Critical for Sora international guests.</div>
+    <div class="rcell score">/2</div>
+
+    <div class="rcell num">06</div>
+    <div class="rcell" data-es><strong>Edad estimada 28-42</strong> — visualmente. Joven sin red madura ≠ host. Mayor con red puede ser asesor en lugar de host.</div>
+    <div class="rcell" data-en><strong>Estimated age 28-42</strong> — visually. Too young without mature network ≠ host. Older with network may be advisor instead.</div>
+    <div class="rcell score">/2</div>
+
+    <div class="rcell num">07</div>
+    <div class="rcell" data-es><strong>Profesión actual</strong> — chef, fotógrafo, ex-hotelero, curador. NO influencer fulltime (con marca = no Sora).</div>
+    <div class="rcell" data-en><strong>Current profession</strong> — chef, photographer, ex-hotelier, curator. NOT fulltime influencer (own brand = not Sora).</div>
+    <div class="rcell score">/2</div>
+  </div>
+
+  <p data-es><strong>Score interpretation:</strong> 18-20 = warm lead inmediato (priorizar). 14-17 = cold target (agregar al pipeline). &lt; 14 = descartar.</p>
+  <p data-en><strong>Score interpretation:</strong> 18-20 = immediate warm lead (prioritize). 14-17 = cold target (add to pipeline). &lt; 14 = discard.</p>
+</section>
+
+<!-- ============== 05 WORKFLOW ============== -->
+<section>
+  <div class="snum"><em>05 ·</em> <span data-es>Workflow semanal</span><span data-en>Weekly workflow</span></div>
+  <h2><span data-es>De <em>scroll</em> a host firmado</span><span data-en>From <em>scroll</em> to signed host</span></h2>
+  <p class="lede" data-es>Una hora por semana por país → 5-10 nuevos candidatos al CRM. Estimado: 6 meses para llenar 10 chapters con hosts.</p>
+  <p class="lede" data-en>One hour per week per country → 5-10 new candidates in CRM. Estimate: 6 months to fill 10 chapters with hosts.</p>
+
+  <div class="flow">
+    <div class="flow-step"><div class="flow-num">01</div><div class="flow-body">
+      <h4 data-es>Lunes · ruta 01-02 (30 min/país)</h4>
+      <h4 data-en>Monday · routes 01-02 (30 min/country)</h4>
+      <p data-es>Abrir seed accounts del país. Anotar 10-15 comentaristas frecuentes. Click en "tagged" de 3 venues clave. Sumar 10-15 más. Score rápido cada uno con rúbrica.</p>
+      <p data-en>Open country seed accounts. Note 10-15 frequent commenters. Click "tagged" on 3 key venues. Add 10-15 more. Quick-score each with rubric.</p>
+    </div></div>
+
+    <div class="flow-step"><div class="flow-num">02</div><div class="flow-body">
+      <h4 data-es>Miércoles · rutas 03-04 (30 min/país)</h4>
+      <h4 data-en>Wednesday · routes 03-04 (30 min/country)</h4>
+      <p data-es>Location tags + hashtags hyper-regionales. Top tab. Anotar 10-15 más. Score.</p>
+      <p data-en>Location tags + hyper-regional hashtags. Top tab. Note 10-15 more. Score.</p>
+    </div></div>
+
+    <div class="flow-step"><div class="flow-num">03</div><div class="flow-body">
+      <h4 data-es>Viernes · verificación + CRM</h4>
+      <h4 data-en>Friday · verification + CRM</h4>
+      <p data-es>Pasar todos ≥ 14 por Social Blade (verificar followers history orgánico) + Not Just Analytics (engagement no inflado). Los que sobreviven → agregar a <a href="./hosts.html">/hosts</a> con status "cold" + owner asignado.</p>
+      <p data-en>Run all ≥ 14 through Social Blade (verify organic followers history) + Not Just Analytics (non-inflated engagement). Survivors → add to <a href="./hosts.html">/hosts</a> with status "cold" + owner assigned.</p>
+    </div></div>
+
+    <div class="flow-step"><div class="flow-num">04</div><div class="flow-body">
+      <h4 data-es>Outreach · DM templated</h4>
+      <h4 data-en>Outreach · templated DM</h4>
+      <p data-es>DM en 2-3 frases. Voz Sora: "Hola [nombre], soy [tu] de SORA Travel Agency — somos una marca de fines de semana curados en LATAM. Tu [trabajo/feed] resonó. Estamos abriendo búsqueda de host para [ciudad]; café virtual 30 min?". Sin pitch venta. Cero emojis. Status warm si responde dentro 1 semana.</p>
+      <p data-en>DM in 2-3 sentences. Sora voice: "Hi [name], [you] from SORA Travel Agency here — we're a curated LATAM weekends brand. Your [work/feed] resonated. We're opening a host search for [city]; virtual coffee 30 min?". No sales pitch. Zero emojis. Status warm if reply within 1 week.</p>
+    </div></div>
+
+    <div class="flow-step"><div class="flow-num">05</div><div class="flow-body">
+      <h4 data-es>Call · evaluar fit</h4>
+      <h4 data-en>Call · assess fit</h4>
+      <p data-es>30 min Zoom. Tres preguntas: (1) "¿Cuándo fue la última vez que organizaste un weekend para 8+ amigos?" (señal real-vs-fake host) (2) "¿Cuáles son tus 3 lugares ocultos en {ciudad}?" (señal de red local) (3) "¿Cómo se ve un {fin de semana ideal} en {ciudad}?" (señal de gusto y narrativa).</p>
+      <p data-en>30 min Zoom. Three questions: (1) "When did you last organize a weekend for 8+ friends?" (real-vs-fake host signal) (2) "What are your 3 hidden spots in {city}?" (local network signal) (3) "What does an {ideal weekend} look like in {city}?" (taste + narrative signal).</p>
+    </div></div>
+
+    <div class="flow-step"><div class="flow-num">06</div><div class="flow-body">
+      <h4 data-es>Trial · primer fin de semana co-curado</h4>
+      <h4 data-en>Trial · first co-curated weekend</h4>
+      <p data-es>Antes de oferta laboral, hacer un trial: co-curar UN weekend (Sora paga $500 + comida + alojamiento). Ver cómo trabaja con grupos reales. Si funciona — oferta $1,500-2,500/mes USD + bonus por weekend exitoso.</p>
+      <p data-en>Before job offer, run a trial: co-curate ONE weekend (Sora pays $500 + food + lodging). See how they work with real groups. If it works — offer $1,500-2,500/mo USD + bonus per successful weekend.</p>
+    </div></div>
+  </div>
+</section>
+
+<!-- ============== 06 SEARCH TEMPLATES ============== -->
+<section>
+  <div class="snum"><em>06 ·</em> <span data-es>Plantillas de búsqueda</span><span data-en>Search templates</span></div>
+  <h2><span data-es>Queries <em>que funcionan</em></span><span data-en>Queries <em>that work</em></span></h2>
+  <p class="lede" data-es>Copy-paste en IG search, Google, TikTok. Reemplazar {city} y {country} antes de pegar.</p>
+  <p class="lede" data-en>Copy-paste into IG search, Google, TikTok. Replace {city} and {country} before pasting.</p>
+
+  <h4>IG search</h4>
+  <pre class="query"><span class="c"># En la barra de búsqueda de IG / IG search bar</span>
+<span class="h">{city} chef</span>
+<span class="h">{city} curator</span>
+<span class="h">{city} photographer</span>
+<span class="h">{city} concierge</span>
+<span class="h">curaduría {city}</span>
+<span class="h">private dinners {city}</span></pre>
+
+  <h4>Google · prensa regional + listas</h4>
+  <pre class="query"><span class="c"># Google search · funciona mejor que IG search directo</span>
+<span class="h">site:vogue.mx 2025 creadores</span>
+<span class="h">site:eltiempo.com lifestyle creadores 2024..2026</span>
+<span class="h">site:folha.uol.com.br criadores instagram 2025</span>
+<span class="h">"30 under 30" {city} instagram 2025</span>
+<span class="h">"creators to follow" {city} 2025</span>
+<span class="h">"top hosts" {city} instagram</span></pre>
+
+  <h4>TikTok · cross-platform</h4>
+  <pre class="query"><span class="c"># TikTok search → click profile → bio link IG</span>
+<span class="h">best restaurants {city}</span>
+<span class="h">luxury weekend {city}</span>
+<span class="h">hidden spots {city}</span>
+<span class="h">where locals eat {city}</span></pre>
+
+  <h4>Google · venue tagged photos</h4>
+  <pre class="query"><span class="c"># Atajo: buscar fotos etiquetadas de un venue específico</span>
+<span class="h">site:instagram.com Habitas Tulum tagged</span>
+<span class="h">site:instagram.com "Don Julio Parrilla" tagged</span>
+<span class="h">site:instagram.com UXUA Trancoso tagged</span></pre>
+</section>
+
+<script src="./data-hosts.js"></script>
+<script>
+  const COUNTRIES = {
+    MX:{flag:'🇲🇽',es:'México',en:'Mexico'}, CO:{flag:'🇨🇴',es:'Colombia',en:'Colombia'},
+    BR:{flag:'🇧🇷',es:'Brasil',en:'Brazil'}, AR:{flag:'🇦🇷',es:'Argentina',en:'Argentina'},
+    CR:{flag:'🇨🇷',es:'Costa Rica',en:'Costa Rica'}, PE:{flag:'🇵🇪',es:'Perú',en:'Peru'},
+    CL:{flag:'🇨🇱',es:'Chile',en:'Chile'}, UY:{flag:'🇺🇾',es:'Uruguay',en:'Uruguay'},
+    PA:{flag:'🇵🇦',es:'Panamá',en:'Panama'}, VE:{flag:'🇻🇪',es:'Venezuela',en:'Venezuela'}
+  };
+
+  const langBtns = document.querySelectorAll('.lang button');
+  function setLang(l){
+    document.documentElement.setAttribute('lang', l);
+    localStorage.setItem('sora.lang', l);
+    langBtns.forEach(b=>b.classList.toggle('active', b.dataset.lang===l));
+    render();
+  }
+  langBtns.forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
+  const initLang = localStorage.getItem('sora.lang') || 'es';
+  document.documentElement.setAttribute('lang', initLang);
+  langBtns.forEach(b=>b.classList.toggle('active', b.dataset.lang===initLang));
+
+  function render(){
+    const lang = document.documentElement.getAttribute('lang') || 'es';
+    const kits = Object.keys(window.SORA_HOSTS.SEARCH).map(code=>{
+      const c = COUNTRIES[code]; if(!c) return '';
+      const s = window.SORA_HOSTS.SEARCH[code];
+      const seeds = s.seedAccounts.map(h=>{
+        const handle = h.replace('@','');
+        return `<a class="ck-acct" href="https://instagram.com/${handle}" target="_blank">${h}</a>`;
+      }).join('');
+      const tags = s.hashtags.map(h=>{
+        const tag = h.replace('#','');
+        return `<a href="https://instagram.com/explore/tags/${tag}/" target="_blank">${h}</a>`;
+      }).join(' ');
+      const locs = s.locations.map(l=>{
+        const q = encodeURIComponent(l);
+        return `<a class="ck-acct" href="https://www.google.com/search?q=site:instagram.com+${q}" target="_blank">${l}</a>`;
+      }).join('');
+      return `<div class="country-kit">
+        <div class="ck-head">
+          <span class="ck-flag">${c.flag}</span>
+          <span class="ck-name">${c[lang]}</span>
+          <span class="ck-cities">${s.cityFocus.join(' · ')}</span>
+        </div>
+        <div class="ck-block">
+          <h5>${lang==='es'?'01 · Cuentas semilla (click → minar comentaristas + tagged)':'01 · Seed accounts (click → mine commenters + tagged)'}</h5>
+          <div class="ck-accts">${seeds}</div>
+        </div>
+        <div class="ck-block">
+          <h5>${lang==='es'?'02 · Hashtags hyper-regionales (top tab)':'02 · Hyper-regional hashtags (top tab)'}</h5>
+          <div class="ck-hashtags">${tags}</div>
+        </div>
+        <div class="ck-block">
+          <h5>${lang==='es'?'03 · Venues a buscar tagged photos':'03 · Venues to search tagged photos'}</h5>
+          <div class="ck-accts">${locs}</div>
+        </div>
+      </div>`;
+    }).join('');
+    document.getElementById('country-kits').innerHTML = kits;
+  }
+  render();
+</script>
+</body>
+</html>

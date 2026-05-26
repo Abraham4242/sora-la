@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SORA · Para Marcos</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Instrument+Serif&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F8F3EA; --cream-2:#F2EBDD; --cream-3:#E9DFCA;
+    --ink:#1B1A17; --ink-2:#3A352D; --ink-3:#5C5346; --faint:#9A8E7A;
+    --line:rgba(27,26,23,.10); --line-2:rgba(27,26,23,.06);
+    --coral:#D9573B; --gold:#B58F4D; --mango:#E2A24A; --green:#3F5F45; --rose:#B8616B; --teal:#2C6E7F;
+    --serif:'Fraunces',Georgia,serif; --display:'Instrument Serif',Georgia,serif;
+    --sans:'Inter',-apple-system,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--cream);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;font-size:15px;line-height:1.55;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.08  0 0 0 0 0.07  0 0 0 0 0.05  0 0 0 0.020 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--coral);color:var(--cream)}
+
+  [data-en]{display:none}
+  html[lang="en"] [data-es]{display:none}
+  html[lang="en"] [data-en]{display:inline}
+  html[lang="en"] li[data-en],html[lang="en"] p[data-en],html[lang="en"] div[data-en],html[lang="en"] h1[data-en],html[lang="en"] h2[data-en],html[lang="en"] h3[data-en],html[lang="en"] span[data-en].block{display:block}
+
+  .top{position:sticky;top:0;z-index:50;background:rgba(248,243,234,.92);backdrop-filter:blur(14px);border-bottom:0.5px solid var(--line)}
+  .top-in{max-width:1080px;margin:0 auto;padding:14px 28px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .brand{font-family:var(--serif);font-weight:600;font-size:16px;letter-spacing:.16em;color:var(--ink)}
+  .brand em{font-style:italic;color:var(--coral)}
+  .top-tag{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--rose);text-transform:uppercase;padding:4px 10px;background:rgba(184,97,107,.10);border-radius:4px}
+  .spacer{flex:1}
+  .lang{display:inline-flex;border:0.5px solid var(--line);border-radius:5px;overflow:hidden}
+  .lang button{padding:6px 11px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;background:transparent;border:0;color:var(--faint);cursor:pointer;font-weight:500}
+  .lang button.active{background:var(--ink);color:var(--cream)}
+
+  /* Hero */
+  .hero{padding:80px 32px 60px;max-width:1080px;margin:0 auto;text-align:center;position:relative}
+  .hero-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--coral);font-weight:600;margin-bottom:24px}
+  .hero h1{font-family:var(--display);font-weight:400;font-size:clamp(60px,10vw,128px);line-height:.92;letter-spacing:-.025em;color:var(--ink);margin-bottom:18px}
+  .hero h1 em{font-style:italic;color:var(--coral)}
+  .hero-lede{font-family:var(--serif);font-size:20px;color:var(--ink-2);font-weight:300;max-width:680px;margin:0 auto 36px;line-height:1.5}
+  .hero-lede strong{color:var(--ink);font-weight:500}
+
+  /* Personal note */
+  .note{max-width:760px;margin:0 auto 56px;padding:32px 36px;background:var(--cream-2);border:0.5px solid var(--line);border-left:3px solid var(--coral);border-radius:10px;position:relative}
+  .note::before{content:'"';position:absolute;top:6px;left:18px;font-family:var(--display);font-size:90px;line-height:1;color:var(--coral);opacity:.28}
+  .note p{font-family:var(--serif);font-style:italic;font-size:17.5px;line-height:1.6;color:var(--ink-2);position:relative;z-index:2;margin-left:14px;margin-bottom:14px}
+  .note p:last-child{margin-bottom:0}
+  .note .sig{font-family:var(--display);font-style:italic;font-size:18px;color:var(--coral);margin-top:18px;margin-left:14px}
+
+  section{max-width:1080px;margin:0 auto;padding:56px 32px}
+  .sec-head{margin-bottom:32px;text-align:center}
+  .sec-num{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--coral);font-weight:600;margin-bottom:14px}
+  .sec-num em{font-style:normal;color:var(--ink-3)}
+  .sec-head h2{font-family:var(--display);font-weight:400;font-size:clamp(36px,5vw,56px);line-height:1.04;letter-spacing:-.02em;color:var(--ink);margin-bottom:14px}
+  .sec-head h2 em{font-style:italic;color:var(--coral)}
+  .sec-sub{font-family:var(--serif);font-size:17px;color:var(--ink-3);font-weight:300;max-width:640px;margin:0 auto;line-height:1.55}
+
+  /* What is Sora — three pillars */
+  .pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:32px}
+  .pillar{background:var(--cream);border:0.5px solid var(--line);border-radius:10px;padding:28px 28px 24px}
+  .pillar .pn{font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--coral);text-transform:uppercase;font-weight:600;margin-bottom:10px}
+  .pillar h3{font-family:var(--display);font-size:24px;font-weight:400;color:var(--ink);letter-spacing:-.005em;line-height:1.15;margin-bottom:10px}
+  .pillar h3 em{font-style:italic;color:var(--coral)}
+  .pillar p{font-family:var(--serif);font-size:15px;line-height:1.55;color:var(--ink-2)}
+
+  /* Tour stops */
+  .tour-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-top:32px}
+  .stop{background:var(--cream);border:0.5px solid var(--line);border-radius:10px;padding:0;overflow:hidden;display:flex;flex-direction:column;transition:all .18s cubic-bezier(0.25,1,0.5,1);text-decoration:none;color:inherit}
+  .stop:hover{transform:translateY(-2px);box-shadow:0 1px 3px rgba(0,0,0,.04),0 8px 24px rgba(0,0,0,.06);border-color:var(--coral)}
+  .stop-band{height:6px;background:var(--coral)}
+  .stop.s-strat .stop-band{background:var(--gold)}
+  .stop.s-ops .stop-band{background:var(--green)}
+  .stop.s-data .stop-band{background:var(--teal)}
+  .stop.s-life .stop-band{background:var(--rose)}
+  .stop-body{padding:22px 24px 24px;flex:1;display:flex;flex-direction:column}
+  .stop-meta{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--faint);text-transform:uppercase;font-weight:600;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}
+  .stop-meta .arrow{color:var(--coral);font-size:14px}
+  .stop h4{font-family:var(--display);font-size:24px;font-weight:400;color:var(--ink);letter-spacing:-.01em;line-height:1.15;margin-bottom:8px}
+  .stop h4 em{font-style:italic;color:var(--coral)}
+  .stop p{font-family:var(--serif);font-size:14.5px;line-height:1.5;color:var(--ink-2);flex:1}
+  .stop-foot{font-family:var(--mono);font-size:10px;color:var(--faint);letter-spacing:.04em;margin-top:14px;padding-top:12px;border-top:0.5px dashed var(--line)}
+
+  /* Stat strip */
+  .stats{background:var(--ink);color:var(--cream);padding:56px 32px;margin:48px 0 0}
+  .stats-in{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:32px;text-align:center}
+  .stat .k{font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:rgba(248,243,234,.55);text-transform:uppercase;margin-bottom:8px}
+  .stat .v{font-family:var(--display);font-size:42px;line-height:1;color:var(--cream);font-weight:400;letter-spacing:-.01em}
+  .stat .v em{font-style:italic;color:var(--mango)}
+  .stat .s{font-family:var(--serif);font-size:13px;color:rgba(248,243,234,.6);margin-top:8px;font-style:italic}
+
+  /* CTA */
+  .cta{padding:64px 32px;text-align:center;max-width:760px;margin:0 auto}
+  .cta h2{font-family:var(--display);font-weight:400;font-size:clamp(32px,5vw,48px);line-height:1.05;letter-spacing:-.02em;color:var(--ink);margin-bottom:14px}
+  .cta h2 em{font-style:italic;color:var(--coral)}
+  .cta p{font-family:var(--serif);font-size:17px;color:var(--ink-3);font-weight:300;margin-bottom:28px;line-height:1.5}
+  .cta-btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:13px;font-weight:600;letter-spacing:.10em;text-transform:uppercase;color:var(--cream);background:var(--ink);padding:14px 26px;border-radius:8px;transition:all .14s ease}
+  .cta-btn:hover{background:var(--coral)}
+  .cta-secondary{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:12px;color:var(--ink-2);padding:12px 22px;border:0.5px solid var(--line);border-radius:6px;margin-left:8px;transition:all .14s ease}
+  .cta-secondary:hover{background:var(--cream-2)}
+  .cta-wa{background:#25d366;color:white}
+  .cta-wa:hover{background:#1da851}
+
+  /* Foot */
+  .foot{padding:48px 32px;text-align:center;background:var(--cream-2);border-top:0.5px solid var(--line)}
+  .foot-sig{font-family:var(--display);font-style:italic;font-size:22px;color:var(--ink-2);margin-bottom:10px}
+  .foot-meta{font-family:var(--mono);font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--faint)}
+
+  @media (max-width:640px){
+    .hero{padding:56px 22px 40px}
+    .note{margin:0 22px 48px;padding:24px 28px}
+    section{padding:40px 22px}
+    .stats{padding:40px 22px}
+    .cta{padding:48px 22px}
+    .cta-secondary{margin-left:0;margin-top:12px;display:inline-block}
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="#top">SORA · <em>Travel Agency</em></a>
+    <span class="top-tag" data-es>Bienvenida personal · Marcos</span>
+    <span class="top-tag" data-en>Personal welcome · Marcos</span>
+    <div class="spacer"></div>
+    <div class="lang">
+      <button class="active" data-lang="es">ES</button>
+      <button data-lang="en">EN</button>
+    </div>
+  </div>
+</header>
+
+<div id="top"></div>
+
+<section class="hero">
+  <div class="hero-eyebrow" data-es>UNA MARCA · QUINCE CAPÍTULOS · UN CONTINENTE</div>
+  <div class="hero-eyebrow" data-en>ONE BRAND · FIFTEEN CHAPTERS · ONE CONTINENT</div>
+  <h1><span data-es>Marcos <em>Vallejos</em>,</span><span data-en>Marcos <em>Vallejos</em>,</span></h1>
+  <h1 style="font-size:clamp(28px,4vw,52px);margin-top:-12px;font-style:italic;color:var(--ink-3);font-weight:400"><span data-es>te quiero mostrar lo que estamos construyendo.</span><span data-en>let me show you what we're building.</span></h1>
+  <p class="hero-lede" data-es>SORA es una agencia de viajes premium curada de <strong>La Compañía</strong>. Fines de semana memorables, experiencias de día y bienes raíces de oportunidad — en quince países de Latinoamérica. Esta página es tu introducción guiada al sistema completo: lo público, lo interno, las herramientas, los datos.</p>
+  <p class="hero-lede" data-en>SORA is <strong>La Compañía's</strong> curated premium travel agency. Memorable weekends, day experiences and opportunity real estate — across fifteen LATAM countries. This page is your guided introduction to the full system: public-facing, internal, tools, data.</p>
+</section>
+
+<div class="note">
+  <p data-es>Marcos — armé esta página para que tengas el contexto completo de SORA antes de que hablemos en detalle. No es marketing — es el sistema interno real. Atlas de locaciones, CRM de contactos, base de tierras, dashboard de turismo, manuales de campo por país, los diez capítulos LATAM.</p>
+  <p data-es>Te conozco para BD y ventas. La oportunidad para vos está clara: <strong>52 contactos en CRM con solo 17 partnered, 46 propiedades inmobiliarias por activar, 10 capítulos donde cada partner que convertís es ingreso recurrente</strong>. El sistema está hecho — falta convertir relaciones en revenue. Eso es lo tuyo.</p>
+  <p data-en>Marcos — I put this page together so you have full context on SORA before we talk in detail. This isn't marketing — it's the real internal system. Locations atlas, contacts CRM, land database, tourism dashboard, country field manuals, the ten LATAM chapters.</p>
+  <p data-en>I see you for BD and sales. The opportunity is clear: <strong>52 CRM contacts with only 17 partnered, 46 properties to activate, 10 chapters where every partner you convert is recurring revenue</strong>. The system is built — what's left is converting relationships into revenue. That's your lane.</p>
+  <div class="sig">— Abraham</div>
+</div>
+
+<section>
+  <div class="sec-head">
+    <div class="sec-num"><em>01</em> · <span data-es>QUÉ ES</span><span data-en>WHAT IT IS</span></div>
+    <h2><span data-es>Tres <em>pilares</em></span><span data-en>Three <em>pillars</em></span></h2>
+    <p class="sec-sub" data-es>SORA gana porque hace tres cosas que ningún operador LATAM hace junto.</p>
+    <p class="sec-sub" data-en>SORA wins because it does three things no single LATAM operator does together.</p>
+  </div>
+  <div class="pillars">
+    <div class="pillar">
+      <div class="pn" data-es>PILAR 1</div>
+      <div class="pn" data-en>PILLAR 1</div>
+      <h3><span data-es>Curaduría <em>multi-país</em></span><span data-en>Multi-country <em>curation</em></span></h3>
+      <p data-es>Un mismo guest puede hacer Tulum, Trancoso, Buenos Aires y Atacama en su primer año. Ningún operador local ofrece eso. Es nuestro moat real.</p>
+      <p data-en>One guest can do Tulum, Trancoso, Buenos Aires and Atacama in their first year. No local operator offers this. It's our real moat.</p>
+    </div>
+    <div class="pillar">
+      <div class="pn" data-es>PILAR 2</div>
+      <div class="pn" data-en>PILLAR 2</div>
+      <h3><span data-es>Real estate <em>como brazo</em></span><span data-en>Real estate <em>as an arm</em></span></h3>
+      <p data-es>El guest que ama el destino quiere quedarse. Brazo inmobiliario conecta al broker correcto con la propiedad correcta. Cierre = $10-200k comisión por venta.</p>
+      <p data-en>The guest who falls in love wants to stay. Real-estate arm connects the right broker to the right property. Closing = $10-200k commission per sale.</p>
+    </div>
+    <div class="pillar">
+      <div class="pn" data-es>PILAR 3</div>
+      <div class="pn" data-en>PILLAR 3</div>
+      <h3><span data-es>Operación <em>data-first</em></span><span data-en><em>Data-first</em> operations</span></h3>
+      <p data-es>Atlas + CRM + audiencia + power map + host pipeline + IG mining MCP. Cada decisión está respaldada con datos por país. Sin esto se compite con Habitas, con esto se le gana.</p>
+      <p data-en>Atlas + CRM + audience + power map + host pipeline + IG mining MCP. Every decision is country-data-backed. Without this we compete with Habitas, with this we beat them.</p>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stats-in">
+    <div class="stat"><div class="k" data-es>Capítulos LATAM</div><div class="k" data-en>LATAM chapters</div><div class="v"><em>15</em></div><div class="s" data-es>4 lanzando · 11 en pipeline</div><div class="s" data-en>4 launching · 11 in pipeline</div></div>
+    <div class="stat"><div class="k" data-es>Locaciones en Atlas</div><div class="k" data-en>Atlas locations</div><div class="v"><em>77</em></div><div class="s" data-es>hoteles · restaurantes · fincas</div><div class="s" data-en>hotels · restaurants · fincas</div></div>
+    <div class="stat"><div class="k" data-es>Contactos en CRM</div><div class="k" data-en>CRM contacts</div><div class="v"><em>52</em></div><div class="s" data-es>chefs · brokers · abogados · talento</div><div class="s" data-en>chefs · brokers · lawyers · talent</div></div>
+    <div class="stat"><div class="k" data-es>Listings verificados</div><div class="k" data-en>Verified listings</div><div class="v"><em>46</em></div><div class="s" data-es>$119M valor total · 9 países</div><div class="s" data-en>$119M total value · 9 countries</div></div>
+    <div class="stat"><div class="k" data-es>Field manuals</div><div class="k" data-en>Field manuals</div><div class="v"><em>4</em></div><div class="s" data-es>VE · MX · CO · AR</div><div class="s" data-en>VE · MX · CO · AR</div></div>
+  </div>
+</div>
+
+<section style="background:linear-gradient(135deg,rgba(217,87,59,.08),rgba(226,162,74,.04));border-radius:0;padding-top:48px;padding-bottom:48px">
+  <div class="sec-head">
+    <div class="sec-num"><em>02a</em> · <span data-es>PARA TI · BD &amp; SALES</span><span data-en>FOR YOU · BD &amp; SALES</span></div>
+    <h2><span data-es>Tus tres <em>paradas críticas</em></span><span data-en>Your three <em>critical stops</em></span></h2>
+    <p class="sec-sub" data-es>De las doce, estas tres son donde tu trabajo se desbloquea. Si tienes 30 min hoy, mirá solo estas tres.</p>
+    <p class="sec-sub" data-en>Of the twelve, these three are where your work unlocks. If you have 30 min today, look at just these three.</p>
+  </div>
+  <div class="tour-grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">
+
+    <a href="LATAM/contacts.html" target="_blank" class="stop s-ops" style="border:2px solid var(--coral)">
+      <div class="stop-band" style="background:var(--coral);height:8px"></div>
+      <div class="stop-body">
+        <div class="stop-meta"><span style="color:var(--coral);font-weight:700" data-es>★ PRIORITARIO · CRM</span><span style="color:var(--coral);font-weight:700" data-en>★ PRIORITY · CRM</span><span class="arrow">→</span></div>
+        <h4><span data-es>52 contactos <em>esperando</em></span><span data-en>52 contacts <em>waiting</em></span></h4>
+        <p data-es>Tu lista. 17 partnered, <strong>35 warm/cold/target</strong> que necesitan conversión. Cada chef + hotel + broker que conviertes es ingreso recurrente y un capítulo más cerca de live.</p>
+        <p data-en>Your list. 17 partnered, <strong>35 warm/cold/target</strong> needing conversion. Every chef + hotel + broker you convert is recurring revenue and one chapter closer to live.</p>
+        <div class="stop-foot" data-es>/LATAM/contacts.html · click cualquier fila para detalle + status editable</div>
+        <div class="stop-foot" data-en>/LATAM/contacts.html · click any row for detail + editable status</div>
+      </div>
+    </a>
+
+    <a href="LATAM/land.html" target="_blank" class="stop s-ops" style="border:2px solid var(--coral)">
+      <div class="stop-band" style="background:var(--coral);height:8px"></div>
+      <div class="stop-body">
+        <div class="stop-meta"><span style="color:var(--coral);font-weight:700" data-es>★ PRIORITARIO · INMOBILIARIO</span><span style="color:var(--coral);font-weight:700" data-en>★ PRIORITY · REAL ESTATE</span><span class="arrow">→</span></div>
+        <h4><span data-es>$119M en <em>comisiones</em> pendientes</span><span data-en>$119M in <em>commissions</em> waiting</span></h4>
+        <p data-es>46 propiedades verificadas con foto + link directo. <strong>Comisión típica 3-6% por cierre = $10-200k por venta.</strong> El guest que va a Trancoso y se enamora — quiere quedarse. Tu trabajo es el match.</p>
+        <p data-en>46 verified properties with photo + direct link. <strong>Typical 3-6% closing commission = $10-200k per sale.</strong> The guest who falls for Trancoso wants to stay. Your job is the match.</p>
+        <div class="stop-foot">/LATAM/land.html · 9 países · brokers locales · admin contacts</div>
+      </div>
+    </a>
+
+    <a href="LATAM/chapter.html#MX" target="_blank" class="stop s-strat" style="border:2px solid var(--coral)">
+      <div class="stop-band" style="background:var(--coral);height:8px"></div>
+      <div class="stop-body">
+        <div class="stop-meta"><span style="color:var(--coral);font-weight:700" data-es>★ PRIORITARIO · CAPÍTULOS</span><span style="color:var(--coral);font-weight:700" data-en>★ PRIORITY · CHAPTERS</span><span class="arrow">→</span></div>
+        <h4><span data-es>Diez <em>territorios</em> de venta</span><span data-en>Ten <em>sales territories</em></span></h4>
+        <p data-es>Cada capítulo es tu mapa de territorio. Tesis del país · weekends ya curados con pricing · partners pre-identificados · familias económicas a contactar · ticket promedio del segmento premium.</p>
+        <p data-en>Each chapter is your territory map. Country thesis · pre-priced curated weekends · pre-identified partners · economic families to contact · premium segment avg ticket.</p>
+        <div class="stop-foot" data-es>/LATAM/chapter.html · navegá entre los 10 con el selector arriba</div>
+        <div class="stop-foot" data-en>/LATAM/chapter.html · navigate the 10 with selector at top</div>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <div class="sec-num"><em>02b</em> · <span data-es>TOUR COMPLETO</span><span data-en>FULL TOUR</span></div>
+    <h2><span data-es>El <em>resto</em> del sistema</span><span data-en>The <em>rest</em> of the system</span></h2>
+    <p class="sec-sub" data-es>Doce paradas en total. Click cualquiera para abrir en nueva pestaña. Sin orden obligatorio.</p>
+    <p class="sec-sub" data-en>Twelve stops total. Click any to open in new tab. No required order.</p>
+  </div>
+  <div class="tour-grid">
+
+    <a href="sora-hq.html" target="_blank" class="stop s-strat">
+      <div class="stop-band"></div>
+      <div class="stop-body">
+        <div class="stop-meta"><span data-es>01 · HQ</span><span data-en>01 · HQ</span><span class="arrow">→</span></div>
+        <h4><span data-es>Centro de <em>comando</em></span><span data-en><em>Command</em> center</span></h4>
+        <p data-es>El mapa del sistema entero. Empezá acá. Todas las superficies, los capítulos, recursos internos.</p>
+        <p data-en>The whole-system map. Start here. Every surface, every chapter, internal resources.</p>
+        <div class="stop-foot">/sora-hq.html · ~2 min lectura</div>
+      </div>
+    </a>
+
+    <a href="sora/web/index.html" target="_blank" class="stop">
+      <div class="stop-band"></div>
+      <div class="stop-body">
+        <div class="stop-meta"><span data-es>02 · SITIO PÚBLICO</span><span data-en>02 · PUBLIC SITE</span><span class="arrow">→</span></div>
+        <h4><span data-es>La <em>cara</em> pública</span><span data-en>The <em>public</em> face</span></h4>
+        <p data-es>Lo que ven los guests. Cómo SORA se presenta al mundo. Bilingüe, con selector de país, WhatsApp directo.</p>
+        <p data-en>What guests see. How SORA presents itself to the world. Bilingual, country switcher, direct WhatsApp.</p>
+        <div class="stop-foot">/sora/web/index.html</div>
+      </div>
+    </a>
+
+    <a href="sora/app/index.html" target="_blank" class="stop">
+      <div class="stop-band"></div>
+      <div class="stop-body">
+        <div class="stop-meta"><span data-es>03 · PWA</span><span data-en>03 · PWA</span><span class="arrow">→</span></div>
+        <h4><span data-es>App de <em>miembros</em></span><span data-en><em>Members</em> app</span></h4>
+        <p data-es>Donde el guest curado vive después de la invitación. 13 pantallas. Verlo en celular es mejor.</p>
+        <p data-en>Where the curated guest lives after invitation. 13 screens. Best viewed on phone.</p>
+        <div class="stop-foot">/sora/app/index.html</div>
+      </div>
+    </a>
+
+    <a href="LATAM/chapter.html#MX" target="_blank" class="stop s-strat">
+      <div class="stop-band"></div>
+      <div class="stop-body">
+        <div class="stop-meta"><span data-es>04 · CAPÍTULOS</span><span data-en>04 · CHAPTERS</span><span class="arrow">→</span></div>
+        <h4><span data-es>Los diez <em>capítulos</em></span><span data-en>The ten <em>chapters</em></span></h4>
+        <p data-es>MX · CO · BR · AR · CR · PE · CL · UY · PA · VE. Cada uno con tesis, weekends, real estate, poder &amp; influencia, números.</p>
+        <p data-en>MX · CO · BR · AR · CR · PE · CL · UY · PA · VE. Each with thesis, weekends, real estate, power &amp; influence, numbers.</p>
+        <div class="stop-foot">/LATAM/chapter.html · ~10 min/capítulo</div>
+      </div>
+    </a>
+
+    <a href="LATAM/audience.html" target="_blank" class="stop s-data">
+      <div class="stop-band"></div>
+      <div class="stop-body">
+        <div class="stop-meta"><span data-es>05 · DATOS</span><span data-en>05 · DATA</span><span class="arrow">→</span></div>
+        <h4><span data-es>Audiencia &amp; <em>turismo</em></span><span data-en>Audience &amp; <em>tourism</em></span></h4>
+        <p data-es>Llegadas internacionales, mercados origen, segmento premium, demografía. La base de toda decisión de pricing y producto.</p>
+        <p data-en>International arrivals, origin markets, premium segment, demographics. The basis for every pricing + product decision.</p>
+        <div class="stop-foot">/LATAM/audience.html</div>
+      </div>
+    </a>
+
+    <a href="LATAM/atlas.html" target="_blank" class="stop s-ops">
+      <div class="stop-band"></div>
+      <div class="stop-body">
+        <div class="stop-meta"><span data-es>06 · INTERNO</span><span data-en>06 · INTERNAL</span><span class="arrow">→</span></div>
+        <h4><span data-es>Atlas de <em>locaciones</em></span><span data-en>Locations <em>atlas</em></span></h4>
+        <p data-es>77 hoteles/restaurantes/fincas/venues — partnered, en pursuit, o target. Filtrá por país, tipo, estado.</p>
+        <p data-en>77 hotels/restaurants/fincas/venues — partnered, pursuing, or target. Filter by country, type, status.</p>
+        <div class="stop-foot">/LATAM/atlas.html</div>
+      </div>
+    </a>
+
+    <a href="LATAM/contacts.html" target="_blank" class="stop s-ops">
+      <div class="stop-band"></div>
+      <div class="stop-body">
+        <div class="stop-meta"><span data-es>07 · CRM</span><span data-en>07 · CRM</span><span class="arrow">→</span></div>
+        <h4><span data-es>52 <em>contactos</em></span><span data-en>52 <em>contacts</em></span></h4>
+        <p data-es>Chefs, hoteleros, brokers, abogados, banca cripto, talento, hosts. Cada uno con email/WhatsApp/IG + estado del relacionamiento.</p>
+        <p data-en>Chefs, hoteliers, brokers, lawyers, crypto banking, talent, hosts. Each with email/WhatsApp/IG + relationship status.</p>
+        <div class="stop-foot">/LATAM/contacts.html</div>
+      </div>
+    </a>
+
+    <a href="LATAM/land.html" target="_blank" class="stop s-ops">
+      <div class="stop-band"></div>
+      <div class="stop-body">
+        <div class="stop-meta"><span data-es>08 · INMOBILIARIO</span><span data-en>08 · REAL ESTATE</span><span class="arrow">→</span></div>
+        <h4><span data-es>46 <em>propiedades</em></span><span data-en>46 <em>properties</em></span></h4>
+        <p data-es>Listings verificados con foto + link directo al listing original. SMA · Tulum · Medellín · Cartagena · Trancoso · BA · Lima · José Ignacio.</p>
+        <p data-en>Verified listings with photo + direct link to original listing. SMA · Tulum · Medellín · Cartagena · Trancoso · BA · Lima · José Ignacio.</p>
+        <div class="stop-foot">/LATAM/land.html · $119M total</div>
+      </div>
+    </a>
+
+    <a href="LATAM/hosts.html" target="_blank" class="stop s-ops">
+      <div class="stop-band"></div>
+      <div class="stop-body">
+        <div class="stop-meta"><span data-es>09 · HOSTS</span><span data-en>09 · HOSTS</span><span class="arrow">→</span></div>
+        <h4><span data-es>Pipeline de <em>anfitriones</em></span><span data-en><em>Host</em> pipeline</span></h4>
+        <p data-es>Arquetipo del host SORA · marco de búsqueda Instagram por país (hashtags + cuentas semilla) · candidatos warm/cold.</p>
+        <p data-en>SORA host archetype · per-country Instagram search framework (hashtags + seed accounts) · warm/cold candidates.</p>
+        <div class="stop-foot">/LATAM/hosts.html</div>
+      </div>
+    </a>
+
+    <a href="LATAM/insta-playbook.html" target="_blank" class="stop s-data">
+      <div class="stop-band"></div>
+      <div class="stop-body">
+        <div class="stop-meta"><span data-es>10 · IG MINING</span><span data-en>10 · IG MINING</span><span class="arrow">→</span></div>
+        <h4><span data-es>Playbook <em>Instagram</em></span><span data-en><em>Instagram</em> playbook</span></h4>
+        <p data-es>Seis rutas que funcionan para minar IG sin scraper · stack de herramientas con precios · MCP server SORA-Instagram listo.</p>
+        <p data-en>Six routes that work for mining IG without scraper · tool stack with pricing · SORA-Instagram MCP server ready.</p>
+        <div class="stop-foot">/LATAM/insta-playbook.html</div>
+      </div>
+    </a>
+
+    <a href="../field-manuals.html" target="_blank" class="stop s-life">
+      <div class="stop-band"></div>
+      <div class="stop-body">
+        <div class="stop-meta"><span data-es>11 · MANUALES</span><span data-en>11 · MANUALS</span><span class="arrow">→</span></div>
+        <h4><span data-es>4 <em>field manuals</em></span><span data-en>4 <em>field manuals</em></span></h4>
+        <p data-es>VE · MX · CO · AR. Dossiers de relocación: dónde vivir, costo de vida, real estate, setup legal, visa, banca, tax, lifestyle, primeros 90 días.</p>
+        <p data-en>VE · MX · CO · AR. Relocation dossiers: where to live, cost of living, real estate, legal setup, visa, banking, tax, lifestyle, first 90 days.</p>
+        <div class="stop-foot">/field-manuals.html · ~12 chapters/c</div>
+      </div>
+    </a>
+
+    <a href="LATAM/dashboard.html" target="_blank" class="stop s-data">
+      <div class="stop-band"></div>
+      <div class="stop-body">
+        <div class="stop-meta"><span data-es>12 · LIVE</span><span data-en>12 · LIVE</span><span class="arrow">→</span></div>
+        <h4><span data-es>Dashboard <em>en vivo</em></span><span data-en><em>Live</em> dashboard</span></h4>
+        <p data-es>Comparativa 15 países con noticias actualizándose en vivo via Google News + tasas de cambio en vivo.</p>
+        <p data-en>15-country comparison with live-updating Google News + live exchange rates.</p>
+        <div class="stop-foot">/LATAM/dashboard.html</div>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <div class="sec-num"><em>03</em> · <span data-es>EL TRABAJO QUE FALTA</span><span data-en>WHAT'S LEFT TO DO</span></div>
+    <h2><span data-es>Donde podemos <em>colaborar</em></span><span data-en>Where we can <em>collaborate</em></span></h2>
+    <p class="sec-sub" data-es>El sistema está construido. Lo que falta es ejecución sobre el terreno y construir las relaciones país-por-país.</p>
+    <p class="sec-sub" data-en>The system is built. What's left is on-the-ground execution and building country-by-country relationships.</p>
+  </div>
+  <div class="pillars">
+    <div class="pillar">
+      <div class="pn" data-es>ÁREA 1</div>
+      <div class="pn" data-en>AREA 1</div>
+      <h3><span data-es>Reclutar <em>hosts</em></span><span data-en>Recruit <em>hosts</em></span></h3>
+      <p data-es>Anfitriones bilingües en CDMX, Medellín, Cartagena, Trancoso, BA, Nosara, Pereira. Cada chapter necesita uno antes de su lanzamiento.</p>
+      <p data-en>Bilingual hosts in CDMX, Medellín, Cartagena, Trancoso, BA, Nosara, Pereira. Each chapter needs one before launch.</p>
+    </div>
+    <div class="pillar">
+      <div class="pn" data-es>ÁREA 2</div>
+      <div class="pn" data-en>AREA 2</div>
+      <h3><span data-es>Activar <em>partners</em></span><span data-en>Activate <em>partners</em></span></h3>
+      <p data-es>De 52 contactos solo 17 son "partnered." Los otros 35 están warm/cold/target. Conversión = unlocks chapter launch.</p>
+      <p data-en>Of 52 contacts only 17 are "partnered." The other 35 are warm/cold/target. Conversion = unlocks chapter launch.</p>
+    </div>
+    <div class="pillar">
+      <div class="pn" data-es>ÁREA 3</div>
+      <div class="pn" data-en>AREA 3</div>
+      <h3><span data-es>Primeros <em>guests</em></span><span data-en>First <em>guests</em></span></h3>
+      <p data-es>Sora-Panamá ya corre. Primer evento Mirador Barú es 14 junio. Necesitamos 50 invitaciones outbound para los próximos tres capítulos.</p>
+      <p data-en>Sora-Panama already runs. First Mirador Barú event is June 14. We need 50 outbound invitations for the next three chapters.</p>
+    </div>
+  </div>
+</section>
+
+<div class="cta">
+  <h2><span data-es>Hablemos cuando <em>termines</em></span><span data-en>Let's talk when you're <em>done</em></span></h2>
+  <p data-es>Manda mensaje cuando hayas revisado al menos las paradas 01, 02 y 04. Esas tres dan la vista que necesitamos para tener la conversación productiva.</p>
+  <p data-en>Message me when you've gone through at least stops 01, 02 and 04. Those three give the view we need for a productive conversation.</p>
+  <a class="cta-btn cta-wa" href="https://wa.me/50760000000" target="_blank">WhatsApp →</a>
+  <a class="cta-secondary" href="sora-hq.html" target="_blank"><span data-es>O empezá por el HQ</span><span data-en>Or start at the HQ</span> →</a>
+</div>
+
+<footer class="foot">
+  <div class="foot-sig" data-es>· Hecho con cariño · 26 Mayo 2026 ·</div>
+  <div class="foot-sig" data-en>· Made with care · May 26, 2026 ·</div>
+  <div class="foot-meta">SORA · La Compañía · MMXXVI</div>
+</footer>
+
+<script>
+  const langBtns = document.querySelectorAll('.lang button');
+  function setLang(l){
+    document.documentElement.setAttribute('lang', l);
+    try { localStorage.setItem('sora.lang', l); } catch(e){}
+    langBtns.forEach(b=>b.classList.toggle('active', b.dataset.lang===l));
+  }
+  langBtns.forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
+  setLang(localStorage.getItem('sora.lang') || 'es');
+</script>
+</body>
+</html>

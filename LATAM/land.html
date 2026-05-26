@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SORA · Tierras & Propiedades</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Instrument+Serif&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F8F3EA; --cream-2:#F2EBDD; --cream-3:#E9DFCA;
+    --ink:#1B1A17; --ink-2:#3A352D; --ink-3:#5C5346; --faint:#9A8E7A;
+    --line:rgba(27,26,23,.10); --line-2:rgba(27,26,23,.06);
+    --coral:#D9573B; --gold:#B58F4D; --mango:#E2A24A; --green:#3F5F45; --rose:#B8616B; --teal:#2C6E7F;
+    --serif:'Fraunces',Georgia,serif; --display:'Instrument Serif',Georgia,serif;
+    --sans:'Inter',-apple-system,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--cream);color:var(--ink);font-family:var(--sans);font-size:14px;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--green);color:var(--cream)}
+  [data-en]{display:none}
+  html[lang="en"] [data-es]{display:none}
+  html[lang="en"] [data-en]{display:inline}
+
+  .top{position:sticky;top:0;z-index:40;background:rgba(248,243,234,.96);backdrop-filter:blur(14px);border-bottom:0.5px solid var(--line)}
+  .top-in{max-width:1480px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .brand{font-family:var(--serif);font-weight:600;font-size:16px;letter-spacing:.16em;color:var(--ink)}
+  .brand em{font-style:normal;color:var(--green)}
+  .top-tag{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--rose);text-transform:uppercase;padding:4px 10px;background:rgba(184,97,107,.10);border-radius:4px}
+  .top-spacer{flex:1}
+  .top-link{font-family:var(--sans);font-size:12px;color:var(--ink-2);padding:7px 12px;border:0.5px solid var(--line);border-radius:5px;transition:all .14s ease}
+  .top-link:hover{background:var(--cream-2)}
+  .lang{display:inline-flex;border:0.5px solid var(--line);border-radius:5px;overflow:hidden}
+  .lang button{padding:7px 11px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;background:transparent;border:0;color:var(--faint);cursor:pointer;font-weight:500}
+  .lang button.active{background:var(--ink);color:var(--cream)}
+
+  .hdr{padding:48px 32px 32px;border-bottom:0.5px solid var(--line);max-width:1480px;margin:0 auto;width:100%}
+  .hdr h1{font-family:var(--display);font-weight:400;font-size:clamp(40px,5vw,64px);line-height:1;letter-spacing:-.02em;color:var(--ink);margin-bottom:14px}
+  .hdr h1 em{font-style:italic;color:var(--green)}
+  .hdr p{font-family:var(--serif);font-size:17px;color:var(--ink-3);font-weight:300;max-width:700px;line-height:1.5}
+  .hdr-stats{display:flex;gap:36px;margin-top:24px;flex-wrap:wrap}
+  .hdr-stats div{display:flex;flex-direction:column;gap:4px}
+  .hdr-stats .k{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--faint);text-transform:uppercase}
+  .hdr-stats .v{font-family:var(--display);font-size:28px;color:var(--ink);line-height:1}
+
+  /* mode tabs */
+  .modes{display:flex;gap:0;padding:0 24px;border-bottom:0.5px solid var(--line);background:var(--cream);max-width:1480px;margin:0 auto}
+  .mode{padding:14px 20px;font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);cursor:pointer;border-bottom:2px solid transparent;transition:all .14s ease}
+  .mode:hover{color:var(--ink-2)}
+  .mode.active{color:var(--green);border-bottom-color:var(--green)}
+
+  .filters{position:sticky;top:51px;z-index:35;background:var(--cream);border-bottom:0.5px solid var(--line);padding:14px 24px}
+  .filters-in{max-width:1480px;margin:0 auto;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .fil-label{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--faint);text-transform:uppercase;margin-right:4px}
+  .chip{display:inline-flex;align-items:center;gap:6px;font-family:var(--sans);font-size:11.5px;font-weight:500;color:var(--ink-3);padding:6px 11px;border:0.5px solid var(--line);border-radius:14px;background:transparent;cursor:pointer;transition:all .14s ease;white-space:nowrap}
+  .chip:hover{background:var(--cream-2);border-color:rgba(27,26,23,.20)}
+  .chip.on{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+  .chip .ct{font-family:var(--mono);font-size:9.5px;opacity:.55;margin-left:2px}
+  .fil-divider{width:1px;height:18px;background:var(--line);margin:0 4px}
+  .search{flex:1;min-width:220px;display:flex;align-items:center;gap:8px;padding:6px 12px;border:0.5px solid var(--line);border-radius:6px;background:var(--cream-2)}
+  .search input{flex:1;border:0;background:transparent;font-family:var(--sans);font-size:13px;color:var(--ink);outline:none}
+  .search input::placeholder{color:var(--faint)}
+  .search-icon{font-size:13px;color:var(--faint)}
+
+  /* listing grid */
+  .grid-wrap{max-width:1480px;margin:0 auto;padding:32px 24px 96px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:14px}
+  .card{background:var(--cream);border:0.5px solid var(--line);border-radius:10px;padding:22px 22px 20px;display:flex;flex-direction:column;gap:10px;transition:all .14s ease;position:relative}
+  .card:hover{border-color:rgba(27,26,23,.20);transform:translateY(-1px);box-shadow:0 1px 3px rgba(0,0,0,.04)}
+  .card-photo{display:block;width:calc(100% + 44px);height:200px;margin:-22px -22px 12px;background:var(--cream-2);overflow:hidden;position:relative}
+  .card-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease}
+  .card:hover .card-photo img{transform:scale(1.03)}
+  .card-photo-placeholder{display:flex;align-items:center;justify-content:center;height:100%;background:linear-gradient(135deg,var(--cream-2) 0%,var(--cream-3) 100%);font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--faint);text-transform:uppercase;text-align:center;padding:0 20px;line-height:1.5}
+  .card-photo .photo-overlay{position:absolute;bottom:10px;left:10px;background:rgba(27,26,23,.82);backdrop-filter:blur(4px);color:var(--cream);font-family:var(--mono);font-size:9.5px;letter-spacing:.10em;padding:4px 8px;border-radius:3px;text-transform:uppercase}
+  .card-flag{position:absolute;top:18px;right:18px;font-size:18px;line-height:1;z-index:2}
+  .card-top{display:flex;align-items:flex-start;gap:8px;flex-wrap:wrap;margin-bottom:2px}
+  .card-country{font-family:var(--mono);font-size:9.5px;font-weight:600;letter-spacing:.16em;color:var(--green);text-transform:uppercase}
+  .card-region{font-family:var(--mono);font-size:9.5px;letter-spacing:.10em;color:var(--faint);text-transform:uppercase}
+  .card-region::before{content:'·';margin:0 6px;color:var(--line)}
+  .card-name{font-family:var(--serif);font-size:19px;font-weight:500;line-height:1.18;color:var(--ink);letter-spacing:-.01em}
+  .card-meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+  .pill{font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;padding:4px 8px;border-radius:3px;background:var(--cream-2);color:var(--ink-3);border:0.5px solid var(--line-2);font-weight:500}
+  .pill.type{color:var(--teal)}
+  .pill.status{font-weight:600}
+  .pill.status.available{background:rgba(63,95,69,.12);color:var(--green)}
+  .pill.status.pending{background:rgba(226,162,74,.15);color:var(--gold)}
+  .pill.status.sold{background:rgba(154,142,122,.18);color:var(--ink-3)}
+  .pill.beds{color:var(--rose)}
+  .card-price{display:flex;justify-content:space-between;align-items:baseline;margin-top:6px;padding:10px 0;border-top:0.5px dashed var(--line);border-bottom:0.5px dashed var(--line)}
+  .card-price .price{font-family:var(--display);font-size:30px;color:var(--ink);font-weight:400;letter-spacing:-.01em}
+  .card-price .price.poa{font-size:18px;color:var(--gold);font-style:italic}
+  .card-price .size{font-family:var(--mono);font-size:11px;color:var(--faint);letter-spacing:.04em}
+  .card-broker{font-family:var(--mono);font-size:10.5px;color:var(--faint);letter-spacing:.04em;line-height:1.5}
+  .card-broker strong{color:var(--ink-2);font-weight:500}
+  .card-notes{font-family:var(--serif);font-size:13.5px;line-height:1.5;color:var(--ink-2);margin-top:4px;flex:1}
+  .card-links{display:flex;gap:8px;margin-top:12px;padding-top:12px;border-top:0.5px dashed var(--line)}
+  .card-link-primary{flex:1;font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.10em;text-transform:uppercase;color:var(--cream);background:var(--ink);padding:9px 14px;border-radius:5px;text-align:center;text-decoration:none;transition:background .14s ease;display:inline-flex;align-items:center;justify-content:center;gap:6px}
+  .card-link-primary:hover{background:var(--green)}
+  .card-link-area{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);padding:9px 12px;border:0.5px solid var(--line);border-radius:5px;text-align:center;text-decoration:none;letter-spacing:.06em;transition:all .14s ease}
+  .card-link-area:hover{background:var(--cream-2);color:var(--ink)}
+
+  /* admin table */
+  .table-wrap{max-width:1480px;margin:0 auto;padding:24px 24px 96px;display:none}
+  .table-wrap.active{display:block}
+  table{width:100%;border-collapse:collapse;font-size:13px;background:var(--cream);border:0.5px solid var(--line);border-radius:8px;overflow:hidden}
+  thead th{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);text-align:left;padding:14px 14px;border-bottom:0.5px solid var(--line);background:var(--cream-2);white-space:nowrap}
+  tbody tr{border-bottom:0.5px solid var(--line-2);transition:background .14s ease}
+  tbody tr:hover{background:var(--cream-2)}
+  tbody td{padding:14px 14px;vertical-align:top;color:var(--ink-2)}
+  .col-country{font-family:var(--mono);font-size:11px;letter-spacing:.10em;color:var(--ink-3);white-space:nowrap}
+  .col-country .fl{font-size:14px;margin-right:4px;letter-spacing:0}
+  .col-type{font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;font-weight:600}
+  .type-registro{color:var(--teal)} .type-catastro{color:var(--gold)}
+  .type-planning{color:var(--coral)} .type-notary{color:var(--green)}
+  .col-name{font-family:var(--serif);font-size:15px;font-weight:500;color:var(--ink)}
+  .col-contact{font-family:var(--mono);font-size:11px;color:var(--ink-3);line-height:1.4}
+  .col-region{font-family:var(--serif);font-size:13.5px;color:var(--ink-2);font-style:italic}
+  .col-notes{font-family:var(--serif);font-size:13px;color:var(--ink-2);line-height:1.45;max-width:340px}
+
+  .empty{padding:64px 24px;text-align:center;font-family:var(--serif);font-size:17px;color:var(--faint);font-style:italic}
+
+  @media (max-width:720px){
+    .hdr{padding:32px 18px 24px}
+    .filters{padding:10px 18px;top:48px}
+    .grid-wrap{padding:24px 18px 64px}
+    .grid{grid-template-columns:1fr;gap:10px}
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="../sora-hq.html">SORA · <em>TIERRAS</em></a>
+    <span class="top-tag" data-es>Interno · La Compañía</span>
+    <span class="top-tag" data-en>Internal · La Compañía</span>
+    <div class="top-spacer"></div>
+    <a class="top-link" href="./atlas.html">↗ Atlas</a>
+    <a class="top-link" href="./contacts.html">↗ CRM</a>
+    <a class="top-link" href="./hosts.html">↗ Hosts</a>
+    <a class="top-link" href="./chapter.html#MX">↗ <span data-es>Capítulos</span><span data-en>Chapters</span></a>
+    <a class="top-link" href="../sora-hq.html">HQ</a>
+    <div class="lang">
+      <button class="active" data-lang="es">ES</button>
+      <button data-lang="en">EN</button>
+    </div>
+  </div>
+</header>
+
+<div class="hdr">
+  <h1><span data-es>Tierras &amp; <em>propiedades</em></span><span data-en>Land &amp; <em>property</em></span></h1>
+  <p data-es>Listings activos de tierra/propiedad y los contactos administrativos por país que Sora necesita para diligencia: registro público, catastro, planificación urbana, notario. Switch arriba entre LISTINGS y ADMIN.</p>
+  <p data-en>Active land/property listings and per-country administrative contacts Sora needs for due-diligence: public registry, cadastre, urban planning, notary. Toggle above between LISTINGS and ADMIN.</p>
+  <div class="hdr-stats">
+    <div><span class="k" data-es>Listings</span><span class="k" data-en>Listings</span><span class="v" id="stat-listings">—</span></div>
+    <div><span class="k" data-es>Países cubiertos</span><span class="k" data-en>Countries covered</span><span class="v" id="stat-countries">—</span></div>
+    <div><span class="k" data-es>Disponibles</span><span class="k" data-en>Available</span><span class="v" id="stat-available">—</span></div>
+    <div><span class="k" data-es>Valor total</span><span class="k" data-en>Total value</span><span class="v" id="stat-value">—</span></div>
+    <div><span class="k" data-es>Contactos admin</span><span class="k" data-en>Admin contacts</span><span class="v" id="stat-admin">—</span></div>
+  </div>
+</div>
+
+<div class="modes">
+  <div class="mode active" data-mode="listings"><span data-es>Listings</span><span data-en>Listings</span></div>
+  <div class="mode" data-mode="admin"><span data-es>Admin & contactos legales</span><span data-en>Admin & legal contacts</span></div>
+</div>
+
+<div class="filters">
+  <div class="filters-in">
+    <span class="fil-label" data-es>País</span><span class="fil-label" data-en>Country</span>
+    <div id="f-country" class="chips"></div>
+    <span class="fil-divider"></span>
+    <span class="fil-label" data-es>Tipo</span><span class="fil-label" data-en>Type</span>
+    <div id="f-type" class="chips"></div>
+    <span class="fil-divider"></span>
+    <div class="search"><span class="search-icon">⌕</span><input id="q" type="text" placeholder="Buscar nombre, broker, notas…"></div>
+  </div>
+</div>
+
+<main class="grid-wrap" id="listings-wrap">
+  <div id="grid" class="grid"></div>
+  <div id="empty" class="empty" style="display:none" data-es>Ninguna propiedad coincide.</div>
+  <div id="empty" class="empty" style="display:none" data-en>No property matches.</div>
+</main>
+
+<main class="table-wrap" id="admin-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th><span data-es>País / Región</span><span data-en>Country / Region</span></th>
+        <th><span data-es>Tipo</span><span data-en>Type</span></th>
+        <th><span data-es>Oficina / nombre</span><span data-en>Office / name</span></th>
+        <th><span data-es>Contacto</span><span data-en>Contact</span></th>
+        <th><span data-es>Notas</span><span data-en>Notes</span></th>
+      </tr>
+    </thead>
+    <tbody id="admin-rows"></tbody>
+  </table>
+</main>
+
+<script src="./data-land.js"></script>
+<script>
+(function(){
+  const COUNTRIES = {
+    MX:{flag:'🇲🇽',es:'México',en:'Mexico'}, CO:{flag:'🇨🇴',es:'Colombia',en:'Colombia'},
+    BR:{flag:'🇧🇷',es:'Brasil',en:'Brazil'}, AR:{flag:'🇦🇷',es:'Argentina',en:'Argentina'},
+    CR:{flag:'🇨🇷',es:'Costa Rica',en:'Costa Rica'}, PE:{flag:'🇵🇪',es:'Perú',en:'Peru'},
+    CL:{flag:'🇨🇱',es:'Chile',en:'Chile'}, UY:{flag:'🇺🇾',es:'Uruguay',en:'Uruguay'},
+    PA:{flag:'🇵🇦',es:'Panamá',en:'Panama'}, VE:{flag:'🇻🇪',es:'Venezuela',en:'Venezuela'}
+  };
+  const TYPES_LISTINGS = [
+    {k:'apartment',es:'Departamento',en:'Apartment'},
+    {k:'house',es:'Casa',en:'House'},
+    {k:'lot',es:'Lote',en:'Lot'},
+    {k:'rural',es:'Rural / Finca',en:'Rural / Finca'}
+  ];
+  const TYPES_ADMIN = [
+    {k:'registro',es:'Registro público',en:'Public registry'},
+    {k:'catastro',es:'Catastro',en:'Cadastre'},
+    {k:'planning',es:'Planificación',en:'Planning'},
+    {k:'notary',es:'Notario / Escribanía',en:'Notary'}
+  ];
+
+  const state = { mode:'listings', country:'ALL', type:'ALL', q:'' };
+
+  /* lang */
+  const langBtns = document.querySelectorAll('.lang button');
+  function setLang(l){
+    document.documentElement.setAttribute('lang', l);
+    localStorage.setItem('sora.lang', l);
+    langBtns.forEach(b=>b.classList.toggle('active', b.dataset.lang===l));
+    buildChips(); render();
+  }
+  langBtns.forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
+  const initLang = localStorage.getItem('sora.lang') || 'es';
+  document.documentElement.setAttribute('lang', initLang);
+  langBtns.forEach(b=>b.classList.toggle('active', b.dataset.lang===initLang));
+
+  /* modes */
+  document.querySelectorAll('.mode').forEach(m=>m.addEventListener('click',()=>{
+    state.mode = m.dataset.mode;
+    state.type = 'ALL';
+    document.querySelectorAll('.mode').forEach(x=>x.classList.toggle('active', x===m));
+    document.getElementById('listings-wrap').style.display = state.mode==='listings'?'block':'none';
+    document.getElementById('admin-wrap').classList.toggle('active', state.mode==='admin');
+    buildChips(); render();
+  }));
+
+  /* chips */
+  function buildChips(){
+    const lang = document.documentElement.getAttribute('lang') || 'es';
+    const data = state.mode==='listings' ? window.SORA_LAND.LISTINGS : window.SORA_LAND.ADMIN;
+    const TYPES = state.mode==='listings' ? TYPES_LISTINGS : TYPES_ADMIN;
+
+    const cc = {}; data.forEach(d=>{ cc[d.country] = (cc[d.country]||0)+1; });
+    const orderedC = ['MX','CO','BR','AR','CR','PE','CL','UY','PA','VE'].filter(c=>cc[c]);
+    document.getElementById('f-country').innerHTML =
+      `<button class="chip ${state.country==='ALL'?'on':''}" data-v="ALL">${lang==='es'?'Todos':'All'} <span class="ct">${data.length}</span></button>` +
+      orderedC.map(c=>`<button class="chip ${state.country===c?'on':''}" data-v="${c}">${COUNTRIES[c].flag} ${c} <span class="ct">${cc[c]}</span></button>`).join('');
+
+    const tc = {}; data.forEach(d=>{ tc[d.type] = (tc[d.type]||0)+1; });
+    document.getElementById('f-type').innerHTML =
+      `<button class="chip ${state.type==='ALL'?'on':''}" data-v="ALL">${lang==='es'?'Todos':'All'}</button>` +
+      TYPES.filter(t=>tc[t.k]).map(t=>`<button class="chip ${state.type===t.k?'on':''}" data-v="${t.k}">${t[lang]} <span class="ct">${tc[t.k]}</span></button>`).join('');
+
+    document.getElementById('f-country').querySelectorAll('.chip').forEach(b=>b.addEventListener('click',()=>{state.country=b.dataset.v;buildChips();render();}));
+    document.getElementById('f-type').querySelectorAll('.chip').forEach(b=>b.addEventListener('click',()=>{state.type=b.dataset.v;buildChips();render();}));
+  }
+
+  document.getElementById('q').addEventListener('input', e=>{ state.q = e.target.value.toLowerCase().trim(); render(); });
+
+  function fmtUSD(n){ return '$' + n.toLocaleString('en-US'); }
+  function fmtSize(m2){
+    if(m2 >= 10000) return (m2/10000).toFixed(1) + ' ha';
+    return m2.toLocaleString('en-US') + ' m²';
+  }
+
+  function render(){
+    const lang = document.documentElement.getAttribute('lang') || 'es';
+    const listings = window.SORA_LAND.LISTINGS;
+    const admin = window.SORA_LAND.ADMIN;
+
+    // stats global
+    document.getElementById('stat-listings').textContent = listings.length;
+    const cs = {}; listings.forEach(l=>cs[l.country]=1);
+    document.getElementById('stat-countries').textContent = Object.keys(cs).length;
+    document.getElementById('stat-available').textContent = listings.filter(l=>l.status==='available').length;
+    const total = listings.reduce((s,l)=>s+(l.priceUSD||0),0);
+    document.getElementById('stat-value').textContent = '$' + (total/1e6).toFixed(1) + 'M';
+    document.getElementById('stat-admin').textContent = admin.length;
+
+    if(state.mode==='listings'){
+      const filtered = listings.filter(l=>{
+        if(state.country!=='ALL' && l.country!==state.country) return false;
+        if(state.type!=='ALL' && l.type!==state.type) return false;
+        if(state.q){
+          const blob = `${l.name} ${l.region} ${l.country} ${l.broker||''} ${(l.notes&&l.notes[lang])||''}`.toLowerCase();
+          if(!blob.includes(state.q)) return false;
+        }
+        return true;
+      });
+      const grid = document.getElementById('grid');
+      const empty = document.querySelectorAll('#empty');
+      if(!filtered.length){ grid.innerHTML=''; empty.forEach(e=>e.style.display='block'); return; }
+      empty.forEach(e=>e.style.display='none');
+      const typeLabel = k => (TYPES_LISTINGS.find(x=>x.k===k)||{})[lang] || k;
+      // Quick ES→EN auto-translate for the most common property-name words
+      function localizeName(s){
+        if (lang !== 'en' || !s) return s;
+        return String(s)
+          .replace(/Hectárea/gi, 'Hectare')
+          .replace(/Casa colonial/gi, 'Colonial house')
+          .replace(/Casa\s+/g, 'House ')
+          .replace(/Lote\s+/g, 'Lot ')
+          .replace(/Departamento\s+/g, 'Apartment ')
+          .replace(/(\d+)\s+años?\b/g, '$1-yr-old')
+          .replace(/con cepa/gi, 'with vines')
+          .replace(/frente al mar/gi, 'beachfront')
+          .replace(/vista al/gi, 'view of')
+          .replace(/vista mar/gi, 'ocean view')
+          .replace(/vista catedral/gi, 'cathedral view')
+          .replace(/vista parque/gi, 'park view')
+          .replace(/renovado/gi, 'renovated')
+          .replace(/restaurado/gi, 'restored')
+          .replace(/playa/gi, 'beach')
+          .replace(/cerca\s+/gi, 'near ')
+          .replace(/highlands/gi, 'highlands');
+      }
+      function fmtPrice(p){
+        if (!p || p === 0) return `<div class="price poa">${lang==='es'?'Precio a consulta':'Price on request'}</div>`;
+        return `<div class="price">${fmtUSD(p)}</div>`;
+      }
+      function fmtBeds(b){
+        if (!b || b === 0) return '';
+        return `<span class="pill beds">${b} ${lang==='es'?(b===1?'dormitorio':'dormitorios'):(b===1?'bedroom':'beds')}</span>`;
+      }
+      function photoBlock(l, cc){
+        if (l.photo) {
+          return `<div class="card-photo">
+            <img src="${l.photo}" alt="${l.name}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=card-photo-placeholder>${lang==='es'?'Foto no disponible · ver listing':'Photo unavailable · see listing'}</div>'">
+            <span class="photo-overlay">${l.source || 'Listing'}</span>
+          </div>`;
+        }
+        return `<div class="card-photo">
+          <div class="card-photo-placeholder">${cc.flag}<br>${lang==='es'?'Sin foto · click ver listing':'No photo · click to see listing'}</div>
+        </div>`;
+      }
+      grid.innerHTML = filtered.map(l=>{
+        const cc = COUNTRIES[l.country] || {flag:''};
+        const note = (l.notes && l.notes[lang]) || '';
+        return `<article class="card">
+          ${photoBlock(l, cc)}
+          <div class="card-flag">${cc.flag}</div>
+          <div class="card-top">
+            <span class="card-country">${l.country}</span>
+            <span class="card-region">${l.region}</span>
+          </div>
+          <div class="card-name">${localizeName(l.name)}</div>
+          <div class="card-meta">
+            <span class="pill type">${typeLabel(l.type)}</span>
+            ${fmtBeds(l.bedrooms)}
+            <span class="pill status ${l.status}">${l.status.toUpperCase()}</span>
+          </div>
+          <div class="card-price">
+            ${fmtPrice(l.priceUSD)}
+            <div class="size">${fmtSize(l.sizeM2)}</div>
+          </div>
+          <div class="card-notes">${note}</div>
+          <div class="card-broker"><strong>${l.broker}</strong></div>
+          <div class="card-links">
+            ${l.url ? `<a class="card-link-primary" href="${l.url}" target="_blank" rel="noopener">${lang==='es'?'Ver listing':'View listing'} ↗</a>` : ''}
+            ${l.areaUrl ? `<a class="card-link-area" href="${l.areaUrl}" target="_blank" rel="noopener" title="${lang==='es'?'Ver todo en':'Browse all in'} ${l.region}">${lang==='es'?'Más en zona':'More in area'} ↗</a>` : ''}
+          </div>
+        </article>`;
+      }).join('');
+    } else {
+      const filtered = admin.filter(a=>{
+        if(state.country!=='ALL' && a.country!==state.country) return false;
+        if(state.type!=='ALL' && a.type!==state.type) return false;
+        if(state.q){
+          const blob = `${a.name} ${a.region} ${a.country} ${a.contact||''} ${(a.notes&&a.notes[lang])||''}`.toLowerCase();
+          if(!blob.includes(state.q)) return false;
+        }
+        return true;
+      });
+      const typeLabel = k => (TYPES_ADMIN.find(x=>x.k===k)||{})[lang] || k;
+      document.getElementById('admin-rows').innerHTML = filtered.map(a=>{
+        const cc = COUNTRIES[a.country] || {flag:''};
+        const note = (a.notes && a.notes[lang]) || '';
+        return `<tr>
+          <td class="col-country"><span class="fl">${cc.flag}</span>${a.country}<div class="col-region">${a.region}</div></td>
+          <td><span class="col-type type-${a.type}">${typeLabel(a.type)}</span></td>
+          <td class="col-name">${a.name}</td>
+          <td class="col-contact">${a.contact||''}</td>
+          <td class="col-notes">${note}</td>
+        </tr>`;
+      }).join('');
+    }
+  }
+
+  buildChips();
+  render();
+})();
+</script>
+</body>
+</html>

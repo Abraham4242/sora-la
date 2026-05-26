@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Medellín 2026 — Field Manual</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper:#f4efe2; --paper-2:#ede5d0; --paper-3:#e6dcc3; --paper-card:#fbf7e8; --paper-deep:#dfd5bd;
+    --paper-tint-emerald:#e6efe5; --paper-tint-warm:#f7ead4; --paper-tint-coral:#f9e7df;
+    --ink:#0f140d; --ink-2:#241f17; --ink-soft:#454a3a; --ink-faint:#787763; --ink-ghost:#aaa988;
+    --line:rgba(15,20,13,.10); --line-2:rgba(15,20,13,.18); --line-strong:rgba(15,20,13,.45);
+    --emerald:#2d6b3e; --emerald-2:#4a8a5b; --emerald-faint:rgba(45,107,62,.12);
+    --coral:#c44a30; --coral-2:#dd6648; --coral-faint:rgba(196,74,48,.10);
+    --gold:#9c7a30; --gold-2:#c5a05c;
+    --wine:#6b1f2c; --teal:#0e6478;
+    --warn-bg:#faecd2; --warn-line:#c08828;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);color:var(--ink);
+    font-family:'Fraunces',Georgia,serif;font-size:17px;line-height:1.62;
+    min-height:100vh;overflow-x:hidden;
+    font-feature-settings:"ss01","ss02","kern","liga";
+    -webkit-font-smoothing:antialiased;
+    background-image:
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.08  0 0 0 0 0.07  0 0 0 0 0.05  0 0 0 0.025 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"),
+      radial-gradient(ellipse at 12% 6%,rgba(45,107,62,.06) 0%,transparent 50%),
+      radial-gradient(ellipse at 88% 95%,rgba(196,74,48,.06) 0%,transparent 55%);
+  }
+  ::selection{background:var(--ink);color:var(--paper)}
+
+  .progress{position:fixed;top:0;left:0;width:100%;height:2px;background:rgba(15,20,13,.04);z-index:100;pointer-events:none}
+  .progress .bar{height:100%;width:0%;background:linear-gradient(90deg,var(--emerald),var(--emerald-2));transition:width .08s linear}
+  .minimark{position:fixed;top:18px;right:24px;z-index:50;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-faint);background:rgba(244,239,226,.85);backdrop-filter:blur(8px);border:1px solid var(--line);padding:8px 14px;opacity:0;transition:opacity .3s ease;display:flex;align-items:center;gap:10px}
+  .minimark.visible{opacity:1}
+  .minimark .dot{width:6px;height:6px;border-radius:50%;background:var(--emerald)}
+  .rail{position:fixed;left:24px;top:50%;transform:translateY(-50%);z-index:50;pointer-events:none;opacity:0;transition:opacity .3s ease}
+  .rail.visible{opacity:1;pointer-events:auto}
+  .rail ol{list-style:none;padding:16px 12px;background:rgba(244,239,226,.85);backdrop-filter:blur(8px);border:1px solid var(--line);display:flex;flex-direction:column;gap:6px}
+  .rail li{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.15em;color:var(--ink-ghost);cursor:pointer;display:flex;align-items:center;gap:8px;padding:2px 2px 2px 0;transition:color .15s ease}
+  .rail li::before{content:'';width:14px;height:1px;background:currentColor;opacity:.5;transition:all .2s ease}
+  .rail li .romnum{font-weight:600;width:22px}
+  .rail li .name{opacity:0;transform:translateX(-8px);transition:all .2s ease;font-family:'Fraunces',serif;font-style:italic;font-size:11px;letter-spacing:0;color:var(--ink-soft);white-space:nowrap}
+  .rail:hover li .name{opacity:.7;transform:translateX(0)}
+  .rail li:hover{color:var(--ink)}
+  .rail li:hover::before{width:22px;background:var(--emerald);opacity:1}
+  .rail li.active{color:var(--emerald)}
+  .rail li.active::before{width:22px;background:var(--emerald);opacity:1}
+  .rail li.active .name{opacity:1;color:var(--emerald)}
+
+  .doc{max-width:1080px;margin:0 auto;padding:0 32px}
+
+  .cover{min-height:100vh;padding:56px 64px 64px;display:flex;flex-direction:column;position:relative;border-bottom:1px solid var(--line-2);overflow:hidden}
+  .cover::before,.cover::after{content:'';position:absolute;pointer-events:none;border:1px solid var(--line-2)}
+  .cover::before{top:20px;left:20px;right:20px;bottom:20px}
+  .cover::after{top:26px;left:26px;right:26px;bottom:26px}
+  .cover-head{display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:auto}
+  .cover-mark{display:flex;align-items:center;gap:14px}
+  .cover-mark .glyph{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border:1px solid var(--ink);font-family:'Fraunces',serif;font-style:italic;font-size:16px;text-transform:none;color:var(--ink)}
+  .cover-body{margin:auto 0}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.30em;text-transform:uppercase;color:var(--emerald);margin-bottom:36px;font-weight:600}
+  .cover-title{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(76px,12vw,176px);line-height:.88;letter-spacing:-.04em;color:var(--ink);margin-bottom:32px}
+  .cover-title em{font-style:italic;color:var(--emerald);font-weight:400}
+  .cover-title .year{display:block;font-family:'Fraunces',serif;font-style:italic;font-weight:300;font-size:.42em;letter-spacing:-.02em;margin-top:14px;color:var(--ink-soft)}
+  .cover-sub{font-family:'Fraunces',serif;font-size:21px;line-height:1.45;color:var(--ink-2);font-weight:300;max-width:680px}
+  .cover-meta{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:64px;padding-top:32px;border-top:1px solid var(--line-2)}
+  .cover-meta .item{display:flex;flex-direction:column;gap:6px}
+  .cover-meta .label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint)}
+  .cover-meta .value{font-family:'Fraunces',serif;font-size:18px;color:var(--ink);font-weight:500}
+  .cover-meta .value em{font-style:italic;color:var(--emerald)}
+  .scroll-cue{position:absolute;bottom:36px;left:50%;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.30em;text-transform:uppercase;color:var(--ink-faint);writing-mode:vertical-rl;transform:translateX(-50%) rotate(180deg)}
+
+  section{padding:96px 0;position:relative;border-bottom:1px solid var(--line)}
+  section.tint-warm{background:linear-gradient(180deg,var(--paper) 0%,var(--paper-tint-warm) 40%,var(--paper-tint-warm) 60%,var(--paper) 100%)}
+  section.tint-coral{background:linear-gradient(180deg,var(--paper) 0%,var(--paper-tint-coral) 40%,var(--paper-tint-coral) 60%,var(--paper) 100%)}
+  section.tint-emerald{background:linear-gradient(180deg,var(--paper) 0%,var(--paper-tint-emerald) 40%,var(--paper-tint-emerald) 60%,var(--paper) 100%)}
+  .ghost-num{position:absolute;top:24px;right:42px;font-family:'Fraunces',serif;font-weight:300;font-size:240px;line-height:1;color:var(--ink);opacity:.04;letter-spacing:-.04em;pointer-events:none;user-select:none;font-style:italic}
+  .chapter{display:grid;grid-template-columns:130px 1fr;gap:48px;margin-bottom:56px;max-width:1080px;margin-left:auto;margin-right:auto;padding:0 32px}
+  .chapter-num{font-family:'Fraunces',serif;font-style:italic;font-weight:300;font-size:72px;line-height:1;color:var(--ink-soft);display:flex;flex-direction:column;align-items:flex-start;gap:18px}
+  .chapter-num sup{font-family:'JetBrains Mono',monospace;font-style:normal;font-size:10px;letter-spacing:.18em;color:var(--ink-faint);text-transform:uppercase;font-weight:600}
+  .chapter-sigil{width:42px;height:42px;display:flex;align-items:center;justify-content:center;opacity:.6}
+  .chapter-sigil svg{width:100%;height:100%;stroke:var(--ink-soft);stroke-width:1.3;fill:none}
+  .chapter-sigil svg .fill{fill:var(--ink-soft);stroke:none}
+  .chapter-body{padding-top:8px}
+  .chapter-kicker{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--emerald);font-weight:600;margin-bottom:14px}
+  .chapter-body h2{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(38px,5vw,60px);line-height:1.04;letter-spacing:-.025em;color:var(--ink);margin-bottom:28px;text-wrap:balance}
+  .chapter-body h2 em{font-style:italic;color:var(--emerald);font-weight:400}
+  .lede{font-family:'Fraunces',serif;font-size:20px;line-height:1.5;color:var(--ink-2);font-weight:300;max-width:680px}
+  .lede.drop::first-letter{font-family:'Fraunces',serif;font-style:italic;font-weight:300;font-size:84px;line-height:.72;float:left;margin:8px 14px 0 0;color:var(--emerald)}
+  .lede strong{font-weight:600;color:var(--ink)}
+
+  h3{font-family:'Fraunces',serif;font-weight:500;font-size:24px;line-height:1.2;color:var(--ink);margin:48px 0 18px;letter-spacing:-.015em}
+  h3 em{font-style:italic;color:var(--emerald);font-weight:400}
+  p{margin-bottom:18px;color:var(--ink-2)}
+  p strong{color:var(--ink);font-weight:600}
+  p em{font-style:italic}
+  a{color:var(--coral);text-decoration:none;border-bottom:1px dashed var(--coral-faint)}
+  a:hover{color:var(--coral-2);border-color:var(--coral)}
+
+  .hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:1080px;margin:48px auto;padding:0 32px}
+  .stat{background:var(--paper-card);border:1px solid var(--line);padding:24px 22px;display:flex;flex-direction:column;gap:8px;position:relative;overflow:hidden}
+  .stat .delta{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);font-weight:600}
+  .stat .num{font-family:'Fraunces',serif;font-weight:300;font-size:42px;line-height:1;color:var(--ink);letter-spacing:-.02em}
+  .stat .num em{font-style:italic;color:var(--emerald);font-weight:400}
+  .stat .lbl{font-family:'Inter',sans-serif;font-size:11.5px;color:var(--ink-soft);line-height:1.35}
+  .stat .sparkline{position:absolute;bottom:0;left:0;right:0;height:18px;opacity:.18}
+  .stat .sparkline svg{width:100%;height:100%}
+  .stat .sparkline path{fill:none;stroke:var(--emerald);stroke-width:1.5}
+
+  .card{max-width:1080px;margin:32px auto;padding:24px 28px;background:var(--paper-card);border:1px solid var(--line);position:relative}
+  .card.warn{background:var(--warn-bg);border-color:var(--warn-line);border-left-width:3px}
+  .card.danger{background:var(--paper-tint-coral);border-color:var(--coral);border-left-width:3px}
+  .card.emerald{background:var(--paper-tint-emerald);border-color:var(--emerald);border-left-width:3px}
+  .card-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);font-weight:600;margin-bottom:10px}
+  .card p{margin-bottom:0;font-size:15.5px}
+
+  .toc{max-width:1080px;margin:48px auto 0;padding:32px;background:var(--paper-deep);border:1px solid var(--line-2)}
+  .toc-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+  .toc-head .label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft);font-weight:600}
+  .toc-head .count{font-family:'Fraunces',serif;font-style:italic;font-size:14px;color:var(--ink-faint)}
+  .toc ol{list-style:none;counter-reset:tocn;columns:2;column-gap:36px}
+  .toc li{counter-increment:tocn;display:flex;gap:14px;padding:6px 0;border-bottom:1px dashed var(--line);break-inside:avoid}
+  .toc li::before{content:counter(tocn,upper-roman);font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-faint);min-width:30px;letter-spacing:.06em;font-weight:600;padding-top:3px}
+  .toc li a{font-family:'Fraunces',serif;font-size:16px;color:var(--ink-2);border:0;flex:1}
+  .toc li a:hover{color:var(--emerald)}
+
+  table.dt{width:100%;max-width:1080px;margin:18px auto 24px;border-collapse:collapse;font-size:14.5px}
+  table.dt th{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;text-align:left;padding:10px 12px;border-bottom:1px solid var(--line-strong)}
+  table.dt td{padding:10px 12px;border-bottom:1px solid var(--line);color:var(--ink-2);vertical-align:top}
+  table.dt td strong{color:var(--ink);font-weight:600}
+  table.dt td.num{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--emerald);font-weight:500}
+  table.dt tr:last-child td{border-bottom:0}
+  table.dt tr.tot td{font-weight:600;color:var(--ink);border-top:1px solid var(--line-strong);padding-top:14px}
+
+  ul.bullets{max-width:1080px;margin:18px auto;padding:0 0 0 24px;list-style:none}
+  ul.bullets li{position:relative;padding-left:22px;margin-bottom:10px;font-size:15.5px;color:var(--ink-2);line-height:1.55}
+  ul.bullets li::before{content:'';position:absolute;left:0;top:11px;width:10px;height:1px;background:var(--emerald)}
+  ul.bullets li strong{color:var(--ink);font-weight:600}
+
+  .neighmap{max-width:1080px;margin:32px auto;padding:32px;background:var(--paper-card);border:1px solid var(--line)}
+  .nm-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:18px}
+  .nm-title{font-family:'Fraunces',serif;font-size:16px;font-weight:500;color:var(--ink)}
+  .nm-tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint)}
+  .nm-legend{display:flex;flex-wrap:wrap;gap:24px;margin-top:18px;padding-top:18px;border-top:1px solid var(--line);font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.10em;text-transform:uppercase;color:var(--ink-soft)}
+  .nm-legend .lg{display:flex;align-items:center;gap:8px}
+  .nm-legend .swatch{width:12px;height:12px;display:inline-block}
+
+  .doc-foot{padding:64px 32px;text-align:center;background:var(--ink);color:var(--paper)}
+  .doc-foot .sig{font-family:'Fraunces',serif;font-style:italic;font-size:22px;margin-bottom:14px}
+  .doc-foot .meta{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:rgba(244,239,226,.5)}
+
+  @media (max-width:880px){
+    .cover{padding:36px 28px 48px}
+    .chapter{grid-template-columns:1fr;gap:18px;padding:0 22px}
+    .chapter-num{flex-direction:row;align-items:center;font-size:48px;gap:14px}
+    .chapter-sigil{width:30px;height:30px}
+    .hero-stats{grid-template-columns:repeat(2,1fr);padding:0 22px}
+    .toc ol{columns:1}
+    .doc{padding:0 22px}
+    section{padding:64px 0}
+    .ghost-num{font-size:140px;right:20px}
+  }
+</style>
+</head>
+<body>
+
+<div class="progress"><div class="bar" id="bar"></div></div>
+<div class="minimark" id="minimark"><span class="dot"></span><span>Medellín · 2026 · Field Manual</span></div>
+
+<nav class="rail" id="rail">
+  <ol>
+    <li data-target="snapshot"><span class="romnum">I</span><span class="name">The Moment</span></li>
+    <li data-target="safety"><span class="romnum">II</span><span class="name">Comunas &amp; Estratos</span></li>
+    <li data-target="money"><span class="romnum">III</span><span class="name">What Your Money Buys</span></li>
+    <li data-target="realestate"><span class="romnum">IV</span><span class="name">Renting &amp; Buying</span></li>
+    <li data-target="office"><span class="romnum">V</span><span class="name">Office &amp; Coworking</span></li>
+    <li data-target="business"><span class="romnum">VI</span><span class="name">Setting Up the SAS</span></li>
+    <li data-target="visa"><span class="romnum">VII</span><span class="name">Visa M / Migrante</span></li>
+    <li data-target="banking"><span class="romnum">VIII</span><span class="name">Banking &amp; COP</span></li>
+    <li data-target="tax"><span class="romnum">IX</span><span class="name">DIAN &amp; U.S. Tax</span></li>
+    <li data-target="lifestyle"><span class="romnum">X</span><span class="name">Lifestyle &amp; Scene</span></li>
+    <li data-target="protocols"><span class="romnum">XI</span><span class="name">Daily Protocols</span></li>
+    <li data-target="first90"><span class="romnum">XII</span><span class="name">First Ninety Days</span></li>
+  </ol>
+</nav>
+
+<header class="cover">
+  <div class="cover-head">
+    <div class="cover-mark">
+      <span class="glyph">A</span>
+      <span>Private Briefing · Not for Distribution</span>
+    </div>
+    <div>Volume III · May 2026</div>
+  </div>
+  <div class="cover-body">
+    <div class="eyebrow">Relocation Dossier — Medellín · Eternal Spring · 30s</div>
+    <h1 class="cover-title">Medellín<em>,</em><span class="year">2026</span></h1>
+    <p class="cover-sub">A field manual for the city of eternal spring after the digital-nomad wave crested. Provenza is saturated, El Poblado priced-in, Laureles ascending. This is how to live well in the easiest LATAM city to set up — and avoid the version of Medellín that the Instagram crowd is selling.</p>
+  </div>
+  <div class="cover-meta">
+    <div class="item"><div class="label">Prepared For</div><div class="value">Abraham · <em>31</em></div></div>
+    <div class="item"><div class="label">Country Risk</div><div class="value">Level <em>2</em> · Increased caution</div></div>
+    <div class="item"><div class="label">Currency of Record</div><div class="value">COP · <em>quote USD</em></div></div>
+    <div class="item"><div class="label">Government</div><div class="value">Petro · <em>final year</em></div></div>
+  </div>
+  <div class="scroll-cue">Begin</div>
+</header>
+
+<!-- ============ 01 ============ -->
+<section id="snapshot">
+  <div class="ghost-num">01</div>
+  <div class="chapter">
+    <div class="chapter-num"><sup>Chapter I</sup>01
+      <div class="chapter-sigil"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="13"/><path d="M16 8 L16 16 L21 19"/><circle cx="16" cy="16" r="0.8" class="fill"/></svg></div>
+    </div>
+    <div class="chapter-body">
+      <div class="chapter-kicker">The Moment You're Walking Into</div>
+      <h2>The city has <em>quietly normalized</em>.</h2>
+      <p class="lede drop">May 2026 Medellín is post-hype. The 2022–2024 digital nomad surge (90,000 monthly expats at peak) has thinned. Visa caps tightened in late 2025, Airbnb pricing in Provenza compressed 18% as supply caught up, and the city's mayor (Federico Gutiérrez, second term) has cleaned up the nightlife district. Petro is in his final year — markets are pricing in a center-right successor in 2026. <strong>The COP has stabilized at ~4,100/USD after the post-Petro shock of 2023. Inflation is at 5.2% and falling.</strong> This is the easiest LATAM city to set up a business in — SAS in 14 days, no minimum capital, fully foreign-ownable.</p>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat"><span class="delta">COP</span><div class="num">~<em>4.1</em>k</div><div class="lbl">Pesos / USD · stable</div><div class="sparkline"><svg viewBox="0 0 100 18" preserveAspectRatio="none"><path d="M0,4 L20,10 L40,14 L60,12 L80,11 L100,10"/></svg></div></div>
+    <div class="stat"><span class="delta">YoY</span><div class="num"><em>5.2</em>%</div><div class="lbl">Inflation · Apr</div><div class="sparkline"><svg viewBox="0 0 100 18" preserveAspectRatio="none"><path d="M0,3 L20,5 L40,8 L60,11 L80,13 L100,14"/></svg></div></div>
+    <div class="stat"><span class="delta">US&nbsp;Dept</span><div class="num">Lvl <em>2</em></div><div class="lbl">Travel advisory (Antioquia)</div><div class="sparkline"><svg viewBox="0 0 100 18" preserveAspectRatio="none"><path d="M0,5 L40,5 L40,8 L80,8 L80,11 L100,11"/></svg></div></div>
+    <div class="stat"><span class="delta">~</span><div class="num"><em>22</em>°C</div><div class="lbl">Average year-round</div><div class="sparkline"><svg viewBox="0 0 100 18" preserveAspectRatio="none"><path d="M0,9 L25,8 L50,9 L75,8 L100,9"/></svg></div></div>
+  </div>
+
+  <div class="card warn">
+    <div class="card-label">Political Risk · Live</div>
+    <p>Colombia's presidential election is March 8, 2026 (first round) and May 31 (runoff). Petro is term-limited; the leading candidates are <strong>Vicky Dávila (center-right, ex-journalist)</strong> and <strong>Daniel Quintero (Medellín ex-mayor, center-left)</strong>. Either outcome stabilizes the COP and reduces extradition / Venezuela-rapprochement risk. <strong>Plan for a 5–8% peso move on June 1 either direction.</strong> Don't be 100% USD-long or 100% COP-long that week.</p>
+  </div>
+
+  <div class="toc">
+    <div class="toc-head"><span class="label">Contents</span><span class="count">XII Chapters</span></div>
+    <ol>
+      <li><a href="#snapshot">The Moment</a></li>
+      <li><a href="#safety">Comunas, Estratos &amp; Neighborhoods</a></li>
+      <li><a href="#money">What Your Money Buys</a></li>
+      <li><a href="#realestate">Renting &amp; Buying</a></li>
+      <li><a href="#office">Office &amp; Coworking</a></li>
+      <li><a href="#business">Setting Up the SAS</a></li>
+      <li><a href="#visa">Visa M &amp; Residency</a></li>
+      <li><a href="#banking">Banking &amp; COP Rails</a></li>
+      <li><a href="#tax">DIAN &amp; U.S. Tax</a></li>
+      <li><a href="#lifestyle">Lifestyle &amp; Scene</a></li>
+      <li><a href="#protocols">Daily Protocols</a></li>
+      <li><a href="#first90">First Ninety Days</a></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ 02 ============ -->
+<section id="safety" class="tint-warm">
+  <div class="ghost-num">02</div>
+  <div class="chapter">
+    <div class="chapter-num"><sup>Chapter II</sup>02
+      <div class="chapter-sigil"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="13"/><path d="M16 3 L18 16 L16 29 L14 16 Z" class="fill"/><path d="M3 16 L29 16" stroke-dasharray="1 3"/><circle cx="16" cy="16" r="1.4" class="fill"/></svg></div>
+    </div>
+    <div class="chapter-body">
+      <div class="chapter-kicker">Where to Live</div>
+      <h2>Live in <em>Estrato 5 or 6</em>. Read the city by stratum.</h2>
+      <p class="lede drop">Colombia uses a 1–6 socioeconomic stratification (estratos) that determines utility prices, neighborhood character, and — practically — your safety profile. <strong>Estrato 6</strong> (top 5% of buildings) is suburban affluent (Poblado southwest, El Tesoro hill, Laureles core). <strong>Estrato 5</strong> (the next 10%) is where you actually want to live — well-built, walkable, designed for upper-middle. Estratos 1–3 are the comunas where Medellín's complicated 1990s–2000s history lives. Don't pretend that's not a real distinction.</p>
+    </div>
+  </div>
+
+  <div class="neighmap">
+    <div class="nm-head">
+      <div class="nm-title">Medellín · The Viable Zone</div>
+      <div class="nm-tag">North up · Aburrá valley · not to scale</div>
+    </div>
+    <svg viewBox="0 0 800 320" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="mehatch" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
+          <line x1="0" y1="0" x2="0" y2="6" stroke="#c44a30" stroke-width="1" opacity=".35"/>
+        </pattern>
+      </defs>
+      <!-- Valley walls (mountains) -->
+      <path d="M0,0 L800,0 L800,30 Q700,25 600,40 Q500,30 400,45 Q300,35 200,50 Q100,40 0,30 Z" fill="#0f140d" opacity=".06"/>
+      <text x="400" y="20" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="13" fill="#0f140d" opacity=".45">Cerro El Volador / west range</text>
+
+      <path d="M0,300 L800,300 L800,290 Q700,295 600,288 Q500,294 400,286 Q300,294 200,288 Q100,295 0,290 Z" fill="#0f140d" opacity=".06"/>
+      <text x="400" y="316" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="13" fill="#0f140d" opacity=".45">east range / El Tesoro</text>
+
+      <!-- River line -->
+      <path d="M400,40 Q420,160 400,290" fill="none" stroke="#0e6478" stroke-width="2" opacity=".35" stroke-dasharray="2 3"/>
+      <text x="430" y="170" font-family="Fraunces, serif" font-style="italic" font-size="10" fill="#0e6478" opacity=".7">Río Medellín</text>
+
+      <!-- Comunas (no-go cluster northwest) -->
+      <rect x="60" y="70" width="160" height="100" fill="url(#mehatch)" opacity=".4"/>
+      <rect x="60" y="70" width="160" height="100" fill="none" stroke="#c44a30" stroke-width=".8" stroke-dasharray="4 3"/>
+      <text x="140" y="92" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#c44a30" letter-spacing="2">COMUNA 13</text>
+      <text x="140" y="112" text-anchor="middle" font-family="Fraunces, serif" font-size="11" fill="#0f140d">Tour-only with guide</text>
+      <text x="140" y="128" text-anchor="middle" font-family="Fraunces, serif" font-size="11" fill="#0f140d">No nightlife · day visits</text>
+      <text x="140" y="148" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="#787763">San Javier · 20 de Julio</text>
+
+      <!-- El Poblado / Provenza -->
+      <circle cx="460" cy="150" r="38" fill="#2d6b3e" opacity=".12" stroke="#2d6b3e" stroke-width="1.2"/>
+      <text x="460" y="147" text-anchor="middle" font-family="Fraunces, serif" font-weight="500" font-size="12" fill="#0f140d">El Poblado</text>
+      <text x="460" y="161" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="#2d6b3e">Estrato 6 · $1,200–2,400</text>
+
+      <!-- Provenza -->
+      <circle cx="510" cy="190" r="22" fill="#c44a30" opacity=".12" stroke="#c44a30" stroke-width="1"/>
+      <text x="510" y="188" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="10" fill="#0f140d">Provenza</text>
+      <text x="510" y="201" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="#c44a30">saturated</text>
+
+      <!-- El Tesoro -->
+      <circle cx="610" cy="200" r="28" fill="#9c7a30" opacity=".10" stroke="#9c7a30" stroke-width="1"/>
+      <text x="610" y="198" text-anchor="middle" font-family="Fraunces, serif" font-weight="500" font-size="11" fill="#0f140d">El Tesoro</text>
+      <text x="610" y="212" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="#9c7a30">families · $1,800–3,400</text>
+
+      <!-- Laureles -->
+      <circle cx="280" cy="180" r="40" fill="#0e6478" opacity=".12" stroke="#0e6478" stroke-width="1.2"/>
+      <text x="280" y="177" text-anchor="middle" font-family="Fraunces, serif" font-weight="500" font-size="12" fill="#0f140d">Laureles</text>
+      <text x="280" y="191" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="#0e6478">recommended</text>
+
+      <!-- Envigado -->
+      <circle cx="460" cy="260" r="28" fill="#2d6b3e" opacity=".10" stroke="#2d6b3e" stroke-width=".8"/>
+      <text x="460" y="258" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="10.5" fill="#0f140d">Envigado</text>
+      <text x="460" y="272" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="#2d6b3e">long-term</text>
+
+      <!-- Centro -->
+      <circle cx="340" cy="100" r="22" fill="none" stroke="#787763" stroke-width=".8" stroke-dasharray="3 2"/>
+      <text x="340" y="98" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="10" fill="#454a3a">Centro</text>
+      <text x="340" y="112" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="#787763">day only</text>
+    </svg>
+    <div class="nm-legend">
+      <div class="lg"><span class="swatch" style="background:#0e6478;opacity:.5"></span>Live · best value</div>
+      <div class="lg"><span class="swatch" style="background:#2d6b3e;opacity:.5"></span>Live · premium</div>
+      <div class="lg"><span class="swatch" style="background:#9c7a30;opacity:.5"></span>Families · quiet</div>
+      <div class="lg"><span class="swatch" style="background:#c44a30;opacity:.5"></span>Saturated · noisy</div>
+    </div>
+  </div>
+
+  <div class="doc">
+    <h3>The Triangle</h3>
+    <p><strong>Laureles</strong> is the answer for 2026. Estrato 5–6, leafy, grid-laid (unusual for Medellín), tons of independent cafés (Hija Mía, Pergamino Laureles, Café Velvet), the new wave of restaurants (Mistura, Naan), and zero of the digital-nomad noise of Provenza. Rent is 30% below El Poblado for the same square footage. If you're new to Medellín, start here.</p>
+    <p><strong>El Poblado</strong> is the corporate / family / "first time in Medellín" default. The southwest hill (around Parque del Poblado, Ciudad del Río, Manila) is genuinely beautiful — Pablo Atrio's modernist apartment buildings, walk to Carmen + El Cielo, easy access to the metro. Provenza specifically (the 8 blocks around Calle 8 + Cra. 35) is now a tourist trap with $14 cocktails. <strong>Live in Manila or the Castropol cluster, NOT Provenza itself.</strong></p>
+    <p><strong>El Tesoro</strong> is the high-end families' choice — the hill east of Poblado. CC El Tesoro mall, country clubs, $400k+ houses. Skip unless you have kids or want gym + grocery + restaurant within a 5-minute walk and don't care about street life.</p>
+
+    <h3>The Long-Term Pick</h3>
+    <p><strong>Envigado</strong> is what mature Medellín expats migrate to after 18 months. Adjacent to Poblado south, Estrato 5–6, much quieter, better food market scene, and the colonial Parque Envigado on Sundays. Rent is 35% below Poblado.</p>
+
+    <h3>Hard No-Go Zones</h3>
+    <p><strong>Comuna 13</strong> (San Javier, 20 de Julio) is famous for the graffiti tour — a daytime guided 2-hour tour with a local artist is fine and worthwhile. Do not go solo, do not go after dark, do not stay overnight. <strong>Comuna 1 / Comuna 2</strong> (northeast) and <strong>Bello commune</strong> (north) are off-limits without specific local sponsorship. <strong>Centro after 6pm</strong> has gotten better but is still rough — gallery visit in the day is OK, the Plaza Botero / Berrío stretch is the perimeter.</p>
+
+    <h3>The Honest Recommendation</h3>
+    <p>For Sora's launch base: <strong>Laureles around Avenida Nutibara + Circular 1</strong>, 2BR unfurnished apartment in a low-rise. $900–1,400/mo. 8-minute walk to Pergamino, 12 minutes to Mistura, 4 minutes to Parque de los Pies Descalzos. Sign for 12 months — Colombian leases penalize early termination but landlord turnover is high so negotiate the diplomatic-clause exit. By month 12, evaluate Envigado vs Manila.</p>
+  </div>
+</section>
+
+<!-- ============ 03 MONEY ============ -->
+<section id="money">
+  <div class="ghost-num">03</div>
+  <div class="chapter">
+    <div class="chapter-num"><sup>Chapter III</sup>03
+      <div class="chapter-sigil"><svg viewBox="0 0 32 32"><path d="M5 12 L27 12 M5 16 L27 16 M5 20 L27 20"/><circle cx="16" cy="16" r="13"/></svg></div>
+    </div>
+    <div class="chapter-body">
+      <div class="chapter-kicker">Cost of Living</div>
+      <h2>You will live very well on <em>$3,400/mo</em>.</h2>
+      <p class="lede drop">Medellín is the cheapest top-LATAM-city on this list — about 35% under CDMX, 45% under Buenos Aires when comparing like-for-like. The 2022–2024 nomad wave pushed Provenza pricing 80% but barely touched Laureles or Envigado. Cook 50% of the time, eat at Carmen + Mistura + Hija Mía the other 50%, gym + Pilates + recovery, weekend trips — $3,400 covers all of it with margin.</p>
+    </div>
+  </div>
+
+  <div class="doc">
+    <h3>Monthly Burn — Laureles, Comfortable</h3>
+    <table class="dt">
+      <thead><tr><th>Line</th><th>USD</th><th>Note</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Rent</strong> — Laureles furnished 2BR</td><td class="num">$1,200</td><td>$1,800 if El Poblado same spec; $800 unfurnished</td></tr>
+        <tr><td>Utilities (EPM + internet + gas)</td><td class="num">$110</td><td>Estrato-based; Estrato 6 pays ~2× Estrato 4 for same kWh</td></tr>
+        <tr><td>Phone — Claro / Movistar plan</td><td class="num">$18</td><td>Get a SIM day 1; plan with 30GB data</td></tr>
+        <tr><td>Groceries — Carulla + market</td><td class="num">$280</td><td>Carulla = nice; Éxito = cheaper; Plaza Minorista = best produce</td></tr>
+        <tr><td>Restaurants — 3×/week mid · 1×/mo high</td><td class="num">$420</td><td>The food scene is U.S.-priced at top end, very cheap at bottom</td></tr>
+        <tr><td>Coffee + cafés — daily</td><td class="num">$140</td><td>Pergamino is the religion</td></tr>
+        <tr><td>Mobility — Uber + occasional driver</td><td class="num">$180</td><td>Uber is illegal but ubiquitous; you'll use it; $20/hr private driver</td></tr>
+        <tr><td>Gym + Pilates</td><td class="num">$140</td><td>Bodytech $90/mo, reformer Pilates $50/class pack</td></tr>
+        <tr><td>Health insurance — Sura premium</td><td class="num">$160</td><td>Colombian private; covers Clínica Las Américas + Pablo Tobón</td></tr>
+        <tr><td>Domestic help — 2×/week</td><td class="num">$130</td><td>Cleaning + light cooking</td></tr>
+        <tr><td>Going out — bars + events</td><td class="num">$320</td><td>Variable; Sora hosting eats this line</td></tr>
+        <tr><td>Misc — laundry + barber + small</td><td class="num">$90</td><td>Buffer</td></tr>
+        <tr class="tot"><td>Total comfortable</td><td class="num">$3,188</td><td>Round to $3,400/mo</td></tr>
+      </tbody>
+    </table>
+
+    <h3>What That Buys You</h3>
+    <ul class="bullets">
+      <li><strong>Restaurant access</strong> at top of Medellín — Carmen, Mistura, El Cielo, Naan — without rationing.</li>
+      <li><strong>22°C weather year-round.</strong> The climate is genuinely the asset. Plan around it.</li>
+      <li><strong>Mobility</strong> — Uber + private driver as needed; no car ownership burden.</li>
+      <li><strong>Time</strong> — cleaning, cooking, errands delegable for $200/mo combined.</li>
+      <li><strong>Weekend travel</strong> — Guatapé ($120), Jardín ($95), Cartagena ($240 fly), Coffee region ($180) all within reach.</li>
+      <li><strong>Health</strong> — Sura private gives access to top Medellín private clinics (Las Américas, Pablo Tobón, El Rosario).</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 04 RE ============ -->
+<section id="realestate" class="tint-coral">
+  <div class="ghost-num">04</div>
+  <div class="chapter">
+    <div class="chapter-num"><sup>Chapter IV</sup>04
+      <div class="chapter-sigil"><svg viewBox="0 0 32 32"><path d="M5 24 L5 14 L16 6 L27 14 L27 24 Z"/><path d="M13 24 L13 17 L19 17 L19 24"/></svg></div>
+    </div>
+    <div class="chapter-body">
+      <div class="chapter-kicker">Renting &amp; Buying</div>
+      <h2>Rent year 1. Buy <em>only</em> in Estrato 5–6 stock under $250k.</h2>
+      <p class="lede drop">Medellín real estate has been on a 4-year run. El Poblado new construction is priced at $3,000–4,500/m² (Bogotá-comparable). The values are in Laureles + Envigado + Sabaneta where dollar buyers haven't fully arrived. Yields are 6–9% gross on furnished long-stay. <strong>Avoid: pre-construction promesa contracts with non-vetted developers, anything with title issues in Comuna 13 fringe, and Provenza-area buildings dependent on Airbnb supply that just compressed 18%.</strong></p>
+    </div>
+  </div>
+
+  <div class="doc">
+    <h3>Rent Bands · USD/month</h3>
+    <table class="dt">
+      <thead><tr><th>Neighborhood</th><th>Studio</th><th>1BR</th><th>2BR boutique</th><th>3BR / house</th></tr></thead>
+      <tbody>
+        <tr><td><strong>El Poblado · Provenza · furnished</strong></td><td class="num">$900</td><td class="num">$1,300</td><td class="num">$1,900</td><td class="num">$3,200+</td></tr>
+        <tr><td>El Poblado · Manila / Castropol</td><td class="num">$750</td><td class="num">$1,100</td><td class="num">$1,700</td><td class="num">$2,800</td></tr>
+        <tr><td><strong>Laureles · furnished</strong></td><td class="num">$600</td><td class="num">$900</td><td class="num">$1,400</td><td class="num">$2,200</td></tr>
+        <tr><td>Laureles · unfurnished 12-mo</td><td class="num">$380</td><td class="num">$580</td><td class="num">$880</td><td class="num">$1,500</td></tr>
+        <tr><td>El Tesoro</td><td class="num">$700</td><td class="num">$1,200</td><td class="num">$1,800</td><td class="num">$3,400</td></tr>
+        <tr><td>Envigado</td><td class="num">$500</td><td class="num">$800</td><td class="num">$1,200</td><td class="num">$2,000</td></tr>
+        <tr><td>Sabaneta</td><td class="num">$420</td><td class="num">$680</td><td class="num">$1,050</td><td class="num">$1,800</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Buying — What $250k Gets You</h3>
+    <ul class="bullets">
+      <li><strong>Laureles 2BR renovated</strong>, 75–95 m², parquet floors — $180–230k. Best total-return play in Medellín.</li>
+      <li><strong>El Poblado Manila 2BR new build</strong>, 70–85 m², amenities + parking — $230–280k. Liquid market.</li>
+      <li><strong>El Tesoro 3BR family apartment</strong>, 130 m², parking + bodega — $250–320k. Family demand, slower appreciation.</li>
+      <li><strong>Envigado 3BR house with patio</strong>, 180 m² lot — $200–280k. The forever-home angle; harder to flip.</li>
+      <li><strong>Provenza 1BR boutique</strong>, 50–70 m² — $220–280k. Be careful: this market just compressed. Buy only if you're long-Medellín-forever.</li>
+    </ul>
+
+    <h3>Buying Process — Compressed</h3>
+    <ol style="max-width:1080px;margin:18px auto;padding-left:32px;font-size:15.5px;line-height:1.55;color:var(--ink-2)">
+      <li style="margin-bottom:10px"><strong>Pick a broker.</strong> Compass Real Estate Medellín, Casacol, or independent like Felipe Restrepo. Avoid Airbnb-owner-turned-broker.</li>
+      <li style="margin-bottom:10px"><strong>Get a Colombian RUT (tax ID).</strong> Via Brigard Urrutia in 1 week; $200. Required for property registration.</li>
+      <li style="margin-bottom:10px"><strong>Promesa de compraventa</strong> — 10% deposit + signed promise contract. Negotiable terms.</li>
+      <li style="margin-bottom:10px"><strong>Title study (estudio de títulos)</strong> via lawyer. 10 days. $500–800. <strong>Critical</strong> — Colombian title chains are messy; uncovered liens are common.</li>
+      <li style="margin-bottom:10px"><strong>Notarial deed (escritura).</strong> 30 days. Notary publica registers transfer.</li>
+      <li style="margin-bottom:10px"><strong>Registration at Oficina de Registro de Instrumentos Públicos.</strong> 15 days. ~1% of purchase as registration tax (boleta fiscal).</li>
+      <li style="margin-bottom:10px"><strong>Closing costs ~3.5%</strong> including notary, registration, lawyer, transfer tax (impuesto de beneficencia). Less than Mexico but real.</li>
+      <li style="margin-bottom:10px"><strong>Pay in COP at the notary.</strong> Convert USD via Buda.com or Bancolombia FX desk; close in pesos.</li>
+    </ol>
+
+    <div class="card emerald">
+      <div class="card-label">Sora Use-Case</div>
+      <p>The Sora-Medellín play: a Laureles 2BR ($200–230k purchase, $1,200/mo furnished rental income when not occupied). Net yield 5.5–6.5% in USD terms, plus 2–4% local appreciation, plus full availability for Sora hosts. Better economics than Mexico City; same logic.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 OFFICE ============ -->
+<section id="office">
+  <div class="ghost-num">05</div>
+  <div class="chapter">
+    <div class="chapter-num"><sup>Chapter V</sup>05
+      <div class="chapter-sigil"><svg viewBox="0 0 32 32"><rect x="5" y="9" width="22" height="16"/><path d="M5 14 L27 14"/><circle cx="9" cy="11.5" r=".7" class="fill"/><circle cx="12" cy="11.5" r=".7" class="fill"/></svg></div>
+    </div>
+    <div class="chapter-body">
+      <div class="chapter-kicker">Office &amp; Coworking</div>
+      <h2>Coworking density is <em>second only to Mexico</em>. Start at Selina.</h2>
+      <p class="lede drop">Medellín has 60+ coworking options as of 2026, concentrated in El Poblado and Laureles. The post-Selina (it survived in MDE) and Atom House era. Start with a month-to-month, evaluate at month 4, upgrade to private suite or pivot to café+home if your work pattern is solo.</p>
+    </div>
+  </div>
+
+  <div class="doc">
+    <h3>Coworking — The Short List</h3>
+    <ul class="bullets">
+      <li><strong>Selina El Poblado</strong> — $190/mo hot desk, $290 dedicated. Good wifi, decent design, fastest social scene if you're new to the city.</li>
+      <li><strong>Atom House Laureles</strong> — $220/mo hot desk, beautiful biophilic design, quieter, better coffee. The Laureles default.</li>
+      <li><strong>WeWork Santafé</strong> — $280/mo, corporate tower, English-speaking front desk. Best if you have client calls + need printing infra.</li>
+      <li><strong>La Casa Redonda</strong> (El Poblado) — boutique, $260/mo, members-only feel, podcast studio. Limited supply, sometimes a waitlist.</li>
+      <li><strong>Tinkko</strong> (Provenza) — $170/mo, very social, very startup-y, expect crypto bro adjacency.</li>
+    </ul>
+
+    <h3>Private Office</h3>
+    <p>For Sora-MDE with 2–4 person team: $1,000–1,800/mo for a private 3-room office through IWG (Regus) or local broker. Better economics than CDMX. Most leases are 6-month terms, easy to break.</p>
+
+    <h3>The Café Pattern</h3>
+    <p>If you work mostly solo, the café network is enough. <strong>Pergamino Laureles</strong> + <strong>Hija Mía</strong> + <strong>Café Velvet</strong> are the wifi-stable rotation. <strong>Café Zeppelin</strong> (Manila) and <strong>Saudade</strong> (Envigado) for variety. Bring noise-canceling headphones — Colombian café culture is louder than U.S. (vallenato on speakers is normal).</p>
+  </div>
+</section>
+
+<!-- ============ 06 BUSINESS ============ -->
+<section id="business" class="tint-emerald">
+  <div class="ghost-num">06</div>
+  <div class="chapter">
+    <div class="chapter-num"><sup>Chapter VI</sup>06
+      <div class="chapter-sigil"><svg viewBox="0 0 32 32"><rect x="6" y="10" width="20" height="16"/><path d="M11 10 L11 6 L21 6 L21 10"/><path d="M6 16 L26 16"/></svg></div>
+    </div>
+    <div class="chapter-body">
+      <div class="chapter-kicker">Setting Up the SAS</div>
+      <h2>SAS via attorney. <em>Two weeks</em>. $1,800 all-in.</h2>
+      <p class="lede drop">Colombia's Sociedad por Acciones Simplificada (SAS) is the easiest business setup in LATAM — period. No minimum capital, single shareholder allowed, foreign ownership 100% permitted, fully digital incorporation. Sora-Colombia is the chapter that should be operational fastest after Mexico.</p>
+    </div>
+  </div>
+
+  <div class="doc">
+    <h3>Setup Sequence</h3>
+    <ol style="max-width:1080px;margin:18px auto;padding-left:32px;font-size:15.5px;line-height:1.55;color:var(--ink-2)">
+      <li style="margin-bottom:10px"><strong>Hire counsel.</strong> Brigard Urrutia ($1,800 all-in, Tier-1) or Posse Herrera Ruiz ($1,200, mid-tier).</li>
+      <li style="margin-bottom:10px"><strong>Name search and reservation</strong> at Cámara de Comercio. 24 hours, $40.</li>
+      <li style="margin-bottom:10px"><strong>Draft statutes (estatutos).</strong> Counsel handles. 2–3 days. Define objeto social (business purpose) broadly to allow Sora's full vertical scope.</li>
+      <li style="margin-bottom:10px"><strong>Constitution and registration</strong> at Cámara de Comercio (Medellín). Online or in-person; 24 hours. Get your matrícula mercantil + RUT (DIAN tax ID).</li>
+      <li style="margin-bottom:10px"><strong>Bank account opening.</strong> Bancolombia, Davivienda, or BBVA. Bring matrícula + RUT + legal rep ID. 2 weeks; in-person required for foreign-owned SAS.</li>
+      <li style="margin-bottom:10px"><strong>Buda.com Business</strong> in parallel for USDC/COP. 10 days post-RUT.</li>
+      <li style="margin-bottom:10px"><strong>Optional: ICA (industry &amp; commerce) registration</strong> at Alcaldía de Medellín. Required if you have a physical commercial activity in the city; not required for online + events.</li>
+    </ol>
+
+    <h3>Recommended Counsel</h3>
+    <ul class="bullets">
+      <li><strong>Brigard Urrutia</strong> — Tier-1 LATAM firm. English-speaking M&amp;A team. Partner: <em>Daniela Castaño</em>. $1,800 incorporation + $250/mo retainer.</li>
+      <li><strong>Posse Herrera Ruiz</strong> — Mid-tier, faster, less bureaucratic. $1,200 incorporation + $200/mo retainer.</li>
+      <li><strong>Lloreda Camacho</strong> — Real estate specialty. Use for property transactions only.</li>
+      <li><strong>NotaryColombia (online)</strong> — $400 simple SAS setup, no retainer. Acceptable for side entity that won't raise outside capital.</li>
+    </ul>
+
+    <h3>Hiring Local Staff — The Reality</h3>
+    <p>Colombian labor law is moderate — less employee-favorable than Mexico, more than the U.S. Employer cost is ~1.52× gross (parafiscales: salud, pensión, ARL, cajas de compensación). For a $1,500/mo Sora-MDE host, total employer cost is ~$2,280/mo. <strong>Prima de servicios</strong> (mid-year 13th-month bonus, mandatory June + Dec) adds 16.6%. <strong>Cesantías</strong> (severance accrual) adds 8.3%. <strong>Vacation</strong> 4.2%.</p>
+    <p>Alternative: hire as <strong>contratista de prestación de servicios</strong> (independent contractor) — no parafiscales, no prima, no cesantías. Limit: contractor must control their own work + tools + schedule. DIAN audits this aggressively. PEO option: Deel or Ontop, ~12% on top of gross.</p>
+
+    <div class="card emerald">
+      <div class="card-label">The "Best Setup in LATAM" Claim</div>
+      <p>Colombia's SAS really is the gold standard: zero capital minimum, fully digital, 14-day timeline, foreign-friendly. <strong>If you're choosing one LATAM country to incorporate in for the first time, Colombia is the right answer.</strong> Mexico (SAPI), Argentina (SA), and Brazil (Ltda) all take 4–8× longer and cost 3–5× more.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 07 VISA ============ -->
+<section id="visa">
+  <div class="ghost-num">07</div>
+  <div class="chapter">
+    <div class="chapter-num"><sup>Chapter VII</sup>07
+      <div class="chapter-sigil"><svg viewBox="0 0 32 32"><rect x="8" y="6" width="16" height="20" rx="1"/><circle cx="16" cy="14" r="3"/><path d="M11 21 L21 21"/></svg></div>
+    </div>
+    <div class="chapter-body">
+      <div class="chapter-kicker">Visa &amp; Residency</div>
+      <h2>Migrante visa via Migración Colombia. <em>Done from inside the country</em>.</h2>
+      <p class="lede drop">Colombia's visa structure is the inverse of Mexico's — you can apply <strong>from inside the country</strong> after entering as a tourist. The Visa M (Migrante) for "Rentista" or "Inversionista" pathway requires $9,400/mo income proof or a property purchase of ~$60k+ to qualify. Total: 4–6 weeks from inside Medellín, $400 in fees, no consulate trip required.</p>
+    </div>
+  </div>
+
+  <div class="doc">
+    <h3>The Sequence That Works</h3>
+    <ol style="max-width:1080px;margin:18px auto;padding-left:32px;font-size:15.5px;line-height:1.55;color:var(--ink-2)">
+      <li style="margin-bottom:10px"><strong>Enter Colombia as tourist.</strong> 90-day stamp on arrival (free, automatic for U.S. passports). Extendable to 180 days.</li>
+      <li style="margin-bottom:10px"><strong>Apply for Visa M online</strong> at the Ministerio de Relaciones Exteriores portal within first 90 days. Choose pathway: Rentista (income), Inversionista (property), or Trabajador (employee of a Colombian company).</li>
+      <li style="margin-bottom:10px"><strong>Submit docs:</strong> passport + 6 months bank statements showing $9,400+/mo OR property purchase deed showing $60k+ OR Sora-Colombia employment contract, plus apostilled birth certificate (get it before you fly).</li>
+      <li style="margin-bottom:10px"><strong>$240 visa fee + $50 examination fee.</strong> Pay online.</li>
+      <li style="margin-bottom:10px"><strong>Approval in 5–15 business days.</strong> Visa stamped digitally to your passport.</li>
+      <li style="margin-bottom:10px"><strong>Cédula de Extranjería (foreigner ID card).</strong> Migración Colombia in El Poblado (Calle 19) — appointment online. $50, 2-week processing. <strong>This is the document you'll use for everything</strong> (bank, lease, mobile plan).</li>
+    </ol>
+
+    <h3>Three Visa Pathways</h3>
+    <ul class="bullets">
+      <li><strong>Rentista</strong> — most common. Proves you make $9,400+/mo from passive income, employment abroad, or freelance. 3-year visa, renewable. Best for remote workers.</li>
+      <li><strong>Inversionista (real estate)</strong> — buy property valued at COP 350x current minimum wage (~$60k in 2026). Forever-renewable as long as you own. Best if you already plan to buy.</li>
+      <li><strong>Trabajador</strong> — employee or legal rep of a Colombian company (e.g., Sora-Colombia SAS). 3-year visa. Best if you incorporate before applying.</li>
+    </ul>
+
+    <h3>Tax Residency — The 183-Day Rule</h3>
+    <p>Colombia considers you a tax resident if you spend <strong>183+ days in any 365-day rolling period</strong> in the country. <strong>This is independent of your visa status.</strong> A tourist who stays 183+ days is a Colombian tax resident. Same for Visa M holders. <strong>If you're going to be in Medellín &gt; 6 months a year, plan for DIAN obligations.</strong></p>
+
+    <div class="card warn">
+      <div class="card-label">Apostille Trap</div>
+      <p>You need an apostilled birth certificate to apply for Visa M. <strong>Apostilles must be issued in your birth state's Secretary of State office (or your federal Department of State for diplomatic births).</strong> This takes 3–6 weeks by mail. Start this <strong>before you fly</strong>, not after — otherwise your 90-day tourist stamp expires while you wait.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 08 BANKING ============ -->
+<section id="banking" class="tint-warm">
+  <div class="ghost-num">08</div>
+  <div class="chapter">
+    <div class="chapter-num"><sup>Chapter VIII</sup>08
+      <div class="chapter-sigil"><svg viewBox="0 0 32 32"><path d="M5 28 L27 28"/><path d="M7 13 L7 25 M12 13 L12 25 M20 13 L20 25 M25 13 L25 25"/><path d="M4 13 L28 13 L16 5 Z"/></svg></div>
+    </div>
+    <div class="chapter-body">
+      <div class="chapter-kicker">Banking &amp; COP Rails</div>
+      <h2>Bancolombia for the bank, <em>Buda</em> for the rail, <em>Daviplata</em> for retail.</h2>
+      <p class="lede drop">Colombian banking works but is paper-heavy. The crypto rails are surprisingly mature — Buda.com and Bitso both serve Colombia with regulated COP/USDC pairs. Daviplata (Davivienda's mobile wallet) is what street-level commerce runs on. For Sora-MDE, the stack is: Bancolombia + Buda + Daviplata for the three different jobs.</p>
+    </div>
+  </div>
+
+  <div class="doc">
+    <h3>Banks — The Short List</h3>
+    <ul class="bullets">
+      <li><strong>Bancolombia</strong> — Largest, best app, best ATM network. Personal account opens in 2 visits (open, return for card) with cédula + RUT + proof of address. Corporate account 2–3 weeks. Default choice.</li>
+      <li><strong>Davivienda</strong> — Solid #2. Owns Daviplata (the dominant mobile money). Better digital UX than Bancolombia. Pick if you want fewer in-person branch visits.</li>
+      <li><strong>BBVA Colombia</strong> — Strong on international wires (better USD/EUR rates), worse domestic UX. Pick if you have Spain/Mexico ties.</li>
+      <li><strong>Itaú Colombia</strong> — Brazilian, great private banking for $250k+ deposits, weak retail.</li>
+    </ul>
+
+    <h3>Crypto Rails — USDC, USDT, BTC</h3>
+    <p><strong>Buda.com</strong> is the answer. Chilean-headquartered, regulated in Colombia by SFC, native USDC and USDT pairs, wire in/out from Bancolombia or any Colombian bank. Spreads 0.5–0.8%. Open personal + Buda Business accounts.</p>
+    <p>Alternative: <strong>Bitso Colombia</strong> (Mexican company, expanding) — also regulated. <strong>Binance P2P COP/USDT</strong> works but is unregulated and has counterparty risk; don't use for large amounts.</p>
+
+    <h3>Retail Rails — Daviplata, Nequi, PSE</h3>
+    <p>Colombian street-level commerce runs on three rails:</p>
+    <ul class="bullets">
+      <li><strong>Daviplata</strong> — Davivienda's wallet. Free transfers. Accepted at most small merchants. Get one day 1.</li>
+      <li><strong>Nequi</strong> — Bancolombia's wallet. Same role. Slightly more popular than Daviplata.</li>
+      <li><strong>PSE</strong> — Pagos Seguros en Línea. The Colombian online-payment rail used for utility payments, taxes, e-commerce. Comes free with your Bancolombia account.</li>
+    </ul>
+
+    <h3>The Money Flow That Works</h3>
+    <ol style="max-width:1080px;margin:18px auto;padding-left:32px;font-size:15.5px;line-height:1.55;color:var(--ink-2)">
+      <li style="margin-bottom:8px">U.S. employer pays USD → U.S. bank.</li>
+      <li style="margin-bottom:8px">Wire USD → Buda.com (1–2 days, $25 wire fee).</li>
+      <li style="margin-bottom:8px">Convert USD → COP on Buda (0.5% spread).</li>
+      <li style="margin-bottom:8px">PSE from Buda → Bancolombia (instant, free).</li>
+      <li style="margin-bottom:8px">Spend COP via Bancolombia debit + Daviplata for retail.</li>
+    </ol>
+    <p>For Sora-MDE revenue: guest pays USD → Stripe → Bitso/Buda → COP for Colombian ops. Net cost: 1.5–2% on cross-border flows.</p>
+  </div>
+</section>
+
+<!-- ============ 09 TAX ============ -->
+<section id="tax">
+  <div class="ghost-num">09</div>
+  <div class="chapter">
+    <div class="chapter-num"><sup>Chapter IX</sup>09
+      <div class="chapter-sigil"><svg viewBox="0 0 32 32"><path d="M8 8 L24 8 L24 24 L8 24 Z"/><path d="M12 13 L20 13 M12 17 L20 17 M12 21 L17 21"/></svg></div>
+    </div>
+    <div class="chapter-body">
+      <div class="chapter-kicker">DIAN &amp; U.S. Tax</div>
+      <h2>Cross 183 days, owe Colombia <em>on worldwide income</em>.</h2>
+      <p class="lede drop">DIAN (Dirección de Impuestos y Aduanas Nacionales) is more aggressive than Mexico's SAT. The 183-day rule is enforced via immigration database cross-references, and Colombian tax residents owe income tax on <strong>worldwide</strong> income at progressive rates up to 39%. The U.S.-Colombia tax treaty doesn't exist yet (in negotiation since 2022). <strong>This is the biggest single risk of Medellín long-stay.</strong></p>
+    </div>
+  </div>
+
+  <div class="doc">
+    <h3>What You Owe / Must File</h3>
+    <ul class="bullets">
+      <li><strong>U.S. Form 1040</strong> — every year regardless of residence. Worldwide income.</li>
+      <li><strong>FEIE (Form 2555)</strong> — exclude up to $130k earned income if you pass bona fide residence or physical presence test.</li>
+      <li><strong>FTC (Form 1116)</strong> — credit for Colombian tax paid. Critical because of treaty absence.</li>
+      <li><strong>FBAR (FinCEN 114)</strong> — required if Colombian accounts &gt; $10k aggregate at any point. Free, online.</li>
+      <li><strong>FATCA (Form 8938)</strong> — if foreign assets &gt; $200k single / $400k married.</li>
+      <li><strong>Colombian DIAN declaration</strong> — annual, due August (varies by NIT last digits), if you cross Colombian tax residency.</li>
+    </ul>
+
+    <h3>The Sweet Spot Structure</h3>
+    <ol style="max-width:1080px;margin:18px auto;padding-left:32px;font-size:15.5px;line-height:1.55;color:var(--ink-2)">
+      <li style="margin-bottom:10px"><strong>Stay U.S. tax resident.</strong> Maintain U.S. address, license, voter registration.</li>
+      <li style="margin-bottom:10px"><strong>Cap Colombian presence at &lt; 183 days/year</strong> for the first 1–2 years. Track via Migration Colombia entry stamps. Spend remainder in Panama / U.S. / weekend trips.</li>
+      <li style="margin-bottom:10px"><strong>Sora-Colombia SAS</strong> is its own tax entity — corporate tax 35%. You're a shareholder, take distributions not salary.</li>
+      <li style="margin-bottom:10px"><strong>U.S. compensation</strong> (Chainlink Labs) stays paid to U.S. bank, U.S. taxed. FEIE eligible if qualified.</li>
+      <li style="margin-bottom:10px"><strong>SAS dividends</strong> — 7% withholding on distribution + Colombian recipient tax. Plan distributions to coincide with FTC availability.</li>
+    </ol>
+
+    <div class="card danger">
+      <div class="card-label">The 183-Day Trap</div>
+      <p><strong>If you cross 183 days in Colombia in any 12-month rolling period, you become a Colombian tax resident retroactively for that fiscal year — on worldwide income.</strong> The U.S.-Colombia tax treaty doesn't exist; the FTC can partially offset but the math gets brutal above ~$200k income. <strong>The honest play: keep Colombian presence &lt; 180 days for years 1–2 while you evaluate. If you commit to Colombia permanently, accept the tax residency and restructure accordingly.</strong> Recommended counsel: <strong>Greenback Tax</strong> (US) + <strong>Brigard Urrutia tax team</strong> (Colombian).</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 10 LIFESTYLE ============ -->
+<section id="lifestyle" class="tint-emerald">
+  <div class="ghost-num">10</div>
+  <div class="chapter">
+    <div class="chapter-num"><sup>Chapter X</sup>10
+      <div class="chapter-sigil"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="13"/><path d="M10 18 Q16 24 22 18"/><circle cx="12" cy="13" r="1.2" class="fill"/><circle cx="20" cy="13" r="1.2" class="fill"/></svg></div>
+    </div>
+    <div class="chapter-body">
+      <div class="chapter-kicker">Lifestyle &amp; Scene</div>
+      <h2>The actual reason is <em>the climate plus the people</em>.</h2>
+      <p class="lede drop">Medellín's food scene has come of age in the last 3 years — Carmen, Mistura, El Cielo, Naan all serving at international standards. But the deeper draw is the everyday quality of life: 22°C weather, walkable neighborhoods, friendly culture, and the warmth of paisas. The people are why expats stay. The climate is why they came.</p>
+    </div>
+  </div>
+
+  <div class="doc">
+    <h3>Where to Eat — The Bones</h3>
+    <table class="dt">
+      <thead><tr><th>Restaurant</th><th>Neighborhood</th><th>Why</th><th>Reservation</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Carmen</strong></td><td>El Poblado</td><td>Rob Pevitts, the city's #1. New-world Colombian fine dining.</td><td>2 weeks</td></tr>
+        <tr><td><strong>El Cielo</strong></td><td>El Poblado</td><td>Juan Manuel Barrientos. 17-course "sensorial" tasting. Theatrical.</td><td>3 weeks</td></tr>
+        <tr><td><strong>Mistura</strong></td><td>Laureles</td><td>Cocina abierta concept, market-driven menu, the Laureles default.</td><td>1 week</td></tr>
+        <tr><td><strong>Naan</strong></td><td>Laureles</td><td>Modern Indian + Colombian fusion. Best $40 tasting in the city.</td><td>1 week</td></tr>
+        <tr><td><strong>Hatoviejo</strong></td><td>El Poblado</td><td>Traditional Antioquian. Bandeja paisa for the cultural date.</td><td>walk-in</td></tr>
+        <tr><td><strong>OCI.Mde</strong></td><td>El Poblado</td><td>Seasonal small plates + natural wine bar. The chef-friend pick.</td><td>1 week</td></tr>
+        <tr><td><strong>La Provincia</strong></td><td>Provenza</td><td>The good restaurant inside the bad neighborhood. Worth Provenza visit.</td><td>2 weeks</td></tr>
+        <tr><td><strong>Hija Mía</strong></td><td>Laureles</td><td>Café + light food. Pergamino-tier coffee, books, slow Sunday.</td><td>—</td></tr>
+        <tr><td><strong>Mondongos</strong></td><td>Multiple</td><td>The Antioquian comfort dish at its best. Mondongos is the chain.</td><td>—</td></tr>
+        <tr><td><strong>Restaurante San Carbón</strong></td><td>El Tesoro</td><td>Best parrilla in Medellín. Sunday tradition.</td><td>1 week</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Nights Out</h3>
+    <ul class="bullets">
+      <li><strong>Salón Amador</strong> (Provenza) — house / techno, the city's serious electronic venue. Don't expect to walk in past midnight.</li>
+      <li><strong>La Causa</strong> (El Poblado) — Mezcalería + cocktail bar. The Mezcal Roma of Medellín.</li>
+      <li><strong>Café Velvet</strong> (Laureles) — Wine bar by day, vermouth + small plates by night. The reliable date.</li>
+      <li><strong>Vintrash</strong> (Manila) — Rooftop, Sunday salsa, more locals than tourists.</li>
+      <li><strong>Donde Aquellos</strong> (Provenza) — Music bar, salsa Tuesdays. The where-to-learn-salsa default.</li>
+      <li><strong>La Octava</strong> (El Poblado) — Wine + tapas, late open, the close-the-night place.</li>
+    </ul>
+
+    <h3>Gym &amp; Movement</h3>
+    <p><strong>Bodytech El Tesoro / Bodytech Premium</strong> — the U.S.-tier gym, $90/mo. <strong>Smart Fit</strong> for budget cardio + weights, $35/mo. <strong>Reformer Pilates studios:</strong> Polestar Pilates (El Poblado) and Beto Studio (Laureles). <strong>Boulder Brothers</strong> (Itagüí) for climbing — the best in Colombia. <strong>El Salado</strong> for trail running — the south valley trails are world-class.</p>
+
+    <h3>Weekends Out of Medellín</h3>
+    <ul class="bullets">
+      <li><strong>Guatapé + El Peñol</strong> — 2h drive. Massive colorful rock, lake, finca cabins. $120/night. The default weekend.</li>
+      <li><strong>Jardín</strong> — 3.5h drive. Colonial coffee village, slower than Salento, much fewer tourists. $80/night for traditional posadas.</li>
+      <li><strong>Coffee Region (Salento, Filandia)</strong> — 4h drive or 1h flight to Pereira. Cocora Valley wax palms, finca stays, jeep tours.</li>
+      <li><strong>Cartagena</strong> — 1h flight. The cinematic colonial weekend. 3 nights ideal.</li>
+      <li><strong>Santa Fe de Antioquia</strong> — 1.5h drive. Old colonial capital, hot, swimming pools, weekend reset.</li>
+      <li><strong>San Andrés</strong> — 2h flight. Caribbean tax-free island, snorkel, cheap rum. The annual long-weekend trip.</li>
+    </ul>
+
+    <h3>Community &amp; Spanish</h3>
+    <p>The expat community in Medellín is real and well-organized. <strong>InternationsMDE</strong> meets monthly. <strong>Expats in Medellín FB group</strong> (60k members) is the resource for everything. <strong>Toucan Spanish</strong> and <strong>Universidad EAFIT Spanish program</strong> are the two serious in-person options. Most servers + drivers + helpers speak no English; many restaurant managers + business contacts speak fluent. Functional Spanish at month 3 is realistic; advanced by month 9.</p>
+  </div>
+</section>
+
+<!-- ============ 11 PROTOCOLS ============ -->
+<section id="protocols" class="tint-coral">
+  <div class="ghost-num">11</div>
+  <div class="chapter">
+    <div class="chapter-num"><sup>Chapter XI</sup>11
+      <div class="chapter-sigil"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="13"/><path d="M9 12 L12 16 L9 20"/><path d="M16 9 L16 23"/><path d="M23 12 L20 16 L23 20"/></svg></div>
+    </div>
+    <div class="chapter-body">
+      <div class="chapter-kicker">Daily Safety Protocols</div>
+      <h2>The bubble is real. <em>Don't dar papaya</em>.</h2>
+      <p class="lede drop">"No dar papaya" is the Colombian phrase — don't give papaya, don't make yourself an easy target. Medellín is safer than Bogotá and much safer than its 1990s reputation, but it's not Mexico City. The risks are specific and avoidable: phone snatching, scopolamine (burundanga) drinks, fake police checkpoints, and Tinder/Bumble robberies in foreigner-targeting patterns.</p>
+    </div>
+  </div>
+
+  <div class="doc">
+    <h3>The Habits Worth Keeping</h3>
+    <ul class="bullets">
+      <li><strong>Phone in pocket on the street.</strong> Medellín phone snatching is #1 reported foreigner crime. Motorcycle-borne. Phone in hand = target. Glance, then re-pocket.</li>
+      <li><strong>Uber or InDriver only.</strong> Never flag a street taxi. Uber is technically illegal in Colombia but ubiquitous and safer; InDriver is the legal alternative.</li>
+      <li><strong>Don't accept open drinks.</strong> Scopolamine (burundanga) is the Colombian roofie — odorless, tasteless, knocks you out for 24 hours during which you'll be robbed clean. Watch your bartender pour. Don't leave drinks unattended. Don't accept drinks from strangers in bars.</li>
+      <li><strong>Tinder/Bumble vigilance.</strong> "Sex worker / accomplice" robbery pattern: match, meet at a bar, accomplices arrive, you're robbed. Always first meet in a public, well-trafficked Provenza or El Poblado venue you choose. Never meet at a hotel or Airbnb first.</li>
+      <li><strong>Don't carry your passport.</strong> Cédula photo on phone is enough for everything but airport. Original passport in apartment safe.</li>
+      <li><strong>No big cash withdrawals at standalone ATMs.</strong> Bancolombia or Davivienda inside branches only. Capped at COP 600k (~$150) per withdrawal anyway.</li>
+      <li><strong>Avoid Comuna 13 + Centro at night.</strong> Daytime fine with guide; never solo after dark.</li>
+      <li><strong>Fake police checkpoints exist.</strong> Real police never ask for cash. If stopped on the road by "police" demanding cash or to search your bag, drive to the nearest gas station and call 123.</li>
+    </ul>
+
+    <h3>What You Don't Need</h3>
+    <p>No armed escort, no panic button, no varying routes. Medellín in 2026 is genuinely safe for normal habits. The risk is specific (phones, scopolamine, dating-app robbery) and avoidable.</p>
+  </div>
+</section>
+
+<!-- ============ 12 FIRST 90 ============ -->
+<section id="first90">
+  <div class="ghost-num">12</div>
+  <div class="chapter">
+    <div class="chapter-num"><sup>Chapter XII</sup>12
+      <div class="chapter-sigil"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="13"/><path d="M16 16 L16 9 M16 16 L23 16"/><circle cx="16" cy="16" r="1.4" class="fill"/></svg></div>
+    </div>
+    <div class="chapter-body">
+      <div class="chapter-kicker">First Ninety Days</div>
+      <h2>The sequence that <em>actually works</em>.</h2>
+      <p class="lede drop">Medellín's setup discipline is the lightest of any LATAM capital. The visa can be done from inside the country, the SAS in 14 days, the bank account in two visits. If you stay disciplined, you're fully operational in 60 days.</p>
+    </div>
+  </div>
+
+  <div class="doc">
+    <h3>Before You Fly</h3>
+    <ul class="bullets">
+      <li><strong>Apostilled birth certificate</strong> — start this 6+ weeks ahead. Required for Visa M.</li>
+      <li><strong>Bank statements ready</strong> — 6 months showing $9,400+/mo for Rentista, or proof of $60k+ for Inversionista pathway.</li>
+      <li><strong>Counsel pre-engaged</strong> — email Brigard Urrutia or Posse Herrera Ruiz. Schedule kickoff call for week 1.</li>
+      <li><strong>U.S. tax cleanup.</strong> Last year's 1040 in hand. 30-min consult with Greenback about FEIE / FBAR.</li>
+      <li><strong>U.S. address solution.</strong> Earth Class Mail or family. Maintain U.S. license + voter registration.</li>
+      <li><strong>USD liquidity.</strong> Move 4 months of burn ($14k) to U.S. account, ready to wire to Buda once Colombian bank opens.</li>
+    </ul>
+
+    <h3>Days 1–30 — Scouting</h3>
+    <ul class="bullets">
+      <li><strong>Land in Medellín on tourist stamp.</strong> 90 days automatic.</li>
+      <li><strong>10 nights at The Charlee Hotel or Click Clack.</strong> Hotel base for the first city tour.</li>
+      <li><strong>Walk Laureles + Manila + El Tesoro + Envigado at 10am, 2pm, 8pm, 11pm</strong> — at least 6 times each. Match neighborhood to your actual rhythm.</li>
+      <li><strong>Eat at Carmen, Mistura, Naan, El Cielo, Hatoviejo</strong> in first 3 weeks. Calibration matters.</li>
+      <li><strong>Meet 5 expat operators</strong> via Expats in Medellín FB or InternationsMDE. Their first-year lessons save 3 months.</li>
+      <li><strong>Choose your neighborhood + sign 12-month lease.</strong> Laureles unfurnished or El Poblado Manila furnished.</li>
+      <li><strong>Apply for Visa M online</strong> within first 60 days.</li>
+    </ul>
+
+    <h3>Days 31–60 — Settling</h3>
+    <ul class="bullets">
+      <li><strong>Visa M approved.</strong> Cédula de Extranjería appointment booked.</li>
+      <li><strong>RUT obtained</strong> via Brigard Urrutia. $200, 1 week.</li>
+      <li><strong>Bancolombia account opened.</strong> 2 visits.</li>
+      <li><strong>Buda.com personal opened</strong> in parallel.</li>
+      <li><strong>Daviplata + Nequi</strong> on phone for retail.</li>
+      <li><strong>Sora-Colombia SAS incorporation started</strong> with counsel. 14-day timeline.</li>
+      <li><strong>Join Bodytech + Pergamino regular</strong> — the texture of daily life starts.</li>
+    </ul>
+
+    <h3>Days 61–90 — Operating</h3>
+    <ul class="bullets">
+      <li><strong>Cédula de Extranjería in hand.</strong></li>
+      <li><strong>SAS fully operational.</strong> Corporate Bancolombia + Buda Business open.</li>
+      <li><strong>First Sora-MDE weekend hosted</strong> — soft launch with 10 guests at The Charlee Hotel.</li>
+      <li><strong>Casa San Agustín (Cartagena) partnership in motion</strong> for Q1 2027 cross-chapter weekend.</li>
+      <li><strong>MDE host hired</strong> via PEO. $1,500/mo USD all-in.</li>
+      <li><strong>Decide</strong>: stay full-time Medellín (and accept &gt; 183-day tax exposure), or quarterly base (and stay under). Honest review at day 90.</li>
+    </ul>
+
+    <div class="card emerald">
+      <div class="card-label">The 90-Day Decision</div>
+      <p>Medellín is the easiest LATAM chapter to launch and the easiest to stay in. By day 90, the question is whether you commit to Colombian tax residency or stay quarterly. If your annual income exceeds ~$200k, lean toward quarterly (keep &lt; 180 days). If under, full-time Medellín pencils out well after the FTC math. <strong>Either way, the SAS + Casa Sansara partnership + MDE host run on their own — you don't need to be there to operate.</strong></p>
+    </div>
+  </div>
+</section>
+
+<footer class="doc-foot">
+  <div class="sig">· · ·</div>
+  <div class="sig">Volume III · Prepared for Abraham · May 2026</div>
+  <div class="meta" style="margin-top:14px">La Compañía · Field Manuals · Not for distribution · MMXXVI</div>
+</footer>
+
+<script>
+  const bar = document.getElementById('bar');
+  const minimark = document.getElementById('minimark');
+  const rail = document.getElementById('rail');
+  window.addEventListener('scroll', ()=>{
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (window.scrollY / h) * 100 + '%';
+    const after = window.scrollY > 400;
+    minimark.classList.toggle('visible', after);
+    rail.classList.toggle('visible', after);
+  });
+  document.querySelectorAll('.rail li').forEach(li=>{
+    li.addEventListener('click', ()=>{
+      const el = document.getElementById(li.dataset.target);
+      if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  });
+  const sections = document.querySelectorAll('section[id]');
+  const railLis = document.querySelectorAll('.rail li');
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        railLis.forEach(li=>li.classList.toggle('active', li.dataset.target===e.target.id));
+      }
+    });
+  }, {rootMargin:'-30% 0% -60% 0%'});
+  sections.forEach(s=>obs.observe(s));
+</script>
+</body>
+</html>

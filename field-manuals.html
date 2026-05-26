@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Field Manuals — La Compañía</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Instrument+Serif&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper:#f5efe2; --paper-2:#ede5d2; --paper-card:#fbf6e9; --paper-deep:#e3d9c2;
+    --ink:#14110c; --ink-2:#2a251d; --ink-soft:#4a4337; --ink-faint:#807761; --ink-ghost:#b0a78e;
+    --line:rgba(20,17,12,.10); --line-2:rgba(20,17,12,.18);
+    --terracotta:#b04525; --rose:#a83f4f; --emerald:#2d6b3e; --wine:#7d1f30;
+    --sky:#365b78; --gold:#9c7a30;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);color:var(--ink);
+    font-family:'Fraunces',Georgia,serif;font-size:17px;line-height:1.55;
+    -webkit-font-smoothing:antialiased;min-height:100vh;
+    background-image:
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.08  0 0 0 0 0.07  0 0 0 0 0.05  0 0 0 0.025 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+
+  .doc{max-width:1080px;margin:0 auto;padding:64px 32px}
+  .head{display:flex;justify-content:space-between;align-items:flex-start;padding:24px 0 56px;border-bottom:1px solid var(--line-2);margin-bottom:48px}
+  .head-mark{display:flex;align-items:center;gap:14px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint)}
+  .head-mark .glyph{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border:1px solid var(--ink);font-family:'Fraunces',serif;font-style:italic;font-size:16px;text-transform:none;color:var(--ink)}
+  .head .vol{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint)}
+
+  h1{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(60px,9vw,128px);line-height:.92;letter-spacing:-.04em;color:var(--ink);margin-bottom:24px}
+  h1 em{font-style:italic;color:var(--terracotta);font-weight:400}
+  .deck{font-family:'Fraunces',serif;font-size:22px;line-height:1.45;color:var(--ink-2);font-weight:300;max-width:760px;margin-bottom:14px}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--terracotta);font-weight:600;margin-bottom:28px}
+
+  .meta-row{display:flex;gap:36px;margin-top:32px;padding-top:24px;border-top:1px solid var(--line-2)}
+  .meta-row div{display:flex;flex-direction:column;gap:6px}
+  .meta-row .k{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint)}
+  .meta-row .v{font-family:'Fraunces',serif;font-size:17px;color:var(--ink);font-weight:500}
+
+  .manuals{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:64px}
+
+  .manual{display:block;background:var(--paper-card);border:1px solid var(--line);padding:40px 36px 32px;text-decoration:none;color:inherit;transition:all .25s cubic-bezier(0.25,1,0.5,1);position:relative;overflow:hidden}
+  .manual::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent);transition:width .25s ease}
+  .manual:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 1px 3px rgba(0,0,0,.05),0 8px 24px rgba(0,0,0,.06)}
+  .manual:hover::before{width:6px}
+
+  .manual.ve{--accent:var(--terracotta)}
+  .manual.mx{--accent:var(--rose)}
+  .manual.co{--accent:var(--emerald)}
+  .manual.ba{--accent:var(--wine)}
+
+  .m-vol{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}
+  .m-vol .flag{font-size:18px;letter-spacing:0}
+  .m-status{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;padding:3px 8px;background:rgba(0,0,0,.03);border-radius:3px;color:var(--accent)}
+  .m-title{font-family:'Fraunces',serif;font-weight:300;font-size:48px;line-height:.95;letter-spacing:-.025em;color:var(--ink);margin:6px 0 4px}
+  .m-title em{font-style:italic;color:var(--accent);font-weight:400}
+  .m-year{font-family:'Fraunces',serif;font-style:italic;font-size:18px;color:var(--ink-soft);margin-bottom:24px}
+  .m-deck{font-family:'Fraunces',serif;font-size:16px;line-height:1.5;color:var(--ink-2);font-weight:400;margin-bottom:24px}
+  .m-stats{display:flex;gap:24px;margin-bottom:20px;flex-wrap:wrap}
+  .m-stats div{display:flex;flex-direction:column;gap:2px}
+  .m-stats .sk{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint)}
+  .m-stats .sv{font-family:'Fraunces',serif;font-size:18px;color:var(--ink);font-weight:500}
+  .m-stats .sv em{font-style:italic;color:var(--accent)}
+  .m-foot{display:flex;justify-content:space-between;align-items:center;padding-top:18px;border-top:1px dashed var(--line)}
+  .m-foot .path{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-faint);letter-spacing:.04em}
+  .m-foot .open{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+
+  .upcoming{margin-top:64px;padding-top:48px;border-top:1px solid var(--line-2)}
+  .upcoming-title{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft);font-weight:600;margin-bottom:24px}
+  .upcoming-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .upcoming-cell{background:transparent;border:0.5px dashed var(--line-2);padding:20px 22px;display:flex;flex-direction:column;gap:6px}
+  .upcoming-cell .flag{font-size:16px}
+  .upcoming-cell .name{font-family:'Fraunces',serif;font-size:18px;font-weight:500;color:var(--ink-soft)}
+  .upcoming-cell .name em{font-style:italic}
+  .upcoming-cell .when{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin-top:4px}
+
+  .foot{margin-top:96px;padding-top:32px;border-top:1px solid var(--line);text-align:center}
+  .foot-sig{font-family:'Fraunces',serif;font-style:italic;font-size:18px;color:var(--ink-2);margin-bottom:10px}
+  .foot-meta{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-faint)}
+
+  @media (max-width:780px){
+    .doc{padding:36px 22px}
+    .manuals,.upcoming-grid{grid-template-columns:1fr}
+    .m-title{font-size:38px}
+    .meta-row{flex-wrap:wrap;gap:24px}
+  }
+</style>
+</head>
+<body>
+
+<div class="doc">
+
+  <div class="head">
+    <div class="head-mark">
+      <span class="glyph">A</span>
+      <span>Private Briefings · Not for Distribution</span>
+    </div>
+    <div class="vol">May 2026</div>
+  </div>
+
+  <div class="eyebrow">La Compañía · Field Manuals</div>
+  <h1>Where to <em>actually live</em>.</h1>
+  <div class="deck">A growing library of country-specific relocation dossiers for Sora's LATAM chapter launches. Each manual covers twelve subjects — from neighborhoods to taxation — written for the operator preparing to spend serious time on the ground. Sora chapter docs answer "what's the strategy"; these answer "where do I sleep, who do I pay, how do I stay legal."</div>
+
+  <div class="meta-row">
+    <div><span class="k">Manuals published</span><span class="v">IV · Volume I–IV</span></div>
+    <div><span class="k">Last revision</span><span class="v">May 2026</span></div>
+    <div><span class="k">Next due</span><span class="v">Nosara · Aug 2026</span></div>
+    <div><span class="k">Audience</span><span class="v">Abraham + La Compañía staff</span></div>
+  </div>
+
+  <div class="manuals">
+
+    <a href="./venezuela-2026.html" class="manual ve">
+      <div class="m-vol"><span>Volume I · Caracas</span><span class="flag">🇻🇪</span></div>
+      <div class="m-title">Venezuela<em>,</em></div>
+      <div class="m-year">2026</div>
+      <div class="m-deck">A field manual for a moment that did not exist a year ago. Caracas after Maduro, the dollar de facto, real estate at 15% of peak, the embassy reopening. Twelve chapters of how to operate.</div>
+      <div class="m-stats">
+        <div><span class="sk">Risk</span><span class="sv">Level <em>3</em></span></div>
+        <div><span class="sk">Burn / mo</span><span class="sv">~<em>$4.2</em>k</span></div>
+        <div><span class="sk">Setup</span><span class="sv">8 wks</span></div>
+        <div><span class="sk">Status</span><span class="m-status">Published</span></div>
+      </div>
+      <div class="m-foot"><span class="path">/life/venezuela-2026.html</span><span class="open">Open →</span></div>
+    </a>
+
+    <a href="./mexico-city-2026.html" class="manual mx">
+      <div class="m-vol"><span>Volume II · CDMX</span><span class="flag">🇲🇽</span></div>
+      <div class="m-title">México<em>,</em></div>
+      <div class="m-year">CDMX 2026</div>
+      <div class="m-deck">The design capital of the Spanish-speaking world. Roma, Condesa, Polanco at premium without ostentation. Sora's MX launch base — and a city you could comfortably live in for a decade.</div>
+      <div class="m-stats">
+        <div><span class="sk">Risk</span><span class="sv">Level <em>2</em></span></div>
+        <div><span class="sk">Burn / mo</span><span class="sv">~<em>$5.2</em>k</span></div>
+        <div><span class="sk">Setup</span><span class="sv">6 wks</span></div>
+        <div><span class="sk">Status</span><span class="m-status">Published</span></div>
+      </div>
+      <div class="m-foot"><span class="path">/life/mexico-city-2026.html</span><span class="open">Open →</span></div>
+    </a>
+
+    <a href="./medellin-2026.html" class="manual co">
+      <div class="m-vol"><span>Volume III · Medellín</span><span class="flag">🇨🇴</span></div>
+      <div class="m-title">Medellín<em>,</em></div>
+      <div class="m-year">2026</div>
+      <div class="m-deck">The city of eternal spring after the digital-nomad wave crested. Laureles ascending, Provenza saturated. The easiest LATAM city to set up — and the right place to be when the rest of the continent feels heavy.</div>
+      <div class="m-stats">
+        <div><span class="sk">Risk</span><span class="sv">Level <em>2</em></span></div>
+        <div><span class="sk">Burn / mo</span><span class="sv">~<em>$3.4</em>k</span></div>
+        <div><span class="sk">Setup</span><span class="sv">2 wks</span></div>
+        <div><span class="sk">Status</span><span class="m-status">Published</span></div>
+      </div>
+      <div class="m-foot"><span class="path">/life/medellin-2026.html</span><span class="open">Open →</span></div>
+    </a>
+
+    <a href="./buenos-aires-2026.html" class="manual ba">
+      <div class="m-vol"><span>Volume IV · BA</span><span class="flag">🇦🇷</span></div>
+      <div class="m-title">Buenos Aires<em>,</em></div>
+      <div class="m-year">2026</div>
+      <div class="m-deck">The Milei-era capital of taste at 35% of NYC cost. Don Julio + Faena + Florería Atlántico inside a fifteen-minute walk. The chapter where Sora's margin is highest and your money goes furthest.</div>
+      <div class="m-stats">
+        <div><span class="sk">Risk</span><span class="sv">Level <em>1</em></span></div>
+        <div><span class="sk">Burn / mo</span><span class="sv">~<em>$3.8</em>k</span></div>
+        <div><span class="sk">Setup</span><span class="sv">6 wks</span></div>
+        <div><span class="sk">Status</span><span class="m-status">Published</span></div>
+      </div>
+      <div class="m-foot"><span class="path">/life/buenos-aires-2026.html</span><span class="open">Open →</span></div>
+    </a>
+
+  </div>
+
+  <div class="upcoming">
+    <div class="upcoming-title">In the queue — to be drafted</div>
+    <div class="upcoming-grid">
+      <div class="upcoming-cell"><span class="flag">🇨🇷</span><span class="name">Nosara<em>,</em> 2026</span><span class="when">Volume V · Aug 2026</span></div>
+      <div class="upcoming-cell"><span class="flag">🇧🇷</span><span class="name">Trancoso<em>,</em> 2026</span><span class="when">Volume VI · Sep 2026</span></div>
+      <div class="upcoming-cell"><span class="flag">🇺🇾</span><span class="name">José Ignacio<em>,</em> 2026</span><span class="when">Volume VII · Oct 2026</span></div>
+      <div class="upcoming-cell"><span class="flag">🇵🇪</span><span class="name">Lima<em>,</em> 2027</span><span class="when">Volume VIII · Jan 2027</span></div>
+      <div class="upcoming-cell"><span class="flag">🇨🇱</span><span class="name">Santiago<em>,</em> 2027</span><span class="when">Volume IX · Mar 2027</span></div>
+      <div class="upcoming-cell"><span class="flag">🇵🇦</span><span class="name">Boquete<em>,</em> origin</span><span class="when">Volume X · Q2 2027</span></div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div class="foot-sig">· · ·</div>
+    <div class="foot-sig">La Compañía · Field Manuals Library · May 2026</div>
+    <div class="foot-meta" style="margin-top:8px">Internal · Not for distribution · MMXXVI</div>
+  </div>
+
+</div>
+
+</body>
+</html>
