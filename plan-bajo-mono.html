@@ -54,9 +54,29 @@
   .stamp{padding:9px 14px;background:var(--paper-2);border:0.5px solid var(--line);border-radius:6px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--ink-2);text-transform:uppercase}
   .stamp strong{color:var(--forest);font-weight:700}
 
-  .h-render{aspect-ratio:5/4;background:linear-gradient(180deg,#a8c8d4 0%,#7fa8b3 50%,#2a5440 50%,#1d3a2c 100%);border-radius:14px;overflow:hidden;border:0.5px solid var(--line);position:relative}
-  .h-render svg{width:100%;height:100%}
-  .h-render-label{position:absolute;bottom:14px;left:16px;font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--paper);background:rgba(20,17,12,.62);padding:6px 11px;border-radius:4px;text-transform:uppercase;font-weight:600;backdrop-filter:blur(4px)}
+  .h-render{aspect-ratio:5/4;background:radial-gradient(ellipse at 30% 20%,#d4d8c8 0%,#b8c3a8 28%,#7a9588 60%,#3a5e3a 100%);border-radius:14px;overflow:hidden;border:0.5px solid var(--line);position:relative;cursor:grab}
+  .h-render svg{width:100%;height:100%;user-select:none}
+  .h-render-label{position:absolute;top:14px;left:16px;font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--paper);background:rgba(20,17,12,.62);padding:6px 11px;border-radius:4px;text-transform:uppercase;font-weight:600;backdrop-filter:blur(4px);pointer-events:none}
+  .h-controls{position:absolute;top:14px;right:14px;display:flex;gap:6px;z-index:5}
+  .h-controls button{padding:7px 11px;font-family:var(--mono);font-size:10px;letter-spacing:.10em;color:var(--ink);background:rgba(247,240,223,0.88);border:0;border-radius:4px;cursor:pointer;font-weight:600;text-transform:uppercase;backdrop-filter:blur(4px);transition:all .14s}
+  .h-controls button:hover{background:var(--paper)}
+  .h-controls button.active{background:var(--ink);color:var(--gold)}
+  .iso-building{cursor:pointer;transition:transform .22s cubic-bezier(0.25,1,0.5,1);transform-origin:center;transform-box:fill-box}
+  .iso-building:hover{transform:translateY(-4px)}
+  .iso-building.active .face-top{stroke:var(--gold) !important;stroke-width:2.5 !important}
+  .iso-building.active .face-side{stroke:var(--gold) !important;stroke-width:2 !important}
+  .iso-label{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.10em;fill:var(--ink);font-weight:700;pointer-events:none;text-transform:uppercase}
+  .iso-callout{opacity:0;transition:opacity .18s;pointer-events:none}
+  .iso-building:hover ~ .iso-callout,
+  .iso-callout.show{opacity:1}
+  .h-detail{position:absolute;bottom:14px;left:14px;right:14px;background:rgba(20,17,12,0.92);color:var(--paper);border-radius:8px;padding:14px 18px;font-family:var(--sans);font-size:12.5px;line-height:1.5;backdrop-filter:blur(8px);transform:translateY(120%);transition:transform .26s cubic-bezier(0.25,1,0.5,1);max-height:42%;overflow-y:auto}
+  .h-detail.show{transform:translateY(0)}
+  .h-detail .hd-title{font-family:var(--serif);font-size:18px;font-style:italic;color:var(--gold);margin-bottom:6px}
+  .h-detail .hd-row{display:flex;justify-content:space-between;gap:16px;padding:6px 0;border-bottom:0.5px solid rgba(247,240,223,.10);font-size:12px}
+  .h-detail .hd-row:last-child{border-bottom:0}
+  .h-detail .hd-row strong{color:var(--gold);font-weight:600}
+  .h-detail .hd-close{position:absolute;top:8px;right:10px;color:var(--paper);background:none;border:0;font-size:18px;cursor:pointer;opacity:.7}
+  .h-detail .hd-close:hover{opacity:1}
 
   /* SITE STATS */
   .site-stats{display:grid;grid-template-columns:repeat(5,1fr);border-top:0.5px solid var(--line);border-bottom:0.5px solid var(--line);margin:40px 0 0}
@@ -147,6 +167,33 @@
   .econ-row:last-child{border-bottom:0;font-weight:600;color:var(--ink);font-size:15px;padding-top:14px;border-top:1px solid var(--ink)}
   .econ-row .v{font-family:var(--mono);color:var(--ink);font-weight:500;letter-spacing:.04em}
 
+  /* MATERIALS */
+  .mat-tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px;padding:6px;background:var(--paper-2);border:0.5px solid var(--line);border-radius:8px}
+  .mat-tab{padding:9px 16px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;background:transparent;border:0;border-radius:5px;color:var(--ink-3);cursor:pointer;font-weight:600;transition:all .14s}
+  .mat-tab:hover{background:var(--paper)}
+  .mat-tab.active{background:var(--ink);color:var(--paper)}
+  .mat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .mat-col{background:var(--paper-2);border:0.5px solid var(--line);border-radius:12px;padding:24px 24px 26px;border-top:3px solid #5a8862}
+  .mat-col.mat-panama{border-top-color:var(--gold)}
+  .mat-col.mat-intl{border-top-color:var(--copper)}
+  .mat-col-head{margin-bottom:18px;padding-bottom:14px;border-bottom:0.5px solid var(--line)}
+  .mat-col-title{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#5a8862;font-weight:700;margin-bottom:6px}
+  .mat-panama .mat-col-title{color:var(--gold-deep)}
+  .mat-intl .mat-col-title{color:var(--copper)}
+  .mat-col-sub{font-family:var(--serif);font-style:italic;font-size:12.5px;color:var(--ink-3);line-height:1.4}
+  .mat-row{padding:11px 0;border-bottom:0.5px dashed var(--line);transition:opacity .18s}
+  .mat-row.hidden{display:none}
+  .mat-row:last-child{border-bottom:0}
+  .mat-row .mr-name{font-family:var(--sans);font-size:13.5px;font-weight:600;color:var(--ink);margin-bottom:3px}
+  .mat-row .mr-meta{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);letter-spacing:.04em;line-height:1.4}
+
+  .mat-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px;padding:24px;background:var(--ink);border-radius:12px}
+  .mat-sum-cell{color:var(--paper)}
+  .mat-sum-cell .ms-pct{font-family:var(--serif);font-size:48px;font-weight:300;line-height:1;color:var(--gold);letter-spacing:-.015em;font-style:italic}
+  .mat-sum-cell .ms-label{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;color:rgba(247,240,223,0.65);text-transform:uppercase;margin:6px 0 10px;font-weight:600}
+  .mat-sum-cell .ms-bar{height:5px;background:rgba(247,240,223,.10);border-radius:3px;overflow:hidden}
+  .mat-sum-cell .ms-fill{height:100%;border-radius:3px}
+
   footer{margin-top:80px;padding:36px 0;text-align:center;background:var(--ink);color:rgba(247,240,223,.6);font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase}
   footer a{color:var(--gold)}
 
@@ -155,6 +202,8 @@
     .site-stats{grid-template-columns:repeat(2,1fr)}
     .site-stats > div:nth-child(2n){border-right:0}
     .phases{grid-template-columns:1fr 1fr}
+    .mat-grid{grid-template-columns:1fr}
+    .mat-summary{grid-template-columns:1fr}
   }
 </style>
 </head>
@@ -194,76 +243,254 @@
         <span class="stamp" data-es="HORIZONTE · 2027-2030" data-en="HORIZON · 2027-2030">HORIZON · 2027-2030</span>
       </div>
     </div>
-    <div class="h-render">
-      <div class="h-render-label" data-es="CONCEPT · NO A ESCALA" data-en="CONCEPT · NOT TO SCALE">CONCEPT · NOT TO SCALE</div>
-      <svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg">
-        <!-- Sky gradient already in container -->
+    <div class="h-render" id="isoCanvas">
+      <div class="h-render-label" data-es="ISOMÉTRICO · INTERACTIVO · CLICK EN UN EDIFICIO" data-en="ISOMETRIC · INTERACTIVE · CLICK A BUILDING">ISOMETRIC · INTERACTIVE · CLICK A BUILDING</div>
+      <div class="h-controls">
+        <button class="active" data-view="iso" data-es="ISO" data-en="ISO">ISO</button>
+        <button data-view="plan" data-es="PLAN" data-en="PLAN">PLAN</button>
+      </div>
+      <svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" id="isoSvg">
+        <defs>
+          <linearGradient id="bm-grass" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#7a9560"/>
+            <stop offset="1" stop-color="#4a6e3e"/>
+          </linearGradient>
+          <linearGradient id="bm-top" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#f4ead0"/>
+            <stop offset="1" stop-color="#dac9a0"/>
+          </linearGradient>
+          <linearGradient id="bm-roof-clinic" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#3a4a3a"/>
+            <stop offset="1" stop-color="#1d2a1d"/>
+          </linearGradient>
+          <linearGradient id="bm-roof-villa" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#7a4a30"/>
+            <stop offset="1" stop-color="#4a2a18"/>
+          </linearGradient>
+          <linearGradient id="bm-roof-amenity" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#c8a050"/>
+            <stop offset="1" stop-color="#8a7030"/>
+          </linearGradient>
+          <linearGradient id="bm-side-left" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#e8dcb8"/>
+            <stop offset="1" stop-color="#c8b88c"/>
+          </linearGradient>
+          <linearGradient id="bm-side-right" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#d8c8a0"/>
+            <stop offset="1" stop-color="#a89878"/>
+          </linearGradient>
+          <radialGradient id="bm-shadow" cx="0.5" cy="0.5" r="0.5">
+            <stop offset="0" stop-color="rgba(0,0,0,0.30)"/>
+            <stop offset="1" stop-color="rgba(0,0,0,0)"/>
+          </radialGradient>
+          <pattern id="bm-coffee" x="0" y="0" width="22" height="14" patternUnits="userSpaceOnUse">
+            <circle cx="6" cy="7" r="3" fill="#2a4a2a" opacity="0.75"/>
+            <circle cx="16" cy="11" r="2.5" fill="#1d3a1d" opacity="0.85"/>
+          </pattern>
+        </defs>
+
+        <!-- Far mountain backdrop (Volcán Barú silhouette) -->
+        <path d="M 0 220 L 0 150 L 60 110 L 120 140 L 200 90 L 280 130 L 360 70 L 460 105 L 560 80 L 680 115 L 800 95 L 800 220 Z" fill="rgba(35,55,42,0.45)"/>
+        <path d="M 0 240 L 0 180 L 80 155 L 180 175 L 280 145 L 380 160 L 480 130 L 580 155 L 680 138 L 800 155 L 800 240 Z" fill="rgba(50,75,55,0.55)"/>
+
         <!-- Sun -->
-        <circle cx="320" cy="50" r="22" fill="rgba(255,235,180,0.85)"/>
-        <circle cx="320" cy="50" r="30" fill="rgba(255,220,150,0.30)"/>
-        <!-- Far mountains -->
-        <path d="M 0 160 L 0 100 L 60 70 L 120 100 L 180 60 L 240 90 L 310 55 L 400 80 L 400 160 Z" fill="rgba(20,40,28,0.65)"/>
-        <!-- Mid mountains (Volcán Barú silhouette) -->
-        <path d="M 0 170 L 0 130 L 90 90 L 160 130 L 200 110 L 260 95 L 320 130 L 400 110 L 400 170 Z" fill="rgba(35,75,55,0.78)"/>
-        <!-- Mid forest -->
-        <path d="M 0 220 L 0 165 L 100 145 L 180 168 L 280 150 L 400 172 L 400 220 Z" fill="rgba(48,95,72,0.85)"/>
-        <!-- Foreground hill -->
-        <path d="M 0 320 L 0 220 Q 100 205 200 215 Q 300 225 400 218 L 400 320 Z" fill="#2a5440"/>
-        <!-- Coffee plants in foreground -->
-        <g fill="#1d3a2c" opacity="0.85">
-          <circle cx="40" cy="290" r="6"/><circle cx="60" cy="295" r="5"/><circle cx="85" cy="298" r="6"/>
-          <circle cx="115" cy="293" r="5"/><circle cx="145" cy="297" r="6"/><circle cx="175" cy="300" r="5"/>
-          <circle cx="220" cy="298" r="6"/><circle cx="250" cy="294" r="5"/><circle cx="285" cy="299" r="6"/>
-          <circle cx="320" cy="295" r="5"/><circle cx="355" cy="298" r="6"/><circle cx="380" cy="293" r="5"/>
+        <circle cx="640" cy="90" r="26" fill="rgba(255,235,180,0.92)"/>
+        <circle cx="640" cy="90" r="36" fill="rgba(255,220,150,0.32)"/>
+
+        <!-- Ground plane (isometric diamond) -->
+        <polygon points="400,200 740,370 400,540 60,370" fill="url(#bm-grass)" stroke="#3a5440" stroke-width="1.2"/>
+
+        <!-- Coffee finca area (back-left strip) -->
+        <polygon points="200,290 380,380 290,425 110,335" fill="url(#bm-coffee)" stroke="rgba(58,84,64,0.5)" stroke-width="0.5"/>
+        <text x="245" y="370" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="rgba(247,240,223,0.92)" font-weight="700" letter-spacing="2" transform="rotate(27 245 370)">COFFEE FINCA</text>
+
+        <!-- Paths (gold dotted) -->
+        <g stroke="rgba(217,165,92,0.65)" stroke-width="2" stroke-dasharray="4 5" fill="none">
+          <path d="M 400 200 L 400 280"/>
+          <path d="M 400 320 L 400 540"/>
+          <path d="M 215 295 L 365 320"/>
+          <path d="M 565 300 L 425 320"/>
+          <path d="M 280 230 L 380 290"/>
+          <path d="M 520 230 L 420 290"/>
+          <path d="M 250 420 L 380 360"/>
+          <path d="M 550 420 L 420 360"/>
         </g>
-        <!-- Main clinic building (mid) -->
-        <g>
-          <polygon points="155,250 245,250 252,232 200,212 148,232" fill="#f0e4c8" stroke="#0a1810" stroke-width="0.7"/>
-          <rect x="155" y="250" width="90" height="26" fill="#f0e4c8" stroke="#0a1810" stroke-width="0.7"/>
-          <!-- Roof shadow -->
-          <polygon points="155,250 245,250 252,232 246,232 240,250" fill="rgba(0,0,0,0.15)"/>
-          <!-- Windows -->
-          <rect x="165" y="258" width="10" height="14" fill="rgba(140,180,210,0.8)" stroke="#1a3325" stroke-width="0.4"/>
-          <rect x="185" y="258" width="10" height="14" fill="rgba(140,180,210,0.8)" stroke="#1a3325" stroke-width="0.4"/>
-          <rect x="205" y="258" width="10" height="14" fill="rgba(140,180,210,0.8)" stroke="#1a3325" stroke-width="0.4"/>
-          <rect x="225" y="258" width="10" height="14" fill="rgba(140,180,210,0.8)" stroke="#1a3325" stroke-width="0.4"/>
-          <!-- Door -->
-          <rect x="194" y="262" width="12" height="14" fill="#5a3520"/>
-          <text x="200" y="244" text-anchor="middle" font-family="JetBrains Mono" font-size="5" fill="#0a1810" letter-spacing="1.5">CLINIC</text>
+
+        <!-- Buildings (back to front for proper z-order) -->
+        <!-- Yoga pavilion (circular, back-center) -->
+        <g class="iso-building" data-id="yoga" data-cat="amenity">
+          <ellipse cx="400" cy="245" rx="34" ry="17" fill="rgba(0,0,0,0.25)"/>
+          <ellipse cx="400" cy="240" rx="32" ry="16" fill="url(#bm-side-left)" stroke="#3a2a18" stroke-width="0.7"/>
+          <ellipse cx="400" cy="232" rx="32" ry="16" fill="url(#bm-roof-amenity)" stroke="#5a3a14" stroke-width="0.8"/>
+          <path d="M 368 232 Q 400 200 432 232" fill="rgba(217,165,92,0.45)" stroke="#5a3a14" stroke-width="0.8"/>
+          <text x="400" y="226" text-anchor="middle" class="iso-label">YOGA</text>
         </g>
-        <!-- Villas distributed -->
-        <g>
-          <!-- Villa 1 (top-left) -->
-          <polygon points="55,228 88,228 92,218 72,210 51,218" fill="#f0e4c8" stroke="#0a1810" stroke-width="0.5"/>
-          <rect x="55" y="228" width="33" height="15" fill="#f0e4c8" stroke="#0a1810" stroke-width="0.5"/>
-          <rect x="60" y="232" width="5" height="7" fill="rgba(140,180,210,0.7)"/>
-          <rect x="76" y="232" width="5" height="7" fill="rgba(140,180,210,0.7)"/>
-          <!-- Villa 2 -->
-          <polygon points="105,238 138,238 142,228 122,220 101,228" fill="#f0e4c8" stroke="#0a1810" stroke-width="0.5"/>
-          <rect x="105" y="238" width="33" height="14" fill="#f0e4c8" stroke="#0a1810" stroke-width="0.5"/>
-          <rect x="110" y="242" width="5" height="6" fill="rgba(140,180,210,0.7)"/>
-          <!-- Villa 3 (right) -->
-          <polygon points="280,235 314,235 318,225 297,217 276,225" fill="#f0e4c8" stroke="#0a1810" stroke-width="0.5"/>
-          <rect x="280" y="235" width="34" height="14" fill="#f0e4c8" stroke="#0a1810" stroke-width="0.5"/>
-          <rect x="285" y="239" width="5" height="6" fill="rgba(140,180,210,0.7)"/>
-          <!-- Villa 4 -->
-          <polygon points="330,245 360,245 364,236 347,228 326,236" fill="#f0e4c8" stroke="#0a1810" stroke-width="0.5"/>
-          <rect x="330" y="245" width="30" height="13" fill="#f0e4c8" stroke="#0a1810" stroke-width="0.5"/>
+
+        <!-- Villa 3 (back-left, V3) -->
+        <g class="iso-building" data-id="v3" data-cat="villa">
+          <polygon points="210,300 270,330 270,365 210,335" fill="url(#bm-side-left)" stroke="#3a2818" stroke-width="0.7" class="face-side"/>
+          <polygon points="270,330 330,300 330,335 270,365" fill="url(#bm-side-right)" stroke="#3a2818" stroke-width="0.7" class="face-side"/>
+          <polygon points="210,300 270,330 330,300 270,270" fill="url(#bm-top)" stroke="#3a2818" stroke-width="0.7" class="face-top"/>
+          <polygon points="270,270 270,250 210,280 210,300" fill="#a87850" stroke="#3a2818" stroke-width="0.6"/>
+          <polygon points="270,270 270,250 330,280 330,300" fill="url(#bm-roof-villa)" stroke="#3a2818" stroke-width="0.6"/>
+          <rect x="225" y="310" width="9" height="13" fill="rgba(140,180,210,0.78)" stroke="#1a3325" stroke-width="0.4" transform="skewY(-12)"/>
+          <text x="270" y="263" text-anchor="middle" class="iso-label">V3</text>
         </g>
+
+        <!-- Villa 6 (back-right) -->
+        <g class="iso-building" data-id="v6" data-cat="villa">
+          <polygon points="470,300 530,270 590,300 530,330" fill="url(#bm-top)" stroke="#3a2818" stroke-width="0.7" class="face-top"/>
+          <polygon points="470,300 530,330 530,365 470,335" fill="url(#bm-side-left)" stroke="#3a2818" stroke-width="0.7" class="face-side"/>
+          <polygon points="530,330 590,300 590,335 530,365" fill="url(#bm-side-right)" stroke="#3a2818" stroke-width="0.7" class="face-side"/>
+          <polygon points="530,270 530,250 470,280 470,300" fill="#a87850" stroke="#3a2818" stroke-width="0.6"/>
+          <polygon points="530,270 530,250 590,280 590,300" fill="url(#bm-roof-villa)" stroke="#3a2818" stroke-width="0.6"/>
+          <text x="530" y="263" text-anchor="middle" class="iso-label">V6</text>
+        </g>
+
+        <!-- Hot/Cold Plunge (small, near clinic) -->
+        <g class="iso-building" data-id="plunge" data-cat="amenity">
+          <polygon points="330,330 360,345 360,358 330,343" fill="#a8d4dc" stroke="#1d3a2c" stroke-width="0.7"/>
+          <polygon points="360,345 390,330 390,343 360,358" fill="#c44030" stroke="#1d3a2c" stroke-width="0.7" opacity="0.85"/>
+          <polygon points="330,330 360,345 390,330 360,315" fill="url(#bm-side-right)" stroke="#1d3a2c" stroke-width="0.7"/>
+          <text x="360" y="328" text-anchor="middle" class="iso-label">PLUNGE</text>
+        </g>
+
+        <!-- CLINIC (center, largest) -->
+        <g class="iso-building" data-id="clinic" data-cat="clinic">
+          <!-- shadow -->
+          <ellipse cx="430" cy="425" rx="125" ry="22" fill="url(#bm-shadow)"/>
+          <!-- right face -->
+          <polygon points="430,355 540,300 540,378 430,433" fill="url(#bm-side-right)" stroke="#1d3a2c" stroke-width="1" class="face-side"/>
+          <!-- left face -->
+          <polygon points="320,300 430,355 430,433 320,378" fill="url(#bm-side-left)" stroke="#1d3a2c" stroke-width="1" class="face-side"/>
+          <!-- top -->
+          <polygon points="320,300 430,355 540,300 430,245" fill="url(#bm-top)" stroke="#1d3a2c" stroke-width="1.2" class="face-top"/>
+          <!-- roof (low-pitched) -->
+          <polygon points="320,300 430,245 430,228 320,283" fill="#3a4a3a" stroke="#1d2a1d" stroke-width="0.8"/>
+          <polygon points="430,245 540,300 540,283 430,228" fill="url(#bm-roof-clinic)" stroke="#1d2a1d" stroke-width="0.8"/>
+          <!-- glass front (large biophilic window) -->
+          <polygon points="335,308 425,353 425,415 335,370" fill="rgba(140,180,210,0.62)" stroke="#1d3a2c" stroke-width="0.5"/>
+          <!-- window mullions -->
+          <line x1="365" y1="323" x2="365" y2="385" stroke="#1d3a2c" stroke-width="0.5"/>
+          <line x1="395" y1="338" x2="395" y2="400" stroke="#1d3a2c" stroke-width="0.5"/>
+          <line x1="335" y1="340" x2="425" y2="385" stroke="#1d3a2c" stroke-width="0.4"/>
+          <!-- right side windows -->
+          <rect x="450" y="333" width="10" height="20" fill="rgba(140,180,210,0.7)" stroke="#1d3a2c" stroke-width="0.4" transform="skewY(-30)"/>
+          <rect x="478" y="333" width="10" height="20" fill="rgba(140,180,210,0.7)" stroke="#1d3a2c" stroke-width="0.4" transform="skewY(-30)"/>
+          <rect x="506" y="333" width="10" height="20" fill="rgba(140,180,210,0.7)" stroke="#1d3a2c" stroke-width="0.4" transform="skewY(-30)"/>
+          <!-- entry door -->
+          <polygon points="378,365 392,372 392,395 378,388" fill="#3a2818"/>
+          <!-- label -->
+          <text x="430" y="320" text-anchor="middle" class="iso-label" font-size="11">CLINIC</text>
+        </g>
+
+        <!-- Villa 1 (left-mid) -->
+        <g class="iso-building" data-id="v1" data-cat="villa">
+          <polygon points="180,360 240,390 240,425 180,395" fill="url(#bm-side-left)" stroke="#3a2818" stroke-width="0.7" class="face-side"/>
+          <polygon points="240,390 300,360 300,395 240,425" fill="url(#bm-side-right)" stroke="#3a2818" stroke-width="0.7" class="face-side"/>
+          <polygon points="180,360 240,390 300,360 240,330" fill="url(#bm-top)" stroke="#3a2818" stroke-width="0.7" class="face-top"/>
+          <polygon points="240,330 240,310 180,340 180,360" fill="#a87850" stroke="#3a2818" stroke-width="0.6"/>
+          <polygon points="240,330 240,310 300,340 300,360" fill="url(#bm-roof-villa)" stroke="#3a2818" stroke-width="0.6"/>
+          <text x="240" y="323" text-anchor="middle" class="iso-label">V1</text>
+        </g>
+
+        <!-- Villa 4 (right-mid) -->
+        <g class="iso-building" data-id="v4" data-cat="villa">
+          <polygon points="560,360 620,390 620,425 560,395" fill="url(#bm-side-left)" stroke="#3a2818" stroke-width="0.7" class="face-side"/>
+          <polygon points="620,390 680,360 680,395 620,425" fill="url(#bm-side-right)" stroke="#3a2818" stroke-width="0.7" class="face-side"/>
+          <polygon points="560,360 620,390 680,360 620,330" fill="url(#bm-top)" stroke="#3a2818" stroke-width="0.7" class="face-top"/>
+          <polygon points="620,330 620,310 560,340 560,360" fill="#a87850" stroke="#3a2818" stroke-width="0.6"/>
+          <polygon points="620,330 620,310 680,340 680,360" fill="url(#bm-roof-villa)" stroke="#3a2818" stroke-width="0.6"/>
+          <text x="620" y="323" text-anchor="middle" class="iso-label">V4</text>
+        </g>
+
+        <!-- Restaurant (front-center, at entry) -->
+        <g class="iso-building" data-id="restaurant" data-cat="amenity">
+          <ellipse cx="400" cy="490" rx="80" ry="14" fill="url(#bm-shadow)"/>
+          <polygon points="335,440 400,475 400,505 335,470" fill="url(#bm-side-left)" stroke="#5a3a14" stroke-width="0.8" class="face-side"/>
+          <polygon points="400,475 465,440 465,470 400,505" fill="url(#bm-side-right)" stroke="#5a3a14" stroke-width="0.8" class="face-side"/>
+          <polygon points="335,440 400,475 465,440 400,405" fill="url(#bm-top)" stroke="#5a3a14" stroke-width="0.8" class="face-top"/>
+          <polygon points="335,440 400,405 400,388 335,423" fill="url(#bm-roof-amenity)" stroke="#5a3a14" stroke-width="0.6"/>
+          <polygon points="465,440 400,405 400,388 465,423" fill="#8a7030" stroke="#5a3a14" stroke-width="0.6"/>
+          <!-- open-air sides (terrace) -->
+          <line x1="350" y1="448" x2="350" y2="476" stroke="#3a2818" stroke-width="1"/>
+          <line x1="380" y1="464" x2="380" y2="494" stroke="#3a2818" stroke-width="1"/>
+          <line x1="415" y1="464" x2="415" y2="494" stroke="#3a2818" stroke-width="1"/>
+          <line x1="445" y1="448" x2="445" y2="476" stroke="#3a2818" stroke-width="1"/>
+          <text x="400" y="436" text-anchor="middle" class="iso-label">RESTAURANT</text>
+        </g>
+
+        <!-- Villa 2 (front-left) -->
+        <g class="iso-building" data-id="v2" data-cat="villa">
+          <polygon points="135,420 195,450 195,485 135,455" fill="url(#bm-side-left)" stroke="#3a2818" stroke-width="0.7" class="face-side"/>
+          <polygon points="195,450 255,420 255,455 195,485" fill="url(#bm-side-right)" stroke="#3a2818" stroke-width="0.7" class="face-side"/>
+          <polygon points="135,420 195,450 255,420 195,390" fill="url(#bm-top)" stroke="#3a2818" stroke-width="0.7" class="face-top"/>
+          <polygon points="195,390 195,370 135,400 135,420" fill="#a87850" stroke="#3a2818" stroke-width="0.6"/>
+          <polygon points="195,390 195,370 255,400 255,420" fill="url(#bm-roof-villa)" stroke="#3a2818" stroke-width="0.6"/>
+          <text x="195" y="383" text-anchor="middle" class="iso-label">V2</text>
+        </g>
+
+        <!-- Villa 5 (front-right) -->
+        <g class="iso-building" data-id="v5" data-cat="villa">
+          <polygon points="605,420 665,450 665,485 605,455" fill="url(#bm-side-left)" stroke="#3a2818" stroke-width="0.7" class="face-side"/>
+          <polygon points="665,450 725,420 725,455 665,485" fill="url(#bm-side-right)" stroke="#3a2818" stroke-width="0.7" class="face-side"/>
+          <polygon points="605,420 665,450 725,420 665,390" fill="url(#bm-top)" stroke="#3a2818" stroke-width="0.7" class="face-top"/>
+          <polygon points="665,390 665,370 605,400 605,420" fill="#a87850" stroke="#3a2818" stroke-width="0.6"/>
+          <polygon points="665,390 665,370 725,400 725,420" fill="url(#bm-roof-villa)" stroke="#3a2818" stroke-width="0.6"/>
+          <text x="665" y="383" text-anchor="middle" class="iso-label">V5</text>
+        </g>
+
         <!-- Trees scattered -->
-        <g fill="#1a3325">
-          <path d="M 28 215 L 28 195 L 22 205 M 28 195 L 34 205 M 28 207 L 22 215 M 28 207 L 34 215"/>
-          <path d="M 130 218 L 130 200 L 124 208 M 130 200 L 136 208"/>
-          <path d="M 175 220 L 175 202 L 169 210 M 175 202 L 181 210"/>
-          <path d="M 250 222 L 250 204 L 244 212 M 250 204 L 256 212"/>
-          <path d="M 380 226 L 380 208 L 374 216 M 380 208 L 386 216"/>
+        <g>
+          <g transform="translate(110,310)">
+            <ellipse cx="0" cy="2" rx="9" ry="3" fill="rgba(0,0,0,0.25)"/>
+            <line x1="0" y1="0" x2="0" y2="-12" stroke="#5a3a18" stroke-width="2"/>
+            <circle cx="0" cy="-18" r="11" fill="#3a5e3a"/>
+            <circle cx="-4" cy="-22" r="8" fill="#4a7848"/>
+          </g>
+          <g transform="translate(630,255)">
+            <ellipse cx="0" cy="2" rx="9" ry="3" fill="rgba(0,0,0,0.25)"/>
+            <line x1="0" y1="0" x2="0" y2="-12" stroke="#5a3a18" stroke-width="2"/>
+            <circle cx="0" cy="-18" r="11" fill="#3a5e3a"/>
+            <circle cx="4" cy="-22" r="8" fill="#4a7848"/>
+          </g>
+          <g transform="translate(155,460)">
+            <ellipse cx="0" cy="2" rx="9" ry="3" fill="rgba(0,0,0,0.25)"/>
+            <line x1="0" y1="0" x2="0" y2="-14" stroke="#5a3a18" stroke-width="2"/>
+            <circle cx="0" cy="-20" r="13" fill="#3a5e3a"/>
+            <circle cx="-5" cy="-26" r="9" fill="#4a7848"/>
+          </g>
+          <g transform="translate(700,455)">
+            <ellipse cx="0" cy="2" rx="9" ry="3" fill="rgba(0,0,0,0.25)"/>
+            <line x1="0" y1="0" x2="0" y2="-14" stroke="#5a3a18" stroke-width="2"/>
+            <circle cx="0" cy="-20" r="13" fill="#3a5e3a"/>
+            <circle cx="5" cy="-26" r="9" fill="#4a7848"/>
+          </g>
+          <g transform="translate(395,520)">
+            <ellipse cx="0" cy="2" rx="11" ry="4" fill="rgba(0,0,0,0.25)"/>
+            <line x1="0" y1="0" x2="0" y2="-16" stroke="#5a3a18" stroke-width="2.5"/>
+            <circle cx="0" cy="-23" r="15" fill="#3a5e3a"/>
+            <circle cx="-5" cy="-30" r="10" fill="#4a7848"/>
+            <circle cx="6" cy="-28" r="8" fill="#4a7848"/>
+          </g>
         </g>
-        <!-- Path -->
-        <path d="M 0 285 Q 100 265 200 245 Q 300 245 400 268" fill="none" stroke="rgba(217,165,92,0.55)" stroke-width="2.5" stroke-dasharray="4 5"/>
-        <!-- Birds -->
-        <path d="M 50 80 q 5 -5 10 0 q 5 -5 10 0" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="1"/>
-        <path d="M 95 95 q 4 -4 8 0 q 4 -4 8 0" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1"/>
+
+        <!-- Property boundary (dashed) -->
+        <polygon points="400,200 740,370 400,540 60,370" fill="none" stroke="rgba(20,30,16,0.55)" stroke-width="1.5" stroke-dasharray="6 5"/>
+
+        <!-- N compass -->
+        <g transform="translate(720, 540)">
+          <circle cx="0" cy="0" r="18" fill="rgba(247,240,223,0.92)" stroke="#1d3a2c" stroke-width="1"/>
+          <path d="M 0 -13 L 0 11 M 0 -13 L -5 -6 M 0 -13 L 5 -6" fill="none" stroke="#1d3a2c" stroke-width="1.5"/>
+          <text x="0" y="-20" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#1d3a2c" font-weight="700">N</text>
+        </g>
       </svg>
+
+      <div class="h-detail" id="hDetail">
+        <button class="hd-close" onclick="closeDetail()">×</button>
+        <div class="hd-title" id="hdTitle">Building</div>
+        <div id="hdBody"></div>
+      </div>
     </div>
   </div>
 </header>
@@ -479,10 +706,102 @@
   </div>
 </section>
 
+<!-- MATERIALS SOURCING -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es="04 · ABASTECIMIENTO DE MATERIALES" data-en="04 · MATERIALS SOURCING">04 · MATERIALS SOURCING</div>
+    <h2 data-es-html="<em>De dónde</em> sale cada cosa." data-en-html="<em>Where</em> each thing comes from.">Where each thing comes from.</h2>
+    <p class="sec-sub" data-es="Tres anillos de abastecimiento: lo que está a 20 min de la propiedad (Boquete/Chiriquí), lo que viene de Panamá City o David, y lo que se importa internacionalmente. Cada anillo afecta plazos, costos de logística y huella de carbono." data-en="Three sourcing rings: what sits within 20 min of the property (Boquete/Chiriquí), what ships from Panama City or David, and what gets imported internationally. Each ring drives lead times, logistics cost, and carbon footprint.">Three sourcing rings: what sits within 20 min of the property (Boquete/Chiriquí), what ships from Panama City or David, and what gets imported internationally. Each ring drives lead times, logistics cost, and carbon footprint.</p>
+  </div>
+
+  <div class="mat-tabs">
+    <button class="mat-tab active" data-mat="all" data-es="Todo" data-en="All">All</button>
+    <button class="mat-tab" data-mat="clinic" data-es="Clínica" data-en="Clinic">Clinic</button>
+    <button class="mat-tab" data-mat="villa" data-es="Villas" data-en="Villas">Villas</button>
+    <button class="mat-tab" data-mat="amenity" data-es="Amenidades" data-en="Amenities">Amenities</button>
+    <button class="mat-tab" data-mat="infra" data-es="Infraestructura" data-en="Infrastructure">Infrastructure</button>
+  </div>
+
+  <div class="mat-grid">
+    <!-- LOCAL COLUMN -->
+    <div class="mat-col mat-local">
+      <div class="mat-col-head">
+        <div class="mat-col-title">LOCAL · BOQUETE / CHIRIQUÍ</div>
+        <div class="mat-col-sub" data-es="0-30 km · entrega 2-7 días · obra principal" data-en="0-30 km · 2-7 day delivery · core construction">0-30 km · 2-7 day delivery · core construction</div>
+      </div>
+      <div class="mat-row" data-cat="clinic villa amenity infra"><div class="mr-name">Cedro amargo (hardwood)</div><div class="mr-meta" data-es="Vigas, persianas · Maderera Boquete · $3-5/bf" data-en="Beams, louvers · Maderera Boquete · $3-5/bf">Beams, louvers · Maderera Boquete · $3-5/bf</div></div>
+      <div class="mat-row" data-cat="villa amenity"><div class="mr-name">Guadua bamboo</div><div class="mr-meta" data-es="Pérgolas, decking · Bambú Tico (David) · 7d" data-en="Pergolas, decking · Bambú Tico (David) · 7d">Pergolas, decking · Bambú Tico (David) · 7d</div></div>
+      <div class="mat-row" data-cat="clinic villa infra"><div class="mr-name">Piedra de río volcánica</div><div class="mr-meta" data-es="Cimentación, muros · Cantera Río Caldera · 3d" data-en="Foundation, walls · Cantera Río Caldera · 3d">Foundation, walls · Cantera Río Caldera · 3d</div></div>
+      <div class="mat-row" data-cat="clinic amenity"><div class="mr-name">Teja barro cocido</div><div class="mr-meta" data-es="Cubiertas · Tejas Penonomé via Boquete · 14d" data-en="Roofing · Tejas Penonomé via Boquete · 14d">Roofing · Tejas Penonomé via Boquete · 14d</div></div>
+      <div class="mat-row" data-cat="amenity infra"><div class="mr-name">Adoquín cobblestone</div><div class="mr-meta" data-es="Caminos internos · Bloques David · 5d" data-en="Internal paths · Bloques David · 5d">Internal paths · Bloques David · 5d</div></div>
+      <div class="mat-row" data-cat="villa amenity"><div class="mr-name">Café-wood (offcuts)</div><div class="mr-meta" data-es="Detalles decorativos · finca propia · gratis" data-en="Decorative details · own finca · free">Decorative details · own finca · free</div></div>
+      <div class="mat-row" data-cat="clinic villa amenity"><div class="mr-name" data-es="Mano de obra local" data-en="Local labor">Local labor</div><div class="mr-meta" data-es="Maestros + ayudantes · $35-65/día" data-en="Skilled + helpers · $35-65/day">Skilled + helpers · $35-65/day</div></div>
+      <div class="mat-row" data-cat="infra"><div class="mr-name" data-es="Captación agua de manantial" data-en="Spring-water catchment">Spring-water catchment</div><div class="mr-meta" data-es="Bambú + PVC · técnico local · 3 sem" data-en="Bamboo + PVC · local technician · 3 wk">Bamboo + PVC · local technician · 3 wk</div></div>
+    </div>
+
+    <!-- PANAMA COLUMN -->
+    <div class="mat-col mat-panama">
+      <div class="mat-col-head">
+        <div class="mat-col-title">PANAMÁ · PA / DAVID</div>
+        <div class="mat-col-sub" data-es="200-450 km · entrega 7-21 días · estructura + sistemas" data-en="200-450 km · 7-21 day delivery · structure + systems">200-450 km · 7-21 day delivery · structure + systems</div>
+      </div>
+      <div class="mat-row" data-cat="clinic villa infra"><div class="mr-name">Cemento Pórtland</div><div class="mr-meta" data-es="Cemex Panamá · $9-12/saco · 5d a obra" data-en="Cemex Panama · $9-12/sack · 5d to site">Cemex Panama · $9-12/sack · 5d to site</div></div>
+      <div class="mat-row" data-cat="clinic villa infra"><div class="mr-name" data-es="Acero estructural + varilla" data-en="Structural steel + rebar">Structural steel + rebar</div><div class="mr-meta" data-es="Acerías Panamá (Tocumen) · 10-14d" data-en="Acerías Panamá (Tocumen) · 10-14d">Acerías Panamá (Tocumen) · 10-14d</div></div>
+      <div class="mat-row" data-cat="clinic villa"><div class="mr-name" data-es="Vidrio templado estándar (6-10mm)" data-en="Tempered glass standard (6-10mm)">Tempered glass standard (6-10mm)</div><div class="mr-meta" data-es="Vitro Panamá (PA) · corte a medida · 14d" data-en="Vitro Panamá (PA) · custom cut · 14d">Vitro Panamá (PA) · custom cut · 14d</div></div>
+      <div class="mat-row" data-cat="clinic villa"><div class="mr-name" data-es="Porcelanato + azulejo" data-en="Porcelain + ceramic tile">Porcelain + ceramic tile</div><div class="mr-meta" data-es="Porcelanosa PA · Multiplaza · 10d" data-en="Porcelanosa PA · Multiplaza · 10d">Porcelanosa PA · Multiplaza · 10d</div></div>
+      <div class="mat-row" data-cat="clinic villa infra"><div class="mr-name" data-es="Cableado eléctrico + tablero" data-en="Electrical wiring + panel">Electrical wiring + panel</div><div class="mr-meta" data-es="Cochez & Cía / Eaton dist. · 7d" data-en="Cochez & Cía / Eaton dist. · 7d">Cochez & Cía / Eaton dist. · 7d</div></div>
+      <div class="mat-row" data-cat="clinic villa"><div class="mr-name" data-es="Plomería + grifería estándar" data-en="Plumbing + standard fixtures">Plumbing + standard fixtures</div><div class="mr-meta" data-es="Felipe Motta / Novey · Toto · 7d" data-en="Felipe Motta / Novey · Toto · 7d">Felipe Motta / Novey · Toto · 7d</div></div>
+      <div class="mat-row" data-cat="infra"><div class="mr-name" data-es="Sistema solar + inversor" data-en="Solar system + inverter">Solar system + inverter</div><div class="mr-meta" data-es="SolarTec PA / Sunny Panamá · 21d" data-en="SolarTec PA / Sunny Panamá · 21d">SolarTec PA / Sunny Panamá · 21d</div></div>
+      <div class="mat-row" data-cat="clinic villa amenity"><div class="mr-name" data-es="Pintura + acabados" data-en="Paint + finishes">Paint + finishes</div><div class="mr-meta" data-es="Sherwin Williams PA · Pintuco · 5d" data-en="Sherwin Williams PA · Pintuco · 5d">Sherwin Williams PA · Pintuco · 5d</div></div>
+      <div class="mat-row" data-cat="infra"><div class="mr-name" data-es="Fibra óptica + router" data-en="Fiber optic + router">Fiber optic + router</div><div class="mr-meta" data-es="CableOnda (Tigo) · instalación 30d" data-en="CableOnda (Tigo) · install 30d">CableOnda (Tigo) · install 30d</div></div>
+      <div class="mat-row" data-cat="clinic villa"><div class="mr-name" data-es="Aire acondicionado split" data-en="Split A/C units">Split A/C units</div><div class="mr-meta" data-es="Mitsubishi / LG · Novey PA · 14d" data-en="Mitsubishi / LG · Novey PA · 14d">Mitsubishi / LG · Novey PA · 14d</div></div>
+      <div class="mat-row" data-cat="infra"><div class="mr-name" data-es="Generador diésel respaldo" data-en="Diesel backup generator">Diesel backup generator</div><div class="mr-meta" data-es="Cummins / Kohler · vía PA · 30d" data-en="Cummins / Kohler · via PA · 30d">Cummins / Kohler · via PA · 30d</div></div>
+    </div>
+
+    <!-- INTERNATIONAL COLUMN -->
+    <div class="mat-col mat-intl">
+      <div class="mat-col-head">
+        <div class="mat-col-title">INTL · USA / EU / ASIA</div>
+        <div class="mat-col-sub" data-es="Importado · entrega 30-90 días · alta especialización" data-en="Imported · 30-90 day delivery · high-spec">Imported · 30-90 day delivery · high-spec</div>
+      </div>
+      <div class="mat-row" data-cat="clinic"><div class="mr-name">HBOT chamber 2.0 ATA</div><div class="mr-meta" data-es="OxyHealth (USA) o Sechrist · $85-110K · 75d" data-en="OxyHealth (USA) or Sechrist · $85-110K · 75d">OxyHealth (USA) or Sechrist · $85-110K · 75d</div></div>
+      <div class="mat-row" data-cat="clinic"><div class="mr-name" data-es="Equipo IV + bombas" data-en="IV equipment + pumps">IV equipment + pumps</div><div class="mr-meta" data-es="B. Braun (DE) / McKesson (USA) · 60d" data-en="B. Braun (DE) / McKesson (USA) · 60d">B. Braun (DE) / McKesson (USA) · 60d</div></div>
+      <div class="mat-row" data-cat="clinic villa"><div class="mr-name" data-es="Cristales arquitectónicos grandes" data-en="Architectural feature glass">Architectural feature glass</div><div class="mr-meta" data-es="Cortizo (ES) / Schüco (DE) · 50-70d" data-en="Cortizo (ES) / Schüco (DE) · 50-70d">Cortizo (ES) / Schüco (DE) · 50-70d</div></div>
+      <div class="mat-row" data-cat="clinic"><div class="mr-name" data-es="Laboratorio · centrífuga + analizador" data-en="Lab · centrifuge + analyzer">Lab · centrifuge + analyzer</div><div class="mr-meta" data-es="Thermo Fisher (USA) · 60d" data-en="Thermo Fisher (USA) · 60d">Thermo Fisher (USA) · 60d</div></div>
+      <div class="mat-row" data-cat="villa amenity"><div class="mr-name" data-es="Grifería premium + ducha lluvia" data-en="Premium fixtures + rain shower">Premium fixtures + rain shower</div><div class="mr-meta" data-es="Hansgrohe (DE) / Kohler (USA) · 45d" data-en="Hansgrohe (DE) / Kohler (USA) · 45d">Hansgrohe (DE) / Kohler (USA) · 45d</div></div>
+      <div class="mat-row" data-cat="villa"><div class="mr-name" data-es="Equipo cocina villa" data-en="Villa kitchen equipment">Villa kitchen equipment</div><div class="mr-meta" data-es="Miele (DE) / Bosch · 60d" data-en="Miele (DE) / Bosch · 60d">Miele (DE) / Bosch · 60d</div></div>
+      <div class="mat-row" data-cat="villa amenity"><div class="mr-name" data-es="Iluminación arquitectónica" data-en="Architectural lighting">Architectural lighting</div><div class="mr-meta" data-es="Flos (IT) / Tom Dixon (UK) · 45d" data-en="Flos (IT) / Tom Dixon (UK) · 45d">Flos (IT) / Tom Dixon (UK) · 45d</div></div>
+      <div class="mat-row" data-cat="clinic villa"><div class="mr-name" data-es="Domótica + control acceso" data-en="Smart home + access control">Smart home + access control</div><div class="mr-meta" data-es="Lutron (USA) + Crestron · 60d" data-en="Lutron (USA) + Crestron · 60d">Lutron (USA) + Crestron · 60d</div></div>
+      <div class="mat-row" data-cat="infra"><div class="mr-name" data-es="Batería LFP grande (80 kWh)" data-en="Large LFP battery (80 kWh)">Large LFP battery (80 kWh)</div><div class="mr-meta" data-es="BYD / Tesla Powerwall · 60-90d" data-en="BYD / Tesla Powerwall · 60-90d">BYD / Tesla Powerwall · 60-90d</div></div>
+      <div class="mat-row" data-cat="amenity"><div class="mr-name" data-es="Tina sauna + cold plunge" data-en="Sauna + cold plunge tubs">Sauna + cold plunge tubs</div><div class="mr-meta" data-es="Almost Heaven (USA) / Plunge (USA) · 60d" data-en="Almost Heaven (USA) / Plunge (USA) · 60d">Almost Heaven (USA) / Plunge (USA) · 60d</div></div>
+      <div class="mat-row" data-cat="clinic villa"><div class="mr-name" data-es="Pisos en madera dura imported" data-en="Imported hardwood flooring">Imported hardwood flooring</div><div class="mr-meta" data-es="Brazilian ipê (BR) o teca burmesa · 45d" data-en="Brazilian ipê (BR) or Burmese teak · 45d">Brazilian ipê (BR) or Burmese teak · 45d</div></div>
+      <div class="mat-row" data-cat="villa amenity"><div class="mr-name" data-es="Mobiliario diseño" data-en="Design furniture">Design furniture</div><div class="mr-meta" data-es="Restoration Hardware / Roche Bobois · 75d" data-en="Restoration Hardware / Roche Bobois · 75d">Restoration Hardware / Roche Bobois · 75d</div></div>
+    </div>
+  </div>
+
+  <div class="mat-summary">
+    <div class="mat-sum-cell">
+      <div class="ms-pct">42%</div>
+      <div class="ms-label" data-es="Capex en local" data-en="Capex local">Capex local</div>
+      <div class="ms-bar"><div class="ms-fill" style="width:42%;background:#5a8862"></div></div>
+    </div>
+    <div class="mat-sum-cell">
+      <div class="ms-pct">36%</div>
+      <div class="ms-label" data-es="Capex en Panamá" data-en="Capex Panama">Capex Panama</div>
+      <div class="ms-bar"><div class="ms-fill" style="width:36%;background:var(--gold)"></div></div>
+    </div>
+    <div class="mat-sum-cell">
+      <div class="ms-pct">22%</div>
+      <div class="ms-label" data-es="Capex importado" data-en="Capex imported">Capex imported</div>
+      <div class="ms-bar"><div class="ms-fill" style="width:22%;background:var(--copper)"></div></div>
+    </div>
+  </div>
+</section>
+
 <!-- PHASING -->
 <section>
   <div class="sec-head">
-    <div class="sec-num" data-es="04 · FASEO" data-en="04 · PHASING">04 · PHASING</div>
+    <div class="sec-num" data-es="05 · FASEO" data-en="05 · PHASING">05 · PHASING</div>
     <h2 data-es-html="<em>Cuatro fases</em>. Cuatro años." data-en-html="<em>Four phases</em>. Four years.">Four phases. Four years.</h2>
     <p class="sec-sub" data-es="Compra del terreno, permisos, construcción por fases. La operación clínica comienza en Fase 2; las villas se entregan en pares en Fases 3-4." data-en="Land acquisition, permits, phased construction. Clinical operation begins in Phase 2; villas deliver in pairs across Phases 3-4.">Land acquisition, permits, phased construction. Clinical operation begins in Phase 2; villas deliver in pairs across Phases 3-4.</p>
   </div>
@@ -518,7 +837,7 @@
 <!-- ECONOMICS -->
 <section>
   <div class="sec-head">
-    <div class="sec-num" data-es="05 · ECONÓMICA" data-en="05 · ECONOMICS">05 · ECONOMICS</div>
+    <div class="sec-num" data-es="06 · ECONÓMICA" data-en="06 · ECONOMICS">06 · ECONOMICS</div>
     <h2 data-es-html="Números <em>preliminares</em>." data-en-html="<em>Preliminary</em> numbers.">Preliminary numbers.</h2>
     <p class="sec-sub" data-es="Estimaciones para faseo + revenue base. Validar con quantity surveyor local en Fase 1. Revenue asume 70% utilización clínica + 65% ocupación villas." data-en="Estimates for phasing + base revenue. Validate with local quantity surveyor in Phase 1. Revenue assumes 70% clinic utilization + 65% villa occupancy.">Estimates for phasing + base revenue. Validate with local quantity surveyor in Phase 1. Revenue assumes 70% clinic utilization + 65% villa occupancy.</p>
   </div>
@@ -575,6 +894,138 @@
     document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('active', b.dataset.lang === lang));
   }
   document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click', ()=>applyLang(b.dataset.lang)));
+
+  // ============ Building detail data ============
+  const BUILDINGS = {
+    clinic: {
+      title: { es: 'Clínica Integrativa', en: 'Integrative Clinic' },
+      cat: { es: 'CLÍNICA · NÚCLEO', en: 'CLINIC · CORE' },
+      area: '600 m²',
+      capex: '$2.8M',
+      rows: [
+        { k:{es:'Estructura',en:'Structure'}, v:{es:'Acero estructural Acerías PA + cimentación piedra volcánica',en:'Acerías PA structural steel + volcanic stone foundation'} },
+        { k:{es:'Cerramientos',en:'Envelope'}, v:{es:'Vidrio Cortizo (ES) 70% fachada + paneles cedro local',en:'Cortizo (ES) glass 70% facade + local cedar panels'} },
+        { k:{es:'Techo',en:'Roof'}, v:{es:'Membrana TPO + solar techo + tejas barro Penonomé',en:'TPO membrane + roof-mount solar + Penonomé clay tile'} },
+        { k:{es:'Interior',en:'Interior'}, v:{es:'Pisos ipê (BR) + porcelanato Porcelanosa PA + paredes blancas',en:'Ipê (BR) floors + Porcelanosa PA porcelain + white walls'} },
+        { k:{es:'Equipo médico',en:'Medical eq.'}, v:{es:'HBOT OxyHealth (USA) + IV B.Braun (DE) + lab Thermo (USA)',en:'OxyHealth HBOT (USA) + B.Braun IV (DE) + Thermo lab (USA)'} },
+        { k:{es:'Sistemas',en:'Systems'}, v:{es:'Domótica Lutron (USA) · A/C Mitsubishi · plomería Hansgrohe',en:'Lutron smart home (USA) · Mitsubishi A/C · Hansgrohe plumbing'} }
+      ]
+    },
+    v1: vSpec('V1', { es:'1-dorm · piso bajo', en:'1-BR · lower terrace' }),
+    v2: vSpec('V2', { es:'1-dorm · borde sur', en:'1-BR · south edge' }),
+    v3: vSpec('V3', { es:'1-dorm · borde norte', en:'1-BR · north edge' }),
+    v4: vSpec('V4', { es:'2-dorm · familiar', en:'2-BR · family' }, true),
+    v5: vSpec('V5', { es:'2-dorm · familiar', en:'2-BR · family' }, true),
+    v6: vSpec('V6', { es:'2-dorm · familiar', en:'2-BR · family' }, true),
+    yoga: {
+      title: { es:'Pavellón Yoga + Meditación', en:'Yoga + Meditation Pavilion' },
+      cat: { es:'AMENIDAD · CONTEMPLACIÓN', en:'AMENITY · CONTEMPLATION' },
+      area: '55 m²',
+      capex: '$95K',
+      rows: [
+        { k:{es:'Estructura',en:'Structure'}, v:{es:'Cedro amargo local + bambú guadua',en:'Local cedar + guadua bamboo'} },
+        { k:{es:'Piso',en:'Floor'}, v:{es:'Tatami japonés (importado) sobre madera local',en:'Japanese tatami (imported) over local wood'} },
+        { k:{es:'Techo',en:'Roof'}, v:{es:'Bambú entretejido + tejas barro',en:'Woven bamboo + clay tiles'} },
+        { k:{es:'Vidrio',en:'Glass'}, v:{es:'Sin cerramiento · open-air al volcán',en:'No envelope · open-air to volcano'} },
+        { k:{es:'Iluminación',en:'Lighting'}, v:{es:'Velas + faroles Tom Dixon (UK) noche',en:'Candles + Tom Dixon (UK) lanterns at night'} }
+      ]
+    },
+    plunge: {
+      title: { es:'Contraste Frío/Caliente', en:'Hot/Cold Contrast' },
+      cat: { es:'AMENIDAD · TERAPIA', en:'AMENITY · THERAPY' },
+      area: '12 m²',
+      capex: '$32K',
+      rows: [
+        { k:{es:'Tina caliente',en:'Hot tub'}, v:{es:'Madera de cedro · 38-40°C · calentador propano',en:'Cedar wood · 38-40°C · propane heater'} },
+        { k:{es:'Plunge fría',en:'Cold plunge'}, v:{es:'Plunge (USA) · 4-8°C · chiller 1 HP',en:'Plunge (USA) · 4-8°C · 1 HP chiller'} },
+        { k:{es:'Estructura',en:'Structure'}, v:{es:'Piedra de río local · piso pulido',en:'Local river stone · polished floor'} },
+        { k:{es:'Cubierta',en:'Cover'}, v:{es:'Pérgola bambú · open-air al bosque',en:'Bamboo pergola · open-air to forest'} }
+      ]
+    },
+    restaurant: {
+      title: { es:'Restaurante + Recepción', en:'Restaurant + Reception' },
+      cat: { es:'AMENIDAD · HOSPITALIDAD', en:'AMENITY · HOSPITALITY' },
+      area: '130 m²',
+      capex: '$220K',
+      rows: [
+        { k:{es:'Estructura',en:'Structure'}, v:{es:'Pilares cedro + viga acero PA + piedra volcánica',en:'Cedar columns + PA steel beam + volcanic stone'} },
+        { k:{es:'Cocina',en:'Kitchen'}, v:{es:'Equipo Wolf+Sub-Zero (USA) · campana Miele (DE)',en:'Wolf+Sub-Zero (USA) · Miele (DE) hood'} },
+        { k:{es:'Comedor',en:'Dining'}, v:{es:'Mesa cedro de finca · sillas Roche Bobois (FR)',en:'Finca cedar table · Roche Bobois (FR) chairs'} },
+        { k:{es:'Terraza',en:'Terrace'}, v:{es:'Decking guadua bambú · vista a volcán Barú',en:'Guadua bamboo decking · Volcán Barú view'} },
+        { k:{es:'Iluminación',en:'Lighting'}, v:{es:'Flos (IT) suspensión + velas locales',en:'Flos (IT) pendants + local candles'} }
+      ]
+    }
+  };
+
+  function vSpec(name, sub, twoBedroom) {
+    return {
+      title: { es:'Villa ' + name, en:'Villa ' + name },
+      cat: { es:'VILLA · RESIDENCIAL · ' + sub.es, en:'VILLA · RESIDENTIAL · ' + sub.en },
+      area: '110 m²',
+      capex: twoBedroom ? '$420K' : '$340K',
+      rows: [
+        { k:{es:'Estructura',en:'Structure'}, v:{es:'Cimentación piedra volcánica + estructura cedro + acero PA',en:'Volcanic stone foundation + cedar structure + PA steel'} },
+        { k:{es:'Pisos',en:'Floors'}, v:{es:'Cedro amargo local + porcelanato baño Porcelanosa',en:'Local cedar + Porcelanosa bathroom porcelain'} },
+        { k:{es:'Ventanas',en:'Windows'}, v:{es:'Vitro Panamá tempered + marcos cedro local',en:'Vitro Panamá tempered + local cedar frames'} },
+        { k:{es:'Techo',en:'Roof'}, v:{es:'Tejas barro Penonomé + radiante en piso',en:'Penonomé clay tile + radiant floor heating'} },
+        { k:{es:'Baño',en:'Bath'}, v:{es:'Ducha lluvia Hansgrohe (DE) · lavabo cerámica local',en:'Hansgrohe (DE) rain shower · local ceramic basin'} },
+        { k:{es:'Cocina',en:'Kitchen'}, v:{es:'Bosch (DE) básica · isla cedro + mármol Carrara (IT)',en:'Basic Bosch (DE) · cedar island + Carrara marble (IT)'} },
+        { k:{es:'Solar',en:'Solar'}, v:{es:'3 kW techo + batería 5 kWh BYD',en:'3 kW roof + 5 kWh BYD battery'} }
+      ]
+    };
+  }
+
+  // ============ Detail panel ============
+  function showDetail(id){
+    const b = BUILDINGS[id];
+    if(!b) return;
+    const lang = getLang();
+    document.getElementById('hdTitle').textContent = b.title[lang];
+    let html = `<div style="font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--gold);text-transform:uppercase;margin-bottom:6px">${b.cat[lang]} · ${b.area} · ${b.capex}</div>`;
+    b.rows.forEach(r => {
+      html += `<div class="hd-row"><strong>${r.k[lang]}</strong><span>${r.v[lang]}</span></div>`;
+    });
+    document.getElementById('hdBody').innerHTML = html;
+    document.getElementById('hDetail').classList.add('show');
+    document.querySelectorAll('.iso-building').forEach(el => el.classList.toggle('active', el.dataset.id === id));
+    // sync materials tabs to building category
+    const cat = document.querySelector(`.iso-building[data-id="${id}"]`).dataset.cat;
+    setMatFilter(cat === 'villa' ? 'villa' : cat === 'clinic' ? 'clinic' : 'amenity');
+  }
+  function closeDetail(){
+    document.getElementById('hDetail').classList.remove('show');
+    document.querySelectorAll('.iso-building').forEach(el => el.classList.remove('active'));
+    setMatFilter('all');
+  }
+  document.querySelectorAll('.iso-building').forEach(el => {
+    el.addEventListener('click', () => showDetail(el.dataset.id));
+  });
+
+  // ============ Plan/Iso toggle ============
+  function setView(v){
+    const svg = document.getElementById('isoSvg');
+    if(!svg) return;
+    if(v === 'plan'){
+      svg.style.transform = 'rotateX(60deg) rotate(-30deg) scale(0.9)';
+      svg.style.transformOrigin = 'center';
+      svg.style.transition = 'transform .6s cubic-bezier(0.25,1,0.5,1)';
+    } else {
+      svg.style.transform = 'none';
+    }
+    document.querySelectorAll('.h-controls button').forEach(b => b.classList.toggle('active', b.dataset.view === v));
+  }
+  document.querySelectorAll('.h-controls button').forEach(b => b.addEventListener('click', () => setView(b.dataset.view)));
+
+  // ============ Materials filter ============
+  function setMatFilter(cat){
+    document.querySelectorAll('.mat-tab').forEach(t => t.classList.toggle('active', t.dataset.mat === cat));
+    document.querySelectorAll('.mat-row').forEach(r => {
+      const cats = (r.dataset.cat || '').split(' ');
+      r.classList.toggle('hidden', cat !== 'all' && !cats.includes(cat));
+    });
+  }
+  document.querySelectorAll('.mat-tab').forEach(t => t.addEventListener('click', () => setMatFilter(t.dataset.mat)));
+
   applyLang(getLang());
 </script>
 </body>

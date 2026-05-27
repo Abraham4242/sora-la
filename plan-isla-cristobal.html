@@ -55,9 +55,53 @@
   .stamp{padding:9px 14px;background:var(--paper-2);border:0.5px solid var(--line);border-radius:6px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--ink-2);text-transform:uppercase}
   .stamp strong{color:var(--sea);font-weight:700}
 
-  .h-render{aspect-ratio:5/4;background:linear-gradient(180deg,#a8c8d4 0%,#7fa8b3 38%,#3d7a9c 38%,#1d4d6a 100%);border-radius:14px;overflow:hidden;border:0.5px solid var(--line);position:relative}
-  .h-render svg{width:100%;height:100%}
-  .h-render-label{position:absolute;bottom:14px;left:16px;font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--paper);background:rgba(20,17,12,.62);padding:6px 11px;border-radius:4px;text-transform:uppercase;font-weight:600;backdrop-filter:blur(4px)}
+  .h-render{aspect-ratio:5/4;background:linear-gradient(180deg,#a8c8d4 0%,#7fa8b3 30%,#3d7a9c 70%,#1d4d6a 100%);border-radius:14px;overflow:hidden;border:0.5px solid var(--line);position:relative;cursor:grab}
+  .h-render svg{width:100%;height:100%;user-select:none}
+  .h-render-label{position:absolute;top:14px;left:16px;font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--paper);background:rgba(20,17,12,.62);padding:6px 11px;border-radius:4px;text-transform:uppercase;font-weight:600;backdrop-filter:blur(4px);pointer-events:none}
+  .h-controls{position:absolute;top:14px;right:14px;display:flex;gap:6px;z-index:5}
+  .h-controls button{padding:7px 11px;font-family:var(--mono);font-size:10px;letter-spacing:.10em;color:var(--ink);background:rgba(247,240,223,0.88);border:0;border-radius:4px;cursor:pointer;font-weight:600;text-transform:uppercase;backdrop-filter:blur(4px);transition:all .14s}
+  .h-controls button:hover{background:var(--paper)}
+  .h-controls button.active{background:var(--ink);color:var(--coral)}
+  .iso-building{cursor:pointer;transition:transform .22s cubic-bezier(0.25,1,0.5,1);transform-origin:center;transform-box:fill-box}
+  .iso-building:hover{transform:translateY(-4px)}
+  .iso-building.active .face-top{stroke:var(--coral) !important;stroke-width:2.5 !important}
+  .iso-building.active .face-side{stroke:var(--coral) !important;stroke-width:2 !important}
+  .iso-label{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.10em;fill:var(--ink);font-weight:700;pointer-events:none;text-transform:uppercase}
+  .h-detail{position:absolute;bottom:14px;left:14px;right:14px;background:rgba(20,17,12,0.92);color:var(--paper);border-radius:8px;padding:14px 18px;font-family:var(--sans);font-size:12.5px;line-height:1.5;backdrop-filter:blur(8px);transform:translateY(120%);transition:transform .26s cubic-bezier(0.25,1,0.5,1);max-height:42%;overflow-y:auto}
+  .h-detail.show{transform:translateY(0)}
+  .h-detail .hd-title{font-family:var(--serif);font-size:18px;font-style:italic;color:var(--coral);margin-bottom:6px}
+  .h-detail .hd-row{display:flex;justify-content:space-between;gap:16px;padding:6px 0;border-bottom:0.5px solid rgba(247,240,223,.10);font-size:12px}
+  .h-detail .hd-row:last-child{border-bottom:0}
+  .h-detail .hd-row strong{color:var(--coral);font-weight:600}
+  .h-detail .hd-close{position:absolute;top:8px;right:10px;color:var(--paper);background:none;border:0;font-size:18px;cursor:pointer;opacity:.7}
+  .h-detail .hd-close:hover{opacity:1}
+
+  /* MATERIALS */
+  .mat-tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px;padding:6px;background:var(--paper-2);border:0.5px solid var(--line);border-radius:8px}
+  .mat-tab{padding:9px 16px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;background:transparent;border:0;border-radius:5px;color:var(--ink-3);cursor:pointer;font-weight:600;transition:all .14s}
+  .mat-tab:hover{background:var(--paper)}
+  .mat-tab.active{background:var(--ink);color:var(--paper)}
+  .mat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .mat-col{background:var(--paper-2);border:0.5px solid var(--line);border-radius:12px;padding:24px 24px 26px;border-top:3px solid var(--sea)}
+  .mat-col.mat-panama{border-top-color:var(--sand-deep)}
+  .mat-col.mat-intl{border-top-color:var(--coral)}
+  .mat-col-head{margin-bottom:18px;padding-bottom:14px;border-bottom:0.5px solid var(--line)}
+  .mat-col-title{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--sea);font-weight:700;margin-bottom:6px}
+  .mat-panama .mat-col-title{color:var(--sand-deep)}
+  .mat-intl .mat-col-title{color:var(--coral)}
+  .mat-col-sub{font-family:var(--serif);font-style:italic;font-size:12.5px;color:var(--ink-3);line-height:1.4}
+  .mat-row{padding:11px 0;border-bottom:0.5px dashed var(--line);transition:opacity .18s}
+  .mat-row.hidden{display:none}
+  .mat-row:last-child{border-bottom:0}
+  .mat-row .mr-name{font-family:var(--sans);font-size:13.5px;font-weight:600;color:var(--ink);margin-bottom:3px}
+  .mat-row .mr-meta{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);letter-spacing:.04em;line-height:1.4}
+
+  .mat-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px;padding:24px;background:var(--ink);border-radius:12px}
+  .mat-sum-cell{color:var(--paper)}
+  .mat-sum-cell .ms-pct{font-family:var(--serif);font-size:48px;font-weight:300;line-height:1;color:var(--coral);letter-spacing:-.015em;font-style:italic}
+  .mat-sum-cell .ms-label{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;color:rgba(247,240,223,0.65);text-transform:uppercase;margin:6px 0 10px;font-weight:600}
+  .mat-sum-cell .ms-bar{height:5px;background:rgba(247,240,223,.10);border-radius:3px;overflow:hidden}
+  .mat-sum-cell .ms-fill{height:100%;border-radius:3px}
 
   .site-stats{display:grid;grid-template-columns:repeat(5,1fr);border-top:0.5px solid var(--line);border-bottom:0.5px solid var(--line);margin:40px 0 0}
   .site-stats > div{padding:24px 18px;text-align:center;border-right:0.5px solid var(--line)}
@@ -190,86 +234,276 @@
         <span class="stamp" data-es="HORIZONTE · 2027-2030" data-en="HORIZON · 2027-2030">HORIZON · 2027-2030</span>
       </div>
     </div>
-    <div class="h-render">
-      <div class="h-render-label" data-es="CONCEPT · NO A ESCALA" data-en="CONCEPT · NOT TO SCALE">CONCEPT · NOT TO SCALE</div>
-      <svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg">
+    <div class="h-render" id="isoCanvas">
+      <div class="h-render-label" data-es="ISOMÉTRICO · INTERACTIVO · CLICK EN UN EDIFICIO" data-en="ISOMETRIC · INTERACTIVE · CLICK A BUILDING">ISOMETRIC · INTERACTIVE · CLICK A BUILDING</div>
+      <div class="h-controls">
+        <button class="active" data-view="iso" data-es="ISO" data-en="ISO">ISO</button>
+        <button data-view="plan" data-es="PLAN" data-en="PLAN">PLAN</button>
+      </div>
+      <svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" id="isoSvg">
+        <defs>
+          <linearGradient id="ic-sand" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#f7e0b0"/>
+            <stop offset="1" stop-color="#dcc090"/>
+          </linearGradient>
+          <linearGradient id="ic-water" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#5a9fbb"/>
+            <stop offset="1" stop-color="#2a6a8a"/>
+          </linearGradient>
+          <linearGradient id="ic-water-deep" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#3d7a9c"/>
+            <stop offset="1" stop-color="#1a4d6a"/>
+          </linearGradient>
+          <linearGradient id="ic-top" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#f4ead0"/>
+            <stop offset="1" stop-color="#dac9a0"/>
+          </linearGradient>
+          <linearGradient id="ic-side-left" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#e8dcb8"/>
+            <stop offset="1" stop-color="#c8b88c"/>
+          </linearGradient>
+          <linearGradient id="ic-side-right" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#d8c8a0"/>
+            <stop offset="1" stop-color="#a89878"/>
+          </linearGradient>
+          <linearGradient id="ic-roof-villa" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#8a5a3c"/>
+            <stop offset="1" stop-color="#5a3a20"/>
+          </linearGradient>
+          <linearGradient id="ic-roof-disco" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#3a1a3a"/>
+            <stop offset="1" stop-color="#0f060f"/>
+          </linearGradient>
+          <radialGradient id="ic-dome" cx="0.5" cy="0.3" r="0.7">
+            <stop offset="0" stop-color="rgba(255,230,200,0.95)"/>
+            <stop offset="0.5" stop-color="rgba(255,150,180,0.65)"/>
+            <stop offset="1" stop-color="rgba(184,68,124,0.20)"/>
+          </radialGradient>
+          <radialGradient id="ic-shadow" cx="0.5" cy="0.5" r="0.5">
+            <stop offset="0" stop-color="rgba(0,0,0,0.30)"/>
+            <stop offset="1" stop-color="rgba(0,0,0,0)"/>
+          </radialGradient>
+        </defs>
+
+        <!-- Sky -->
+        <rect width="800" height="200" fill="url(#ic-water)" opacity="0.18"/>
         <!-- Sun -->
-        <circle cx="320" cy="55" r="22" fill="rgba(255,235,180,0.92)"/>
-        <circle cx="320" cy="55" r="32" fill="rgba(255,220,150,0.30)"/>
+        <circle cx="650" cy="100" r="32" fill="rgba(255,235,180,0.95)"/>
+        <circle cx="650" cy="100" r="46" fill="rgba(255,220,150,0.30)"/>
         <!-- Distant islands -->
-        <ellipse cx="70" cy="120" rx="48" ry="10" fill="rgba(40,80,55,0.5)"/>
-        <ellipse cx="70" cy="115" rx="42" ry="6" fill="rgba(50,95,65,0.6)"/>
-        <ellipse cx="180" cy="105" rx="35" ry="7" fill="rgba(40,80,55,0.45)"/>
-        <ellipse cx="180" cy="103" rx="30" ry="4" fill="rgba(55,100,72,0.6)"/>
-        <!-- Sun reflection on water -->
-        <ellipse cx="320" cy="195" rx="100" ry="6" fill="rgba(255,235,180,0.55)"/>
-        <ellipse cx="320" cy="200" rx="70" ry="4" fill="rgba(255,255,200,0.4)"/>
-        <!-- Beach front -->
-        <path d="M 0 260 Q 100 252 200 256 Q 300 262 400 256 L 400 320 L 0 320 Z" fill="#f5d9a8"/>
+        <ellipse cx="180" cy="195" rx="80" ry="14" fill="rgba(40,80,55,0.45)"/>
+        <ellipse cx="180" cy="190" rx="68" ry="9" fill="rgba(55,100,72,0.6)"/>
+        <ellipse cx="420" cy="180" rx="55" ry="10" fill="rgba(40,80,55,0.4)"/>
+        <ellipse cx="420" cy="177" rx="46" ry="6" fill="rgba(55,100,72,0.55)"/>
+
+        <!-- Water (full background to bottom) -->
+        <polygon points="0,200 800,200 800,400 0,400" fill="url(#ic-water)"/>
+        <polygon points="0,400 800,400 800,600 0,600" fill="url(#ic-water-deep)"/>
+        <!-- Sun reflection -->
+        <ellipse cx="650" cy="280" rx="160" ry="8" fill="rgba(255,235,180,0.55)"/>
+        <ellipse cx="650" cy="290" rx="120" ry="5" fill="rgba(255,255,200,0.4)"/>
         <!-- Wave lines -->
-        <path d="M 0 240 Q 80 235 150 240 Q 220 245 300 240 Q 360 237 400 240" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="1.6"/>
-        <path d="M 0 215 Q 80 210 150 215 Q 220 220 300 215 Q 360 212 400 215" fill="none" stroke="rgba(255,255,255,0.30)" stroke-width="1.2"/>
-        <path d="M 0 185 Q 80 180 150 185 Q 220 190 300 185" fill="none" stroke="rgba(255,255,255,0.20)" stroke-width="1"/>
-        <!-- Over-water discoteca with light dome -->
+        <g stroke="rgba(255,255,255,0.32)" stroke-width="1.3" fill="none">
+          <path d="M 0 270 Q 200 265 400 270 Q 600 275 800 268"/>
+          <path d="M 0 320 Q 200 315 400 320 Q 600 325 800 318"/>
+          <path d="M 0 380 Q 200 375 400 380 Q 600 385 800 378"/>
+          <path d="M 0 440 Q 200 435 400 440 Q 600 445 800 438"/>
+        </g>
+
+        <!-- Island land (isometric beach diamond) -->
+        <polygon points="400,330 730,440 400,520 70,440" fill="url(#ic-sand)" stroke="#b88a40" stroke-width="0.8"/>
+        <!-- Beach inner gradient -->
+        <polygon points="400,360 690,450 400,500 110,450" fill="rgba(245,220,170,0.55)"/>
+
+        <!-- Pier (north-east corner) -->
         <g>
-          <!-- Stilts -->
-          <line x1="195" y1="235" x2="195" y2="265" stroke="#5a3520" stroke-width="2.5"/>
-          <line x1="225" y1="235" x2="225" y2="265" stroke="#5a3520" stroke-width="2.5"/>
-          <line x1="255" y1="235" x2="255" y2="265" stroke="#5a3520" stroke-width="2.5"/>
-          <line x1="285" y1="235" x2="285" y2="265" stroke="#5a3520" stroke-width="2.5"/>
-          <!-- Deck -->
-          <rect x="185" y="222" width="110" height="14" fill="#8a5a3c" stroke="#3a1f10" stroke-width="0.5"/>
-          <!-- Building -->
-          <polygon points="185,222 295,222 305,200 240,178 175,200" fill="#1a1a1a"/>
-          <rect x="185" y="222" width="110" height="0" fill="#1a1a1a"/>
+          <polygon points="640,378 720,418 712,425 632,385" fill="#7a4a28" stroke="#3a1f10" stroke-width="0.5"/>
+          <line x1="650" y1="382" x2="650" y2="395" stroke="#3a1f10" stroke-width="1"/>
+          <line x1="690" y1="402" x2="690" y2="415" stroke="#3a1f10" stroke-width="1"/>
+          <!-- Boat -->
+          <ellipse cx="745" cy="430" rx="18" ry="5" fill="#f0e4c8" stroke="#3a1f10" stroke-width="0.5"/>
+          <line x1="745" y1="425" x2="745" y2="412" stroke="#3a1f10" stroke-width="1"/>
+        </g>
+
+        <!-- Buildings back to front -->
+        <!-- Discoteca (back, over water — actually back-center) -->
+        <g class="iso-building" data-id="disco" data-cat="disco">
+          <!-- shadow on water -->
+          <ellipse cx="400" cy="310" rx="115" ry="22" fill="rgba(0,0,0,0.32)"/>
+          <!-- Stilts (4 visible) -->
+          <line x1="320" y1="285" x2="320" y2="335" stroke="#3a1f10" stroke-width="3"/>
+          <line x1="370" y1="305" x2="370" y2="355" stroke="#3a1f10" stroke-width="3"/>
+          <line x1="430" y1="305" x2="430" y2="355" stroke="#3a1f10" stroke-width="3"/>
+          <line x1="480" y1="285" x2="480" y2="335" stroke="#3a1f10" stroke-width="3"/>
+          <!-- Deck (large iso platform) -->
+          <polygon points="290,290 400,235 510,290 400,345" fill="#a8702a" stroke="#3a1f10" stroke-width="0.8"/>
+          <polygon points="290,290 400,345 400,360 290,305" fill="#7a4a18" stroke="#3a1f10" stroke-width="0.5"/>
+          <polygon points="400,345 510,290 510,305 400,360" fill="#8a5a20" stroke="#3a1f10" stroke-width="0.5"/>
+          <!-- Disco walls -->
+          <polygon points="290,290 400,235 400,210 290,265" fill="#1a0a1a" stroke="#000" stroke-width="0.8" class="face-side"/>
+          <polygon points="400,235 510,290 510,265 400,210" fill="#0f060f" stroke="#000" stroke-width="0.8" class="face-side"/>
+          <polygon points="290,265 400,210 510,265 400,320" fill="#1a1a1a" stroke="#000" stroke-width="1" class="face-top"/>
           <!-- Light dome -->
-          <ellipse cx="240" cy="175" rx="55" ry="18" fill="rgba(184,68,124,0.65)"/>
-          <ellipse cx="240" cy="170" rx="48" ry="13" fill="rgba(255,200,150,0.65)"/>
-          <ellipse cx="240" cy="166" rx="40" ry="8" fill="rgba(255,235,200,0.7)"/>
-          <!-- Speakers / silhouettes -->
-          <rect x="195" y="208" width="3" height="14" fill="rgba(217,87,59,0.85)"/>
-          <rect x="284" y="208" width="3" height="14" fill="rgba(217,87,59,0.85)"/>
-          <text x="240" y="218" text-anchor="middle" font-family="Inter" font-size="6" fill="#d9a55c" letter-spacing="3" font-weight="600">DISCOTECA</text>
+          <ellipse cx="400" cy="200" rx="105" ry="28" fill="url(#ic-dome)"/>
+          <ellipse cx="400" cy="192" rx="85" ry="20" fill="rgba(255,200,180,0.65)"/>
+          <ellipse cx="400" cy="186" rx="60" ry="12" fill="rgba(255,235,210,0.55)"/>
+          <!-- Speakers stacks -->
+          <rect x="298" y="248" width="6" height="20" fill="#c44030"/>
+          <rect x="498" y="248" width="6" height="20" fill="#c44030"/>
+          <text x="400" y="270" text-anchor="middle" font-family="Inter" font-size="11" fill="#d9a55c" letter-spacing="4" font-weight="700">DISCOTECA</text>
         </g>
-        <!-- Hostal on shore (multi-room building) -->
+
+        <!-- Villa 5 over-water (right side) -->
+        <g class="iso-building" data-id="v5" data-cat="villa-ow">
+          <ellipse cx="620" cy="395" rx="50" ry="9" fill="rgba(0,0,0,0.30)"/>
+          <line x1="588" y1="378" x2="588" y2="408" stroke="#3a1f10" stroke-width="2"/>
+          <line x1="622" y1="397" x2="622" y2="427" stroke="#3a1f10" stroke-width="2"/>
+          <line x1="652" y1="378" x2="652" y2="408" stroke="#3a1f10" stroke-width="2"/>
+          <polygon points="570,370 620,344 670,370 620,396" fill="#a8702a" stroke="#3a1f10" stroke-width="0.5"/>
+          <polygon points="570,370 620,396 620,408 570,382" fill="url(#ic-side-left)" stroke="#3a1f10" stroke-width="0.6" class="face-side"/>
+          <polygon points="620,396 670,370 670,382 620,408" fill="url(#ic-side-right)" stroke="#3a1f10" stroke-width="0.6" class="face-side"/>
+          <polygon points="570,370 620,344 670,370 620,396" fill="url(#ic-top)" stroke="#3a1f10" stroke-width="0.6" class="face-top"/>
+          <polygon points="620,344 620,326 570,352 570,370" fill="url(#ic-roof-villa)"/>
+          <polygon points="620,344 620,326 670,352 670,370" fill="#5a3a20"/>
+          <text x="620" y="338" text-anchor="middle" class="iso-label">V5 · OW</text>
+        </g>
+
+        <!-- Beach (front area buildings) -->
+        <!-- Hostal (left side, multi-room low building) -->
+        <g class="iso-building" data-id="hostal" data-cat="hostal">
+          <ellipse cx="190" cy="465" rx="85" ry="13" fill="url(#ic-shadow)"/>
+          <polygon points="120,415 260,415 280,395 200,375 100,395" fill="url(#ic-side-left)" stroke="#3a1f10" stroke-width="0.6"/>
+          <polygon points="120,415 200,455 200,485 120,445" fill="url(#ic-side-left)" stroke="#3a1f10" stroke-width="0.7" class="face-side"/>
+          <polygon points="200,455 280,415 280,445 200,485" fill="url(#ic-side-right)" stroke="#3a1f10" stroke-width="0.7" class="face-side"/>
+          <polygon points="120,415 200,455 280,415 200,375" fill="url(#ic-top)" stroke="#3a1f10" stroke-width="0.8" class="face-top"/>
+          <!-- Roof (low pitched) -->
+          <polygon points="120,415 200,375 200,360 120,400" fill="url(#ic-roof-villa)" stroke="#3a1f10" stroke-width="0.5"/>
+          <polygon points="280,415 200,375 200,360 280,400" fill="#5a3a20" stroke="#3a1f10" stroke-width="0.5"/>
+          <!-- Window row on visible face -->
+          <g fill="rgba(140,180,210,0.78)" stroke="#1a3325" stroke-width="0.4">
+            <rect x="130" y="438" width="5" height="8" transform="skewY(20)"/>
+            <rect x="145" y="442" width="5" height="8" transform="skewY(20)"/>
+            <rect x="160" y="447" width="5" height="8" transform="skewY(20)"/>
+            <rect x="175" y="451" width="5" height="8" transform="skewY(20)"/>
+          </g>
+          <text x="200" y="410" text-anchor="middle" class="iso-label" font-size="10">HOSTAL · 24</text>
+        </g>
+
+        <!-- Water-sports shed (small, beach center) -->
+        <g class="iso-building" data-id="watersports" data-cat="amenity">
+          <polygon points="380,440 415,460 415,475 380,455" fill="url(#ic-side-left)" stroke="#3a1f10" stroke-width="0.6"/>
+          <polygon points="415,460 450,440 450,455 415,475" fill="url(#ic-side-right)" stroke="#3a1f10" stroke-width="0.6"/>
+          <polygon points="380,440 415,460 450,440 415,420" fill="#3a3a3a" stroke="#3a1f10" stroke-width="0.6" class="face-top"/>
+          <text x="415" y="432" text-anchor="middle" class="iso-label" font-size="7">KAYAK</text>
+        </g>
+
+        <!-- Villa 1 (left-mid beach) -->
+        <g class="iso-building" data-id="v1" data-cat="villa">
+          <polygon points="90,475 145,500 145,525 90,500" fill="url(#ic-side-left)" stroke="#3a1f10" stroke-width="0.6" class="face-side"/>
+          <polygon points="145,500 200,475 200,500 145,525" fill="url(#ic-side-right)" stroke="#3a1f10" stroke-width="0.6" class="face-side"/>
+          <polygon points="90,475 145,500 200,475 145,450" fill="url(#ic-top)" stroke="#3a1f10" stroke-width="0.6" class="face-top"/>
+          <polygon points="145,450 145,435 90,460 90,475" fill="url(#ic-roof-villa)"/>
+          <polygon points="145,450 145,435 200,460 200,475" fill="#5a3a20"/>
+          <text x="145" y="445" text-anchor="middle" class="iso-label">V1</text>
+        </g>
+
+        <!-- Restaurant + reception (front-center) -->
+        <g class="iso-building" data-id="restaurant" data-cat="amenity">
+          <ellipse cx="400" cy="510" rx="80" ry="13" fill="url(#ic-shadow)"/>
+          <polygon points="335,460 400,495 400,520 335,490" fill="url(#ic-side-left)" stroke="#3a1f10" stroke-width="0.7" class="face-side"/>
+          <polygon points="400,495 465,460 465,490 400,520" fill="url(#ic-side-right)" stroke="#3a1f10" stroke-width="0.7" class="face-side"/>
+          <polygon points="335,460 400,495 465,460 400,425" fill="url(#ic-top)" stroke="#3a1f10" stroke-width="0.8" class="face-top"/>
+          <polygon points="335,460 400,425 400,408 335,443" fill="url(#ic-roof-villa)"/>
+          <polygon points="465,460 400,425 400,408 465,443" fill="#5a3a20"/>
+          <line x1="355" y1="476" x2="355" y2="500" stroke="#3a1f10" stroke-width="1"/>
+          <line x1="380" y1="489" x2="380" y2="513" stroke="#3a1f10" stroke-width="1"/>
+          <line x1="420" y1="489" x2="420" y2="513" stroke="#3a1f10" stroke-width="1"/>
+          <line x1="445" y1="476" x2="445" y2="500" stroke="#3a1f10" stroke-width="1"/>
+          <text x="400" y="454" text-anchor="middle" class="iso-label" font-size="9">REST + REC</text>
+        </g>
+
+        <!-- Villa 2 (right-mid beach) -->
+        <g class="iso-building" data-id="v2" data-cat="villa">
+          <polygon points="600,475 655,500 655,525 600,500" fill="url(#ic-side-left)" stroke="#3a1f10" stroke-width="0.6" class="face-side"/>
+          <polygon points="655,500 710,475 710,500 655,525" fill="url(#ic-side-right)" stroke="#3a1f10" stroke-width="0.6" class="face-side"/>
+          <polygon points="600,475 655,500 710,475 655,450" fill="url(#ic-top)" stroke="#3a1f10" stroke-width="0.6" class="face-top"/>
+          <polygon points="655,450 655,435 600,460 600,475" fill="url(#ic-roof-villa)"/>
+          <polygon points="655,450 655,435 710,460 710,475" fill="#5a3a20"/>
+          <text x="655" y="445" text-anchor="middle" class="iso-label">V2</text>
+        </g>
+
+        <!-- Villa 3 (front-left, on sand) -->
+        <g class="iso-building" data-id="v3" data-cat="villa">
+          <polygon points="190,520 240,540 240,560 190,540" fill="url(#ic-side-left)" stroke="#3a1f10" stroke-width="0.6" class="face-side"/>
+          <polygon points="240,540 290,520 290,540 240,560" fill="url(#ic-side-right)" stroke="#3a1f10" stroke-width="0.6" class="face-side"/>
+          <polygon points="190,520 240,540 290,520 240,500" fill="url(#ic-top)" stroke="#3a1f10" stroke-width="0.6" class="face-top"/>
+          <polygon points="240,500 240,488 190,508 190,520" fill="url(#ic-roof-villa)"/>
+          <polygon points="240,500 240,488 290,508 290,520" fill="#5a3a20"/>
+          <text x="240" y="495" text-anchor="middle" class="iso-label">V3</text>
+        </g>
+
+        <!-- Villa 4 (front-right, on sand) -->
+        <g class="iso-building" data-id="v4" data-cat="villa">
+          <polygon points="510,520 560,540 560,560 510,540" fill="url(#ic-side-left)" stroke="#3a1f10" stroke-width="0.6" class="face-side"/>
+          <polygon points="560,540 610,520 610,540 560,560" fill="url(#ic-side-right)" stroke="#3a1f10" stroke-width="0.6" class="face-side"/>
+          <polygon points="510,520 560,540 610,520 560,500" fill="url(#ic-top)" stroke="#3a1f10" stroke-width="0.6" class="face-top"/>
+          <polygon points="560,500 560,488 510,508 510,520" fill="url(#ic-roof-villa)"/>
+          <polygon points="560,500 560,488 610,508 610,520" fill="#5a3a20"/>
+          <text x="560" y="495" text-anchor="middle" class="iso-label">V4</text>
+        </g>
+
+        <!-- Palm trees scattered -->
         <g>
-          <polygon points="32,278 105,278 110,266 70,256 27,266" fill="#8a5a3c" stroke="#3a1f10" stroke-width="0.5"/>
-          <rect x="32" y="278" width="75" height="22" fill="#f0e4c8" stroke="#3a1f10" stroke-width="0.5"/>
-          <!-- Windows in row -->
-          <rect x="38" y="284" width="5" height="9" fill="#1a3325"/>
-          <rect x="49" y="284" width="5" height="9" fill="#1a3325"/>
-          <rect x="60" y="284" width="5" height="9" fill="#1a3325"/>
-          <rect x="71" y="284" width="5" height="9" fill="#1a3325"/>
-          <rect x="82" y="284" width="5" height="9" fill="#1a3325"/>
-          <rect x="93" y="284" width="5" height="9" fill="#1a3325"/>
-          <text x="70" y="274" text-anchor="middle" font-family="JetBrains Mono" font-size="5" fill="#3a1f10" letter-spacing="1.5">HOSTAL</text>
+          <g transform="translate(75,430)">
+            <ellipse cx="0" cy="2" rx="7" ry="2" fill="rgba(0,0,0,0.3)"/>
+            <path d="M 0 0 Q 2 -10 4 -22" stroke="#5a3520" stroke-width="2.5" fill="none"/>
+            <path d="M 4 -22 Q -8 -28 -14 -22 M 4 -22 Q 16 -28 22 -22 M 4 -22 Q -4 -34 -8 -40 M 4 -22 Q 12 -34 16 -40" stroke="#1a4d2a" stroke-width="2.5" fill="none"/>
+            <circle cx="4" cy="-22" r="3" fill="#5a3520"/>
+          </g>
+          <g transform="translate(320,500)">
+            <ellipse cx="0" cy="2" rx="7" ry="2" fill="rgba(0,0,0,0.3)"/>
+            <path d="M 0 0 Q 2 -10 4 -22" stroke="#5a3520" stroke-width="2.5" fill="none"/>
+            <path d="M 4 -22 Q -8 -28 -14 -22 M 4 -22 Q 16 -28 22 -22 M 4 -22 Q -4 -34 -8 -40 M 4 -22 Q 12 -34 16 -40" stroke="#1a4d2a" stroke-width="2.5" fill="none"/>
+            <circle cx="4" cy="-22" r="3" fill="#5a3520"/>
+          </g>
+          <g transform="translate(485,505)">
+            <ellipse cx="0" cy="2" rx="7" ry="2" fill="rgba(0,0,0,0.3)"/>
+            <path d="M 0 0 Q 2 -10 4 -22" stroke="#5a3520" stroke-width="2.5" fill="none"/>
+            <path d="M 4 -22 Q -8 -28 -14 -22 M 4 -22 Q 16 -28 22 -22 M 4 -22 Q -4 -34 -8 -40 M 4 -22 Q 12 -34 16 -40" stroke="#1a4d2a" stroke-width="2.5" fill="none"/>
+            <circle cx="4" cy="-22" r="3" fill="#5a3520"/>
+          </g>
+          <g transform="translate(720,435)">
+            <ellipse cx="0" cy="2" rx="7" ry="2" fill="rgba(0,0,0,0.3)"/>
+            <path d="M 0 0 Q 2 -10 4 -22" stroke="#5a3520" stroke-width="2.5" fill="none"/>
+            <path d="M 4 -22 Q -8 -28 -14 -22 M 4 -22 Q 16 -28 22 -22 M 4 -22 Q -4 -34 -8 -40 M 4 -22 Q 12 -34 16 -40" stroke="#1a4d2a" stroke-width="2.5" fill="none"/>
+            <circle cx="4" cy="-22" r="3" fill="#5a3520"/>
+          </g>
         </g>
-        <!-- Beachfront villas -->
-        <g>
-          <polygon points="325,275 360,275 364,266 343,258 322,266" fill="#8a5a3c" stroke="#3a1f10" stroke-width="0.5"/>
-          <rect x="325" y="275" width="35" height="16" fill="#f0e4c8" stroke="#3a1f10" stroke-width="0.5"/>
-          <rect x="332" y="280" width="5" height="7" fill="rgba(140,180,210,0.7)"/>
-          <rect x="345" y="280" width="5" height="7" fill="rgba(140,180,210,0.7)"/>
-        </g>
-        <!-- Palm trees -->
-        <g>
-          <line x1="148" y1="290" x2="156" y2="248" stroke="#5a3520" stroke-width="2.5"/>
-          <path d="M 156 248 Q 138 240 130 248 M 156 248 Q 174 240 182 246 M 156 248 Q 144 232 138 224 M 156 248 Q 168 232 176 226 M 156 248 Q 148 234 142 230" fill="none" stroke="#1a4d2a" stroke-width="2.5"/>
-          <circle cx="156" cy="244" r="3" fill="#5a3520"/>
-          <line x1="305" y1="295" x2="312" y2="252" stroke="#5a3520" stroke-width="2.5"/>
-          <path d="M 312 252 Q 294 244 286 252 M 312 252 Q 330 244 338 250 M 312 252 Q 300 236 294 228 M 312 252 Q 324 236 332 230" fill="none" stroke="#1a4d2a" stroke-width="2.5"/>
-          <circle cx="312" cy="248" r="3" fill="#5a3520"/>
-        </g>
-        <!-- Boats / pier -->
-        <g>
-          <ellipse cx="375" cy="248" rx="14" ry="3" fill="#f0e4c8"/>
-          <line x1="375" y1="245" x2="378" y2="238" stroke="#8a5a3c" stroke-width="1"/>
-          <polygon points="378,238 376,238 378,232 380,238" fill="#f0e4c8"/>
-        </g>
+
+        <!-- Property boundary (dashed underwater + on sand) -->
+        <polygon points="400,200 740,355 400,535 60,355" fill="none" stroke="rgba(247,240,223,0.55)" stroke-width="1.5" stroke-dasharray="6 5"/>
+
         <!-- Birds -->
-        <path d="M 60 80 q 5 -5 10 0 q 5 -5 10 0" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="1"/>
-        <path d="M 105 95 q 4 -4 8 0 q 4 -4 8 0" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1"/>
+        <path d="M 100 90 q 6 -5 12 0 q 6 -5 12 0" stroke="rgba(255,255,255,0.85)" stroke-width="1.5" fill="none"/>
+        <path d="M 160 110 q 5 -4 10 0 q 5 -4 10 0" stroke="rgba(255,255,255,0.75)" stroke-width="1.2" fill="none"/>
+        <path d="M 540 80 q 5 -4 10 0 q 5 -4 10 0" stroke="rgba(255,255,255,0.75)" stroke-width="1.2" fill="none"/>
+
+        <!-- N compass -->
+        <g transform="translate(60, 100)">
+          <circle cx="0" cy="0" r="18" fill="rgba(247,240,223,0.92)" stroke="#1d4d6a" stroke-width="1"/>
+          <path d="M 0 -13 L 0 11 M 0 -13 L -5 -6 M 0 -13 L 5 -6" fill="none" stroke="#1d4d6a" stroke-width="1.5"/>
+          <text x="0" y="-22" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#1d4d6a" font-weight="700">N</text>
+        </g>
+
+        <!-- Caribbean label -->
+        <text x="160" y="170" font-family="JetBrains Mono" font-size="8" fill="rgba(247,240,223,0.95)" letter-spacing="3" font-weight="600">PLAYA NORTE · CARIBE</text>
       </svg>
+
+      <div class="h-detail" id="hDetail">
+        <button class="hd-close" onclick="closeDetail()">×</button>
+        <div class="hd-title" id="hdTitle">Building</div>
+        <div id="hdBody"></div>
+      </div>
     </div>
   </div>
 </header>
@@ -488,10 +722,104 @@
   </div>
 </section>
 
+<!-- MATERIALS SOURCING -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es="04 · ABASTECIMIENTO DE MATERIALES" data-en="04 · MATERIALS SOURCING">04 · MATERIALS SOURCING</div>
+    <h2 data-es-html="<em>De dónde</em> sale cada cosa." data-en-html="<em>Where</em> each thing comes from.">Where each thing comes from.</h2>
+    <p class="sec-sub" data-es="Logística de isla: nada llega solo. Tres anillos de abastecimiento: lo del archipiélago (Bocas Town), lo de Panamá continental embarcado por lancha, y lo internacional importado por contenedor. La huella marina exige especificación grado-marino en todo metal y madera." data-en="Island logistics: nothing arrives on its own. Three sourcing rings: archipelago (Bocas Town), Panama mainland shipped by boat, and internationally imported by container. The marine footprint demands marine-grade spec on all metal and wood.">Island logistics: nothing arrives on its own. Three sourcing rings: archipelago (Bocas Town), Panama mainland shipped by boat, and internationally imported by container. The marine footprint demands marine-grade spec on all metal and wood.</p>
+  </div>
+
+  <div class="mat-tabs">
+    <button class="mat-tab active" data-mat="all" data-es="Todo" data-en="All">All</button>
+    <button class="mat-tab" data-mat="disco" data-es="Discoteca" data-en="Discoteca">Discoteca</button>
+    <button class="mat-tab" data-mat="hostal" data-es="Hostal" data-en="Hostal">Hostal</button>
+    <button class="mat-tab" data-mat="villa" data-es="Villas" data-en="Villas">Villas</button>
+    <button class="mat-tab" data-mat="amenity" data-es="Amenidades" data-en="Amenities">Amenities</button>
+    <button class="mat-tab" data-mat="infra" data-es="Infraestructura" data-en="Infrastructure">Infrastructure</button>
+  </div>
+
+  <div class="mat-grid">
+    <!-- LOCAL (Bocas Town / archipiélago) -->
+    <div class="mat-col mat-local">
+      <div class="mat-col-head">
+        <div class="mat-col-title">LOCAL · BOCAS TOWN · ARCHIPIÉLAGO</div>
+        <div class="mat-col-sub" data-es="0-30 km · entrega lancha 1-2 días · obra de campo" data-en="0-30 km · 1-2 day boat delivery · field labor">0-30 km · 1-2 day boat delivery · field labor</div>
+      </div>
+      <div class="mat-row" data-cat="disco villa hostal"><div class="mr-name" data-es="Cocobolo (madera dura local)" data-en="Cocobolo (local hardwood)">Cocobolo (local hardwood)</div><div class="mr-meta" data-es="Detalles, bar, mobiliario fijo · talleres indígenas Ngäbe" data-en="Details, bar, fixed furniture · Ngäbe indigenous workshops">Details, bar, fixed furniture · Ngäbe indigenous workshops</div></div>
+      <div class="mat-row" data-cat="disco villa amenity"><div class="mr-name" data-es="Almendro de río (tropical hardwood)" data-en="Almendro de río (tropical hardwood)">Almendro de río (tropical hardwood)</div><div class="mr-meta" data-es="Vigas, pisos · serradero Changuinola · 7d" data-en="Beams, floors · Changuinola sawmill · 7d">Beams, floors · Changuinola sawmill · 7d</div></div>
+      <div class="mat-row" data-cat="villa amenity"><div class="mr-name" data-es="Bambú guadua" data-en="Guadua bamboo">Guadua bamboo</div><div class="mr-meta" data-es="Pérgolas, decking · viveros locales · 5d" data-en="Pergolas, decking · local farms · 5d">Pergolas, decking · local farms · 5d</div></div>
+      <div class="mat-row" data-cat="villa hostal infra"><div class="mr-name" data-es="Arena + coralina (fundación)" data-en="Sand + coralina (foundation)">Sand + coralina (foundation)</div><div class="mr-meta" data-es="Cantera Isla Colón · permiso ARAP · 3d" data-en="Isla Colón quarry · ARAP permit · 3d">Isla Colón quarry · ARAP permit · 3d</div></div>
+      <div class="mat-row" data-cat="villa hostal amenity"><div class="mr-name" data-es="Hojas de palma + caña brava (techos)" data-en="Palm thatch + cane (roofs)">Palm thatch + cane (roofs)</div><div class="mr-meta" data-es="Comunidad Ngäbe · capa rústica · 10d" data-en="Ngäbe community · rustic layer · 10d">Ngäbe community · rustic layer · 10d</div></div>
+      <div class="mat-row" data-cat="disco villa hostal amenity infra"><div class="mr-name" data-es="Mano de obra Bocas" data-en="Bocas local labor">Bocas local labor</div><div class="mr-meta" data-es="Maestros + ayudantes · $50-90/día (premium isla)" data-en="Skilled + helpers · $50-90/day (island premium)">Skilled + helpers · $50-90/day (island premium)</div></div>
+      <div class="mat-row" data-cat="infra"><div class="mr-name" data-es="Captación lluvia (sistema local)" data-en="Rain catchment (local system)">Rain catchment (local system)</div><div class="mr-meta" data-es="Tanques fabricados Almirante · 7d" data-en="Tanks fabricated in Almirante · 7d">Tanks fabricated in Almirante · 7d</div></div>
+      <div class="mat-row" data-cat="amenity"><div class="mr-name" data-es="Hamaca + textiles artesanales" data-en="Hammocks + artisan textiles">Hammocks + artisan textiles</div><div class="mr-meta" data-es="Cooperativa Bocas · Kuna mola · 3d" data-en="Bocas co-op · Kuna mola · 3d">Bocas co-op · Kuna mola · 3d</div></div>
+    </div>
+
+    <!-- PANAMA (mainland) -->
+    <div class="mat-col mat-panama">
+      <div class="mat-col-head">
+        <div class="mat-col-title">PANAMÁ · CONTINENTAL · DAVID/PA</div>
+        <div class="mat-col-sub" data-es="200-700 km · ferry/lancha 5-21 días · estructura + sistemas" data-en="200-700 km · ferry/boat 5-21 days · structure + systems">200-700 km · ferry/boat 5-21 days · structure + systems</div>
+      </div>
+      <div class="mat-row" data-cat="disco hostal villa infra"><div class="mr-name" data-es="Cemento marino + aditivo SCM" data-en="Marine cement + SCM additive">Marine cement + SCM additive</div><div class="mr-meta" data-es="Cemex Panamá grado marítimo · 14d via Almirante" data-en="Cemex Panamá marine-grade · 14d via Almirante">Cemex Panamá marine-grade · 14d via Almirante</div></div>
+      <div class="mat-row" data-cat="disco hostal villa"><div class="mr-name" data-es="Acero galvanizado + 316L stainless" data-en="Galvanized steel + 316L stainless">Galvanized steel + 316L stainless</div><div class="mr-meta" data-es="Acerías Panamá · 316L para herrajes marinos · 18d" data-en="Acerías Panamá · 316L marine hardware · 18d">Acerías Panamá · 316L marine hardware · 18d</div></div>
+      <div class="mat-row" data-cat="disco villa"><div class="mr-name" data-es="Vidrio templado + laminado" data-en="Tempered + laminated glass">Tempered + laminated glass</div><div class="mr-meta" data-es="Vitro Panamá · corte + transporte cuidado · 21d" data-en="Vitro Panamá · cut + careful transport · 21d">Vitro Panamá · cut + careful transport · 21d</div></div>
+      <div class="mat-row" data-cat="villa hostal amenity"><div class="mr-name" data-es="Porcelanato exterior antideslizante" data-en="Anti-slip exterior porcelain">Anti-slip exterior porcelain</div><div class="mr-meta" data-es="Porcelanosa PA (Multiplaza) · 14d" data-en="Porcelanosa PA (Multiplaza) · 14d">Porcelanosa PA (Multiplaza) · 14d</div></div>
+      <div class="mat-row" data-cat="disco hostal villa amenity infra"><div class="mr-name" data-es="Pintura marina + protector UV" data-en="Marine paint + UV protector">Marine paint + UV protector</div><div class="mr-meta" data-es="Sherwin Williams Marine · Sika · 10d" data-en="Sherwin Williams Marine · Sika · 10d">Sherwin Williams Marine · Sika · 10d</div></div>
+      <div class="mat-row" data-cat="disco hostal villa infra"><div class="mr-name" data-es="Cableado eléctrico + tablero marino" data-en="Electrical wiring + marine panel">Electrical wiring + marine panel</div><div class="mr-meta" data-es="Schneider PA · IP65 marino · 14d" data-en="Schneider PA · IP65 marine · 14d">Schneider PA · IP65 marine · 14d</div></div>
+      <div class="mat-row" data-cat="hostal villa"><div class="mr-name" data-es="Aire acondicionado con anti-corrosión" data-en="A/C with anti-corrosion coating">A/C with anti-corrosion coating</div><div class="mr-meta" data-es="Mitsubishi Marine coating · Novey · 21d" data-en="Mitsubishi Marine coating · Novey · 21d">Mitsubishi Marine coating · Novey · 21d</div></div>
+      <div class="mat-row" data-cat="infra"><div class="mr-name" data-es="Sistema solar 60 kW + inversor" data-en="Solar system 60 kW + inverter">Solar system 60 kW + inverter</div><div class="mr-meta" data-es="SolarTec PA + Victron · 30d" data-en="SolarTec PA + Victron · 30d">SolarTec PA + Victron · 30d</div></div>
+      <div class="mat-row" data-cat="infra"><div class="mr-name" data-es="Generador diésel marino 35 kW" data-en="Marine diesel generator 35 kW">Marine diesel generator 35 kW</div><div class="mr-meta" data-es="Cummins Marine · vía PA · 45d" data-en="Cummins Marine · via PA · 45d">Cummins Marine · via PA · 45d</div></div>
+      <div class="mat-row" data-cat="infra"><div class="mr-name" data-es="Lanchas (transfer + carga)" data-en="Boats (transfer + cargo)">Boats (transfer + cargo)</div><div class="mr-meta" data-es="Astilleros Bocas/PA · fibra de vidrio · 90d" data-en="Bocas/PA shipyards · fiberglass · 90d">Bocas/PA shipyards · fiberglass · 90d</div></div>
+      <div class="mat-row" data-cat="hostal amenity"><div class="mr-name" data-es="Equipo cocina industrial" data-en="Commercial kitchen equipment">Commercial kitchen equipment</div><div class="mr-meta" data-es="Hobart distribuido PA · 30d" data-en="Hobart distributed PA · 30d">Hobart distributed PA · 30d</div></div>
+      <div class="mat-row" data-cat="disco amenity"><div class="mr-name" data-es="Sistema agua potable + UV + RO" data-en="Potable water + UV + RO">Potable water + UV + RO</div><div class="mr-meta" data-es="Aguatec PA · ensamble local · 21d" data-en="Aguatec PA · local assembly · 21d">Aguatec PA · local assembly · 21d</div></div>
+    </div>
+
+    <!-- INTERNATIONAL -->
+    <div class="mat-col mat-intl">
+      <div class="mat-col-head">
+        <div class="mat-col-title">INTL · USA / EU / ASIA</div>
+        <div class="mat-col-sub" data-es="Contenedor marítimo · 45-120 días · alta especialización" data-en="Sea container · 45-120 days · high-spec">Sea container · 45-120 days · high-spec</div>
+      </div>
+      <div class="mat-row" data-cat="disco villa infra"><div class="mr-name" data-es="Pilotes Greenheart (Guyana)" data-en="Greenheart pilings (Guyana)">Greenheart pilings (Guyana)</div><div class="mr-meta" data-es="★ La madera más resistente al agua salada · 60d" data-en="★ Most saltwater-resistant wood on Earth · 60d">★ Most saltwater-resistant wood on Earth · 60d</div></div>
+      <div class="mat-row" data-cat="disco"><div class="mr-name" data-es="Sistema PA Funktion-One F132" data-en="Funktion-One F132 PA system">Funktion-One F132 PA system</div><div class="mr-meta" data-es="UK · $90-120K · 75d incluye instalación" data-en="UK · $90-120K · 75d includes install">UK · $90-120K · 75d includes install</div></div>
+      <div class="mat-row" data-cat="disco"><div class="mr-name" data-es="Sistema láser + iluminación arquitectónica" data-en="Laser + architectural lighting">Laser + architectural lighting</div><div class="mr-meta" data-es="Robe Lighting (CZ) + Chauvet (USA) · 60d" data-en="Robe Lighting (CZ) + Chauvet (USA) · 60d">Robe Lighting (CZ) + Chauvet (USA) · 60d</div></div>
+      <div class="mat-row" data-cat="disco"><div class="mr-name" data-es="DJ booth + mixer Pioneer DJ" data-en="DJ booth + Pioneer DJ mixer">DJ booth + Pioneer DJ mixer</div><div class="mr-meta" data-es="Pioneer DJM-V10 + CDJ-3000 · 45d" data-en="Pioneer DJM-V10 + CDJ-3000 · 45d">Pioneer DJM-V10 + CDJ-3000 · 45d</div></div>
+      <div class="mat-row" data-cat="disco hostal villa"><div class="mr-name" data-es="Herrajes 316L stainless marinos" data-en="Marine 316L stainless hardware">Marine 316L stainless hardware</div><div class="mr-meta" data-es="Suncor (USA) / SeaSure (UK) · 45d" data-en="Suncor (USA) / SeaSure (UK) · 45d">Suncor (USA) / SeaSure (UK) · 45d</div></div>
+      <div class="mat-row" data-cat="villa amenity"><div class="mr-name" data-es="Grifería + ducha exterior marina" data-en="Marine outdoor shower fixtures">Marine outdoor shower fixtures</div><div class="mr-meta" data-es="Hansgrohe Marine (DE) + Whitecap · 60d" data-en="Hansgrohe Marine (DE) + Whitecap · 60d">Hansgrohe Marine (DE) + Whitecap · 60d</div></div>
+      <div class="mat-row" data-cat="villa"><div class="mr-name" data-es="Piso de vidrio (villa over-water)" data-en="Glass floor (over-water villa)">Glass floor (over-water villa)</div><div class="mr-meta" data-es="Onyx Solar (ES) · vidrio estructural · 90d" data-en="Onyx Solar (ES) · structural glass · 90d">Onyx Solar (ES) · structural glass · 90d</div></div>
+      <div class="mat-row" data-cat="infra"><div class="mr-name" data-es="Batería marina LFP 120 kWh" data-en="Marine LFP battery 120 kWh">Marine LFP battery 120 kWh</div><div class="mr-meta" data-es="Victron + EVE (CN) · marine-rated IP65 · 75d" data-en="Victron + EVE (CN) · marine-rated IP65 · 75d">Victron + EVE (CN) · marine-rated IP65 · 75d</div></div>
+      <div class="mat-row" data-cat="infra"><div class="mr-name" data-es="Internet satelital + radio marina" data-en="Satellite internet + marine VHF">Satellite internet + marine VHF</div><div class="mr-meta" data-es="Starlink Maritime + Icom VHF · 30d" data-en="Starlink Maritime + Icom VHF · 30d">Starlink Maritime + Icom VHF · 30d</div></div>
+      <div class="mat-row" data-cat="amenity"><div class="mr-name" data-es="Equipo kayak/SUP/snorkel" data-en="Kayak/SUP/snorkel gear">Kayak/SUP/snorkel gear</div><div class="mr-meta" data-es="Wilderness Systems (USA) + Cressi (IT) · 30d" data-en="Wilderness Systems (USA) + Cressi (IT) · 30d">Wilderness Systems (USA) + Cressi (IT) · 30d</div></div>
+      <div class="mat-row" data-cat="disco amenity"><div class="mr-name" data-es="Mobiliario disco + lounge" data-en="Disco + lounge furniture">Disco + lounge furniture</div><div class="mr-meta" data-es="Gandia Blasco (ES) outdoor · 75d" data-en="Gandia Blasco (ES) outdoor · 75d">Gandia Blasco (ES) outdoor · 75d</div></div>
+      <div class="mat-row" data-cat="villa"><div class="mr-name" data-es="Cama king + textiles premium" data-en="King bed + premium textiles">King bed + premium textiles</div><div class="mr-meta" data-es="Coyuchi (USA) organic + IKEA Hemnes · 45d" data-en="Coyuchi (USA) organic + IKEA Hemnes · 45d">Coyuchi (USA) organic + IKEA Hemnes · 45d</div></div>
+    </div>
+  </div>
+
+  <div class="mat-summary">
+    <div class="mat-sum-cell">
+      <div class="ms-pct">28%</div>
+      <div class="ms-label" data-es="Capex en local Bocas" data-en="Capex local Bocas">Capex local Bocas</div>
+      <div class="ms-bar"><div class="ms-fill" style="width:28%;background:var(--sea)"></div></div>
+    </div>
+    <div class="mat-sum-cell">
+      <div class="ms-pct">40%</div>
+      <div class="ms-label" data-es="Capex en Panamá" data-en="Capex Panama">Capex Panama</div>
+      <div class="ms-bar"><div class="ms-fill" style="width:40%;background:var(--sand-deep)"></div></div>
+    </div>
+    <div class="mat-sum-cell">
+      <div class="ms-pct">32%</div>
+      <div class="ms-label" data-es="Capex importado" data-en="Capex imported">Capex imported</div>
+      <div class="ms-bar"><div class="ms-fill" style="width:32%;background:var(--coral)"></div></div>
+    </div>
+  </div>
+</section>
+
 <!-- PHASING -->
 <section>
   <div class="sec-head">
-    <div class="sec-num" data-es="04 · FASEO" data-en="04 · PHASING">04 · PHASING</div>
+    <div class="sec-num" data-es="05 · FASEO" data-en="05 · PHASING">05 · PHASING</div>
     <h2 data-es-html="<em>Cuatro fases</em>. Comienza con la discoteca." data-en-html="<em>Four phases</em>. Start with the discoteca.">Four phases. Start with the discoteca.</h2>
     <p class="sec-sub" data-es="La discoteca es el ancla comercial — abre primero para generar flujo y prueba la operación logística (transporte, energía, basura). Las villas y el hostal son fases 2-4." data-en="The discoteca is the commercial anchor — opens first to drive traffic and proof the logistics (transport, energy, waste). Villas and hostal are phases 2-4.">The discoteca is the commercial anchor — opens first to drive traffic and proof the logistics (transport, energy, waste). Villas and hostal are phases 2-4.</p>
   </div>
@@ -527,7 +855,7 @@
 <!-- ECONOMICS -->
 <section>
   <div class="sec-head">
-    <div class="sec-num" data-es="05 · ECONÓMICA" data-en="05 · ECONOMICS">05 · ECONOMICS</div>
+    <div class="sec-num" data-es="06 · ECONÓMICA" data-en="06 · ECONOMICS">06 · ECONOMICS</div>
     <h2 data-es-html="Números <em>preliminares</em>." data-en-html="<em>Preliminary</em> numbers.">Preliminary numbers.</h2>
     <p class="sec-sub" data-es="Revenue depende de la mix discoteca (alto-volumen) + villas (alto-margen) + hostal (estable). Validar con operador local. La temporada alta diciembre-marzo + septiembre-octubre tiene 80% de ingresos." data-en="Revenue depends on disco mix (high-volume) + villas (high-margin) + hostal (stable). Validate with local operator. December-March + September-October high seasons drive 80% of revenue.">Revenue depends on disco mix (high-volume) + villas (high-margin) + hostal (stable). Validate with local operator. December-March + September-October high seasons drive 80% of revenue.</p>
   </div>
@@ -584,6 +912,141 @@
     document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('active', b.dataset.lang === lang));
   }
   document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click', ()=>applyLang(b.dataset.lang)));
+
+  // ============ Building detail data ============
+  const BUILDINGS = {
+    disco: {
+      title: { es:'Discoteca · Over-Water', en:'Discoteca · Over-Water' },
+      cat: { es:'ANCLA COMERCIAL · 380 M² · 320 PAX', en:'COMMERCIAL ANCHOR · 380 M² · 320 PAX' },
+      area: '380 m²', capex: '$1.2M',
+      rows: [
+        { k:{es:'Pilotes',en:'Pilings'}, v:{es:'14 columnas Greenheart (Guyana) · 60d en contenedor',en:'14 Greenheart columns (Guyana) · 60d by container'} },
+        { k:{es:'Plataforma',en:'Platform'}, v:{es:'Almendro de río local + acero 316L PA',en:'Local almendro hardwood + 316L PA steel'} },
+        { k:{es:'Sonido',en:'Sound'}, v:{es:'Funktion-One F132 (UK) · $90-120K · 75d',en:'Funktion-One F132 (UK) · $90-120K · 75d'} },
+        { k:{es:'DJ booth',en:'DJ booth'}, v:{es:'Pioneer DJM-V10 + CDJ-3000 · 45d',en:'Pioneer DJM-V10 + CDJ-3000 · 45d'} },
+        { k:{es:'Iluminación',en:'Lighting'}, v:{es:'Robe (CZ) + Chauvet (USA) · láser + arquitectónica',en:'Robe (CZ) + Chauvet (USA) · laser + architectural'} },
+        { k:{es:'Estructura techo',en:'Roof'}, v:{es:'Domo translúcido membrana ETFE (DE) · 90d',en:'Translucent ETFE membrane dome (DE) · 90d'} },
+        { k:{es:'Bar',en:'Bar'}, v:{es:'Cocobolo local artesanal + grifería Hansgrohe Marine',en:'Local artisan cocobolo + Hansgrohe Marine taps'} }
+      ]
+    },
+    hostal: {
+      title: { es:'Hostal · 24 camas', en:'Hostal · 24 beds' },
+      cat: { es:'VOLUMEN · BACKPACKER · 340 M²', en:'VOLUME · BACKPACKER · 340 M²' },
+      area: '340 m²', capex: '$680K',
+      rows: [
+        { k:{es:'Estructura',en:'Structure'}, v:{es:'Cemento marino Cemex PA + acero galvanizado',en:'Cemex PA marine cement + galvanized steel'} },
+        { k:{es:'Pisos',en:'Floors'}, v:{es:'Porcelanato antideslizante Porcelanosa PA',en:'Anti-slip porcelain Porcelanosa PA'} },
+        { k:{es:'Techo',en:'Roof'}, v:{es:'Hojas de palma sobre estructura ventilada local',en:'Palm thatch over local ventilated structure'} },
+        { k:{es:'Literas',en:'Bunks'}, v:{es:'Cocobolo local artesanal · 24 unidades',en:'Local artisan cocobolo · 24 units'} },
+        { k:{es:'A/C',en:'A/C'}, v:{es:'Mitsubishi anti-corrosión marino · uno por dorm',en:'Mitsubishi marine anti-corrosion · one per dorm'} },
+        { k:{es:'Cocina compartida',en:'Shared kitchen'}, v:{es:'Hobart inducción (USA via PA) · 30d',en:'Hobart induction (USA via PA) · 30d'} },
+        { k:{es:'Agua caliente',en:'Hot water'}, v:{es:'Solar térmico Apricus (AU) · 60d',en:'Solar thermal Apricus (AU) · 60d'} }
+      ]
+    },
+    v1: vSpec('V1', false), v2: vSpec('V2', false), v3: vSpec('V3', false), v4: vSpec('V4', false),
+    v5: {
+      title: { es:'Villa V5 · Over-Water', en:'Villa V5 · Over-Water' },
+      cat: { es:'VILLA FLAGSHIP · 95 M² · SUITE ESPECIAL', en:'FLAGSHIP VILLA · 95 M² · SPECIAL SUITE' },
+      area: '95 m²', capex: '$340K',
+      rows: [
+        { k:{es:'Pilotes',en:'Pilings'}, v:{es:'4 columnas Greenheart (Guyana) · marino-grade',en:'4 Greenheart columns (Guyana) · marine-grade'} },
+        { k:{es:'Plataforma',en:'Platform'}, v:{es:'Almendro de río local + acero 316L PA',en:'Local almendro + 316L PA steel'} },
+        { k:{es:'Pisos',en:'Floors'}, v:{es:'★ Piso de vidrio estructural sala (Onyx Solar ES) · 90d',en:'★ Structural glass floor in living (Onyx Solar ES) · 90d'} },
+        { k:{es:'Cerramientos',en:'Envelope'}, v:{es:'Vidrio Vitro PA + marcos almendro local',en:'Vitro PA glass + local almendro frames'} },
+        { k:{es:'Techo',en:'Roof'}, v:{es:'Tejas + bambú · ventilación cruzada · sin A/C de día',en:'Tile + bamboo · cross-ventilation · no daytime A/C'} },
+        { k:{es:'Baño',en:'Bath'}, v:{es:'Ducha lluvia Hansgrohe Marine (DE) · escalera al mar',en:'Hansgrohe Marine rain shower (DE) · ladder to sea'} },
+        { k:{es:'Cama',en:'Bed'}, v:{es:'King Coyuchi orgánico (USA) + mosquitero textil',en:'King Coyuchi organic (USA) + textile mosquito net'} }
+      ]
+    },
+    restaurant: {
+      title: { es:'Restaurante + Recepción', en:'Restaurant + Reception' },
+      cat: { es:'AMENIDAD · HOSPITALIDAD · 280 M²', en:'AMENITY · HOSPITALITY · 280 M²' },
+      area: '280 m²', capex: '$340K',
+      rows: [
+        { k:{es:'Estructura',en:'Structure'}, v:{es:'Pilares cocobolo local + acero PA + cimiento coralina',en:'Local cocobolo posts + PA steel + coralina foundation'} },
+        { k:{es:'Cocina',en:'Kitchen'}, v:{es:'Hobart + Wolf (USA via PA) · campana acero 316L',en:'Hobart + Wolf (USA via PA) · 316L steel hood'} },
+        { k:{es:'Comedor',en:'Dining'}, v:{es:'Mesas almendro · sillas Gandia Blasco (ES)',en:'Almendro tables · Gandia Blasco (ES) chairs'} },
+        { k:{es:'Bar',en:'Bar'}, v:{es:'Cocobolo local + cuerno de vaca pulido',en:'Local cocobolo + polished cow horn'} },
+        { k:{es:'Terraza',en:'Terrace'}, v:{es:'Decking guadua bambú · vista al mar',en:'Guadua bamboo decking · sea view'} },
+        { k:{es:'Iluminación',en:'Lighting'}, v:{es:'Pantallas hechas a mano Bocas + Tom Dixon noche',en:'Bocas handmade shades + Tom Dixon at night'} }
+      ]
+    },
+    watersports: {
+      title: { es:'Centro de Deportes Acuáticos', en:'Water Sports Center' },
+      cat: { es:'AMENIDAD · KAYAK · SUP · SNORKEL', en:'AMENITY · KAYAK · SUP · SNORKEL' },
+      area: '45 m²', capex: '$58K',
+      rows: [
+        { k:{es:'Construcción',en:'Construction'}, v:{es:'Caseta abierta · estructura almendro + techo palma',en:'Open shed · almendro structure + palm roof'} },
+        { k:{es:'Equipo',en:'Equipment'}, v:{es:'8 kayaks Wilderness Systems (USA) + 6 SUP Naish',en:'8 Wilderness Systems kayaks (USA) + 6 Naish SUP'} },
+        { k:{es:'Snorkel',en:'Snorkel'}, v:{es:'20 sets Cressi (IT) · careta + tubo + aletas',en:'20 Cressi (IT) sets · mask + snorkel + fins'} },
+        { k:{es:'Tablas',en:'Boards'}, v:{es:'Almacenamiento techado · ducha enjuague exterior',en:'Covered storage · outdoor rinse shower'} },
+        { k:{es:'Lockers',en:'Lockers'}, v:{es:'Lockers metálicos marino-tratados (PA) · 24 unidades',en:'Marine-treated metal lockers (PA) · 24 units'} }
+      ]
+    }
+  };
+
+  function vSpec(name, owFlag){
+    return {
+      title: { es:'Villa ' + name + ' · Beachfront', en:'Villa ' + name + ' · Beachfront' },
+      cat: { es:'VILLA · FRENTE DE PLAYA · 95 M²', en:'VILLA · BEACHFRONT · 95 M²' },
+      area: '95 m²', capex: '$220K',
+      rows: [
+        { k:{es:'Cimentación',en:'Foundation'}, v:{es:'Coralina local + cemento marino Cemex PA',en:'Local coralina + Cemex PA marine cement'} },
+        { k:{es:'Estructura',en:'Structure'}, v:{es:'Almendro de río local + acero 316L PA',en:'Local almendro + 316L PA steel'} },
+        { k:{es:'Pisos',en:'Floors'}, v:{es:'Madera tropical local sobre piedra coralina',en:'Local tropical wood over coralina stone'} },
+        { k:{es:'Ventanas',en:'Windows'}, v:{es:'Vitro Panamá tempered + marco almendro',en:'Vitro Panamá tempered + almendro frame'} },
+        { k:{es:'Techo',en:'Roof'}, v:{es:'Caña brava + palma · ventilación natural',en:'Cane + palm thatch · natural ventilation'} },
+        { k:{es:'Ducha exterior',en:'Outdoor shower'}, v:{es:'Hansgrohe Marine (DE) · lluvia · sin techo',en:'Hansgrohe Marine (DE) · rain · open-air'} },
+        { k:{es:'Cama',en:'Bed'}, v:{es:'King Coyuchi orgánico + hamaca colgante local',en:'King Coyuchi organic + local hanging hammock'} }
+      ]
+    };
+  }
+
+  // ============ Detail panel ============
+  function showDetail(id){
+    const b = BUILDINGS[id]; if(!b) return;
+    const lang = getLang();
+    document.getElementById('hdTitle').textContent = b.title[lang];
+    let html = `<div style="font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--coral);text-transform:uppercase;margin-bottom:6px">${b.cat[lang]} · ${b.capex}</div>`;
+    b.rows.forEach(r => { html += `<div class="hd-row"><strong>${r.k[lang]}</strong><span>${r.v[lang]}</span></div>`; });
+    document.getElementById('hdBody').innerHTML = html;
+    document.getElementById('hDetail').classList.add('show');
+    document.querySelectorAll('.iso-building').forEach(el => el.classList.toggle('active', el.dataset.id === id));
+    const cat = document.querySelector(`.iso-building[data-id="${id}"]`).dataset.cat;
+    const filter = cat === 'villa' || cat === 'villa-ow' ? 'villa' : ['disco','hostal','amenity','infra'].includes(cat) ? cat : 'all';
+    setMatFilter(filter);
+  }
+  function closeDetail(){
+    document.getElementById('hDetail').classList.remove('show');
+    document.querySelectorAll('.iso-building').forEach(el => el.classList.remove('active'));
+    setMatFilter('all');
+  }
+  document.querySelectorAll('.iso-building').forEach(el => el.addEventListener('click', () => showDetail(el.dataset.id)));
+
+  // ============ Plan/Iso toggle ============
+  function setView(v){
+    const svg = document.getElementById('isoSvg'); if(!svg) return;
+    if(v === 'plan'){
+      svg.style.transform = 'rotateX(60deg) rotate(-30deg) scale(0.9)';
+      svg.style.transformOrigin = 'center';
+      svg.style.transition = 'transform .6s cubic-bezier(0.25,1,0.5,1)';
+    } else {
+      svg.style.transform = 'none';
+    }
+    document.querySelectorAll('.h-controls button').forEach(b => b.classList.toggle('active', b.dataset.view === v));
+  }
+  document.querySelectorAll('.h-controls button').forEach(b => b.addEventListener('click', () => setView(b.dataset.view)));
+
+  // ============ Materials filter ============
+  function setMatFilter(cat){
+    document.querySelectorAll('.mat-tab').forEach(t => t.classList.toggle('active', t.dataset.mat === cat));
+    document.querySelectorAll('.mat-row').forEach(r => {
+      const cats = (r.dataset.cat || '').split(' ');
+      r.classList.toggle('hidden', cat !== 'all' && !cats.includes(cat));
+    });
+  }
+  document.querySelectorAll('.mat-tab').forEach(t => t.addEventListener('click', () => setMatFilter(t.dataset.mat)));
+
   applyLang(getLang());
 </script>
 </body>
