@@ -867,7 +867,7 @@
   function applyLang(lang){
     document.querySelectorAll('[data-es]').forEach(el=>{
       const v = el.getAttribute('data-' + lang);
-      if(v != null) el.textContent = v;
+      if (v != null) { if (/<[a-z]/i.test(v)) el.innerHTML = v; else el.textContent = v; }
     });
     document.querySelectorAll('[data-es-html]').forEach(el=>{
       const v = el.getAttribute('data-' + lang + '-html');
