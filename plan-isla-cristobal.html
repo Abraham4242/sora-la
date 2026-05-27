@@ -1,0 +1,590 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Isla Cristóbal Beach Resort · Plan · La Compañía</title>
+<meta name="description" content="Concept · 2.5 hectare over-water resort on Isla Cristóbal, Bocas del Toro. Discoteca + hostal + villas + water sports.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231d3a2c'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Georgia,serif' font-size='20' font-weight='400' fill='%23d9a55c'%3EC%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f7f0df; --paper-2:#fcf6e6; --paper-3:#ede4ca; --paper-deep:#e3d9c2;
+    --ink:#14110c; --ink-2:#2a251d; --ink-3:#4b4337; --ink-faint:#8a7e6a;
+    --line:rgba(20,17,12,0.10); --line-2:rgba(20,17,12,0.18);
+    --forest:#1d3a2c; --sea:#3d7a9c; --sea-deep:#1d4d6a; --sea-light:#7fa8b3;
+    --sand:#f5d9a8; --sand-deep:#c9a26a;
+    --gold:#d9a55c; --gold-deep:#b88842; --coral:#D9573B; --magenta:#b8447c;
+    --serif:'Fraunces',Georgia,serif; --sans:'Inter',-apple-system,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--sea-deep);color:var(--paper)}
+  [data-en]{display:none}
+  html[lang="en"] [data-es]{display:none}
+  html[lang="en"] [data-en]{display:inline}
+
+  .top{position:sticky;top:0;z-index:50;background:rgba(247,240,223,.94);backdrop-filter:blur(14px);border-bottom:0.5px solid var(--line)}
+  .top-in{max-width:1280px;margin:0 auto;padding:16px 36px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  .brand{display:flex;align-items:baseline;gap:12px}
+  .brand .word{font-family:var(--serif);font-weight:500;font-size:20px;letter-spacing:.06em}
+  .brand .sub{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--ink-3);text-transform:uppercase}
+  .top-link{font-family:var(--sans);font-size:12px;color:var(--ink-2);padding:6px 13px;border:0.5px solid var(--line);border-radius:5px}
+  .top-link:hover{background:var(--paper-2)}
+  .spacer{flex:1}
+  .lang{display:inline-flex;border:0.5px solid var(--line);border-radius:5px;overflow:hidden}
+  .lang button{padding:7px 12px;font-family:var(--mono);font-size:10.5px;background:transparent;border:0;color:var(--ink-faint);cursor:pointer;font-weight:500}
+  .lang button.active{background:var(--ink);color:var(--paper)}
+
+  .wrap{max-width:1280px;margin:0 auto;padding:0 36px}
+
+  .breadcrumbs{padding:24px 0 0;font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--ink-faint);text-transform:uppercase}
+  .breadcrumbs a{color:var(--sea);font-weight:600}
+
+  /* HERO */
+  .hero{padding:56px 0 24px}
+  .h-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+  .h-info .h-tag{font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--sea);font-weight:700;margin-bottom:16px;display:inline-block;padding:6px 12px;background:rgba(61,122,156,.10);border-radius:4px}
+  .h-info h1{font-family:var(--serif);font-weight:300;font-size:clamp(54px,8vw,108px);line-height:.96;letter-spacing:-.025em;color:var(--ink);margin-bottom:18px}
+  .h-info h1 em{font-style:italic;color:var(--sea);font-weight:400}
+  .h-info .h-sub{font-family:var(--serif);font-style:italic;font-size:20px;color:var(--ink-3);font-weight:300;line-height:1.5;margin-bottom:24px}
+  .h-stamps{display:flex;flex-wrap:wrap;gap:14px}
+  .stamp{padding:9px 14px;background:var(--paper-2);border:0.5px solid var(--line);border-radius:6px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--ink-2);text-transform:uppercase}
+  .stamp strong{color:var(--sea);font-weight:700}
+
+  .h-render{aspect-ratio:5/4;background:linear-gradient(180deg,#a8c8d4 0%,#7fa8b3 38%,#3d7a9c 38%,#1d4d6a 100%);border-radius:14px;overflow:hidden;border:0.5px solid var(--line);position:relative}
+  .h-render svg{width:100%;height:100%}
+  .h-render-label{position:absolute;bottom:14px;left:16px;font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--paper);background:rgba(20,17,12,.62);padding:6px 11px;border-radius:4px;text-transform:uppercase;font-weight:600;backdrop-filter:blur(4px)}
+
+  .site-stats{display:grid;grid-template-columns:repeat(5,1fr);border-top:0.5px solid var(--line);border-bottom:0.5px solid var(--line);margin:40px 0 0}
+  .site-stats > div{padding:24px 18px;text-align:center;border-right:0.5px solid var(--line)}
+  .site-stats > div:last-child{border-right:0}
+  .site-stats .k{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;margin-bottom:6px}
+  .site-stats .v{font-family:var(--serif);font-size:30px;color:var(--ink);line-height:1;font-weight:400}
+  .site-stats .v em{font-style:italic;color:var(--sea)}
+  .site-stats .u{font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--ink-faint);margin-top:4px;text-transform:uppercase}
+
+  section{padding:64px 0 32px;border-top:0.5px solid var(--line)}
+  .sec-head{margin-bottom:32px}
+  .sec-num{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--sea);font-weight:700;margin-bottom:10px}
+  .sec-head h2{font-family:var(--serif);font-weight:300;font-size:clamp(30px,4.5vw,48px);line-height:1.06;color:var(--ink);letter-spacing:-.015em;max-width:760px}
+  .sec-head h2 em{font-style:italic;color:var(--sea);font-weight:400}
+  .sec-sub{font-family:var(--serif);font-size:16px;color:var(--ink-3);font-weight:300;line-height:1.55;font-style:italic;max-width:720px;margin-top:14px}
+
+  .siteplan{background:var(--paper-2);border:0.5px solid var(--line);border-radius:14px;padding:32px;display:grid;grid-template-columns:1fr 320px;gap:32px;align-items:start}
+  .siteplan-svg{aspect-ratio:4/3;background:linear-gradient(135deg,#a8c8d4,#7fa8b3);border-radius:10px;overflow:hidden;position:relative}
+  .siteplan-svg svg{width:100%;height:100%}
+  .siteplan-legend{font-family:var(--sans);font-size:13.5px;color:var(--ink-2);line-height:1.6}
+  .siteplan-legend h4{font-family:var(--serif);font-weight:500;font-size:18px;color:var(--ink);margin-bottom:14px}
+  .legend-row{display:flex;align-items:center;gap:11px;padding:8px 0;border-bottom:0.5px dashed var(--line);font-size:13px}
+  .legend-row:last-child{border-bottom:0}
+  .legend-dot{width:14px;height:14px;border-radius:3px;flex-shrink:0}
+  .legend-row .label{flex:1;font-weight:500;color:var(--ink)}
+  .legend-row .meta{font-family:var(--mono);font-size:10px;color:var(--ink-faint);letter-spacing:.06em}
+
+  .components{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-top:24px}
+  .component{background:var(--paper);border:0.5px solid var(--line);border-radius:12px;padding:24px 24px 22px;position:relative;overflow:hidden;border-top:3px solid var(--sea)}
+  .component.c-villa{border-top-color:var(--sand-deep)}
+  .component.c-amenity{border-top-color:var(--magenta)}
+  .component.c-infra{border-top-color:var(--gold)}
+  .c-num{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;color:var(--ink-faint);text-transform:uppercase;font-weight:700;margin-bottom:8px}
+  .c-num.t-disco{color:var(--magenta)}
+  .c-num.t-hostal{color:var(--sea)}
+  .c-num.t-villa{color:var(--sand-deep)}
+  .c-num.t-infra{color:var(--gold-deep)}
+  .component h4{font-family:var(--serif);font-weight:400;font-size:22px;color:var(--ink);line-height:1.18;margin-bottom:4px;letter-spacing:-.005em}
+  .component h4 em{font-style:italic;color:var(--sea)}
+  .component .c-sub{font-family:var(--serif);font-style:italic;font-size:13px;color:var(--ink-3);margin-bottom:14px;line-height:1.45}
+  .component ul{list-style:none;padding:0;margin-top:6px}
+  .component li{font-family:var(--sans);font-size:13px;color:var(--ink-2);padding:5px 0 5px 16px;position:relative;line-height:1.5}
+  .component li::before{content:'·';position:absolute;left:4px;color:var(--sea);font-weight:700;font-size:14px}
+  .c-foot{margin-top:14px;padding-top:12px;border-top:0.5px solid var(--line);font-family:var(--mono);font-size:10px;letter-spacing:.10em;color:var(--ink-faint);text-transform:uppercase;display:flex;justify-content:space-between}
+
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+  .info-card{background:var(--ink);color:var(--paper);border-radius:14px;padding:32px;position:relative;overflow:hidden}
+  .info-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--sea),var(--coral),var(--magenta))}
+  .info-card .ic-label{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;color:var(--coral);text-transform:uppercase;font-weight:700;margin-bottom:14px}
+  .info-card h4{font-family:var(--serif);font-weight:400;font-size:24px;color:var(--paper);line-height:1.18;margin-bottom:14px}
+  .info-card p{font-family:var(--serif);font-size:14.5px;color:rgba(247,240,223,.82);line-height:1.65;margin-bottom:12px}
+  .info-card p strong{color:var(--coral);font-weight:500}
+  .info-card ul{list-style:none;padding:0}
+  .info-card li{font-family:var(--serif);font-size:14px;color:rgba(247,240,223,.78);line-height:1.65;padding-left:16px;position:relative;margin-bottom:7px}
+  .info-card li::before{content:'·';position:absolute;left:0;color:var(--coral)}
+
+  .light-card{background:var(--paper-2);border:0.5px solid var(--line);border-radius:14px;padding:32px}
+  .light-card h4{font-family:var(--serif);font-weight:500;font-size:22px;color:var(--ink);margin-bottom:14px;letter-spacing:-.01em}
+  .light-card .climate-row{display:grid;grid-template-columns:80px 1fr 110px;gap:12px;align-items:center;padding:10px 0;border-bottom:0.5px dashed var(--line);font-size:13.5px}
+  .light-card .climate-row:last-child{border-bottom:0}
+  .light-card .climate-row .mo{font-family:var(--mono);font-size:11px;letter-spacing:.10em;color:var(--ink-faint);text-transform:uppercase;font-weight:600}
+  .light-card .climate-row .bar{height:8px;border-radius:4px;background:linear-gradient(90deg,#4a8fb8,#7fa8b3,#d9a55c,#b85439);position:relative}
+  .light-card .climate-row .marker{position:absolute;top:-3px;width:14px;height:14px;border-radius:50%;border:2px solid var(--paper);background:var(--ink);transform:translateX(-7px)}
+  .light-card .climate-row .val{font-family:var(--mono);font-size:11px;color:var(--ink-2);text-align:right;letter-spacing:.04em}
+
+  .phases{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:20px}
+  .phase{background:var(--paper-2);border:0.5px solid var(--line);border-radius:10px;padding:22px 22px 20px;position:relative;border-top:3px solid var(--sea)}
+  .phase:nth-child(2){border-top-color:var(--magenta)}
+  .phase:nth-child(3){border-top-color:var(--sand-deep)}
+  .phase:nth-child(4){border-top-color:var(--coral)}
+  .phase .p-num{font-family:var(--serif);font-style:italic;font-size:34px;color:var(--sea);line-height:1;margin-bottom:6px}
+  .phase:nth-child(2) .p-num{color:var(--magenta)}
+  .phase:nth-child(3) .p-num{color:var(--sand-deep)}
+  .phase:nth-child(4) .p-num{color:var(--coral)}
+  .phase .p-when{font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--ink-faint);text-transform:uppercase;font-weight:700;margin-bottom:8px}
+  .phase h5{font-family:var(--serif);font-weight:500;font-size:17px;color:var(--ink);margin-bottom:8px}
+  .phase p{font-family:var(--sans);font-size:13px;color:var(--ink-2);line-height:1.55}
+
+  .econ-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:20px}
+  .econ-card{background:var(--paper-2);border:0.5px solid var(--line);border-radius:14px;padding:28px 30px}
+  .econ-card h4{font-family:var(--serif);font-weight:500;font-size:20px;color:var(--ink);margin-bottom:14px;letter-spacing:-.005em}
+  .econ-row{display:flex;justify-content:space-between;padding:11px 0;border-bottom:0.5px solid var(--line);font-size:13.5px;color:var(--ink-2)}
+  .econ-row:last-child{border-bottom:0;font-weight:600;color:var(--ink);font-size:15px;padding-top:14px;border-top:1px solid var(--ink)}
+  .econ-row .v{font-family:var(--mono);color:var(--ink);font-weight:500;letter-spacing:.04em}
+
+  footer{margin-top:80px;padding:36px 0;text-align:center;background:var(--ink);color:rgba(247,240,223,.6);font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase}
+  footer a{color:var(--coral)}
+
+  @media (max-width:880px){
+    .h-grid,.siteplan,.two-col,.econ-grid{grid-template-columns:1fr;gap:24px}
+    .site-stats{grid-template-columns:repeat(2,1fr)}
+    .site-stats > div:nth-child(2n){border-right:0}
+    .phases{grid-template-columns:1fr 1fr}
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-in">
+    <div class="brand">
+      <a href="lacompania.html"><span class="word">LA COMPAÑÍA</span></a>
+      <span class="sub" data-es="Planes · Bienes raíces" data-en="Plans · Real estate">Plans · Real estate</span>
+    </div>
+    <span class="spacer"></span>
+    <a class="top-link" href="lacompania.html" data-es="← Activos" data-en="← Assets">← Assets</a>
+    <a class="top-link" href="plan-bajo-mono.html" data-es="← Bajo Mono" data-en="← Bajo Mono">← Bajo Mono</a>
+    <div class="lang">
+      <button class="active" data-lang="en">EN</button>
+      <button data-lang="es">ES</button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<div class="breadcrumbs">
+  <a href="lacompania.html">LA COMPAÑÍA</a> · <span data-es="ACTIVOS" data-en="ASSETS">ASSETS</span> · <span data-es="PLANES" data-en="PLANS">PLANS</span> · ISLA CRISTÓBAL RESORT
+</div>
+
+<header class="hero">
+  <div class="h-grid">
+    <div class="h-info">
+      <div class="h-tag" data-es="CONCEPTO · ISLA CRISTÓBAL · BOCAS DEL TORO" data-en="CONCEPT · ISLA CRISTÓBAL · BOCAS DEL TORO">CONCEPT · ISLA CRISTÓBAL · BOCAS DEL TORO</div>
+      <h1><em>Isla Cristóbal</em><br>Beach Resort</h1>
+      <div class="h-sub" data-es="2.5 hectáreas de costa caribeña en el archipiélago. Discoteca over-water · hostal 24 camas · cinco villas · centro de deportes acuáticos · restaurante." data-en="2.5 hectares of Caribbean coast in the archipelago. Over-water discoteca · 24-bed hostal · five villas · water-sports center · restaurant.">2.5 hectares of Caribbean coast in the archipelago. Over-water discoteca · 24-bed hostal · five villas · water-sports center · restaurant.</div>
+      <div class="h-stamps">
+        <span class="stamp"><strong>ISLA CRISTÓBAL</strong> · BOCAS · PA</span>
+        <span class="stamp" data-es="ESTADO · CONCEPTO" data-en="STATUS · CONCEPT">STATUS · CONCEPT</span>
+        <span class="stamp" data-es="HORIZONTE · 2027-2030" data-en="HORIZON · 2027-2030">HORIZON · 2027-2030</span>
+      </div>
+    </div>
+    <div class="h-render">
+      <div class="h-render-label" data-es="CONCEPT · NO A ESCALA" data-en="CONCEPT · NOT TO SCALE">CONCEPT · NOT TO SCALE</div>
+      <svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg">
+        <!-- Sun -->
+        <circle cx="320" cy="55" r="22" fill="rgba(255,235,180,0.92)"/>
+        <circle cx="320" cy="55" r="32" fill="rgba(255,220,150,0.30)"/>
+        <!-- Distant islands -->
+        <ellipse cx="70" cy="120" rx="48" ry="10" fill="rgba(40,80,55,0.5)"/>
+        <ellipse cx="70" cy="115" rx="42" ry="6" fill="rgba(50,95,65,0.6)"/>
+        <ellipse cx="180" cy="105" rx="35" ry="7" fill="rgba(40,80,55,0.45)"/>
+        <ellipse cx="180" cy="103" rx="30" ry="4" fill="rgba(55,100,72,0.6)"/>
+        <!-- Sun reflection on water -->
+        <ellipse cx="320" cy="195" rx="100" ry="6" fill="rgba(255,235,180,0.55)"/>
+        <ellipse cx="320" cy="200" rx="70" ry="4" fill="rgba(255,255,200,0.4)"/>
+        <!-- Beach front -->
+        <path d="M 0 260 Q 100 252 200 256 Q 300 262 400 256 L 400 320 L 0 320 Z" fill="#f5d9a8"/>
+        <!-- Wave lines -->
+        <path d="M 0 240 Q 80 235 150 240 Q 220 245 300 240 Q 360 237 400 240" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="1.6"/>
+        <path d="M 0 215 Q 80 210 150 215 Q 220 220 300 215 Q 360 212 400 215" fill="none" stroke="rgba(255,255,255,0.30)" stroke-width="1.2"/>
+        <path d="M 0 185 Q 80 180 150 185 Q 220 190 300 185" fill="none" stroke="rgba(255,255,255,0.20)" stroke-width="1"/>
+        <!-- Over-water discoteca with light dome -->
+        <g>
+          <!-- Stilts -->
+          <line x1="195" y1="235" x2="195" y2="265" stroke="#5a3520" stroke-width="2.5"/>
+          <line x1="225" y1="235" x2="225" y2="265" stroke="#5a3520" stroke-width="2.5"/>
+          <line x1="255" y1="235" x2="255" y2="265" stroke="#5a3520" stroke-width="2.5"/>
+          <line x1="285" y1="235" x2="285" y2="265" stroke="#5a3520" stroke-width="2.5"/>
+          <!-- Deck -->
+          <rect x="185" y="222" width="110" height="14" fill="#8a5a3c" stroke="#3a1f10" stroke-width="0.5"/>
+          <!-- Building -->
+          <polygon points="185,222 295,222 305,200 240,178 175,200" fill="#1a1a1a"/>
+          <rect x="185" y="222" width="110" height="0" fill="#1a1a1a"/>
+          <!-- Light dome -->
+          <ellipse cx="240" cy="175" rx="55" ry="18" fill="rgba(184,68,124,0.65)"/>
+          <ellipse cx="240" cy="170" rx="48" ry="13" fill="rgba(255,200,150,0.65)"/>
+          <ellipse cx="240" cy="166" rx="40" ry="8" fill="rgba(255,235,200,0.7)"/>
+          <!-- Speakers / silhouettes -->
+          <rect x="195" y="208" width="3" height="14" fill="rgba(217,87,59,0.85)"/>
+          <rect x="284" y="208" width="3" height="14" fill="rgba(217,87,59,0.85)"/>
+          <text x="240" y="218" text-anchor="middle" font-family="Inter" font-size="6" fill="#d9a55c" letter-spacing="3" font-weight="600">DISCOTECA</text>
+        </g>
+        <!-- Hostal on shore (multi-room building) -->
+        <g>
+          <polygon points="32,278 105,278 110,266 70,256 27,266" fill="#8a5a3c" stroke="#3a1f10" stroke-width="0.5"/>
+          <rect x="32" y="278" width="75" height="22" fill="#f0e4c8" stroke="#3a1f10" stroke-width="0.5"/>
+          <!-- Windows in row -->
+          <rect x="38" y="284" width="5" height="9" fill="#1a3325"/>
+          <rect x="49" y="284" width="5" height="9" fill="#1a3325"/>
+          <rect x="60" y="284" width="5" height="9" fill="#1a3325"/>
+          <rect x="71" y="284" width="5" height="9" fill="#1a3325"/>
+          <rect x="82" y="284" width="5" height="9" fill="#1a3325"/>
+          <rect x="93" y="284" width="5" height="9" fill="#1a3325"/>
+          <text x="70" y="274" text-anchor="middle" font-family="JetBrains Mono" font-size="5" fill="#3a1f10" letter-spacing="1.5">HOSTAL</text>
+        </g>
+        <!-- Beachfront villas -->
+        <g>
+          <polygon points="325,275 360,275 364,266 343,258 322,266" fill="#8a5a3c" stroke="#3a1f10" stroke-width="0.5"/>
+          <rect x="325" y="275" width="35" height="16" fill="#f0e4c8" stroke="#3a1f10" stroke-width="0.5"/>
+          <rect x="332" y="280" width="5" height="7" fill="rgba(140,180,210,0.7)"/>
+          <rect x="345" y="280" width="5" height="7" fill="rgba(140,180,210,0.7)"/>
+        </g>
+        <!-- Palm trees -->
+        <g>
+          <line x1="148" y1="290" x2="156" y2="248" stroke="#5a3520" stroke-width="2.5"/>
+          <path d="M 156 248 Q 138 240 130 248 M 156 248 Q 174 240 182 246 M 156 248 Q 144 232 138 224 M 156 248 Q 168 232 176 226 M 156 248 Q 148 234 142 230" fill="none" stroke="#1a4d2a" stroke-width="2.5"/>
+          <circle cx="156" cy="244" r="3" fill="#5a3520"/>
+          <line x1="305" y1="295" x2="312" y2="252" stroke="#5a3520" stroke-width="2.5"/>
+          <path d="M 312 252 Q 294 244 286 252 M 312 252 Q 330 244 338 250 M 312 252 Q 300 236 294 228 M 312 252 Q 324 236 332 230" fill="none" stroke="#1a4d2a" stroke-width="2.5"/>
+          <circle cx="312" cy="248" r="3" fill="#5a3520"/>
+        </g>
+        <!-- Boats / pier -->
+        <g>
+          <ellipse cx="375" cy="248" rx="14" ry="3" fill="#f0e4c8"/>
+          <line x1="375" y1="245" x2="378" y2="238" stroke="#8a5a3c" stroke-width="1"/>
+          <polygon points="378,238 376,238 378,232 380,238" fill="#f0e4c8"/>
+        </g>
+        <!-- Birds -->
+        <path d="M 60 80 q 5 -5 10 0 q 5 -5 10 0" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="1"/>
+        <path d="M 105 95 q 4 -4 8 0 q 4 -4 8 0" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1"/>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<div class="site-stats">
+  <div><div class="k" data-es="ÁREA TOTAL" data-en="TOTAL AREA">TOTAL AREA</div><div class="v"><em>2.5</em></div><div class="u" data-es="HECTÁREAS · 6.18 ACRES" data-en="HECTARES · 6.18 ACRES">HECTARES · 6.18 ACRES</div></div>
+  <div><div class="k" data-es="FRENTE DE PLAYA" data-en="BEACHFRONT">BEACHFRONT</div><div class="v">180</div><div class="u">METROS · 590 FT</div></div>
+  <div><div class="k" data-es="CLIMA" data-en="CLIMATE">CLIMATE</div><div class="v">24-31°</div><div class="u" data-es="C · TROPICAL" data-en="C · TROPICAL">C · TROPICAL</div></div>
+  <div><div class="k" data-es="A BOCAS TOWN" data-en="TO BOCAS TOWN">TO BOCAS TOWN</div><div class="v">18</div><div class="u" data-es="MIN EN LANCHA" data-en="MIN BY BOAT">MIN BY BOAT</div></div>
+  <div><div class="k" data-es="UNIDADES" data-en="UNITS">UNITS</div><div class="v">1+1+5</div><div class="u" data-es="DISCO+HOSTAL+VILLAS" data-en="DISCO+HOSTAL+VILLAS">DISCO+HOSTAL+VILLAS</div></div>
+</div>
+
+<!-- WHY HERE -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es="01 · LA UBICACIÓN" data-en="01 · THE LOCATION">01 · THE LOCATION</div>
+    <h2 data-es-html="Caribe panameño. <em>Archipiélago</em> sin huracanes." data-en-html="Panamanian Caribbean. <em>Archipelago</em> without hurricanes.">Panamanian Caribbean. Archipelago without hurricanes.</h2>
+    <p class="sec-sub" data-es="Isla Cristóbal es la segunda isla más grande del archipiélago Bocas del Toro — entre Isla Colón (capital del archipiélago) e Isla Bastimentos. Manglar al sur, playa caribeña al norte. Sin huracanes en su historia documentada. 18 minutos en lancha desde Bocas Town." data-en="Isla Cristóbal is the second-largest island in Bocas del Toro archipelago — between Isla Colón (the capital island) and Isla Bastimentos. Mangrove to the south, Caribbean beach to the north. No hurricanes in documented history. 18 min by boat from Bocas Town.">Isla Cristóbal is the second-largest island in Bocas del Toro archipelago — between Isla Colón (the capital island) and Isla Bastimentos. Mangrove to the south, Caribbean beach to the north. No hurricanes in documented history. 18 min by boat from Bocas Town.</p>
+  </div>
+
+  <div class="two-col">
+    <div class="light-card">
+      <h4 data-es="Promedio mensual · temperatura + lluvia" data-en="Monthly average · temp + rain">Monthly average · temp + rain</h4>
+      <div class="climate-row"><span class="mo">ENE</span><div class="bar"><div class="marker" style="left:55%"></div></div><span class="val">24-29° · 180mm</span></div>
+      <div class="climate-row"><span class="mo">FEB</span><div class="bar"><div class="marker" style="left:58%"></div></div><span class="val">24-29° · 100mm</span></div>
+      <div class="climate-row"><span class="mo">MAR</span><div class="bar"><div class="marker" style="left:60%"></div></div><span class="val">24-30° · 90mm</span></div>
+      <div class="climate-row"><span class="mo">ABR</span><div class="bar"><div class="marker" style="left:62%"></div></div><span class="val">25-30° · 120mm</span></div>
+      <div class="climate-row"><span class="mo">MAY</span><div class="bar"><div class="marker" style="left:65%"></div></div><span class="val">25-31° · 280mm</span></div>
+      <div class="climate-row"><span class="mo">JUN</span><div class="bar"><div class="marker" style="left:65%"></div></div><span class="val">25-31° · 320mm</span></div>
+      <div class="climate-row"><span class="mo">JUL</span><div class="bar"><div class="marker" style="left:65%"></div></div><span class="val">25-31° · 350mm</span></div>
+      <div class="climate-row"><span class="mo">AGO</span><div class="bar"><div class="marker" style="left:65%"></div></div><span class="val">25-31° · 280mm</span></div>
+      <div class="climate-row"><span class="mo">SEP</span><div class="bar"><div class="marker" style="left:62%"></div></div><span class="val">25-31° · 200mm · ★ SECO</span></div>
+      <div class="climate-row"><span class="mo">OCT</span><div class="bar"><div class="marker" style="left:62%"></div></div><span class="val">24-31° · 230mm · ★ SECO</span></div>
+      <div class="climate-row"><span class="mo">NOV</span><div class="bar"><div class="marker" style="left:60%"></div></div><span class="val">24-30° · 380mm</span></div>
+      <div class="climate-row"><span class="mo">DIC</span><div class="bar"><div class="marker" style="left:58%"></div></div><span class="val">24-29° · 290mm</span></div>
+    </div>
+
+    <div class="info-card">
+      <div class="ic-label" data-es="POR QUÉ ISLA CRISTÓBAL" data-en="WHY ISLA CRISTÓBAL">WHY ISLA CRISTÓBAL</div>
+      <h4 data-es="Bocas sin la saturación de Colón" data-en="Bocas without the Colón saturation">Bocas without the Colón saturation</h4>
+      <p data-es="Isla Colón (Bocas Town) está saturada — hostales, fiesta, ruido. Isla Cristóbal está al lado, 18 minutos en lancha, y prácticamente sin desarrollo turístico. Es la <strong>jugada del &lsquo;next-up&rsquo;</strong>: el party-circuit ya está creado, pero la calma todavía está disponible." data-en="Isla Colón (Bocas Town) is saturated — hostels, parties, noise. Isla Cristóbal is right next door, 18 min by boat, and almost undeveloped for tourism. It's the <strong>'next-up' play</strong>: the party circuit is already there, but the calm is still available.">Isla Colón (Bocas Town) is saturated — hostels, parties, noise. Isla Cristóbal is right next door, 18 min by boat, and almost undeveloped for tourism. It's the <strong>'next-up' play</strong>: the party circuit is already there, but the calm is still available.</p>
+      <ul>
+        <li><span data-es="Indígena Ngäbe-Buglé comunidad presente · respeto + acuerdo previo necesario" data-en="Ngäbe-Buglé indigenous community present · respect + prior agreement needed">Ngäbe-Buglé indigenous community present · respect + prior agreement needed</span></li>
+        <li><span data-es="Frente de playa con arena · sin acantilados · acceso amigable" data-en="Sandy beachfront · no cliffs · friendly access">Sandy beachfront · no cliffs · friendly access</span></li>
+        <li><span data-es="Sin huracanes · Caribe centroamericano se libra históricamente" data-en="No hurricanes · Central American Caribbean spared historically">No hurricanes · Central American Caribbean spared historically</span></li>
+        <li><span data-es="Aeropuerto Bocas (BOC) · 60 vuelos/sem a PTY + COL · 1h" data-en="Bocas airport (BOC) · 60 flights/wk to PTY + COL · 1h">Bocas airport (BOC) · 60 flights/wk to PTY + COL · 1h</span></li>
+        <li><span data-es="Visa friendly-nations + permisos turísticos ya existentes en zona" data-en="Friendly-nations visa + tourism permits already established in zone">Friendly-nations visa + tourism permits already established in zone</span></li>
+        <li><span data-es="Energía via solar + lancha-fuel · agua via captación lluvia + ósmosis" data-en="Energy via solar + boat-fuel · water via rain catchment + osmosis">Energy via solar + boat-fuel · water via rain catchment + osmosis</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SITE PLAN -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es="02 · SITE PLAN" data-en="02 · SITE PLAN">02 · SITE PLAN</div>
+    <h2 data-es-html="Distribución <em>aérea</em>." data-en-html="<em>Aerial</em> distribution.">Aerial distribution.</h2>
+    <p class="sec-sub" data-es="Discoteca over-water al sur (la cala protegida). Hostal en la franja media. Cinco villas distribuidas en la línea de playa norte. Restaurante + recepción en el muelle." data-en="Over-water discoteca on the south side (the protected cove). Hostal in the middle band. Five villas distributed along the north beach. Restaurant + reception at the pier.">Over-water discoteca on the south side (the protected cove). Hostal in the middle band. Five villas distributed along the north beach. Restaurant + reception at the pier.</p>
+  </div>
+
+  <div class="siteplan">
+    <div class="siteplan-svg">
+      <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+        <!-- Water (background fill from container) -->
+        <!-- Property water boundary -->
+        <path d="M 30 30 L 370 30 L 380 280 L 20 280 Z" fill="none" stroke="#1d4d6a" stroke-width="2" stroke-dasharray="6 4"/>
+        <!-- Island shape (land area) -->
+        <path d="M 50 95 Q 90 75 145 80 Q 200 75 260 85 Q 310 90 350 110 Q 365 145 358 195 Q 350 230 310 245 Q 240 252 175 248 Q 110 245 70 220 Q 45 175 50 95 Z" fill="#5a8862"/>
+        <!-- Beach edge -->
+        <path d="M 50 95 Q 90 75 145 80 Q 200 75 260 85 Q 310 90 350 110" fill="none" stroke="#f5d9a8" stroke-width="6"/>
+        <!-- Mangrove south -->
+        <path d="M 110 230 Q 175 240 240 235" fill="none" stroke="#1a3325" stroke-width="4" stroke-dasharray="2 2"/>
+        <!-- Pier -->
+        <line x1="350" y1="155" x2="378" y2="155" stroke="#8a5a3c" stroke-width="4"/>
+        <circle cx="378" cy="155" r="3" fill="#1d4d6a"/>
+        <text x="378" y="148" text-anchor="middle" font-family="JetBrains Mono" font-size="6" fill="#1d4d6a" letter-spacing="1">DOCK</text>
+        <!-- Reception/restaurant -->
+        <rect x="312" y="135" width="32" height="22" fill="#f0e4c8" stroke="#b88842" stroke-width="1.2"/>
+        <text x="328" y="150" text-anchor="middle" font-family="Inter" font-size="5.5" fill="#b88842" font-weight="600" letter-spacing="1">RECP+REST</text>
+        <!-- Over-water discoteca -->
+        <ellipse cx="200" cy="265" rx="55" ry="18" fill="#1a1a1a" stroke="#1d4d6a" stroke-width="1.5"/>
+        <ellipse cx="200" cy="262" rx="45" ry="12" fill="rgba(184,68,124,0.55)" stroke="#1a1a1a" stroke-width="0.5"/>
+        <text x="200" y="266" text-anchor="middle" font-family="Inter" font-size="6.5" fill="#fff" font-weight="700" letter-spacing="2">DISCOTECA</text>
+        <line x1="170" y1="252" x2="170" y2="245" stroke="#5a3520" stroke-width="1"/>
+        <line x1="200" y1="252" x2="200" y2="244" stroke="#5a3520" stroke-width="1"/>
+        <line x1="230" y1="252" x2="230" y2="245" stroke="#5a3520" stroke-width="1"/>
+        <!-- Hostal (long bar building) -->
+        <rect x="125" y="170" width="100" height="34" fill="#f0e4c8" stroke="#3d7a9c" stroke-width="1.5"/>
+        <rect x="125" y="165" width="100" height="6" fill="#3d7a9c"/>
+        <text x="175" y="190" text-anchor="middle" font-family="Inter" font-size="7" fill="#3d7a9c" font-weight="700" letter-spacing="2">HOSTAL · 24 BUNKS</text>
+        <!-- Villas distributed along beach -->
+        <g>
+          <rect x="60" y="100" width="24" height="18" fill="#f0e4c8" stroke="#c9a26a" stroke-width="1.4"/>
+          <text x="72" y="96" text-anchor="middle" font-family="JetBrains Mono" font-size="6" fill="#c9a26a" font-weight="700">V1</text>
+          <rect x="110" y="98" width="24" height="18" fill="#f0e4c8" stroke="#c9a26a" stroke-width="1.4"/>
+          <text x="122" y="94" text-anchor="middle" font-family="JetBrains Mono" font-size="6" fill="#c9a26a" font-weight="700">V2</text>
+          <rect x="180" y="102" width="24" height="18" fill="#f0e4c8" stroke="#c9a26a" stroke-width="1.4"/>
+          <text x="192" y="98" text-anchor="middle" font-family="JetBrains Mono" font-size="6" fill="#c9a26a" font-weight="700">V3</text>
+          <rect x="245" y="105" width="24" height="18" fill="#f0e4c8" stroke="#c9a26a" stroke-width="1.4"/>
+          <text x="257" y="101" text-anchor="middle" font-family="JetBrains Mono" font-size="6" fill="#c9a26a" font-weight="700">V4</text>
+          <!-- Over-water villa -->
+          <rect x="280" y="148" width="24" height="18" fill="#f0e4c8" stroke="#3d7a9c" stroke-width="1.4"/>
+          <line x1="285" y1="166" x2="285" y2="178" stroke="#5a3520" stroke-width="1"/>
+          <line x1="299" y1="166" x2="299" y2="178" stroke="#5a3520" stroke-width="1"/>
+          <text x="292" y="144" text-anchor="middle" font-family="JetBrains Mono" font-size="6" fill="#3d7a9c" font-weight="700">V5 · OW</text>
+        </g>
+        <!-- Water sports / kayak rack -->
+        <rect x="220" y="140" width="30" height="10" fill="#1a1a1a" stroke="#3d7a9c" stroke-width="0.8"/>
+        <text x="235" y="135" text-anchor="middle" font-family="JetBrains Mono" font-size="5" fill="#3d7a9c" letter-spacing="1">KAYAK</text>
+        <!-- Palm trees scattered -->
+        <g fill="#1a4d2a">
+          <circle cx="95" cy="135" r="3.5"/><circle cx="155" cy="138" r="3"/>
+          <circle cx="215" cy="140" r="3.5"/><circle cx="270" cy="135" r="3"/>
+          <circle cx="100" cy="165" r="3"/><circle cx="245" cy="170" r="3"/>
+        </g>
+        <!-- Paths (sandy) -->
+        <path d="M 350 155 Q 290 158 230 165 Q 175 175 130 175 M 175 204 Q 195 230 200 250 M 72 116 Q 75 145 105 165 M 192 120 Q 195 140 175 165" fill="none" stroke="rgba(245,217,168,0.85)" stroke-width="2.5" stroke-dasharray="3 3"/>
+        <!-- North arrow -->
+        <g transform="translate(355, 55)">
+          <circle cx="0" cy="0" r="13" fill="rgba(247,240,223,0.9)" stroke="#1d4d6a" stroke-width="1"/>
+          <path d="M 0 -10 L 0 8 M 0 -10 L -4 -4 M 0 -10 L 4 -4" fill="none" stroke="#1d4d6a" stroke-width="1.5"/>
+          <text x="0" y="-15" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#1d4d6a" font-weight="700">N</text>
+        </g>
+        <!-- Scale -->
+        <g transform="translate(30, 285)">
+          <line x1="0" y1="0" x2="60" y2="0" stroke="#fff" stroke-width="2"/>
+          <line x1="0" y1="-3" x2="0" y2="3" stroke="#fff" stroke-width="2"/>
+          <line x1="60" y1="-3" x2="60" y2="3" stroke="#fff" stroke-width="2"/>
+          <text x="30" y="-6" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#fff" font-weight="700">50 M</text>
+        </g>
+        <!-- "Beach" label -->
+        <text x="200" y="60" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#fff" font-weight="600" letter-spacing="3">PLAYA NORTE · CARIBE</text>
+      </svg>
+    </div>
+    <div class="siteplan-legend">
+      <h4 data-es="Leyenda del plot" data-en="Site legend">Site legend</h4>
+      <div class="legend-row"><div class="legend-dot" style="background:#1a1a1a;border:1.5px solid #b8447c"></div><span class="label" data-es="Discoteca over-water · 380 m²" data-en="Over-water discoteca · 380 m²">Over-water discoteca · 380 m²</span><span class="meta">320 PAX</span></div>
+      <div class="legend-row"><div class="legend-dot" style="background:#f0e4c8;border:1.5px solid #3d7a9c"></div><span class="label" data-es="Hostal · 24 camas en bunks" data-en="Hostal · 24 bunk beds">Hostal · 24 bunk beds</span><span class="meta">340 m²</span></div>
+      <div class="legend-row"><div class="legend-dot" style="background:#f0e4c8;border:1.5px solid #c9a26a"></div><span class="label" data-es="Villas frente al mar · 4 × 95 m²" data-en="Beachfront villas · 4 × 95 m²">Beachfront villas · 4 × 95 m²</span><span class="meta">V1-V4</span></div>
+      <div class="legend-row"><div class="legend-dot" style="background:#f0e4c8;border:1.5px solid #3d7a9c"></div><span class="label" data-es="Villa over-water · 1 × 95 m²" data-en="Over-water villa · 1 × 95 m²">Over-water villa · 1 × 95 m²</span><span class="meta">V5 · OW</span></div>
+      <div class="legend-row"><div class="legend-dot" style="background:#f0e4c8;border:1.5px solid #b88842"></div><span class="label" data-es="Recepción + restaurante" data-en="Reception + restaurant">Reception + restaurant</span><span class="meta">280 m²</span></div>
+      <div class="legend-row"><div class="legend-dot" style="background:#1a1a1a;border:1.5px solid #3d7a9c"></div><span class="label" data-es="Centro acuático · kayak · SUP" data-en="Water-sports · kayak · SUP">Water-sports · kayak · SUP</span><span class="meta">SHED</span></div>
+      <div class="legend-row"><div class="legend-dot" style="background:rgba(245,217,168,0.85)"></div><span class="label" data-es="Senderos de arena" data-en="Sand paths">Sand paths</span><span class="meta">~900 M</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPONENTS -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es="03 · COMPONENTES" data-en="03 · COMPONENTS">03 · COMPONENTS</div>
+    <h2 data-es-html="<em>Qué se construye</em>. Detalle." data-en-html="<em>What gets built</em>. The detail.">What gets built. The detail.</h2>
+  </div>
+
+  <div class="components">
+    <div class="component c-amenity">
+      <div class="c-num t-disco" data-es="01 · DISCOTECA · OVER-WATER" data-en="01 · DISCOTECA · OVER-WATER">01 · DISCOTECA · OVER-WATER</div>
+      <h4 data-es-html="<em>La</em> Discoteca" data-en-html="<em>The</em> Discoteca">The Discoteca</h4>
+      <div class="c-sub" data-es="380 m² sobre el agua · capacidad 320 · techo translúcido" data-en="380 m² over water · 320 pax capacity · translucent roof">380 m² over water · 320 pax capacity · translucent roof</div>
+      <ul>
+        <li><span data-es="Plataforma sobre pilotes de madera tropical · 14 columnas" data-en="Tropical hardwood pilings · 14 columns">Tropical hardwood pilings · 14 columns</span></li>
+        <li><span data-es="DJ booth elevado · sistema PA Funktion-One F132" data-en="Elevated DJ booth · Funktion-One F132 PA system">Elevated DJ booth · Funktion-One F132 PA system</span></li>
+        <li><span data-es="Iluminación arquitectónica + láser ambiente low-cost" data-en="Architectural lighting + ambient laser low-cost">Architectural lighting + ambient laser low-cost</span></li>
+        <li><span data-es="Bar central 6 puestos · doble cocktail station" data-en="Central 6-seat bar · double cocktail station">Central 6-seat bar · double cocktail station</span></li>
+        <li><span data-es="Apertura: jueves-domingo · cerrada lunes-miércoles" data-en="Open Thu-Sun · closed Mon-Wed">Open Thu-Sun · closed Mon-Wed</span></li>
+        <li><span data-es="Curaduría de DJs · circuito caribeño + invitados europeos" data-en="DJ curation · Caribbean circuit + European guests">DJ curation · Caribbean circuit + European guests</span></li>
+      </ul>
+      <div class="c-foot"><span data-es="ANCLA COMERCIAL" data-en="COMMERCIAL ANCHOR">COMMERCIAL ANCHOR</span><span>~$1.2M USD</span></div>
+    </div>
+
+    <div class="component">
+      <div class="c-num t-hostal" data-es="02 · HOSTAL" data-en="02 · HOSTAL">02 · HOSTAL</div>
+      <h4 data-es-html="<em>El</em> Hostal" data-en-html="<em>The</em> Hostal">The Hostal</h4>
+      <div class="c-sub" data-es="340 m² · 24 camas · cocina compartida · terraza" data-en="340 m² · 24 beds · shared kitchen · terrace">340 m² · 24 beds · shared kitchen · terrace</div>
+      <ul>
+        <li><span data-es="6 dormitorios de 4 · literas dobles + lockers" data-en="6 dorms of 4 · bunk beds + lockers">6 dorms of 4 · bunk beds + lockers</span></li>
+        <li><span data-es="A/C en cada dorm · ventiladores techo + abertura cruzada" data-en="A/C per dorm · ceiling fans + cross-ventilation">A/C per dorm · ceiling fans + cross-ventilation</span></li>
+        <li><span data-es="Cocina compartida estilo backpacker · induction" data-en="Backpacker shared kitchen · induction cooktops">Backpacker shared kitchen · induction cooktops</span></li>
+        <li><span data-es="2 baños comunes · 6 duchas · agua caliente solar" data-en="2 shared baths · 6 showers · solar hot water">2 shared baths · 6 showers · solar hot water</span></li>
+        <li><span data-es="Lounge + hamacas en terraza · vista al mar" data-en="Lounge + hammocks on terrace · sea view">Lounge + hammocks on terrace · sea view</span></li>
+        <li><span data-es="Mercado backpacker: $28-38/noche · estancia media 3 noches" data-en="Backpacker market: $28-38/night · 3-night avg stay">Backpacker market: $28-38/night · 3-night avg stay</span></li>
+      </ul>
+      <div class="c-foot"><span data-es="VOLUMEN + DISCOTECA TRAFFIC" data-en="VOLUME + DISCO TRAFFIC">VOLUME + DISCO TRAFFIC</span><span>~$680K USD</span></div>
+    </div>
+
+    <div class="component c-villa">
+      <div class="c-num t-villa" data-es="03 · VILLAS · 4 BEACHFRONT + 1 OVER-WATER" data-en="03 · VILLAS · 4 BEACHFRONT + 1 OVER-WATER">03 · VILLAS · 4 BEACHFRONT + 1 OVER-WATER</div>
+      <h4 data-es-html="Cinco <em>villas</em>" data-en-html="Five <em>villas</em>">Five villas</h4>
+      <div class="c-sub" data-es="95 m² c/u · 1-2 dorm · cocineta + terraza al mar" data-en="95 m² each · 1-2 BR · kitchenette + sea terrace">95 m² each · 1-2 BR · kitchenette + sea terrace</div>
+      <ul>
+        <li><span data-es="4 villas beachfront · pisos en madera tropical sobre piedra coral" data-en="4 beachfront villas · tropical hardwood over coral stone">4 beachfront villas · tropical hardwood over coral stone</span></li>
+        <li><span data-es="1 villa over-water · escalera al océano · piso de vidrio en la sala" data-en="1 over-water villa · ladder to ocean · glass floor in living room">1 over-water villa · ladder to ocean · glass floor in living room</span></li>
+        <li><span data-es="Outdoor shower · ducha lluvia con vista al cielo" data-en="Outdoor shower · rain shower with sky view">Outdoor shower · rain shower with sky view</span></li>
+        <li><span data-es="Hamaca colgante + king bed + mosquitero textil" data-en="Hanging hammock + king bed + textile mosquito net">Hanging hammock + king bed + textile mosquito net</span></li>
+        <li><span data-es="$280-450/noche · 6-8 noches estancia media · luna de miel + pareja" data-en="$280-450/night · 6-8 night avg stay · honeymoon + couples">$280-450/night · 6-8 night avg stay · honeymoon + couples</span></li>
+        <li><span data-es="Concierge incluido · transporte lancha desde Bocas Town" data-en="Concierge included · boat transfer from Bocas Town">Concierge included · boat transfer from Bocas Town</span></li>
+      </ul>
+      <div class="c-foot"><span data-es="MARGEN ALTO" data-en="HIGH MARGIN">HIGH MARGIN</span><span>~$1.4M USD</span></div>
+    </div>
+
+    <div class="component c-infra">
+      <div class="c-num t-infra" data-es="04 · INFRAESTRUCTURA · ISLA" data-en="04 · INFRASTRUCTURE · ISLAND">04 · INFRASTRUCTURE · ISLAND</div>
+      <h4 data-es-html="<em>Spine</em> del sitio" data-en-html="Site <em>spine</em>">Site spine</h4>
+      <div class="c-sub" data-es="Energía + agua + transporte · todo off-grid" data-en="Energy + water + transport · all off-grid">Energy + water + transport · all off-grid</div>
+      <ul>
+        <li><span data-es="Solar central 60 kW + batería LFP 120 kWh" data-en="Central solar 60 kW + LFP battery 120 kWh">Central solar 60 kW + LFP battery 120 kWh</span></li>
+        <li><span data-es="Captación lluvia 60 m³ · filtración + UV potable" data-en="Rain catchment 60 m³ · filtration + UV potable">Rain catchment 60 m³ · filtration + UV potable</span></li>
+        <li><span data-es="Generador diésel respaldo 35 kW (extremo)" data-en="Diesel backup generator 35 kW (extreme)">Diesel backup generator 35 kW (extreme)</span></li>
+        <li><span data-es="2 lanchas · 1 transfer (16 pax) + 1 logística carga" data-en="2 boats · 1 transfer (16 pax) + 1 cargo logistics">2 boats · 1 transfer (16 pax) + 1 cargo logistics</span></li>
+        <li><span data-es="Starlink + radio VHF marina · respaldo internet" data-en="Starlink + marine VHF radio · internet backup">Starlink + marine VHF radio · internet backup</span></li>
+        <li><span data-es="Tratamiento aguas grises in-situ · biofiltro de manglar" data-en="On-site greywater treatment · mangrove biofilter">On-site greywater treatment · mangrove biofilter</span></li>
+      </ul>
+      <div class="c-foot"><span data-es="OFF-GRID 100%" data-en="100% OFF-GRID">100% OFF-GRID</span><span>~$520K USD</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PHASING -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es="04 · FASEO" data-en="04 · PHASING">04 · PHASING</div>
+    <h2 data-es-html="<em>Cuatro fases</em>. Comienza con la discoteca." data-en-html="<em>Four phases</em>. Start with the discoteca.">Four phases. Start with the discoteca.</h2>
+    <p class="sec-sub" data-es="La discoteca es el ancla comercial — abre primero para generar flujo y prueba la operación logística (transporte, energía, basura). Las villas y el hostal son fases 2-4." data-en="The discoteca is the commercial anchor — opens first to drive traffic and proof the logistics (transport, energy, waste). Villas and hostal are phases 2-4.">The discoteca is the commercial anchor — opens first to drive traffic and proof the logistics (transport, energy, waste). Villas and hostal are phases 2-4.</p>
+  </div>
+
+  <div class="phases">
+    <div class="phase">
+      <div class="p-num">01</div>
+      <div class="p-when" data-es="2027 Q2-Q4" data-en="2027 Q2-Q4">2027 Q2-Q4</div>
+      <h5 data-es="Acuerdo + permisos + acuerdo comunitario" data-en="Agreement + permits + community agreement">Agreement + permits + community agreement</h5>
+      <p data-es="Acuerdo de derecho-de-uso con comunidad Ngäbe-Buglé (vital — sin esto no hay proyecto). Permisos ANATI + ARAP (marítimos) + MINSA + ANAM (ambiental EIA). Sociedad estructura panameña." data-en="Right-of-use agreement with Ngäbe-Buglé community (essential — without this, no project). ANATI + ARAP (maritime) + MINSA + ANAM (environmental EIA) permits. Panamanian company structure.">Right-of-use agreement with Ngäbe-Buglé community (essential — without this, no project). ANATI + ARAP (maritime) + MINSA + ANAM (environmental EIA) permits. Panamanian company structure.</p>
+    </div>
+    <div class="phase">
+      <div class="p-num">02</div>
+      <div class="p-when" data-es="2028 Q1-Q4" data-en="2028 Q1-Q4">2028 Q1-Q4</div>
+      <h5 data-es="Infra · discoteca · recepción" data-en="Infra · discoteca · reception">Infra · discoteca · reception</h5>
+      <p data-es="Pilotes y plataforma over-water. Solar + batería. Sistema agua. Lanchas. Edificio recepción/restaurante. Discoteca completa con apertura soft octubre 2028 (final de temporada lluvia)." data-en="Pilings and over-water platform. Solar + battery. Water system. Boats. Reception/restaurant building. Discoteca complete with soft opening October 2028 (end of rainy season).">Pilings and over-water platform. Solar + battery. Water system. Boats. Reception/restaurant building. Discoteca complete with soft opening October 2028 (end of rainy season).</p>
+    </div>
+    <div class="phase">
+      <div class="p-num">03</div>
+      <div class="p-when" data-es="2029 Q1-Q3" data-en="2029 Q1-Q3">2029 Q1-Q3</div>
+      <h5 data-es="Hostal + 3 villas beachfront" data-en="Hostal + 3 beachfront villas">Hostal + 3 beachfront villas</h5>
+      <p data-es="Hostal 24 camas operativo en abril 2029 (alta temporada seca). V1, V2, V3 entregadas en pareja. Operación dual: backpackers en hostal + parejas en villas; ambos convergen en discoteca." data-en="Hostal 24 beds operational April 2029 (high dry season). V1, V2, V3 delivered in pairs. Dual operation: backpackers in hostal + couples in villas; both converge at discoteca.">Hostal 24 beds operational April 2029 (high dry season). V1, V2, V3 delivered in pairs. Dual operation: backpackers in hostal + couples in villas; both converge at discoteca.</p>
+    </div>
+    <div class="phase">
+      <div class="p-num">04</div>
+      <div class="p-when" data-es="2029 Q4 – 2030 Q3" data-en="2029 Q4 – 2030 Q3">2029 Q4 – 2030 Q3</div>
+      <h5 data-es="V4 + V5 over-water + acuático" data-en="V4 + V5 over-water + water-sports">V4 + V5 over-water + water-sports</h5>
+      <p data-es="V4 beachfront + V5 over-water (la &lsquo;flagship suite&rsquo;). Centro de deportes acuáticos: kayak, SUP, snorkel, sunset cruise. Capacidad plena en operación temporada alta 2030-31." data-en="V4 beachfront + V5 over-water (the 'flagship suite'). Water-sports center: kayak, SUP, snorkel, sunset cruise. Full capacity by high-season 2030-31.">V4 beachfront + V5 over-water (the 'flagship suite'). Water-sports center: kayak, SUP, snorkel, sunset cruise. Full capacity by high-season 2030-31.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ECONOMICS -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es="05 · ECONÓMICA" data-en="05 · ECONOMICS">05 · ECONOMICS</div>
+    <h2 data-es-html="Números <em>preliminares</em>." data-en-html="<em>Preliminary</em> numbers.">Preliminary numbers.</h2>
+    <p class="sec-sub" data-es="Revenue depende de la mix discoteca (alto-volumen) + villas (alto-margen) + hostal (estable). Validar con operador local. La temporada alta diciembre-marzo + septiembre-octubre tiene 80% de ingresos." data-en="Revenue depends on disco mix (high-volume) + villas (high-margin) + hostal (stable). Validate with local operator. December-March + September-October high seasons drive 80% of revenue.">Revenue depends on disco mix (high-volume) + villas (high-margin) + hostal (stable). Validate with local operator. December-March + September-October high seasons drive 80% of revenue.</p>
+  </div>
+
+  <div class="econ-grid">
+    <div class="econ-card">
+      <h4 data-es="Capex · construcción + setup" data-en="Capex · construction + setup">Capex · construction + setup</h4>
+      <div class="econ-row"><span data-es="Derecho-de-uso · 99-year lease" data-en="Right-of-use · 99-year lease">Right-of-use · 99-year lease</span><span class="v">$280,000</span></div>
+      <div class="econ-row"><span data-es="Discoteca over-water 380 m²" data-en="Over-water discoteca 380 m²">Over-water discoteca 380 m²</span><span class="v">$1,200,000</span></div>
+      <div class="econ-row"><span data-es="Hostal 340 m² @ $1,400/m²" data-en="Hostal 340 m² @ $1,400/m²">Hostal 340 m² @ $1,400/m²</span><span class="v">$480,000</span></div>
+      <div class="econ-row"><span data-es="5 villas · 475 m² @ $2,200/m²" data-en="5 villas · 475 m² @ $2,200/m²">5 villas · 475 m² @ $2,200/m²</span><span class="v">$1,045,000</span></div>
+      <div class="econ-row"><span data-es="Recepción + restaurante" data-en="Reception + restaurant">Reception + restaurant</span><span class="v">$340,000</span></div>
+      <div class="econ-row"><span data-es="Infra off-grid + lanchas" data-en="Off-grid infra + boats">Off-grid infra + boats</span><span class="v">$520,000</span></div>
+      <div class="econ-row"><span data-es="Permisos · EIA · ARAP · 8%" data-en="Permits · EIA · ARAP · 8%">Permits · EIA · ARAP · 8%</span><span class="v">$310,000</span></div>
+      <div class="econ-row"><span data-es="Reserva contingencia · 12% (isla)" data-en="Contingency reserve · 12% (island)">Contingency reserve · 12% (island)</span><span class="v">$510,000</span></div>
+      <div class="econ-row"><span data-es="TOTAL CAPEX" data-en="TOTAL CAPEX">TOTAL CAPEX</span><span class="v">$4,685,000</span></div>
+    </div>
+
+    <div class="econ-card">
+      <h4 data-es="Revenue · operación estabilizada (año 3)" data-en="Revenue · steady-state (year 3)">Revenue · steady-state (year 3)</h4>
+      <div class="econ-row"><span data-es="Discoteca · cover + bar · 180 noches/año" data-en="Discoteca · cover + bar · 180 nights/yr">Discoteca · cover + bar · 180 nights/yr</span><span class="v">$1,820,000</span></div>
+      <div class="econ-row"><span data-es="Hostal · 24 camas · 78% ocup. @ $33" data-en="Hostal · 24 beds · 78% occ. @ $33">Hostal · 24 beds · 78% occ. @ $33</span><span class="v">$226,000</span></div>
+      <div class="econ-row"><span data-es="Villas · 5 unidades · 68% ocup. @ $370" data-en="Villas · 5 units · 68% occ. @ $370">Villas · 5 units · 68% occ. @ $370</span><span class="v">$459,000</span></div>
+      <div class="econ-row"><span data-es="Restaurante (huéspedes + walk-in)" data-en="Restaurant (guests + walk-in)">Restaurant (guests + walk-in)</span><span class="v">$385,000</span></div>
+      <div class="econ-row"><span data-es="Water-sports · transfers · tours" data-en="Water-sports · transfers · tours">Water-sports · transfers · tours</span><span class="v">$165,000</span></div>
+      <div class="econ-row"><span data-es="Eventos privados (bodas · DJ buyouts)" data-en="Private events (weddings · DJ buyouts)">Private events (weddings · DJ buyouts)</span><span class="v">$220,000</span></div>
+      <div class="econ-row"><span data-es="Opex (staff, suministros, marketing) · 58%" data-en="Opex (staff, supplies, marketing) · 58%">Opex (staff, supplies, marketing) · 58%</span><span class="v">-$1,898,000</span></div>
+      <div class="econ-row"><span data-es="EBITDA · ESTABLE" data-en="EBITDA · STEADY">EBITDA · STEADY</span><span class="v">$1,377,000</span></div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <span data-es="ARCHIVO LA COMPAÑÍA · PLAN 02 · ISLA CRISTÓBAL RESORT" data-en="LA COMPAÑÍA ARCHIVE · PLAN 02 · ISLA CRISTÓBAL RESORT">LA COMPAÑÍA ARCHIVE · PLAN 02 · ISLA CRISTÓBAL RESORT</span> ·
+  <a href="lacompania.html" data-es="VOLVER" data-en="BACK">BACK</a> ·
+  <a href="plan-bajo-mono.html" data-es="← BAJO MONO" data-en="← BAJO MONO">← BAJO MONO</a>
+</footer>
+
+<script>
+  const getLang = () => localStorage.getItem('sora.lang') || 'en';
+  function applyLang(lang){
+    document.querySelectorAll('[data-es]').forEach(el=>{
+      const v = el.getAttribute('data-' + lang);
+      if(v != null) el.textContent = v;
+    });
+    document.querySelectorAll('[data-es-html]').forEach(el=>{
+      const v = el.getAttribute('data-' + lang + '-html');
+      if(v != null) el.innerHTML = v;
+    });
+    document.documentElement.lang = lang;
+    localStorage.setItem('sora.lang', lang);
+    document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('active', b.dataset.lang === lang));
+  }
+  document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click', ()=>applyLang(b.dataset.lang)));
+  applyLang(getLang());
+</script>
+</body>
+</html>

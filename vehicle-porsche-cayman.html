@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2006 Porsche Cayman S · La Compañía · Vehicles</title>
+<meta name="description" content="2006 Porsche Cayman S (987.1) · 3.4L flat-six · mid-engine RWD · La Compañía asset file.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231d3a2c'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Georgia,serif' font-size='20' font-weight='400' fill='%23d9a55c'%3EC%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f7f0df; --paper-2:#fcf6e6; --paper-3:#ede4ca; --paper-deep:#e3d9c2;
+    --ink:#14110c; --ink-2:#2a251d; --ink-3:#4b4337; --ink-faint:#8a7e6a;
+    --line:rgba(20,17,12,0.10); --line-2:rgba(20,17,12,0.18);
+    --forest:#1d3a2c; --gold:#d9a55c; --gold-deep:#b88842; --coral:#D9573B;
+    --porsche-red:#9c2828; --porsche-silver:#c0c0c0; --porsche-dark:#1a1a1a;
+    --serif:'Fraunces',Georgia,serif; --sans:'Inter',-apple-system,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--ink);color:var(--paper)}
+  [data-en]{display:none}
+  html[lang="en"] [data-es]{display:none}
+  html[lang="en"] [data-en]{display:inline}
+
+  .top{position:sticky;top:0;z-index:50;background:rgba(247,240,223,.94);backdrop-filter:blur(14px);border-bottom:0.5px solid var(--line)}
+  .top-in{max-width:1280px;margin:0 auto;padding:16px 36px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  .brand{display:flex;align-items:baseline;gap:12px}
+  .brand .word{font-family:var(--serif);font-weight:500;font-size:20px;letter-spacing:.06em;color:var(--ink)}
+  .brand .sub{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--ink-3);text-transform:uppercase}
+  .top-link{font-family:var(--sans);font-size:12px;color:var(--ink-2);padding:6px 13px;border:0.5px solid var(--line);border-radius:5px}
+  .top-link:hover{background:var(--paper-2)}
+  .spacer{flex:1}
+  .lang{display:inline-flex;border:0.5px solid var(--line);border-radius:5px;overflow:hidden}
+  .lang button{padding:7px 12px;font-family:var(--mono);font-size:10.5px;background:transparent;border:0;color:var(--ink-faint);cursor:pointer;font-weight:500;letter-spacing:.06em}
+  .lang button.active{background:var(--ink);color:var(--paper)}
+
+  .wrap{max-width:1280px;margin:0 auto;padding:0 36px}
+
+  .breadcrumbs{padding:24px 0 0;font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--ink-faint);text-transform:uppercase}
+  .breadcrumbs a{color:var(--forest);font-weight:600}
+  .breadcrumbs a:hover{color:var(--gold-deep)}
+
+  /* HERO */
+  .hero{padding:48px 0 36px}
+  .h-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:center}
+  .h-info .h-tag{font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--forest);font-weight:700;margin-bottom:18px}
+  .h-info h1{font-family:var(--serif);font-weight:300;font-size:clamp(48px,7vw,92px);line-height:.96;letter-spacing:-.025em;color:var(--ink);margin-bottom:14px}
+  .h-info h1 em{font-style:italic;color:var(--porsche-red);font-weight:400}
+  .h-info .h-sub{font-family:var(--serif);font-style:italic;font-size:20px;color:var(--ink-3);font-weight:300;margin-bottom:24px;line-height:1.4}
+  .h-info .h-vin{display:flex;gap:24px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;color:var(--ink-faint);letter-spacing:.10em;text-transform:uppercase;margin-bottom:24px}
+  .h-info .h-vin span strong{color:var(--ink);font-weight:600;display:block;font-size:13px;margin-top:2px;letter-spacing:.04em}
+  .h-info .h-cta{display:flex;gap:10px}
+  .h-info .h-cta .btn{padding:11px 18px;font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;border-radius:5px;font-weight:600;border:0.5px solid var(--ink);color:var(--ink)}
+  .h-info .h-cta .btn-primary{background:var(--ink);color:var(--paper)}
+
+  .h-img{position:relative;aspect-ratio:5/3;background:linear-gradient(135deg,var(--paper-3),var(--paper-deep));border-radius:14px;overflow:hidden;border:0.5px solid var(--line)}
+  .h-img svg{width:100%;height:100%}
+  .h-stamp{position:absolute;top:18px;right:18px;font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;background:var(--ink);color:var(--paper);padding:6px 11px;border-radius:4px;font-weight:600}
+
+  /* STATS STRIP */
+  .stats{display:grid;grid-template-columns:repeat(6,1fr);border-top:0.5px solid var(--line);border-bottom:0.5px solid var(--line);margin:48px 0 0}
+  .stats > div{padding:24px 18px;text-align:center;border-right:0.5px solid var(--line)}
+  .stats > div:last-child{border-right:0}
+  .stats .k{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;margin-bottom:6px}
+  .stats .v{font-family:var(--serif);font-size:32px;color:var(--ink);line-height:1;font-weight:400;letter-spacing:-.01em}
+  .stats .v em{font-style:italic;color:var(--porsche-red)}
+  .stats .u{font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--ink-faint);margin-top:4px;text-transform:uppercase}
+
+  /* SECTIONS */
+  section{padding:64px 0 32px;border-top:0.5px solid var(--line)}
+  .sec-head{margin-bottom:32px}
+  .sec-num{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--forest);font-weight:700;margin-bottom:10px}
+  .sec-head h2{font-family:var(--serif);font-weight:300;font-size:clamp(30px,4.5vw,48px);line-height:1.06;color:var(--ink);letter-spacing:-.015em;max-width:760px}
+  .sec-head h2 em{font-style:italic;color:var(--porsche-red);font-weight:400}
+  .sec-sub{font-family:var(--serif);font-size:16px;color:var(--ink-3);font-weight:300;line-height:1.55;font-style:italic;max-width:680px;margin-top:14px}
+
+  /* SPECS GRID */
+  .specs{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:0.5px solid var(--line);border-radius:12px;overflow:hidden;background:var(--paper-2)}
+  .spec-cell{padding:24px 22px;border-right:0.5px solid var(--line);border-bottom:0.5px solid var(--line)}
+  .spec-cell:nth-child(4n){border-right:0}
+  .spec-cell:nth-last-child(-n+4){border-bottom:0}
+  .spec-cell .k{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;color:var(--ink-faint);text-transform:uppercase;font-weight:600;margin-bottom:8px}
+  .spec-cell .v{font-family:var(--serif);font-size:22px;color:var(--ink);font-weight:400;line-height:1.15;letter-spacing:-.005em}
+  .spec-cell .v em{font-style:italic;color:var(--porsche-red)}
+  .spec-cell .u{font-family:var(--mono);font-size:10px;color:var(--ink-faint);margin-top:4px;letter-spacing:.10em}
+
+  /* TWO COL */
+  .two-col{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:start}
+  .col-body p{font-family:var(--serif);font-size:16px;line-height:1.7;color:var(--ink-2);margin-bottom:14px}
+  .col-body p strong{color:var(--ink);font-weight:600}
+  .col-body p em{color:var(--porsche-red);font-style:italic}
+  .col-body h4{font-family:var(--serif);font-weight:500;font-size:22px;color:var(--ink);margin:24px 0 10px;letter-spacing:-.01em}
+
+  .info-card{background:var(--ink);color:var(--paper);border-radius:14px;padding:32px 32px 28px;position:relative;overflow:hidden}
+  .info-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--porsche-red),var(--gold),var(--porsche-red))}
+  .info-card .ic-label{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;color:var(--gold);text-transform:uppercase;margin-bottom:14px;font-weight:700}
+  .info-card h4{font-family:var(--serif);font-weight:400;font-size:24px;color:var(--paper);line-height:1.18;margin-bottom:14px}
+  .info-card ul{list-style:none;padding:0}
+  .info-card ul li{font-family:var(--serif);font-size:14px;color:rgba(247,240,223,.78);line-height:1.65;padding-left:16px;position:relative;margin-bottom:8px}
+  .info-card ul li::before{content:'·';position:absolute;left:0;color:var(--gold);font-weight:700}
+  .info-card ul li strong{color:var(--gold);font-weight:600}
+
+  /* COLOR OPTIONS */
+  .colors{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:14px}
+  .color{padding:14px;background:var(--paper-2);border:0.5px solid var(--line);border-radius:8px;text-align:center}
+  .color .swatch{width:80px;height:80px;border-radius:50%;margin:0 auto 12px;border:0.5px solid var(--line-2);box-shadow:inset 0 -8px 14px rgba(0,0,0,0.15),inset 0 8px 14px rgba(255,255,255,0.10)}
+  .color .name{font-family:var(--serif);font-style:italic;font-size:13.5px;color:var(--ink);margin-bottom:3px}
+  .color .code{font-family:var(--mono);font-size:9.5px;color:var(--ink-faint);letter-spacing:.10em}
+
+  /* GALLERY */
+  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .gallery-tile{aspect-ratio:4/3;border-radius:10px;overflow:hidden;background:linear-gradient(135deg,var(--paper-3),var(--paper-deep));border:0.5px solid var(--line);position:relative;display:flex;align-items:center;justify-content:center}
+  .gallery-tile svg{width:88%;height:auto}
+  .gallery-tile .tile-label{position:absolute;bottom:10px;left:12px;font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;color:var(--ink);background:rgba(247,240,223,.84);padding:4px 9px;border-radius:3px;text-transform:uppercase;font-weight:600}
+
+  /* HISTORY TIMELINE */
+  .timeline{position:relative;padding-left:30px;border-left:1px solid var(--line-2)}
+  .tl-item{padding:0 0 28px 20px;position:relative}
+  .tl-item::before{content:'';position:absolute;left:-36px;top:4px;width:11px;height:11px;border-radius:50%;background:var(--porsche-red);border:3px solid var(--paper)}
+  .tl-year{font-family:var(--mono);font-size:11px;color:var(--porsche-red);letter-spacing:.10em;font-weight:700;margin-bottom:4px}
+  .tl-item h5{font-family:var(--serif);font-size:18px;font-weight:500;color:var(--ink);margin-bottom:5px;letter-spacing:-.005em}
+  .tl-item p{font-family:var(--serif);font-size:14.5px;color:var(--ink-2);line-height:1.6}
+
+  footer{margin-top:80px;padding:36px 0;text-align:center;background:var(--ink);color:rgba(247,240,223,.6);font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase}
+  footer a{color:var(--gold)}
+
+  @media (max-width:880px){
+    .h-grid,.two-col{grid-template-columns:1fr;gap:24px}
+    .stats{grid-template-columns:repeat(3,1fr)}
+    .stats > div:nth-child(3n){border-right:0}
+    .specs{grid-template-columns:repeat(2,1fr)}
+    .gallery{grid-template-columns:1fr 1fr}
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-in">
+    <div class="brand">
+      <a href="lacompania.html" style="color:inherit"><span class="word">LA COMPAÑÍA</span></a>
+      <span class="sub" data-es="Vehículos" data-en="Vehicles">Vehicles</span>
+    </div>
+    <span class="spacer"></span>
+    <a class="top-link" href="lacompania.html" data-es="← Activos" data-en="← Assets">← Assets</a>
+    <a class="top-link" href="sora-hq.html">SORA HQ</a>
+    <div class="lang">
+      <button class="active" data-lang="en">EN</button>
+      <button data-lang="es">ES</button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<div class="breadcrumbs">
+  <a href="lacompania.html">LA COMPAÑÍA</a> · <span data-es="ACTIVOS" data-en="ASSETS">ASSETS</span> · <span data-es="VEHÍCULOS" data-en="VEHICLES">VEHICLES</span> · 2006 PORSCHE CAYMAN S
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="h-grid">
+    <div class="h-info">
+      <div class="h-tag" data-es="VEHÍCULO 01 · COUPÉ DEPORTIVO · 2006" data-en="VEHICLE 01 · SPORTS COUPÉ · 2006">VEHICLE 01 · SPORTS COUPÉ · 2006</div>
+      <h1><em>Porsche</em> Cayman S<br>987.1</h1>
+      <div class="h-sub" data-es="El primer Cayman. Motor central 3.4L, 295 hp, RWD, 6-spd manual — el chasis más rígido que Stuttgart había hecho." data-en="The first Cayman. Mid-engine 3.4L, 295 hp, RWD, 6-spd manual — the stiffest chassis Stuttgart had built.">The first Cayman. Mid-engine 3.4L, 295 hp, RWD, 6-spd manual — the stiffest chassis Stuttgart had built.</div>
+      <div class="h-vin">
+        <span><span data-es="GENERACIÓN" data-en="GENERATION">GENERATION</span><strong>987.1 · Type 987</strong></span>
+        <span><span data-es="ENSAMBLE" data-en="ASSEMBLY">ASSEMBLY</span><strong>Uusikaupunki · Finland</strong></span>
+        <span><span data-es="DEBUT" data-en="DEBUT">DEBUT</span><strong>Frankfurt IAA 2005</strong></span>
+      </div>
+      <div class="h-cta">
+        <a class="btn btn-primary" href="#specs" data-es="VER SPECS" data-en="VIEW SPECS">VIEW SPECS</a>
+        <a class="btn" href="#gallery" data-es="GALERÍA" data-en="GALLERY">GALLERY</a>
+      </div>
+    </div>
+    <div class="h-img">
+      <div class="h-stamp">FILE · LCMP-V01</div>
+      <svg viewBox="0 0 500 320" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="bodyGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#3a3a3a"/>
+            <stop offset="0.55" stop-color="#1a1a1a"/>
+            <stop offset="1" stop-color="#0a0a0a"/>
+          </linearGradient>
+          <radialGradient id="floorGrad" cx="0.5" cy="0.5" r="0.5">
+            <stop offset="0" stop-color="rgba(0,0,0,0.20)"/>
+            <stop offset="1" stop-color="rgba(0,0,0,0)"/>
+          </radialGradient>
+        </defs>
+        <!-- floor shadow -->
+        <ellipse cx="250" cy="265" rx="200" ry="12" fill="url(#floorGrad)"/>
+        <!-- main body -->
+        <path d="M 60 240 Q 45 220 70 195 L 110 165 Q 150 135 215 130 L 295 130 Q 365 138 400 162 L 430 185 Q 450 200 440 240 L 420 248 L 60 248 Z" fill="url(#bodyGrad)"/>
+        <!-- Roof / greenhouse -->
+        <path d="M 145 145 Q 200 95 270 95 Q 340 100 380 152" fill="none" stroke="#1a1a1a" stroke-width="3" opacity="0.5"/>
+        <!-- Window -->
+        <path d="M 150 150 Q 200 100 265 100 Q 335 105 375 158 L 360 165 Q 320 130 260 128 Q 210 128 165 153 Z" fill="rgba(140,180,210,0.42)" stroke="#0a0a0a" stroke-width="0.6"/>
+        <!-- Window divider (B-pillar) -->
+        <line x1="252" y1="100" x2="248" y2="155" stroke="#0a0a0a" stroke-width="1.2" opacity="0.7"/>
+        <!-- Side mirror -->
+        <path d="M 173 152 L 162 159 L 173 162 Z" fill="#1a1a1a"/>
+        <!-- Door cut -->
+        <line x1="252" y1="155" x2="245" y2="240" stroke="#0a0a0a" stroke-width="0.7" opacity="0.55"/>
+        <!-- Door handle -->
+        <rect x="260" y="185" width="14" height="3" rx="1" fill="#3a3a3a"/>
+        <!-- Front headlight (Cayman teardrop) -->
+        <path d="M 410 198 Q 430 196 432 208 Q 432 220 425 222 Q 415 224 408 218 Q 405 207 410 198 Z" fill="#f4e8c8"/>
+        <ellipse cx="420" cy="210" rx="5" ry="4" fill="#fff"/>
+        <!-- Front fender vent (Cayman signature side gill) -->
+        <path d="M 330 195 L 360 195 L 364 200 L 360 205 L 330 205 L 326 200 Z" fill="#0a0a0a"/>
+        <line x1="332" y1="200" x2="358" y2="200" stroke="#666" stroke-width="0.6"/>
+        <!-- Rear -->
+        <path d="M 60 240 Q 50 218 78 200" fill="none" stroke="#0a0a0a" stroke-width="1" opacity="0.5"/>
+        <!-- Rear taillights -->
+        <path d="M 62 200 L 88 200 L 90 210 L 60 210 Z" fill="#c44030"/>
+        <ellipse cx="76" cy="205" rx="11" ry="2.5" fill="#ff6655" opacity="0.55"/>
+        <!-- Front wheel -->
+        <g>
+          <circle cx="365" cy="250" r="32" fill="#0a0a0a"/>
+          <circle cx="365" cy="250" r="28" fill="#1d1d1d" stroke="#3a3a3a" stroke-width="0.5"/>
+          <circle cx="365" cy="250" r="14" fill="#1a1a1a"/>
+          <g stroke="#9a9a9a" stroke-width="1.6" fill="none" opacity="0.75">
+            <line x1="365" y1="222" x2="365" y2="278"/>
+            <line x1="337" y1="250" x2="393" y2="250"/>
+            <line x1="345" y1="230" x2="385" y2="270"/>
+            <line x1="385" y1="230" x2="345" y2="270"/>
+            <line x1="355" y1="224" x2="375" y2="276"/>
+            <line x1="375" y1="224" x2="355" y2="276"/>
+          </g>
+          <circle cx="365" cy="250" r="3.5" fill="#9a9a9a"/>
+        </g>
+        <!-- Rear wheel -->
+        <g>
+          <circle cx="135" cy="250" r="32" fill="#0a0a0a"/>
+          <circle cx="135" cy="250" r="28" fill="#1d1d1d" stroke="#3a3a3a" stroke-width="0.5"/>
+          <circle cx="135" cy="250" r="14" fill="#1a1a1a"/>
+          <g stroke="#9a9a9a" stroke-width="1.6" fill="none" opacity="0.75">
+            <line x1="135" y1="222" x2="135" y2="278"/>
+            <line x1="107" y1="250" x2="163" y2="250"/>
+            <line x1="115" y1="230" x2="155" y2="270"/>
+            <line x1="155" y1="230" x2="115" y2="270"/>
+            <line x1="125" y1="224" x2="145" y2="276"/>
+            <line x1="145" y1="224" x2="125" y2="276"/>
+          </g>
+          <circle cx="135" cy="250" r="3.5" fill="#9a9a9a"/>
+        </g>
+        <!-- shine -->
+        <path d="M 180 130 Q 240 100 320 100 Q 360 102 380 140" fill="none" stroke="rgba(255,255,255,0.16)" stroke-width="2.5"/>
+        <!-- badge -->
+        <text x="250" y="218" text-anchor="middle" font-family="Inter" font-size="8" fill="rgba(255,255,255,0.4)" letter-spacing="3">CAYMAN S</text>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<div class="stats">
+  <div><div class="k" data-es="POTENCIA" data-en="POWER">POWER</div><div class="v"><em>295</em></div><div class="u">HP @ 6,250 RPM</div></div>
+  <div><div class="k" data-es="TORQUE" data-en="TORQUE">TORQUE</div><div class="v">340</div><div class="u">NM @ 4,400</div></div>
+  <div><div class="k">0-100</div><div class="v">5.4<span style="font-size:18px">s</span></div><div class="u">km/h · MANUAL</div></div>
+  <div><div class="k" data-es="MÁX" data-en="TOP SPEED">TOP SPEED</div><div class="v">275</div><div class="u">KM/H</div></div>
+  <div><div class="k" data-es="PESO" data-en="WEIGHT">WEIGHT</div><div class="v">1,340</div><div class="u">KG</div></div>
+  <div><div class="k">POWER/KG</div><div class="v">220</div><div class="u">HP/TON</div></div>
+</div>
+
+<!-- ENGINE / DRIVETRAIN -->
+<section id="specs">
+  <div class="sec-head">
+    <div class="sec-num" data-es="01 · ESPECIFICACIONES" data-en="01 · SPECIFICATIONS">01 · SPECIFICATIONS</div>
+    <h2 data-es-html="Boxer-6 <em>en el centro</em>. Tracción trasera. Manual de seis." data-en-html="Boxer-6 <em>in the middle</em>. Rear-wheel drive. Six-speed manual.">Boxer-6 <em>in the middle</em>. Rear-wheel drive. Six-speed manual.</h2>
+    <p class="sec-sub" data-es="El M97/21 — la última generación del flat-six refrigerado por aire-aceite-agua que Porsche heredó del 996. Antes del controvertido cambio a inyección directa del 9A1." data-en="The M97/21 — the last generation of the air-oil-water-cooled flat-six Porsche inherited from the 996 lineage. Before the controversial switch to direct injection in the 9A1.">The M97/21 — the last generation of the air-oil-water-cooled flat-six Porsche inherited from the 996 lineage. Before the controversial switch to direct injection in the 9A1.</p>
+  </div>
+
+  <div class="specs">
+    <div class="spec-cell"><div class="k" data-es="MOTOR" data-en="ENGINE">ENGINE</div><div class="v">M97/21</div><div class="u">FLAT-6 · DOHC · 24V</div></div>
+    <div class="spec-cell"><div class="k" data-es="DESPLAZAMIENTO" data-en="DISPLACEMENT">DISPLACEMENT</div><div class="v">3,387 cc</div><div class="u">96.0 × 78.0 MM</div></div>
+    <div class="spec-cell"><div class="k" data-es="POTENCIA" data-en="POWER">POWER</div><div class="v"><em>295 hp</em></div><div class="u">@ 6,250 RPM</div></div>
+    <div class="spec-cell"><div class="k">TORQUE</div><div class="v">340 Nm</div><div class="u">@ 4,400 RPM</div></div>
+
+    <div class="spec-cell"><div class="k" data-es="COMPRESIÓN" data-en="COMPRESSION">COMPRESSION</div><div class="v">11.1 : 1</div><div class="u">VARIOCAM PLUS</div></div>
+    <div class="spec-cell"><div class="k" data-es="TRANSMISIÓN" data-en="TRANSMISSION">TRANSMISSION</div><div class="v">6-MT</div><div class="u">G87/01 · 5-SPD TIPTRONIC OPT.</div></div>
+    <div class="spec-cell"><div class="k" data-es="TRACCIÓN" data-en="DRIVETRAIN">DRIVETRAIN</div><div class="v">RWD</div><div class="u" data-es="MOTOR CENTRAL" data-en="MID-ENGINE">MID-ENGINE</div></div>
+    <div class="spec-cell"><div class="k">0-100 KM/H</div><div class="v">5.4 s</div><div class="u" data-es="MANUAL · 5.7 TIPTRONIC" data-en="MANUAL · 5.7 TIPTRONIC">MANUAL · 5.7 TIPTRONIC</div></div>
+
+    <div class="spec-cell"><div class="k" data-es="VELOCIDAD MÁX" data-en="TOP SPEED">TOP SPEED</div><div class="v">275 km/h</div><div class="u">171 MPH</div></div>
+    <div class="spec-cell"><div class="k" data-es="PESO SECO" data-en="DRY WEIGHT">DRY WEIGHT</div><div class="v">1,340 kg</div><div class="u">2,954 LB</div></div>
+    <div class="spec-cell"><div class="k" data-es="DISTRIBUCIÓN" data-en="WEIGHT BAL.">WEIGHT BAL.</div><div class="v">44 / 56</div><div class="u" data-es="FR / RR · CASI IDEAL" data-en="FR / RR · NEAR IDEAL">FR / RR · NEAR IDEAL</div></div>
+    <div class="spec-cell"><div class="k" data-es="COMBUSTIBLE" data-en="FUEL TANK">FUEL TANK</div><div class="v">64 L</div><div class="u">PREMIUM 98 RON</div></div>
+
+    <div class="spec-cell"><div class="k">LENGTH</div><div class="v">4,341 mm</div><div class="u">171.0 IN</div></div>
+    <div class="spec-cell"><div class="k">WIDTH</div><div class="v">1,801 mm</div><div class="u">70.9 IN</div></div>
+    <div class="spec-cell"><div class="k">HEIGHT</div><div class="v">1,305 mm</div><div class="u">51.4 IN</div></div>
+    <div class="spec-cell"><div class="k">WHEELBASE</div><div class="v">2,415 mm</div><div class="u">95.1 IN</div></div>
+
+    <div class="spec-cell"><div class="k" data-es="MALETERO DEL." data-en="FRONT TRUNK">FRONT TRUNK</div><div class="v">150 L</div><div class="u">FRUNK</div></div>
+    <div class="spec-cell"><div class="k" data-es="MALETERO TRAS." data-en="REAR TRUNK">REAR TRUNK</div><div class="v">260 L</div><div class="u" data-es="DETRÁS DEL MOTOR" data-en="BEHIND ENGINE">BEHIND ENGINE</div></div>
+    <div class="spec-cell"><div class="k" data-es="CARGA TOTAL" data-en="TOTAL CARGO">TOTAL CARGO</div><div class="v">410 L</div><div class="u" data-es="MEJOR DE SU CLASE" data-en="BEST IN CLASS">BEST IN CLASS</div></div>
+    <div class="spec-cell"><div class="k" data-es="MSRP 2006" data-en="MSRP 2006">MSRP 2006</div><div class="v">$58,900</div><div class="u">USD · BASE</div></div>
+  </div>
+</section>
+
+<!-- POSITIONING -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es="02 · POSICIONAMIENTO" data-en="02 · POSITIONING">02 · POSITIONING</div>
+    <h2 data-es-html="Mejor balanceado <em>que el 911</em> de su época." data-en-html="Better balanced <em>than the 911</em> of its era.">Better balanced <em>than the 911</em> of its era.</h2>
+  </div>
+
+  <div class="two-col">
+    <div class="col-body">
+      <p data-es="Cuando Porsche lanzó el Cayman S en 2005 para el año-modelo 2006, la prensa especializada quedó incómoda. Era <strong>más rígido</strong> que el 911 Carrera 997 contemporáneo (torsionalmente — 28,000 Nm/grado vs 22,000), tenía <strong>distribución de peso casi ideal</strong> (44/56), y costaba <strong>$20,000 menos</strong>. Porsche tuvo que des-afinar deliberadamente la suspensión para no canibalizar el 911." data-en="When Porsche launched the Cayman S in 2005 for the 2006 model year, the press grew uncomfortable. It was <strong>stiffer</strong> than the contemporary 997 911 Carrera (torsionally — 28,000 Nm/deg vs 22,000), had <strong>near-ideal weight distribution</strong> (44/56), and cost <strong>$20,000 less</strong>. Porsche had to deliberately de-tune the suspension to avoid cannibalizing the 911.">When Porsche launched the Cayman S in 2005 for the 2006 model year, the press grew uncomfortable. It was <strong>stiffer</strong> than the contemporary 997 911 Carrera (torsionally — 28,000 Nm/deg vs 22,000), had <strong>near-ideal weight distribution</strong> (44/56), and cost <strong>$20,000 less</strong>. Porsche had to deliberately de-tune the suspension to avoid cannibalizing the 911.</p>
+
+      <p data-es="El chasis es el del Boxster — pero con techo fijo, agregando rigidez torsional masiva. El resultado: el coupé deportivo con mejor reparto de masas que se haya producido en serie por Stuttgart. Veinte años después, los <em>987.1 Cayman S</em> bien mantenidos se cotizan firmes en el mercado de coleccionistas — la prensa lo llama <strong>el 911 secreto</strong>." data-en="The chassis is the Boxster's — but with a fixed roof, adding massive torsional rigidity. The result: the best-balanced sports coupé Stuttgart ever produced in series. Twenty years later, well-kept <em>987.1 Cayman S</em> hold strong in the collector market — the press calls it <strong>the secret 911</strong>.">The chassis is the Boxster's — but with a fixed roof, adding massive torsional rigidity. The result: the best-balanced sports coupé Stuttgart ever produced in series. Twenty years later, well-kept <em>987.1 Cayman S</em> hold strong in the collector market — the press calls it <strong>the secret 911</strong>.</p>
+
+      <h4 data-es="Por qué este auto, en esta casa" data-en="Why this car, in this house">Why this car, in this house</h4>
+      <p data-es="El Cayman 987.1 representa el último Porsche refrigerado por agua antes de la inyección directa. Es un auto que se conduce — manual, mid-engine, sin asistencias agresivas — y que mantiene valor. La Compañía lo guarda como <strong>activo de uso + objeto cultural</strong>: un fragmento de la historia automotriz alemana que sigue manejándose mejor que el 99% de lo que se vende hoy." data-en="The 987.1 Cayman represents the last water-cooled Porsche before direct injection. It's a car you drive — manual, mid-engine, no aggressive electronic nannies — and that holds value. La Compañía keeps it as a <strong>use-asset + cultural object</strong>: a fragment of German automotive history that still drives better than 99% of what's sold today.">The 987.1 Cayman represents the last water-cooled Porsche before direct injection. It's a car you drive — manual, mid-engine, no aggressive electronic nannies — and that holds value. La Compañía keeps it as a <strong>use-asset + cultural object</strong>: a fragment of German automotive history that still drives better than 99% of what's sold today.</p>
+    </div>
+
+    <div class="info-card">
+      <div class="ic-label" data-es="QUE NO SE OLVIDE" data-en="DON'T FORGET">DON'T FORGET</div>
+      <h4 data-es="Mantenimiento crítico para 987.1" data-en="Critical maintenance for 987.1">Critical maintenance for 987.1</h4>
+      <ul>
+        <li><strong>IMS bearing</strong> — <span data-es="rodamiento del eje intermedio. Riesgo de falla catastrófica en M97 (2005-2008). Solución: LN Engineering IMS Retrofit (~$1,500 con embrague). Verificar si ya fue reemplazado." data-en="intermediate shaft bearing. Risk of catastrophic failure on M97 engines (2005-2008). Fix: LN Engineering IMS Retrofit (~$1,500 with clutch). Confirm if already swapped.">intermediate shaft bearing. Risk of catastrophic failure on M97 engines (2005-2008). Fix: LN Engineering IMS Retrofit (~$1,500 with clutch). Confirm if already swapped.</span></li>
+        <li><strong>Bore scoring</strong> — <span data-es="cilindros 4, 5, 6 (banco derecho). Inspección con boroscopio cada 30K mi. Aceite Mobil 1 5W-40 o Joe Gibbs Driven DT40." data-en="cylinders 4, 5, 6 (right bank). Borescope inspection every 30K mi. Run Mobil 1 5W-40 or Joe Gibbs Driven DT40.">cylinders 4, 5, 6 (right bank). Borescope inspection every 30K mi. Run Mobil 1 5W-40 or Joe Gibbs Driven DT40.</span></li>
+        <li><strong>AOS</strong> — <span data-es="separador aire/aceite. Vida ~80K mi. Síntoma: humo blanco al arrancar." data-en="air/oil separator. ~80K mi lifespan. Symptom: white smoke at startup.">air/oil separator. ~80K mi lifespan. Symptom: white smoke at startup.</span></li>
+        <li><strong>RMS</strong> — <span data-es="sello trasero del cigüeñal. Goteo leve es normal; severo requiere atención." data-en="rear main seal. Light weep is normal; severe drip needs attention.">rear main seal. Light weep is normal; severe drip needs attention.</span></li>
+        <li><strong>Cardán + soportes</strong> — <span data-es="bushings de suspensión cada 60-80K mi." data-en="suspension bushings every 60-80K mi.">suspension bushings every 60-80K mi.</span></li>
+        <li><span data-es="Servicio mayor cada 30K mi · cambio de aceite cada 8-10K mi" data-en="Major service every 30K mi · oil change every 8-10K mi">Major service every 30K mi · oil change every 8-10K mi</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- COLOR OPTIONS -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es="03 · COLORES DE FÁBRICA" data-en="03 · FACTORY COLORS">03 · FACTORY COLORS</div>
+    <h2 data-es-html="Paleta <em>987.1</em>." data-en-html="<em>987.1</em> palette.">The <em>987.1</em> palette.</h2>
+    <p class="sec-sub" data-es="Los 12 colores estándar para el año-modelo 2006. Special-orders + Paint-to-Sample disponibles a precio." data-en="The 12 standard colors for model year 2006. Special-orders + Paint-to-Sample available at extra cost.">The 12 standard colors for model year 2006. Special-orders + Paint-to-Sample available at extra cost.</p>
+  </div>
+
+  <div class="colors">
+    <div class="color"><div class="swatch" style="background:#0a0a0a"></div><div class="name">Basalt Black</div><div class="code">041</div></div>
+    <div class="color"><div class="swatch" style="background:#fafafa"></div><div class="name">Carrara White</div><div class="code">B9A</div></div>
+    <div class="color"><div class="swatch" style="background:#8c8c8c"></div><div class="name">Arctic Silver</div><div class="code">L92U</div></div>
+    <div class="color"><div class="swatch" style="background:#3a3a3a"></div><div class="name">Atlas Grey</div><div class="code">L92T</div></div>
+    <div class="color"><div class="swatch" style="background:#9c1818"></div><div class="name">Guards Red</div><div class="code">G1</div></div>
+    <div class="color"><div class="swatch" style="background:#1f4f8a"></div><div class="name">Cobalt Blue</div><div class="code">37W</div></div>
+    <div class="color"><div class="swatch" style="background:#143a52"></div><div class="name">Midnight Blue</div><div class="code">39C</div></div>
+    <div class="color"><div class="swatch" style="background:#7a9588"></div><div class="name">Seal Grey</div><div class="code">L92S</div></div>
+    <div class="color"><div class="swatch" style="background:#d5b656"></div><div class="name">Speed Yellow</div><div class="code">12H</div></div>
+    <div class="color"><div class="swatch" style="background:#e3925c"></div><div class="name">Orange · PTS</div><div class="code">PTS</div></div>
+    <div class="color"><div class="swatch" style="background:#3a5e3a"></div><div class="name">British Green</div><div class="code">PTS</div></div>
+    <div class="color"><div class="swatch" style="background:#e8d6b2"></div><div class="name">Sand Beige</div><div class="code">2J3</div></div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="sec-head">
+    <div class="sec-num" data-es="04 · GALERÍA" data-en="04 · GALLERY">04 · GALLERY</div>
+    <h2 data-es-html="Vistas <em>técnicas</em>." data-en-html="<em>Technical</em> views.">Technical views.</h2>
+    <p class="sec-sub" data-es="Lateral. Frontal. Trasera. Tres ángulos del coupé deportivo más balanceado de la era Mezger-tardía." data-en="Side. Front. Rear. Three angles of the best-balanced sports coupé of the late-Mezger era.">Side. Front. Rear. Three angles of the best-balanced sports coupé of the late-Mezger era.</p>
+  </div>
+
+  <div class="gallery">
+    <div class="gallery-tile">
+      <div class="tile-label">SIDE PROFILE</div>
+      <svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="200" cy="195" rx="160" ry="8" fill="rgba(0,0,0,0.15)"/>
+        <path d="M 50 175 Q 38 150 65 130 L 100 105 Q 140 80 195 75 L 270 75 Q 320 80 345 105 L 370 130 Q 390 145 380 175 L 365 182 L 50 182 Z" fill="#1a1a1a"/>
+        <path d="M 130 105 Q 195 50 250 50 Q 305 55 340 100" fill="none" stroke="#0a0a0a" stroke-width="2.5"/>
+        <path d="M 135 110 Q 200 60 245 60 Q 300 65 335 100 L 320 108 Q 285 80 240 80 Q 200 80 158 100 Z" fill="rgba(140,180,210,0.5)"/>
+        <line x1="225" y1="60" x2="223" y2="105" stroke="#0a0a0a" stroke-width="1.4" opacity="0.6"/>
+        <path d="M 285 142 L 320 142 L 322 148 L 320 154 L 285 154 L 283 148 Z" fill="#0a0a0a"/>
+        <circle cx="320" cy="185" r="26" fill="#0a0a0a"/>
+        <circle cx="320" cy="185" r="22" fill="#222"/>
+        <circle cx="320" cy="185" r="11" fill="#1a1a1a"/>
+        <circle cx="115" cy="185" r="26" fill="#0a0a0a"/>
+        <circle cx="115" cy="185" r="22" fill="#222"/>
+        <circle cx="115" cy="185" r="11" fill="#1a1a1a"/>
+        <text x="200" y="200" text-anchor="middle" font-family="JetBrains Mono" font-size="6" fill="#888" letter-spacing="3">4,341 MM</text>
+      </svg>
+    </div>
+    <div class="gallery-tile">
+      <div class="tile-label">FRONT FASCIA</div>
+      <svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="200" cy="200" rx="155" ry="6" fill="rgba(0,0,0,0.12)"/>
+        <!-- Hood -->
+        <path d="M 80 100 Q 200 60 320 100 L 320 165 L 80 165 Z" fill="#1a1a1a"/>
+        <!-- Lights -->
+        <path d="M 88 95 Q 110 90 130 105 L 130 130 Q 118 142 92 132 Z" fill="#f4e8c8"/>
+        <ellipse cx="110" cy="115" rx="14" ry="10" fill="#fff"/>
+        <path d="M 312 95 Q 290 90 270 105 L 270 130 Q 282 142 308 132 Z" fill="#f4e8c8"/>
+        <ellipse cx="290" cy="115" rx="14" ry="10" fill="#fff"/>
+        <!-- Lower bumper -->
+        <path d="M 80 165 L 320 165 L 305 195 L 95 195 Z" fill="#0a0a0a"/>
+        <!-- Air intakes -->
+        <rect x="115" y="172" width="60" height="14" rx="3" fill="#1a1a1a"/>
+        <rect x="225" y="172" width="60" height="14" rx="3" fill="#1a1a1a"/>
+        <!-- Center intake -->
+        <rect x="180" y="178" width="40" height="8" rx="2" fill="#1a1a1a"/>
+        <!-- Porsche crest -->
+        <path d="M 195 130 L 205 130 L 210 142 L 195 152 L 190 142 Z" fill="#d9a55c" stroke="#0a0a0a" stroke-width="0.5"/>
+        <text x="200" y="208" text-anchor="middle" font-family="JetBrains Mono" font-size="6" fill="#888" letter-spacing="3">1,801 MM · W</text>
+      </svg>
+    </div>
+    <div class="gallery-tile">
+      <div class="tile-label">REAR · 3/4</div>
+      <svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="200" cy="200" rx="160" ry="6" fill="rgba(0,0,0,0.12)"/>
+        <!-- Rear body -->
+        <path d="M 80 95 Q 200 70 320 95 L 320 170 L 80 170 Z" fill="#1a1a1a"/>
+        <!-- Rear window -->
+        <path d="M 105 95 Q 200 75 295 95 L 280 130 Q 200 118 120 130 Z" fill="rgba(140,180,210,0.42)"/>
+        <!-- Active rear spoiler (deployed) -->
+        <rect x="120" y="92" width="160" height="6" rx="2" fill="#0a0a0a"/>
+        <!-- Taillights -->
+        <path d="M 88 138 L 165 138 L 170 152 L 90 152 Z" fill="#c44030"/>
+        <ellipse cx="125" cy="145" rx="36" ry="3" fill="#ff6655" opacity="0.6"/>
+        <path d="M 312 138 L 235 138 L 230 152 L 310 152 Z" fill="#c44030"/>
+        <ellipse cx="275" cy="145" rx="36" ry="3" fill="#ff6655" opacity="0.6"/>
+        <!-- Exhaust tips -->
+        <ellipse cx="155" cy="180" rx="14" ry="5" fill="#3a3a3a"/>
+        <ellipse cx="155" cy="180" rx="9" ry="3" fill="#0a0a0a"/>
+        <ellipse cx="245" cy="180" rx="14" ry="5" fill="#3a3a3a"/>
+        <ellipse cx="245" cy="180" rx="9" ry="3" fill="#0a0a0a"/>
+        <!-- Badge -->
+        <text x="200" y="165" text-anchor="middle" font-family="Inter" font-size="9" fill="#d9a55c" letter-spacing="6" font-weight="600">CAYMAN S</text>
+        <text x="200" y="210" text-anchor="middle" font-family="JetBrains Mono" font-size="6" fill="#888" letter-spacing="3">1,305 MM · H</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- HISTORY -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es="05 · HISTORIA DE LA LÍNEA" data-en="05 · LINE HISTORY">05 · LINE HISTORY</div>
+    <h2 data-es-html="Veinte años de <em>Cayman</em>." data-en-html="Twenty years of <em>Cayman</em>.">Twenty years of <em>Cayman</em>.</h2>
+  </div>
+
+  <div class="two-col">
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-year">2005 · IAA FRANKFURT</div>
+        <h5 data-es="Debut del Cayman S" data-en="Cayman S debut">Cayman S debut</h5>
+        <p data-es="Porsche presenta el Cayman S como coupé top de la línea Boxster. Solo versión S al principio — 3.4L del 911 Carrera des-afinado a 295 hp. MSRP $58,900." data-en="Porsche unveils the Cayman S as the top-tier coupé of the Boxster line. S-only at launch — 3.4L from the 911 Carrera, detuned to 295 hp. MSRP $58,900.">Porsche unveils the Cayman S as the top-tier coupé of the Boxster line. S-only at launch — 3.4L from the 911 Carrera, detuned to 295 hp. MSRP $58,900.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2007</div>
+        <h5 data-es="Base Cayman 2.7L" data-en="Base Cayman 2.7L">Base Cayman 2.7L</h5>
+        <p data-es="Variante base con 245 hp y 5-spd manual. Más asequible. La S se mantiene como la versión deseable." data-en="Base variant with 245 hp and 5-spd manual. More attainable. The S remains the desirable trim.">Base variant with 245 hp and 5-spd manual. More attainable. The S remains the desirable trim.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2009</div>
+        <h5 data-es="987.2 · DFI + PDK" data-en="987.2 · DFI + PDK">987.2 · DFI + PDK</h5>
+        <p data-es="Facelift. Motor cambia a inyección directa (MA1) — 320 hp. PDK 7-spd reemplaza el Tiptronic. Más rápido pero menos analógico — los puristas prefieren el 987.1 anterior." data-en="Facelift. Engine switches to direct injection (MA1) — 320 hp. PDK 7-spd replaces Tiptronic. Faster but less analog — purists prefer the earlier 987.1.">Facelift. Engine switches to direct injection (MA1) — 320 hp. PDK 7-spd replaces Tiptronic. Faster but less analog — purists prefer the earlier 987.1.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2013</div>
+        <h5 data-es="981 · Generación 2" data-en="981 · Generation 2">981 · Generation 2</h5>
+        <p data-es="Rediseño completo. Más largo, más ancho, más rápido. El GT4 (2015) llega con 3.8L 385 hp + 6-spd — culto inmediato." data-en="Full redesign. Longer, wider, faster. The GT4 (2015) arrives with 3.8L 385 hp + 6-spd — instant cult.">Full redesign. Longer, wider, faster. The GT4 (2015) arrives with 3.8L 385 hp + 6-spd — instant cult.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2016</div>
+        <h5 data-es="718 Cayman · 4-cyl turbo" data-en="718 Cayman · 4-cyl turbo">718 Cayman · 4-cyl turbo</h5>
+        <p data-es="Porsche pasa al 4-cilindros turbo. Más eficiente pero el sonido divide a los fans. El GT4 + GTS 4.0 (2020) preservan el flat-six." data-en="Porsche moves to turbo 4-cyl. More efficient but the sound divides fans. The GT4 + GTS 4.0 (2020) preserve the flat-six.">Porsche moves to turbo 4-cyl. More efficient but the sound divides fans. The GT4 + GTS 4.0 (2020) preserve the flat-six.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2025-2026</div>
+        <h5 data-es="Adiós a la combustión" data-en="Combustion's farewell">Combustion's farewell</h5>
+        <p data-es="Porsche anuncia que el Cayman/Boxster ICE finaliza producción 2026 — sucesor 100% eléctrico. Los 987.1 y los GT4 4.0 se convierten en clásicos." data-en="Porsche announces ICE Cayman/Boxster production ends 2026 — successor is fully electric. The 987.1 and GT4 4.0 become future classics.">Porsche announces ICE Cayman/Boxster production ends 2026 — successor is fully electric. The 987.1 and GT4 4.0 become future classics.</p>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <div class="ic-label" data-es="MERCADO ACTUAL · MAY 2026" data-en="CURRENT MARKET · MAY 2026">CURRENT MARKET · MAY 2026</div>
+      <h4 data-es="Cómo se cotiza un 987.1" data-en="How a 987.1 prices today">How a 987.1 prices today</h4>
+      <ul>
+        <li><strong>Base 2.7L manual</strong> · <span data-es="$22,000-32,000 con &lt;80K mi" data-en="$22,000-32,000 with &lt;80K mi">$22,000-32,000 with &lt;80K mi</span></li>
+        <li><strong>Cayman S 3.4L manual</strong> · <span data-es="$30,000-45,000 IMS hecho" data-en="$30,000-45,000 IMS done">$30,000-45,000 IMS done</span></li>
+        <li><strong>Cayman S Tiptronic</strong> · <span data-es="$25,000-36,000 · menos deseado" data-en="$25,000-36,000 · less desired">$25,000-36,000 · less desired</span></li>
+        <li><strong>Cayman S Sport / Design Edition 1</strong> · <span data-es="$40,000-55,000 · colección" data-en="$40,000-55,000 · collector">$40,000-55,000 · collector</span></li>
+        <li><span data-es="Premium para autos < 50K mi · IMS LN Engineering · servicio mayor reciente" data-en="Premium for cars &lt; 50K mi · LN Engineering IMS · recent major service">Premium for cars &lt; 50K mi · LN Engineering IMS · recent major service</span></li>
+        <li><span data-es="Tendencia: los 987.1 manuales bien-mantenidos suben +6-9% al año desde 2022" data-en="Trend: well-kept manual 987.1s climbing +6-9% per year since 2022">Trend: well-kept manual 987.1s climbing +6-9% per year since 2022</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <span data-es="ARCHIVO LA COMPAÑÍA · VEHÍCULO 01 · 2006 PORSCHE CAYMAN S" data-en="LA COMPAÑÍA ARCHIVE · VEHICLE 01 · 2006 PORSCHE CAYMAN S">LA COMPAÑÍA ARCHIVE · VEHICLE 01 · 2006 PORSCHE CAYMAN S</span> ·
+  <a href="lacompania.html" data-es="VOLVER" data-en="BACK">BACK</a>
+</footer>
+
+<script>
+  const getLang = () => localStorage.getItem('sora.lang') || 'en';
+  function applyLang(lang){
+    document.querySelectorAll('[data-es]').forEach(el=>{
+      const v = el.getAttribute('data-' + lang);
+      if(v != null) el.textContent = v;
+    });
+    document.querySelectorAll('[data-es-html]').forEach(el=>{
+      const v = el.getAttribute('data-' + lang + '-html');
+      if(v != null) el.innerHTML = v;
+    });
+    document.documentElement.lang = lang;
+    localStorage.setItem('sora.lang', lang);
+    document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('active', b.dataset.lang === lang));
+  }
+  document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click', ()=>applyLang(b.dataset.lang)));
+  applyLang(getLang());
+</script>
+</body>
+</html>

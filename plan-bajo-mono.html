@@ -1,0 +1,581 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bajo Mono Wellness Compound · Plan · La Compañía</title>
+<meta name="description" content="Concept · 2.5 hectare wellness compound in Bajo Mono cloud forest, Boquete. Integrative clinic + 6 villas + supporting infrastructure.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231d3a2c'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Georgia,serif' font-size='20' font-weight='400' fill='%23d9a55c'%3EC%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f7f0df; --paper-2:#fcf6e6; --paper-3:#ede4ca; --paper-deep:#e3d9c2;
+    --ink:#14110c; --ink-2:#2a251d; --ink-3:#4b4337; --ink-faint:#8a7e6a;
+    --line:rgba(20,17,12,0.10); --line-2:rgba(20,17,12,0.18);
+    --forest:#1d3a2c; --forest-2:#2a5440; --forest-3:#3a6e54; --moss:#5a8862;
+    --gold:#d9a55c; --gold-deep:#b88842; --copper:#b85439;
+    --serif:'Fraunces',Georgia,serif; --sans:'Inter',-apple-system,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--forest);color:var(--paper)}
+  [data-en]{display:none}
+  html[lang="en"] [data-es]{display:none}
+  html[lang="en"] [data-en]{display:inline}
+
+  .top{position:sticky;top:0;z-index:50;background:rgba(247,240,223,.94);backdrop-filter:blur(14px);border-bottom:0.5px solid var(--line)}
+  .top-in{max-width:1280px;margin:0 auto;padding:16px 36px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  .brand{display:flex;align-items:baseline;gap:12px}
+  .brand .word{font-family:var(--serif);font-weight:500;font-size:20px;letter-spacing:.06em}
+  .brand .sub{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--ink-3);text-transform:uppercase}
+  .top-link{font-family:var(--sans);font-size:12px;color:var(--ink-2);padding:6px 13px;border:0.5px solid var(--line);border-radius:5px}
+  .top-link:hover{background:var(--paper-2)}
+  .spacer{flex:1}
+  .lang{display:inline-flex;border:0.5px solid var(--line);border-radius:5px;overflow:hidden}
+  .lang button{padding:7px 12px;font-family:var(--mono);font-size:10.5px;background:transparent;border:0;color:var(--ink-faint);cursor:pointer;font-weight:500}
+  .lang button.active{background:var(--ink);color:var(--paper)}
+
+  .wrap{max-width:1280px;margin:0 auto;padding:0 36px}
+
+  .breadcrumbs{padding:24px 0 0;font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--ink-faint);text-transform:uppercase}
+  .breadcrumbs a{color:var(--forest);font-weight:600}
+
+  /* HERO */
+  .hero{padding:56px 0 24px}
+  .h-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+  .h-info .h-tag{font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--forest);font-weight:700;margin-bottom:16px;display:inline-block;padding:6px 12px;background:rgba(29,58,44,.10);border-radius:4px}
+  .h-info h1{font-family:var(--serif);font-weight:300;font-size:clamp(54px,8vw,108px);line-height:.96;letter-spacing:-.025em;color:var(--ink);margin-bottom:18px}
+  .h-info h1 em{font-style:italic;color:var(--forest);font-weight:400}
+  .h-info .h-sub{font-family:var(--serif);font-style:italic;font-size:20px;color:var(--ink-3);font-weight:300;line-height:1.5;margin-bottom:24px}
+  .h-stamps{display:flex;flex-wrap:wrap;gap:14px}
+  .stamp{padding:9px 14px;background:var(--paper-2);border:0.5px solid var(--line);border-radius:6px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--ink-2);text-transform:uppercase}
+  .stamp strong{color:var(--forest);font-weight:700}
+
+  .h-render{aspect-ratio:5/4;background:linear-gradient(180deg,#a8c8d4 0%,#7fa8b3 50%,#2a5440 50%,#1d3a2c 100%);border-radius:14px;overflow:hidden;border:0.5px solid var(--line);position:relative}
+  .h-render svg{width:100%;height:100%}
+  .h-render-label{position:absolute;bottom:14px;left:16px;font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--paper);background:rgba(20,17,12,.62);padding:6px 11px;border-radius:4px;text-transform:uppercase;font-weight:600;backdrop-filter:blur(4px)}
+
+  /* SITE STATS */
+  .site-stats{display:grid;grid-template-columns:repeat(5,1fr);border-top:0.5px solid var(--line);border-bottom:0.5px solid var(--line);margin:40px 0 0}
+  .site-stats > div{padding:24px 18px;text-align:center;border-right:0.5px solid var(--line)}
+  .site-stats > div:last-child{border-right:0}
+  .site-stats .k{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;margin-bottom:6px}
+  .site-stats .v{font-family:var(--serif);font-size:30px;color:var(--ink);line-height:1;font-weight:400}
+  .site-stats .v em{font-style:italic;color:var(--forest)}
+  .site-stats .u{font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--ink-faint);margin-top:4px;text-transform:uppercase}
+
+  /* SECTIONS */
+  section{padding:64px 0 32px;border-top:0.5px solid var(--line)}
+  .sec-head{margin-bottom:32px}
+  .sec-num{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--forest);font-weight:700;margin-bottom:10px}
+  .sec-head h2{font-family:var(--serif);font-weight:300;font-size:clamp(30px,4.5vw,48px);line-height:1.06;color:var(--ink);letter-spacing:-.015em;max-width:760px}
+  .sec-head h2 em{font-style:italic;color:var(--forest);font-weight:400}
+  .sec-sub{font-family:var(--serif);font-size:16px;color:var(--ink-3);font-weight:300;line-height:1.55;font-style:italic;max-width:720px;margin-top:14px}
+
+  /* SITE PLAN */
+  .siteplan{background:var(--paper-2);border:0.5px solid var(--line);border-radius:14px;padding:32px;display:grid;grid-template-columns:1fr 320px;gap:32px;align-items:start}
+  .siteplan-svg{aspect-ratio:4/3;background:linear-gradient(135deg,#e8e1c8,#dccfa8);border-radius:10px;overflow:hidden;position:relative}
+  .siteplan-svg svg{width:100%;height:100%}
+  .siteplan-legend{font-family:var(--sans);font-size:13.5px;color:var(--ink-2);line-height:1.6}
+  .siteplan-legend h4{font-family:var(--serif);font-weight:500;font-size:18px;color:var(--ink);margin-bottom:14px}
+  .legend-row{display:flex;align-items:center;gap:11px;padding:8px 0;border-bottom:0.5px dashed var(--line);font-size:13px}
+  .legend-row:last-child{border-bottom:0}
+  .legend-dot{width:14px;height:14px;border-radius:3px;flex-shrink:0}
+  .legend-row .label{flex:1;font-weight:500;color:var(--ink)}
+  .legend-row .meta{font-family:var(--mono);font-size:10px;color:var(--ink-faint);letter-spacing:.06em}
+
+  /* COMPONENTS GRID */
+  .components{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-top:24px}
+  .component{background:var(--paper);border:0.5px solid var(--line);border-radius:12px;padding:24px 24px 22px;position:relative;overflow:hidden;border-top:3px solid var(--forest)}
+  .component.c-villa{border-top-color:var(--moss)}
+  .component.c-amenity{border-top-color:var(--gold)}
+  .c-num{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;color:var(--ink-faint);text-transform:uppercase;font-weight:700;margin-bottom:8px}
+  .c-num.t-clinic{color:var(--forest)}
+  .c-num.t-villa{color:var(--moss)}
+  .c-num.t-amenity{color:var(--gold-deep)}
+  .component h4{font-family:var(--serif);font-weight:400;font-size:22px;color:var(--ink);line-height:1.18;margin-bottom:4px;letter-spacing:-.005em}
+  .component h4 em{font-style:italic;color:var(--forest)}
+  .component .c-sub{font-family:var(--serif);font-style:italic;font-size:13px;color:var(--ink-3);margin-bottom:14px;line-height:1.45}
+  .component ul{list-style:none;padding:0;margin-top:6px}
+  .component li{font-family:var(--sans);font-size:13px;color:var(--ink-2);padding:5px 0 5px 16px;position:relative;line-height:1.5}
+  .component li::before{content:'·';position:absolute;left:4px;color:var(--forest);font-weight:700;font-size:14px}
+  .c-foot{margin-top:14px;padding-top:12px;border-top:0.5px solid var(--line);font-family:var(--mono);font-size:10px;letter-spacing:.10em;color:var(--ink-faint);text-transform:uppercase;display:flex;justify-content:space-between}
+
+  /* CLIMATE / LOCATION */
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+  .info-card{background:var(--ink);color:var(--paper);border-radius:14px;padding:32px;position:relative;overflow:hidden}
+  .info-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--forest),var(--gold),var(--forest))}
+  .info-card .ic-label{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;color:var(--gold);text-transform:uppercase;font-weight:700;margin-bottom:14px}
+  .info-card h4{font-family:var(--serif);font-weight:400;font-size:24px;color:var(--paper);line-height:1.18;margin-bottom:14px}
+  .info-card p{font-family:var(--serif);font-size:14.5px;color:rgba(247,240,223,.82);line-height:1.65;margin-bottom:12px}
+  .info-card p strong{color:var(--gold);font-weight:500}
+  .info-card ul{list-style:none;padding:0}
+  .info-card li{font-family:var(--serif);font-size:14px;color:rgba(247,240,223,.78);line-height:1.65;padding-left:16px;position:relative;margin-bottom:7px}
+  .info-card li::before{content:'·';position:absolute;left:0;color:var(--gold)}
+
+  .light-card{background:var(--paper-2);border:0.5px solid var(--line);border-radius:14px;padding:32px}
+  .light-card h4{font-family:var(--serif);font-weight:500;font-size:22px;color:var(--ink);margin-bottom:14px;letter-spacing:-.01em}
+  .light-card .climate-row{display:grid;grid-template-columns:80px 1fr 90px;gap:12px;align-items:center;padding:10px 0;border-bottom:0.5px dashed var(--line);font-size:13.5px}
+  .light-card .climate-row:last-child{border-bottom:0}
+  .light-card .climate-row .mo{font-family:var(--mono);font-size:11px;letter-spacing:.10em;color:var(--ink-faint);text-transform:uppercase;font-weight:600}
+  .light-card .climate-row .bar{height:8px;border-radius:4px;background:linear-gradient(90deg,#4a8fb8,#5a8862,#d9a55c,#b85439);position:relative}
+  .light-card .climate-row .marker{position:absolute;top:-3px;width:14px;height:14px;border-radius:50%;border:2px solid var(--paper);background:var(--ink);transform:translateX(-7px)}
+  .light-card .climate-row .val{font-family:var(--mono);font-size:11px;color:var(--ink-2);text-align:right;letter-spacing:.04em}
+
+  /* PHASING */
+  .phases{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:20px}
+  .phase{background:var(--paper-2);border:0.5px solid var(--line);border-radius:10px;padding:22px 22px 20px;position:relative;border-top:3px solid var(--forest)}
+  .phase:nth-child(2){border-top-color:var(--moss)}
+  .phase:nth-child(3){border-top-color:var(--gold)}
+  .phase:nth-child(4){border-top-color:var(--copper)}
+  .phase .p-num{font-family:var(--serif);font-style:italic;font-size:34px;color:var(--forest);line-height:1;margin-bottom:6px}
+  .phase:nth-child(2) .p-num{color:var(--moss)}
+  .phase:nth-child(3) .p-num{color:var(--gold-deep)}
+  .phase:nth-child(4) .p-num{color:var(--copper)}
+  .phase .p-when{font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--ink-faint);text-transform:uppercase;font-weight:700;margin-bottom:8px}
+  .phase h5{font-family:var(--serif);font-weight:500;font-size:17px;color:var(--ink);margin-bottom:8px;letter-spacing:-.005em}
+  .phase p{font-family:var(--sans);font-size:13px;color:var(--ink-2);line-height:1.55}
+
+  /* ECONOMICS */
+  .econ-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:20px}
+  .econ-card{background:var(--paper-2);border:0.5px solid var(--line);border-radius:14px;padding:28px 30px}
+  .econ-card h4{font-family:var(--serif);font-weight:500;font-size:20px;color:var(--ink);margin-bottom:14px;letter-spacing:-.005em}
+  .econ-row{display:flex;justify-content:space-between;padding:11px 0;border-bottom:0.5px solid var(--line);font-size:13.5px;color:var(--ink-2)}
+  .econ-row:last-child{border-bottom:0;font-weight:600;color:var(--ink);font-size:15px;padding-top:14px;border-top:1px solid var(--ink)}
+  .econ-row .v{font-family:var(--mono);color:var(--ink);font-weight:500;letter-spacing:.04em}
+
+  footer{margin-top:80px;padding:36px 0;text-align:center;background:var(--ink);color:rgba(247,240,223,.6);font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase}
+  footer a{color:var(--gold)}
+
+  @media (max-width:880px){
+    .h-grid,.siteplan,.two-col,.econ-grid{grid-template-columns:1fr;gap:24px}
+    .site-stats{grid-template-columns:repeat(2,1fr)}
+    .site-stats > div:nth-child(2n){border-right:0}
+    .phases{grid-template-columns:1fr 1fr}
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-in">
+    <div class="brand">
+      <a href="lacompania.html"><span class="word">LA COMPAÑÍA</span></a>
+      <span class="sub" data-es="Planes · Bienes raíces" data-en="Plans · Real estate">Plans · Real estate</span>
+    </div>
+    <span class="spacer"></span>
+    <a class="top-link" href="lacompania.html" data-es="← Activos" data-en="← Assets">← Assets</a>
+    <a class="top-link" href="plan-isla-cristobal.html" data-es="Isla Cristóbal →" data-en="Isla Cristóbal →">Isla Cristóbal →</a>
+    <div class="lang">
+      <button class="active" data-lang="en">EN</button>
+      <button data-lang="es">ES</button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<div class="breadcrumbs">
+  <a href="lacompania.html">LA COMPAÑÍA</a> · <span data-es="ACTIVOS" data-en="ASSETS">ASSETS</span> · <span data-es="PLANES" data-en="PLANS">PLANS</span> · BAJO MONO COMPOUND
+</div>
+
+<header class="hero">
+  <div class="h-grid">
+    <div class="h-info">
+      <div class="h-tag" data-es="CONCEPTO · BAJO MONO · BOQUETE" data-en="CONCEPT · BAJO MONO · BOQUETE">CONCEPT · BAJO MONO · BOQUETE</div>
+      <h1><em>Bajo Mono</em><br>Wellness<br>Compound</h1>
+      <div class="h-sub" data-es="2.5 hectáreas de bosque nuboso a 1,600 m. Una clínica integrativa al centro · seis villas en la pendiente · senderos · finca de café en producción." data-en="2.5 hectares of cloud forest at 1,600 m. An integrative clinic at center · six villas on the slope · trails · a producing coffee finca.">2.5 hectares of cloud forest at 1,600 m. An integrative clinic at center · six villas on the slope · trails · a producing coffee finca.</div>
+      <div class="h-stamps">
+        <span class="stamp"><strong>BAJO MONO</strong> · BOQUETE · CHIRIQUÍ · PA</span>
+        <span class="stamp" data-es="ESTADO · CONCEPTO" data-en="STATUS · CONCEPT">STATUS · CONCEPT</span>
+        <span class="stamp" data-es="HORIZONTE · 2027-2030" data-en="HORIZON · 2027-2030">HORIZON · 2027-2030</span>
+      </div>
+    </div>
+    <div class="h-render">
+      <div class="h-render-label" data-es="CONCEPT · NO A ESCALA" data-en="CONCEPT · NOT TO SCALE">CONCEPT · NOT TO SCALE</div>
+      <svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg">
+        <!-- Sky gradient already in container -->
+        <!-- Sun -->
+        <circle cx="320" cy="50" r="22" fill="rgba(255,235,180,0.85)"/>
+        <circle cx="320" cy="50" r="30" fill="rgba(255,220,150,0.30)"/>
+        <!-- Far mountains -->
+        <path d="M 0 160 L 0 100 L 60 70 L 120 100 L 180 60 L 240 90 L 310 55 L 400 80 L 400 160 Z" fill="rgba(20,40,28,0.65)"/>
+        <!-- Mid mountains (Volcán Barú silhouette) -->
+        <path d="M 0 170 L 0 130 L 90 90 L 160 130 L 200 110 L 260 95 L 320 130 L 400 110 L 400 170 Z" fill="rgba(35,75,55,0.78)"/>
+        <!-- Mid forest -->
+        <path d="M 0 220 L 0 165 L 100 145 L 180 168 L 280 150 L 400 172 L 400 220 Z" fill="rgba(48,95,72,0.85)"/>
+        <!-- Foreground hill -->
+        <path d="M 0 320 L 0 220 Q 100 205 200 215 Q 300 225 400 218 L 400 320 Z" fill="#2a5440"/>
+        <!-- Coffee plants in foreground -->
+        <g fill="#1d3a2c" opacity="0.85">
+          <circle cx="40" cy="290" r="6"/><circle cx="60" cy="295" r="5"/><circle cx="85" cy="298" r="6"/>
+          <circle cx="115" cy="293" r="5"/><circle cx="145" cy="297" r="6"/><circle cx="175" cy="300" r="5"/>
+          <circle cx="220" cy="298" r="6"/><circle cx="250" cy="294" r="5"/><circle cx="285" cy="299" r="6"/>
+          <circle cx="320" cy="295" r="5"/><circle cx="355" cy="298" r="6"/><circle cx="380" cy="293" r="5"/>
+        </g>
+        <!-- Main clinic building (mid) -->
+        <g>
+          <polygon points="155,250 245,250 252,232 200,212 148,232" fill="#f0e4c8" stroke="#0a1810" stroke-width="0.7"/>
+          <rect x="155" y="250" width="90" height="26" fill="#f0e4c8" stroke="#0a1810" stroke-width="0.7"/>
+          <!-- Roof shadow -->
+          <polygon points="155,250 245,250 252,232 246,232 240,250" fill="rgba(0,0,0,0.15)"/>
+          <!-- Windows -->
+          <rect x="165" y="258" width="10" height="14" fill="rgba(140,180,210,0.8)" stroke="#1a3325" stroke-width="0.4"/>
+          <rect x="185" y="258" width="10" height="14" fill="rgba(140,180,210,0.8)" stroke="#1a3325" stroke-width="0.4"/>
+          <rect x="205" y="258" width="10" height="14" fill="rgba(140,180,210,0.8)" stroke="#1a3325" stroke-width="0.4"/>
+          <rect x="225" y="258" width="10" height="14" fill="rgba(140,180,210,0.8)" stroke="#1a3325" stroke-width="0.4"/>
+          <!-- Door -->
+          <rect x="194" y="262" width="12" height="14" fill="#5a3520"/>
+          <text x="200" y="244" text-anchor="middle" font-family="JetBrains Mono" font-size="5" fill="#0a1810" letter-spacing="1.5">CLINIC</text>
+        </g>
+        <!-- Villas distributed -->
+        <g>
+          <!-- Villa 1 (top-left) -->
+          <polygon points="55,228 88,228 92,218 72,210 51,218" fill="#f0e4c8" stroke="#0a1810" stroke-width="0.5"/>
+          <rect x="55" y="228" width="33" height="15" fill="#f0e4c8" stroke="#0a1810" stroke-width="0.5"/>
+          <rect x="60" y="232" width="5" height="7" fill="rgba(140,180,210,0.7)"/>
+          <rect x="76" y="232" width="5" height="7" fill="rgba(140,180,210,0.7)"/>
+          <!-- Villa 2 -->
+          <polygon points="105,238 138,238 142,228 122,220 101,228" fill="#f0e4c8" stroke="#0a1810" stroke-width="0.5"/>
+          <rect x="105" y="238" width="33" height="14" fill="#f0e4c8" stroke="#0a1810" stroke-width="0.5"/>
+          <rect x="110" y="242" width="5" height="6" fill="rgba(140,180,210,0.7)"/>
+          <!-- Villa 3 (right) -->
+          <polygon points="280,235 314,235 318,225 297,217 276,225" fill="#f0e4c8" stroke="#0a1810" stroke-width="0.5"/>
+          <rect x="280" y="235" width="34" height="14" fill="#f0e4c8" stroke="#0a1810" stroke-width="0.5"/>
+          <rect x="285" y="239" width="5" height="6" fill="rgba(140,180,210,0.7)"/>
+          <!-- Villa 4 -->
+          <polygon points="330,245 360,245 364,236 347,228 326,236" fill="#f0e4c8" stroke="#0a1810" stroke-width="0.5"/>
+          <rect x="330" y="245" width="30" height="13" fill="#f0e4c8" stroke="#0a1810" stroke-width="0.5"/>
+        </g>
+        <!-- Trees scattered -->
+        <g fill="#1a3325">
+          <path d="M 28 215 L 28 195 L 22 205 M 28 195 L 34 205 M 28 207 L 22 215 M 28 207 L 34 215"/>
+          <path d="M 130 218 L 130 200 L 124 208 M 130 200 L 136 208"/>
+          <path d="M 175 220 L 175 202 L 169 210 M 175 202 L 181 210"/>
+          <path d="M 250 222 L 250 204 L 244 212 M 250 204 L 256 212"/>
+          <path d="M 380 226 L 380 208 L 374 216 M 380 208 L 386 216"/>
+        </g>
+        <!-- Path -->
+        <path d="M 0 285 Q 100 265 200 245 Q 300 245 400 268" fill="none" stroke="rgba(217,165,92,0.55)" stroke-width="2.5" stroke-dasharray="4 5"/>
+        <!-- Birds -->
+        <path d="M 50 80 q 5 -5 10 0 q 5 -5 10 0" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="1"/>
+        <path d="M 95 95 q 4 -4 8 0 q 4 -4 8 0" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1"/>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<div class="site-stats">
+  <div><div class="k" data-es="ÁREA TOTAL" data-en="TOTAL AREA">TOTAL AREA</div><div class="v"><em>2.5</em></div><div class="u" data-es="HECTÁREAS · 6.18 ACRES" data-en="HECTARES · 6.18 ACRES">HECTARES · 6.18 ACRES</div></div>
+  <div><div class="k" data-es="ELEVACIÓN" data-en="ELEVATION">ELEVATION</div><div class="v">1,600</div><div class="u">METROS · 5,250 FT</div></div>
+  <div><div class="k" data-es="CLIMA" data-en="CLIMATE">CLIMATE</div><div class="v">16-22°</div><div class="u" data-es="C · TODO EL AÑO" data-en="C · YEAR-ROUND">C · YEAR-ROUND</div></div>
+  <div><div class="k" data-es="A DAVID" data-en="TO DAVID">TO DAVID</div><div class="v">22</div><div class="u" data-es="KM · 35 MIN" data-en="KM · 35 MIN">KM · 35 MIN</div></div>
+  <div><div class="k" data-es="UNIDADES" data-en="UNITS">UNITS</div><div class="v">1+6</div><div class="u" data-es="CLÍNICA + VILLAS" data-en="CLINIC + VILLAS">CLINIC + VILLAS</div></div>
+</div>
+
+<!-- WHY HERE -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es="01 · LA UBICACIÓN" data-en="01 · THE LOCATION">01 · THE LOCATION</div>
+    <h2 data-es-html="Bosque nuboso. <em>Eterno marzo</em>." data-en-html="Cloud forest. <em>Eternal March</em>.">Cloud forest. <em>Eternal March</em>.</h2>
+    <p class="sec-sub" data-es="Bajo Mono es el valle que sube desde Boquete-pueblo hacia las laderas del Volcán Barú. El microclima es famoso entre los expatriados de Norteamérica y Europa: 16-22°C todo el año, lluvias suaves de la tarde, sin huracanes, suelo volcánico — el mismo que produce el café geisha más caro del mundo." data-en="Bajo Mono is the valley climbing from Boquete town toward Volcán Barú's flanks. The microclimate is famous among North American and European expats: 16-22°C year-round, soft afternoon rains, no hurricanes, volcanic soil — the same that produces the world's most expensive geisha coffee.">Bajo Mono is the valley climbing from Boquete town toward Volcán Barú's flanks. The microclimate is famous among North American and European expats: 16-22°C year-round, soft afternoon rains, no hurricanes, volcanic soil — the same that produces the world's most expensive geisha coffee.</p>
+  </div>
+
+  <div class="two-col">
+    <div class="light-card">
+      <h4 data-es="Promedio mensual · temperatura" data-en="Monthly average · temperature">Monthly average · temperature</h4>
+      <div class="climate-row"><span class="mo">ENE</span><div class="bar"><div class="marker" style="left:28%"></div></div><span class="val">16-21° · DRY</span></div>
+      <div class="climate-row"><span class="mo">FEB</span><div class="bar"><div class="marker" style="left:30%"></div></div><span class="val">16-22° · DRY</span></div>
+      <div class="climate-row"><span class="mo">MAR</span><div class="bar"><div class="marker" style="left:34%"></div></div><span class="val">17-22° · DRY</span></div>
+      <div class="climate-row"><span class="mo">ABR</span><div class="bar"><div class="marker" style="left:38%"></div></div><span class="val">17-23° · TRANS</span></div>
+      <div class="climate-row"><span class="mo">MAY</span><div class="bar"><div class="marker" style="left:36%"></div></div><span class="val">17-22° · WET</span></div>
+      <div class="climate-row"><span class="mo">JUN</span><div class="bar"><div class="marker" style="left:34%"></div></div><span class="val">16-21° · WET</span></div>
+      <div class="climate-row"><span class="mo">JUL</span><div class="bar"><div class="marker" style="left:32%"></div></div><span class="val">16-21° · WET</span></div>
+      <div class="climate-row"><span class="mo">AGO</span><div class="bar"><div class="marker" style="left:32%"></div></div><span class="val">16-21° · WET</span></div>
+      <div class="climate-row"><span class="mo">SEP</span><div class="bar"><div class="marker" style="left:32%"></div></div><span class="val">16-21° · WET</span></div>
+      <div class="climate-row"><span class="mo">OCT</span><div class="bar"><div class="marker" style="left:30%"></div></div><span class="val">16-21° · WET</span></div>
+      <div class="climate-row"><span class="mo">NOV</span><div class="bar"><div class="marker" style="left:28%"></div></div><span class="val">16-20° · TRANS</span></div>
+      <div class="climate-row"><span class="mo">DIC</span><div class="bar"><div class="marker" style="left:26%"></div></div><span class="val">15-20° · DRY</span></div>
+    </div>
+
+    <div class="info-card">
+      <div class="ic-label" data-es="POR QUÉ BAJO MONO" data-en="WHY BAJO MONO">WHY BAJO MONO</div>
+      <h4 data-es="Sólido legal + soft climate" data-en="Solid legal + soft climate">Solid legal + soft climate</h4>
+      <p data-es="Boquete tiene la <strong>comunidad expatriada más madura</strong> de Centroamérica. Visa de pensionado y residente económico son sencillas. Infraestructura: hospital privado en David (Hospital Chiriquí, 35 min), aeropuerto internacional David (1h vuelo Panamá City), fibra óptica en todo el valle." data-en="Boquete hosts <strong>Central America's most mature expat community</strong>. Pensionado and friendly-nations visas are simple. Infrastructure: private hospital in David (Hospital Chiriquí, 35 min), David international airport (1h flight Panama City), fiber optic throughout the valley.">Boquete hosts <strong>Central America's most mature expat community</strong>. Pensionado and friendly-nations visas are simple. Infrastructure: private hospital in David (Hospital Chiriquí, 35 min), David international airport (1h flight Panama City), fiber optic throughout the valley.</p>
+      <ul>
+        <li><span data-es="Suelo volcánico fértil · café geisha y mora orgánica" data-en="Fertile volcanic soil · geisha coffee and organic blackberry">Fertile volcanic soil · geisha coffee and organic blackberry</span></li>
+        <li><span data-es="Agua de manantial en propiedad — captación gravitacional" data-en="On-property spring water — gravity-fed catchment">On-property spring water — gravity-fed catchment</span></li>
+        <li><span data-es="Sin huracanes · zona sísmica baja (vs. Costa Rica)" data-en="No hurricanes · low seismic zone (vs. Costa Rica)">No hurricanes · low seismic zone (vs. Costa Rica)</span></li>
+        <li><span data-es="Acceso pavimentado · 4WD recomendado para tramos finales" data-en="Paved road access · 4WD recommended for final segments">Paved road access · 4WD recommended for final segments</span></li>
+        <li><span data-es="ANATI titulación · zona ya parcelada para uso turístico/residencial" data-en="ANATI titled · zoning already parceled for tourism/residential">ANATI titled · zoning already parceled for tourism/residential</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SITE PLAN -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es="02 · SITE PLAN" data-en="02 · SITE PLAN">02 · SITE PLAN</div>
+    <h2 data-es-html="Distribución <em>vista aérea</em>." data-en-html="<em>Aerial</em> distribution.">Aerial distribution.</h2>
+    <p class="sec-sub" data-es="Clínica al centro topográfico, en el punto más nivelado. Villas distribuidas en pendiente sur-este para captura solar matutina. Senderos cierran el loop al café-finca." data-en="Clinic at the topographic center, on the most level plateau. Villas distributed on the south-east slope for morning solar capture. Trails loop down to the coffee finca.">Clinic at the topographic center, on the most level plateau. Villas distributed on the south-east slope for morning solar capture. Trails loop down to the coffee finca.</p>
+  </div>
+
+  <div class="siteplan">
+    <div class="siteplan-svg">
+      <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+        <!-- Property boundary -->
+        <path d="M 30 30 L 370 30 L 380 280 L 20 280 Z" fill="none" stroke="#1d3a2c" stroke-width="2" stroke-dasharray="6 4"/>
+        <!-- Contour lines -->
+        <path d="M 50 80 Q 200 70 350 80" fill="none" stroke="rgba(29,58,44,0.20)" stroke-width="1"/>
+        <path d="M 45 110 Q 200 100 355 110" fill="none" stroke="rgba(29,58,44,0.20)" stroke-width="1"/>
+        <path d="M 40 140 Q 200 130 360 140" fill="none" stroke="rgba(29,58,44,0.20)" stroke-width="1"/>
+        <path d="M 35 170 Q 200 160 365 170" fill="none" stroke="rgba(29,58,44,0.20)" stroke-width="1"/>
+        <path d="M 30 200 Q 200 190 370 200" fill="none" stroke="rgba(29,58,44,0.20)" stroke-width="1"/>
+        <path d="M 28 230 Q 200 220 372 230" fill="none" stroke="rgba(29,58,44,0.20)" stroke-width="1"/>
+        <!-- Forest patches -->
+        <g fill="#5a8862" opacity="0.45">
+          <circle cx="50" cy="55" r="14"/><circle cx="80" cy="50" r="12"/><circle cx="55" cy="80" r="13"/>
+          <circle cx="340" cy="50" r="14"/><circle cx="365" cy="65" r="11"/><circle cx="345" cy="80" r="12"/>
+          <circle cx="40" cy="250" r="14"/><circle cx="65" cy="265" r="12"/>
+          <circle cx="360" cy="255" r="13"/><circle cx="340" cy="270" r="14"/>
+        </g>
+        <!-- Coffee finca area -->
+        <rect x="60" y="220" width="280" height="40" fill="rgba(90,136,98,0.32)" stroke="rgba(29,58,44,0.4)" stroke-width="0.5" stroke-dasharray="3 3"/>
+        <text x="200" y="245" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#1d3a2c" letter-spacing="2">COFFEE FINCA · 1.2 HA</text>
+        <!-- Clinic (center) -->
+        <rect x="172" y="130" width="56" height="34" fill="#f0e4c8" stroke="#1d3a2c" stroke-width="1.2"/>
+        <rect x="178" y="120" width="44" height="14" fill="#1d3a2c"/>
+        <text x="200" y="151" text-anchor="middle" font-family="Inter" font-size="6.5" fill="#1d3a2c" font-weight="600" letter-spacing="1">CLINIC</text>
+        <!-- Yoga pavilion (above clinic) -->
+        <circle cx="265" cy="105" r="14" fill="#f0e4c8" stroke="#1d3a2c" stroke-width="1"/>
+        <text x="265" y="108" text-anchor="middle" font-family="Inter" font-size="5" fill="#1d3a2c" letter-spacing="1">YOGA</text>
+        <!-- Hot/cold plunge -->
+        <rect x="125" y="98" width="22" height="18" fill="#a8d4dc" stroke="#1d3a2c" stroke-width="0.8" rx="3"/>
+        <rect x="150" y="98" width="22" height="18" fill="#c44030" stroke="#1d3a2c" stroke-width="0.8" rx="3" opacity="0.75"/>
+        <text x="148" y="92" text-anchor="middle" font-family="JetBrains Mono" font-size="5" fill="#1d3a2c" letter-spacing="1">PLUNGE</text>
+        <!-- Villas -->
+        <g>
+          <rect x="62" y="160" width="22" height="18" fill="#f0e4c8" stroke="#5a8862" stroke-width="1.2"/>
+          <text x="73" y="156" text-anchor="middle" font-family="JetBrains Mono" font-size="6" fill="#5a8862" font-weight="700">V1</text>
+          <rect x="100" y="180" width="22" height="18" fill="#f0e4c8" stroke="#5a8862" stroke-width="1.2"/>
+          <text x="111" y="176" text-anchor="middle" font-family="JetBrains Mono" font-size="6" fill="#5a8862" font-weight="700">V2</text>
+          <rect x="80" y="120" width="22" height="18" fill="#f0e4c8" stroke="#5a8862" stroke-width="1.2"/>
+          <text x="91" y="116" text-anchor="middle" font-family="JetBrains Mono" font-size="6" fill="#5a8862" font-weight="700">V3</text>
+          <rect x="278" y="160" width="22" height="18" fill="#f0e4c8" stroke="#5a8862" stroke-width="1.2"/>
+          <text x="289" y="156" text-anchor="middle" font-family="JetBrains Mono" font-size="6" fill="#5a8862" font-weight="700">V4</text>
+          <rect x="310" y="180" width="22" height="18" fill="#f0e4c8" stroke="#5a8862" stroke-width="1.2"/>
+          <text x="321" y="176" text-anchor="middle" font-family="JetBrains Mono" font-size="6" fill="#5a8862" font-weight="700">V5</text>
+          <rect x="295" y="120" width="22" height="18" fill="#f0e4c8" stroke="#5a8862" stroke-width="1.2"/>
+          <text x="306" y="116" text-anchor="middle" font-family="JetBrains Mono" font-size="6" fill="#5a8862" font-weight="700">V6</text>
+        </g>
+        <!-- Restaurant/dining at entrance -->
+        <rect x="180" y="55" width="40" height="20" fill="#f0e4c8" stroke="#b88842" stroke-width="1"/>
+        <text x="200" y="68" text-anchor="middle" font-family="Inter" font-size="5.5" fill="#b88842" font-weight="600" letter-spacing="1">RESTAURANT</text>
+        <!-- Paths -->
+        <path d="M 200 30 L 200 55 M 200 75 L 200 130 M 200 164 L 200 220 M 100 178 Q 150 150 172 147 M 300 178 Q 250 150 228 147 M 95 138 Q 150 130 172 132 M 305 138 Q 250 130 228 132 M 75 158 Q 120 155 175 155 M 325 158 Q 280 155 225 155 M 173 105 Q 200 110 265 105" fill="none" stroke="rgba(217,165,92,0.6)" stroke-width="1.5" stroke-dasharray="3 3"/>
+        <!-- Entrance arrow -->
+        <path d="M 200 15 L 200 25 L 196 21 M 200 25 L 204 21" fill="none" stroke="#1d3a2c" stroke-width="1.5"/>
+        <text x="220" y="20" font-family="JetBrains Mono" font-size="7" fill="#1d3a2c" letter-spacing="1.5">ENTRADA</text>
+        <!-- North arrow -->
+        <g transform="translate(355, 50)">
+          <circle cx="0" cy="0" r="13" fill="none" stroke="#1d3a2c" stroke-width="1"/>
+          <path d="M 0 -10 L 0 8 M 0 -10 L -4 -4 M 0 -10 L 4 -4" fill="none" stroke="#1d3a2c" stroke-width="1.5"/>
+          <text x="0" y="-15" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#1d3a2c" font-weight="700">N</text>
+        </g>
+        <!-- Scale -->
+        <g transform="translate(30, 290)">
+          <line x1="0" y1="0" x2="60" y2="0" stroke="#1d3a2c" stroke-width="1.5"/>
+          <line x1="0" y1="-3" x2="0" y2="3" stroke="#1d3a2c" stroke-width="1.5"/>
+          <line x1="30" y1="-3" x2="30" y2="3" stroke="#1d3a2c" stroke-width="1"/>
+          <line x1="60" y1="-3" x2="60" y2="3" stroke="#1d3a2c" stroke-width="1.5"/>
+          <text x="30" y="-7" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#1d3a2c">50 M</text>
+        </g>
+      </svg>
+    </div>
+    <div class="siteplan-legend">
+      <h4 data-es="Leyenda del plot" data-en="Site legend">Site legend</h4>
+      <div class="legend-row"><div class="legend-dot" style="background:#f0e4c8;border:1.5px solid #1d3a2c"></div><span class="label" data-es="Clínica · 600 m²" data-en="Clinic · 600 m²">Clinic · 600 m²</span><span class="meta">CORE</span></div>
+      <div class="legend-row"><div class="legend-dot" style="background:#f0e4c8;border:1.5px solid #5a8862"></div><span class="label" data-es="Villas residenciales · 6 × 110 m²" data-en="Residential villas · 6 × 110 m²">Residential villas · 6 × 110 m²</span><span class="meta">V1-V6</span></div>
+      <div class="legend-row"><div class="legend-dot" style="background:#f0e4c8;border:1.5px solid #b88842"></div><span class="label" data-es="Restaurante + recepción" data-en="Restaurant + reception">Restaurant + reception</span><span class="meta">130 m²</span></div>
+      <div class="legend-row"><div class="legend-dot" style="background:#f0e4c8;border:1.5px solid #1d3a2c;border-radius:50%"></div><span class="label" data-es="Pavellón yoga + meditación" data-en="Yoga + meditation pavilion">Yoga + meditation pavilion</span><span class="meta">55 m²</span></div>
+      <div class="legend-row"><div class="legend-dot" style="background:linear-gradient(90deg,#a8d4dc 50%,#c44030 50%)"></div><span class="label" data-es="Contraste frío/caliente" data-en="Hot/cold contrast">Hot/cold contrast</span><span class="meta">12 m²</span></div>
+      <div class="legend-row"><div class="legend-dot" style="background:rgba(90,136,98,0.32);border:0.5px dashed #1d3a2c"></div><span class="label" data-es="Finca de café · 1.2 ha" data-en="Coffee finca · 1.2 ha">Coffee finca · 1.2 ha</span><span class="meta" data-es="CULTIVO" data-en="CROP">CROP</span></div>
+      <div class="legend-row"><div class="legend-dot" style="background:rgba(217,165,92,0.6)"></div><span class="label" data-es="Senderos peatonales" data-en="Pedestrian paths">Pedestrian paths</span><span class="meta">~1,400 M</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPONENTS -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es="03 · COMPONENTES" data-en="03 · COMPONENTS">03 · COMPONENTS</div>
+    <h2 data-es-html="<em>Qué se construye</em>. Detalle." data-en-html="<em>What gets built</em>. The detail.">What gets built. The detail.</h2>
+  </div>
+
+  <div class="components">
+    <div class="component">
+      <div class="c-num t-clinic" data-es="01 · CLÍNICA INTEGRATIVA" data-en="01 · INTEGRATIVE CLINIC">01 · INTEGRATIVE CLINIC</div>
+      <h4 data-es-html="<em>La</em> Clínica" data-en-html="<em>The</em> Clinic">The Clinic</h4>
+      <div class="c-sub" data-es="600 m² · arquitectura biofílica · vidrio + madera local" data-en="600 m² · biophilic architecture · glass + local hardwood">600 m² · biophilic architecture · glass + local hardwood</div>
+      <ul>
+        <li><span data-es="Cámara HBOT hard-shell 2.0 ATA · protocolo Efrati" data-en="Hard-shell HBOT chamber 2.0 ATA · Efrati protocol">Hard-shell HBOT chamber 2.0 ATA · Efrati protocol</span></li>
+        <li><span data-es="6 salas IV · NAD+ · vitamina C alta dosis · péptidos" data-en="6 IV rooms · NAD+ · high-dose vitamin C · peptides">6 IV rooms · NAD+ · high-dose vitamin C · peptides</span></li>
+        <li><span data-es="Sala de procedimientos para terapia con ketamina" data-en="Procedure room for ketamine therapy">Procedure room for ketamine therapy</span></li>
+        <li><span data-es="Laboratorio interno · panel completo + microbioma" data-en="In-house lab · full panel + microbiome">In-house lab · full panel + microbiome</span></li>
+        <li><span data-es="Sala de consulta médica · 2 puestos" data-en="Medical consult room · 2 stations">Medical consult room · 2 stations</span></li>
+        <li><span data-es="Farmacia compounding propia" data-en="On-site compounding pharmacy">On-site compounding pharmacy</span></li>
+      </ul>
+      <div class="c-foot"><span data-es="OPS · 8 STAFF MÉDICOS" data-en="OPS · 8 MEDICAL STAFF">OPS · 8 MEDICAL STAFF</span><span>~$2.8M USD</span></div>
+    </div>
+
+    <div class="component c-villa">
+      <div class="c-num t-villa" data-es="02 · VILLAS RESIDENCIALES" data-en="02 · RESIDENTIAL VILLAS">02 · RESIDENTIAL VILLAS</div>
+      <h4 data-es-html="Seis <em>villas</em>" data-en-html="Six <em>villas</em>">Six villas</h4>
+      <div class="c-sub" data-es="110 m² c/u · 1-2 dorm + sala + cocina · terraza al bosque" data-en="110 m² each · 1-2 BR + living + kitchen · forest deck">110 m² each · 1-2 BR + living + kitchen · forest deck</div>
+      <ul>
+        <li><span data-es="3 villas 1-dorm para huéspedes individuales/parejas" data-en="3 1-BR villas for solo guests/couples">3 1-BR villas for solo guests/couples</span></li>
+        <li><span data-es="3 villas 2-dorm para familias o estancias largas" data-en="3 2-BR villas for families or long stays">3 2-BR villas for families or long stays</span></li>
+        <li><span data-es="Calefacción radiante (suelo de piedra) · chimenea opcional" data-en="Radiant floor heating (stone) · optional fireplace">Radiant floor heating (stone) · optional fireplace</span></li>
+        <li><span data-es="Cocina equipada · ducha contraste (lavabo bambú)" data-en="Equipped kitchen · contrast shower (bamboo basin)">Equipped kitchen · contrast shower (bamboo basin)</span></li>
+        <li><span data-es="Pre-cableado fibra · domótica básica" data-en="Fiber pre-wired · basic home automation">Fiber pre-wired · basic home automation</span></li>
+        <li><span data-es="Solar techo · panel fotovoltaico 3 kW por villa" data-en="Roof solar · 3 kW PV per villa">Roof solar · 3 kW PV per villa</span></li>
+      </ul>
+      <div class="c-foot"><span data-es="USOS · HUÉSPEDES + ALQUILER" data-en="USE · GUESTS + RENTAL">USE · GUESTS + RENTAL</span><span>~$2.2M USD</span></div>
+    </div>
+
+    <div class="component c-amenity">
+      <div class="c-num t-amenity" data-es="03 · AMENIDADES COMUNES" data-en="03 · COMMON AMENITIES">03 · COMMON AMENITIES</div>
+      <h4 data-es-html="<em>Amenidades</em>" data-en-html="<em>Amenities</em>">Amenities</h4>
+      <div class="c-sub" data-es="Restaurante · pavellón yoga · contraste frío/calor · senderos" data-en="Restaurant · yoga pavilion · cold/hot contrast · trails">Restaurant · yoga pavilion · cold/hot contrast · trails</div>
+      <ul>
+        <li><span data-es="Restaurante · 38 puestos · cocina farm-to-table" data-en="Restaurant · 38 seats · farm-to-table kitchen">Restaurant · 38 seats · farm-to-table kitchen</span></li>
+        <li><span data-es="Pavellón circular yoga · piso de tatami · vista al volcán" data-en="Circular yoga pavilion · tatami floor · Barú view">Circular yoga pavilion · tatami floor · Barú view</span></li>
+        <li><span data-es="Tina hot 38-40°C (eucalipto) + tanque frío 4-8°C" data-en="Hot tub 38-40°C (eucalyptus) + cold plunge 4-8°C">Hot tub 38-40°C (eucalyptus) + cold plunge 4-8°C</span></li>
+        <li><span data-es="Jardín medicinal · cúrcuma, valeriana, manzanilla, kava" data-en="Medicinal garden · turmeric, valerian, chamomile, kava">Medicinal garden · turmeric, valerian, chamomile, kava</span></li>
+        <li><span data-es="Sendero forestal 3.5 km circuito · 5 paradas meditación" data-en="3.5 km forest trail loop · 5 meditation stops">3.5 km forest trail loop · 5 meditation stops</span></li>
+        <li><span data-es="Capilla del agua · cascada con piscina natural" data-en="Water chapel · waterfall with natural pool">Water chapel · waterfall with natural pool</span></li>
+      </ul>
+      <div class="c-foot"><span data-es="GUESTS + LOCALES" data-en="GUESTS + LOCALS">GUESTS + LOCALS</span><span>~$680K USD</span></div>
+    </div>
+
+    <div class="component c-amenity">
+      <div class="c-num t-amenity" data-es="04 · INFRAESTRUCTURA" data-en="04 · INFRASTRUCTURE">04 · INFRASTRUCTURE</div>
+      <h4 data-es-html="<em>Spine</em> del sitio" data-en-html="Site <em>spine</em>">Site spine</h4>
+      <div class="c-sub" data-es="Agua · energía · acceso · servicios" data-en="Water · energy · access · services">Water · energy · access · services</div>
+      <ul>
+        <li><span data-es="Captación gravitacional del manantial · 8,000 L/d" data-en="Gravity-fed spring catchment · 8,000 L/d">Gravity-fed spring catchment · 8,000 L/d</span></li>
+        <li><span data-es="Tratamiento UV + ósmosis inversa para potable" data-en="UV + reverse osmosis treatment for potable">UV + reverse osmosis treatment for potable</span></li>
+        <li><span data-es="Sistema solar central 40 kW + batería 80 kWh" data-en="Central solar system 40 kW + 80 kWh battery">Central solar system 40 kW + 80 kWh battery</span></li>
+        <li><span data-es="Generador respaldo diésel 25 kW (emergencia)" data-en="Diesel backup generator 25 kW (emergency)">Diesel backup generator 25 kW (emergency)</span></li>
+        <li><span data-es="Fibra óptica · 1 Gbps a la propiedad (CableOnda)" data-en="Fiber optic · 1 Gbps to property (CableOnda)">Fiber optic · 1 Gbps to property (CableOnda)</span></li>
+        <li><span data-es="Camino interno empedrado · 220 m parking visitantes" data-en="Cobblestone internal road · 220 m visitor parking">Cobblestone internal road · 220 m visitor parking</span></li>
+      </ul>
+      <div class="c-foot"><span data-es="OBRA CIVIL" data-en="CIVIL WORKS">CIVIL WORKS</span><span>~$420K USD</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PHASING -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es="04 · FASEO" data-en="04 · PHASING">04 · PHASING</div>
+    <h2 data-es-html="<em>Cuatro fases</em>. Cuatro años." data-en-html="<em>Four phases</em>. Four years.">Four phases. Four years.</h2>
+    <p class="sec-sub" data-es="Compra del terreno, permisos, construcción por fases. La operación clínica comienza en Fase 2; las villas se entregan en pares en Fases 3-4." data-en="Land acquisition, permits, phased construction. Clinical operation begins in Phase 2; villas deliver in pairs across Phases 3-4.">Land acquisition, permits, phased construction. Clinical operation begins in Phase 2; villas deliver in pairs across Phases 3-4.</p>
+  </div>
+
+  <div class="phases">
+    <div class="phase">
+      <div class="p-num">01</div>
+      <div class="p-when" data-es="2027 Q1-Q3" data-en="2027 Q1-Q3">2027 Q1-Q3</div>
+      <h5 data-es="Terreno + permisos" data-en="Land + permits">Land + permits</h5>
+      <p data-es="Compra de 2.5 ha. Estudio topográfico. Permisos ANATI + MINSA (clínica). Sociedad anónima panameña. Bufete: Patton, Moreno & Asvat (Boquete office)." data-en="Acquire 2.5 ha. Topographic survey. ANATI + MINSA permits (clinic). Panamanian S.A. structure. Counsel: Patton, Moreno & Asvat (Boquete office).">Acquire 2.5 ha. Topographic survey. ANATI + MINSA permits (clinic). Panamanian S.A. structure. Counsel: Patton, Moreno & Asvat (Boquete office).</p>
+    </div>
+    <div class="phase">
+      <div class="p-num">02</div>
+      <div class="p-when" data-es="2027 Q4 – 2028 Q3" data-en="2027 Q4 – 2028 Q3">2027 Q4 – 2028 Q3</div>
+      <h5 data-es="Clínica + infraestructura" data-en="Clinic + infrastructure">Clinic + infrastructure</h5>
+      <p data-es="Construcción del edificio clínico, sistema solar, agua, camino interno, parking. Soft-open de clínica en septiembre 2028 con 4 protocolos: HBOT, IV NAD+, IV vit C, péptidos basal." data-en="Build the clinic building, solar system, water, internal road, parking. Clinic soft-opens September 2028 with 4 protocols: HBOT, IV NAD+, IV vit C, baseline peptides.">Build the clinic building, solar system, water, internal road, parking. Clinic soft-opens September 2028 with 4 protocols: HBOT, IV NAD+, IV vit C, baseline peptides.</p>
+    </div>
+    <div class="phase">
+      <div class="p-num">03</div>
+      <div class="p-when" data-es="2029 Q1 – Q4" data-en="2029 Q1 – Q4">2029 Q1 – Q4</div>
+      <h5 data-es="Primeras 3 villas + restaurante" data-en="First 3 villas + restaurant">First 3 villas + restaurant</h5>
+      <p data-es="V1, V2, V3 (todas 1-dorm) + restaurante + pavellón yoga + contraste hot/cold. Apertura completa con paquetes huéspedes y experiencia integrada clínica + alojamiento." data-en="V1, V2, V3 (all 1-BR) + restaurant + yoga pavilion + hot/cold contrast. Full opening with guest packages integrating clinic + lodging.">V1, V2, V3 (all 1-BR) + restaurant + yoga pavilion + hot/cold contrast. Full opening with guest packages integrating clinic + lodging.</p>
+    </div>
+    <div class="phase">
+      <div class="p-num">04</div>
+      <div class="p-when" data-es="2030 Q1 – Q4" data-en="2030 Q1 – Q4">2030 Q1 – Q4</div>
+      <h5 data-es="Villas 4-6 + finca café" data-en="Villas 4-6 + coffee finca">Villas 4-6 + coffee finca</h5>
+      <p data-es="V4, V5, V6 (todas 2-dorm). Re-activación de finca café (cultivar geisha + caturra) con planta de beneficio compartida. Apertura plena de capacidad: 6 villas + clínica @ 80% utilización." data-en="V4, V5, V6 (all 2-BR). Re-activate coffee finca (geisha + caturra) with shared wet-mill. Full capacity opening: 6 villas + clinic @ 80% utilization.">V4, V5, V6 (all 2-BR). Re-activate coffee finca (geisha + caturra) with shared wet-mill. Full capacity opening: 6 villas + clinic @ 80% utilization.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ECONOMICS -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num" data-es="05 · ECONÓMICA" data-en="05 · ECONOMICS">05 · ECONOMICS</div>
+    <h2 data-es-html="Números <em>preliminares</em>." data-en-html="<em>Preliminary</em> numbers.">Preliminary numbers.</h2>
+    <p class="sec-sub" data-es="Estimaciones para faseo + revenue base. Validar con quantity surveyor local en Fase 1. Revenue asume 70% utilización clínica + 65% ocupación villas." data-en="Estimates for phasing + base revenue. Validate with local quantity surveyor in Phase 1. Revenue assumes 70% clinic utilization + 65% villa occupancy.">Estimates for phasing + base revenue. Validate with local quantity surveyor in Phase 1. Revenue assumes 70% clinic utilization + 65% villa occupancy.</p>
+  </div>
+
+  <div class="econ-grid">
+    <div class="econ-card">
+      <h4 data-es="Capex · construcción + setup" data-en="Capex · construction + setup">Capex · construction + setup</h4>
+      <div class="econ-row"><span data-es="Terreno · 2.5 ha @ $18/m²" data-en="Land · 2.5 ha @ $18/m²">Land · 2.5 ha @ $18/m²</span><span class="v">$450,000</span></div>
+      <div class="econ-row"><span data-es="Clínica · 600 m² @ $2,400/m²" data-en="Clinic · 600 m² @ $2,400/m²">Clinic · 600 m² @ $2,400/m²</span><span class="v">$1,440,000</span></div>
+      <div class="econ-row"><span data-es="Equipo médico (HBOT, IV, lab)" data-en="Medical equipment (HBOT, IV, lab)">Medical equipment (HBOT, IV, lab)</span><span class="v">$840,000</span></div>
+      <div class="econ-row"><span data-es="6 villas · 660 m² @ $1,800/m²" data-en="6 villas · 660 m² @ $1,800/m²">6 villas · 660 m² @ $1,800/m²</span><span class="v">$1,190,000</span></div>
+      <div class="econ-row"><span data-es="Amenidades (restaurante, yoga, plunge)" data-en="Amenities (restaurant, yoga, plunge)">Amenities (restaurant, yoga, plunge)</span><span class="v">$580,000</span></div>
+      <div class="econ-row"><span data-es="Infraestructura (solar, agua, fibra, camino)" data-en="Infrastructure (solar, water, fiber, road)">Infrastructure (solar, water, fiber, road)</span><span class="v">$420,000</span></div>
+      <div class="econ-row"><span data-es="Permisos · arquitecto · ingeniero · 8%" data-en="Permits · architect · engineer · 8%">Permits · architect · engineer · 8%</span><span class="v">$390,000</span></div>
+      <div class="econ-row"><span data-es="Reserva contingencia · 10%" data-en="Contingency reserve · 10%">Contingency reserve · 10%</span><span class="v">$530,000</span></div>
+      <div class="econ-row"><span data-es="TOTAL CAPEX" data-en="TOTAL CAPEX">TOTAL CAPEX</span><span class="v">$5,840,000</span></div>
+    </div>
+
+    <div class="econ-card">
+      <h4 data-es="Revenue · operación estabilizada (año 3)" data-en="Revenue · steady-state (year 3)">Revenue · steady-state (year 3)</h4>
+      <div class="econ-row"><span data-es="Programa intensivo · 12 días · $14K x 18/mes" data-en="Intensive program · 12 days · $14K x 18/mo">Intensive program · 12 days · $14K x 18/mo</span><span class="v">$3,024,000</span></div>
+      <div class="econ-row"><span data-es="Walk-in IV · HBOT (locales BQ)" data-en="Walk-in IV · HBOT (BQ locals)">Walk-in IV · HBOT (BQ locals)</span><span class="v">$580,000</span></div>
+      <div class="econ-row"><span data-es="Villas alquiler (días sin programa)" data-en="Villa rental (days without program)">Villa rental (days without program)</span><span class="v">$310,000</span></div>
+      <div class="econ-row"><span data-es="Restaurante (público + huéspedes)" data-en="Restaurant (public + guests)">Restaurant (public + guests)</span><span class="v">$220,000</span></div>
+      <div class="econ-row"><span data-es="Café geisha · 1.2 ha @ premium specialty" data-en="Geisha coffee · 1.2 ha @ specialty premium">Geisha coffee · 1.2 ha @ specialty premium</span><span class="v">$95,000</span></div>
+      <div class="econ-row"><span data-es="Workshops + retreats externos" data-en="External workshops + retreats">External workshops + retreats</span><span class="v">$140,000</span></div>
+      <div class="econ-row"><span data-es="Opex (staff, suministros, marketing) · 52%" data-en="Opex (staff, supplies, marketing) · 52%">Opex (staff, supplies, marketing) · 52%</span><span class="v">-$2,270,000</span></div>
+      <div class="econ-row"><span data-es="EBITDA · ESTABLE" data-en="EBITDA · STEADY">EBITDA · STEADY</span><span class="v">$2,099,000</span></div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <span data-es="ARCHIVO LA COMPAÑÍA · PLAN 01 · BAJO MONO COMPOUND" data-en="LA COMPAÑÍA ARCHIVE · PLAN 01 · BAJO MONO COMPOUND">LA COMPAÑÍA ARCHIVE · PLAN 01 · BAJO MONO COMPOUND</span> ·
+  <a href="lacompania.html" data-es="VOLVER" data-en="BACK">BACK</a> ·
+  <a href="plan-isla-cristobal.html" data-es="ISLA CRISTÓBAL →" data-en="ISLA CRISTÓBAL →">ISLA CRISTÓBAL →</a>
+</footer>
+
+<script>
+  const getLang = () => localStorage.getItem('sora.lang') || 'en';
+  function applyLang(lang){
+    document.querySelectorAll('[data-es]').forEach(el=>{
+      const v = el.getAttribute('data-' + lang);
+      if(v != null) el.textContent = v;
+    });
+    document.querySelectorAll('[data-es-html]').forEach(el=>{
+      const v = el.getAttribute('data-' + lang + '-html');
+      if(v != null) el.innerHTML = v;
+    });
+    document.documentElement.lang = lang;
+    localStorage.setItem('sora.lang', lang);
+    document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('active', b.dataset.lang === lang));
+  }
+  document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click', ()=>applyLang(b.dataset.lang)));
+  applyLang(getLang());
+</script>
+</body>
+</html>
