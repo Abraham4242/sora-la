@@ -128,11 +128,17 @@
   .asset-card .a-foot .open{color:var(--forest);font-weight:700;letter-spacing:.20em}
 
   /* PEOPLE */
-  .people{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
-  .person{padding:24px 26px;background:var(--paper-2);border:0.5px solid var(--line);border-radius:10px}
-  .person .role{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;color:var(--gold-deep);text-transform:uppercase;font-weight:700;margin-bottom:10px}
-  .person h6{font-family:var(--serif);font-style:italic;font-size:22px;font-weight:400;color:var(--ink);line-height:1.1;margin-bottom:6px}
-  .person p{font-family:var(--serif);font-size:13px;color:var(--ink-3);line-height:1.5}
+  .people{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+  .person{padding:22px 22px 20px;background:var(--paper-2);border:0.5px solid var(--line);border-radius:10px;border-top:2px solid var(--gold-deep);position:relative;transition:all .2s}
+  .person:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(20,17,12,.06);border-color:var(--line-2)}
+  .person.founder{border-top-color:var(--coral);background:linear-gradient(180deg,var(--paper),var(--paper-2))}
+  .person.family::after{content:'V';position:absolute;top:8px;right:10px;font-family:var(--serif);font-style:italic;font-size:13px;color:var(--gold);opacity:.55;letter-spacing:.04em}
+  .person .role{font-family:var(--mono);font-size:9px;letter-spacing:.18em;color:var(--gold-deep);text-transform:uppercase;font-weight:700;margin-bottom:10px;line-height:1.4}
+  .person.founder .role{color:var(--coral)}
+  .person h6{font-family:var(--serif);font-style:italic;font-size:21px;font-weight:400;color:var(--ink);line-height:1.1;margin-bottom:8px;letter-spacing:-.005em}
+  .person p{font-family:var(--serif);font-size:12.5px;color:var(--ink-3);line-height:1.5}
+  .people-note{margin-top:14px;font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--ink-faint);text-transform:uppercase;text-align:center}
+  .people-note em{font-style:italic;color:var(--gold);font-weight:600;text-transform:none;letter-spacing:.02em}
 
   /* FOOTER */
   footer{margin-top:80px;padding:48px 0 32px;background:var(--ink);color:var(--paper)}
@@ -439,26 +445,60 @@
       <div class="sec-num" data-es="03 · PERSONAS" data-en="03 · PEOPLE">03 · PEOPLE</div>
       <h3 data-es-html="Los <em>que la mueven</em>." data-en-html="Those who <em>move it</em>.">Those who <em>move it</em>.</h3>
     </div>
-    <p class="sec-sub" data-es="Equipo fundador. Estructura amplia con socios por marca." data-en="Founding team. Broader structure with per-brand partners.">Founding team. Broader structure with per-brand partners.</p>
+    <p class="sec-sub" data-es="Ocho personas. Disciplinas independientes — vehículos, seguridad, electrónica, cocina, medicina, operaciones — bajo un solo techo." data-en="Eight people. Independent disciplines — vehicles, security, electronics, kitchen, medicine, operations — under one roof.">Eight people. Independent disciplines — vehicles, security, electronics, kitchen, medicine, operations — under one roof.</p>
   </div>
 
   <div class="people">
-    <div class="person">
+    <div class="person founder">
       <div class="role" data-es="FUNDADOR · CEO" data-en="FOUNDER · CEO">FOUNDER · CEO</div>
       <h6>Abraham Eid</h6>
-      <p data-es="Capital, estrategia, marca. Boquete + LATAM." data-en="Capital, strategy, brand. Boquete + LATAM.">Capital, strategy, brand. Boquete + LATAM.</p>
+      <p data-es="Visión, capital, estrategia, marca. Boquete + LATAM." data-en="Vision, capital, strategy, brand. Boquete + LATAM.">Vision, capital, strategy, brand. Boquete + LATAM.</p>
     </div>
-    <div class="person">
-      <div class="role" data-es="CO-FUNDADOR · OPERACIONES" data-en="CO-FOUNDER · OPERATIONS">CO-FOUNDER · OPERATIONS</div>
-      <h6>Abdiel</h6>
-      <p data-es="Operaciones de campo. Panamá." data-en="Field operations. Panama.">Field operations. Panama.</p>
-    </div>
-    <div class="person">
-      <div class="role" data-es="BD · SORA" data-en="BD · SORA">BD · SORA</div>
+
+    <div class="person family">
+      <div class="role" data-es="GERENTE GENERAL · PANAMÁ" data-en="GENERAL MANAGER · PANAMA">GENERAL MANAGER · PANAMA</div>
       <h6>Marcos Vallejos</h6>
-      <p data-es="Desarrollo de mercado, ventas, partners. Sora-PA." data-en="Market development, sales, partners. Sora-PA.">Market development, sales, partners. Sora-PA.</p>
+      <p data-es="P&L de Panamá. Comercial, partners, ventas, hosts. Reporta a Abraham." data-en="Panama P&L. Commercial, partners, sales, hosts. Reports to Abraham.">Panama P&L. Commercial, partners, sales, hosts. Reports to Abraham.</p>
+    </div>
+
+    <div class="person">
+      <div class="role" data-es="DIR. DE TRANSPORTE" data-en="DIRECTOR OF TRANSPORTATION">DIRECTOR OF TRANSPORTATION</div>
+      <h6>Minor Jiménez</h6>
+      <p data-es="Flota, choferes, logística, traslados de huéspedes y carga. Seguridad vial." data-en="Fleet, drivers, logistics, guest + cargo transfers. Road safety.">Fleet, drivers, logistics, guest + cargo transfers. Road safety.</p>
+    </div>
+
+    <div class="person family">
+      <div class="role" data-es="GERENTE DE OPERACIONES" data-en="OPERATIONS MANAGER">OPERATIONS MANAGER</div>
+      <h6>Elías Vallejos</h6>
+      <p data-es="Día a día. Vendors, mantenimiento, calendario operativo, coordinación entre áreas." data-en="Day-to-day. Vendors, maintenance, operations calendar, cross-team coordination.">Day-to-day. Vendors, maintenance, operations calendar, cross-team coordination.</p>
+    </div>
+
+    <div class="person family">
+      <div class="role" data-es="JEFE DE SEGURIDAD FÍSICA" data-en="MANAGER OF PHYSICAL SECURITY">MANAGER OF PHYSICAL SECURITY</div>
+      <h6>Gabriel Vallejos</h6>
+      <p data-es="Seguridad de sitio, eventos, personal y traslados. Protocolos + entrenamiento." data-en="Site, event, personnel and transport security. Protocols + training.">Site, event, personnel and transport security. Protocols + training.</p>
+    </div>
+
+    <div class="person">
+      <div class="role" data-es="ESPECIALISTA EN ELECTRÓNICA" data-en="ELECTRONICS SPECIALIST">ELECTRONICS SPECIALIST</div>
+      <h6>Abdiel</h6>
+      <p data-es="A/V, iluminación, redes, IT, sistemas de control. Stack técnico de Sora." data-en="A/V, lighting, networking, IT, control systems. Sora technical stack.">A/V, lighting, networking, IT, control systems. Sora technical stack.</p>
+    </div>
+
+    <div class="person family">
+      <div class="role" data-es="CHEF EJECUTIVO" data-en="EXECUTIVE CHEF">EXECUTIVE CHEF</div>
+      <h6>Daniel Vallejos</h6>
+      <p data-es="Cocinas, menús, F&B. Carta para eventos, residencias y futura clínica de Bajo Mono." data-en="Kitchens, menus, F&B. Menus for events, residences, and the future Bajo Mono clinic.">Kitchens, menus, F&B. Menus for events, residences, and the future Bajo Mono clinic.</p>
+    </div>
+
+    <div class="person">
+      <div class="role" data-es="ESPECIALISTA EN MEDICINA" data-en="MEDICINAL SPECIALIST">MEDICINAL SPECIALIST</div>
+      <h6>Sebastián Rodríguez</h6>
+      <p data-es="Protocolos clínicos, péptidos, elixirs, sourcing farmacéutico. Líder técnico para Bajo Mono." data-en="Clinical protocols, peptides, elixirs, pharmaceutical sourcing. Technical lead for Bajo Mono.">Clinical protocols, peptides, elixirs, pharmaceutical sourcing. Technical lead for Bajo Mono.</p>
     </div>
   </div>
+
+  <div class="people-note" data-es-html="Cuatro de los ocho son hermanos · <em>Vallejos</em> · marca señalada con V" data-en-html="Four of eight are brothers · <em>Vallejos</em> · marked with V">Four of eight are brothers · <em>Vallejos</em> · marked with V</div>
 </section>
 
 </div>
