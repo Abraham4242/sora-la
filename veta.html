@@ -1,0 +1,626 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VETA · Minerals &amp; Materials · La Compañía</title>
+<meta name="description" content="VETA — La Compañía's mining venture. Extraction, processing, and off-take across Latin America. Panama first.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231a1612'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Georgia,serif' font-size='20' font-weight='600' fill='%23c97a3e'%3EV%3C/text%3E%3C/svg%3E">
+<meta property="og:title" content="VETA · Minerals &amp; Materials">
+<meta property="og:description" content="La Compañía's mining venture. From the seam to the circuit.">
+<meta name="theme-color" content="#1a1612">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* VETA palette — earth-side, copper-toned counterpart to Sora's cream/coral */
+    --paper: #e8dfc8;
+    --paper-2: #e0d5b8;
+    --paper-3: #d4c8a3;
+    --paper-deep: #c4b790;
+    --ink: #1a1612;
+    --ink-2: #2e2820;
+    --ink-3: #4a4032;
+    --ink-faint: #756648;
+    --line: rgba(26,22,18,0.12);
+    --line-2: rgba(26,22,18,0.22);
+    --copper: #b8602a;
+    --copper-deep: #8a4318;
+    --copper-light: #d48e5a;
+    --patina: #5a7268;
+    --patina-deep: #2e4438;
+    --basalt: #2a2826;
+    --gold: #c6964c;
+    --gold-deep: #95702f;
+    --ash: #5a5246;
+    --ember: #d24820;
+    --serif: 'Fraunces', Georgia, serif;
+    --sans: 'Inter', -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  body{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.10  0 0 0 0 0.08  0 0 0 0 0.06  0 0 0 0.035 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--copper);color:var(--paper)}
+  [data-en]:not([data-es]){display:none}
+  html[lang="en"] [data-es]:not([data-en]){display:none}
+  html[lang="en"] [data-en]:not([data-es]){display:inline}
+
+  /* HEADER */
+  .top{position:sticky;top:0;z-index:50;background:rgba(232,223,200,.94);backdrop-filter:blur(14px);border-bottom:0.5px solid var(--line)}
+  .top-in{max-width:1280px;margin:0 auto;padding:18px 36px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  .brand{display:flex;align-items:baseline;gap:14px}
+  .brand .word{font-family:var(--serif);font-weight:600;font-size:22px;letter-spacing:.20em;color:var(--ink)}
+  .brand .sub{font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--copper-deep);text-transform:uppercase;font-weight:700}
+  .spacer{flex:1}
+  .top-link{font-family:var(--sans);font-size:12px;color:var(--ink-2);padding:8px 14px;border:0.5px solid var(--line);border-radius:5px;transition:all .14s}
+  .top-link:hover{background:var(--paper-2);border-color:var(--line-2)}
+  .lang{display:inline-flex;border:0.5px solid var(--line);border-radius:5px;overflow:hidden}
+  .lang button{padding:7px 13px;font-family:var(--mono);font-size:10.5px;background:transparent;border:0;color:var(--ink-faint);cursor:pointer;font-weight:500;letter-spacing:.10em}
+  .lang button.active{background:var(--ink);color:var(--paper)}
+
+  .wrap{max-width:1280px;margin:0 auto;padding:0 36px}
+  .breadcrumbs{padding:24px 0 0;font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--ink-faint);text-transform:uppercase}
+  .breadcrumbs a{color:var(--copper-deep);font-weight:700}
+
+  /* HERO */
+  .hero{padding:80px 0 56px;display:grid;grid-template-columns:1.3fr 1fr;gap:56px;align-items:center;border-bottom:0.5px solid var(--line)}
+  .hero-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.30em;text-transform:uppercase;color:var(--copper-deep);font-weight:700;margin-bottom:24px}
+  .hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(72px,12vw,180px);line-height:.86;letter-spacing:-.04em;color:var(--ink);margin-bottom:20px;text-transform:none}
+  .hero h1 em{font-style:italic;color:var(--copper);font-weight:400}
+  .hero-lede{font-family:var(--serif);font-size:21px;color:var(--ink-2);font-weight:300;line-height:1.5;font-style:italic;margin-bottom:28px;max-width:540px}
+  .hero-meta{display:flex;gap:18px;flex-wrap:wrap;font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;color:var(--ink-faint);text-transform:uppercase}
+  .hero-meta span{display:inline-flex;align-items:center;gap:8px}
+  .hero-meta .dot{width:6px;height:6px;border-radius:50%;background:var(--copper)}
+
+  /* Hero illustration: stylized copper ore / mineral cross-section */
+  .hero-art{aspect-ratio:1;background:radial-gradient(circle at 35% 35%,#3a2218 0%,#1a1410 60%,#0c0806 100%);border-radius:16px;overflow:hidden;position:relative;border:0.5px solid var(--line)}
+  .hero-art svg{width:100%;height:100%}
+  .hero-stamp{position:absolute;top:18px;left:18px;font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;background:rgba(184,96,42,.92);color:var(--paper);padding:6px 11px;border-radius:4px;font-weight:700;text-transform:uppercase}
+
+  /* MISSION CARD */
+  .mission{margin:48px auto 64px;max-width:1100px;background:var(--ink);color:var(--paper);border-radius:16px;padding:52px 60px;position:relative;overflow:hidden}
+  .mission::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--copper-deep),var(--copper),var(--gold),var(--copper),var(--copper-deep))}
+  .mission .m-label{font-family:var(--mono);font-size:10.5px;letter-spacing:.26em;color:var(--copper-light);text-transform:uppercase;font-weight:700;margin-bottom:20px}
+  .mission h2{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4vw,42px);line-height:1.16;color:var(--paper);letter-spacing:-.015em;margin-bottom:20px}
+  .mission h2 em{color:var(--copper-light);font-style:italic;font-weight:500}
+  .mission p{font-family:var(--serif);font-size:17px;line-height:1.65;color:rgba(232,223,200,0.80);font-style:italic;max-width:720px}
+
+  /* SECTIONS */
+  section{padding:72px 0 32px;border-top:0.5px solid var(--line)}
+  section:first-of-type{border-top:0}
+  .sec-head{margin-bottom:40px;display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap}
+  .sec-num{font-family:var(--mono);font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--copper-deep);font-weight:700;margin-bottom:12px}
+  .sec-head h3{font-family:var(--serif);font-weight:400;font-size:clamp(36px,5vw,56px);line-height:1.02;color:var(--ink);letter-spacing:-.02em;max-width:720px}
+  .sec-head h3 em{font-style:italic;color:var(--copper);font-weight:500}
+  .sec-sub{font-family:var(--serif);font-size:16px;color:var(--ink-3);font-weight:300;max-width:380px;line-height:1.55;font-style:italic;text-align:right}
+
+  /* PILLARS */
+  .pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .pillar{background:var(--paper-2);border:0.5px solid var(--line);border-radius:12px;padding:28px 26px 24px;border-top:3px solid var(--copper)}
+  .pillar:nth-child(2){border-top-color:var(--ember)}
+  .pillar:nth-child(3){border-top-color:var(--patina)}
+  .pillar:nth-child(4){border-top-color:var(--gold)}
+  .pillar .p-num{font-family:var(--serif);font-style:italic;font-size:48px;color:var(--copper);line-height:1;margin-bottom:14px;font-weight:300}
+  .pillar:nth-child(2) .p-num{color:var(--ember)}
+  .pillar:nth-child(3) .p-num{color:var(--patina)}
+  .pillar:nth-child(4) .p-num{color:var(--gold-deep)}
+  .pillar h4{font-family:var(--serif);font-weight:500;font-size:21px;color:var(--ink);line-height:1.18;margin-bottom:8px;letter-spacing:-.005em}
+  .pillar h4 em{font-style:italic;color:var(--copper)}
+  .pillar p{font-family:var(--serif);font-size:14.5px;color:var(--ink-2);line-height:1.55}
+  .pillar p strong{color:var(--ink);font-weight:600}
+
+  /* SITES */
+  .sites{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .site{background:var(--paper);border:0.5px solid var(--line);border-radius:14px;padding:32px 32px 28px;position:relative;overflow:hidden;display:flex;flex-direction:column}
+  .site::before{content:'';position:absolute;top:0;left:0;width:5px;bottom:0;background:var(--copper)}
+  .site.s-stream::before{background:var(--patina)}
+  .site.s-future::before{background:var(--ash);opacity:0.5}
+  .site .tag{font-family:var(--mono);font-size:10px;letter-spacing:.20em;color:var(--copper-deep);text-transform:uppercase;font-weight:700;margin-bottom:14px;padding-bottom:12px;border-bottom:0.5px solid var(--line-2)}
+  .site.s-stream .tag{color:var(--patina-deep)}
+  .site.s-future .tag{color:var(--ash)}
+  .site h4{font-family:var(--serif);font-weight:500;font-size:30px;color:var(--ink);line-height:1.1;margin-bottom:10px;letter-spacing:-.01em}
+  .site h4 em{font-style:italic;color:var(--copper);font-weight:400}
+  .site.s-stream h4 em{color:var(--patina-deep)}
+  .site .place{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:18px}
+  .site p{font-family:var(--serif);font-size:14.5px;line-height:1.6;color:var(--ink-2);margin-bottom:14px}
+  .site p strong{color:var(--ink);font-weight:600}
+  .site ul{list-style:none;padding:0;margin-top:6px;flex:1}
+  .site li{font-family:var(--sans);font-size:13px;color:var(--ink-2);padding:6px 0 6px 18px;position:relative;line-height:1.5}
+  .site li::before{content:'';position:absolute;left:0;top:14px;width:10px;height:1px;background:var(--copper)}
+  .site.s-stream li::before{background:var(--patina)}
+  .site.s-future{opacity:0.78}
+  .site .s-foot{margin-top:16px;padding-top:14px;border-top:0.5px solid var(--line-2);display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--ink-faint);text-transform:uppercase}
+
+  /* PARTNERSHIPS */
+  .partners{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+  .partner{background:var(--paper-2);border:0.5px solid var(--line);border-radius:10px;padding:24px 26px}
+  .partner .p-role{font-family:var(--mono);font-size:9.5px;letter-spacing:.20em;color:var(--copper-deep);text-transform:uppercase;font-weight:700;margin-bottom:10px}
+  .partner h5{font-family:var(--serif);font-style:italic;font-size:24px;font-weight:500;color:var(--ink);line-height:1.15;margin-bottom:8px}
+  .partner p{font-family:var(--serif);font-size:13.5px;color:var(--ink-3);line-height:1.55}
+
+  /* COMMUNITY CARD */
+  .community{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+  .com-text p{font-family:var(--serif);font-size:16px;line-height:1.7;color:var(--ink-2);margin-bottom:14px}
+  .com-text p strong{color:var(--ink);font-weight:600}
+  .com-text p em{color:var(--copper);font-style:italic;font-weight:500}
+  .com-text h4{font-family:var(--serif);font-weight:500;font-size:22px;color:var(--ink);margin:22px 0 10px;letter-spacing:-.005em}
+
+  .lesson-card{background:var(--ink);color:var(--paper);border-radius:14px;padding:36px;position:relative;overflow:hidden}
+  .lesson-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--ember),var(--copper),var(--gold))}
+  .lesson-card .lc-tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;color:var(--ember);text-transform:uppercase;font-weight:700;margin-bottom:14px}
+  .lesson-card h4{font-family:var(--serif);font-weight:400;font-size:24px;line-height:1.2;color:var(--paper);margin-bottom:16px;letter-spacing:-.005em}
+  .lesson-card p{font-family:var(--serif);font-size:15px;line-height:1.65;color:rgba(232,223,200,0.78);margin-bottom:12px}
+  .lesson-card ul{list-style:none;padding:0;margin-top:12px}
+  .lesson-card li{font-family:var(--serif);font-size:14px;color:rgba(232,223,200,0.82);line-height:1.65;padding-left:18px;position:relative;margin-bottom:9px}
+  .lesson-card li::before{content:'·';position:absolute;left:0;color:var(--copper);font-weight:700;font-size:18px;top:-3px}
+  .lesson-card li strong{color:var(--copper-light);font-weight:600}
+
+  /* CUSTOMERS */
+  .customers{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+  .customer{background:var(--paper-2);border:0.5px solid var(--line);border-radius:10px;padding:22px 22px 20px;border-left:3px solid var(--copper)}
+  .customer.c-semis{border-left-color:var(--patina)}
+  .customer.c-ev{border-left-color:var(--ember)}
+  .customer.c-cable{border-left-color:var(--gold-deep)}
+  .customer.c-export{border-left-color:var(--ash)}
+  .customer .grade{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;color:var(--copper-deep);text-transform:uppercase;font-weight:700;margin-bottom:10px}
+  .customer.c-semis .grade{color:var(--patina-deep)}
+  .customer.c-ev .grade{color:var(--ember)}
+  .customer.c-cable .grade{color:var(--gold-deep)}
+  .customer.c-export .grade{color:var(--ash)}
+  .customer h5{font-family:var(--serif);font-style:italic;font-size:20px;font-weight:500;color:var(--ink);line-height:1.15;margin-bottom:8px;letter-spacing:-.005em}
+  .customer p{font-family:var(--serif);font-size:13.5px;color:var(--ink-3);line-height:1.5;margin-bottom:10px}
+  .customer .names{font-family:var(--mono);font-size:10.5px;color:var(--ink-2);letter-spacing:.06em;line-height:1.5;padding-top:10px;border-top:0.5px dashed var(--line-2)}
+
+  /* ROADMAP */
+  .timeline{position:relative;padding-left:36px;border-left:1px solid var(--line-2)}
+  .tl-item{padding:0 0 32px 24px;position:relative}
+  .tl-item::before{content:'';position:absolute;left:-42px;top:6px;width:13px;height:13px;border-radius:50%;background:var(--copper);border:3px solid var(--paper)}
+  .tl-item:nth-child(2)::before{background:var(--ember)}
+  .tl-item:nth-child(3)::before{background:var(--patina)}
+  .tl-item:nth-child(4)::before{background:var(--gold)}
+  .tl-item:nth-child(5)::before{background:var(--ash)}
+  .tl-q{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--copper-deep);font-weight:700;margin-bottom:6px;text-transform:uppercase}
+  .tl-item h5{font-family:var(--serif);font-size:22px;font-weight:500;color:var(--ink);margin-bottom:8px;letter-spacing:-.005em}
+  .tl-item h5 em{font-style:italic;color:var(--copper)}
+  .tl-item p{font-family:var(--serif);font-size:15px;line-height:1.6;color:var(--ink-2)}
+  .tl-item p strong{color:var(--ink);font-weight:600}
+
+  /* FOOTER */
+  footer{margin-top:80px;padding:48px 0 32px;background:var(--ink);color:var(--paper)}
+  footer .foot-grid{max-width:1280px;margin:0 auto;padding:0 36px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:36px}
+  footer .wordmark-foot{font-family:var(--serif);font-size:34px;font-weight:600;color:var(--paper);letter-spacing:.20em;margin-bottom:14px;line-height:1}
+  footer .tagline{font-family:var(--serif);font-style:italic;font-size:14px;color:rgba(232,223,200,.6);line-height:1.55;max-width:320px}
+  footer h6{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;color:var(--copper-light);text-transform:uppercase;font-weight:700;margin-bottom:14px}
+  footer ul{list-style:none}
+  footer ul li{margin-bottom:10px;font-size:13px}
+  footer ul a{color:rgba(232,223,200,.72);transition:color .15s}
+  footer ul a:hover{color:var(--copper-light)}
+  .foot-bottom{max-width:1280px;margin:0 auto;padding:24px 36px 0;border-top:1px solid rgba(232,223,200,.10);display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;font-family:var(--mono);font-size:10.5px;letter-spacing:.10em;color:rgba(232,223,200,.42);text-transform:uppercase}
+
+  @media (max-width:880px){
+    .hero{grid-template-columns:1fr;gap:32px}
+    .pillars{grid-template-columns:1fr 1fr}
+    .sites,.community{grid-template-columns:1fr;gap:18px}
+    footer .foot-grid{grid-template-columns:1fr 1fr;gap:32px}
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-in">
+    <div class="brand">
+      <a href="lacompania.html" style="color:inherit;text-decoration:none"><span class="word">VETA</span></a>
+      <span class="sub" data-es="Minerales · Materiales" data-en="Minerals · Materials">Minerals · Materials</span>
+    </div>
+    <span class="spacer"></span>
+    <a class="top-link" href="lacompania.html" data-es="← La Compañía" data-en="← La Compañía">← La Compañía</a>
+    <a class="top-link" href="sora-hq.html">SORA →</a>
+    <div class="lang">
+      <button class="active" data-lang="en">EN</button>
+      <button data-lang="es">ES</button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<div class="breadcrumbs">
+  <a href="lacompania.html">LA COMPAÑÍA</a> · <span data-es="MARCAS" data-en="BRANDS">BRANDS</span> · 02 · VETA
+</div>
+
+<header class="hero">
+  <div>
+    <div class="hero-eyebrow" data-es="MARCA 02 · LA COMPAÑÍA · MMXXVI" data-en="BRAND 02 · LA COMPAÑÍA · MMXXVI">BRAND 02 · LA COMPAÑÍA · MMXXVI</div>
+    <h1>VETA</h1>
+    <p class="hero-lede" data-es-html="De la <em>veta</em> al circuito. Minería, procesamiento y off-take en Latinoamérica — empezando por Panamá." data-en-html="From the <em>seam</em> to the circuit. Mining, processing, and off-take across Latin America — starting in Panama.">From the <em>seam</em> to the circuit. Mining, processing, and off-take across Latin America — starting in Panama.</p>
+    <div class="hero-meta">
+      <span><span class="dot"></span>CHIRIQUÍ · PANAMÁ · <span data-es="ARRANQUE" data-en="LAUNCH">LAUNCH</span></span>
+      <span><span class="dot"></span><span data-es="COBRE · LITIO · TIERRAS RARAS" data-en="COPPER · LITHIUM · RARE EARTH">COPPER · LITHIUM · RARE EARTH</span></span>
+      <span><span class="dot"></span>LATAM · GLOBAL</span>
+    </div>
+  </div>
+  <div class="hero-art">
+    <div class="hero-stamp" data-es="VETA · MUESTRA · 01" data-en="VETA · SAMPLE · 01">VETA · SAMPLE · 01</div>
+    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="ore-core" cx="0.35" cy="0.35" r="0.6">
+          <stop offset="0" stop-color="#d48e5a"/>
+          <stop offset="0.4" stop-color="#b8602a"/>
+          <stop offset="0.8" stop-color="#5a2814"/>
+          <stop offset="1" stop-color="#1a0c08"/>
+        </radialGradient>
+        <linearGradient id="vein-grad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#e8a560"/>
+          <stop offset="0.5" stop-color="#c97a3e"/>
+          <stop offset="1" stop-color="#8a4318"/>
+        </linearGradient>
+        <pattern id="rock-tex" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+          <circle cx="10" cy="14" r="2" fill="#3a2a20" opacity="0.5"/>
+          <circle cx="38" cy="32" r="1.5" fill="#2a1a10" opacity="0.6"/>
+          <circle cx="22" cy="48" r="2.5" fill="#1a1208" opacity="0.45"/>
+          <circle cx="50" cy="8" r="1.5" fill="#4a3220" opacity="0.5"/>
+        </pattern>
+      </defs>
+      <!-- Background rock matrix -->
+      <rect width="400" height="400" fill="url(#rock-tex)"/>
+      <!-- Main ore body -->
+      <ellipse cx="200" cy="200" rx="155" ry="135" fill="url(#ore-core)"/>
+      <!-- Vein streaks -->
+      <path d="M 50 280 Q 120 240 200 260 Q 280 280 360 240" fill="none" stroke="url(#vein-grad)" stroke-width="9" opacity="0.85"/>
+      <path d="M 60 180 Q 140 160 220 175 Q 300 195 350 170" fill="none" stroke="url(#vein-grad)" stroke-width="6" opacity="0.7"/>
+      <path d="M 80 320 Q 160 300 240 320 Q 320 340 350 320" fill="none" stroke="url(#vein-grad)" stroke-width="4" opacity="0.55"/>
+      <path d="M 90 100 Q 170 80 250 100 Q 320 120 360 95" fill="none" stroke="url(#vein-grad)" stroke-width="5" opacity="0.6"/>
+      <!-- Crystalline highlights (copper sulfide) -->
+      <g fill="rgba(216,180,120,0.55)">
+        <polygon points="140,180 150,170 165,178 158,195 144,196"/>
+        <polygon points="220,230 235,222 246,238 232,252 218,245"/>
+        <polygon points="280,160 292,152 304,162 296,178 282,176"/>
+        <polygon points="170,290 180,283 195,291 188,304 174,303"/>
+      </g>
+      <!-- Sparkle / lustre -->
+      <g fill="#f0c87a" opacity="0.6">
+        <circle cx="155" cy="155" r="1.8"/><circle cx="280" cy="240" r="1.5"/>
+        <circle cx="230" cy="180" r="2"/><circle cx="200" cy="320" r="1.5"/>
+        <circle cx="120" cy="220" r="1.5"/><circle cx="320" cy="180" r="1.8"/>
+      </g>
+      <!-- Sample label crosshair -->
+      <g stroke="#c6964c" stroke-width="0.6" opacity="0.45">
+        <line x1="200" y1="40" x2="200" y2="80"/>
+        <line x1="200" y1="320" x2="200" y2="360"/>
+        <line x1="40" y1="200" x2="80" y2="200"/>
+        <line x1="320" y1="200" x2="360" y2="200"/>
+      </g>
+      <text x="200" y="385" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#c6964c" letter-spacing="3" opacity="0.7">CHIRIQUÍ · CU · 2.4%</text>
+    </svg>
+  </div>
+</header>
+
+<!-- MISSION -->
+<div class="mission">
+  <div class="m-label" data-es="MISIÓN" data-en="MISSION">MISSION</div>
+  <h2 data-es-html="Lo que la <em>tierra</em> entrega — ordenado, refinado, y vendido al precio justo. Comunidad antes que extracción." data-en-html="What the <em>earth</em> delivers — sorted, refined, and sold at a fair price. Community before extraction.">What the <em>earth</em> delivers — sorted, refined, and sold at a fair price. Community before extraction.</h2>
+  <p data-es="VETA es la contracara terrestre de Sora. Mientras Sora vende experiencias del cielo (viajes, hospitalidad, tiempo curado), VETA opera del subsuelo: minería responsable, procesamiento por grados de pureza, y venta directa a fabricantes de semis, vehículos eléctricos, y cableado a nivel global. Empieza en Panamá. Sigue por la espina dorsal mineral de los Andes." data-en="VETA is Sora's earth-side counterpart. Where Sora sells experiences of the sky (travel, hospitality, curated time), VETA operates from the subsoil: responsible mining, processing by purity grades, and direct off-take to global semiconductor, EV, and cable manufacturers. It starts in Panama. It follows the Andean mineral spine from there.">VETA is Sora's earth-side counterpart. Where Sora sells experiences of the sky (travel, hospitality, curated time), VETA operates from the subsoil: responsible mining, processing by purity grades, and direct off-take to global semiconductor, EV, and cable manufacturers. It starts in Panama. It follows the Andean mineral spine from there.</p>
+</div>
+
+<!-- PILLARS -->
+<section>
+  <div class="sec-head">
+    <div>
+      <div class="sec-num" data-es="01 · LOS CUATRO PILARES" data-en="01 · THE FOUR PILLARS">01 · THE FOUR PILLARS</div>
+      <h3 data-es-html="Lo <em>que hace</em> VETA." data-en-html="What <em>VETA does</em>.">What <em>VETA does</em>.</h3>
+    </div>
+    <p class="sec-sub" data-es="No solo extracción. Cuatro líneas, una integrada en la otra." data-en="Not just extraction. Four lines, each feeding the next.">Not just extraction. Four lines, each feeding the next.</p>
+  </div>
+
+  <div class="pillars">
+    <div class="pillar">
+      <div class="p-num">01</div>
+      <h4 data-es-html="<em>Extracción</em>" data-en-html="<em>Extraction</em>">Extraction</h4>
+      <p data-es-html="Operación directa en sitios autorizados con comunidades anfitrionas. Cobre, litio, tierras raras, agregados. La <strong>licencia social</strong> es la primera entrega — antes que el primer kilo." data-en-html="Direct operation at authorized sites with host communities. Copper, lithium, rare earths, aggregates. The <strong>social license</strong> is the first deliverable — before the first kilogram.">Direct operation at authorized sites with host communities. Copper, lithium, rare earths, aggregates. The <strong>social license</strong> is the first deliverable — before the first kilogram.</p>
+    </div>
+    <div class="pillar">
+      <div class="p-num">02</div>
+      <h4 data-es-html="<em>Procesamiento</em>" data-en-html="<em>Processing</em>">Processing</h4>
+      <p data-es-html="Concentración, fundición y refinación por grados. Cobre 99.99% para semis · 99.95% para cable · concentrado para exportación. Cada grado tiene su comprador." data-en-html="Concentration, smelting, refining by grade. 99.99% copper for semis · 99.95% for cable · concentrate for export. Each grade has its buyer.">Concentration, smelting, refining by grade. 99.99% copper for semis · 99.95% for cable · concentrate for export. Each grade has its buyer.</p>
+    </div>
+    <div class="pillar">
+      <div class="p-num">03</div>
+      <h4 data-es-html="<em>Off-take</em>" data-en-html="<em>Off-take</em>">Off-take</h4>
+      <p data-es-html="Contratos directos con fabricantes de semiconductores, vehículos eléctricos, cableado y procesadores de tierras raras. Sin intermediarios — desde la veta al circuito." data-en-html="Direct contracts with semiconductor, EV, cable, and rare-earth-processor manufacturers. No middlemen — from seam to circuit.">Direct contracts with semiconductor, EV, cable, and rare-earth-processor manufacturers. No middlemen — from seam to circuit.</p>
+    </div>
+    <div class="pillar">
+      <div class="p-num">04</div>
+      <h4 data-es-html="<em>Comunidad</em>" data-en-html="<em>Community</em>">Community</h4>
+      <p data-es-html="Asesoría a la comunidad anfitriona + coordinación con autoridades locales. La diferencia entre una mina que opera y una mina que cierra son las relaciones que estaban antes del primer barreno." data-en-html="Advisory for the host community + coordination with local authorities. The difference between a mine that runs and a mine that closes is the relationships built before the first drill.">Advisory for the host community + coordination with local authorities. The difference between a mine that runs and a mine that closes is the relationships built before the first drill.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SITES -->
+<section>
+  <div class="sec-head">
+    <div>
+      <div class="sec-num" data-es="02 · OPERACIONES" data-en="02 · OPERATIONS">02 · OPERATIONS</div>
+      <h3 data-es-html="Dos <em>arranques</em> en Panamá." data-en-html="Two <em>launch sites</em> in Panama.">Two <em>launch sites</em> in Panama.</h3>
+    </div>
+    <p class="sec-sub" data-es="Una operación directa en la Comarca. Un streaming deal con la mina más grande del país." data-en="One direct operation in the Comarca. One streaming deal with the country's largest mine.">One direct operation in the Comarca. One streaming deal with the country's largest mine.</p>
+  </div>
+
+  <div class="sites">
+    <!-- SITE 01 — Comarca JV -->
+    <article class="site">
+      <div class="tag" data-es="SITIO 01 · COMARCA NGÄBE-BUGLÉ · JV DIRECTA" data-en="SITE 01 · COMARCA NGÄBE-BUGLÉ · DIRECT JV">SITE 01 · COMARCA NGÄBE-BUGLÉ · DIRECT JV</div>
+      <h4 data-es-html="<em>Chiriquí</em> · Comarca" data-en-html="<em>Chiriquí</em> · Comarca">Chiriquí · Comarca</h4>
+      <div class="place" data-es="OESTE DE PANAMÁ · TERRITORIO INDÍGENA · 5,000+ KM²" data-en="WESTERN PANAMA · INDIGENOUS TERRITORY · 5,000+ KM²">WESTERN PANAMA · INDIGENOUS TERRITORY · 5,000+ KM²</div>
+      <p data-es-html="Joint venture directa con la comunidad <strong>Ngäbe-Buglé</strong>. La Comarca tiene depósitos documentados de cobre, oro, y minerales estratégicos. La estructura: VETA opera, los Ngäbe son <strong>socios con voz vinculante</strong> + royalty + capacitación + infraestructura de retorno." data-en-html="Direct joint venture with the <strong>Ngäbe-Buglé</strong> community. The Comarca holds documented copper, gold, and strategic-mineral deposits. The structure: VETA operates, the Ngäbe are <strong>partners with binding voice</strong> + royalty + training + return infrastructure.">Direct joint venture with the <strong>Ngäbe-Buglé</strong> community. The Comarca holds documented copper, gold, and strategic-mineral deposits. The structure: VETA operates, the Ngäbe are <strong>partners with binding voice</strong> + royalty + training + return infrastructure.</p>
+      <ul>
+        <li><span data-es="Acuerdo marco con el Congreso General Ngäbe-Buglé" data-en="Master agreement with the Ngäbe-Buglé General Congress">Master agreement with the Ngäbe-Buglé General Congress</span></li>
+        <li><span data-es="EIA + permisos ANATI + MICI · ruta paralela" data-en="EIA + ANATI + MICI permits · parallel track">EIA + ANATI + MICI permits · parallel track</span></li>
+        <li><span data-es="Pilot extraction 2027 · 50 ha · escalado por consenso" data-en="Pilot extraction 2027 · 50 ha · scale by consensus">Pilot extraction 2027 · 50 ha · scale by consensus</span></li>
+        <li><span data-es="Empleo local prioritario · formación técnica en Boquete" data-en="Local-priority hiring · technical training in Boquete">Local-priority hiring · technical training in Boquete</span></li>
+        <li><span data-es="Royalty + fondo comunitario · auditoría externa anual" data-en="Royalty + community fund · annual external audit">Royalty + community fund · annual external audit</span></li>
+      </ul>
+      <div class="s-foot"><span data-es="ESTADO · NEGOCIACIÓN" data-en="STATUS · NEGOTIATION">STATUS · NEGOTIATION</span><span data-es="ARRANQUE · 2027-Q3" data-en="LAUNCH · 2027-Q3">LAUNCH · 2027-Q3</span></div>
+    </article>
+
+    <!-- SITE 02 — First Quantum streaming -->
+    <article class="site s-stream">
+      <div class="tag" data-es="SITIO 02 · STREAMING · COBRE PANAMÁ" data-en="SITE 02 · STREAMING · COBRE PANAMÁ">SITE 02 · STREAMING · COBRE PANAMÁ</div>
+      <h4 data-es-html="<em>First Quantum</em> · Cobre Panamá" data-en-html="<em>First Quantum</em> · Cobre Panamá">First Quantum · Cobre Panamá</h4>
+      <div class="place" data-es="COLÓN · CARIBE PANAMEÑO · OPERACIÓN SUSPENDIDA NOV 2023" data-en="COLÓN · PANAMA CARIBBEAN · OPERATION SUSPENDED NOV 2023">COLÓN · PANAMA CARIBBEAN · OPERATION SUSPENDED NOV 2023</div>
+      <p data-es-html="Cobre Panamá fue ~5% del PIB nacional. Cerró tras los protestos de 2023 y el fallo de la Corte Suprema. <strong>Está siendo re-negociado para reanudar</strong>. VETA estructura un <strong>streaming deal</strong>: capital adelantado a First Quantum a cambio de entrega futura de cobre a precio descontado." data-en-html="Cobre Panamá was ~5% of national GDP. It closed after the 2023 protests and the Supreme Court ruling. <strong>It's being re-negotiated to restart</strong>. VETA structures a <strong>streaming deal</strong>: upfront capital to First Quantum in exchange for future copper delivery at a discounted price.">Cobre Panamá was ~5% of national GDP. It closed after the 2023 protests and the Supreme Court ruling. <strong>It's being re-negotiated to restart</strong>. VETA structures a <strong>streaming deal</strong>: upfront capital to First Quantum in exchange for future copper delivery at a discounted price.</p>
+      <ul>
+        <li><span data-es="Streaming deal · % de producción futura a precio descontado" data-en="Streaming deal · % of future production at a discount">Streaming deal · % of future production at a discount</span></li>
+        <li><span data-es="Asesoría comunitaria como condición · sin licencia social no hay reapertura" data-en="Community advisory as a condition · no social license, no restart">Community advisory as a condition · no social license, no restart</span></li>
+        <li><span data-es="Coordinación con autoridades locales · seguridad operativa" data-en="Coordination with local authorities · operational security">Coordination with local authorities · operational security</span></li>
+        <li><span data-es="Estructura tipo Wheaton / Franco-Nevada · contrato a 15-25 años" data-en="Wheaton / Franco-Nevada-style structure · 15-25 year contract">Wheaton / Franco-Nevada-style structure · 15-25 year contract</span></li>
+        <li><span data-es="Opción de procesamiento local · valor agregado en territorio panameño" data-en="Local processing option · in-country value-add">Local processing option · in-country value-add</span></li>
+      </ul>
+      <div class="s-foot"><span data-es="ESTADO · CONTINGENTE A REAPERTURA" data-en="STATUS · CONTINGENT ON RESTART">STATUS · CONTINGENT ON RESTART</span><span data-es="FIRMA · 2027" data-en="SIGN · 2027">SIGN · 2027</span></div>
+    </article>
+
+    <!-- SITE 03 — Future LATAM -->
+    <article class="site s-future">
+      <div class="tag" data-es="FUTURO · CINTURÓN ANDINO · 2028+" data-en="FUTURE · ANDEAN BELT · 2028+">FUTURE · ANDEAN BELT · 2028+</div>
+      <h4 data-es-html="<em>Perú · Chile · Colombia</em>" data-en-html="<em>Peru · Chile · Colombia</em>">Peru · Chile · Colombia</h4>
+      <div class="place" data-es="EL TRIÁNGULO DEL COBRE · 40% DEL COBRE MUNDIAL" data-en="THE COPPER TRIANGLE · 40% OF GLOBAL COPPER">THE COPPER TRIANGLE · 40% OF GLOBAL COPPER</div>
+      <p data-es="Una vez probada la operación en Panamá, VETA replica la fórmula JV-comunidad-anfitriona en el cinturón andino. Litio en Chile · cobre en Perú · oro en Colombia · tierras raras donde aparezcan." data-en="Once the Panama playbook is proven, VETA replicates the host-community-JV formula across the Andean belt. Lithium in Chile · copper in Peru · gold in Colombia · rare earths wherever they surface.">Once the Panama playbook is proven, VETA replicates the host-community-JV formula across the Andean belt. Lithium in Chile · copper in Peru · gold in Colombia · rare earths wherever they surface.</p>
+      <ul>
+        <li><span data-es="Sora ya tiene presencia local en cada país · ventaja de inteligencia" data-en="Sora already has local presence in each country · intel advantage">Sora already has local presence in each country · intel advantage</span></li>
+        <li><span data-es="Misma estructura: comunidad anfitriona socia, no proveedora" data-en="Same structure: host community as partner, not vendor">Same structure: host community as partner, not vendor</span></li>
+        <li><span data-es="Streaming + JV híbrido según jurisdicción" data-en="Hybrid streaming + JV per jurisdiction">Hybrid streaming + JV per jurisdiction</span></li>
+      </ul>
+      <div class="s-foot"><span data-es="ESTADO · TESIS" data-en="STATUS · THESIS">STATUS · THESIS</span><span data-es="HORIZONTE · 2028-2032" data-en="HORIZON · 2028-2032">HORIZON · 2028-2032</span></div>
+    </article>
+
+    <!-- SITE 04 — Processing plant -->
+    <article class="site">
+      <div class="tag" data-es="FUTURO · PLANTA DE REFINACIÓN · 2029+" data-en="FUTURE · REFINING PLANT · 2029+">FUTURE · REFINING PLANT · 2029+</div>
+      <h4 data-es-html="<em>Refinación</em> · grado electrónica" data-en-html="<em>Refining</em> · electronics-grade">Refining · electronics-grade</h4>
+      <div class="place" data-es="UBICACIÓN · COLÓN O CHIRIQUÍ · A DETERMINAR" data-en="LOCATION · COLÓN OR CHIRIQUÍ · TBD">LOCATION · COLÓN OR CHIRIQUÍ · TBD</div>
+      <p data-es-html="El cobre crudo se exporta por <strong>$8K/ton</strong>. El cobre 99.99% se vende por <strong>$12-14K/ton</strong>. Construir refinación local captura el delta y crea empleo de alta calificación. Plan: planta SX-EW + horno de refinación · capacidad inicial 60K toneladas/año." data-en-html="Raw copper exports at <strong>$8K/ton</strong>. 99.99% copper sells at <strong>$12-14K/ton</strong>. Building local refining captures the delta and creates skilled jobs. Plan: SX-EW plant + refining furnace · 60K ton/year initial capacity.">Raw copper exports at <strong>$8K/ton</strong>. 99.99% copper sells at <strong>$12-14K/ton</strong>. Building local refining captures the delta and creates skilled jobs. Plan: SX-EW plant + refining furnace · 60K ton/year initial capacity.</p>
+      <ul>
+        <li><span data-es="Capacidad inicial 60K ton Cu/año · escalable a 200K" data-en="Initial capacity 60K ton Cu/year · scalable to 200K">Initial capacity 60K ton Cu/year · scalable to 200K</span></li>
+        <li><span data-es="Off-take directo a TSMC · Samsung · Intel · Tesla · BYD" data-en="Direct off-take to TSMC · Samsung · Intel · Tesla · BYD">Direct off-take to TSMC · Samsung · Intel · Tesla · BYD</span></li>
+        <li><span data-es="Empleo técnico local · ingeniería metalúrgica" data-en="Local skilled employment · metallurgical engineering">Local skilled employment · metallurgical engineering</span></li>
+      </ul>
+      <div class="s-foot"><span data-es="ESTADO · CONCEPTO" data-en="STATUS · CONCEPT">STATUS · CONCEPT</span><span data-es="HORIZONTE · 2029-2031" data-en="HORIZON · 2029-2031">HORIZON · 2029-2031</span></div>
+    </article>
+  </div>
+</section>
+
+<!-- PARTNERSHIPS -->
+<section>
+  <div class="sec-head">
+    <div>
+      <div class="sec-num" data-es="03 · SOCIOS ESTRATÉGICOS" data-en="03 · STRATEGIC PARTNERS">03 · STRATEGIC PARTNERS</div>
+      <h3 data-es-html="Con <em>quién</em> opera." data-en-html="Who <em>VETA operates with</em>.">Who VETA operates with.</h3>
+    </div>
+    <p class="sec-sub" data-es="Ningún arranque funciona solo. Tres anillos de socio: comunidad, operador, gobierno local." data-en="No launch works alone. Three rings of partner: community, operator, local government.">No launch works alone. Three rings of partner: community, operator, local government.</p>
+  </div>
+
+  <div class="partners">
+    <div class="partner">
+      <div class="p-role" data-es="SOCIO PRINCIPAL · COMUNIDAD" data-en="PRIMARY PARTNER · COMMUNITY">PRIMARY PARTNER · COMMUNITY</div>
+      <h5>Congreso General Ngäbe-Buglé</h5>
+      <p data-es="El órgano de gobierno tradicional de la Comarca. JV directa, voz vinculante en decisiones operativas, fondo comunitario, monitoreo ambiental conjunto." data-en="The Comarca's traditional governance body. Direct JV, binding voice on operational decisions, community fund, joint environmental monitoring.">The Comarca's traditional governance body. Direct JV, binding voice on operational decisions, community fund, joint environmental monitoring.</p>
+    </div>
+
+    <div class="partner">
+      <div class="p-role" data-es="SOCIO MINERO · STREAMING" data-en="MINING PARTNER · STREAMING">MINING PARTNER · STREAMING</div>
+      <h5>First Quantum Minerals</h5>
+      <p data-es="Operador canadiense de Cobre Panamá. Contraparte natural para el streaming deal cuando se reanude la operación de Donoso." data-en="Canadian operator of Cobre Panamá. Natural counterparty for a streaming deal once the Donoso operation restarts.">Canadian operator of Cobre Panamá. Natural counterparty for a streaming deal once the Donoso operation restarts.</p>
+    </div>
+
+    <div class="partner">
+      <div class="p-role" data-es="GOBIERNO LOCAL · CHIRIQUÍ" data-en="LOCAL GOVERNMENT · CHIRIQUÍ">LOCAL GOVERNMENT · CHIRIQUÍ</div>
+      <h5 data-es-html="Autoridades regionales" data-en-html="Regional authorities">Regional authorities</h5>
+      <p data-es="Coordinación operativa con gobernación + alcaldías + policía nacional. Permisos, seguridad de sitio, logística vial, protocolos de respuesta a contingencias." data-en="Operational coordination with provincial governor + mayoralties + national police. Permits, site security, road logistics, contingency response protocols.">Operational coordination with provincial governor + mayoralties + national police. Permits, site security, road logistics, contingency response protocols.</p>
+    </div>
+
+    <div class="partner">
+      <div class="p-role" data-es="FUTURO · OFF-TAKE" data-en="FUTURE · OFF-TAKE">FUTURE · OFF-TAKE</div>
+      <h5 data-es-html="Fabricantes de electrónicos + EVs" data-en-html="Electronics + EV manufacturers">Electronics + EV manufacturers</h5>
+      <p data-es="Contratos de largo plazo con compradores finales — fabricantes de semis, baterías, cable y motor eléctrico. Evitar la dependencia de comerciantes de commodities." data-en="Long-term contracts with end-buyers — semi, battery, cable, and electric-motor makers. Avoid dependence on commodity traders.">Long-term contracts with end-buyers — semi, battery, cable, and electric-motor makers. Avoid dependence on commodity traders.</p>
+    </div>
+  </div>
+</section>
+
+<!-- COMMUNITY + RISK -->
+<section>
+  <div class="sec-head">
+    <div>
+      <div class="sec-num" data-es="04 · COMUNIDAD + RIESGO" data-en="04 · COMMUNITY + RISK">04 · COMMUNITY + RISK</div>
+      <h3 data-es-html="La <em>razón</em> por la que Cobre Panamá cerró." data-en-html="The <em>reason</em> Cobre Panamá closed.">The <em>reason</em> Cobre Panamá closed.</h3>
+    </div>
+    <p class="sec-sub" data-es="No fue geología. No fue tecnología. Fue gente que no se sintió escuchada." data-en="It wasn't geology. It wasn't technology. It was people who didn't feel heard.">It wasn't geology. It wasn't technology. It was people who didn't feel heard.</p>
+  </div>
+
+  <div class="community">
+    <div class="com-text">
+      <p data-es-html="En octubre y noviembre de 2023, Panamá vivió las protestas más grandes de su historia reciente. El detonante: el contrato renegociado entre el Estado y Minera Panamá (subsidiaria de First Quantum) para extender 20 años más la operación de Cobre Panamá. Los panameños sintieron que el contrato favorecía al inversor extranjero y excluía la voz local. La Corte Suprema declaró inconstitucional el contrato en noviembre 2023. La mina cerró." data-en-html="In October and November 2023, Panama lived through the largest protests in its recent history. The trigger: the renegotiated contract between the State and Minera Panamá (a First Quantum subsidiary) extending Cobre Panamá's operation 20 more years. Panamanians felt the contract favored the foreign investor and excluded local voice. The Supreme Court declared the contract unconstitutional in November 2023. The mine closed.">In October and November 2023, Panama lived through the largest protests in its recent history. The trigger: the renegotiated contract between the State and Minera Panamá (a First Quantum subsidiary) extending Cobre Panamá's operation 20 more years. Panamanians felt the contract favored the foreign investor and excluded local voice. The Supreme Court declared the contract unconstitutional in November 2023. The mine closed.</p>
+
+      <p data-es-html="VETA toma la lección al revés. La <em>licencia social</em> no es un trámite — es el activo más caro y el más frágil. Construirla antes de la primera perforación. Mantenerla con dinero real (royalty + fondo comunitario), datos abiertos (monitoreo ambiental publicado), y trato directo (no a través de operadores)." data-en-html="VETA takes the lesson in reverse. The <em>social license</em> isn't paperwork — it's the most expensive and most fragile asset. Build it before the first drill. Maintain it with real money (royalty + community fund), open data (published environmental monitoring), and direct dealing (not through operators).">VETA takes the lesson in reverse. The <em>social license</em> isn't paperwork — it's the most expensive and most fragile asset. Build it before the first drill. Maintain it with real money (royalty + community fund), open data (published environmental monitoring), and direct dealing (not through operators).</p>
+
+      <h4 data-es="El modelo VETA" data-en="The VETA model">The VETA model</h4>
+      <p data-es-html="<strong>Comunidad anfitriona = socio JV</strong>, no proveedor ni vecino. Voto en decisiones operativas. Royalty proporcional a producción. Fondo comunitario para infraestructura local (escuelas, agua, conectividad). Empleo local prioritario. Capacitación técnica continua. Monitoreo ambiental con representantes de la comunidad presentes en cada medición." data-en-html="<strong>Host community = JV partner</strong>, not vendor, not neighbor. Vote on operational decisions. Royalty proportional to production. Community fund for local infrastructure (schools, water, connectivity). Local-priority hiring. Continuous technical training. Environmental monitoring with community representatives present at every reading.">Host community = JV partner, not vendor, not neighbor. Vote on operational decisions. Royalty proportional to production. Community fund for local infrastructure (schools, water, connectivity). Local-priority hiring. Continuous technical training. Environmental monitoring with community representatives present at every reading.</p>
+    </div>
+
+    <div class="lesson-card">
+      <div class="lc-tag" data-es="PLAYBOOK · ESTABILIDAD OPERATIVA" data-en="PLAYBOOK · OPERATIONAL STABILITY">PLAYBOOK · OPERATIONAL STABILITY</div>
+      <h4 data-es-html="Cómo se mantiene operativa una mina en LATAM" data-en-html="How to keep a LATAM mine running">How to keep a LATAM mine running</h4>
+      <p data-es-html="Las minas que cierran no cierran por geología. Cierran por relaciones que se rompieron. VETA invierte en relaciones primero, mineral después." data-en-html="Mines that close don't close because of geology. They close because relationships broke. VETA invests in relationships first, mineral second.">Mines that close don't close because of geology. They close because relationships broke. VETA invests in relationships first, mineral second.</p>
+      <ul>
+        <li><strong data-es="ANTES DEL PRIMER BARRENO." data-en="BEFORE THE FIRST DRILL.">BEFORE THE FIRST DRILL.</strong> <span data-es="Reuniones formales con el Congreso General. Acuerdo marco con voz vinculante." data-en="Formal meetings with the General Congress. Master agreement with binding voice.">Formal meetings with the General Congress. Master agreement with binding voice.</span></li>
+        <li><strong data-es="EQUIPO LOCAL." data-en="LOCAL TEAM.">LOCAL TEAM.</strong> <span data-es="Gerente de relaciones comunitarias es de la comunidad — no expatriado." data-en="Community relations manager is from the community — not an expat.">Community relations manager is from the community — not an expat.</span></li>
+        <li><strong data-es="MONITOREO PÚBLICO." data-en="PUBLIC MONITORING.">PUBLIC MONITORING.</strong> <span data-es="Calidad de agua, ruido, polvo — publicados mensualmente y auditados anualmente." data-en="Water quality, noise, dust — published monthly, audited annually.">Water quality, noise, dust — published monthly, audited annually.</span></li>
+        <li><strong data-es="DINERO REAL." data-en="REAL MONEY.">REAL MONEY.</strong> <span data-es="Royalty + fondo a la comunidad antes de pagar dividendos a inversores." data-en="Royalty + community fund paid before any dividends to investors.">Royalty + community fund paid before any dividends to investors.</span></li>
+        <li><strong data-es="POLICÍA + GOBERNACIÓN." data-en="POLICE + GOVERNORSHIP.">POLICE + GOVERNORSHIP.</strong> <span data-es="Protocolos compartidos para contingencias. Sin sorpresas para ningún lado." data-en="Shared contingency protocols. No surprises for any side.">Shared contingency protocols. No surprises for any side.</span></li>
+        <li><strong data-es="LECCIÓN COBRE PANAMÁ." data-en="COBRE PANAMÁ LESSON.">COBRE PANAMÁ LESSON.</strong> <span data-es="Un contrato impopular vale menos que ninguno. La aprobación pública es la garantía." data-en="An unpopular contract is worth less than none. Public approval is the guarantee.">An unpopular contract is worth less than none. Public approval is the guarantee.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CUSTOMERS / OFF-TAKE -->
+<section>
+  <div class="sec-head">
+    <div>
+      <div class="sec-num" data-es="05 · COMPRADORES" data-en="05 · BUYERS">05 · BUYERS</div>
+      <h3 data-es-html="A <em>quién</em> le vendemos." data-en-html="Who <em>we sell to</em>.">Who <em>we sell to</em>.</h3>
+    </div>
+    <p class="sec-sub" data-es="Cada grado de pureza tiene un cliente final. La meta: contratos directos, sin commodity traders." data-en="Each purity grade has its end-customer. The goal: direct contracts, no commodity traders.">Each purity grade has its end-customer. The goal: direct contracts, no commodity traders.</p>
+  </div>
+
+  <div class="customers">
+    <div class="customer c-semis">
+      <div class="grade" data-es="GRADO 99.99% · SEMICONDUCTORES" data-en="GRADE 99.99% · SEMICONDUCTORS">GRADE 99.99% · SEMICONDUCTORS</div>
+      <h5 data-es-html="Cobre <em>de pureza máxima</em>" data-en-html="<em>Ultra-pure</em> copper">Ultra-pure copper</h5>
+      <p data-es="Para interconexiones en chips. Margen alto, volumen bajo. Cliente exigente." data-en="For chip interconnects. High margin, low volume. Demanding customer.">For chip interconnects. High margin, low volume. Demanding customer.</p>
+      <div class="names">TSMC · SAMSUNG · INTEL · GLOBALFOUNDRIES · SK HYNIX</div>
+    </div>
+
+    <div class="customer c-ev">
+      <div class="grade" data-es="GRADO 99.95% · VEHÍCULOS ELÉCTRICOS" data-en="GRADE 99.95% · ELECTRIC VEHICLES">GRADE 99.95% · ELECTRIC VEHICLES</div>
+      <h5 data-es-html="Cobre para <em>cableado EV + motor</em>" data-en-html="Copper for <em>EV wiring + motor</em>">Copper for EV wiring + motor</h5>
+      <p data-es="Un EV usa 4x el cobre de un vehículo de combustión. El cuello de botella del cambio energético." data-en="An EV uses 4x the copper of a combustion vehicle. The bottleneck of the energy transition.">An EV uses 4x the copper of a combustion vehicle. The bottleneck of the energy transition.</p>
+      <div class="names">TESLA · BYD · VOLKSWAGEN · GM · STELLANTIS · LUCID</div>
+    </div>
+
+    <div class="customer c-cable">
+      <div class="grade" data-es="GRADO 99.9% · CABLE + INFRAESTRUCTURA" data-en="GRADE 99.9% · CABLE + INFRASTRUCTURE">GRADE 99.9% · CABLE + INFRASTRUCTURE</div>
+      <h5 data-es-html="Cobre para <em>red eléctrica</em>" data-en-html="Copper for the <em>grid</em>">Copper for the grid</h5>
+      <p data-es="El crecimiento solar y eólico exige cobre. Cable submarino + transmisión + transformadores." data-en="Solar and wind buildout demands copper. Submarine cable + transmission + transformers.">Solar and wind buildout demands copper. Submarine cable + transmission + transformers.</p>
+      <div class="names">PRYSMIAN · NEXANS · SOUTHWIRE · NKT · LS CABLE</div>
+    </div>
+
+    <div class="customer c-export">
+      <div class="grade" data-es="CONCENTRADO · EXPORTACIÓN" data-en="CONCENTRATE · EXPORT">CONCENTRATE · EXPORT</div>
+      <h5 data-es-html="Concentrado de <em>cobre crudo</em>" data-en-html="Raw <em>copper concentrate</em>">Raw copper concentrate</h5>
+      <p data-es="Lo no-refinado se exporta a refinerías asiáticas. Línea base mientras VETA construye su propia refinación." data-en="Unrefined output ships to Asian refineries. Baseline line while VETA builds its own refining.">Unrefined output ships to Asian refineries. Baseline line while VETA builds its own refining.</p>
+      <div class="names">JIANGXI COPPER · TONGLING · JX NIPPON · TRAFIGURA</div>
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section>
+  <div class="sec-head">
+    <div>
+      <div class="sec-num" data-es="06 · CRONOGRAMA" data-en="06 · ROADMAP">06 · ROADMAP</div>
+      <h3 data-es-html="<em>Cinco fases</em>. Seis años." data-en-html="<em>Five phases</em>. Six years.">Five phases. Six years.</h3>
+    </div>
+    <p class="sec-sub" data-es="Empezar pequeño. Probar el modelo de comunidad. Escalar solo cuando esté demostrado." data-en="Start small. Prove the community model. Scale only once it's demonstrated.">Start small. Prove the community model. Scale only once it's demonstrated.</p>
+  </div>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-q">2026 · Q3-Q4</div>
+      <h5 data-es-html="Acuerdo marco <em>Ngäbe-Buglé</em>" data-en-html="<em>Ngäbe-Buglé</em> master agreement">Ngäbe-Buglé master agreement</h5>
+      <p data-es="Reuniones formales con el Congreso General. Estudios técnicos preliminares. Acuerdo marco firmado con voz vinculante de la comunidad." data-en="Formal meetings with the General Congress. Preliminary technical studies. Master agreement signed with the community's binding voice.">Formal meetings with the General Congress. Preliminary technical studies. Master agreement signed with the community's binding voice.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-q">2027 · Q1-Q3</div>
+      <h5 data-es-html="Permisos + EIA + <em>piloto</em>" data-en-html="Permits + EIA + <em>pilot</em>">Permits + EIA + pilot</h5>
+      <p data-es-html="EIA con representantes Ngäbe presentes en cada medición. Permisos ANATI + MICI + MINSA. Piloto de extracción 50 ha · evaluación a 12 meses." data-en-html="EIA with Ngäbe representatives present at every reading. ANATI + MICI + MINSA permits. 50 ha extraction pilot · 12-month evaluation.">EIA with Ngäbe representatives present at every reading. ANATI + MICI + MINSA permits. 50 ha extraction pilot · 12-month evaluation.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-q">2027 · Q4 — 2028 · Q2</div>
+      <h5 data-es-html="<em>Streaming deal</em> con First Quantum" data-en-html="<em>Streaming deal</em> with First Quantum">Streaming deal with First Quantum</h5>
+      <p data-es="Si Cobre Panamá reanuda operación: cierre del streaming deal. VETA aporta capital y servicios de asesoría comunitaria. Recibe % de producción futura a precio descontado." data-en="If Cobre Panamá restarts: close streaming deal. VETA contributes capital and community-advisory services. Receives % of future production at a discounted price.">If Cobre Panamá restarts: close streaming deal. VETA contributes capital and community-advisory services. Receives % of future production at a discounted price.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-q">2028 · Q3 — 2029 · Q4</div>
+      <h5 data-es-html="<em>Operación plena</em> + refinación inicial" data-en-html="<em>Full operation</em> + initial refining">Full operation + initial refining</h5>
+      <p data-es-html="Escalado Comarca a 500 ha por consenso. Diseño y construcción de planta SX-EW · capacidad inicial 60K ton Cu/año. Primeros contratos directos de off-take." data-en-html="Scale Comarca to 500 ha by consensus. Design and build SX-EW plant · initial capacity 60K ton Cu/year. First direct off-take contracts.">Scale Comarca to 500 ha by consensus. Design and build SX-EW plant · initial capacity 60K ton Cu/year. First direct off-take contracts.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-q">2030 · Q1+</div>
+      <h5 data-es-html="<em>LATAM</em> — Perú · Chile · Colombia" data-en-html="<em>LATAM</em> — Peru · Chile · Colombia">LATAM — Peru · Chile · Colombia</h5>
+      <p data-es="Replicar el modelo en el cinturón andino. Sora ya tiene presencia local. Litio en Atacama. Cobre en Cajamarca. Oro en Antioquia. VETA + Sora se vuelven la pinza de La Compañía: tierra y cielo." data-en="Replicate the model along the Andean belt. Sora already has local presence. Lithium in Atacama. Copper in Cajamarca. Gold in Antioquia. VETA + Sora become La Compañía's pincer: earth and sky.">Replicate the model along the Andean belt. Sora already has local presence. Lithium in Atacama. Copper in Cajamarca. Gold in Antioquia. VETA + Sora become La Compañía's pincer: earth and sky.</p>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div class="foot-grid">
+    <div>
+      <div class="wordmark-foot">VETA</div>
+      <p class="tagline" data-es="De la veta al circuito. La operación minera de La Compañía — comunidad primero, mineral después." data-en="From the seam to the circuit. La Compañía's mining operation — community first, mineral second.">From the seam to the circuit. La Compañía's mining operation — community first, mineral second.</p>
+    </div>
+    <div>
+      <h6 data-es="OPERACIONES" data-en="OPERATIONS">OPERATIONS</h6>
+      <ul>
+        <li data-es="Comarca Ngäbe-Buglé" data-en="Comarca Ngäbe-Buglé">Comarca Ngäbe-Buglé</li>
+        <li data-es="Cobre Panamá · streaming" data-en="Cobre Panamá · streaming">Cobre Panamá · streaming</li>
+        <li data-es="Cinturón andino · futuro" data-en="Andean belt · future">Andean belt · future</li>
+      </ul>
+    </div>
+    <div>
+      <h6 data-es="SOCIOS" data-en="PARTNERS">PARTNERS</h6>
+      <ul>
+        <li>Congreso Ngäbe-Buglé</li>
+        <li>First Quantum Minerals</li>
+        <li data-es="Gobierno regional · Chiriquí" data-en="Regional gov · Chiriquí">Regional gov · Chiriquí</li>
+      </ul>
+    </div>
+    <div>
+      <h6 data-es="LA COMPAÑÍA" data-en="LA COMPAÑÍA">LA COMPAÑÍA</h6>
+      <ul>
+        <li><a href="lacompania.html" data-es="← Holding" data-en="← Holding">← Holding</a></li>
+        <li><a href="sora-hq.html">Sora · HQ</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>VETA · LA COMPAÑÍA · MMXXVI</span>
+    <span data-es="EMPEZANDO EN CHIRIQUÍ" data-en="STARTING IN CHIRIQUÍ">STARTING IN CHIRIQUÍ</span>
+  </div>
+</footer>
+
+<script>
+  const getLang = () => localStorage.getItem('sora.lang') || 'en';
+  function applyLang(lang){
+    document.querySelectorAll('[data-es]').forEach(el=>{
+      const v = el.getAttribute('data-' + lang);
+      if (v != null) { if (/<[a-z]/i.test(v)) el.innerHTML = v; else el.textContent = v; }
+    });
+    document.querySelectorAll('[data-es-html]').forEach(el=>{
+      const v = el.getAttribute('data-' + lang + '-html');
+      if(v != null) el.innerHTML = v;
+    });
+    document.documentElement.lang = lang;
+    localStorage.setItem('sora.lang', lang);
+    document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('active', b.dataset.lang === lang));
+  }
+  document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click', ()=>applyLang(b.dataset.lang)));
+  applyLang(getLang());
+</script>
+</body>
+</html>
