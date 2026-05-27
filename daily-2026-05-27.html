@@ -106,6 +106,18 @@
   .task .tag.tag-build{background:#9F6AB8} .task .tag.tag-prep{background:#b85439}
   .task .tag.tag-finance{background:var(--gold-deep)} .task .tag.tag-deps{background:var(--ink-3)}
   .task.done .body{color:var(--ink-faint);text-decoration:line-through;text-decoration-color:rgba(20,17,12,0.35)}
+  .task-subs{list-style:none;padding:0;margin:4px 0 0 22px;border-left:1px dashed var(--line-2);grid-column:1 / -1}
+  .task-sub{display:grid;grid-template-columns:16px 1fr;gap:9px;padding:7px 0 7px 14px;align-items:start;cursor:pointer}
+  .task-sub .chk{width:14px;height:14px;border-radius:3px;border:1.2px solid var(--ink-faint);background:transparent;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;transition:all .14s}
+  .task-sub .chk::after{content:'';width:6px;height:6px;border-radius:2px;background:var(--forest);transform:scale(0);transition:transform .15s}
+  .task-sub.done .chk{border-color:var(--forest);background:rgba(29,58,44,0.06)}
+  .task-sub.done .chk::after{transform:scale(1)}
+  .p-marcos .task-sub.done .chk{border-color:var(--p-marcos)} .p-marcos .task-sub.done .chk::after{background:var(--p-marcos)}
+  .p-abraham .task-sub.done .chk{border-color:var(--p-abraham)} .p-abraham .task-sub.done .chk::after{background:var(--p-abraham)}
+  .task-sub .body{font-family:var(--sans);font-size:12.5px;line-height:1.45;color:var(--ink-3)}
+  .task-sub .body strong{color:var(--ink);font-weight:600}
+  .task-sub.done .body{color:var(--ink-faint);text-decoration:line-through;text-decoration-color:rgba(20,17,12,0.30)}
+  .task-sub .stag{display:inline-block;font-family:var(--mono);font-size:8.5px;letter-spacing:.10em;color:var(--ink-faint);background:rgba(20,17,12,0.06);padding:1px 5px;border-radius:3px;margin-right:6px;text-transform:uppercase;font-weight:600;vertical-align:1px}
 
   .add-task{margin-top:14px;display:flex;gap:8px}
   .add-task input{flex:1;background:var(--paper);border:0.5px solid var(--line);border-radius:6px;padding:8px 12px;font-family:var(--sans);font-size:13px;color:var(--ink)}
@@ -177,6 +189,7 @@
     <ul class="task-list" data-owner="abraham">
       <li class="task" data-key="ab-mtg-towerbank"><div class="chk"></div><div class="body"><span class="tag tag-mtg">MTG</span><span data-es="Reunión con Towerbank — después de que Marcos confirme la coordinación." data-en="Meeting with Towerbank — once Marcos confirms the booking.">Meeting with Towerbank — once Marcos confirms the booking.</span></div></li>
       <li class="task" data-key="ab-comarca-prep"><div class="chk"></div><div class="body"><span class="tag tag-prep">PREP</span><span data-es="Preparar reunión en Comarca mañana — agenda, materiales, briefing con Elías y Michelle." data-en="Prep Comarca meeting for tomorrow — agenda, materials, brief with Elías and Michelle.">Prep Comarca meeting for tomorrow — agenda, materials, brief with Elías and Michelle.</span></div></li>
+      <li class="task" data-key="ab-iphone-marcos"><div class="chk"></div><div class="body"><span class="tag tag-finance">$</span><span data-es-html="Comprar <strong>iPhone 14</strong> para Marcos." data-en-html="Buy <strong>iPhone 14</strong> for Marcos.">Buy iPhone 14 for Marcos.</span></div></li>
     </ul>
   </div>
 
@@ -196,7 +209,14 @@
       <li class="task" data-key="mv-wiper"><div class="chk"></div><div class="body"><span class="tag tag-call">CALL</span><span data-es="Llamar al mecánico amigo por el brazo del limpiaparabrisas." data-en="Call mechanic friend for the windshield wiper arm.">Call mechanic friend for the windshield wiper arm.</span></div></li>
       <li class="task" data-key="mv-mech-ven"><div class="chk"></div><div class="body"><span class="tag tag-call">CALL</span><span data-es="Llamar al mecánico venezolano para revisar la tarjeta." data-en="Call Venezuelan mechanic friend to get the card checked.">Call Venezuelan mechanic friend to get the card checked.</span></div></li>
       <li class="task" data-key="mv-elias-license"><div class="chk"></div><div class="body"><span class="tag tag-deps">+ ELIAS</span><span data-es="Apoyar a Elías para finalizar su licencia." data-en="Help Elías finalize his driver's license.">Help Elías finalize his driver's license.</span></div></li>
-      <li class="task" data-key="mv-palazio"><div class="chk"></div><div class="body"><span class="tag tag-call">CALL</span><span data-es="Hacer follow-up con Palazio sobre la vista del terreno." data-en="Follow up with Palazio on the land viewing.">Follow up with Palazio on the land viewing.</span></div></li>
+      <li class="task has-subs" data-key="mv-palazio">
+        <div class="chk"></div>
+        <div class="body"><span class="tag tag-call">CALL</span><span data-es="Hacer follow-up con Palazio sobre la vista del terreno." data-en="Follow up with Palazio on the land viewing.">Follow up with Palazio on the land viewing.</span></div>
+        <ul class="task-subs">
+          <li class="task-sub" data-key="mv-palazio-visit"><div class="chk"></div><div class="body"><span class="stag" data-es="VISITA" data-en="VISIT">VISIT</span><span data-es-html="Coordinar visita con Palazio para que Marcos y Abraham vayan a <strong>Alto Jaramillo</strong> a ver el lote a <strong>$7/m²</strong>." data-en-html="Coordinate with Palazio for Marcos and Abraham to visit <strong>Alto Jaramillo</strong> to see the lot at <strong>$7/m²</strong>.">Coordinate with Palazio for Marcos and Abraham to visit <strong>Alto Jaramillo</strong> to see the lot at <strong>$7/m²</strong>.</span></div></li>
+          <li class="task-sub" data-key="mv-palazio-drone"><div class="chk"></div><div class="body"><span class="stag" data-es="DRONE" data-en="DRONE">DRONE</span><span data-es="Preguntarle a Michelle si su hermano puede prestar el drone y ayudarnos a hacer un mapa aéreo del terreno." data-en="Ask Michelle if her brother can lend his drone and help us shoot an aerial map of the land.">Ask Michelle if her brother can lend his drone and help us shoot an aerial map of the land.</span></div></li>
+        </ul>
+      </li>
     </ul>
   </div>
 
@@ -331,7 +351,7 @@
   function saveState(s){ localStorage.setItem(STORAGE_KEY, JSON.stringify(s)) }
   function applyState(){
     const s = loadState();
-    document.querySelectorAll('.task').forEach(t => {
+    document.querySelectorAll('.task, .task-sub').forEach(t => {
       t.classList.toggle('done', !!s[t.dataset.key]);
     });
     updateCounters();
@@ -346,8 +366,8 @@
   function updateCounters(){
     let totalAll = 0, doneAll = 0;
     document.querySelectorAll('.person-block').forEach(blk => {
-      const tasks = blk.querySelectorAll('.task');
-      const done = blk.querySelectorAll('.task.done');
+      const tasks = blk.querySelectorAll('.task, .task-sub');
+      const done = blk.querySelectorAll('.task.done, .task-sub.done');
       totalAll += tasks.length; doneAll += done.length;
       const cntDone = blk.querySelector('.cnt-done'); const cntTotal = blk.querySelector('.cnt-total');
       if(cntDone) cntDone.textContent = done.length;
@@ -356,7 +376,14 @@
     document.getElementById('doneCount').textContent = doneAll;
     document.getElementById('totalCount').textContent = totalAll;
   }
-  document.querySelectorAll('.task').forEach(t => t.addEventListener('click', () => toggleTask(t)));
+  document.querySelectorAll('.task').forEach(t => t.addEventListener('click', (e) => {
+    if (e.target.closest('.task-sub')) return;
+    toggleTask(t);
+  }));
+  document.querySelectorAll('.task-sub').forEach(t => t.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleTask(t);
+  }));
 
   applyLang(getLang());
   applyState();
