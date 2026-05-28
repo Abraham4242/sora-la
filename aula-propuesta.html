@@ -43,7 +43,7 @@ html,body{background:#e5dcc4;font-family:var(--sans);color:var(--ink);font-size:
   height:11in;
   background:var(--paper);
   position:relative;
-  padding:0.85in 0.9in 0.7in;
+  padding:0.65in 0.85in 0.5in;
   display:flex;
   flex-direction:column;
   overflow:hidden;
@@ -52,110 +52,110 @@ html,body{background:#e5dcc4;font-family:var(--sans);color:var(--ink);font-size:
 }
 
 /* PAGE HEAD / FOOT */
-.head{display:flex;justify-content:space-between;align-items:center;padding-bottom:14px;border-bottom:0.5px solid var(--line-2);margin-bottom:36px}
-.head .mark{font-family:var(--serif);font-size:14px;letter-spacing:.18em;color:var(--ink-2);font-weight:500}
+.head{display:flex;justify-content:space-between;align-items:center;padding-bottom:10px;border-bottom:0.5px solid var(--line-2);margin-bottom:22px;flex-shrink:0}
+.head .mark{font-family:var(--serif);font-size:13px;letter-spacing:.18em;color:var(--ink-2);font-weight:500}
 .head .mark em{color:var(--ochre);font-style:normal;font-weight:600}
 .head .pgnum{font-family:var(--mono);font-size:10px;letter-spacing:.20em;color:var(--ink-faint);font-weight:500}
-.foot{margin-top:auto;padding-top:14px;border-top:0.5px solid var(--line);display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:9px;letter-spacing:.18em;color:var(--ink-faint);text-transform:uppercase}
+.foot{margin-top:auto;padding-top:10px;border-top:0.5px solid var(--line);display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:9px;letter-spacing:.18em;color:var(--ink-faint);text-transform:uppercase;flex-shrink:0}
 .foot .sec em{font-style:normal;color:var(--ink-3);font-weight:600}
 
 /* TYPOGRAPHY */
-.eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--ochre-deep);font-weight:700;margin-bottom:16px}
-.title{font-family:var(--serif);font-weight:300;line-height:.98;letter-spacing:-.018em;color:var(--ink);margin-bottom:18px}
+.eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--ochre-deep);font-weight:700;margin-bottom:10px}
+.title{font-family:var(--serif);font-weight:300;line-height:.98;letter-spacing:-.018em;color:var(--ink);margin-bottom:12px}
 .title em{font-style:italic;color:var(--ochre-deep);font-weight:400}
-.lede{font-family:var(--serif);font-style:italic;font-weight:300;color:var(--ink-2);line-height:1.5}
-.body p{font-family:var(--sans);font-size:13px;line-height:1.65;color:var(--ink-2);margin-bottom:11px}
+.lede{font-family:var(--serif);font-style:italic;font-weight:300;color:var(--ink-2);line-height:1.45}
+.body p{font-family:var(--sans);font-size:12.5px;line-height:1.55;color:var(--ink-2);margin-bottom:8px}
 .body p strong{color:var(--ink);font-weight:600}
 .body p em{color:var(--ochre-deep);font-style:italic}
-.kicker{font-family:var(--mono);font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;margin-bottom:6px}
+.kicker{font-family:var(--mono);font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;margin-bottom:5px;margin-top:4px}
 
 /* DATA STRIPS / STATS */
-.data-strip{display:grid;grid-template-columns:repeat(4,1fr);border:0.5px solid var(--line-2);border-radius:6px;background:var(--paper-2);margin:18px 0}
-.data-strip .cell{padding:14px 16px;border-right:0.5px solid var(--line-2)}
+.data-strip{display:grid;grid-template-columns:repeat(4,1fr);border:0.5px solid var(--line-2);border-radius:6px;background:var(--paper-2);margin:10px 0}
+.data-strip .cell{padding:10px 12px;border-right:0.5px solid var(--line-2)}
 .data-strip .cell:last-child{border-right:0}
-.data-strip .v{font-family:var(--serif);font-size:26px;font-weight:300;color:var(--ink);line-height:1;letter-spacing:-.01em}
+.data-strip .v{font-family:var(--serif);font-size:23px;font-weight:300;color:var(--ink);line-height:1;letter-spacing:-.01em}
 .data-strip .v em{font-style:italic;color:var(--ochre-deep);font-weight:400}
-.data-strip .l{font-family:var(--mono);font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;margin-top:6px}
+.data-strip .l{font-family:var(--mono);font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;margin-top:4px;line-height:1.3}
 
-.bigfig{font-family:var(--serif);font-weight:300;font-size:72px;line-height:.95;letter-spacing:-.025em;color:var(--ochre-deep);font-style:italic}
-.bigfig-l{font-family:var(--mono);font-size:10px;letter-spacing:.20em;text-transform:uppercase;color:var(--ink-3);font-weight:600;margin-top:4px}
+.bigfig{font-family:var(--serif);font-weight:300;font-size:64px;line-height:.95;letter-spacing:-.025em;color:var(--ochre-deep);font-style:italic}
+.bigfig-l{font-family:var(--mono);font-size:9.5px;letter-spacing:.20em;text-transform:uppercase;color:var(--ink-3);font-weight:600;margin-top:3px;line-height:1.3}
 
 /* CALLOUT BOXES */
-.callout{background:var(--ink);color:var(--paper);padding:22px 26px;border-radius:8px;margin:18px 0;position:relative;overflow:hidden}
+.callout{background:var(--ink);color:var(--paper);padding:14px 20px;border-radius:7px;margin:10px 0;position:relative;overflow:hidden}
 .callout::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--ochre)}
-.callout .clabel{font-family:var(--mono);font-size:9px;letter-spacing:.24em;color:var(--ochre);text-transform:uppercase;font-weight:600;margin-bottom:8px}
-.callout p{font-family:var(--serif);font-size:15px;line-height:1.55;color:var(--paper);font-style:italic;font-weight:300}
+.callout .clabel{font-family:var(--mono);font-size:9px;letter-spacing:.22em;color:var(--ochre);text-transform:uppercase;font-weight:600;margin-bottom:6px}
+.callout p{font-family:var(--serif);font-size:13px;line-height:1.45;color:var(--paper);font-style:italic;font-weight:300}
 .callout p em{color:var(--ochre-soft);font-style:italic;font-weight:400}
 
-.callout-light{background:var(--paper-2);border:0.5px solid var(--line-2);padding:18px 22px;border-radius:6px;margin:14px 0}
-.callout-light .clabel{font-family:var(--mono);font-size:9px;letter-spacing:.22em;color:var(--ochre-deep);text-transform:uppercase;font-weight:700;margin-bottom:8px}
-.callout-light p{font-family:var(--sans);font-size:12.5px;line-height:1.55;color:var(--ink-2)}
+.callout-light{background:var(--paper-2);border:0.5px solid var(--line-2);padding:11px 16px;border-radius:6px;margin:10px 0}
+.callout-light .clabel{font-family:var(--mono);font-size:8.5px;letter-spacing:.20em;color:var(--ochre-deep);text-transform:uppercase;font-weight:700;margin-bottom:5px}
+.callout-light p{font-family:var(--sans);font-size:11.5px;line-height:1.5;color:var(--ink-2)}
 
 /* TABLES */
-.tbl{width:100%;border-collapse:collapse;margin:14px 0;font-family:var(--sans)}
-.tbl thead th{font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);font-weight:700;padding:8px 10px;text-align:left;border-bottom:1px solid var(--line-3);background:var(--paper-3)}
-.tbl tbody td{padding:9px 10px;border-bottom:0.5px solid var(--line);font-size:12px;color:var(--ink-2)}
+.tbl{width:100%;border-collapse:collapse;margin:10px 0;font-family:var(--sans)}
+.tbl thead th{font-family:var(--mono);font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);font-weight:700;padding:6px 8px;text-align:left;border-bottom:1px solid var(--line-3);background:var(--paper-3)}
+.tbl tbody td{padding:6.5px 8px;border-bottom:0.5px solid var(--line);font-size:11.5px;color:var(--ink-2);line-height:1.4}
 .tbl tbody tr:last-child td{border-bottom:0}
 .tbl tbody td strong{color:var(--ink);font-weight:600}
-.tbl tbody td.num{font-family:var(--mono);font-size:11.5px;text-align:right;letter-spacing:.02em}
+.tbl tbody td.num{font-family:var(--mono);font-size:11px;text-align:right;letter-spacing:.02em}
 .tbl tbody tr.hi td{background:rgba(200,144,48,.08)}
 .tbl tbody tr.hi td strong{color:var(--ochre-deep)}
 
 /* TWO-COL COMPARE */
-.compare{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0}
-.compare .col{padding:18px 20px;border-radius:6px;border:0.5px solid var(--line-2)}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:10px 0}
+.compare .col{padding:14px 16px;border-radius:6px;border:0.5px solid var(--line-2)}
 .compare .col.a{background:var(--paper-2)}
 .compare .col.b{background:var(--slate);color:var(--paper)}
-.compare .col .ttl{font-family:var(--mono);font-size:9px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;margin-bottom:12px}
+.compare .col .ttl{font-family:var(--mono);font-size:8.5px;letter-spacing:.20em;text-transform:uppercase;font-weight:700;margin-bottom:8px}
 .compare .col.a .ttl{color:var(--ink-faint)}
 .compare .col.b .ttl{color:var(--ochre-soft)}
-.compare .col h4{font-family:var(--serif);font-size:18px;font-weight:400;margin-bottom:8px;line-height:1.15}
+.compare .col h4{font-family:var(--serif);font-size:16px;font-weight:400;margin-bottom:6px;line-height:1.15}
 .compare .col.a h4{color:var(--ink)}
 .compare .col.b h4{color:var(--paper)}
-.compare .col p{font-size:12px;line-height:1.55}
+.compare .col p{font-size:11.5px;line-height:1.5}
 .compare .col.a p{color:var(--ink-3)}
 .compare .col.b p{color:rgba(247,240,223,.78)}
-.compare .col ul{list-style:none;margin-top:10px}
-.compare .col ul li{font-size:11.5px;line-height:1.55;padding-left:14px;position:relative;margin-bottom:5px}
+.compare .col ul{list-style:none;margin-top:6px}
+.compare .col ul li{font-size:11px;line-height:1.45;padding-left:12px;position:relative;margin-bottom:3px}
 .compare .col.a ul li::before{content:'·';position:absolute;left:4px;color:var(--ochre-deep);font-weight:700}
 .compare .col.b ul li::before{content:'·';position:absolute;left:4px;color:var(--ochre)}
 .compare .col.a ul li{color:var(--ink-3)}
 .compare .col.b ul li{color:rgba(247,240,223,.72)}
 
 /* INDIGENOUS PEOPLES LIST */
-.peoples{display:grid;grid-template-columns:1fr;gap:8px;margin:14px 0}
-.peoples .ppl{display:grid;grid-template-columns:auto 1fr auto auto;gap:14px;padding:10px 14px;border:0.5px solid var(--line);border-radius:5px;background:var(--paper-2);align-items:center}
-.peoples .ppl .glyph{width:26px;height:26px;display:flex;align-items:center;justify-content:center;background:var(--slate);color:var(--ochre-soft);font-family:var(--serif);font-style:italic;font-size:14px;border-radius:50%}
-.peoples .ppl .nm{font-family:var(--serif);font-size:14px;color:var(--ink);font-weight:500}
-.peoples .ppl .nm small{display:block;font-family:var(--sans);font-size:10px;color:var(--ink-faint);font-weight:400;margin-top:2px}
-.peoples .ppl .lang{font-family:var(--mono);font-size:9.5px;letter-spacing:.10em;color:var(--ink-3);text-transform:uppercase}
-.peoples .ppl .cnt{font-family:var(--mono);font-size:13px;color:var(--ochre-deep);font-weight:600;min-width:64px;text-align:right}
+.peoples{display:grid;grid-template-columns:1fr;gap:5px;margin:10px 0}
+.peoples .ppl{display:grid;grid-template-columns:auto 1fr auto auto;gap:12px;padding:7px 12px;border:0.5px solid var(--line);border-radius:5px;background:var(--paper-2);align-items:center}
+.peoples .ppl .glyph{width:24px;height:24px;display:flex;align-items:center;justify-content:center;background:var(--slate);color:var(--ochre-soft);font-family:var(--serif);font-style:italic;font-size:13px;border-radius:50%}
+.peoples .ppl .nm{font-family:var(--serif);font-size:13px;color:var(--ink);font-weight:500}
+.peoples .ppl .nm small{display:block;font-family:var(--sans);font-size:9.5px;color:var(--ink-faint);font-weight:400;margin-top:1px}
+.peoples .ppl .lang{font-family:var(--mono);font-size:9px;letter-spacing:.08em;color:var(--ink-3);text-transform:uppercase}
+.peoples .ppl .cnt{font-family:var(--mono);font-size:12px;color:var(--ochre-deep);font-weight:600;min-width:60px;text-align:right}
 
 /* PROCESS STEPS */
-.steps{display:grid;gap:10px;margin:14px 0}
-.step{display:grid;grid-template-columns:40px 1fr;gap:14px;padding:12px 0;border-bottom:0.5px solid var(--line);align-items:start}
+.steps{display:grid;gap:4px;margin:10px 0}
+.step{display:grid;grid-template-columns:32px 1fr;gap:10px;padding:7px 0;border-bottom:0.5px solid var(--line);align-items:start}
 .step:last-child{border-bottom:0}
-.step .n{font-family:var(--serif);font-style:italic;font-size:26px;color:var(--ochre-deep);font-weight:300;line-height:1}
-.step .c h5{font-family:var(--serif);font-size:14px;color:var(--ink);font-weight:500;margin-bottom:4px}
-.step .c p{font-family:var(--sans);font-size:11.5px;color:var(--ink-3);line-height:1.55}
+.step .n{font-family:var(--serif);font-style:italic;font-size:22px;color:var(--ochre-deep);font-weight:300;line-height:1}
+.step .c h5{font-family:var(--serif);font-size:13px;color:var(--ink);font-weight:500;margin-bottom:3px}
+.step .c p{font-family:var(--sans);font-size:11px;color:var(--ink-3);line-height:1.45}
 
 /* GRID 2 / 3 */
-.g2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0}
-.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0}
-.tile{border:0.5px solid var(--line-2);border-radius:6px;padding:14px 16px;background:var(--paper-2)}
-.tile .t-num{font-family:var(--mono);font-size:9px;letter-spacing:.22em;color:var(--ochre-deep);font-weight:700;margin-bottom:8px;text-transform:uppercase}
-.tile h5{font-family:var(--serif);font-size:14px;color:var(--ink);font-weight:500;margin-bottom:5px;line-height:1.2}
-.tile p{font-family:var(--sans);font-size:11px;color:var(--ink-3);line-height:1.5}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:10px 0}
+.tile{border:0.5px solid var(--line-2);border-radius:6px;padding:11px 13px;background:var(--paper-2)}
+.tile .t-num{font-family:var(--mono);font-size:8.5px;letter-spacing:.20em;color:var(--ochre-deep);font-weight:700;margin-bottom:5px;text-transform:uppercase}
+.tile h5{font-family:var(--serif);font-size:13.5px;color:var(--ink);font-weight:500;margin-bottom:4px;line-height:1.2}
+.tile p{font-family:var(--sans);font-size:10.5px;color:var(--ink-3);line-height:1.45}
 
 /* FLOWS / ARCHITECTURE */
-.arch{display:grid;gap:14px;margin:14px 0}
-.layer{display:grid;grid-template-columns:90px 1fr;gap:14px;padding:14px 16px;border:0.5px solid var(--line-2);border-radius:6px;background:var(--paper-2);align-items:start}
-.layer .ll{font-family:var(--mono);font-size:9px;letter-spacing:.22em;color:var(--ochre-deep);font-weight:700;text-transform:uppercase}
-.layer .ll em{display:block;font-style:normal;font-family:var(--serif);font-size:22px;color:var(--ink);font-weight:300;margin-top:4px;letter-spacing:-.01em}
-.layer .lc h5{font-family:var(--serif);font-size:14.5px;color:var(--ink);font-weight:500;margin-bottom:4px}
-.layer .lc p{font-family:var(--sans);font-size:11.5px;color:var(--ink-3);line-height:1.55}
-.layer .lc ul{margin-top:6px;list-style:none}
-.layer .lc ul li{font-family:var(--sans);font-size:11px;color:var(--ink-3);padding-left:12px;position:relative;margin-bottom:3px}
+.arch{display:grid;gap:8px;margin:10px 0}
+.layer{display:grid;grid-template-columns:80px 1fr;gap:12px;padding:10px 14px;border:0.5px solid var(--line-2);border-radius:6px;background:var(--paper-2);align-items:start}
+.layer .ll{font-family:var(--mono);font-size:8.5px;letter-spacing:.20em;color:var(--ochre-deep);font-weight:700;text-transform:uppercase;line-height:1.3}
+.layer .ll em{display:block;font-style:normal;font-family:var(--serif);font-size:19px;color:var(--ink);font-weight:300;margin-top:3px;letter-spacing:-.01em}
+.layer .lc h5{font-family:var(--serif);font-size:13.5px;color:var(--ink);font-weight:500;margin-bottom:3px;line-height:1.25}
+.layer .lc p{font-family:var(--sans);font-size:11px;color:var(--ink-3);line-height:1.45}
+.layer .lc ul{margin-top:4px;list-style:none}
+.layer .lc ul li{font-family:var(--sans);font-size:10.5px;color:var(--ink-3);padding-left:11px;position:relative;margin-bottom:2px;line-height:1.4}
 .layer .lc ul li::before{content:'›';position:absolute;left:2px;color:var(--ochre);font-weight:700}
 
 /* COVER PAGE */
@@ -187,16 +187,16 @@ html,body{background:#e5dcc4;font-family:var(--sans);color:var(--ink);font-size:
 .letter .sig .role{font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--ink-faint);text-transform:uppercase}
 
 /* MOCKUP / DASHBOARD */
-.mock{border:0.5px solid var(--line-3);border-radius:8px;overflow:hidden;background:#fafafa;margin:14px 0;font-family:var(--sans)}
-.mock .m-top{background:var(--slate);color:var(--paper);padding:8px 14px;display:flex;align-items:center;justify-content:space-between;font-size:10.5px}
+.mock{border:0.5px solid var(--line-3);border-radius:8px;overflow:hidden;background:#fafafa;margin:10px 0;font-family:var(--sans)}
+.mock .m-top{background:var(--slate);color:var(--paper);padding:6px 12px;display:flex;align-items:center;justify-content:space-between;font-size:10px}
 .mock .m-top .dots{display:inline-flex;gap:5px;margin-right:10px}
-.mock .m-top .dots span{width:8px;height:8px;border-radius:50%;background:rgba(247,240,223,.3)}
-.mock .m-top .url{font-family:var(--mono);font-size:9.5px;color:rgba(247,240,223,.7);letter-spacing:.08em}
-.mock .m-top .who{font-family:var(--mono);font-size:9.5px;color:var(--ochre-soft);letter-spacing:.12em}
-.mock .m-body{padding:14px 16px;background:#faf6e9}
+.mock .m-top .dots span{width:7px;height:7px;border-radius:50%;background:rgba(247,240,223,.3)}
+.mock .m-top .url{font-family:var(--mono);font-size:9px;color:rgba(247,240,223,.7);letter-spacing:.08em}
+.mock .m-top .who{font-family:var(--mono);font-size:9px;color:var(--ochre-soft);letter-spacing:.12em}
+.mock .m-body{padding:10px 12px;background:#faf6e9}
 
 /* TEACHER DASH MOCK */
-.dash-grid{display:grid;grid-template-columns:130px 1fr 180px;gap:12px;min-height:280px}
+.dash-grid{display:grid;grid-template-columns:115px 1fr 165px;gap:10px;min-height:240px}
 .dash-side{background:var(--paper);border:0.5px solid var(--line-2);border-radius:5px;padding:10px 8px}
 .dash-side .sec-l{font-family:var(--mono);font-size:8.5px;letter-spacing:.18em;color:var(--ink-faint);text-transform:uppercase;font-weight:700;margin-bottom:6px;padding:0 4px}
 .dash-side .nav{font-family:var(--sans);font-size:10.5px;padding:5px 6px;border-radius:3px;color:var(--ink-2);cursor:pointer;display:flex;justify-content:space-between;align-items:center;margin-bottom:1px}
@@ -226,8 +226,8 @@ html,body{background:#e5dcc4;font-family:var(--sans);color:var(--ink);font-size:
 .dash-detail .panel .pv em{color:var(--ochre-deep);font-style:italic;font-weight:500}
 
 /* STUDENT TABLET */
-.tablet{background:var(--ink);border-radius:14px;padding:8px;max-width:5.5in;margin:14px auto}
-.tablet .scr{background:linear-gradient(180deg,#fff9e8,#f7eccc);border-radius:8px;padding:14px 18px;min-height:300px;position:relative;overflow:hidden}
+.tablet{background:var(--ink);border-radius:12px;padding:7px;max-width:5.4in;margin:8px auto}
+.tablet .scr{background:linear-gradient(180deg,#fff9e8,#f7eccc);border-radius:7px;padding:11px 16px;min-height:240px;position:relative;overflow:hidden}
 .tablet .scr::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--ochre),var(--forest))}
 .tablet .t-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;padding-top:5px}
 .tablet .t-top .greet{font-family:var(--serif);font-size:14px;color:var(--ink);font-weight:500}
@@ -346,7 +346,7 @@ html[lang="en"] [data-en]:not([data-es]){display:inline}
   </div>
 
   <div class="eyebrow" data-es="CARTA ABIERTA" data-en="OPEN LETTER">CARTA ABIERTA</div>
-  <h1 class="title" style="font-size:38px" data-es-html="A quienes <em>cargan</em><br>el sistema." data-en-html="To those who <em>carry</em><br>the system.">A quienes <em>cargan</em><br>el sistema.</h1>
+  <h1 class="title" style="font-size:32px" data-es-html="A quienes <em>cargan</em><br>el sistema." data-en-html="To those who <em>carry</em><br>the system.">A quienes <em>cargan</em><br>el sistema.</h1>
 
   <div class="salut" data-es="Estimados líderes de MEDUCA, directores regionales, congresos indígenas, y maestros de Panamá:" data-en="Esteemed MEDUCA leadership, regional directors, indigenous congresses, and teachers of Panama:">Estimados líderes de MEDUCA, directores regionales, congresos indígenas, y maestros de Panamá:</div>
 
@@ -383,8 +383,8 @@ html[lang="en"] [data-en]:not([data-es]){display:inline}
   </div>
 
   <div class="eyebrow" data-es="03 · SISTEMA EDUCATIVO PANAMEÑO" data-en="03 · PANAMA'S EDUCATION SYSTEM">03 · SISTEMA EDUCATIVO PANAMEÑO</div>
-  <h1 class="title" style="font-size:44px" data-es-html="Cómo aprende hoy un <em>niño panameño</em>." data-en-html="How a Panamanian <em>child</em> learns today.">Cómo aprende hoy un <em>niño panameño</em>.</h1>
-  <p class="lede" style="font-size:15.5px;margin-bottom:22px;max-width:6in" data-es="El sistema panameño es uno de los más estructurados de Centroamérica sobre el papel. La distancia entre el papel y el aula es donde empieza este documento." data-en="On paper, Panama's system is among the most structured in Central America. The distance between paper and classroom is where this document begins.">El sistema panameño es uno de los más estructurados de Centroamérica sobre el papel. La distancia entre el papel y el aula es donde empieza este documento.</p>
+  <h1 class="title" style="font-size:36px" data-es-html="Cómo aprende hoy un <em>niño panameño</em>." data-en-html="How a Panamanian <em>child</em> learns today.">Cómo aprende hoy un <em>niño panameño</em>.</h1>
+  <p class="lede" style="font-size:13px;margin-bottom:22px;max-width:6in" data-es="El sistema panameño es uno de los más estructurados de Centroamérica sobre el papel. La distancia entre el papel y el aula es donde empieza este documento." data-en="On paper, Panama's system is among the most structured in Central America. The distance between paper and classroom is where this document begins.">El sistema panameño es uno de los más estructurados de Centroamérica sobre el papel. La distancia entre el papel y el aula es donde empieza este documento.</p>
 
   <div class="kicker" data-es="ESTRUCTURA OFICIAL · MEDUCA" data-en="OFFICIAL STRUCTURE · MEDUCA">ESTRUCTURA OFICIAL · MEDUCA</div>
   <table class="tbl">
@@ -447,8 +447,8 @@ html[lang="en"] [data-en]:not([data-es]){display:inline}
   </div>
 
   <div class="eyebrow" data-es="04 · LA BRECHA FUNDAMENTAL" data-en="04 · THE FUNDAMENTAL GAP">04 · LA BRECHA FUNDAMENTAL</div>
-  <h1 class="title" style="font-size:42px" data-es-html="Dos países <em>en un solo</em> sistema." data-en-html="Two countries <em>inside one</em> system.">Dos países <em>en un solo</em> sistema.</h1>
-  <p class="lede" style="font-size:15px;max-width:6in;margin-bottom:18px" data-es="No es una observación ideológica. Es una observación de presupuesto, infraestructura, y resultado. Aquí están los números." data-en="Not an ideological observation. A budget, infrastructure, and outcome observation. Here are the numbers.">No es una observación ideológica. Es una observación de presupuesto, infraestructura, y resultado. Aquí están los números.</p>
+  <h1 class="title" style="font-size:34px" data-es-html="Dos países <em>en un solo</em> sistema." data-en-html="Two countries <em>inside one</em> system.">Dos países <em>en un solo</em> sistema.</h1>
+  <p class="lede" style="font-size:13px;max-width:6in;margin-bottom:18px" data-es="No es una observación ideológica. Es una observación de presupuesto, infraestructura, y resultado. Aquí están los números." data-en="Not an ideological observation. A budget, infrastructure, and outcome observation. Here are the numbers.">No es una observación ideológica. Es una observación de presupuesto, infraestructura, y resultado. Aquí están los números.</p>
 
   <div class="compare">
     <div class="col a">
@@ -508,8 +508,8 @@ html[lang="en"] [data-en]:not([data-es]){display:inline}
   </div>
 
   <div class="eyebrow" data-es="05 · CRISIS RURAL" data-en="05 · THE RURAL CRISIS">05 · CRISIS RURAL</div>
-  <h1 class="title" style="font-size:42px" data-es-html="Un solo maestro. <em>Cuarenta</em> niños. <em>Seis</em> grados." data-en-html="One teacher. <em>Forty</em> children. <em>Six</em> grades.">Un solo maestro. <em>Cuarenta</em> niños. <em>Seis</em> grados.</h1>
-  <p class="lede" style="font-size:14.5px;max-width:6in;margin-bottom:18px" data-es="La escuela multigrado no es una excepción rural. Es la forma dominante de educación en el 38% de los planteles públicos del país." data-en="The multigrade school is not a rural exception. It is the dominant form of education in 38% of public schools nationwide.">La escuela multigrado no es una excepción rural. Es la forma dominante de educación en el 38% de los planteles públicos del país.</p>
+  <h1 class="title" style="font-size:34px" data-es-html="Un solo maestro. <em>Cuarenta</em> niños. <em>Seis</em> grados." data-en-html="One teacher. <em>Forty</em> children. <em>Six</em> grades.">Un solo maestro. <em>Cuarenta</em> niños. <em>Seis</em> grados.</h1>
+  <p class="lede" style="font-size:13px;max-width:6in;margin-bottom:18px" data-es="La escuela multigrado no es una excepción rural. Es la forma dominante de educación en el 38% de los planteles públicos del país." data-en="The multigrade school is not a rural exception. It is the dominant form of education in 38% of public schools nationwide.">La escuela multigrado no es una excepción rural. Es la forma dominante de educación en el 38% de los planteles públicos del país.</p>
 
   <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:22px;margin-bottom:14px">
     <div>
@@ -566,8 +566,8 @@ html[lang="en"] [data-en]:not([data-es]){display:inline}
   </div>
 
   <div class="eyebrow" data-es="06 · PISA 2022 · STANDING INTERNACIONAL" data-en="06 · PISA 2022 · INTERNATIONAL STANDING">06 · PISA 2022 · STANDING INTERNACIONAL</div>
-  <h1 class="title" style="font-size:40px" data-es-html="Dónde está <em>Panamá</em> en el mundo, según PISA." data-en-html="Where <em>Panama</em> stands in the world, per PISA.">Dónde está <em>Panamá</em> en el mundo, según PISA.</h1>
-  <p class="lede" style="font-size:14px;max-width:6in;margin-bottom:18px" data-es="PISA mide a estudiantes de 15 años en matemática, lectura y ciencias. Es el termómetro internacional más confiable. En 2022 participaron 81 países. Panamá quedó cerca del fondo." data-en="PISA measures 15-year-olds in math, reading, science. The most reliable international thermometer. 81 countries participated in 2022. Panama landed near the bottom.">PISA mide a estudiantes de 15 años en matemática, lectura y ciencias. Es el termómetro internacional más confiable. En 2022 participaron 81 países. Panamá quedó cerca del fondo.</p>
+  <h1 class="title" style="font-size:34px" data-es-html="Dónde está <em>Panamá</em> en el mundo, según PISA." data-en-html="Where <em>Panama</em> stands in the world, per PISA.">Dónde está <em>Panamá</em> en el mundo, según PISA.</h1>
+  <p class="lede" style="font-size:13px;max-width:6in;margin-bottom:18px" data-es="PISA mide a estudiantes de 15 años en matemática, lectura y ciencias. Es el termómetro internacional más confiable. En 2022 participaron 81 países. Panamá quedó cerca del fondo." data-en="PISA measures 15-year-olds in math, reading, science. The most reliable international thermometer. 81 countries participated in 2022. Panama landed near the bottom.">PISA mide a estudiantes de 15 años en matemática, lectura y ciencias. Es el termómetro internacional más confiable. En 2022 participaron 81 países. Panamá quedó cerca del fondo.</p>
 
   <div class="kicker" data-es="RESULTADOS PISA 2022" data-en="PISA 2022 RESULTS">RESULTADOS PISA 2022</div>
   <table class="tbl">
@@ -634,8 +634,8 @@ html[lang="en"] [data-en]:not([data-es]){display:inline}
   </div>
 
   <div class="eyebrow" data-es="07 · PANAMÁ INDÍGENA · ATLAS" data-en="07 · INDIGENOUS PANAMA · ATLAS">07 · PANAMÁ INDÍGENA · ATLAS</div>
-  <h1 class="title" style="font-size:42px" data-es-html="<em>Siete pueblos</em>. Siete lenguas. Un solo país." data-en-html="<em>Seven peoples</em>. Seven languages. One country."><em>Siete pueblos</em>. Siete lenguas. Un solo país.</h1>
-  <p class="lede" style="font-size:14px;max-width:6in;margin-bottom:16px" data-es="Panamá tiene siete pueblos originarios reconocidos, ~417,000 personas, 12.3% de la población nacional. Cinco comarcas semi-autónomas y dos territorios colectivos. Aquí están — y aquí está dónde el sistema educativo no los alcanza." data-en="Panama has seven recognized indigenous peoples, ~417,000 people, 12.3% of the national population. Five semi-autonomous comarcas and two collective territories. Here they are — and here is where the education system fails to reach them.">Panamá tiene siete pueblos originarios reconocidos, ~417,000 personas, 12.3% de la población nacional. Cinco comarcas semi-autónomas y dos territorios colectivos. Aquí están — y aquí está dónde el sistema educativo no los alcanza.</p>
+  <h1 class="title" style="font-size:34px" data-es-html="<em>Siete pueblos</em>. Siete lenguas. Un solo país." data-en-html="<em>Seven peoples</em>. Seven languages. One country."><em>Siete pueblos</em>. Siete lenguas. Un solo país.</h1>
+  <p class="lede" style="font-size:13px;max-width:6in;margin-bottom:16px" data-es="Panamá tiene siete pueblos originarios reconocidos, ~417,000 personas, 12.3% de la población nacional. Cinco comarcas semi-autónomas y dos territorios colectivos. Aquí están — y aquí está dónde el sistema educativo no los alcanza." data-en="Panama has seven recognized indigenous peoples, ~417,000 people, 12.3% of the national population. Five semi-autonomous comarcas and two collective territories. Here they are — and here is where the education system fails to reach them.">Panamá tiene siete pueblos originarios reconocidos, ~417,000 personas, 12.3% de la población nacional. Cinco comarcas semi-autónomas y dos territorios colectivos. Aquí están — y aquí está dónde el sistema educativo no los alcanza.</p>
 
   <div class="kicker" data-es="POBLACIÓN POR PUEBLO ORIGINARIO" data-en="POPULATION BY ORIGINARY PEOPLE">POBLACIÓN POR PUEBLO ORIGINARIO</div>
   <div class="peoples">
@@ -676,8 +676,8 @@ html[lang="en"] [data-en]:not([data-es]){display:inline}
   </div>
 
   <div class="eyebrow" data-es="08 · LA BARRERA LINGÜÍSTICA" data-en="08 · THE LANGUAGE BARRIER">08 · LA BARRERA LINGÜÍSTICA</div>
-  <h1 class="title" style="font-size:42px" data-es-html="El niño no es lento. <em>La escuela</em> está en otro idioma." data-en-html="The child isn't slow. <em>The school</em> is in another language.">El niño no es lento. <em>La escuela</em> está en otro idioma.</h1>
-  <p class="lede" style="font-size:14px;max-width:6.2in;margin-bottom:18px" data-es="El 80% de los niños de la Comarca Ngäbe-Buglé entran a primero de primaria hablando Ngäbere como lengua principal. La escuela les enseña en español. La diferencia entre ser bilingüe a los seis años y ser etiquetado de “bajo rendimiento” es quién traduce." data-en="80% of children in the Ngäbe-Buglé Comarca enter first grade speaking Ngäbere as their main language. The school teaches in Spanish. The difference between being bilingual at six and being labeled “underperforming” is who translates.">El 80% de los niños de la Comarca Ngäbe-Buglé entran a primero de primaria hablando Ngäbere como lengua principal. La escuela les enseña en español. La diferencia entre ser bilingüe a los seis años y ser etiquetado de "bajo rendimiento" es quién traduce.</p>
+  <h1 class="title" style="font-size:34px" data-es-html="El niño no es lento. <em>La escuela</em> está en otro idioma." data-en-html="The child isn't slow. <em>The school</em> is in another language.">El niño no es lento. <em>La escuela</em> está en otro idioma.</h1>
+  <p class="lede" style="font-size:13px;max-width:6.2in;margin-bottom:18px" data-es="El 80% de los niños de la Comarca Ngäbe-Buglé entran a primero de primaria hablando Ngäbere como lengua principal. La escuela les enseña en español. La diferencia entre ser bilingüe a los seis años y ser etiquetado de “bajo rendimiento” es quién traduce." data-en="80% of children in the Ngäbe-Buglé Comarca enter first grade speaking Ngäbere as their main language. The school teaches in Spanish. The difference between being bilingual at six and being labeled “underperforming” is who translates.">El 80% de los niños de la Comarca Ngäbe-Buglé entran a primero de primaria hablando Ngäbere como lengua principal. La escuela les enseña en español. La diferencia entre ser bilingüe a los seis años y ser etiquetado de "bajo rendimiento" es quién traduce.</p>
 
   <div class="kicker" data-es="EL DÉFICIT DE EIB (EDUCACIÓN INTERCULTURAL BILINGÜE)" data-en="THE EIB DEFICIT (INTERCULTURAL BILINGUAL EDUCATION)">EL DÉFICIT DE EIB (EDUCACIÓN INTERCULTURAL BILINGÜE)</div>
   <table class="tbl">
@@ -732,8 +732,8 @@ html[lang="en"] [data-en]:not([data-es]){display:inline}
   </div>
 
   <div class="eyebrow" data-es="09 · MAESTROS ORIGINARIOS · UN CUADRO NUEVO" data-en="09 · ORIGINARIO TEACHERS · A NEW CADRE">09 · MAESTROS ORIGINARIOS · UN CUADRO NUEVO</div>
-  <h1 class="title" style="font-size:42px" data-es-html="Maestros formados <em>desde dentro</em> de la comunidad." data-en-html="Teachers trained <em>from inside</em> the community.">Maestros formados <em>desde dentro</em> de la comunidad.</h1>
-  <p class="lede" style="font-size:14px;max-width:6.2in;margin-bottom:18px" data-es="La forma más durable de cerrar la brecha lingüística es formar a quienes ya hablan la lengua. AULA financia, entrena y acredita un cuadro de maestros originarios — Ngäbe, Buglé, Guna, Emberá, Wounaan, Naso, Bri-Bri — para que enseñen en su propia comunidad y en su propia lengua. Trabajamos con los congresos generales, no encima de ellos." data-en="The most durable way to close the language gap is to train those who already speak it. AULA funds, trains, and accredits a cadre of originario teachers — Ngäbe, Buglé, Guna, Emberá, Wounaan, Naso, Bri-Bri — to teach in their own community and their own language. We work with the general congresses, not above them.">La forma más durable de cerrar la brecha lingüística es formar a quienes ya hablan la lengua. AULA financia, entrena y acredita un cuadro de maestros originarios — Ngäbe, Buglé, Guna, Emberá, Wounaan, Naso, Bri-Bri — para que enseñen en su propia comunidad y en su propia lengua. Trabajamos con los congresos generales, no encima de ellos.</p>
+  <h1 class="title" style="font-size:34px" data-es-html="Maestros formados <em>desde dentro</em> de la comunidad." data-en-html="Teachers trained <em>from inside</em> the community.">Maestros formados <em>desde dentro</em> de la comunidad.</h1>
+  <p class="lede" style="font-size:13px;max-width:6.2in;margin-bottom:18px" data-es="La forma más durable de cerrar la brecha lingüística es formar a quienes ya hablan la lengua. AULA financia, entrena y acredita un cuadro de maestros originarios — Ngäbe, Buglé, Guna, Emberá, Wounaan, Naso, Bri-Bri — para que enseñen en su propia comunidad y en su propia lengua. Trabajamos con los congresos generales, no encima de ellos." data-en="The most durable way to close the language gap is to train those who already speak it. AULA funds, trains, and accredits a cadre of originario teachers — Ngäbe, Buglé, Guna, Emberá, Wounaan, Naso, Bri-Bri — to teach in their own community and their own language. We work with the general congresses, not above them.">La forma más durable de cerrar la brecha lingüística es formar a quienes ya hablan la lengua. AULA financia, entrena y acredita un cuadro de maestros originarios — Ngäbe, Buglé, Guna, Emberá, Wounaan, Naso, Bri-Bri — para que enseñen en su propia comunidad y en su propia lengua. Trabajamos con los congresos generales, no encima de ellos.</p>
 
   <div class="kicker" data-es="EL PROGRAMA DE FORMACIÓN · 24 MESES" data-en="THE TRAINING PROGRAM · 24 MONTHS">EL PROGRAMA DE FORMACIÓN · 24 MESES</div>
   <div class="steps">
@@ -783,8 +783,8 @@ html[lang="en"] [data-en]:not([data-es]){display:inline}
   </div>
 
   <div class="eyebrow" data-es="10 · ARQUITECTURA AULA" data-en="10 · AULA ARCHITECTURE">10 · ARQUITECTURA AULA</div>
-  <h1 class="title" style="font-size:42px" data-es-html="Tres capas. <em>Una</em> caja. <em>Cero</em> internet requerido." data-en-html="Three layers. <em>One</em> box. <em>Zero</em> internet required.">Tres capas. <em>Una</em> caja. <em>Cero</em> internet requerido.</h1>
-  <p class="lede" style="font-size:14px;max-width:6.2in;margin-bottom:16px" data-es="El error de los productos EdTech LATAM típicos es asumir conexión Cloud confiable. No existe en la Comarca, ni en buena parte del Panamá rural. AULA invierte la arquitectura: el modelo IA corre en la propia escuela, las tabletas se conectan por WiFi local, y todo sincroniza cuando hay señal." data-en="The typical LATAM EdTech mistake is assuming reliable cloud. It doesn't exist in the Comarca, nor in much of rural Panama. AULA inverts the architecture: the AI model runs at the school itself, tablets connect over local WiFi, everything syncs when signal returns.">El error de los productos EdTech LATAM típicos es asumir conexión Cloud confiable. No existe en la Comarca, ni en buena parte del Panamá rural. AULA invierte la arquitectura: el modelo IA corre en la propia escuela, las tabletas se conectan por WiFi local, y todo sincroniza cuando hay señal.</p>
+  <h1 class="title" style="font-size:34px" data-es-html="Tres capas. <em>Una</em> caja. <em>Cero</em> internet requerido." data-en-html="Three layers. <em>One</em> box. <em>Zero</em> internet required.">Tres capas. <em>Una</em> caja. <em>Cero</em> internet requerido.</h1>
+  <p class="lede" style="font-size:13px;max-width:6.2in;margin-bottom:16px" data-es="El error de los productos EdTech LATAM típicos es asumir conexión Cloud confiable. No existe en la Comarca, ni en buena parte del Panamá rural. AULA invierte la arquitectura: el modelo IA corre en la propia escuela, las tabletas se conectan por WiFi local, y todo sincroniza cuando hay señal." data-en="The typical LATAM EdTech mistake is assuming reliable cloud. It doesn't exist in the Comarca, nor in much of rural Panama. AULA inverts the architecture: the AI model runs at the school itself, tablets connect over local WiFi, everything syncs when signal returns.">El error de los productos EdTech LATAM típicos es asumir conexión Cloud confiable. No existe en la Comarca, ni en buena parte del Panamá rural. AULA invierte la arquitectura: el modelo IA corre en la propia escuela, las tabletas se conectan por WiFi local, y todo sincroniza cuando hay señal.</p>
 
   <div class="arch">
     <div class="layer">
@@ -846,8 +846,8 @@ html[lang="en"] [data-en]:not([data-es]){display:inline}
   </div>
 
   <div class="eyebrow" data-es="11 · EXPERIENCIA DEL MAESTRO" data-en="11 · TEACHER EXPERIENCE">11 · EXPERIENCIA DEL MAESTRO</div>
-  <h1 class="title" style="font-size:40px" data-es-html="Click en un niño. <em>Aparece</em> el currículo." data-en-html="Click a child. The <em>curriculum</em> appears.">Click en un niño. <em>Aparece</em> el currículo.</h1>
-  <p class="lede" style="font-size:13.5px;max-width:6.2in;margin-bottom:14px" data-es="La consola docente es un sitio web local. La maestra entra desde cualquier dispositivo y ve su clase como una sola pantalla. Cada estudiante es un avatar. Click — y AULA muestra qué necesita ese niño hoy, qué le costó ayer, y qué planificar mañana." data-en="The teacher console is a local website. The teacher signs in from any device and sees the class on one screen. Each student is an avatar. Click — and AULA shows what that child needs today, what they struggled with yesterday, and what to plan tomorrow.">La consola docente es un sitio web local. La maestra entra desde cualquier dispositivo y ve su clase como una sola pantalla. Cada estudiante es un avatar. Click — y AULA muestra qué necesita ese niño hoy, qué le costó ayer, y qué planificar mañana.</p>
+  <h1 class="title" style="font-size:34px" data-es-html="Click en un niño. <em>Aparece</em> el currículo." data-en-html="Click a child. The <em>curriculum</em> appears.">Click en un niño. <em>Aparece</em> el currículo.</h1>
+  <p class="lede" style="font-size:13px;max-width:6.2in;margin-bottom:14px" data-es="La consola docente es un sitio web local. La maestra entra desde cualquier dispositivo y ve su clase como una sola pantalla. Cada estudiante es un avatar. Click — y AULA muestra qué necesita ese niño hoy, qué le costó ayer, y qué planificar mañana." data-en="The teacher console is a local website. The teacher signs in from any device and sees the class on one screen. Each student is an avatar. Click — and AULA shows what that child needs today, what they struggled with yesterday, and what to plan tomorrow.">La consola docente es un sitio web local. La maestra entra desde cualquier dispositivo y ve su clase como una sola pantalla. Cada estudiante es un avatar. Click — y AULA muestra qué necesita ese niño hoy, qué le costó ayer, y qué planificar mañana.</p>
 
   <div class="mock">
     <div class="m-top">
@@ -919,8 +919,8 @@ html[lang="en"] [data-en]:not([data-es]){display:inline}
   </div>
 
   <div class="eyebrow" data-es="12 · EXPERIENCIA DEL ESTUDIANTE" data-en="12 · STUDENT EXPERIENCE">12 · EXPERIENCIA DEL ESTUDIANTE</div>
-  <h1 class="title" style="font-size:40px" data-es-html="Un tutor que <em>nunca apura</em>, en mi propia lengua." data-en-html="A tutor who <em>never rushes</em>, in my own language.">Un tutor que <em>nunca apura</em>, en mi propia lengua.</h1>
-  <p class="lede" style="font-size:13.5px;max-width:6.2in;margin-bottom:14px" data-es="Yarisma tiene cinco años. Habla Ngäbere en casa y aprende español en la escuela. Cada mañana abre su tableta y la saluda Maestro Beli — un avatar IA que le habla en su lengua. No se ríe de ella, no la apura, no se cansa de repetir." data-en="Yarisma is five. Speaks Ngäbere at home, learns Spanish at school. Each morning she opens her tablet and Maestro Beli — an AI avatar — greets her in her own language. He doesn't laugh, doesn't rush, doesn't tire of repeating.">Yarisma tiene cinco años. Habla Ngäbere en casa y aprende español en la escuela. Cada mañana abre su tableta y la saluda Maestro Beli — un avatar IA que le habla en su lengua. No se ríe de ella, no la apura, no se cansa de repetir.</p>
+  <h1 class="title" style="font-size:34px" data-es-html="Un tutor que <em>nunca apura</em>, en mi propia lengua." data-en-html="A tutor who <em>never rushes</em>, in my own language.">Un tutor que <em>nunca apura</em>, en mi propia lengua.</h1>
+  <p class="lede" style="font-size:13px;max-width:6.2in;margin-bottom:14px" data-es="Yarisma tiene cinco años. Habla Ngäbere en casa y aprende español en la escuela. Cada mañana abre su tableta y la saluda Maestro Beli — un avatar IA que le habla en su lengua. No se ríe de ella, no la apura, no se cansa de repetir." data-en="Yarisma is five. Speaks Ngäbere at home, learns Spanish at school. Each morning she opens her tablet and Maestro Beli — an AI avatar — greets her in her own language. He doesn't laugh, doesn't rush, doesn't tire of repeating.">Yarisma tiene cinco años. Habla Ngäbere en casa y aprende español en la escuela. Cada mañana abre su tableta y la saluda Maestro Beli — un avatar IA que le habla en su lengua. No se ríe de ella, no la apura, no se cansa de repetir.</p>
 
   <div class="tablet">
     <div class="scr">
@@ -979,8 +979,8 @@ html[lang="en"] [data-en]:not([data-es]){display:inline}
   </div>
 
   <div class="eyebrow" data-es="13 · MOTOR DE DIAGNÓSTICO" data-en="13 · THE DIAGNOSTIC ENGINE">13 · MOTOR DE DIAGNÓSTICO</div>
-  <h1 class="title" style="font-size:40px" data-es-html="¿Cómo sabe AULA <em>qué necesita</em> cada niño?" data-en-html="How does AULA know <em>what each child</em> needs?">¿Cómo sabe AULA <em>qué necesita</em> cada niño?</h1>
-  <p class="lede" style="font-size:13.5px;max-width:6.2in;margin-bottom:14px" data-es="No es magia. Es una secuencia de medición continua que empieza el primer día y se actualiza cada interacción. El resultado es una “constelación de habilidades” por niño que el maestro y el sistema usan para tomar decisiones." data-en="No magic. A continuous measurement sequence that begins on day one and updates with every interaction. The output is a per-child “skill constellation” that the teacher and system use to make decisions.">No es magia. Es una secuencia de medición continua que empieza el primer día y se actualiza cada interacción. El resultado es una "constelación de habilidades" por niño que el maestro y el sistema usan para tomar decisiones.</p>
+  <h1 class="title" style="font-size:34px" data-es-html="¿Cómo sabe AULA <em>qué necesita</em> cada niño?" data-en-html="How does AULA know <em>what each child</em> needs?">¿Cómo sabe AULA <em>qué necesita</em> cada niño?</h1>
+  <p class="lede" style="font-size:13px;max-width:6.2in;margin-bottom:14px" data-es="No es magia. Es una secuencia de medición continua que empieza el primer día y se actualiza cada interacción. El resultado es una “constelación de habilidades” por niño que el maestro y el sistema usan para tomar decisiones." data-en="No magic. A continuous measurement sequence that begins on day one and updates with every interaction. The output is a per-child “skill constellation” that the teacher and system use to make decisions.">No es magia. Es una secuencia de medición continua que empieza el primer día y se actualiza cada interacción. El resultado es una "constelación de habilidades" por niño que el maestro y el sistema usan para tomar decisiones.</p>
 
   <div style="display:grid;grid-template-columns:1fr 1.1fr;gap:18px;margin-bottom:12px">
     <div>
@@ -1066,8 +1066,8 @@ html[lang="en"] [data-en]:not([data-es]){display:inline}
   </div>
 
   <div class="eyebrow" data-es="14 · PLAN PILOTO · 90 DÍAS" data-en="14 · PILOT PLAN · 90 DAYS">14 · PLAN PILOTO · 90 DÍAS</div>
-  <h1 class="title" style="font-size:42px" data-es-html="<em>Cinco</em> escuelas. <em>Noventa</em> días. <em>Cero</em> costo para MEDUCA." data-en-html="<em>Five</em> schools. <em>Ninety</em> days. <em>Zero</em> cost to MEDUCA."><em>Cinco</em> escuelas. <em>Noventa</em> días. <em>Cero</em> costo para MEDUCA.</h1>
-  <p class="lede" style="font-size:13.5px;max-width:6.2in;margin-bottom:14px" data-es="El piloto opera en dos contextos paralelos — Boquete urbano/peri-urbano y Comarca Ngäbe-Buglé. Si funciona en ambos, funciona en cualquier escuela panameña. La Compañía financia totalmente la Fase 1; MEDUCA aporta autorización y co-supervisión." data-en="The pilot runs in two parallel contexts — urban/peri-urban Boquete and the Ngäbe-Buglé Comarca. If it works in both, it works in any Panamanian school. La Compañía fully funds Phase 1; MEDUCA provides authorization and co-supervision.">El piloto opera en dos contextos paralelos — Boquete urbano/peri-urbano y Comarca Ngäbe-Buglé. Si funciona en ambos, funciona en cualquier escuela panameña. La Compañía financia totalmente la Fase 1; MEDUCA aporta autorización y co-supervisión.</p>
+  <h1 class="title" style="font-size:34px" data-es-html="<em>Cinco</em> escuelas. <em>Noventa</em> días. <em>Cero</em> costo para MEDUCA." data-en-html="<em>Five</em> schools. <em>Ninety</em> days. <em>Zero</em> cost to MEDUCA."><em>Cinco</em> escuelas. <em>Noventa</em> días. <em>Cero</em> costo para MEDUCA.</h1>
+  <p class="lede" style="font-size:13px;max-width:6.2in;margin-bottom:14px" data-es="El piloto opera en dos contextos paralelos — Boquete urbano/peri-urbano y Comarca Ngäbe-Buglé. Si funciona en ambos, funciona en cualquier escuela panameña. La Compañía financia totalmente la Fase 1; MEDUCA aporta autorización y co-supervisión." data-en="The pilot runs in two parallel contexts — urban/peri-urban Boquete and the Ngäbe-Buglé Comarca. If it works in both, it works in any Panamanian school. La Compañía fully funds Phase 1; MEDUCA provides authorization and co-supervision.">El piloto opera en dos contextos paralelos — Boquete urbano/peri-urbano y Comarca Ngäbe-Buglé. Si funciona en ambos, funciona en cualquier escuela panameña. La Compañía financia totalmente la Fase 1; MEDUCA aporta autorización y co-supervisión.</p>
 
   <div class="kicker" data-es="SITIOS DEL PILOTO" data-en="PILOT SITES">SITIOS DEL PILOTO</div>
   <table class="tbl">
@@ -1133,8 +1133,8 @@ html[lang="en"] [data-en]:not([data-es]){display:inline}
   </div>
 
   <div class="eyebrow" data-es="15 · LA PETICIÓN" data-en="15 · THE ASK">15 · LA PETICIÓN</div>
-  <h1 class="title" style="font-size:48px" data-es-html="Permiso para <em>probar</em>." data-en-html="Permission to <em>try</em>.">Permiso para <em>probar</em>.</h1>
-  <p class="lede" style="font-size:15.5px;max-width:6.2in;margin-bottom:22px" data-es="Lo que esta propuesta solicita formalmente. Y lo que ofrece a cambio." data-en="What this proposal formally requests. And what it offers in exchange.">Lo que esta propuesta solicita formalmente. Y lo que ofrece a cambio.</p>
+  <h1 class="title" style="font-size:40px" data-es-html="Permiso para <em>probar</em>." data-en-html="Permission to <em>try</em>.">Permiso para <em>probar</em>.</h1>
+  <p class="lede" style="font-size:13px;max-width:6.2in;margin-bottom:22px" data-es="Lo que esta propuesta solicita formalmente. Y lo que ofrece a cambio." data-en="What this proposal formally requests. And what it offers in exchange.">Lo que esta propuesta solicita formalmente. Y lo que ofrece a cambio.</p>
 
   <div class="compare">
     <div class="col a">
