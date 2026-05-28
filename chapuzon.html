@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CHAPUZÓN · Sora · Sábado 30 mayo</title>
+<meta name="description" content="CHAPUZÓN — el primer encuentro SORA. Sábado 30 de mayo, piscina del Hotel Bocas del Mar, Golfo de Chiriquí.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23D9573B'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Georgia,serif' font-size='17' font-weight='400' fill='%23f7ecd0'%3EC%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f7ecd0;
+  --paper-2:#fbf3dd;
+  --ink:#1a1410;
+  --ink-2:#2f261d;
+  --ink-3:#4f4332;
+  --ink-faint:#8a7d63;
+  --line:rgba(26,20,16,0.12);
+  --line-2:rgba(26,20,16,0.20);
+  --coral:#D9573B;
+  --coral-deep:#a8401f;
+  --coral-soft:#e88a6e;
+  --ochre:#c89030;
+  --sea:#3d7a91;
+  --sea-deep:#1f5168;
+  --pool:#5fb8d4;
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'Inter',-apple-system,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#e1d4ab;font-family:var(--sans);color:var(--ink);font-size:14px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.app{padding:32px 16px 60px;display:flex;justify-content:center}
+
+/* SINGLE-PAGE FLYER · US Letter portrait */
+.flyer{
+  width:8.5in;
+  height:11in;
+  background:var(--paper);
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  box-shadow:0 2px 4px rgba(0,0,0,.04),0 16px 48px rgba(0,0,0,.16);
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.92' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.10  0 0 0 0 0.08  0 0 0 0 0.05  0 0 0 0.024 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+/* HEADER STAMP */
+.stamp{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:0.55in 0.6in 0;
+  font-family:var(--mono);font-size:10px;letter-spacing:.28em;color:var(--ink-faint);text-transform:uppercase;font-weight:600
+}
+.stamp em{color:var(--coral);font-style:normal;font-weight:700}
+
+/* HERO IMAGE BAND */
+.hero-img{
+  position:relative;
+  margin:24px 0.6in 0;
+  height:3.4in;
+  border-radius:10px;
+  overflow:hidden;
+  background:linear-gradient(180deg,#7fc6e0 0%,#5fb8d4 38%,#3d7a91 100%);
+  box-shadow:0 6px 24px rgba(31,81,104,.20),0 1px 2px rgba(0,0,0,.08)
+}
+.hero-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.hero-img::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(31,81,104,0) 0%,rgba(26,20,16,.18) 78%,rgba(26,20,16,.42) 100%);pointer-events:none}
+.hero-overlay{position:absolute;left:24px;bottom:18px;right:24px;display:flex;justify-content:space-between;align-items:flex-end;color:#fff;z-index:2}
+.hero-overlay .place{font-family:var(--serif);font-style:italic;font-weight:400;font-size:22px;line-height:1.1;letter-spacing:-.005em;text-shadow:0 1px 2px rgba(0,0,0,.35)}
+.hero-overlay .place small{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:rgba(255,255,255,.86);font-style:normal;margin-top:4px}
+.hero-overlay .credit{font-family:var(--mono);font-size:9px;letter-spacing:.20em;text-transform:uppercase;font-weight:600;color:rgba(255,255,255,.78)}
+
+/* HEADLINE BAND */
+.head-band{padding:30px 0.6in 0;text-align:center}
+.head-band .roman{font-family:var(--serif);font-style:italic;font-size:18px;letter-spacing:.30em;color:var(--coral);font-weight:400;margin-bottom:6px}
+.head-band h1{font-family:var(--serif);font-weight:300;font-size:140px;line-height:.88;letter-spacing:-.045em;color:var(--ink);margin-bottom:14px}
+.head-band h1 em{font-style:italic;color:var(--coral-deep);font-weight:400}
+.head-band .tagline{font-family:var(--serif);font-style:italic;font-weight:300;font-size:18px;color:var(--ink-2);max-width:5.6in;margin:0 auto 0;line-height:1.35}
+
+/* DATE / TIME / PLACE BAR */
+.meta-bar{margin:24px 0.6in 0;display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2);padding:14px 0}
+.meta-bar .col{padding:0 18px;text-align:center;border-right:0.5px solid var(--line);display:flex;flex-direction:column;justify-content:center}
+.meta-bar .col:last-child{border-right:0}
+.meta-bar .lab{font-family:var(--mono);font-size:9px;letter-spacing:.26em;color:var(--ink-faint);text-transform:uppercase;font-weight:700;margin-bottom:6px}
+.meta-bar .val{font-family:var(--serif);font-size:18px;color:var(--ink);font-weight:400;line-height:1.1}
+.meta-bar .val em{color:var(--coral-deep);font-style:italic;font-weight:400}
+.meta-bar .val small{display:block;font-family:var(--sans);font-size:11.5px;font-weight:400;color:var(--ink-3);margin-top:3px}
+
+/* DESCRIPTION + DETAILS BLOCK */
+.body{padding:18px 0.6in 0;display:grid;grid-template-columns:1.3fr 1fr;gap:28px}
+.body .desc p{font-family:var(--serif);font-style:italic;font-weight:300;font-size:14.5px;line-height:1.5;color:var(--ink-2);margin-bottom:8px}
+.body .desc p strong{font-style:normal;color:var(--ink);font-weight:500}
+.body .desc p em{color:var(--coral-deep);font-style:italic}
+.body .details ul{list-style:none}
+.body .details ul li{font-family:var(--sans);font-size:12px;color:var(--ink-2);padding:6px 0 6px 14px;position:relative;line-height:1.45;border-bottom:0.5px solid var(--line)}
+.body .details ul li:last-child{border-bottom:0}
+.body .details ul li::before{content:'·';position:absolute;left:2px;color:var(--coral);font-weight:700}
+.body .details ul li strong{color:var(--ink);font-weight:600;font-family:var(--mono);font-size:10px;letter-spacing:.10em;text-transform:uppercase;display:block;margin-bottom:1px;color:var(--coral-deep)}
+
+/* RSVP FOOTER */
+.rsvp{margin-top:auto;display:flex;justify-content:space-between;align-items:center;padding:18px 0.6in 0.5in;border-top:1px solid var(--line-2)}
+.rsvp .left{font-family:var(--mono);font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-faint);font-weight:600}
+.rsvp .left em{color:var(--coral);font-style:normal;font-weight:700}
+.rsvp .right{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--ink);font-weight:400}
+.rsvp .right em{color:var(--coral-deep);font-style:italic}
+
+/* LANG / PRINT */
+.lang-bar{position:fixed;top:18px;right:24px;display:flex;gap:6px;background:var(--paper);border:0.5px solid var(--line-2);border-radius:6px;padding:5px;z-index:50;box-shadow:0 4px 16px rgba(0,0,0,.08)}
+.lang-bar button{padding:6px 11px;font-family:var(--mono);font-size:10px;letter-spacing:.12em;background:transparent;border:0;color:var(--ink-faint);cursor:pointer;font-weight:600;border-radius:4px}
+.lang-bar button.act{background:var(--coral);color:var(--paper)}
+.print-bar{position:fixed;top:18px;left:24px;background:var(--coral);color:var(--paper);border:0;padding:9px 14px;font-family:var(--mono);font-size:10px;letter-spacing:.14em;font-weight:700;cursor:pointer;border-radius:6px;z-index:50;box-shadow:0 4px 16px rgba(0,0,0,.12);text-transform:uppercase}
+.print-bar:hover{background:var(--coral-deep)}
+
+[data-en]:not([data-es]){display:none}
+html[lang="en"] [data-es]:not([data-en]){display:none}
+html[lang="en"] [data-en]:not([data-es]){display:inline}
+
+@media print{
+  html,body{background:white}
+  .app{padding:0}
+  .lang-bar,.print-bar{display:none !important}
+  .flyer{box-shadow:none;page-break-after:auto;margin:0}
+  @page{size:letter portrait;margin:0}
+}
+</style>
+</head>
+<body>
+
+<button class="print-bar" onclick="window.print()" data-es="IMPRIMIR" data-en="PRINT">IMPRIMIR</button>
+<div class="lang-bar">
+  <button class="act" data-lang="es">ES</button>
+  <button data-lang="en">EN</button>
+</div>
+
+<div class="app">
+  <section class="flyer">
+
+    <!-- STAMP -->
+    <div class="stamp">
+      <div><em>SORA</em> · TRAVEL AGENCY · LA COMPAÑÍA · MMXXVI</div>
+      <div data-es="ENCUENTRO N.º 1" data-en="GATHERING N.º 1">ENCUENTRO N.º 1</div>
+    </div>
+
+    <!-- HERO IMAGE -->
+    <div class="hero-img">
+      <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=1600&q=80" alt="Pool side" onerror="this.style.display='none'">
+      <div class="hero-overlay">
+        <div class="place">Hotel Bocas del Mar<small data-es="Boca Chica · Golfo de Chiriquí · Panamá" data-en="Boca Chica · Gulf of Chiriquí · Panama">Boca Chica · Golfo de Chiriquí · Panamá</small></div>
+        <div class="credit">PISCINA · MAR · MESA LARGA</div>
+      </div>
+    </div>
+
+    <!-- HEADLINE -->
+    <div class="head-band">
+      <div class="roman">I</div>
+      <h1><em>C</em>hapuzón</h1>
+      <div class="tagline" data-es="El primer encuentro Sora. Piscina, mar, una mesa larga y nada más que hacer." data-en="The first Sora gathering. Pool, sea, a long table and nothing else to do.">El primer encuentro Sora. Piscina, mar, una mesa larga y nada más que hacer.</div>
+    </div>
+
+    <!-- META BAR -->
+    <div class="meta-bar">
+      <div class="col">
+        <div class="lab" data-es="CUÁNDO" data-en="WHEN">CUÁNDO</div>
+        <div class="val"><em data-es="Sábado 30" data-en="Saturday 30">Sábado 30</em><small data-es="Mayo · 11:00 al atardecer" data-en="May · 11:00 to sunset">Mayo · 11:00 al atardecer</small></div>
+      </div>
+      <div class="col">
+        <div class="lab" data-es="DÓNDE" data-en="WHERE">DÓNDE</div>
+        <div class="val"><em>Bocas del Mar</em><small data-es="Boca Chica · Chiriquí" data-en="Boca Chica · Chiriquí">Boca Chica · Chiriquí</small></div>
+      </div>
+      <div class="col">
+        <div class="lab" data-es="CÓDIGO" data-en="DRESS">CÓDIGO</div>
+        <div class="val"><em data-es="Traje de baño" data-en="Swimwear">Traje de baño</em><small data-es="+ lino o sombrero" data-en="+ linen or hat">+ lino o sombrero</small></div>
+      </div>
+    </div>
+
+    <!-- BODY -->
+    <div class="body">
+      <div class="desc">
+        <p data-es-html="<strong>11:00.</strong> Llegamos al hotel. Café, agua de coco, salida al sol y a la piscina. Quien quiere, nada o se queda en hamaca. <em>Sin agenda. Sin lista. Sin proyecto que entregar.</em>" data-en-html="<strong>11:00.</strong> Arrive at the hotel. Coffee, coconut water, into the sun and the pool. Swim or hammock — your call. <em>No agenda. No list. No deliverable.</em>"><strong>11:00.</strong> Llegamos al hotel. Café, agua de coco, salida al sol y a la piscina. Quien quiere, nada o se queda en hamaca. <em>Sin agenda. Sin lista. Sin proyecto que entregar.</em></p>
+        <p data-es-html="<strong>14:00.</strong> Almuerzo largo en la terraza — ceviche de corvina, pargo a la brasa, plátanos maduros, vino frío. Música acústica de fondo." data-en-html="<strong>14:00.</strong> Long lunch on the terrace — corvina ceviche, grilled snapper, ripe plantain, cold wine. Acoustic music in the background."><strong>14:00.</strong> Almuerzo largo en la terraza — ceviche de corvina, pargo a la brasa, plátanos maduros, vino frío. Música acústica de fondo.</p>
+        <p data-es-html="<strong>17:30.</strong> Atardecer. Cocktail al borde de la piscina. Quien quiere se queda a cena, quien quiere se va con la tarde." data-en-html="<strong>17:30.</strong> Sunset. Cocktail on the pool edge. Stay for dinner, or leave with the afternoon."><strong>17:30.</strong> Atardecer. Cocktail al borde de la piscina. Quien quiere se queda a cena, quien quiere se va con la tarde.</p>
+      </div>
+      <div class="details">
+        <ul>
+          <li><strong data-es="LO QUE TRAEMOS" data-en="WE BRING">LO QUE TRAEMOS</strong><span data-es="Toalla, sombrero, bloqueador, ganas de no apurarse." data-en="Towel, hat, sunblock, willingness to slow down.">Toalla, sombrero, bloqueador, ganas de no apurarse.</span></li>
+          <li><strong data-es="SE INCLUYE" data-en="INCLUDED">SE INCLUYE</strong><span data-es="Acceso a piscina · cocktail de bienvenida · almuerzo largo · música en vivo · sombrillas." data-en="Pool access · welcome cocktail · long lunch · live music · umbrellas.">Acceso a piscina · cocktail de bienvenida · almuerzo largo · música en vivo · sombrillas.</span></li>
+          <li><strong data-es="CÓMO LLEGAR" data-en="HOW TO GET THERE">CÓMO LLEGAR</strong><span data-es="2 h desde Boquete · 1 h 15 de David · van Sora sale 09:00 desde Plaza Los Establos." data-en="2 h from Boquete · 1 h 15 from David · Sora van leaves 09:00 from Plaza Los Establos.">2 h desde Boquete · 1 h 15 de David · van Sora sale 09:00 desde Plaza Los Establos.</span></li>
+          <li><strong data-es="APORTE" data-en="CONTRIBUTION">APORTE</strong><span data-es="$85 por persona · cubre todo lo del día. Transferencia o efectivo." data-en="$85 per person · covers everything for the day. Transfer or cash.">$85 por persona · cubre todo lo del día. Transferencia o efectivo.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- RSVP -->
+    <div class="rsvp">
+      <div class="left"><span data-es="CONFIRMAR ANTES DEL" data-en="CONFIRM BY">CONFIRMAR ANTES DEL</span> <em data-es="JUEVES 28" data-en="THU 28">JUEVES 28</em></div>
+      <div class="right" data-es-html="WhatsApp: <em>+507 6000 0000</em>" data-en-html="WhatsApp: <em>+507 6000 0000</em>">WhatsApp: <em>+507 6000 0000</em></div>
+    </div>
+
+  </section>
+</div>
+
+<script>
+const getLang = () => localStorage.getItem('sora.lang') || 'es';
+function applyLang(lang){
+  document.querySelectorAll('[data-es]').forEach(el=>{
+    const v = el.getAttribute('data-' + lang);
+    if (v != null) { if (/<[a-z]/i.test(v)) el.innerHTML = v; else el.textContent = v; }
+  });
+  document.querySelectorAll('[data-es-html]').forEach(el=>{
+    const v = el.getAttribute('data-' + lang + '-html');
+    if(v != null) el.innerHTML = v;
+  });
+  document.documentElement.lang = lang;
+  localStorage.setItem('sora.lang', lang);
+  document.querySelectorAll('.lang-bar button').forEach(b=>b.classList.toggle('act', b.dataset.lang === lang));
+}
+document.querySelectorAll('.lang-bar button').forEach(b=>b.addEventListener('click', ()=>applyLang(b.dataset.lang)));
+applyLang(getLang());
+</script>
+</body>
+</html>
