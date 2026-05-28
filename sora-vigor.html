@@ -1,0 +1,1053 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VIGOR · El protocolo del cuerpo · La Compañía</title>
+<meta name="description" content="VIGOR — el protocolo de alimentación, movimiento, biokinética, respiración y descanso para los miembros de La Compañía.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231d3a2c'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Georgia,serif' font-size='17' font-weight='400' fill='%23e0b466'%3EV%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f5ecd6;
+  --paper-2:#fbf3dd;
+  --paper-3:#ebe1c2;
+  --paper-deep:#dccfa9;
+  --ink:#13150f;
+  --ink-2:#241f1a;
+  --ink-3:#473f32;
+  --ink-faint:#857a64;
+  --line:rgba(19,21,15,0.10);
+  --line-2:rgba(19,21,15,0.18);
+  --line-3:rgba(19,21,15,0.30);
+  --forest:#1d3a2c;
+  --forest-2:#2a5440;
+  --forest-3:#3a6e54;
+  --sage:#7a8f6a;
+  --ochre:#c89030;
+  --ochre-deep:#a17225;
+  --ochre-soft:#e0b466;
+  --copper:#b85439;
+  --copper-deep:#8b3d28;
+  --slate:#2c3e44;
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'Inter',-apple-system,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+body{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.08  0 0 0 0 0.07  0 0 0 0 0.05  0 0 0 0.024 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--forest);color:var(--paper)}
+[data-en]:not([data-es]){display:none}
+html[lang="en"] [data-es]:not([data-en]){display:none}
+html[lang="en"] [data-en]:not([data-es]){display:inline}
+
+/* HEADER */
+.top{position:sticky;top:0;z-index:50;background:rgba(245,236,214,.94);backdrop-filter:blur(14px);border-bottom:0.5px solid var(--line)}
+.top-in{max-width:1200px;margin:0 auto;padding:16px 36px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.brand-mark{display:flex;align-items:baseline;gap:14px}
+.brand-mark .word{font-family:var(--serif);font-weight:500;font-size:22px;letter-spacing:.06em;color:var(--forest)}
+.brand-mark .sub{font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--ink-3);text-transform:uppercase}
+.spacer{flex:1}
+.top-link{font-family:var(--sans);font-size:12px;color:var(--ink-2);padding:7px 13px;border:0.5px solid var(--line);border-radius:6px;transition:all .15s}
+.top-link:hover{background:var(--paper-2);border-color:var(--line-2)}
+.lang-toggle{display:inline-flex;border:0.5px solid var(--line);border-radius:6px;overflow:hidden}
+.lang-toggle button{padding:6px 12px;font-family:var(--mono);font-size:10.5px;letter-spacing:.10em;background:transparent;border:0;color:var(--ink-faint);cursor:pointer;font-weight:500}
+.lang-toggle button.active{background:var(--forest);color:var(--paper)}
+
+/* HERO */
+.wrap{max-width:1200px;margin:0 auto;padding:0 36px}
+.hero{padding:96px 0 56px;text-align:center;position:relative}
+.hero-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--forest);font-weight:600;margin-bottom:24px}
+.hero h1{font-family:var(--serif);font-weight:300;font-size:clamp(80px,14vw,180px);line-height:.88;letter-spacing:-.035em;color:var(--ink);margin-bottom:22px}
+.hero h1 em{font-style:italic;color:var(--forest);font-weight:400}
+.hero-lede{font-family:var(--serif);font-size:21px;color:var(--ink-2);font-weight:300;max-width:760px;margin:0 auto 28px;line-height:1.5;font-style:italic}
+.hero-meta{display:flex;justify-content:center;gap:28px;font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;color:var(--ink-faint);text-transform:uppercase;flex-wrap:wrap}
+.hero-meta span{display:inline-flex;align-items:center;gap:7px}
+.hero-meta .dot{width:5px;height:5px;border-radius:50%;background:var(--forest)}
+.hero-orn{position:absolute;top:42%;left:50%;transform:translate(-50%,-50%);width:520px;height:520px;opacity:.05;pointer-events:none;z-index:0}
+.hero > *{position:relative;z-index:1}
+
+/* MISSION CARD */
+.mission{margin:24px auto 56px;max-width:980px;background:var(--ink);color:var(--paper);border-radius:14px;padding:42px 52px;position:relative;overflow:hidden}
+.mission::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--forest),var(--ochre),var(--copper))}
+.mission .m-label{font-family:var(--mono);font-size:10.5px;letter-spacing:.24em;color:var(--ochre-soft);text-transform:uppercase;font-weight:600;margin-bottom:16px}
+.mission h2{font-family:var(--serif);font-weight:300;font-size:clamp(26px,3.6vw,36px);line-height:1.2;color:var(--paper);letter-spacing:-.015em;margin-bottom:18px}
+.mission h2 em{color:var(--ochre-soft);font-style:italic}
+.mission p{font-family:var(--serif);font-size:16.5px;line-height:1.6;color:rgba(245,236,214,0.78);font-style:italic;max-width:660px}
+
+/* SECTIONS */
+section{padding:56px 0 28px;border-top:0.5px solid var(--line)}
+section:first-of-type{border-top:0}
+.sec-head{margin-bottom:32px;display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap}
+.sec-num{font-family:var(--mono);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--forest);font-weight:600;margin-bottom:10px}
+.sec-head h3{font-family:var(--serif);font-weight:300;font-size:clamp(34px,4.6vw,50px);line-height:1.04;color:var(--ink);letter-spacing:-.015em;max-width:680px}
+.sec-head h3 em{font-style:italic;color:var(--forest)}
+.sec-sub{font-family:var(--serif);font-size:16px;color:var(--ink-3);font-weight:300;max-width:360px;line-height:1.5;font-style:italic;text-align:right}
+
+/* PILLARS · 3-COL */
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:28px}
+@media (max-width:880px){.pillars{grid-template-columns:1fr}}
+.pillar{background:var(--paper-2);border:0.5px solid var(--line);border-radius:12px;padding:30px 32px 28px;position:relative;overflow:hidden;transition:transform .25s cubic-bezier(.25,1,.5,1)}
+.pillar:hover{transform:translateY(-3px)}
+.pillar::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.pillar.p-food::before{background:var(--copper)}
+.pillar.p-move::before{background:var(--forest)}
+.pillar.p-bio::before{background:var(--ochre)}
+.pillar .p-num{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;color:var(--ink-faint);text-transform:uppercase;font-weight:600;margin-bottom:12px}
+.pillar h4{font-family:var(--serif);font-weight:400;font-size:30px;line-height:1.05;color:var(--ink);letter-spacing:-.012em;margin-bottom:10px}
+.pillar h4 em{font-style:italic}
+.pillar.p-food h4 em{color:var(--copper-deep)}
+.pillar.p-move h4 em{color:var(--forest)}
+.pillar.p-bio h4 em{color:var(--ochre-deep)}
+.pillar .lede{font-family:var(--serif);font-size:15.5px;color:var(--ink-2);font-style:italic;line-height:1.5;margin-bottom:16px;font-weight:300}
+.pillar p{font-family:var(--sans);font-size:13px;color:var(--ink-3);line-height:1.6}
+.pillar ul{list-style:none;margin-top:12px}
+.pillar ul li{font-family:var(--sans);font-size:13px;color:var(--ink-3);padding:5px 0 5px 18px;position:relative;border-top:0.5px solid var(--line);line-height:1.45}
+.pillar ul li:first-child{border-top:0}
+.pillar ul li::before{content:'›';position:absolute;left:2px;color:var(--forest);font-weight:700;top:5px}
+
+/* LEVELS · MEMBER TIERS */
+.levels{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media (max-width:880px){.levels{grid-template-columns:1fr}}
+.level{position:relative;background:var(--paper);border:0.5px solid var(--line-2);border-radius:12px;padding:28px 30px;display:flex;flex-direction:column;overflow:hidden}
+.level::before{content:'';position:absolute;top:0;left:0;right:0;height:4px}
+.level.l-1::before{background:var(--sage)}
+.level.l-2::before{background:var(--forest)}
+.level.l-3::before{background:var(--ochre-deep)}
+.level .l-tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.22em;color:var(--ink-faint);text-transform:uppercase;font-weight:600;margin-bottom:12px}
+.level h4{font-family:var(--serif);font-weight:400;font-size:36px;line-height:1;letter-spacing:.02em;color:var(--ink);margin-bottom:6px}
+.level h4 em{font-style:italic}
+.level.l-1 h4 em{color:var(--sage)}
+.level.l-2 h4 em{color:var(--forest)}
+.level.l-3 h4 em{color:var(--ochre-deep)}
+.level .l-sub{font-family:var(--serif);font-style:italic;font-size:14.5px;color:var(--ink-3);margin-bottom:18px;line-height:1.4}
+.level .lstats{display:grid;grid-template-columns:1fr 1fr;gap:8px 14px;margin:14px 0;padding:14px 0;border-top:0.5px solid var(--line);border-bottom:0.5px solid var(--line)}
+.level .lstats .ls{font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;display:block;margin-bottom:2px}
+.level .lstats .lv{font-family:var(--serif);font-size:16px;color:var(--ink);font-weight:500;line-height:1.2;font-style:italic}
+.level .lstats .lv em{color:var(--forest);font-style:italic}
+.level p{font-family:var(--sans);font-size:13px;color:var(--ink-3);line-height:1.55;margin-bottom:8px}
+.level .outcome{margin-top:auto;padding-top:14px;border-top:0.5px solid var(--line);font-family:var(--serif);font-style:italic;font-size:13.5px;color:var(--ink-2);line-height:1.5}
+.level .outcome em{color:var(--forest)}
+
+/* SPLIT · PROTOCOLO + DETALLES */
+.split{display:grid;grid-template-columns:1.05fr 1fr;gap:36px;align-items:start}
+@media (max-width:880px){.split{grid-template-columns:1fr;gap:18px}}
+.split-text h4{font-family:var(--serif);font-weight:400;font-size:28px;line-height:1.1;color:var(--ink);letter-spacing:-.012em;margin-bottom:14px}
+.split-text h4 em{color:var(--forest);font-style:italic}
+.split-text p{font-family:var(--sans);font-size:14px;color:var(--ink-2);line-height:1.65;margin-bottom:12px}
+.split-text p strong{color:var(--ink);font-weight:600}
+.split-text p em{color:var(--forest);font-style:italic}
+
+/* PROTOCOL TABLE */
+.protocol{background:var(--paper-2);border:0.5px solid var(--line-2);border-radius:10px;overflow:hidden}
+.protocol .ph{padding:14px 22px;border-bottom:0.5px solid var(--line-2);background:var(--ink);color:var(--paper);display:flex;justify-content:space-between;align-items:baseline}
+.protocol .ph .pl{font-family:var(--mono);font-size:10px;letter-spacing:.22em;color:var(--ochre-soft);text-transform:uppercase;font-weight:600}
+.protocol .ph .pt{font-family:var(--serif);font-size:15px;font-style:italic;font-weight:400;color:var(--paper)}
+.protocol .pr{display:grid;grid-template-columns:90px 1fr;gap:16px;padding:13px 22px;border-bottom:0.5px solid var(--line);align-items:baseline}
+.protocol .pr:last-child{border-bottom:0}
+.protocol .pr .pt{font-family:var(--mono);font-size:10.5px;letter-spacing:.10em;color:var(--forest);font-weight:600;text-transform:uppercase}
+.protocol .pr .pc{font-family:var(--sans);font-size:13px;color:var(--ink-2);line-height:1.55}
+.protocol .pr .pc strong{color:var(--ink);font-weight:600}
+.protocol .pr .pc em{color:var(--forest);font-style:italic}
+
+/* DIET BLOCKS */
+.diet-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:18px}
+@media (max-width:880px){.diet-grid{grid-template-columns:1fr}}
+.dblock{background:var(--paper-2);border:0.5px solid var(--line);border-radius:8px;padding:18px 22px}
+.dblock.eat{border-left:3px solid var(--forest)}
+.dblock.avoid{border-left:3px solid var(--copper)}
+.dblock .dl{font-family:var(--mono);font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;margin-bottom:10px}
+.dblock.eat .dl{color:var(--forest)}
+.dblock.avoid .dl{color:var(--copper-deep)}
+.dblock h5{font-family:var(--serif);font-size:17px;color:var(--ink);font-weight:400;margin-bottom:8px;font-style:italic}
+.dblock ul{list-style:none}
+.dblock ul li{font-family:var(--sans);font-size:12.5px;color:var(--ink-3);padding:4px 0 4px 14px;position:relative;line-height:1.5}
+.dblock.eat ul li::before{content:'+';position:absolute;left:0;color:var(--forest);font-weight:700}
+.dblock.avoid ul li::before{content:'–';position:absolute;left:0;color:var(--copper);font-weight:700}
+
+/* DAY STRIP — SAMPLE WEEK */
+.daystrip{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-top:18px}
+@media (max-width:1000px){.daystrip{grid-template-columns:repeat(2,1fr)}}
+.day{background:var(--paper-2);border:0.5px solid var(--line);border-radius:8px;padding:14px 14px;display:flex;flex-direction:column;min-height:240px}
+.day .d-name{font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--ink-faint);text-transform:uppercase;font-weight:700;margin-bottom:4px}
+.day .d-num{font-family:var(--serif);font-size:30px;color:var(--ink);line-height:1;letter-spacing:-.02em;margin-bottom:10px;font-weight:300}
+.day .d-num em{font-style:italic;color:var(--forest)}
+.day .d-block{padding:6px 0;border-top:0.5px solid var(--line);font-family:var(--sans);font-size:11px;color:var(--ink-3);line-height:1.45}
+.day .d-block strong{display:block;font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--forest);font-weight:700;margin-bottom:2px}
+.day .d-rest{margin-top:auto;padding-top:8px;font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--ochre-deep);font-weight:600}
+
+/* PHARMACY CROSS-REF */
+.pharm-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media (max-width:980px){.pharm-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.pharm-grid{grid-template-columns:1fr}}
+.pharm{background:var(--paper);border:0.5px solid var(--line-2);border-radius:10px;padding:22px 24px 20px;display:flex;flex-direction:column;transition:all .25s cubic-bezier(.25,1,.5,1);position:relative;overflow:hidden}
+.pharm:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(20,17,12,.07);border-color:var(--line-2);background:var(--paper-2)}
+.pharm::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.pharm.ph-elx::before{background:var(--ochre)}
+.pharm.ph-pep::before{background:var(--copper)}
+.pharm.ph-med::before{background:var(--forest)}
+.pharm.ph-chm::before{background:var(--slate)}
+.pharm .ph-l{font-family:var(--mono);font-size:9.5px;letter-spacing:.20em;text-transform:uppercase;color:var(--ink-faint);font-weight:700;margin-bottom:12px}
+.pharm h5{font-family:var(--serif);font-weight:400;font-size:24px;line-height:1;letter-spacing:.02em;color:var(--ink);margin-bottom:6px}
+.pharm h5 em{font-style:italic}
+.pharm.ph-elx h5 em{color:var(--ochre-deep)}
+.pharm.ph-pep h5 em{color:var(--copper-deep)}
+.pharm.ph-med h5 em{color:var(--forest)}
+.pharm.ph-chm h5 em{color:var(--slate)}
+.pharm .ph-sub{font-family:var(--serif);font-style:italic;font-size:13.5px;color:var(--ink-3);margin-bottom:12px;line-height:1.4}
+.pharm p{font-family:var(--sans);font-size:12.5px;color:var(--ink-3);line-height:1.5;margin-bottom:12px;flex:1}
+.pharm .ph-when{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;color:var(--forest);text-transform:uppercase;font-weight:700;padding-top:10px;border-top:0.5px solid var(--line)}
+.pharm .ph-when em{font-style:normal;color:var(--ink)}
+
+/* MARCADORES (METRICS) */
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media (max-width:880px){.metrics{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:480px){.metrics{grid-template-columns:1fr}}
+.metric{padding:20px 22px;background:var(--paper-2);border:0.5px solid var(--line);border-radius:8px;border-top:2px solid var(--forest)}
+.metric .ml{font-family:var(--mono);font-size:9.5px;letter-spacing:.20em;text-transform:uppercase;color:var(--forest);font-weight:700;margin-bottom:8px}
+.metric h5{font-family:var(--serif);font-size:20px;color:var(--ink);font-weight:400;line-height:1.15;margin-bottom:6px}
+.metric h5 em{color:var(--forest);font-style:italic}
+.metric p{font-family:var(--sans);font-size:12px;color:var(--ink-3);line-height:1.5;margin-bottom:8px}
+.metric .target{font-family:var(--mono);font-size:10px;letter-spacing:.10em;color:var(--ochre-deep);text-transform:uppercase;font-weight:700;padding-top:6px;border-top:0.5px solid var(--line)}
+
+/* MAESTROS / READING LIST */
+.readers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media (max-width:980px){.readers{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.readers{grid-template-columns:1fr}}
+.reader{padding:18px 20px;background:var(--paper-2);border:0.5px solid var(--line);border-radius:8px;display:flex;flex-direction:column;gap:6px}
+.reader .r-l{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);font-weight:700}
+.reader h6{font-family:var(--serif);font-size:17px;color:var(--ink);font-weight:500;line-height:1.2;font-style:italic}
+.reader p{font-family:var(--sans);font-size:12px;color:var(--ink-3);line-height:1.5}
+.reader p em{color:var(--forest);font-style:italic}
+
+/* PULL QUOTE */
+.pullq{margin:32px auto;max-width:880px;padding:36px 44px;background:var(--paper-2);border-left:3px solid var(--forest);border-radius:0 10px 10px 0;position:relative}
+.pullq::before{content:'"';position:absolute;top:8px;left:18px;font-family:var(--serif);font-size:80px;color:var(--forest);opacity:.18;font-style:italic;line-height:1}
+.pullq p{font-family:var(--serif);font-style:italic;font-weight:300;font-size:22px;line-height:1.45;color:var(--ink-2);position:relative;z-index:1}
+.pullq p em{color:var(--forest);font-style:italic;font-weight:400}
+.pullq cite{display:block;margin-top:14px;font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;color:var(--ink-faint);font-style:normal;text-transform:uppercase;font-weight:600}
+
+/* CLOSING */
+.close{margin:48px auto 0;text-align:center;padding:64px 24px;background:var(--ink);color:var(--paper);border-radius:14px;position:relative;overflow:hidden}
+.close::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--copper),var(--ochre),var(--forest))}
+.close .cl{font-family:var(--mono);font-size:11px;letter-spacing:.30em;text-transform:uppercase;color:var(--ochre);font-weight:700;margin-bottom:18px}
+.close h3{font-family:var(--serif);font-weight:300;font-size:clamp(34px,4.4vw,52px);line-height:1.05;letter-spacing:-.018em;color:var(--paper);max-width:780px;margin:0 auto 22px}
+.close h3 em{color:var(--ochre-soft);font-style:italic}
+.close p{font-family:var(--serif);font-style:italic;font-size:17px;line-height:1.55;color:rgba(245,236,214,.74);max-width:580px;margin:0 auto;font-weight:300}
+
+/* FOOTER */
+footer{margin-top:80px;padding:48px 0 32px;background:var(--ink);color:var(--paper)}
+footer .foot-grid{max-width:1200px;margin:0 auto;padding:0 36px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:36px}
+footer .wordmark-foot{font-family:var(--serif);font-size:32px;font-weight:400;color:var(--paper);letter-spacing:.04em;margin-bottom:14px;line-height:1}
+footer .tagline{font-family:var(--serif);font-style:italic;font-size:14px;color:rgba(245,236,214,.6);line-height:1.55;max-width:300px}
+footer h6{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;color:var(--ochre-soft);text-transform:uppercase;font-weight:700;margin-bottom:14px}
+footer ul{list-style:none}
+footer ul li{margin-bottom:10px;font-size:13px}
+footer ul a{color:rgba(245,236,214,.72);transition:color .15s}
+footer ul a:hover{color:var(--ochre-soft)}
+.foot-bottom{max-width:1200px;margin:0 auto;padding:24px 36px 0;border-top:1px solid rgba(245,236,214,.10);display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;font-family:var(--mono);font-size:10.5px;letter-spacing:.10em;color:rgba(245,236,214,.42);text-transform:uppercase}
+
+@media (max-width:880px){
+  .sec-head{flex-direction:column;align-items:flex-start}
+  .sec-sub{text-align:left}
+  footer .foot-grid{grid-template-columns:1fr 1fr;gap:32px}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-in">
+    <div class="brand-mark">
+      <a href="lacompania.html" style="color:inherit"><span class="word">VIGOR</span></a>
+      <span class="sub" data-es="LA COMPAÑÍA · PROTOCOLO INTERNO" data-en="LA COMPAÑÍA · INTERNAL PROTOCOL">LA COMPAÑÍA · PROTOCOLO INTERNO</span>
+    </div>
+    <span class="spacer"></span>
+    <a class="top-link" href="lacompania.html" data-es="← La Compañía" data-en="← La Compañía">← La Compañía</a>
+    <a class="top-link" href="sora-elixirs.html">Elixirs</a>
+    <a class="top-link" href="sora-peptides.html">Peptides</a>
+    <a class="top-link" href="sora-medicines.html">Medicines</a>
+    <div class="lang-toggle">
+      <button class="active" data-lang="es">ES</button>
+      <button data-lang="en">EN</button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<!-- ═════════════════════════════════════════════════════════════ -->
+<!-- HERO                                                          -->
+<!-- ═════════════════════════════════════════════════════════════ -->
+<header class="hero">
+  <svg class="hero-orn" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+    <g fill="none" stroke="#1d3a2c" stroke-width="0.7">
+      <circle cx="250" cy="250" r="240"/>
+      <circle cx="250" cy="250" r="190"/>
+      <circle cx="250" cy="250" r="140"/>
+      <circle cx="250" cy="250" r="90"/>
+      <circle cx="250" cy="250" r="40"/>
+      <g stroke-width="0.5" opacity=".5">
+        <path d="M 50 250 L 450 250"/>
+        <path d="M 250 50 L 250 450"/>
+        <path d="M 109 109 L 391 391"/>
+        <path d="M 391 109 L 109 391"/>
+      </g>
+    </g>
+    <g fill="#1d3a2c">
+      <circle cx="250" cy="50" r="4"/>
+      <circle cx="450" cy="250" r="4"/>
+      <circle cx="250" cy="450" r="4"/>
+      <circle cx="50" cy="250" r="4"/>
+    </g>
+  </svg>
+
+  <div class="hero-eyebrow" data-es="LA COMPAÑÍA · MEMBRESÍA · PROTOCOLO DEL CUERPO" data-en="LA COMPAÑÍA · MEMBERSHIP · BODY PROTOCOL">LA COMPAÑÍA · MEMBRESÍA · PROTOCOLO DEL CUERPO</div>
+  <h1><em>V</em>igor</h1>
+  <p class="hero-lede" data-es="El cuerpo como vehículo. Comer, moverse, respirar y descansar como un acto de oficio. El protocolo de La Compañía para que sus miembros vivan mucho — y bien." data-en="The body as vehicle. Eating, moving, breathing and resting as an act of craft. La Compañía's protocol so its members live long — and well.">El cuerpo como vehículo. Comer, moverse, respirar y descansar como un acto de oficio. El protocolo de La Compañía para que sus miembros vivan mucho — y bien.</p>
+  <div class="hero-meta">
+    <span><span class="dot"></span><span data-es="ALIMENTACIÓN" data-en="NOURISHMENT">ALIMENTACIÓN</span></span>
+    <span><span class="dot"></span><span data-es="MOVIMIENTO" data-en="MOVEMENT">MOVIMIENTO</span></span>
+    <span><span class="dot"></span><span data-es="BIOKINÉTICA" data-en="BIOKINETICS">BIOKINÉTICA</span></span>
+    <span><span class="dot"></span><span data-es="RESPIRACIÓN" data-en="BREATH">RESPIRACIÓN</span></span>
+    <span><span class="dot"></span><span data-es="DESCANSO" data-en="REST">DESCANSO</span></span>
+  </div>
+</header>
+
+<!-- MISSION -->
+<div class="mission">
+  <div class="m-label" data-es="PRINCIPIO RECTOR" data-en="GUIDING PRINCIPLE">PRINCIPIO RECTOR</div>
+  <h2 data-es-html="Dar <em>desde el rebose</em>, nunca desde el agotamiento. Construir un cuerpo que <em>aguante el siglo</em>, no que <em>sobreviva la semana</em>." data-en-html="Give <em>from the overflow</em>, never from depletion. Build a body that <em>holds the century</em>, not one that <em>survives the week</em>.">Dar <em>desde el rebose</em>, nunca desde el agotamiento. Construir un cuerpo que <em>aguante el siglo</em>, no que <em>sobreviva la semana</em>.</h2>
+  <p data-es="El miembro de La Compañía construye negocios, viaja, cuida familia y proyecto. Eso pide un cuerpo lúcido, fuerte y sereno — no una rutina de monje, ni de atleta olímpico, ni de biohacker desesperado. Lo que sigue es un sistema reproducible: aplicable en Boquete, en Ciudad de Panamá, en Medellín o en cualquier lugar donde el oficio nos lleve." data-en="The member of La Compañía builds ventures, travels, holds family and craft. That asks for a lucid, strong, and serene body — not a monk's routine, nor an Olympic athlete's, nor a desperate biohacker's. What follows is a reproducible system: applicable in Boquete, Panama City, Medellín, or wherever the craft takes us.">El miembro de La Compañía construye negocios, viaja, cuida familia y proyecto. Eso pide un cuerpo lúcido, fuerte y sereno — no una rutina de monje, ni de atleta olímpico, ni de biohacker desesperado. Lo que sigue es un sistema reproducible: aplicable en Boquete, en Ciudad de Panamá, en Medellín o en cualquier lugar donde el oficio nos lleve.</p>
+</div>
+
+<!-- ═════════════════════════════════════════════════════════════ -->
+<!-- 01 · TRES PILARES                                            -->
+<!-- ═════════════════════════════════════════════════════════════ -->
+<section>
+  <div class="sec-head">
+    <div>
+      <div class="sec-num" data-es="01 · LOS TRES PILARES" data-en="01 · THE THREE PILLARS">01 · LOS TRES PILARES</div>
+      <h3 data-es-html="Tres ejes. <em>Uno</em> indivisible." data-en-html="Three axes. <em>One</em> indivisible.">Tres ejes. <em>Uno</em> indivisible.</h3>
+    </div>
+    <p class="sec-sub" data-es="Lo que se come, cómo se mueve, cómo se carga eléctricamente el cuerpo. Quitar cualquiera de los tres y el sistema no compensa." data-en="What you eat, how you move, how the body charges electrically. Remove any of the three and the system can't compensate.">Lo que se come, cómo se mueve, cómo se carga eléctricamente el cuerpo. Quitar cualquiera de los tres y el sistema no compensa.</p>
+  </div>
+
+  <div class="pillars">
+    <div class="pillar p-food">
+      <div class="p-num" data-es="PILAR 01 · COMBUSTIBLE" data-en="PILLAR 01 · FUEL">PILAR 01 · COMBUSTIBLE</div>
+      <h4><em>Alimentación</em></h4>
+      <p class="lede" data-es="Comida real, ancestral, mediterránea. Dos comidas al día. Ayuno como herramienta, no como dogma." data-en="Real, ancestral, Mediterranean food. Two meals a day. Fasting as a tool, not a dogma.">Comida real, ancestral, mediterránea. Dos comidas al día. Ayuno como herramienta, no como dogma.</p>
+      <ul>
+        <li data-es="Proteína animal de calidad como base" data-en="Quality animal protein as base">Proteína animal de calidad como base</li>
+        <li data-es="Grasas ancestrales: oliva, mantequilla, sebo, cocó" data-en="Ancestral fats: olive, butter, tallow, coconut">Grasas ancestrales: oliva, mantequilla, sebo, cocó</li>
+        <li data-es="Vegetales de temporada, fermentos, hierbas" data-en="Seasonal vegetables, ferments, herbs">Vegetales de temporada, fermentos, hierbas</li>
+        <li data-es="Frutas tropicales locales como dulce natural" data-en="Local tropical fruit as natural sweet">Frutas tropicales locales como dulce natural</li>
+        <li data-es="Sin aceites de semilla, sin azúcar refinada, sin ultraprocesados" data-en="No seed oils, no refined sugar, no ultra-processed">Sin aceites de semilla, sin azúcar refinada, sin ultraprocesados</li>
+      </ul>
+    </div>
+    <div class="pillar p-move">
+      <div class="p-num" data-es="PILAR 02 · CARGA" data-en="PILLAR 02 · LOAD">PILAR 02 · CARGA</div>
+      <h4><em>Movimiento</em></h4>
+      <p class="lede" data-es="Caminar mucho. Levantar pesado tres veces por semana. Esprintar una. Mantener movilidad diaria. Lo demás se ajusta." data-en="Walk a lot. Lift heavy three times a week. Sprint once. Keep daily mobility. Everything else adjusts.">Caminar mucho. Levantar pesado tres veces por semana. Esprintar una. Mantener movilidad diaria. Lo demás se ajusta.</p>
+      <ul>
+        <li data-es="Caminata: 8 – 12 km diarios, ritmo conversacional" data-en="Walk: 8 – 12 km daily, conversational pace">Caminata: 8 – 12 km diarios, ritmo conversacional</li>
+        <li data-es="Zona 2 cardio: 3 sesiones × 45 min por semana" data-en="Zone 2 cardio: 3 sessions × 45 min weekly">Zona 2 cardio: 3 sesiones × 45 min por semana</li>
+        <li data-es="Fuerza compuesta: 3 sesiones × 50 min por semana" data-en="Compound strength: 3 sessions × 50 min weekly">Fuerza compuesta: 3 sesiones × 50 min por semana</li>
+        <li data-es="VO₂ max / sprint: 1 sesión corta intensa por semana" data-en="VO₂ max / sprint: 1 short intense weekly">VO₂ max / sprint: 1 sesión corta intensa por semana</li>
+        <li data-es="Movilidad y respiración: 15 min diarios" data-en="Mobility and breath: 15 min daily">Movilidad y respiración: 15 min diarios</li>
+      </ul>
+    </div>
+    <div class="pillar p-bio">
+      <div class="p-num" data-es="PILAR 03 · CAMPO" data-en="PILLAR 03 · FIELD">PILAR 03 · CAMPO</div>
+      <h4><em>Biokinética</em></h4>
+      <p class="lede" data-es="El cuerpo es un sistema bioeléctrico. Sol, tierra, agua, frío, calor, luz y aire programan la mitocondria mejor que cualquier suplemento." data-en="The body is a bioelectric system. Sun, earth, water, cold, heat, light and air program mitochondria better than any supplement.">El cuerpo es un sistema bioeléctrico. Sol, tierra, agua, frío, calor, luz y aire programan la mitocondria mejor que cualquier suplemento.</p>
+      <ul>
+        <li data-es="Sol AM (UVA): 10 min al amanecer, ojos descubiertos" data-en="AM sun (UVA): 10 min at dawn, eyes uncovered">Sol AM (UVA): 10 min al amanecer, ojos descubiertos</li>
+        <li data-es="Aterrizaje: 30 min/día con pies en la tierra" data-en="Grounding: 30 min/day feet on the earth">Aterrizaje: 30 min/día con pies en la tierra</li>
+        <li data-es="Frío deliberado: 11 min/semana a 14 °C (Søberg)" data-en="Deliberate cold: 11 min/wk at 14 °C (Søberg)">Frío deliberado: 11 min/semana a 14 °C (Søberg)</li>
+        <li data-es="Sauna: 4×/semana, 20 min a 80 °C (Finnish data)" data-en="Sauna: 4×/wk, 20 min at 80 °C (Finnish data)">Sauna: 4×/semana, 20 min a 80 °C (Finnish data)</li>
+        <li data-es="Coherencia cardíaca: 10 min/día, ratio 5:5 respiración" data-en="Heart coherence: 10 min/day, 5:5 breath ratio">Coherencia cardíaca: 10 min/día, ratio 5:5 respiración</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="pullq">
+    <p data-es-html="“Si quieres encontrar los secretos del universo, piensa en términos de <em>energía, frecuencia y vibración</em>.”" data-en-html="“If you want to find the secrets of the universe, think in terms of <em>energy, frequency, and vibration</em>.”">"Si quieres encontrar los secretos del universo, piensa en términos de <em>energía, frecuencia y vibración</em>."</p>
+    <cite data-es="NIKOLA TESLA · BASE TEÓRICA DEL PILAR 03" data-en="NIKOLA TESLA · THEORETICAL BASIS FOR PILLAR 03">NIKOLA TESLA · BASE TEÓRICA DEL PILAR 03</cite>
+  </div>
+</section>
+
+<!-- ═════════════════════════════════════════════════════════════ -->
+<!-- 02 · LOS TRES NIVELES                                        -->
+<!-- ═════════════════════════════════════════════════════════════ -->
+<section>
+  <div class="sec-head">
+    <div>
+      <div class="sec-num" data-es="02 · MEMBRESÍA · NIVELES" data-en="02 · MEMBERSHIP · LEVELS">02 · MEMBRESÍA · NIVELES</div>
+      <h3 data-es-html="Tres niveles. <em>Tres</em> compromisos." data-en-html="Three levels. <em>Three</em> commitments.">Tres niveles. <em>Tres</em> compromisos.</h3>
+    </div>
+    <p class="sec-sub" data-es="Nadie entra en Maestro de la noche a la mañana. Empezamos por Novicio. Cada nivel es honesto y completo en sí." data-en="No one starts as Maestro. Everyone begins as Novicio. Each level is honest and complete in itself.">Nadie entra en Maestro de la noche a la mañana. Empezamos por Novicio. Cada nivel es honesto y completo en sí.</p>
+  </div>
+
+  <div class="levels">
+    <div class="level l-1">
+      <div class="l-tag" data-es="NIVEL 01" data-en="LEVEL 01">NIVEL 01</div>
+      <h4><em>Novicio</em></h4>
+      <p class="l-sub" data-es="Los primeros 90 días. Construir el suelo." data-en="The first 90 days. Lay the floor.">Los primeros 90 días. Construir el suelo.</p>
+      <div class="lstats">
+        <div><span class="ls" data-es="HORAS / SEMANA" data-en="HRS / WEEK">HORAS / SEMANA</span><span class="lv"><em>6 – 7</em></span></div>
+        <div><span class="ls" data-es="COMIDAS / DÍA" data-en="MEALS / DAY">COMIDAS / DÍA</span><span class="lv"><em>3</em></span></div>
+        <div><span class="ls" data-es="AYUNO" data-en="FASTING">AYUNO</span><span class="lv">12 / 12</span></div>
+        <div><span class="ls" data-es="FRÍO" data-en="COLD">FRÍO</span><span class="lv" data-es="Ducha fría AM" data-en="AM cold shower">Ducha fría AM</span></div>
+      </div>
+      <p data-es="El objetivo no es transformar, es regularizar. Caminar todos los días, comer comida real, dormir 8 horas, ver el sol al despertar. Nada más complejo que eso." data-en="The goal isn't transformation, it's regularity. Walk every day, eat real food, sleep 8 hours, see the sun on waking. Nothing more complex.">El objetivo no es transformar, es regularizar. Caminar todos los días, comer comida real, dormir 8 horas, ver el sol al despertar. Nada más complejo que eso.</p>
+      <div class="outcome" data-es-html="Al día 90: <em>9 kg menos de grasa, 4 cm menos de cintura, sueño profundo recuperado</em>, base para subir a Operativo." data-en-html="By day 90: <em>9 kg less fat, 4 cm less waist, deep sleep recovered</em>, foundation to step up to Operativo.">Al día 90: <em>9 kg menos de grasa, 4 cm menos de cintura, sueño profundo recuperado</em>, base para subir a Operativo.</div>
+    </div>
+
+    <div class="level l-2">
+      <div class="l-tag" data-es="NIVEL 02" data-en="LEVEL 02">NIVEL 02</div>
+      <h4><em>Operativo</em></h4>
+      <p class="l-sub" data-es="Año 1 a 5. El régimen de quien construye y carga proyecto." data-en="Year 1 to 5. The regimen of those building and carrying ventures.">Año 1 a 5. El régimen de quien construye y carga proyecto.</p>
+      <div class="lstats">
+        <div><span class="ls" data-es="HORAS / SEMANA" data-en="HRS / WEEK">HORAS / SEMANA</span><span class="lv"><em>9 – 11</em></span></div>
+        <div><span class="ls" data-es="COMIDAS / DÍA" data-en="MEALS / DAY">COMIDAS / DÍA</span><span class="lv"><em>2</em></span></div>
+        <div><span class="ls" data-es="AYUNO" data-en="FASTING">AYUNO</span><span class="lv">16 / 8</span></div>
+        <div><span class="ls" data-es="FRÍO + CALOR" data-en="COLD + HEAT">FRÍO + CALOR</span><span class="lv" data-es="11 min frío + 4× sauna" data-en="11 min cold + 4× sauna">11 min frío + 4× sauna</span></div>
+      </div>
+      <p data-es="La mayoría de los miembros viven en este nivel. Dos comidas de calidad, fuerza tres veces, zona 2 cardio tres veces, sprint una, biokinética diaria. Espacio para viajar sin romper el sistema." data-en="Most members live here. Two quality meals, strength three times, zone 2 cardio three times, one sprint, biokinetics daily. Room to travel without breaking the system.">La mayoría de los miembros viven en este nivel. Dos comidas de calidad, fuerza tres veces, zona 2 cardio tres veces, sprint una, biokinética diaria. Espacio para viajar sin romper el sistema.</p>
+      <div class="outcome" data-es-html="Marcadores: <em>VO₂ max &gt; 50, HRV nocturno alto, glucosa estable, masa magra creciendo lentamente</em>." data-en-html="Markers: <em>VO₂ max > 50, high nocturnal HRV, stable glucose, lean mass slowly growing</em>.">Marcadores: <em>VO₂ max &gt; 50, HRV nocturno alto, glucosa estable, masa magra creciendo lentamente</em>.</div>
+    </div>
+
+    <div class="level l-3">
+      <div class="l-tag" data-es="NIVEL 03" data-en="LEVEL 03">NIVEL 03</div>
+      <h4><em>Maestro</em></h4>
+      <p class="l-sub" data-es="Año 5 en adelante. Cuerpo de quien ya enseña y entrega." data-en="Year 5 and onward. Body of one who already teaches and gives.">Año 5 en adelante. Cuerpo de quien ya enseña y entrega.</p>
+      <div class="lstats">
+        <div><span class="ls" data-es="HORAS / SEMANA" data-en="HRS / WEEK">HORAS / SEMANA</span><span class="lv"><em>12 – 14</em></span></div>
+        <div><span class="ls" data-es="COMIDAS / DÍA" data-en="MEALS / DAY">COMIDAS / DÍA</span><span class="lv"><em>1 – 2</em></span></div>
+        <div><span class="ls" data-es="AYUNO" data-en="FASTING">AYUNO</span><span class="lv" data-es="20:4 + 72h trimestre" data-en="20:4 + 72h quarterly">20:4 + 72h trimestre</span></div>
+        <div><span class="ls" data-es="CICLOS" data-en="CYCLES">CICLOS</span><span class="lv" data-es="Estacionales" data-en="Seasonal">Estacionales</span></div>
+      </div>
+      <p data-es="El cuerpo del Maestro es ya un instrumento afinado. Comer poco y de altísima calidad. Ayuno de 72 horas cada trimestre para limpiar célula. Movimiento que no es entrenamiento sino estado." data-en="The Maestro's body is already a tuned instrument. Eat little and of the highest quality. 72-hour fast every quarter to clear cells. Movement that isn't training, it's a state.">El cuerpo del Maestro es ya un instrumento afinado. Comer poco y de altísima calidad. Ayuno de 72 horas cada trimestre para limpiar célula. Movimiento que no es entrenamiento sino estado.</p>
+      <div class="outcome" data-es-html="Marcadores: <em>edad biológica &lt; cronológica por 10+ años, telómeros estables, autofagia activa</em>." data-en-html="Markers: <em>biological age &lt; chronological by 10+ years, stable telomeres, active autophagy</em>.">Marcadores: <em>edad biológica &lt; cronológica por 10+ años, telómeros estables, autofagia activa</em>.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════════════════════════════════════════════════ -->
+<!-- 03 · PROTOCOLO ALIMENTARIO                                   -->
+<!-- ═════════════════════════════════════════════════════════════ -->
+<section>
+  <div class="sec-head">
+    <div>
+      <div class="sec-num" data-es="03 · PROTOCOLO ALIMENTARIO" data-en="03 · NUTRITION PROTOCOL">03 · PROTOCOLO ALIMENTARIO</div>
+      <h3 data-es-html="Comer como <em>los abuelos</em>. Ayunar como <em>los monjes</em>." data-en-html="Eat like <em>the grandparents</em>. Fast like <em>the monks</em>.">Comer como <em>los abuelos</em>. Ayunar como <em>los monjes</em>.</h3>
+    </div>
+    <p class="sec-sub" data-es="Mediterráneo ancestral, palestino, portugués — la raíz alimentaria de Abraham, adaptada a Panamá y a quien quiera seguirla. Comida que ya conocemos." data-en="Ancestral Mediterranean, Palestinian, Portuguese — Abraham's food root, adapted to Panama and anyone who'd follow. Food we already know.">Mediterráneo ancestral, palestino, portugués — la raíz alimentaria de Abraham, adaptada a Panamá y a quien quiera seguirla. Comida que ya conocemos.</p>
+  </div>
+
+  <div class="split">
+    <div class="split-text">
+      <h4 data-es-html="El día <em>operativo tipo</em>." data-en-html="The <em>typical operativo</em> day.">El día <em>operativo tipo</em>.</h4>
+      <p data-es-html="<strong>Despertamos a las 5:30 – 6:00.</strong> Agua con sal y jugo de limón. Café o té matcha — sin azúcar, sin leche. Salida al sol. Caminata o entrenamiento. <strong>Ventana de ayuno: 16 horas.</strong>" data-en-html="<strong>Wake 5:30 – 6:00.</strong> Salt water with lemon. Coffee or matcha tea — no sugar, no milk. Step into the sun. Walk or train. <strong>Fasting window: 16 hours.</strong>"><strong>Despertamos a las 5:30 – 6:00.</strong> Agua con sal y jugo de limón. Café o té matcha — sin azúcar, sin leche. Salida al sol. Caminata o entrenamiento. <strong>Ventana de ayuno: 16 horas.</strong></p>
+      <p data-es-html="<strong>Primera comida: 11:00 – 12:00.</strong> Proteína animal de calidad (huevo de campo, pescado, cordero, res alimentada con pasto) + grasa ancestral (aceite de oliva crudo, mantequilla clarificada, sebo) + vegetales fermentados (chucrut, kimchi) + hierbas. Esta es la comida grande del día." data-en-html="<strong>First meal: 11:00 – 12:00.</strong> Quality animal protein (pasture egg, fish, lamb, grass-fed beef) + ancestral fat (raw olive oil, ghee, tallow) + fermented vegetables (sauerkraut, kimchi) + herbs. This is the day's big meal."><strong>Primera comida: 11:00 – 12:00.</strong> Proteína animal de calidad (huevo de campo, pescado, cordero, res alimentada con pasto) + grasa ancestral (aceite de oliva crudo, mantequilla clarificada, sebo) + vegetales fermentados (chucrut, kimchi) + hierbas. Esta es la comida grande del día.</p>
+      <p data-es-html="<strong>Segunda comida: 17:00 – 18:00.</strong> Más ligera. Sopa de hueso, ensalada con aceite y vinagre de manzana, queso curado, fruta tropical local de temporada (mamey, maracuyá, mango). Cerramos la ventana de alimentación. <em>Doce horas hasta la próxima comida.</em>" data-en-html="<strong>Second meal: 17:00 – 18:00.</strong> Lighter. Bone broth, salad with oil and apple cider vinegar, aged cheese, seasonal local tropical fruit (mamey, passion fruit, mango). Close the feeding window. <em>Twelve hours to the next meal.</em>"><strong>Segunda comida: 17:00 – 18:00.</strong> Más ligera. Sopa de hueso, ensalada con aceite y vinagre de manzana, queso curado, fruta tropical local de temporada (mamey, maracuyá, mango). Cerramos la ventana de alimentación. <em>Doce horas hasta la próxima comida.</em></p>
+      <p data-es-html="<strong>Hidratación:</strong> 2.5 – 3 L de agua de manantial o filtrada, con pizcas de sal marina cruda durante el día. Nada de bebidas azucaradas, nada de zumos comerciales. Té de hierbas locales (jengibre, manzanilla, hierbabuena) en la tarde-noche." data-en-html="<strong>Hydration:</strong> 2.5 – 3 L of spring or filtered water, with pinches of raw sea salt through the day. No sugary drinks, no commercial juices. Local herbal teas (ginger, chamomile, mint) in the afternoon-evening."><strong>Hidratación:</strong> 2.5 – 3 L de agua de manantial o filtrada, con pizcas de sal marina cruda durante el día. Nada de bebidas azucaradas, nada de zumos comerciales. Té de hierbas locales (jengibre, manzanilla, hierbabuena) en la tarde-noche.</p>
+    </div>
+
+    <div class="protocol">
+      <div class="ph">
+        <span class="pl" data-es="VENTANA DEL DÍA" data-en="DAILY WINDOW">VENTANA DEL DÍA</span>
+        <span class="pt" data-es="16:8 estándar" data-en="16:8 standard">16:8 estándar</span>
+      </div>
+      <div class="pr"><div class="pt">05:30</div><div class="pc" data-es-html="<strong>Despertar.</strong> Agua + sal + limón. Sol AM 10 min." data-en-html="<strong>Wake.</strong> Water + salt + lemon. AM sun 10 min."><strong>Despertar.</strong> Agua + sal + limón. Sol AM 10 min.</div></div>
+      <div class="pr"><div class="pt">06:15</div><div class="pc" data-es-html="<strong>Café o matcha</strong> sin azúcar. Caminata 20 min." data-en-html="<strong>Coffee or matcha</strong> unsweetened. 20-min walk."><strong>Café o matcha</strong> sin azúcar. Caminata 20 min.</div></div>
+      <div class="pr"><div class="pt">07:00</div><div class="pc" data-es-html="<strong>Entrenamiento</strong> en ayuno (fuerza o zona 2)." data-en-html="<strong>Workout</strong> fasted (strength or zone 2)."><strong>Entrenamiento</strong> en ayuno (fuerza o zona 2).</div></div>
+      <div class="pr"><div class="pt">11:30</div><div class="pc" data-es-html="<strong>Primera comida.</strong> Proteína + grasa + verduras + fermentos. <em>40 g proteína mínimo.</em>" data-en-html="<strong>First meal.</strong> Protein + fat + vegetables + ferments. <em>40 g protein minimum.</em>"><strong>Primera comida.</strong> Proteína + grasa + verduras + fermentos. <em>40 g proteína mínimo.</em></div></div>
+      <div class="pr"><div class="pt">14:00</div><div class="pc" data-es-html="<strong>Sol del mediodía</strong> 15 min, piel al sol. Vitamina D." data-en-html="<strong>Midday sun</strong> 15 min, skin to sun. Vitamin D."><strong>Sol del mediodía</strong> 15 min, piel al sol. Vitamina D.</div></div>
+      <div class="pr"><div class="pt">17:30</div><div class="pc" data-es-html="<strong>Segunda comida.</strong> Más ligera. Sopa, ensalada, queso, fruta." data-en-html="<strong>Second meal.</strong> Lighter. Soup, salad, cheese, fruit."><strong>Segunda comida.</strong> Más ligera. Sopa, ensalada, queso, fruta.</div></div>
+      <div class="pr"><div class="pt">19:00</div><div class="pc" data-es-html="<strong>Cierre ventana.</strong> Última calidad de luz al ojo." data-en-html="<strong>Close window.</strong> Last quality light to the eye."><strong>Cierre ventana.</strong> Última calidad de luz al ojo.</div></div>
+      <div class="pr"><div class="pt">21:30</div><div class="pc" data-es-html="<strong>Té de hierbas.</strong> Coherencia cardíaca 10 min. Cama 22:00." data-en-html="<strong>Herbal tea.</strong> Heart coherence 10 min. Bed 22:00."><strong>Té de hierbas.</strong> Coherencia cardíaca 10 min. Cama 22:00.</div></div>
+    </div>
+  </div>
+
+  <div class="diet-grid">
+    <div class="dblock eat">
+      <div class="dl" data-es="LO QUE COMEMOS · BASE ANCESTRAL" data-en="WHAT WE EAT · ANCESTRAL BASE">LO QUE COMEMOS · BASE ANCESTRAL</div>
+      <h5 data-es="La pirámide al revés — grasa y proteína abajo, vegetal arriba, carbohidrato fluido." data-en="Inverted pyramid — fat and protein at the base, vegetables on top, fluid carbs.">La pirámide al revés — grasa y proteína abajo, vegetal arriba, carbohidrato fluido.</h5>
+      <ul>
+        <li data-es="Huevos de campo, hígado de pollo, sardinas, mariscos locales (corvina, pargo)" data-en="Pasture eggs, chicken liver, sardines, local seafood (corvina, snapper)">Huevos de campo, hígado de pollo, sardinas, mariscos locales (corvina, pargo)</li>
+        <li data-es="Cordero, cabra y res alimentada con pasto (David, Volcán)" data-en="Lamb, goat, grass-fed beef (David, Volcán)">Cordero, cabra y res alimentada con pasto (David, Volcán)</li>
+        <li data-es="Aceite de oliva extra virgen sin filtrar (Portugal, Andalucía)" data-en="Unfiltered EVOO (Portugal, Andalusia)">Aceite de oliva extra virgen sin filtrar (Portugal, Andalucía)</li>
+        <li data-es="Mantequilla clarificada (ghee), sebo, manteca de cerdo de campo" data-en="Ghee, tallow, pasture-pork lard">Mantequilla clarificada (ghee), sebo, manteca de cerdo de campo</li>
+        <li data-es="Vegetales de hoja, crucíferas, calabaza, batata, plátano verde" data-en="Leafy greens, cruciferous, squash, sweet potato, green plantain">Vegetales de hoja, crucíferas, calabaza, batata, plátano verde</li>
+        <li data-es="Fermentos: chucrut, kimchi, kéfir de cabra, yogurt griego" data-en="Ferments: sauerkraut, kimchi, goat kefir, Greek yogurt">Fermentos: chucrut, kimchi, kéfir de cabra, yogurt griego</li>
+        <li data-es="Frutas tropicales de Boquete: mango, mamey, maracuyá, granadilla" data-en="Boquete tropicals: mango, mamey, passion fruit, granadilla">Frutas tropicales de Boquete: mango, mamey, maracuyá, granadilla</li>
+        <li data-es="Especias y hierbas: cúrcuma, jengibre, comino, za'atar, orégano, sumac" data-en="Spices and herbs: turmeric, ginger, cumin, za'atar, oregano, sumac">Especias y hierbas: cúrcuma, jengibre, comino, za'atar, orégano, sumac</li>
+        <li data-es="Café orgánico local (Café Ruiz, Janson), té matcha ceremonial, infusiones" data-en="Local organic coffee (Café Ruiz, Janson), ceremonial matcha, infusions">Café orgánico local (Café Ruiz, Janson), té matcha ceremonial, infusiones</li>
+        <li data-es="Sal marina sin refinar (Maldon, Guérande). Agua de manantial." data-en="Unrefined sea salt (Maldon, Guérande). Spring water.">Sal marina sin refinar (Maldon, Guérande). Agua de manantial.</li>
+      </ul>
+    </div>
+    <div class="dblock avoid">
+      <div class="dl" data-es="LO QUE NO COMEMOS" data-en="WHAT WE DO NOT EAT">LO QUE NO COMEMOS</div>
+      <h5 data-es="Si lo come tu bisabuelo, lo comemos. Si no — fuera del sistema." data-en="If your great-grandparent ate it, we eat it. Otherwise — out of the system.">Si lo come tu bisabuelo, lo comemos. Si no — fuera del sistema.</h5>
+      <ul>
+        <li data-es="Aceites de semilla (soya, canola, maíz, girasol, cártamo) — inflamatorios" data-en="Seed oils (soy, canola, corn, sunflower, safflower) — inflammatory">Aceites de semilla (soya, canola, maíz, girasol, cártamo) — inflamatorios</li>
+        <li data-es="Azúcar refinada, jarabe de maíz, edulcorantes artificiales" data-en="Refined sugar, corn syrup, artificial sweeteners">Azúcar refinada, jarabe de maíz, edulcorantes artificiales</li>
+        <li data-es="Harinas refinadas, pan industrial, cereales de caja" data-en="Refined flour, industrial bread, boxed cereal">Harinas refinadas, pan industrial, cereales de caja</li>
+        <li data-es="Alimentos ultraprocesados con más de 5 ingredientes" data-en="Ultra-processed foods with more than 5 ingredients">Alimentos ultraprocesados con más de 5 ingredientes</li>
+        <li data-es="Sodas, jugos comerciales, “bebidas energéticas”" data-en="Sodas, commercial juices, “energy drinks”">Sodas, jugos comerciales, "bebidas energéticas"</li>
+        <li data-es="Lácteos comerciales pasteurizados altos en lactosa" data-en="Commercial high-lactose pasteurized dairy">Lácteos comerciales pasteurizados altos en lactosa</li>
+        <li data-es="Carne de feedlot industrial, embutidos con nitritos" data-en="Industrial feedlot meat, nitrite-laden cold cuts">Carne de feedlot industrial, embutidos con nitritos</li>
+        <li data-es="Alcohol como hábito (un vino con la comida, no como evasión)" data-en="Alcohol as habit (a glass with the meal, not as escape)">Alcohol como hábito (un vino con la comida, no como evasión)</li>
+        <li data-es="Comida fuera de la ventana — “snackear” deshace todo el protocolo" data-en="Food outside the window — snacking undoes the whole protocol">Comida fuera de la ventana — "snackear" deshace todo el protocolo</li>
+        <li data-es="Comer mirando pantalla, comer apurado, comer de pie" data-en="Eating in front of a screen, eating in a rush, eating standing">Comer mirando pantalla, comer apurado, comer de pie</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout-light" style="margin-top:24px;background:var(--paper-2);border:0.5px solid var(--line-2);padding:22px 28px;border-radius:10px">
+    <div style="font-family:var(--mono);font-size:10px;letter-spacing:.22em;color:var(--forest);text-transform:uppercase;font-weight:700;margin-bottom:10px" data-es="AYUNOS PROFUNDOS · CICLO TRIMESTRAL" data-en="DEEP FASTS · QUARTERLY CYCLE">AYUNOS PROFUNDOS · CICLO TRIMESTRAL</div>
+    <div style="font-family:var(--serif);font-size:16px;color:var(--ink-2);font-style:italic;line-height:1.55;font-weight:300" data-es-html="Una vez por trimestre, <strong>72 horas de ayuno</strong> con sal, agua y té. Activa autofagia profunda y regenera células madre (Longo et al., FMD studies). Antes y después: caldo de hueso. El Maestro puede extender a <strong>5 días una vez al año</strong>, alineado al equinoccio o solsticio." data-en-html="Once a quarter, <strong>72 hours of fasting</strong> on salt, water, and tea. Triggers deep autophagy and stem cell regeneration (Longo et al., FMD studies). Before and after: bone broth. The Maestro can extend to <strong>5 days once a year</strong>, aligned to equinox or solstice.">Una vez por trimestre, <strong>72 horas de ayuno</strong> con sal, agua y té. Activa autofagia profunda y regenera células madre (Longo et al., FMD studies). Antes y después: caldo de hueso. El Maestro puede extender a <strong>5 días una vez al año</strong>, alineado al equinoccio o solsticio.</div>
+  </div>
+</section>
+
+<!-- ═════════════════════════════════════════════════════════════ -->
+<!-- 04 · PROTOCOLO DE MOVIMIENTO                                 -->
+<!-- ═════════════════════════════════════════════════════════════ -->
+<section>
+  <div class="sec-head">
+    <div>
+      <div class="sec-num" data-es="04 · PROTOCOLO DE MOVIMIENTO" data-en="04 · MOVEMENT PROTOCOL">04 · PROTOCOLO DE MOVIMIENTO</div>
+      <h3 data-es-html="Pesado, lento, <em>frecuente</em>." data-en-html="Heavy, slow, <em>frequent</em>.">Pesado, lento, <em>frecuente</em>.</h3>
+    </div>
+    <p class="sec-sub" data-es="La fuerza es la moneda de la longevidad. Después de los 40, perderla es perder vida útil. Construirla es comprar décadas." data-en="Strength is longevity's currency. Past 40, losing it is losing usable life. Building it buys decades.">La fuerza es la moneda de la longevidad. Después de los 40, perderla es perder vida útil. Construirla es comprar décadas.</p>
+  </div>
+
+  <div class="protocol" style="margin-bottom:24px">
+    <div class="ph">
+      <span class="pl" data-es="SEMANA TIPO · NIVEL OPERATIVO" data-en="TYPICAL WEEK · OPERATIVO LEVEL">SEMANA TIPO · NIVEL OPERATIVO</span>
+      <span class="pt" data-es="9 – 11 horas / 7 días" data-en="9 – 11 hours / 7 days">9 – 11 horas / 7 días</span>
+    </div>
+    <div class="pr"><div class="pt" data-es="LUN" data-en="MON">LUN</div><div class="pc" data-es-html="<strong>Fuerza A:</strong> sentadilla + press de banca + remo. 5×5 reps. 50 min." data-en-html="<strong>Strength A:</strong> squat + bench press + row. 5×5 reps. 50 min."><strong>Fuerza A:</strong> sentadilla + press de banca + remo. 5×5 reps. 50 min.</div></div>
+    <div class="pr"><div class="pt" data-es="MAR" data-en="TUE">MAR</div><div class="pc" data-es-html="<strong>Zona 2 cardio:</strong> 45 min ritmo conversacional (correr suave, ciclismo, remo). HR 130 – 140." data-en-html="<strong>Zone 2 cardio:</strong> 45 min conversational pace (easy run, bike, row). HR 130 – 140."><strong>Zona 2 cardio:</strong> 45 min ritmo conversacional (correr suave, ciclismo, remo). HR 130 – 140.</div></div>
+    <div class="pr"><div class="pt" data-es="MIÉ" data-en="WED">MIÉ</div><div class="pc" data-es-html="<strong>Fuerza B:</strong> peso muerto + press militar + dominadas. 3×8 reps + accesorios. 55 min." data-en-html="<strong>Strength B:</strong> deadlift + overhead press + pull-ups. 3×8 reps + accessories. 55 min."><strong>Fuerza B:</strong> peso muerto + press militar + dominadas. 3×8 reps + accesorios. 55 min.</div></div>
+    <div class="pr"><div class="pt" data-es="JUE" data-en="THU">JUE</div><div class="pc" data-es-html="<strong>Sprint VO₂ max:</strong> 4×4 min al 95% HR / 3 min recuperación. Total 28 min + calentamiento. <em>Una vez por semana, no más.</em>" data-en-html="<strong>Sprint VO₂ max:</strong> 4×4 min at 95% HR / 3 min recovery. 28 min total + warm-up. <em>Once per week, no more.</em>"><strong>Sprint VO₂ max:</strong> 4×4 min al 95% HR / 3 min recuperación. Total 28 min + calentamiento. <em>Una vez por semana, no más.</em></div></div>
+    <div class="pr"><div class="pt" data-es="VIE" data-en="FRI">VIE</div><div class="pc" data-es-html="<strong>Zona 2 cardio + movilidad:</strong> 45 min + 20 min movilidad articular." data-en-html="<strong>Zone 2 cardio + mobility:</strong> 45 min + 20 min joint mobility."><strong>Zona 2 cardio + movilidad:</strong> 45 min + 20 min movilidad articular.</div></div>
+    <div class="pr"><div class="pt" data-es="SÁB" data-en="SAT">SÁB</div><div class="pc" data-es-html="<strong>Fuerza C:</strong> sentadilla + press de banca + dominadas con peso. 5×3 reps pesado. 60 min." data-en-html="<strong>Strength C:</strong> squat + bench + weighted pull-ups. 5×3 heavy. 60 min."><strong>Fuerza C:</strong> sentadilla + press de banca + dominadas con peso. 5×3 reps pesado. 60 min.</div></div>
+    <div class="pr"><div class="pt" data-es="DOM" data-en="SUN">DOM</div><div class="pc" data-es-html="<strong>Caminata larga:</strong> 90 – 120 min, naturaleza, en familia. Recuperación activa." data-en-html="<strong>Long walk:</strong> 90 – 120 min, nature, with family. Active recovery."><strong>Caminata larga:</strong> 90 – 120 min, naturaleza, en familia. Recuperación activa.</div></div>
+  </div>
+
+  <div class="split">
+    <div class="split-text">
+      <h4 data-es-html="Caminar es <em>el ejercicio fundacional</em>." data-en-html="Walking is <em>the foundational exercise</em>.">Caminar es <em>el ejercicio fundacional</em>.</h4>
+      <p data-es-html="Antes de cualquier sesión de fuerza o cardio: la caminata diaria. <strong>8 – 12 km al día, ritmo conversacional</strong>, idealmente con sol en la piel. Es la actividad con mejor relación riesgo-beneficio que existe: mejora glucosa, sueño, ánimo, longevidad y digestión. <em>Si solo pudieras hacer una cosa por tu cuerpo, sería caminar.</em>" data-en-html="Before any strength or cardio session: the daily walk. <strong>8 – 12 km a day, conversational pace</strong>, ideally with sun on the skin. The highest risk-to-benefit activity that exists: improves glucose, sleep, mood, longevity and digestion. <em>If you could only do one thing for your body, it would be to walk.</em>">Antes de cualquier sesión de fuerza o cardio: la caminata diaria. <strong>8 – 12 km al día, ritmo conversacional</strong>, idealmente con sol en la piel. Es la actividad con mejor relación riesgo-beneficio que existe: mejora glucosa, sueño, ánimo, longevidad y digestión. <em>Si solo pudieras hacer una cosa por tu cuerpo, sería caminar.</em></p>
+      <p data-es-html="<strong>Fuerza compuesta sobre fuerza aislada.</strong> Sentadilla, peso muerto, press, remo, dominada. Cinco movimientos cubren el 90% del retorno. Sumamos ruedas de carga + Farmers walks para grip y tronco. Aislados como accesorio, no como protagonista." data-en-html="<strong>Compound strength over isolated.</strong> Squat, deadlift, press, row, pull-up. Five movements deliver 90% of the return. Add loaded carries + farmer's walks for grip and core. Isolated as accessories, never as main act."><strong>Fuerza compuesta sobre fuerza aislada.</strong> Sentadilla, peso muerto, press, remo, dominada. Cinco movimientos cubren el 90% del retorno. Sumamos ruedas de carga + Farmers walks para grip y tronco. Aislados como accesorio, no como protagonista.</p>
+      <p data-es-html="<strong>Zona 2 es la base aeróbica.</strong> Tres sesiones de 45 minutos a frecuencia cardíaca conversacional (130 – 140 bpm). Construye densidad mitocondrial, capacidad de oxidación de grasa, y baja el riesgo cardiovascular más que cualquier otra modalidad. <em>Si puedes sostener una conversación, estás en zona 2.</em>" data-en-html="<strong>Zone 2 is the aerobic base.</strong> Three 45-min sessions at conversational heart rate (130 – 140 bpm). Builds mitochondrial density, fat oxidation capacity, and lowers cardiovascular risk more than any other modality. <em>If you can hold a conversation, you're in zone 2.</em>"><strong>Zona 2 es la base aeróbica.</strong> Tres sesiones de 45 minutos a frecuencia cardíaca conversacional (130 – 140 bpm). Construye densidad mitocondrial, capacidad de oxidación de grasa, y baja el riesgo cardiovascular más que cualquier otra modalidad. <em>Si puedes sostener una conversación, estás en zona 2.</em></p>
+      <p data-es-html="<strong>El sprint sube el techo.</strong> Una sesión semanal de intervalos al 95% — 4×4 minutos con 3 minutos de recuperación es el clásico noruego. Sube VO₂ max, el predictor más fuerte de mortalidad por toda causa. <em>Una semana al mes lo cambias por un esfuerzo máximo de tipo Tabata o sled push.</em>" data-en-html="<strong>The sprint raises the ceiling.</strong> One weekly session of 95% intervals — 4×4 minutes with 3 min recovery is the Norwegian classic. Raises VO₂ max, the strongest all-cause mortality predictor. <em>Once a month, swap it for max-effort Tabata or sled push.</em>"><strong>El sprint sube el techo.</strong> Una sesión semanal de intervalos al 95% — 4×4 minutos con 3 minutos de recuperación es el clásico noruego. Sube VO₂ max, el predictor más fuerte de mortalidad por toda causa. <em>Una semana al mes lo cambias por un esfuerzo máximo de tipo Tabata o sled push.</em></p>
+    </div>
+
+    <div class="protocol">
+      <div class="ph">
+        <span class="pl" data-es="MARCADORES DE FUERZA · OBJETIVO ANUAL" data-en="STRENGTH MARKERS · ANNUAL TARGET">MARCADORES DE FUERZA · OBJETIVO ANUAL</span>
+        <span class="pt" data-es="Operativo · 30s" data-en="Operativo · 30s">Operativo · 30s</span>
+      </div>
+      <div class="pr"><div class="pt" data-es="SENTADILLA" data-en="SQUAT">SENTADILLA</div><div class="pc" data-es-html="<strong>1.5× peso corporal</strong> × 5 reps · profundidad completa" data-en-html="<strong>1.5× bodyweight</strong> × 5 reps · full depth"><strong>1.5× peso corporal</strong> × 5 reps · profundidad completa</div></div>
+      <div class="pr"><div class="pt" data-es="PESO MUERTO" data-en="DEADLIFT">PESO MUERTO</div><div class="pc" data-es-html="<strong>2× peso corporal</strong> × 3 reps · sumo o convencional" data-en-html="<strong>2× bodyweight</strong> × 3 reps · sumo or conventional"><strong>2× peso corporal</strong> × 3 reps · sumo o convencional</div></div>
+      <div class="pr"><div class="pt" data-es="PRESS BANCA" data-en="BENCH PRESS">PRESS BANCA</div><div class="pc" data-es-html="<strong>1× peso corporal</strong> × 5 reps · pausa en pecho" data-en-html="<strong>1× bodyweight</strong> × 5 reps · pause on chest"><strong>1× peso corporal</strong> × 5 reps · pausa en pecho</div></div>
+      <div class="pr"><div class="pt" data-es="DOMINADA" data-en="PULL-UP">DOMINADA</div><div class="pc" data-es-html="<strong>15 limpias</strong> sin balanceo, manos pronas" data-en-html="<strong>15 clean</strong> no swing, pronated"><strong>15 limpias</strong> sin balanceo, manos pronas</div></div>
+      <div class="pr"><div class="pt" data-es="VO₂ MAX" data-en="VO₂ MAX">VO₂ MAX</div><div class="pc" data-es-html="<strong>&gt; 50 ml/kg/min</strong> · top 5% por edad y género" data-en-html="<strong>&gt; 50 ml/kg/min</strong> · top 5% by age and gender"><strong>&gt; 50 ml/kg/min</strong> · top 5% por edad y género</div></div>
+      <div class="pr"><div class="pt" data-es="GRIP" data-en="GRIP">GRIP</div><div class="pc" data-es-html="<strong>60 kg dinamómetro</strong> mano dominante · longevidad probada" data-en-html="<strong>60 kg dynamometer</strong> dominant hand · proven longevity"><strong>60 kg dinamómetro</strong> mano dominante · longevidad probada</div></div>
+      <div class="pr"><div class="pt" data-es="FARMER" data-en="FARMER">FARMER</div><div class="pc" data-es-html="<strong>1× peso corporal</strong> en cada mano · 60 segundos" data-en-html="<strong>1× bodyweight</strong> each hand · 60 seconds"><strong>1× peso corporal</strong> en cada mano · 60 segundos</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════════════════════════════════════════════════ -->
+<!-- 05 · BIOKINÉTICA                                             -->
+<!-- ═════════════════════════════════════════════════════════════ -->
+<section>
+  <div class="sec-head">
+    <div>
+      <div class="sec-num" data-es="05 · BIOKINÉTICA" data-en="05 · BIOKINETICS">05 · BIOKINÉTICA</div>
+      <h3 data-es-html="El cuerpo es un <em>sistema bioeléctrico</em>." data-en-html="The body is a <em>bioelectric system</em>.">El cuerpo es un <em>sistema bioeléctrico</em>.</h3>
+    </div>
+    <p class="sec-sub" data-es="Mitocondria, agua estructurada, magnetorrecepción. Lo que la ciencia de frontera está confirmando, los abuelos lo sabían: sol, tierra, frío, calor, aire." data-en="Mitochondria, structured water, magnetoreception. What frontier science is confirming, the elders already knew: sun, earth, cold, heat, air.">Mitocondria, agua estructurada, magnetorrecepción. Lo que la ciencia de frontera está confirmando, los abuelos lo sabían: sol, tierra, frío, calor, aire.</p>
+  </div>
+
+  <div class="pillars">
+    <div class="pillar p-bio" style="background:#fdf6e3">
+      <div class="p-num" data-es="EJE 01 · SOL" data-en="AXIS 01 · SUN">EJE 01 · SOL</div>
+      <h4><em>Heliotropismo</em></h4>
+      <p class="lede" data-es="El sol regula circadiano, vitamina D, óxido nítrico, melatonina, dopamina, ánimo, fertilidad y mitocondria." data-en="The sun regulates circadian rhythm, vitamin D, nitric oxide, melatonin, dopamine, mood, fertility, and mitochondria.">El sol regula circadiano, vitamina D, óxido nítrico, melatonina, dopamina, ánimo, fertilidad y mitocondria.</p>
+      <ul>
+        <li data-es="Sol AM al despertar: 10 min sin lentes oscuros, ojos hacia (no a) el sol" data-en="AM sun on waking: 10 min no sunglasses, eyes toward (not at) the sun">Sol AM al despertar: 10 min sin lentes oscuros, ojos hacia (no a) el sol</li>
+        <li data-es="Sol del mediodía: 15 – 20 min, piel descubierta, latitud 9° (Boquete)" data-en="Midday sun: 15 – 20 min, skin uncovered, latitude 9° (Boquete)">Sol del mediodía: 15 – 20 min, piel descubierta, latitud 9° (Boquete)</li>
+        <li data-es="Atardecer: ver el sol bajar — calibra la melatonina" data-en="Sunset: watch the sun descend — calibrates melatonin">Atardecer: ver el sol bajar — calibra la melatonina</li>
+        <li data-es="Sin pantalla LED después del atardecer · luz roja o vela" data-en="No LED screens after sunset · red light or candle">Sin pantalla LED después del atardecer · luz roja o vela</li>
+      </ul>
+    </div>
+    <div class="pillar" style="background:#efe7d2;border-color:transparent">
+      <div class="p-num" data-es="EJE 02 · TIERRA" data-en="AXIS 02 · EARTH">EJE 02 · TIERRA</div>
+      <h4 style="color:var(--ink)"><em style="color:var(--copper-deep)">Aterrizaje</em></h4>
+      <p class="lede" data-es="La tierra está cargada negativamente. La piel descalza absorbe electrones libres que neutralizan radicales libres del cuerpo." data-en="The earth is negatively charged. Bare skin absorbs free electrons that neutralize the body's free radicals.">La tierra está cargada negativamente. La piel descalza absorbe electrones libres que neutralizan radicales libres del cuerpo.</p>
+      <ul>
+        <li data-es="30 min/día pies descalzos sobre tierra, pasto o arena" data-en="30 min/day bare feet on earth, grass, or sand">30 min/día pies descalzos sobre tierra, pasto o arena</li>
+        <li data-es="Dormir aterrizado con sábana de grounding (vivir cerca de la tierra)" data-en="Sleep grounded with a grounding sheet (live close to earth)">Dormir aterrizado con sábana de grounding (vivir cerca de la tierra)</li>
+        <li data-es="Trabajo de oficina con sandalia de cuero sobre piedra o madera" data-en="Office work in leather sandals on stone or wood">Trabajo de oficina con sandalia de cuero sobre piedra o madera</li>
+        <li data-es="Boquete y Bajo Mono — terrazas con pasto siempre disponibles" data-en="Boquete and Bajo Mono — grass terraces always available">Boquete y Bajo Mono — terrazas con pasto siempre disponibles</li>
+      </ul>
+    </div>
+    <div class="pillar" style="background:#e1ebf2;border-color:transparent">
+      <div class="p-num" data-es="EJE 03 · AGUA" data-en="AXIS 03 · WATER">EJE 03 · AGUA</div>
+      <h4 style="color:var(--ink)"><em style="color:var(--slate)">Hidrodinámica</em></h4>
+      <p class="lede" data-es="Cada célula del cuerpo es 70% agua, organizada en cuarta fase (Gerald Pollack). El agua de la cuerpo es batería; las mitocondrias son su ingeniero." data-en="Every cell is 70% water, organized in fourth phase (Gerald Pollack). Body water is battery; mitochondria are its engineer.">Cada célula del cuerpo es 70% agua, organizada en cuarta fase (Gerald Pollack). El agua de la cuerpo es batería; las mitocondrias son su ingeniero.</p>
+      <ul>
+        <li data-es="Agua de manantial sin tratar: Cervecería en David, manantiales de Boquete" data-en="Untreated spring water: David's brewery, Boquete springs">Agua de manantial sin tratar: Cervecería en David, manantiales de Boquete</li>
+        <li data-es="Sal de mar cruda — sodio, magnesio, oligoelementos" data-en="Raw sea salt — sodium, magnesium, trace elements">Sal de mar cruda — sodio, magnesio, oligoelementos</li>
+        <li data-es="Evitar plástico — interfiere endocrinamente" data-en="Avoid plastic — endocrine disruptor">Evitar plástico — interfiere endocrinamente</li>
+        <li data-es="Nadar en río o mar 2× / semana cuando es posible" data-en="Swim in river or sea 2× / week when possible">Nadar en río o mar 2× / semana cuando es posible</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="pillars" style="margin-top:14px">
+    <div class="pillar" style="background:#d8e6e1;border-color:transparent">
+      <div class="p-num" data-es="EJE 04 · FRÍO" data-en="AXIS 04 · COLD">EJE 04 · FRÍO</div>
+      <h4 style="color:var(--ink)"><em style="color:var(--slate)">Hormesis fría</em></h4>
+      <p class="lede" data-es="Susanna Søberg confirmó la dosis óptima: 11 minutos por semana a 14 °C distribuidos en 2 – 4 inmersiones. Activa grasa parda, dopamina basal, resiliencia." data-en="Susanna Søberg confirmed the optimal dose: 11 minutes weekly at 14 °C distributed over 2 – 4 immersions. Activates brown fat, baseline dopamine, resilience.">Susanna Søberg confirmó la dosis óptima: 11 minutos por semana a 14 °C distribuidos en 2 – 4 inmersiones. Activa grasa parda, dopamina basal, resiliencia.</p>
+      <ul>
+        <li data-es="Ducha fría AM 3 min al cerrar la ducha caliente — entrada al sistema" data-en="3 min AM cold shower after closing the hot — system entry">Ducha fría AM 3 min al cerrar la ducha caliente — entrada al sistema</li>
+        <li data-es="Inmersión completa: tina con hielo o río de montaña 2 – 4 min" data-en="Full immersion: ice bath or mountain river 2 – 4 min">Inmersión completa: tina con hielo o río de montaña 2 – 4 min</li>
+        <li data-es="Nunca en ayuno extendido ni con ansiedad alta — adaptación primero" data-en="Never on extended fast nor high anxiety — adapt first">Nunca en ayuno extendido ni con ansiedad alta — adaptación primero</li>
+        <li data-es="Río Caldera (Boquete) y quebradas del Volcán: opciones naturales" data-en="Caldera River (Boquete) and Volcán streams: natural options">Río Caldera (Boquete) y quebradas del Volcán: opciones naturales</li>
+      </ul>
+    </div>
+    <div class="pillar" style="background:#f3dcc8;border-color:transparent">
+      <div class="p-num" data-es="EJE 05 · CALOR" data-en="AXIS 05 · HEAT">EJE 05 · CALOR</div>
+      <h4 style="color:var(--ink)"><em style="color:var(--copper-deep)">Sauna finlandesa</em></h4>
+      <p class="lede" data-es="Estudio Kuopio: 4 – 7 sesiones por semana de 20 min a 80 °C reducen mortalidad cardiovascular 50% y demencia 65%. La mejor longevidad por costo." data-en="Kuopio study: 4 – 7 sessions per week of 20 min at 80 °C cut cardiovascular mortality 50% and dementia 65%. Best longevity per cost.">Estudio Kuopio: 4 – 7 sesiones por semana de 20 min a 80 °C reducen mortalidad cardiovascular 50% y demencia 65%. La mejor longevidad por costo.</p>
+      <ul>
+        <li data-es="4×/semana, 20 min, 80 – 90 °C. Idealmente al final del entrenamiento" data-en="4×/wk, 20 min, 80 – 90 °C. Ideally at workout's end">4×/semana, 20 min, 80 – 90 °C. Idealmente al final del entrenamiento</li>
+        <li data-es="Hidratación pre y post: 500 ml agua con sal" data-en="Hydrate pre and post: 500 ml salted water">Hidratación pre y post: 500 ml agua con sal</li>
+        <li data-es="Contraste: sauna + frío 3 ciclos = release máximo de norepinefrina" data-en="Contrast: sauna + cold 3 cycles = max norepinephrine release">Contraste: sauna + frío 3 ciclos = release máximo de norepinefrina</li>
+        <li data-es="Hotel Panamonte (Boquete) o casa de Bajo Mono — instalar" data-en="Hotel Panamonte (Boquete) or Bajo Mono house — install">Hotel Panamonte (Boquete) o casa de Bajo Mono — instalar</li>
+      </ul>
+    </div>
+    <div class="pillar" style="background:#fce5da;border-color:transparent">
+      <div class="p-num" data-es="EJE 06 · LUZ" data-en="AXIS 06 · LIGHT">EJE 06 · LUZ</div>
+      <h4 style="color:var(--ink)"><em style="color:var(--copper-deep)">Fotobiomodulación</em></h4>
+      <p class="lede" data-es="Luz roja e infrarroja (660 + 850 nm) penetra hasta 4 cm de tejido. Activa citocromo C oxidasa, mejora producción de ATP, reduce inflamación, sana piel y tejido." data-en="Red and infrared light (660 + 850 nm) penetrates up to 4 cm of tissue. Activates cytochrome C oxidase, improves ATP production, reduces inflammation, heals skin and tissue.">Luz roja e infrarroja (660 + 850 nm) penetra hasta 4 cm de tejido. Activa citocromo C oxidasa, mejora producción de ATP, reduce inflamación, sana piel y tejido.</p>
+      <ul>
+        <li data-es="Panel rojo: 10 min al despertar, cuerpo descubierto, 30 cm de distancia" data-en="Red panel: 10 min on waking, body uncovered, 30 cm distance">Panel rojo: 10 min al despertar, cuerpo descubierto, 30 cm de distancia</li>
+        <li data-es="Mejor stack: 10 mg metileno azul + 10 min panel rojo (Greg Williams)" data-en="Best stack: 10 mg methylene blue + 10 min red panel (Greg Williams)">Mejor stack: 10 mg metileno azul + 10 min panel rojo (Greg Williams)</li>
+        <li data-es="Para lesión local: 20 min sobre articulación, 2× al día" data-en="For local injury: 20 min on joint, 2× daily">Para lesión local: 20 min sobre articulación, 2× al día</li>
+        <li data-es="Marca: Mito Red, Joovv, Block Blue Light. Inversión: ~$600 — vida útil 10 años" data-en="Brands: Mito Red, Joovv, Block Blue Light. Cost: ~$600 — 10-year lifespan">Marca: Mito Red, Joovv, Block Blue Light. Inversión: ~$600 — vida útil 10 años</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="pullq" style="margin-top:32px">
+    <p data-es-html="“El cuerpo humano es <em>una batería</em>. Su carga viene del sol, de la tierra, del agua y del campo magnético terrestre. Quien se desconecta de esas cuatro fuentes, se descarga — y llama a eso enfermedad.”" data-en-html="“The human body is <em>a battery</em>. Its charge comes from the sun, the earth, the water, and the Earth's magnetic field. Who disconnects from those four sources discharges — and calls that disease.”">"El cuerpo humano es <em>una batería</em>. Su carga viene del sol, de la tierra, del agua y del campo magnético terrestre. Quien se desconecta de esas cuatro fuentes, se descarga — y llama a eso enfermedad."</p>
+    <cite data-es="JACK KRUSE · DRA. SAFRAN · CONSENSO DE BIOELECTRICIDAD APLICADA" data-en="JACK KRUSE · DRA. SAFRAN · APPLIED BIOELECTRICITY CONSENSUS">JACK KRUSE · DRA. SAFRAN · CONSENSO DE BIOELECTRICIDAD APLICADA</cite>
+  </div>
+</section>
+
+<!-- ═════════════════════════════════════════════════════════════ -->
+<!-- 06 · RESPIRACIÓN                                             -->
+<!-- ═════════════════════════════════════════════════════════════ -->
+<section>
+  <div class="sec-head">
+    <div>
+      <div class="sec-num" data-es="06 · RESPIRACIÓN" data-en="06 · BREATH">06 · RESPIRACIÓN</div>
+      <h3 data-es-html="Una palanca, <em>siempre disponible</em>." data-en-html="One lever, <em>always available</em>.">Una palanca, <em>siempre disponible</em>.</h3>
+    </div>
+    <p class="sec-sub" data-es="Cambias la respiración, cambias el sistema nervioso. Cuatro técnicas básicas — una para cada estado del día." data-en="Change the breath, change the nervous system. Four basic techniques — one per state of the day.">Cambias la respiración, cambias el sistema nervioso. Cuatro técnicas básicas — una para cada estado del día.</p>
+  </div>
+
+  <div class="pillars">
+    <div class="pillar p-move" style="background:#e9eee5;border-color:transparent">
+      <div class="p-num" data-es="06 AM · DESPERTAR" data-en="06 AM · WAKING">06 AM · DESPERTAR</div>
+      <h4 style="color:var(--ink)"><em>Wim Hof</em></h4>
+      <p class="lede" data-es="30 respiraciones rápidas y profundas, retención al final con pulmones vacíos, repetir 3 rondas. Activa simpático, aumenta noradrenalina, sube energía." data-en="30 fast deep breaths, retention with empty lungs, repeat 3 rounds. Activates sympathetic, raises norepinephrine, raises energy.">30 respiraciones rápidas y profundas, retención al final con pulmones vacíos, repetir 3 rondas. Activa simpático, aumenta noradrenalina, sube energía.</p>
+      <p data-es-html="<strong>Uso:</strong> al despertar antes de ducha fría. <strong>Tiempo:</strong> 12 minutos. <em>No hacer manejando ni en agua.</em>" data-en-html="<strong>Use:</strong> on waking before cold shower. <strong>Time:</strong> 12 minutes. <em>Not while driving or in water.</em>"><strong>Uso:</strong> al despertar antes de ducha fría. <strong>Tiempo:</strong> 12 minutos. <em>No hacer manejando ni en agua.</em></p>
+    </div>
+    <div class="pillar p-move" style="background:#e1e8ec;border-color:transparent">
+      <div class="p-num" data-es="DÍA · ENFOQUE" data-en="DAY · FOCUS">DÍA · ENFOQUE</div>
+      <h4 style="color:var(--ink)"><em style="color:var(--slate)">Box breathing</em></h4>
+      <p class="lede" data-es="Inhalar 4 · retener 4 · exhalar 4 · retener 4. Protocolo Navy SEAL. Estabiliza, enfoca, baja cortisol agudo." data-en="Inhale 4 · hold 4 · exhale 4 · hold 4. Navy SEAL protocol. Stabilizes, focuses, drops acute cortisol.">Inhalar 4 · retener 4 · exhalar 4 · retener 4. Protocolo Navy SEAL. Estabiliza, enfoca, baja cortisol agudo.</p>
+      <p data-es-html="<strong>Uso:</strong> antes de reunión difícil, antes de presentación, antes de decisión grande. <strong>Tiempo:</strong> 4 minutos." data-en-html="<strong>Use:</strong> before a hard meeting, before a presentation, before a big decision. <strong>Time:</strong> 4 minutes."><strong>Uso:</strong> antes de reunión difícil, antes de presentación, antes de decisión grande. <strong>Tiempo:</strong> 4 minutos.</p>
+    </div>
+    <div class="pillar p-move" style="background:#e5dfe6;border-color:transparent">
+      <div class="p-num" data-es="TARDE · COHERENCIA" data-en="AFTERNOON · COHERENCE">TARDE · COHERENCIA</div>
+      <h4 style="color:var(--ink)"><em style="color:#5a4960">5:5 HeartMath</em></h4>
+      <p class="lede" data-es="5 segundos inhalar · 5 segundos exhalar, sincronizado al corazón, con sentimiento de gratitud. Sincroniza HRV, baja cortisol, alinea ondas cerebrales." data-en="5 second inhale · 5 second exhale, synced to the heart, with gratitude feeling. Syncs HRV, lowers cortisol, aligns brain waves.">5 segundos inhalar · 5 segundos exhalar, sincronizado al corazón, con sentimiento de gratitud. Sincroniza HRV, baja cortisol, alinea ondas cerebrales.</p>
+      <p data-es-html="<strong>Uso:</strong> mediodía, post-comida, o cualquier transición. <strong>Tiempo:</strong> 10 minutos diarios." data-en-html="<strong>Use:</strong> midday, post-meal, or any transition. <strong>Time:</strong> 10 minutes daily."><strong>Uso:</strong> mediodía, post-comida, o cualquier transición. <strong>Tiempo:</strong> 10 minutos diarios.</p>
+    </div>
+  </div>
+
+  <div class="callout-light" style="margin-top:18px;background:var(--paper-2);border:0.5px solid var(--line-2);padding:22px 26px;border-radius:10px">
+    <div style="font-family:var(--mono);font-size:10px;letter-spacing:.22em;color:var(--forest);text-transform:uppercase;font-weight:700;margin-bottom:10px" data-es="LA REGLA INVISIBLE · RESPIRAR POR LA NARIZ TODO EL DÍA" data-en="THE INVISIBLE RULE · NASAL BREATHING ALL DAY">LA REGLA INVISIBLE · RESPIRAR POR LA NARIZ TODO EL DÍA</div>
+    <div style="font-family:var(--serif);font-size:16px;color:var(--ink-2);font-style:italic;line-height:1.55;font-weight:300" data-es-html="Patrick McKeown (Oxygen Advantage) y James Nestor (Breath) consolidaron lo que la tradición ya sabía: la boca es para comer y hablar; la nariz es para respirar. <strong>Boca cerrada durante el sueño</strong> (tape o mouthpiece) mejora ronquido, presión arterial, oxigenación nocturna y sequedad. <em>Quien respira por la boca de día se cansa de noche.</em>" data-en-html="Patrick McKeown (Oxygen Advantage) and James Nestor (Breath) consolidated what tradition already knew: the mouth is for eating and speaking; the nose is for breathing. <strong>Mouth taped at sleep</strong> improves snoring, blood pressure, nocturnal oxygenation, dryness. <em>Whoever mouth-breathes by day, tires by night.</em>">Patrick McKeown (Oxygen Advantage) y James Nestor (Breath) consolidaron lo que la tradición ya sabía: la boca es para comer y hablar; la nariz es para respirar. <strong>Boca cerrada durante el sueño</strong> (tape o mouthpiece) mejora ronquido, presión arterial, oxigenación nocturna y sequedad. <em>Quien respira por la boca de día se cansa de noche.</em></div>
+  </div>
+</section>
+
+<!-- ═════════════════════════════════════════════════════════════ -->
+<!-- 07 · SUEÑO Y RECUPERACIÓN                                    -->
+<!-- ═════════════════════════════════════════════════════════════ -->
+<section>
+  <div class="sec-head">
+    <div>
+      <div class="sec-num" data-es="07 · SUEÑO Y RECUPERACIÓN" data-en="07 · SLEEP AND RECOVERY">07 · SUEÑO Y RECUPERACIÓN</div>
+      <h3 data-es-html="<em>Ocho horas</em> innegociables." data-en-html="<em>Eight hours</em> non-negotiable."><em>Ocho horas</em> innegociables.</h3>
+    </div>
+    <p class="sec-sub" data-es="Sin sueño profundo no hay protocolo que funcione. El sueño es el momento donde la mitocondria se regenera y el cuerpo se ordena." data-en="Without deep sleep no protocol works. Sleep is when mitochondria regenerate and the body orders itself.">Sin sueño profundo no hay protocolo que funcione. El sueño es el momento donde la mitocondria se regenera y el cuerpo se ordena.</p>
+  </div>
+
+  <div class="split">
+    <div class="split-text">
+      <h4 data-es-html="La <em>higiene</em> del sueño." data-en-html="Sleep <em>hygiene</em>.">La <em>higiene</em> del sueño.</h4>
+      <p data-es-html="<strong>22:00 a 06:00.</strong> No es preferencia; es fisiología. La hormona del crecimiento se libera mayoritariamente entre las 22:00 y la 01:00; perder ese tramo es perder reparación. La testosterona se reconstituye en sueño profundo. La melatonina solo se produce en oscuridad total." data-en-html="<strong>22:00 to 06:00.</strong> Not a preference; physiology. Growth hormone releases mostly between 22:00 and 01:00; missing that block is missing repair. Testosterone reconstitutes in deep sleep. Melatonin only forms in total darkness."><strong>22:00 a 06:00.</strong> No es preferencia; es fisiología. La hormona del crecimiento se libera mayoritariamente entre las 22:00 y la 01:00; perder ese tramo es perder reparación. La testosterona se reconstituye en sueño profundo. La melatonina solo se produce en oscuridad total.</p>
+      <p data-es-html="<strong>Cuarto:</strong> oscuro total (cortina blackout, antifaz si necesario), fresco (18 – 19 °C), silencioso (tapones si vives en ciudad). <strong>Cero pantallas en el cuarto.</strong> El teléfono en otra habitación o en avión. La cama es solo para dormir y para el amor — no para trabajar." data-en-html="<strong>Bedroom:</strong> total darkness (blackout curtain, mask if needed), cool (18 – 19 °C), silent (plugs if you're in a city). <strong>Zero screens in the bedroom.</strong> Phone in another room or airplane mode. The bed is for sleep and love only — not work."><strong>Cuarto:</strong> oscuro total (cortina blackout, antifaz si necesario), fresco (18 – 19 °C), silencioso (tapones si vives en ciudad). <strong>Cero pantallas en el cuarto.</strong> El teléfono en otra habitación o en avión. La cama es solo para dormir y para el amor — no para trabajar.</p>
+      <p data-es-html="<strong>Ritual de cierre:</strong> 21:00 luz cálida o vela. Té de manzanilla o pasiflora. Coherencia cardíaca 10 min. Lectura física (papel, no pantalla). Dormir antes de las 22:30. <em>Despertarse sin alarma — el cuerpo sabe.</em>" data-en-html="<strong>Closing ritual:</strong> 21:00 warm light or candle. Chamomile or passionflower tea. Heart coherence 10 min. Physical reading (paper, not screen). Sleep before 22:30. <em>Wake without alarm — the body knows.</em>"><strong>Ritual de cierre:</strong> 21:00 luz cálida o vela. Té de manzanilla o pasiflora. Coherencia cardíaca 10 min. Lectura física (papel, no pantalla). Dormir antes de las 22:30. <em>Despertarse sin alarma — el cuerpo sabe.</em></p>
+    </div>
+
+    <div class="protocol">
+      <div class="ph">
+        <span class="pl" data-es="MARCADORES DE RECUPERACIÓN" data-en="RECOVERY MARKERS">MARCADORES DE RECUPERACIÓN</span>
+        <span class="pt" data-es="Ring/strap recomendado" data-en="Ring/strap recommended">Ring/strap recomendado</span>
+      </div>
+      <div class="pr"><div class="pt">HRV</div><div class="pc" data-es-html="<strong>&gt; 55 ms</strong> noche (RMSSD) · marcador #1 de salud del SNA" data-en-html="<strong>&gt; 55 ms</strong> nocturnal (RMSSD) · #1 ANS health marker"><strong>&gt; 55 ms</strong> noche (RMSSD) · marcador #1 de salud del SNA</div></div>
+      <div class="pr"><div class="pt" data-es="REPOSO" data-en="RHR">REPOSO</div><div class="pc" data-es-html="<strong>FC reposo &lt; 55 bpm</strong> · si sube 5+ bpm, no entrenar fuerte" data-en-html="<strong>RHR &lt; 55 bpm</strong> · if up 5+ bpm, don't train hard"><strong>FC reposo &lt; 55 bpm</strong> · si sube 5+ bpm, no entrenar fuerte</div></div>
+      <div class="pr"><div class="pt" data-es="PROFUNDO" data-en="DEEP">PROFUNDO</div><div class="pc" data-es-html="<strong>&gt; 90 min</strong> sueño profundo · regeneración tisular" data-en-html="<strong>&gt; 90 min</strong> deep sleep · tissue regeneration"><strong>&gt; 90 min</strong> sueño profundo · regeneración tisular</div></div>
+      <div class="pr"><div class="pt">REM</div><div class="pc" data-es-html="<strong>&gt; 100 min</strong> sueño REM · consolidación de memoria" data-en-html="<strong>&gt; 100 min</strong> REM sleep · memory consolidation"><strong>&gt; 100 min</strong> sueño REM · consolidación de memoria</div></div>
+      <div class="pr"><div class="pt" data-es="EFICIENCIA" data-en="EFFICIENCY">EFICIENCIA</div><div class="pc" data-es-html="<strong>&gt; 90%</strong> tiempo en cama dormido (eficiencia sueño)" data-en-html="<strong>&gt; 90%</strong> time in bed asleep (sleep efficiency)"><strong>&gt; 90%</strong> tiempo en cama dormido (eficiencia sueño)</div></div>
+      <div class="pr"><div class="pt">SpO₂</div><div class="pc" data-es-html="<strong>&gt; 96%</strong> media nocturna · indicador de apnea" data-en-html="<strong>&gt; 96%</strong> nocturnal mean · apnea indicator"><strong>&gt; 96%</strong> media nocturna · indicador de apnea</div></div>
+      <div class="pr"><div class="pt" data-es="HERRAMIENTAS" data-en="TOOLS">HERRAMIENTAS</div><div class="pc" data-es-html="Oura, Whoop, Apple Watch + AutoSleep. <em>Validar con polisomnografía 1×/año.</em>" data-en-html="Oura, Whoop, Apple Watch + AutoSleep. <em>Validate with polysomnography 1×/year.</em>">Oura, Whoop, Apple Watch + AutoSleep. <em>Validar con polisomnografía 1×/año.</em></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════════════════════════════════════════════════ -->
+<!-- 08 · INTEGRACIÓN CON FARMACIA INTERNA                        -->
+<!-- ═════════════════════════════════════════════════════════════ -->
+<section>
+  <div class="sec-head">
+    <div>
+      <div class="sec-num" data-es="08 · INTEGRACIÓN CON FARMACIA INTERNA" data-en="08 · INTERNAL PHARMACY INTEGRATION">08 · INTEGRACIÓN CON FARMACIA INTERNA</div>
+      <h3 data-es-html="Primero la base. <em>Después</em> la molécula." data-en-html="Base first. <em>Molecule</em> after.">Primero la base. <em>Después</em> la molécula.</h3>
+    </div>
+    <p class="sec-sub" data-es="Elixirs, péptidos, medicinas y químicos no sustituyen los tres pilares — los amplifican. Esta sección dice qué usar, cuándo y para qué." data-en="Elixirs, peptides, medicines and chemicals don't replace the three pillars — they amplify. This section says what, when, and why.">Elixirs, péptidos, medicinas y químicos no sustituyen los tres pilares — los amplifican. Esta sección dice qué usar, cuándo y para qué.</p>
+  </div>
+
+  <div class="pharm-grid">
+    <a href="sora-elixirs.html" class="pharm ph-elx">
+      <div class="ph-l" data-es="DIARIO · MAÑANA Y TARDE" data-en="DAILY · AM AND PM">DIARIO · MAÑANA Y TARDE</div>
+      <h5><em>Elixirs</em></h5>
+      <div class="ph-sub" data-es="30 líquidos rituales · plantas, hongos, minerales" data-en="30 ritual liquids · plants, fungi, minerals">30 líquidos rituales · plantas, hongos, minerales</div>
+      <p data-es-html="Soporte cotidiano. <strong>AM:</strong> Ashwagandha tonic, café con MCT, polvo de cordyceps. <strong>Tarde:</strong> matcha ceremonial. <strong>Noche:</strong> reishi, manzanilla, magnesio glicinato. La capa de base nutricional." data-en-html="Daily support. <strong>AM:</strong> Ashwagandha tonic, MCT coffee, cordyceps powder. <strong>PM:</strong> ceremonial matcha. <strong>Night:</strong> reishi, chamomile, magnesium glycinate. Nutritional base layer.">Soporte cotidiano. <strong>AM:</strong> Ashwagandha tonic, café con MCT, polvo de cordyceps. <strong>Tarde:</strong> matcha ceremonial. <strong>Noche:</strong> reishi, manzanilla, magnesio glicinato. La capa de base nutricional.</p>
+      <div class="ph-when" data-es="ABRIR ESTANTERÍA →" data-en="OPEN SHELF →">ABRIR ESTANTERÍA →</div>
+    </a>
+
+    <a href="sora-peptides.html" class="pharm ph-pep">
+      <div class="ph-l" data-es="LESIÓN · LONGEVIDAD · SUEÑO" data-en="INJURY · LONGEVITY · SLEEP">LESIÓN · LONGEVIDAD · SUEÑO</div>
+      <h5><em>Peptides</em></h5>
+      <div class="ph-sub" data-es="BPC-157 · TB-500 · Epitalon · Semax" data-en="BPC-157 · TB-500 · Epitalon · Semax">BPC-157 · TB-500 · Epitalon · Semax</div>
+      <p data-es-html="Cuando el cuerpo se lesiona o se desordena. <strong>BPC-157:</strong> tejido blando lesionado (8 semanas SC). <strong>TB-500:</strong> tendón y articulación crónicos. <strong>Epitalon:</strong> sueño profundo y longevidad (10 días, 2×/año). <strong>Semax:</strong> claridad mental post-trauma." data-en-html="When the body injures or disorders. <strong>BPC-157:</strong> soft tissue injury (8 weeks SC). <strong>TB-500:</strong> chronic tendon and joint. <strong>Epitalon:</strong> deep sleep and longevity (10 days, 2×/yr). <strong>Semax:</strong> mental clarity post-trauma.">Cuando el cuerpo se lesiona o se desordena. <strong>BPC-157:</strong> tejido blando lesionado (8 semanas SC). <strong>TB-500:</strong> tendón y articulación crónicos. <strong>Epitalon:</strong> sueño profundo y longevidad (10 días, 2×/año). <strong>Semax:</strong> claridad mental post-trauma.</p>
+      <div class="ph-when" data-es="ABRIR PROTOCOLOS →" data-en="OPEN PROTOCOLS →">ABRIR PROTOCOLOS →</div>
+    </a>
+
+    <a href="sora-medicines.html" class="pharm ph-med">
+      <div class="ph-l" data-es="ENFOQUE · MITOCONDRIA · NEUROPLASTICIDAD" data-en="FOCUS · MITOCHONDRIA · NEUROPLASTICITY">ENFOQUE · MITOCONDRIA · NEUROPLASTICIDAD</div>
+      <h5><em>Medicines</em></h5>
+      <div class="ph-sub" data-es="Metileno azul · NAD+ · racetams · modafinilo" data-en="Methylene blue · NAD+ · racetams · modafinil">Metileno azul · NAD+ · racetams · modafinilo</div>
+      <p data-es-html="Soporte funcional avanzado. <strong>Metileno azul (10 mg):</strong> stacked con panel rojo AM — top stack mitocondrial. <strong>NAD+:</strong> precursor de NAD intracelular, longevidad. <strong>Racetams:</strong> trabajo cognitivo profundo. <strong>Modafinilo:</strong> días excepcionales — no rutina." data-en-html="Advanced functional support. <strong>Methylene blue (10 mg):</strong> stacked with red panel AM — top mitochondrial stack. <strong>NAD+:</strong> intracellular NAD precursor, longevity. <strong>Racetams:</strong> deep cognitive work. <strong>Modafinil:</strong> exceptional days — not routine.">Soporte funcional avanzado. <strong>Metileno azul (10 mg):</strong> stacked con panel rojo AM — top stack mitocondrial. <strong>NAD+:</strong> precursor de NAD intracelular, longevidad. <strong>Racetams:</strong> trabajo cognitivo profundo. <strong>Modafinilo:</strong> días excepcionales — no rutina.</p>
+      <div class="ph-when" data-es="ABRIR BOTIQUÍN →" data-en="OPEN CABINET →">ABRIR BOTIQUÍN →</div>
+    </a>
+
+    <a href="sora-chemicals.html" class="pharm ph-chm">
+      <div class="ph-l" data-es="CONTEXTO RITUAL · NO RECREATIVO" data-en="RITUAL CONTEXT · NON-RECREATIONAL">CONTEXTO RITUAL · NO RECREATIVO</div>
+      <h5><em>Chemicals</em></h5>
+      <div class="ph-sub" data-es="Linaje Shulgin · psilocibina · MDMA · 2C-B" data-en="Shulgin lineage · psilocybin · MDMA · 2C-B">Linaje Shulgin · psilocibina · MDMA · 2C-B</div>
+      <p data-es-html="Solo en contexto ceremonial, terapéutico o creativo profundo. <strong>Microdosis psilocibina:</strong> protocolo Fadiman (1 día sí, 2 no, 4 semanas / 4 fuera). <strong>MDMA terapéutica:</strong> 1× / año con guía. <strong>2C-B:</strong> exploración consciente, no fiesta." data-en-html="Only ceremonial, therapeutic, or deep creative context. <strong>Psilocybin microdose:</strong> Fadiman protocol (1 on, 2 off, 4 weeks in / 4 out). <strong>Therapeutic MDMA:</strong> 1× / year with guide. <strong>2C-B:</strong> conscious exploration, not party.">Solo en contexto ceremonial, terapéutico o creativo profundo. <strong>Microdosis psilocibina:</strong> protocolo Fadiman (1 día sí, 2 no, 4 semanas / 4 fuera). <strong>MDMA terapéutica:</strong> 1× / año con guía. <strong>2C-B:</strong> exploración consciente, no fiesta.</p>
+      <div class="ph-when" data-es="ABRIR LABORATORIO →" data-en="OPEN LAB →">ABRIR LABORATORIO →</div>
+    </a>
+  </div>
+
+  <div class="callout-light" style="margin-top:18px;background:var(--paper-2);border:0.5px solid var(--line-2);padding:22px 28px;border-radius:10px">
+    <div style="font-family:var(--mono);font-size:10px;letter-spacing:.22em;color:var(--copper-deep);text-transform:uppercase;font-weight:700;margin-bottom:10px" data-es="REGLA DE ORO · LA PIRÁMIDE DE INTERVENCIÓN" data-en="GOLDEN RULE · INTERVENTION PYRAMID">REGLA DE ORO · LA PIRÁMIDE DE INTERVENCIÓN</div>
+    <div style="font-family:var(--serif);font-size:16px;color:var(--ink-2);font-style:italic;line-height:1.55;font-weight:300" data-es-html="<strong>Base:</strong> sueño + sol + caminata + comida real. <strong>Capa 2:</strong> fuerza + zona 2 + frío + sauna. <strong>Capa 3:</strong> ayunos + breathwork + coherencia cardíaca. <strong>Capa 4 (elixirs):</strong> apoyo nutricional inteligente. <strong>Capa 5 (péptidos):</strong> intervención puntual para lesión o longevidad. <strong>Capa 6 (medicinas y químicos):</strong> casos específicos, dosis controlada. <em>Nunca saltar capas. Quien empieza por la 6 — falla.</em>" data-en-html="<strong>Base:</strong> sleep + sun + walking + real food. <strong>Layer 2:</strong> strength + zone 2 + cold + sauna. <strong>Layer 3:</strong> fasts + breathwork + heart coherence. <strong>Layer 4 (elixirs):</strong> smart nutritional support. <strong>Layer 5 (peptides):</strong> targeted intervention for injury or longevity. <strong>Layer 6 (medicines and chemicals):</strong> specific cases, controlled dose. <em>Never skip layers. Whoever starts at 6 — fails.</em>"><strong>Base:</strong> sueño + sol + caminata + comida real. <strong>Capa 2:</strong> fuerza + zona 2 + frío + sauna. <strong>Capa 3:</strong> ayunos + breathwork + coherencia cardíaca. <strong>Capa 4 (elixirs):</strong> apoyo nutricional inteligente. <strong>Capa 5 (péptidos):</strong> intervención puntual para lesión o longevidad. <strong>Capa 6 (medicinas y químicos):</strong> casos específicos, dosis controlada. <em>Nunca saltar capas. Quien empieza por la 6 — falla.</em></div>
+  </div>
+</section>
+
+<!-- ═════════════════════════════════════════════════════════════ -->
+<!-- 09 · LA SEMANA TIPO · NIVEL OPERATIVO                        -->
+<!-- ═════════════════════════════════════════════════════════════ -->
+<section>
+  <div class="sec-head">
+    <div>
+      <div class="sec-num" data-es="09 · LA SEMANA TIPO" data-en="09 · THE TYPICAL WEEK">09 · LA SEMANA TIPO</div>
+      <h3 data-es-html="Siete días, <em>siete decisiones</em>." data-en-html="Seven days, <em>seven decisions</em>.">Siete días, <em>siete decisiones</em>.</h3>
+    </div>
+    <p class="sec-sub" data-es="Así corre la semana de un miembro Operativo en Boquete. Adaptable a viaje, familia, estación. La estructura sobre cualquier circunstancia." data-en="That's how an Operativo's week runs in Boquete. Adaptable to travel, family, season. Structure over circumstance.">Así corre la semana de un miembro Operativo en Boquete. Adaptable a viaje, familia, estación. La estructura sobre cualquier circunstancia.</p>
+  </div>
+
+  <div class="daystrip">
+    <div class="day">
+      <div class="d-name" data-es="LUNES" data-en="MONDAY">LUNES</div>
+      <div class="d-num"><em>01</em></div>
+      <div class="d-block"><strong data-es="06:00" data-en="06:00">06:00</strong><span data-es="Sol AM 10' + ducha fría 3'" data-en="AM sun 10' + cold shower 3'">Sol AM 10' + ducha fría 3'</span></div>
+      <div class="d-block"><strong data-es="07:00" data-en="07:00">07:00</strong><span data-es="Fuerza A (sentadilla + banca + remo)" data-en="Strength A (squat + bench + row)">Fuerza A (sentadilla + banca + remo)</span></div>
+      <div class="d-block"><strong data-es="11:30" data-en="11:30">11:30</strong><span data-es="Comida 1 — pesado en proteína" data-en="Meal 1 — protein heavy">Comida 1 — pesado en proteína</span></div>
+      <div class="d-block"><strong data-es="17:30" data-en="17:30">17:30</strong><span data-es="Comida 2 — sopa + ensalada" data-en="Meal 2 — soup + salad">Comida 2 — sopa + ensalada</span></div>
+      <div class="d-rest" data-es="DESCANSO · 22:00" data-en="REST · 22:00">DESCANSO · 22:00</div>
+    </div>
+    <div class="day">
+      <div class="d-name" data-es="MARTES" data-en="TUESDAY">MARTES</div>
+      <div class="d-num"><em>02</em></div>
+      <div class="d-block"><strong data-es="06:00" data-en="06:00">06:00</strong><span data-es="Sol AM + Wim Hof 12'" data-en="AM sun + Wim Hof 12'">Sol AM + Wim Hof 12'</span></div>
+      <div class="d-block"><strong data-es="07:00" data-en="07:00">07:00</strong><span data-es="Zona 2 · 45 min · caminata-trote" data-en="Zone 2 · 45 min · walk-jog">Zona 2 · 45 min · caminata-trote</span></div>
+      <div class="d-block"><strong data-es="11:30" data-en="11:30">11:30</strong><span data-es="Comida 1 + sol mediodía 15'" data-en="Meal 1 + midday sun 15'">Comida 1 + sol mediodía 15'</span></div>
+      <div class="d-block"><strong data-es="18:00" data-en="18:00">18:00</strong><span data-es="Comida 2 + sauna 20'" data-en="Meal 2 + sauna 20'">Comida 2 + sauna 20'</span></div>
+      <div class="d-rest" data-es="DESCANSO · 22:00" data-en="REST · 22:00">DESCANSO · 22:00</div>
+    </div>
+    <div class="day">
+      <div class="d-name" data-es="MIÉRCOLES" data-en="WEDNESDAY">MIÉRCOLES</div>
+      <div class="d-num"><em>03</em></div>
+      <div class="d-block"><strong data-es="06:00" data-en="06:00">06:00</strong><span data-es="Sol AM + panel rojo + metileno azul" data-en="AM sun + red panel + methylene blue">Sol AM + panel rojo + metileno azul</span></div>
+      <div class="d-block"><strong data-es="07:00" data-en="07:00">07:00</strong><span data-es="Fuerza B (peso muerto + press + dominadas)" data-en="Strength B (deadlift + press + pull-ups)">Fuerza B (peso muerto + press + dominadas)</span></div>
+      <div class="d-block"><strong data-es="11:30" data-en="11:30">11:30</strong><span data-es="Comida 1 — pesado en carbohidrato post-fuerza" data-en="Meal 1 — carb-heavy post-lift">Comida 1 — pesado en carbohidrato post-fuerza</span></div>
+      <div class="d-block"><strong data-es="18:00" data-en="18:00">18:00</strong><span data-es="Comida 2 + coherencia cardíaca 10'" data-en="Meal 2 + heart coherence 10'">Comida 2 + coherencia cardíaca 10'</span></div>
+      <div class="d-rest" data-es="DESCANSO · 22:00" data-en="REST · 22:00">DESCANSO · 22:00</div>
+    </div>
+    <div class="day">
+      <div class="d-name" data-es="JUEVES" data-en="THURSDAY">JUEVES</div>
+      <div class="d-num"><em>04</em></div>
+      <div class="d-block"><strong data-es="06:00" data-en="06:00">06:00</strong><span data-es="Sol AM + ducha fría" data-en="AM sun + cold shower">Sol AM + ducha fría</span></div>
+      <div class="d-block"><strong data-es="07:00" data-en="07:00">07:00</strong><span data-es="VO₂ max · 4×4 min sprint protocol" data-en="VO₂ max · 4×4 min sprint protocol">VO₂ max · 4×4 min sprint protocol</span></div>
+      <div class="d-block"><strong data-es="11:30" data-en="11:30">11:30</strong><span data-es="Comida 1 + inmersión fría río Caldera" data-en="Meal 1 + cold dip Caldera river">Comida 1 + inmersión fría río Caldera</span></div>
+      <div class="d-block"><strong data-es="18:00" data-en="18:00">18:00</strong><span data-es="Comida 2 ligera + sauna + contraste" data-en="Light meal 2 + sauna + contrast">Comida 2 ligera + sauna + contraste</span></div>
+      <div class="d-rest" data-es="DESCANSO · 22:00" data-en="REST · 22:00">DESCANSO · 22:00</div>
+    </div>
+    <div class="day">
+      <div class="d-name" data-es="VIERNES" data-en="FRIDAY">VIERNES</div>
+      <div class="d-num"><em>05</em></div>
+      <div class="d-block"><strong data-es="06:00" data-en="06:00">06:00</strong><span data-es="Sol AM + box breathing" data-en="AM sun + box breathing">Sol AM + box breathing</span></div>
+      <div class="d-block"><strong data-es="07:00" data-en="07:00">07:00</strong><span data-es="Zona 2 · 45 min + movilidad 20'" data-en="Zone 2 · 45 min + mobility 20'">Zona 2 · 45 min + movilidad 20'</span></div>
+      <div class="d-block"><strong data-es="11:30" data-en="11:30">11:30</strong><span data-es="Comida 1 — encuentro con socios" data-en="Meal 1 — partners' meal">Comida 1 — encuentro con socios</span></div>
+      <div class="d-block"><strong data-es="18:00" data-en="18:00">18:00</strong><span data-es="Comida 2 — un vino, en familia" data-en="Meal 2 — one wine, with family">Comida 2 — un vino, en familia</span></div>
+      <div class="d-rest" data-es="DESCANSO · 22:00" data-en="REST · 22:00">DESCANSO · 22:00</div>
+    </div>
+    <div class="day">
+      <div class="d-name" data-es="SÁBADO" data-en="SATURDAY">SÁBADO</div>
+      <div class="d-num"><em>06</em></div>
+      <div class="d-block"><strong data-es="06:30" data-en="06:30">06:30</strong><span data-es="Sol AM + caminata familia" data-en="AM sun + family walk">Sol AM + caminata familia</span></div>
+      <div class="d-block"><strong data-es="08:00" data-en="08:00">08:00</strong><span data-es="Fuerza C (5×3 pesado · día premium)" data-en="Strength C (5×3 heavy · premium day)">Fuerza C (5×3 pesado · día premium)</span></div>
+      <div class="d-block"><strong data-es="12:00" data-en="12:00">12:00</strong><span data-es="Comida 1 — más larga, social" data-en="Meal 1 — longer, social">Comida 1 — más larga, social</span></div>
+      <div class="d-block"><strong data-es="19:00" data-en="19:00">19:00</strong><span data-es="Comida 2 — cena en familia o restaurante" data-en="Meal 2 — family or restaurant dinner">Comida 2 — cena en familia o restaurante</span></div>
+      <div class="d-rest" data-es="DESCANSO · 22:30" data-en="REST · 22:30">DESCANSO · 22:30</div>
+    </div>
+    <div class="day" style="background:var(--paper-3)">
+      <div class="d-name" data-es="DOMINGO" data-en="SUNDAY">DOMINGO</div>
+      <div class="d-num"><em>07</em></div>
+      <div class="d-block"><strong data-es="07:00" data-en="07:00">07:00</strong><span data-es="Despertar sin alarma + sol AM" data-en="Wake no alarm + AM sun">Despertar sin alarma + sol AM</span></div>
+      <div class="d-block"><strong data-es="09:00" data-en="09:00">09:00</strong><span data-es="Caminata larga 90 min · sendero o Bajo Mono" data-en="Long walk 90 min · trail or Bajo Mono">Caminata larga 90 min · sendero o Bajo Mono</span></div>
+      <div class="d-block"><strong data-es="13:00" data-en="13:00">13:00</strong><span data-es="Comida 1 — preparación de la semana" data-en="Meal 1 — meal prep week ahead">Comida 1 — preparación de la semana</span></div>
+      <div class="d-block"><strong data-es="—" data-en="—">—</strong><span data-es="Lectura, escritura, oración, silencio" data-en="Reading, writing, prayer, silence">Lectura, escritura, oración, silencio</span></div>
+      <div class="d-rest" data-es="RECUPERACIÓN COMPLETA" data-en="FULL RECOVERY">RECUPERACIÓN COMPLETA</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════════════════════════════════════════════════ -->
+<!-- 10 · MARCADORES Y MEDICIÓN                                   -->
+<!-- ═════════════════════════════════════════════════════════════ -->
+<section>
+  <div class="sec-head">
+    <div>
+      <div class="sec-num" data-es="10 · MARCADORES Y MEDICIÓN" data-en="10 · MARKERS AND MEASUREMENT">10 · MARCADORES Y MEDICIÓN</div>
+      <h3 data-es-html="<em>Lo que no se mide</em> no se mejora." data-en-html="<em>What's not measured</em> doesn't improve."><em>Lo que no se mide</em> no se mejora.</h3>
+    </div>
+    <p class="sec-sub" data-es="No obsesionar. Medir lo que dice más con lo mínimo. Trimestral si Operativo, semestral si Maestro." data-en="Don't obsess. Measure what says most with the least. Quarterly if Operativo, semi-annually if Maestro.">No obsesionar. Medir lo que dice más con lo mínimo. Trimestral si Operativo, semestral si Maestro.</p>
+  </div>
+
+  <div class="metrics">
+    <div class="metric">
+      <div class="ml" data-es="DIARIO · TIEMPO REAL" data-en="DAILY · REAL TIME">DIARIO · TIEMPO REAL</div>
+      <h5 data-es-html="HRV · <em>FC reposo</em>" data-en-html="HRV · <em>RHR</em>">HRV · <em>FC reposo</em></h5>
+      <p data-es="Anillo Oura, Whoop, o Apple Watch + AutoSleep. La mejor señal diaria de recuperación. Subida sostenida en FC reposo = recortar entrenamiento." data-en="Oura ring, Whoop, or Apple Watch + AutoSleep. The best daily recovery signal. Sustained RHR rise = pull back training.">Anillo Oura, Whoop, o Apple Watch + AutoSleep. La mejor señal diaria de recuperación. Subida sostenida en FC reposo = recortar entrenamiento.</p>
+      <div class="target" data-es="OBJETIVO · HRV &gt; 55 ms · FC &lt; 55 bpm" data-en="TARGET · HRV &gt; 55 ms · RHR &lt; 55 bpm">OBJETIVO · HRV &gt; 55 ms · FC &lt; 55 bpm</div>
+    </div>
+    <div class="metric">
+      <div class="ml" data-es="2 SEMANAS · GLUCOSA CONTINUA" data-en="2 WEEKS · CONTINUOUS GLUCOSE">2 SEMANAS · GLUCOSA CONTINUA</div>
+      <h5 data-es-html="CGM · <em>2× al año</em>" data-en-html="CGM · <em>2× per year</em>">CGM · <em>2× al año</em></h5>
+      <p data-es="Sensor Freestyle Libre o Stelo (14 días). Aprender qué comida sube glucosa más, qué orden, qué horario. La mejor inversión educativa nutricional." data-en="Freestyle Libre or Stelo sensor (14 days). Learn which food spikes glucose most, in what order, what timing. Best nutritional education investment.">Sensor Freestyle Libre o Stelo (14 días). Aprender qué comida sube glucosa más, qué orden, qué horario. La mejor inversión educativa nutricional.</p>
+      <div class="target" data-es="OBJETIVO · MEDIA 85 – 95 · PICOS &lt; 140 mg/dL" data-en="TARGET · MEAN 85 – 95 · PEAKS &lt; 140 mg/dL">OBJETIVO · MEDIA 85 – 95 · PICOS &lt; 140 mg/dL</div>
+    </div>
+    <div class="metric">
+      <div class="ml" data-es="TRIMESTRAL · LAB COMPLETA" data-en="QUARTERLY · FULL LAB">TRIMESTRAL · LAB COMPLETA</div>
+      <h5 data-es-html="Panel sangre <em>completo</em>" data-en-html="<em>Full</em> blood panel">Panel sangre <em>completo</em></h5>
+      <p data-es-html="ApoB, Lp(a), HbA1c, hsCRP, ferritina, vitamina D, omega-3 index, testosterona libre/total, T3/T4 libre, SHBG, DHEA-S, hormonas. <strong>Más actional que cualquier algoritmo.</strong>" data-en-html="ApoB, Lp(a), HbA1c, hsCRP, ferritin, vitamin D, omega-3 index, free/total testosterone, free T3/T4, SHBG, DHEA-S, hormones. <strong>More actionable than any algorithm.</strong>">ApoB, Lp(a), HbA1c, hsCRP, ferritina, vitamina D, omega-3 index, testosterona libre/total, T3/T4 libre, SHBG, DHEA-S, hormonas. <strong>Más actional que cualquier algoritmo.</strong></p>
+      <div class="target" data-es="LABORATORIO · CLÍNICA HOSPITAL CHIRIQUÍ" data-en="LAB · CLÍNICA HOSPITAL CHIRIQUÍ">LABORATORIO · CLÍNICA HOSPITAL CHIRIQUÍ</div>
+    </div>
+    <div class="metric">
+      <div class="ml" data-es="ANUAL · EDAD BIOLÓGICA" data-en="ANNUAL · BIOLOGICAL AGE">ANUAL · EDAD BIOLÓGICA</div>
+      <h5 data-es-html="<em>DEXA</em> + epigenética" data-en-html="<em>DEXA</em> + epigenetic"><em>DEXA</em> + epigenética</h5>
+      <p data-es-html="Composición corporal (DEXA) — grasa visceral, masa magra por miembro, densidad ósea. Test epigenético (TruDiagnostic, GlycanAge) — edad biológica vs cronológica. <strong>Una vez al año basta.</strong>" data-en-html="Body composition (DEXA) — visceral fat, lean mass per limb, bone density. Epigenetic test (TruDiagnostic, GlycanAge) — biological vs chronological age. <strong>Once a year is enough.</strong>">Composición corporal (DEXA) — grasa visceral, masa magra por miembro, densidad ósea. Test epigenético (TruDiagnostic, GlycanAge) — edad biológica vs cronológica. <strong>Una vez al año basta.</strong></p>
+      <div class="target" data-es="OBJETIVO · GRASA &lt; 18% · EDAD BIO − 5+" data-en="TARGET · FAT &lt; 18% · BIO AGE − 5+">OBJETIVO · GRASA &lt; 18% · EDAD BIO − 5+</div>
+    </div>
+  </div>
+
+  <div class="protocol" style="margin-top:24px">
+    <div class="ph">
+      <span class="pl" data-es="EL TABLERO MÍNIMO · LO QUE TODO MIEMBRO SIGUE" data-en="MINIMUM DASHBOARD · WHAT EVERY MEMBER TRACKS">EL TABLERO MÍNIMO · LO QUE TODO MIEMBRO SIGUE</span>
+      <span class="pt" data-es="6 números, todo el año" data-en="6 numbers, all year">6 números, todo el año</span>
+    </div>
+    <div class="pr"><div class="pt">01</div><div class="pc" data-es-html="<strong>Sueño:</strong> &gt; 7.5 h · &gt; 90 min profundo · &gt; 100 min REM" data-en-html="<strong>Sleep:</strong> &gt; 7.5 h · &gt; 90 min deep · &gt; 100 min REM"><strong>Sueño:</strong> &gt; 7.5 h · &gt; 90 min profundo · &gt; 100 min REM</div></div>
+    <div class="pr"><div class="pt">02</div><div class="pc" data-es-html="<strong>HRV:</strong> &gt; 55 ms nocturno (RMSSD)" data-en-html="<strong>HRV:</strong> &gt; 55 ms nocturnal (RMSSD)"><strong>HRV:</strong> &gt; 55 ms nocturno (RMSSD)</div></div>
+    <div class="pr"><div class="pt">03</div><div class="pc" data-es-html="<strong>Pasos:</strong> &gt; 10,000 diarios · idealmente con sol" data-en-html="<strong>Steps:</strong> &gt; 10,000 daily · ideally in sun"><strong>Pasos:</strong> &gt; 10,000 diarios · idealmente con sol</div></div>
+    <div class="pr"><div class="pt">04</div><div class="pc" data-es-html="<strong>Fuerza:</strong> 3 sesiones pesadas / semana · progresión registrada" data-en-html="<strong>Strength:</strong> 3 heavy sessions / week · logged progression"><strong>Fuerza:</strong> 3 sesiones pesadas / semana · progresión registrada</div></div>
+    <div class="pr"><div class="pt">05</div><div class="pc" data-es-html="<strong>VO₂ max:</strong> 1 sesión sprint / semana · trend trimestral" data-en-html="<strong>VO₂ max:</strong> 1 sprint session / week · quarterly trend"><strong>VO₂ max:</strong> 1 sesión sprint / semana · trend trimestral</div></div>
+    <div class="pr"><div class="pt">06</div><div class="pc" data-es-html="<strong>Calor + frío:</strong> 4 sauna + 11 min frío por semana — Søberg" data-en-html="<strong>Heat + cold:</strong> 4 sauna + 11 min cold per week — Søberg"><strong>Calor + frío:</strong> 4 sauna + 11 min frío por semana — Søberg</div></div>
+  </div>
+</section>
+
+<!-- ═════════════════════════════════════════════════════════════ -->
+<!-- 11 · MAESTROS Y LECTURAS                                    -->
+<!-- ═════════════════════════════════════════════════════════════ -->
+<section>
+  <div class="sec-head">
+    <div>
+      <div class="sec-num" data-es="11 · MAESTROS Y LECTURAS" data-en="11 · MASTERS AND READINGS">11 · MAESTROS Y LECTURAS</div>
+      <h3 data-es-html="De quiénes <em>aprendemos</em>." data-en-html="From whom we <em>learn</em>.">De quiénes <em>aprendemos</em>.</h3>
+    </div>
+    <p class="sec-sub" data-es="VIGOR no inventa; sintetiza. Estos son los pensadores e investigadores cuya obra está atrás del protocolo." data-en="VIGOR doesn't invent; it synthesizes. These are the thinkers and researchers whose work stands behind the protocol.">VIGOR no inventa; sintetiza. Estos son los pensadores e investigadores cuya obra está atrás del protocolo.</p>
+  </div>
+
+  <div class="readers">
+    <div class="reader">
+      <div class="r-l" data-es="LONGEVIDAD · MEDICINA INTERNA" data-en="LONGEVITY · INTERNAL MEDICINE">LONGEVIDAD · MEDICINA INTERNA</div>
+      <h6>Peter Attia, MD</h6>
+      <p data-es-html="<em>Outlive</em> (2023). El framework Medicina 3.0, los Cuatro Jinetes (cardiovasc, cáncer, neurodegen, metabolic) y el “Centenarian Decathlon.”" data-en-html="<em>Outlive</em> (2023). The Medicine 3.0 framework, the Four Horsemen (cardiovasc, cancer, neurodegen, metabolic), and the “Centenarian Decathlon.”"><em>Outlive</em> (2023). El framework Medicina 3.0, los Cuatro Jinetes (cardiovasc, cáncer, neurodegen, metabolic) y el "Centenarian Decathlon."</p>
+    </div>
+    <div class="reader">
+      <div class="r-l" data-es="NEUROCIENCIA APLICADA" data-en="APPLIED NEUROSCIENCE">NEUROCIENCIA APLICADA</div>
+      <h6>Andrew Huberman, PhD</h6>
+      <p data-es-html="Huberman Lab Podcast. Protocolos de sol AM, frío, dopamina, focus, sueño. <em>El traductor más confiable entre ciencia y práctica diaria.</em>" data-en-html="Huberman Lab Podcast. Protocols for AM sun, cold, dopamine, focus, sleep. <em>The most reliable translator between science and daily practice.</em>">Huberman Lab Podcast. Protocolos de sol AM, frío, dopamina, focus, sueño. <em>El traductor más confiable entre ciencia y práctica diaria.</em></p>
+    </div>
+    <div class="reader">
+      <div class="r-l" data-es="FUERZA Y RENDIMIENTO" data-en="STRENGTH AND PERFORMANCE">FUERZA Y RENDIMIENTO</div>
+      <h6>Andy Galpin, PhD</h6>
+      <p data-es-html="Tipo de fibra muscular, periodización, recuperación, ergogénicos. <em>Probablemente el científico de músculo más práctico vivo hoy.</em>" data-en-html="Muscle fiber type, periodization, recovery, ergogenics. <em>Probably the most practical muscle scientist alive today.</em>">Tipo de fibra muscular, periodización, recuperación, ergogénicos. <em>Probablemente el científico de músculo más práctico vivo hoy.</em></p>
+    </div>
+    <div class="reader">
+      <div class="r-l" data-es="FRÍO · TERMORREGULACIÓN" data-en="COLD · THERMOREGULATION">FRÍO · TERMORREGULACIÓN</div>
+      <h6>Susanna Søberg, PhD</h6>
+      <p data-es-html="<em>Winter Swimming</em> (2022). Estableció la dosis óptima de frío para activación de grasa parda — 11 min/semana a 14 °C, distribuido." data-en-html="<em>Winter Swimming</em> (2022). Established the optimal cold dose for brown fat activation — 11 min/wk at 14 °C, distributed."><em>Winter Swimming</em> (2022). Estableció la dosis óptima de frío para activación de grasa parda — 11 min/semana a 14 °C, distribuido.</p>
+    </div>
+    <div class="reader">
+      <div class="r-l" data-es="AYUNO Y AUTOFAGIA" data-en="FASTING AND AUTOPHAGY">AYUNO Y AUTOFAGIA</div>
+      <h6>Valter Longo, PhD</h6>
+      <p data-es-html="<em>The Longevity Diet</em>. Fasting Mimicking Diet (5 días), protocolo de regeneración celular y reducción de IGF-1. Base científica del ayuno trimestral." data-en-html="<em>The Longevity Diet</em>. Fasting Mimicking Diet (5 days), cellular regeneration and IGF-1 reduction protocol. Scientific base for quarterly fasting."><em>The Longevity Diet</em>. Fasting Mimicking Diet (5 días), protocolo de regeneración celular y reducción de IGF-1. Base científica del ayuno trimestral.</p>
+    </div>
+    <div class="reader">
+      <div class="r-l" data-es="RESPIRACIÓN NASAL" data-en="NASAL BREATHING">RESPIRACIÓN NASAL</div>
+      <h6>Patrick McKeown · James Nestor</h6>
+      <p data-es-html="<em>Oxygen Advantage</em> + <em>Breath</em>. Restauración de la respiración nasal como base del rendimiento, sueño, y salud cardiovascular." data-en-html="<em>Oxygen Advantage</em> + <em>Breath</em>. Restoration of nasal breathing as performance, sleep, and cardiovascular health foundation."><em>Oxygen Advantage</em> + <em>Breath</em>. Restauración de la respiración nasal como base del rendimiento, sueño, y salud cardiovascular.</p>
+    </div>
+    <div class="reader">
+      <div class="r-l" data-es="MOVILIDAD Y PLIABILIDAD" data-en="MOBILITY AND PLIABILITY">MOVILIDAD Y PLIABILIDAD</div>
+      <h6>Kelly Starrett, DPT</h6>
+      <p data-es-html="<em>Built to Move</em>. Las 10 pruebas que predicen función a los 80. El régimen diario que las mantiene." data-en-html="<em>Built to Move</em>. The 10 tests that predict function at 80. The daily regimen that keeps them."><em>Built to Move</em>. Las 10 pruebas que predicen función a los 80. El régimen diario que las mantiene.</p>
+    </div>
+    <div class="reader">
+      <div class="r-l" data-es="BIOELECTRICIDAD" data-en="BIOELECTRICITY">BIOELECTRICIDAD</div>
+      <h6>Jack Kruse, MD</h6>
+      <p data-es-html="Mitochondriac. La síntesis controversial pero documentada de luz, agua estructurada (Pollack), campos magnéticos y mitocondria. Pilar 03 de VIGOR." data-en-html="Mitochondriac. The controversial but documented synthesis of light, structured water (Pollack), magnetic fields, and mitochondria. Pillar 03 of VIGOR.">Mitochondriac. La síntesis controversial pero documentada de luz, agua estructurada (Pollack), campos magnéticos y mitocondria. Pilar 03 de VIGOR.</p>
+    </div>
+    <div class="reader">
+      <div class="r-l" data-es="SUEÑO" data-en="SLEEP">SUEÑO</div>
+      <h6>Matthew Walker, PhD</h6>
+      <p data-es-html="<em>Why We Sleep</em>. Sintetizó dos décadas de investigación. El sueño como infraestructura de toda otra intervención." data-en-html="<em>Why We Sleep</em>. Synthesized two decades of research. Sleep as infrastructure for all other intervention."><em>Why We Sleep</em>. Sintetizó dos décadas de investigación. El sueño como infraestructura de toda otra intervención.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════════════════════════════════════════════════ -->
+<!-- 12 · CIERRE FILOSÓFICO                                       -->
+<!-- ═════════════════════════════════════════════════════════════ -->
+<section>
+  <div class="close">
+    <div class="cl" data-es="CIERRE · FILOSOFÍA" data-en="CLOSE · PHILOSOPHY">CIERRE · FILOSOFÍA</div>
+    <h3 data-es-html="Construir un cuerpo que aguante <em>el siglo</em> — no porque temamos morir, sino porque tenemos <em>obra que entregar</em>." data-en-html="Build a body that holds <em>the century</em> — not because we fear death, but because we have <em>work to give</em>.">Construir un cuerpo que aguante <em>el siglo</em> — no porque temamos morir, sino porque tenemos <em>obra que entregar</em>.</h3>
+    <p data-es="Gene Key 40: del agotamiento, a través de la resolución, hasta la voluntad divina. La señal de que el protocolo funciona no es el espejo. Es que damos desde el rebose y nunca desde el cansancio. Que la mujer, el hijo, el socio, el extranjero — reciben de nosotros sin que nosotros perdamos. Ese es el cuerpo de un miembro de La Compañía." data-en="Gene Key 40: from exhaustion, through resolve, to divine will. The signal that the protocol works isn't the mirror. It's that we give from overflow, never from depletion. That the wife, the child, the partner, the stranger — receive from us without us losing. That is the body of a member of La Compañía.">Gene Key 40: del agotamiento, a través de la resolución, hasta la voluntad divina. La señal de que el protocolo funciona no es el espejo. Es que damos desde el rebose y nunca desde el cansancio. Que la mujer, el hijo, el socio, el extranjero — reciben de nosotros sin que nosotros perdamos. Ese es el cuerpo de un miembro de La Compañía.</p>
+  </div>
+</section>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-grid">
+    <div>
+      <div class="wordmark-foot">VIGOR</div>
+      <p class="tagline" data-es="El protocolo del cuerpo para los miembros de La Compañía. Comer, moverse, cargarse, respirar, descansar — como oficio." data-en="The body protocol for La Compañía members. Eating, moving, charging, breathing, resting — as craft.">El protocolo del cuerpo para los miembros de La Compañía. Comer, moverse, cargarse, respirar, descansar — como oficio.</p>
+    </div>
+    <div>
+      <h6 data-es="LOS TRES PILARES" data-en="THE THREE PILLARS">LOS TRES PILARES</h6>
+      <ul>
+        <li data-es="Alimentación" data-en="Nourishment">Alimentación</li>
+        <li data-es="Movimiento" data-en="Movement">Movimiento</li>
+        <li data-es="Biokinética" data-en="Biokinetics">Biokinética</li>
+        <li data-es="Respiración" data-en="Breath">Respiración</li>
+        <li data-es="Descanso" data-en="Rest">Descanso</li>
+      </ul>
+    </div>
+    <div>
+      <h6 data-es="FARMACIA INTERNA" data-en="INTERNAL PHARMACY">FARMACIA INTERNA</h6>
+      <ul>
+        <li><a href="sora-elixirs.html">Elixirs</a></li>
+        <li><a href="sora-peptides.html">Peptides</a></li>
+        <li><a href="sora-medicines.html">Medicines</a></li>
+        <li><a href="sora-chemicals.html">Chemicals</a></li>
+      </ul>
+    </div>
+    <div>
+      <h6 data-es="LA COMPAÑÍA" data-en="LA COMPAÑÍA">LA COMPAÑÍA</h6>
+      <ul>
+        <li><a href="lacompania.html" data-es="← Holding" data-en="← Holding">← Holding</a></li>
+        <li><a href="sora-hq.html">Sora · HQ</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>VIGOR · LA COMPAÑÍA · MMXXVI</span>
+    <span data-es="HECHO EN BOQUETE" data-en="MADE IN BOQUETE">HECHO EN BOQUETE</span>
+  </div>
+</footer>
+
+<script>
+const getLang = () => localStorage.getItem('sora.lang') || 'es';
+function applyLang(lang){
+  document.querySelectorAll('[data-es]').forEach(el=>{
+    const v = el.getAttribute('data-' + lang);
+    if (v != null) { if (/<[a-z]/i.test(v)) el.innerHTML = v; else el.textContent = v; }
+  });
+  document.querySelectorAll('[data-es-html]').forEach(el=>{
+    const v = el.getAttribute('data-' + lang + '-html');
+    if(v != null) el.innerHTML = v;
+  });
+  document.documentElement.lang = lang;
+  localStorage.setItem('sora.lang', lang);
+  document.querySelectorAll('.lang-toggle button').forEach(b=>b.classList.toggle('active', b.dataset.lang === lang));
+}
+document.querySelectorAll('.lang-toggle button').forEach(b=>b.addEventListener('click', ()=>applyLang(b.dataset.lang)));
+applyLang(getLang());
+</script>
+</body>
+</html>
