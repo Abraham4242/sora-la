@@ -86,11 +86,14 @@
   .sec-sub{font-family:var(--serif);font-size:16px;color:var(--ink-3);font-weight:300;max-width:380px;line-height:1.55;font-style:italic;text-align:right}
 
   /* BRANDS GRID */
-  .brands{display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:18px}
+  .brands{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  @media (max-width:780px){.brands{grid-template-columns:1fr}}
   .brand-card{position:relative;background:var(--paper-2);border:0.5px solid var(--line);border-radius:14px;padding:36px 38px 32px;display:flex;flex-direction:column;min-height:280px;transition:all .22s cubic-bezier(0.25,1,0.5,1);overflow:hidden}
   .brand-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--coral,#D9573B)}
   .brand-card.b-sora::before{background:#D9573B}
   .brand-card.b-veta::before{background:#b8602a}
+  .brand-card.b-plata::before{background:#1f4eb8}
+  .brand-card.b-rapitido::before{background:#c63320}
   .brand-card:hover{transform:translateY(-4px);box-shadow:0 14px 40px rgba(20,17,12,.08);border-color:var(--line-2);background:var(--paper)}
   .brand-card .b-tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.22em;color:var(--ink-faint);text-transform:uppercase;font-weight:600;margin-bottom:14px}
   .brand-card h4{font-family:var(--serif);font-weight:400;font-size:38px;line-height:1;color:var(--ink);letter-spacing:.02em;margin-bottom:8px}
@@ -206,7 +209,7 @@
       <div class="sec-num" data-es="01 · MARCAS" data-en="01 · BRANDS">01 · BRANDS</div>
       <h3 data-es-html="Lo <em>que construimos</em>." data-en-html="What we <em>build</em>.">What we <em>build</em>.</h3>
     </div>
-    <p class="sec-sub" data-es="Una marca live. Más en camino — cada una con identidad propia." data-en="One brand live. More on the way — each with its own identity.">One brand live. More on the way — each with its own identity.</p>
+    <p class="sec-sub" data-es="Cuatro apuestas. Cada una con identidad propia. Una infraestructura compartida abajo." data-en="Four bets. Each with its own identity. One shared infrastructure underneath.">Four bets. Each with its own identity. One shared infrastructure underneath.</p>
   </div>
 
   <div class="brands">
@@ -225,10 +228,32 @@
       <div class="b-tag" data-es="02 · EN DESARROLLO · ARRANQUE 2027" data-en="02 · IN DEVELOPMENT · LAUNCH 2027">02 · IN DEVELOPMENT · LAUNCH 2027</div>
       <h4 style="letter-spacing:.02em"><em style="color:#b8602a">VETA</em></h4>
       <div class="b-tag-line" data-es="Minería + procesamiento + off-take · Comarca Ngäbe-Buglé + LATAM" data-en="Mining + processing + off-take · Ngäbe-Buglé Comarca + LATAM">Mining + processing + off-take · Ngäbe-Buglé Comarca + LATAM</div>
-      <p data-es-html="La segunda apuesta — la contracara terrestre de Sora. JV directo con la comunidad <strong>Ngäbe-Buglé</strong> en Chiriquí. Streaming deal estructurado con First Quantum para Cobre Panamá. Off-take directo a fabricantes de semis, EVs y cable global. <em>De la veta al circuito.</em>" data-en-html="The second bet — Sora's earth-side counterpart. Direct JV with the <strong>Ngäbe-Buglé</strong> community in Chiriquí. Structured streaming deal with First Quantum for Cobre Panamá. Direct off-take to global semi, EV, and cable manufacturers. <em>From the seam to the circuit.</em>">The second bet — Sora's earth-side counterpart. Direct JV with the Ngäbe-Buglé community in Chiriquí. Structured streaming deal with First Quantum for Cobre Panamá. Direct off-take to global semi, EV, and cable manufacturers. From the seam to the circuit.</p>
+      <p data-es-html="La contracara terrestre de Sora. JV directo con la comunidad <strong>Ngäbe-Buglé</strong> en Chiriquí. Streaming deal estructurado con First Quantum para Cobre Panamá. Off-take directo a fabricantes de semis, EVs y cable global." data-en-html="Sora's earth-side counterpart. Direct JV with the <strong>Ngäbe-Buglé</strong> community in Chiriquí. Structured streaming deal with First Quantum for Cobre Panamá. Direct off-take to global semi, EV, and cable manufacturers.">Sora's earth-side counterpart. Direct JV with the Ngäbe-Buglé community in Chiriquí. Structured streaming deal with First Quantum for Cobre Panamá. Direct off-take to global semi, EV, and cable manufacturers.</p>
       <div class="b-foot">
         <span class="b-meta">/veta.html</span>
         <span class="b-open" style="color:#b8602a">OPEN →</span>
+      </div>
+    </a>
+
+    <a href="plata.html" class="brand-card b-plata">
+      <div class="b-tag" data-es="03 · ARQUITECTURA · ARRANQUE 2028" data-en="03 · ARCHITECTURE · LAUNCH 2028">03 · ARCHITECTURE · LAUNCH 2028</div>
+      <h4 style="letter-spacing:.02em"><em style="color:#1f4eb8">PLATA</em></h4>
+      <div class="b-tag-line" data-es="Pagos P2P onchain · Panamá ↔ El Salvador · LATAM" data-en="P2P onchain payments · Panama ↔ El Salvador · LATAM">P2P onchain payments · Panama ↔ El Salvador · LATAM</div>
+      <p data-es-html="Red de dinero nativa onchain. <strong>USDC/USDT</strong> sobre Solana + Tron. Privacidad selectiva con zk-SNARKs (privado por default, cumplimiento opt-in). Biometría en capas FIDO2. Corredor Panamá ↔ El Salvador primero — dos países dolarizados con apetito cripto. <em>Mejor que Yappy. Mejor que Venmo. Cross-border.</em>" data-en-html="Native onchain money network. <strong>USDC/USDT</strong> on Solana + Tron. Selective privacy via zk-SNARKs (private default, opt-in compliance). FIDO2 layered biometrics. Panama ↔ El Salvador corridor first — two dollarized countries with crypto appetite. <em>Beats Yappy. Beats Venmo. Cross-border.</em>">Native onchain money network. USDC/USDT on Solana + Tron. Selective privacy via zk-SNARKs. FIDO2 layered biometrics. Panama ↔ El Salvador corridor first — two dollarized countries with crypto appetite. Beats Yappy. Beats Venmo. Cross-border.</p>
+      <div class="b-foot">
+        <span class="b-meta">/plata.html</span>
+        <span class="b-open" style="color:#1f4eb8">OPEN →</span>
+      </div>
+    </a>
+
+    <a href="rapitido.html" class="brand-card b-rapitido">
+      <div class="b-tag" data-es="04 · MVP · ARRANQUE 2027" data-en="04 · MVP · LAUNCH 2027">04 · MVP · LAUNCH 2027</div>
+      <h4 style="letter-spacing:.02em"><em style="color:#c63320">RAPITIDO</em></h4>
+      <div class="b-tag-line" data-es="Delivery + Restaurant OS · Boquete · David · LATAM" data-en="Delivery + Restaurant OS · Boquete · David · LATAM">Delivery + Restaurant OS · Boquete · David · LATAM</div>
+      <p data-es-html="App de delivery que compite con PedidosYa por estructura, no por catálogo. <strong>18% comisión</strong> al restaurante (vs 28%). Repartidores con salario base + 100% propina. Stock en vivo desde POS. Filtros dietéticos nativos. Pago en PLATA con descuento. Dos productos en uno: la app + un Restaurant OS para mesas, reservas e inventario." data-en-html="A delivery app that competes with PedidosYa on structure, not catalog. <strong>18% commission</strong> to restaurants (vs 28%). Drivers on base salary + 100% tips. Live POS-synced stock. Native dietary filters. Pay in PLATA discount. Two products in one: the app + a Restaurant OS for tables, reservations, and inventory.">A delivery app that competes with PedidosYa on structure, not catalog. 18% commission to restaurants (vs 28%). Drivers on base salary + 100% tips. Live POS-synced stock. Native dietary filters. Pay in PLATA discount. Two products in one: the app + a Restaurant OS for tables, reservations, and inventory.</p>
+      <div class="b-foot">
+        <span class="b-meta">/rapitido.html</span>
+        <span class="b-open" style="color:#c63320">OPEN →</span>
       </div>
     </a>
   </div>
@@ -552,9 +577,10 @@
     <div>
       <h6 data-es="MARCAS" data-en="BRANDS">BRANDS</h6>
       <ul>
-        <li><a href="sora-hq.html">SORA · HQ</a></li>
-        <li><a href="sora-ops.html" data-es="Sora · Ops" data-en="Sora · Ops">Sora · Ops</a></li>
+        <li><a href="sora-hq.html">SORA · Travel</a></li>
         <li><a href="veta.html">VETA · Minerals</a></li>
+        <li><a href="plata.html">PLATA · Money</a></li>
+        <li><a href="rapitido.html">RAPITIDO · Delivery</a></li>
         <li><a href="daily-notes.html" data-es="Notas Diarias" data-en="Daily Notes">Daily Notes</a></li>
       </ul>
     </div>

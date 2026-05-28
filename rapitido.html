@@ -1,0 +1,640 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RAPITIDO · Delivery + Restaurant OS · La Compañía</title>
+<meta name="description" content="RAPITIDO — Better-margin food delivery for Latin America. Lower commission, salaried drivers, native dietary filters. Competing with PedidosYa from day one.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23c63320'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Georgia,serif' font-size='20' font-weight='600' fill='%23fbf3df'%3ER%3C/text%3E%3C/svg%3E">
+<meta name="theme-color" content="#c63320">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #fbf3df;
+    --paper-2: #f5ead0;
+    --paper-3: #ecddb6;
+    --ink: #1c1410;
+    --ink-2: #2e2218;
+    --ink-3: #4b3a2a;
+    --ink-faint: #8a7256;
+    --line: rgba(28,20,16,0.10);
+    --line-2: rgba(28,20,16,0.20);
+    --tomato: #c63320;
+    --tomato-deep: #8e1f12;
+    --tomato-light: #e2674a;
+    --lime: #5a8a32;
+    --lime-deep: #3f6422;
+    --lime-light: #88b85a;
+    --mustard: #e0a93b;
+    --basil: #2f6048;
+    --serif: 'Fraunces', Georgia, serif;
+    --sans: 'Inter', -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  body{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.10  0 0 0 0 0.07  0 0 0 0 0.05  0 0 0 0.025 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--tomato);color:var(--paper)}
+  [data-en]:not([data-es]){display:none}
+  html[lang="en"] [data-es]:not([data-en]){display:none}
+  html[lang="en"] [data-en]:not([data-es]){display:inline}
+
+  .top{position:sticky;top:0;z-index:50;background:rgba(251,243,223,.94);backdrop-filter:blur(14px);border-bottom:0.5px solid var(--line)}
+  .top-in{max-width:1280px;margin:0 auto;padding:18px 36px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  .brand{display:flex;align-items:baseline;gap:14px}
+  .brand .word{font-family:var(--serif);font-weight:700;font-size:22px;letter-spacing:.16em;color:var(--tomato-deep)}
+  .brand .sub{font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--lime-deep);text-transform:uppercase;font-weight:700}
+  .spacer{flex:1}
+  .top-link{font-family:var(--sans);font-size:12px;color:var(--ink-2);padding:8px 14px;border:0.5px solid var(--line);border-radius:5px}
+  .top-link:hover{background:var(--paper-2);border-color:var(--line-2)}
+  .lang{display:inline-flex;border:0.5px solid var(--line);border-radius:5px;overflow:hidden}
+  .lang button{padding:7px 13px;font-family:var(--mono);font-size:10.5px;background:transparent;border:0;color:var(--ink-faint);cursor:pointer;font-weight:500;letter-spacing:.10em}
+  .lang button.active{background:var(--ink);color:var(--paper)}
+
+  .wrap{max-width:1280px;margin:0 auto;padding:0 36px}
+  .breadcrumbs{padding:24px 0 0;font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--ink-faint);text-transform:uppercase}
+  .breadcrumbs a{color:var(--tomato-deep);font-weight:700}
+
+  /* HERO */
+  .hero{padding:80px 0 56px;display:grid;grid-template-columns:1.3fr 1fr;gap:56px;align-items:center;border-bottom:0.5px solid var(--line)}
+  .hero-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.30em;text-transform:uppercase;color:var(--tomato-deep);font-weight:700;margin-bottom:24px}
+  .hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(72px,12vw,176px);line-height:.86;letter-spacing:-.04em;color:var(--ink);margin-bottom:20px}
+  .hero h1 em{font-style:italic;color:var(--tomato);font-weight:500}
+  .hero-lede{font-family:var(--serif);font-size:21px;color:var(--ink-2);font-weight:300;line-height:1.5;font-style:italic;margin-bottom:28px;max-width:560px}
+  .hero-meta{display:flex;gap:18px;flex-wrap:wrap;font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;color:var(--ink-faint);text-transform:uppercase}
+  .hero-meta span{display:inline-flex;align-items:center;gap:8px}
+  .hero-meta .dot{width:6px;height:6px;border-radius:50%;background:var(--tomato)}
+
+  .hero-art{aspect-ratio:1;background:linear-gradient(140deg,#c63320 0%,#a32614 50%,#5a1408 100%);border-radius:16px;overflow:hidden;position:relative;border:0.5px solid var(--line)}
+  .hero-art svg{width:100%;height:100%}
+  .hero-stamp{position:absolute;top:18px;left:18px;font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;background:rgba(251,243,223,.95);color:var(--tomato-deep);padding:6px 11px;border-radius:4px;font-weight:700;text-transform:uppercase}
+
+  .mission{margin:48px auto 64px;max-width:1100px;background:var(--ink);color:var(--paper);border-radius:16px;padding:52px 60px;position:relative;overflow:hidden}
+  .mission::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--tomato-deep),var(--tomato),var(--mustard),var(--lime-light),var(--lime-deep))}
+  .mission .m-label{font-family:var(--mono);font-size:10.5px;letter-spacing:.26em;color:var(--tomato-light);text-transform:uppercase;font-weight:700;margin-bottom:20px}
+  .mission h2{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4vw,42px);line-height:1.16;color:var(--paper);letter-spacing:-.015em;margin-bottom:20px}
+  .mission h2 em{color:var(--tomato-light);font-style:italic;font-weight:500}
+  .mission p{font-family:var(--serif);font-size:17px;line-height:1.65;color:rgba(251,243,223,0.80);font-style:italic;max-width:760px}
+
+  section{padding:72px 0 32px;border-top:0.5px solid var(--line)}
+  section:first-of-type{border-top:0}
+  .sec-head{margin-bottom:40px;display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap}
+  .sec-num{font-family:var(--mono);font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--tomato-deep);font-weight:700;margin-bottom:12px}
+  .sec-head h3{font-family:var(--serif);font-weight:400;font-size:clamp(36px,5vw,56px);line-height:1.02;color:var(--ink);letter-spacing:-.02em;max-width:720px}
+  .sec-head h3 em{font-style:italic;color:var(--tomato);font-weight:500}
+  .sec-sub{font-family:var(--serif);font-size:16px;color:var(--ink-3);font-weight:300;max-width:380px;line-height:1.55;font-style:italic;text-align:right}
+
+  /* THREE-SIDED VALUE */
+  .three-sides{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .side{background:var(--paper-2);border:0.5px solid var(--line);border-radius:14px;padding:30px 28px 26px;border-top:3px solid var(--tomato)}
+  .side.s-driver{border-top-color:var(--lime-deep)}
+  .side.s-eater{border-top-color:var(--mustard)}
+  .side .s-tag{font-family:var(--mono);font-size:10px;letter-spacing:.22em;color:var(--tomato-deep);text-transform:uppercase;font-weight:700;margin-bottom:14px;padding-bottom:12px;border-bottom:0.5px solid var(--line-2)}
+  .side.s-driver .s-tag{color:var(--lime-deep)}
+  .side.s-eater .s-tag{color:#a47018}
+  .side h4{font-family:var(--serif);font-weight:500;font-size:26px;color:var(--ink);line-height:1.15;margin-bottom:12px;letter-spacing:-.005em}
+  .side h4 em{font-style:italic;color:var(--tomato)}
+  .side.s-driver h4 em{color:var(--lime-deep)}
+  .side.s-eater h4 em{color:#a47018}
+  .side ul{list-style:none;padding:0;margin-top:14px}
+  .side li{font-family:var(--sans);font-size:13.5px;color:var(--ink-2);padding:8px 0 8px 18px;position:relative;line-height:1.5}
+  .side li::before{content:'';position:absolute;left:0;top:14px;width:10px;height:1px;background:var(--tomato)}
+  .side.s-driver li::before{background:var(--lime-deep)}
+  .side.s-eater li::before{background:var(--mustard)}
+  .side li strong{color:var(--ink);font-weight:600}
+
+  /* COMPARE TABLE */
+  .compete{background:var(--paper-2);border:0.5px solid var(--line);border-radius:14px;overflow:hidden}
+  .compete-row{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;align-items:center;border-bottom:0.5px solid var(--line)}
+  .compete-row:last-child{border-bottom:0}
+  .compete-row > div{padding:18px 20px}
+  .compete-row.head{background:var(--ink);color:var(--paper)}
+  .compete-row.head > div{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--tomato-light)}
+  .compete-row .feat{font-family:var(--serif);font-style:italic;font-size:15px;color:var(--ink);font-weight:500}
+  .compete-row .val{font-family:var(--sans);font-size:13.5px;color:var(--ink-2);line-height:1.45}
+  .compete-row .val.us{background:rgba(198,51,32,0.06);color:var(--tomato-deep);font-weight:600;border-left:2px solid var(--tomato)}
+  .compete-row .val .check{color:var(--lime-deep);font-weight:700}
+  .compete-row .val .x{color:var(--tomato);font-weight:700}
+
+  /* FEATURES GRID */
+  .feats{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+  .feat-card{background:var(--paper);border:0.5px solid var(--line);border-radius:10px;padding:24px 24px 20px;border-left:3px solid var(--tomato)}
+  .feat-card.f-multistop{border-left-color:var(--lime-deep)}
+  .feat-card.f-stock{border-left-color:var(--mustard)}
+  .feat-card.f-diet{border-left-color:var(--basil)}
+  .feat-card.f-wa{border-left-color:var(--tomato-light)}
+  .feat-card.f-plata{border-left-color:#1f4eb8}
+  .feat-card.f-sub{border-left-color:var(--lime-light)}
+  .feat-card .role{font-family:var(--mono);font-size:9.5px;letter-spacing:.20em;color:var(--tomato-deep);text-transform:uppercase;font-weight:700;margin-bottom:10px}
+  .feat-card.f-multistop .role{color:var(--lime-deep)}
+  .feat-card.f-stock .role{color:#a47018}
+  .feat-card.f-diet .role{color:var(--basil)}
+  .feat-card.f-wa .role{color:var(--tomato-light)}
+  .feat-card.f-plata .role{color:#1f4eb8}
+  .feat-card.f-sub .role{color:var(--lime-light)}
+  .feat-card h5{font-family:var(--serif);font-style:italic;font-size:20px;font-weight:500;color:var(--ink);line-height:1.18;margin-bottom:8px}
+  .feat-card p{font-family:var(--serif);font-size:13.5px;color:var(--ink-3);line-height:1.55;margin-bottom:10px}
+  .feat-card p strong{color:var(--ink);font-weight:600}
+
+  /* RESTAURANT OS CARD */
+  .ros-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+  .ros-text p{font-family:var(--serif);font-size:16px;line-height:1.7;color:var(--ink-2);margin-bottom:14px}
+  .ros-text p strong{color:var(--ink);font-weight:600}
+  .ros-text p em{color:var(--tomato);font-style:italic;font-weight:500}
+  .ros-text h4{font-family:var(--serif);font-weight:500;font-size:22px;color:var(--ink);margin:22px 0 10px;letter-spacing:-.005em}
+
+  .ros-card{background:var(--ink);color:var(--paper);border-radius:14px;padding:36px;position:relative;overflow:hidden}
+  .ros-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--tomato),var(--mustard),var(--lime-deep))}
+  .ros-card .rc-tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;color:var(--mustard);text-transform:uppercase;font-weight:700;margin-bottom:14px}
+  .ros-card h4{font-family:var(--serif);font-weight:400;font-size:24px;line-height:1.2;color:var(--paper);margin-bottom:16px}
+  .ros-card ul{list-style:none;padding:0;margin-top:12px}
+  .ros-card li{font-family:var(--serif);font-size:14.5px;color:rgba(251,243,223,0.82);line-height:1.65;padding-left:18px;position:relative;margin-bottom:9px}
+  .ros-card li::before{content:'·';position:absolute;left:0;color:var(--tomato-light);font-weight:700;font-size:18px;top:-3px}
+  .ros-card li strong{color:var(--mustard);font-weight:600}
+
+  /* TIMELINE */
+  .timeline{position:relative;padding-left:36px;border-left:1px solid var(--line-2)}
+  .tl-item{padding:0 0 32px 24px;position:relative}
+  .tl-item::before{content:'';position:absolute;left:-42px;top:6px;width:13px;height:13px;border-radius:50%;background:var(--tomato);border:3px solid var(--paper)}
+  .tl-item:nth-child(2)::before{background:var(--mustard)}
+  .tl-item:nth-child(3)::before{background:var(--lime-deep)}
+  .tl-item:nth-child(4)::before{background:var(--basil)}
+  .tl-q{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--tomato-deep);font-weight:700;margin-bottom:6px;text-transform:uppercase}
+  .tl-item h5{font-family:var(--serif);font-size:22px;font-weight:500;color:var(--ink);margin-bottom:8px}
+  .tl-item h5 em{font-style:italic;color:var(--tomato)}
+  .tl-item p{font-family:var(--serif);font-size:15px;line-height:1.6;color:var(--ink-2)}
+  .tl-item p strong{color:var(--ink);font-weight:600}
+
+  /* FOOTER */
+  footer{margin-top:80px;padding:48px 0 32px;background:var(--ink);color:var(--paper)}
+  footer .foot-grid{max-width:1280px;margin:0 auto;padding:0 36px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:36px}
+  footer .wordmark-foot{font-family:var(--serif);font-size:34px;font-weight:700;color:var(--tomato-light);letter-spacing:.16em;margin-bottom:14px;line-height:1}
+  footer .tagline{font-family:var(--serif);font-style:italic;font-size:14px;color:rgba(251,243,223,.6);line-height:1.55;max-width:320px}
+  footer h6{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;color:var(--tomato-light);text-transform:uppercase;font-weight:700;margin-bottom:14px}
+  footer ul{list-style:none}
+  footer ul li{margin-bottom:10px;font-size:13px}
+  footer ul a{color:rgba(251,243,223,.72);transition:color .15s}
+  footer ul a:hover{color:var(--tomato-light)}
+  .foot-bottom{max-width:1280px;margin:0 auto;padding:24px 36px 0;border-top:1px solid rgba(251,243,223,.10);display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;font-family:var(--mono);font-size:10.5px;letter-spacing:.10em;color:rgba(251,243,223,.42);text-transform:uppercase}
+
+  @media (max-width:880px){
+    .hero{grid-template-columns:1fr;gap:32px}
+    .three-sides{grid-template-columns:1fr}
+    .ros-grid{grid-template-columns:1fr;gap:24px}
+    .compete-row{grid-template-columns:1fr 1fr;font-size:12px}
+    footer .foot-grid{grid-template-columns:1fr 1fr;gap:32px}
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-in">
+    <div class="brand">
+      <a href="lacompania.html" style="color:inherit;text-decoration:none"><span class="word">RAPITIDO</span></a>
+      <span class="sub" data-es="Delivery · Restaurant OS" data-en="Delivery · Restaurant OS">Delivery · Restaurant OS</span>
+    </div>
+    <span class="spacer"></span>
+    <a class="top-link" href="lacompania.html" data-es="← La Compañía" data-en="← La Compañía">← La Compañía</a>
+    <a class="top-link" href="plata.html">PLATA →</a>
+    <div class="lang">
+      <button class="active" data-lang="en">EN</button>
+      <button data-lang="es">ES</button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<div class="breadcrumbs">
+  <a href="lacompania.html">LA COMPAÑÍA</a> · <span data-es="MARCAS" data-en="BRANDS">BRANDS</span> · 04 · RAPITIDO
+</div>
+
+<header class="hero">
+  <div>
+    <div class="hero-eyebrow" data-es="MARCA 04 · LA COMPAÑÍA · MMXXVI" data-en="BRAND 04 · LA COMPAÑÍA · MMXXVI">BRAND 04 · LA COMPAÑÍA · MMXXVI</div>
+    <h1>RAPITIDO</h1>
+    <p class="hero-lede" data-es-html="<em>Pedidos</em> sin la espera, sin la comisión absurda, sin el repartidor mal pagado. Compitiendo con PedidosYa desde el día uno." data-en-html="<em>Orders</em> without the wait, without the absurd commission, without the underpaid driver. Competing with PedidosYa from day one.">Orders without the wait, without the absurd commission, without the underpaid driver. Competing with PedidosYa from day one.</p>
+    <div class="hero-meta">
+      <span><span class="dot"></span><span data-es="BOQUETE · DAVID · PANAMÁ CITY" data-en="BOQUETE · DAVID · PANAMA CITY">BOQUETE · DAVID · PANAMA CITY</span></span>
+      <span><span class="dot"></span><span data-es="MENOS COMISIÓN · MEJORES DRIVERS" data-en="LESS COMMISSION · BETTER DRIVERS">LESS COMMISSION · BETTER DRIVERS</span></span>
+      <span><span class="dot"></span><span data-es="POS · MESA · DELIVERY" data-en="POS · TABLE · DELIVERY">POS · TABLE · DELIVERY</span></span>
+    </div>
+  </div>
+  <div class="hero-art">
+    <div class="hero-stamp" data-es="DELIVERY · COCINA · MESA" data-en="DELIVERY · KITCHEN · TABLE">DELIVERY · KITCHEN · TABLE</div>
+    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="plate-grad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#fbf3df"/>
+          <stop offset="1" stop-color="#e8d8a8"/>
+        </linearGradient>
+        <radialGradient id="steam" cx="0.5" cy="0.4" r="0.5">
+          <stop offset="0" stop-color="rgba(251,243,223,0.45)"/>
+          <stop offset="1" stop-color="rgba(251,243,223,0)"/>
+        </radialGradient>
+      </defs>
+
+      <!-- Plate (large circle) -->
+      <ellipse cx="200" cy="260" rx="150" ry="38" fill="rgba(0,0,0,0.25)"/>
+      <ellipse cx="200" cy="245" rx="155" ry="42" fill="url(#plate-grad)" stroke="#a47018" stroke-width="1.5"/>
+      <ellipse cx="200" cy="240" rx="135" ry="32" fill="#fbf3df" stroke="rgba(164,112,24,0.3)" stroke-width="0.5"/>
+
+      <!-- Food: bowl with rice + protein + sauce -->
+      <ellipse cx="200" cy="232" rx="100" ry="22" fill="#e2c890"/>
+      <!-- rice -->
+      <g fill="#fbf3df">
+        <ellipse cx="160" cy="225" rx="6" ry="3"/>
+        <ellipse cx="175" cy="220" rx="6" ry="3"/>
+        <ellipse cx="195" cy="228" rx="6" ry="3"/>
+        <ellipse cx="215" cy="222" rx="6" ry="3"/>
+        <ellipse cx="240" cy="226" rx="6" ry="3"/>
+        <ellipse cx="170" cy="232" rx="6" ry="3"/>
+        <ellipse cx="225" cy="232" rx="6" ry="3"/>
+      </g>
+      <!-- protein/meat chunks -->
+      <g fill="#7a3a18">
+        <ellipse cx="190" cy="218" rx="12" ry="6"/>
+        <ellipse cx="220" cy="216" rx="10" ry="5"/>
+        <ellipse cx="172" cy="220" rx="9" ry="5"/>
+      </g>
+      <!-- greens -->
+      <g fill="#5a8a32">
+        <ellipse cx="155" cy="222" rx="5" ry="3"/>
+        <ellipse cx="246" cy="220" rx="6" ry="3"/>
+        <ellipse cx="205" cy="215" rx="4" ry="2.5"/>
+      </g>
+      <!-- sauce drizzle -->
+      <path d="M 160 228 Q 200 215 240 230" stroke="#c63320" stroke-width="2" fill="none" opacity="0.85"/>
+
+      <!-- Steam wisps -->
+      <g fill="url(#steam)">
+        <ellipse cx="180" cy="160" rx="20" ry="40"><animate attributeName="cy" values="160;145;160" dur="3s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.6;0.3;0.6" dur="3s" repeatCount="indefinite"/></ellipse>
+        <ellipse cx="215" cy="155" rx="18" ry="35"><animate attributeName="cy" values="155;138;155" dur="3.5s" repeatCount="indefinite" begin="0.4s"/><animate attributeName="opacity" values="0.5;0.25;0.5" dur="3.5s" repeatCount="indefinite" begin="0.4s"/></ellipse>
+      </g>
+
+      <!-- Scooter (top-left, going) -->
+      <g transform="translate(50, 80)">
+        <!-- helmet/rider -->
+        <circle cx="14" cy="6" r="6" fill="#1c1410"/>
+        <!-- body -->
+        <rect x="6" y="10" width="20" height="14" rx="3" fill="#c63320"/>
+        <!-- bag -->
+        <rect x="-5" y="12" width="14" height="14" rx="2" fill="#fbf3df" stroke="#1c1410" stroke-width="1"/>
+        <text x="2" y="22" font-family="Inter" font-size="6" fill="#c63320" font-weight="700">R</text>
+        <!-- wheels -->
+        <circle cx="6" cy="30" r="5" fill="#1c1410"/>
+        <circle cx="25" cy="30" r="5" fill="#1c1410"/>
+        <circle cx="6" cy="30" r="2" fill="#fbf3df"/>
+        <circle cx="25" cy="30" r="2" fill="#fbf3df"/>
+      </g>
+      <!-- motion lines for scooter -->
+      <g stroke="rgba(251,243,223,0.45)" stroke-width="1.5" fill="none">
+        <line x1="20" y1="92" x2="40" y2="92"/>
+        <line x1="22" y1="100" x2="42" y2="100"/>
+        <line x1="20" y1="108" x2="38" y2="108"/>
+      </g>
+
+      <!-- Phone (right side) -->
+      <g transform="translate(280, 70)">
+        <rect x="0" y="0" width="60" height="100" rx="8" fill="#1c1410"/>
+        <rect x="3" y="6" width="54" height="88" rx="4" fill="#fbf3df"/>
+        <rect x="3" y="6" width="54" height="14" rx="4" fill="#c63320"/>
+        <text x="30" y="16" text-anchor="middle" font-family="Inter" font-size="6" fill="#fbf3df" font-weight="700">RAPITIDO</text>
+        <!-- order items -->
+        <rect x="7" y="25" width="46" height="10" rx="2" fill="#f5ead0"/>
+        <rect x="7" y="38" width="46" height="10" rx="2" fill="#f5ead0"/>
+        <rect x="7" y="51" width="46" height="10" rx="2" fill="#f5ead0"/>
+        <!-- timer -->
+        <rect x="7" y="68" width="46" height="20" rx="3" fill="#5a8a32"/>
+        <text x="30" y="80" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#fbf3df" font-weight="700">12:30</text>
+        <text x="30" y="86" text-anchor="middle" font-family="JetBrains Mono" font-size="5" fill="#fbf3df">ETA</text>
+      </g>
+
+      <!-- Top stamp text -->
+      <text x="200" y="390" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#fbf3df" letter-spacing="3" opacity="0.85">EL PEDIDO QUE LLEGA · 18 MIN PROMEDIO</text>
+    </svg>
+  </div>
+</header>
+
+<!-- MISSION -->
+<div class="mission">
+  <div class="m-label" data-es="MISIÓN" data-en="MISSION">MISSION</div>
+  <h2 data-es-html="Una app de delivery donde <em>todos ganan</em> — el restaurante gana más margen, el repartidor gana un salario, el cliente recibe más rápido y más barato. La economía existe, la tecnología existe. Lo único que faltaba era la decisión." data-en-html="A delivery app where <em>everyone wins</em> — the restaurant keeps more margin, the driver earns a salary, the customer pays less and waits less. The economics work, the tech works. What was missing was the decision.">A delivery app where everyone wins — the restaurant keeps more margin, the driver earns a salary, the customer pays less and waits less. The economics work, the tech works. What was missing was the decision.</h2>
+  <p data-es="RAPITIDO compite con PedidosYa, Uber Eats y DiDi Food no por tener más restaurantes — sino por tener mejor estructura. Comisión 18% (vs 28% de PedidosYa). Repartidores con base + propina (no piecework). Stock en vivo desde el POS. Filtros dietéticos nativos. Pago en PLATA con descuento. Y dos productos en uno: la app de delivery + un OS para restaurantes (mesa, reservas, inventario). Empezamos en Boquete y David, donde La Compañía vive. Después Panamá City, después El Salvador." data-en="RAPITIDO doesn't compete with PedidosYa, Uber Eats, and DiDi Food on restaurant count — it competes on structure. 18% commission (vs PedidosYa's 28%). Salaried-plus-tips drivers (no piecework). Live stock from the POS. Native dietary filters. Pay-in-PLATA discount. And two products in one: the delivery app + a Restaurant OS (table, reservations, inventory). We start in Boquete and David, where La Compañía lives. Then Panama City, then El Salvador.">RAPITIDO doesn't compete with PedidosYa, Uber Eats, and DiDi Food on restaurant count — it competes on structure. 18% commission (vs PedidosYa's 28%). Salaried-plus-tips drivers (no piecework). Live stock from the POS. Native dietary filters. Pay-in-PLATA discount. And two products in one: the delivery app + a Restaurant OS (table, reservations, inventory). We start in Boquete and David, where La Compañía lives. Then Panama City, then El Salvador.</p>
+</div>
+
+<!-- THREE-SIDED VALUE -->
+<section>
+  <div class="sec-head">
+    <div>
+      <div class="sec-num" data-es="01 · TRES LADOS" data-en="01 · THREE SIDES">01 · THREE SIDES</div>
+      <h3 data-es-html="Lo <em>que gana</em> cada lado." data-en-html="What <em>each side wins</em>.">What each side wins.</h3>
+    </div>
+    <p class="sec-sub" data-es="Sin uno de los tres, la red colapsa. Hay que ganarle bien a los tres." data-en="Without one of three, the network collapses. All three need to win.">Without one of three, the network collapses. All three need to win.</p>
+  </div>
+
+  <div class="three-sides">
+    <div class="side">
+      <div class="s-tag" data-es="LADO 01 · RESTAURANTE" data-en="SIDE 01 · RESTAURANT">SIDE 01 · RESTAURANT</div>
+      <h4 data-es-html="<em>Más margen</em>, más datos" data-en-html="<em>More margin</em>, more data">More margin, more data</h4>
+      <ul>
+        <li><strong>18% comisión</strong> <span data-es="vs 28% de PedidosYa. La diferencia es la utilidad de la cocina." data-en="vs PedidosYa's 28%. The difference is the kitchen's profit.">vs PedidosYa's 28%. The difference is the kitchen's profit.</span></li>
+        <li><span data-es-html="<strong>Integración POS directa</strong> — Vendus, Square, Bevy. Sin doble entrada, sin items vendidos cuando no hay stock." data-en-html="<strong>Direct POS integration</strong> — Vendus, Square, Bevy. No double entry, no items sold when out of stock.">Direct POS integration — Vendus, Square, Bevy. No double entry, no items sold when out of stock.</span></li>
+        <li><span data-es-html="<strong>Dashboard real</strong> — top platos, hora pico, items que dejan más margen. Hoy PedidosYa no comparte esto." data-en-html="<strong>Real dashboard</strong> — top dishes, peak hour, highest-margin items. PedidosYa doesn't share this today.">Real dashboard — top dishes, peak hour, highest-margin items. PedidosYa doesn't share this today.</span></li>
+        <li><span data-es-html="<strong>Restaurant OS</strong> incluido — reservas + mesa + inventario en una sola plataforma." data-en-html="<strong>Restaurant OS</strong> included — reservations + table + inventory on one platform.">Restaurant OS included — reservations + table + inventory on one platform.</span></li>
+        <li><span data-es="Pago a 7 días (vs 14-30 de PedidosYa)" data-en="7-day payout (vs PedidosYa's 14-30)">7-day payout (vs PedidosYa's 14-30)</span></li>
+      </ul>
+    </div>
+
+    <div class="side s-driver">
+      <div class="s-tag" data-es="LADO 02 · REPARTIDOR" data-en="SIDE 02 · DRIVER">SIDE 02 · DRIVER</div>
+      <h4 data-es-html="Salario <em>base</em> + propina" data-en-html="<em>Base salary</em> + tips">Base salary + tips</h4>
+      <ul>
+        <li><strong data-es="Salario por hora" data-en="Hourly wage">Hourly wage</strong> <span data-es="(no piecework). Promedio $5-7/hr en PA · $4-5 en SV. Más alto en horas pico." data-en="(no piecework). Average $5-7/hr in PA · $4-5 in SV. Higher in peak hours.">(no piecework). Average $5-7/hr in PA · $4-5 in SV. Higher in peak hours.</span></li>
+        <li><span data-es-html="<strong>100% de la propina</strong> — Rapitido no toca una sola moneda." data-en-html="<strong>100% of tips</strong> — Rapitido takes nothing.">100% of tips — Rapitido takes nothing.</span></li>
+        <li><span data-es-html="<strong>Seguro de salud</strong> a partir del mes 6. Seguro de moto/bici incluido." data-en-html="<strong>Health insurance</strong> from month 6. Vehicle insurance included.">Health insurance from month 6. Vehicle insurance included.</span></li>
+        <li><span data-es-html="<strong>Bonificación multi-stop</strong> — recoger en 2 restaurantes en un trip = +$2 por orden." data-en-html="<strong>Multi-stop bonus</strong> — picking up at 2 restaurants in one trip = +$2 per order.">Multi-stop bonus — picking up at 2 restaurants in one trip = +$2 per order.</span></li>
+        <li><span data-es="Financiamiento moto/bici eléctrica · $0 down · descuento de salario" data-en="Electric scooter/bike financing · $0 down · salary deduction">Electric scooter/bike financing · $0 down · salary deduction</span></li>
+        <li><span data-es="Acceso a beneficios La Compañía (Sora · medicina · Plata)" data-en="Access to La Compañía benefits (Sora · medicine · Plata)">Access to La Compañía benefits (Sora · medicine · Plata)</span></li>
+      </ul>
+    </div>
+
+    <div class="side s-eater">
+      <div class="s-tag" data-es="LADO 03 · CLIENTE" data-en="SIDE 03 · CUSTOMER">SIDE 03 · CUSTOMER</div>
+      <h4 data-es-html="Más <em>rápido</em>, más barato" data-en-html="<em>Faster</em>, cheaper">Faster, cheaper</h4>
+      <ul>
+        <li><strong data-es="Suscripción $9.99/mes" data-en="$9.99/mo subscription">$9.99/mo subscription</strong> <span data-es="= delivery gratis ilimitado. Cuesta menos que 3 órdenes con PedidosYa." data-en="= unlimited free delivery. Cheaper than 3 PedidosYa orders.">= unlimited free delivery. Cheaper than 3 PedidosYa orders.</span></li>
+        <li><span data-es-html="<strong>Stock en vivo</strong> — si la cocina se queda sin ceviche, el item se grisa al instante. No esperás 20 min para que te llamen." data-en-html="<strong>Live stock</strong> — if the kitchen runs out of ceviche, the item grays instantly. No 20-min wait for the call.">Live stock — if the kitchen runs out of ceviche, the item grays instantly. No 20-min wait for the call.</span></li>
+        <li><span data-es-html="<strong>Multi-stop</strong> — sushi + postre de otro restaurante en un solo pedido." data-en-html="<strong>Multi-stop</strong> — sushi + dessert from a different restaurant in one order.">Multi-stop — sushi + dessert from a different restaurant in one order.</span></li>
+        <li><span data-es-html="<strong>Filtros dietéticos reales</strong> — vegano, sin gluten, halal, keto, anti-inflamatorio. Conectado a Sora-Medicines si querés." data-en-html="<strong>Real dietary filters</strong> — vegan, gluten-free, halal, keto, anti-inflammatory. Optional Sora-Medicines link.">Real dietary filters — vegan, gluten-free, halal, keto, anti-inflammatory. Optional Sora-Medicines link.</span></li>
+        <li><span data-es-html="<strong>Pago en PLATA</strong> = 2% descuento. Crypto-native, opcional, sin fricción para el que no quiere." data-en-html="<strong>Pay in PLATA</strong> = 2% discount. Crypto-native, optional, frictionless for non-users.">Pay in PLATA = 2% discount. Crypto-native, optional, frictionless for non-users.</span></li>
+        <li><span data-es-html="<strong>WhatsApp ordering</strong> para los que prefieren chat — bot conversacional con menú completo." data-en-html="<strong>WhatsApp ordering</strong> for chat lovers — conversational bot with full menu.">WhatsApp ordering for chat lovers — conversational bot with full menu.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- COMPETITIVE TABLE -->
+<section>
+  <div class="sec-head">
+    <div>
+      <div class="sec-num" data-es="02 · COMPETENCIA" data-en="02 · COMPETITION">02 · COMPETITION</div>
+      <h3 data-es-html="Frente a <em>PedidosYa</em>, frente a Uber Eats." data-en-html="Against <em>PedidosYa</em>, against Uber Eats.">Against <em>PedidosYa</em>, against Uber Eats.</h3>
+    </div>
+    <p class="sec-sub" data-es="Ellos llegaron primero. Por eso copiaron el modelo norteamericano sin adaptarlo." data-en="They arrived first. That's why they copied the North-American model without adapting.">They arrived first. That's why they copied the North-American model without adapting.</p>
+  </div>
+
+  <div class="compete">
+    <div class="compete-row head">
+      <div data-es="CARACTERÍSTICA" data-en="FEATURE">FEATURE</div>
+      <div>PEDIDOSYA</div>
+      <div>UBER EATS</div>
+      <div>RAPITIDO</div>
+    </div>
+    <div class="compete-row">
+      <div class="feat" data-es="Comisión al restaurante" data-en="Restaurant commission">Restaurant commission</div>
+      <div class="val">~28%</div>
+      <div class="val">25-30%</div>
+      <div class="val us"><strong>18%</strong></div>
+    </div>
+    <div class="compete-row">
+      <div class="feat" data-es="Pago al repartidor" data-en="Driver pay">Driver pay</div>
+      <div class="val" data-es="Piecework · sin salario" data-en="Piecework · no salary">Piecework · no salary</div>
+      <div class="val" data-es="Piecework · sin salario" data-en="Piecework · no salary">Piecework · no salary</div>
+      <div class="val us"><span data-es="Salario base + 100% propina" data-en="Base salary + 100% tips">Base salary + 100% tips</span></div>
+    </div>
+    <div class="compete-row">
+      <div class="feat" data-es="Stock en vivo desde POS" data-en="Live stock from POS">Live stock from POS</div>
+      <div class="val"><span class="x">✗</span> <span data-es="restaurante actualiza manual" data-en="restaurant updates manually">restaurant updates manually</span></div>
+      <div class="val"><span class="x">✗</span></div>
+      <div class="val us"><span class="check">✓</span> <span data-es="auto-sync con POS" data-en="POS auto-sync">POS auto-sync</span></div>
+    </div>
+    <div class="compete-row">
+      <div class="feat" data-es="Multi-stop en una orden" data-en="Multi-stop per order">Multi-stop per order</div>
+      <div class="val"><span class="x">✗</span></div>
+      <div class="val"><span class="x">✗</span></div>
+      <div class="val us"><span class="check">✓</span></div>
+    </div>
+    <div class="compete-row">
+      <div class="feat" data-es="Filtros dietéticos nativos" data-en="Native dietary filters">Native dietary filters</div>
+      <div class="val" data-es="solo vegetariano" data-en="vegetarian only">vegetarian only</div>
+      <div class="val" data-es="solo vegetariano" data-en="vegetarian only">vegetarian only</div>
+      <div class="val us"><span class="check">✓</span> <span data-es="vegan/gluten-free/halal/keto/anti-inflam." data-en="vegan/gluten-free/halal/keto/anti-inflam.">vegan/gluten-free/halal/keto/anti-inflam.</span></div>
+    </div>
+    <div class="compete-row">
+      <div class="feat" data-es="Restaurant OS (mesa + POS + inventario)" data-en="Restaurant OS (table + POS + inventory)">Restaurant OS (table + POS + inventory)</div>
+      <div class="val"><span class="x">✗</span></div>
+      <div class="val"><span class="x">✗</span></div>
+      <div class="val us"><span class="check">✓</span> <span data-es="incluido" data-en="included">included</span></div>
+    </div>
+    <div class="compete-row">
+      <div class="feat" data-es="Suscripción delivery gratis" data-en="Free-delivery subscription">Free-delivery subscription</div>
+      <div class="val">PedidosYa Plus $4.99</div>
+      <div class="val">Eats Pass $9.99</div>
+      <div class="val us">$9.99 · <span data-es="incluye multi-stop" data-en="incl. multi-stop">incl. multi-stop</span></div>
+    </div>
+    <div class="compete-row">
+      <div class="feat" data-es="WhatsApp ordering" data-en="WhatsApp ordering">WhatsApp ordering</div>
+      <div class="val"><span class="x">✗</span></div>
+      <div class="val"><span class="x">✗</span></div>
+      <div class="val us"><span class="check">✓</span> <span data-es="bot oficial" data-en="official bot">official bot</span></div>
+    </div>
+    <div class="compete-row">
+      <div class="feat" data-es="Crypto / stablecoin" data-en="Crypto / stablecoin">Crypto / stablecoin</div>
+      <div class="val"><span class="x">✗</span></div>
+      <div class="val"><span class="x">✗</span></div>
+      <div class="val us"><span class="check">✓</span> PLATA · 2% off</div>
+    </div>
+    <div class="compete-row">
+      <div class="feat" data-es="Pago al restaurante" data-en="Restaurant payout">Restaurant payout</div>
+      <div class="val">14-30 días</div>
+      <div class="val">7-14 días</div>
+      <div class="val us">7 días</div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section>
+  <div class="sec-head">
+    <div>
+      <div class="sec-num" data-es="03 · FEATURES" data-en="03 · FEATURES">03 · FEATURES</div>
+      <h3 data-es-html="Las <em>diferencias</em> que importan." data-en-html="The <em>differences</em> that matter.">The differences that matter.</h3>
+    </div>
+    <p class="sec-sub" data-es="No es una lista de checklist. Son las cosas que cambian la experiencia." data-en="Not a checklist. These actually change the experience.">Not a checklist. These actually change the experience.</p>
+  </div>
+
+  <div class="feats">
+    <div class="feat-card f-multistop">
+      <div class="role" data-es="01 · MULTI-STOP" data-en="01 · MULTI-STOP">01 · MULTI-STOP</div>
+      <h5 data-es-html="<em>Dos restaurantes</em>, un repartidor" data-en-html="<em>Two restaurants</em>, one driver">Two restaurants, one driver</h5>
+      <p data-es-html="Pedí sushi de uno + helado de otro. El repartidor pasa por los dos en el orden óptimo. <strong>Más barato</strong> que pagar dos deliveries, <strong>más rápido</strong> en zonas densas." data-en-html="Order sushi from one + dessert from another. Driver hits both in optimal order. <strong>Cheaper</strong> than two deliveries, <strong>faster</strong> in dense zones.">Order sushi from one + dessert from another. Driver hits both in optimal order. Cheaper than two deliveries, faster in dense zones.</p>
+    </div>
+
+    <div class="feat-card f-stock">
+      <div class="role" data-es="02 · STOCK EN VIVO" data-en="02 · LIVE STOCK">02 · LIVE STOCK</div>
+      <h5 data-es-html="<em>Lo que ves</em>, es lo que hay" data-en-html="<em>What you see</em>, you get">What you see, you get</h5>
+      <p data-es-html="Integración directa con el POS del restaurante. Cuando el chef saca el último ceviche, el item se grisa <strong>en milisegundos</strong>. Cero llamadas de "no tenemos eso"." data-en-html="Direct POS integration with the restaurant. When the chef sells the last ceviche, the item grays <strong>in milliseconds</strong>. Zero 'we don't have that' calls.">Direct POS integration with the restaurant. When the chef sells the last ceviche, the item grays in milliseconds. Zero 'we don't have that' calls.</p>
+    </div>
+
+    <div class="feat-card f-diet">
+      <div class="role" data-es="03 · DIETA NATIVA" data-en="03 · NATIVE DIET">03 · NATIVE DIET</div>
+      <h5 data-es-html="<em>Filtros</em> que filtran de verdad" data-en-html="<em>Filters</em> that actually filter">Filters that actually filter</h5>
+      <p data-es-html="Vegano, sin gluten, halal, keto, anti-inflamatorio. Restaurantes etiquetan plato por plato. Si tomás <strong>metformina o GLP-1</strong>, el filtro de Sora-Medicines sugiere lo compatible." data-en-html="Vegan, gluten-free, halal, keto, anti-inflammatory. Restaurants tag dish by dish. If you're on <strong>metformin or GLP-1</strong>, the Sora-Medicines filter suggests what's compatible.">Vegan, gluten-free, halal, keto, anti-inflammatory. Restaurants tag dish by dish. If you're on metformin or GLP-1, the Sora-Medicines filter suggests what's compatible.</p>
+    </div>
+
+    <div class="feat-card f-wa">
+      <div class="role" data-es="04 · WHATSAPP BOT" data-en="04 · WHATSAPP BOT">04 · WHATSAPP BOT</div>
+      <h5 data-es-html="<em>Pedir</em> sin abrir la app" data-en-html="<em>Order</em> without opening the app">Order without opening the app</h5>
+      <p data-es-html="Mucha gente en LATAM no quiere instalar una app más. RAPITIDO tiene un <strong>bot oficial de WhatsApp</strong>: \"hola, quiero ceviche\" → carta → confirmar → ETA → pagar. Sin descarga, sin login." data-en-html="Many in LATAM don't want another app. RAPITIDO has an <strong>official WhatsApp bot</strong>: 'hi, I want ceviche' → menu → confirm → ETA → pay. No download, no login.">Many in LATAM don't want another app. RAPITIDO has an official WhatsApp bot: 'hi, I want ceviche' → menu → confirm → ETA → pay. No download, no login.</p>
+    </div>
+
+    <div class="feat-card f-plata">
+      <div class="role" data-es="05 · PAGO PLATA" data-en="05 · PLATA PAYMENT">05 · PLATA PAYMENT</div>
+      <h5 data-es-html="<em>Pagá en stablecoin</em>, ahorrá 2%" data-en-html="<em>Pay in stablecoin</em>, save 2%">Pay in stablecoin, save 2%</h5>
+      <p data-es-html="Conexión nativa con PLATA. <strong>2% de descuento al cliente</strong>, comisión baja para el restaurante, settlement instantáneo. Para quien no usa cripto: tarjeta normal, sin fricción." data-en-html="Native PLATA connection. <strong>2% discount to customer</strong>, low fee to restaurant, instant settlement. For non-crypto users: regular card, zero friction.">Native PLATA connection. 2% discount to customer, low fee to restaurant, instant settlement. For non-crypto users: regular card, zero friction.</p>
+    </div>
+
+    <div class="feat-card f-sub">
+      <div class="role" data-es="06 · RAPITIDO PASS" data-en="06 · RAPITIDO PASS">06 · RAPITIDO PASS</div>
+      <h5 data-es-html="<em>$9.99/mes</em> · delivery sin límite" data-en-html="<em>$9.99/mo</em> · unlimited delivery">$9.99/mo · unlimited delivery</h5>
+      <p data-es-html="Pedidos con tarifa cero, multi-stop incluido, prioridad en horas pico, descuentos en restaurantes seleccionados. Punto de equilibrio: <strong>3 órdenes/mes</strong>." data-en-html="Free-fee orders, multi-stop included, peak-hour priority, discounts at select restaurants. Break-even: <strong>3 orders/month</strong>.">Free-fee orders, multi-stop included, peak-hour priority, discounts at select restaurants. Break-even: 3 orders/month.</p>
+    </div>
+  </div>
+</section>
+
+<!-- RESTAURANT OS -->
+<section>
+  <div class="sec-head">
+    <div>
+      <div class="sec-num" data-es="04 · RESTAURANT OS" data-en="04 · RESTAURANT OS">04 · RESTAURANT OS</div>
+      <h3 data-es-html="Dos <em>productos</em>, una empresa." data-en-html="Two <em>products</em>, one company.">Two products, one company.</h3>
+    </div>
+    <p class="sec-sub" data-es="El delivery es solo la mitad. La otra mitad es el OS que el restaurante usa todos los días." data-en="Delivery is only half. The other half is the OS the restaurant uses every day.">Delivery is only half. The other half is the OS the restaurant uses every day.</p>
+  </div>
+
+  <div class="ros-grid">
+    <div class="ros-text">
+      <p data-es-html="PedidosYa es una <em>plataforma de delivery</em>. RAPITIDO es eso <strong>más un sistema operativo para restaurantes</strong>. Cuando un restaurante se suma, recibe: punto de venta (POS), gestión de mesas con QR-menu, reservas online, control de inventario en tiempo real, dashboard analítico, y la integración con la app de delivery. Todo unificado." data-en-html="PedidosYa is a <em>delivery platform</em>. RAPITIDO is that <strong>plus an OS for restaurants</strong>. When a restaurant joins, they get: point of sale (POS), table management with QR-menu, online reservations, real-time inventory, analytics dashboard, and the delivery-app integration. All unified.">PedidosYa is a delivery platform. RAPITIDO is that plus an OS for restaurants. When a restaurant joins, they get: point of sale (POS), table management with QR-menu, online reservations, real-time inventory, analytics dashboard, and the delivery-app integration. All unified.</p>
+
+      <p data-es-html="Eso cambia la economía. PedidosYa solo gana cuando alguien pide para delivery. RAPITIDO gana de 4 vertientes: <strong>comisión delivery + SaaS mensual del POS + comisión de reservas + spread de procesamiento de pago</strong>. Cada vertiente es chica, pero juntas crean un negocio más sano que vivir solo de comisiones del 28%." data-en-html="That changes the economics. PedidosYa only earns when someone orders delivery. RAPITIDO earns from four streams: <strong>delivery commission + monthly POS SaaS + reservation commission + payment-processing spread</strong>. Each stream is small, but together they make a healthier business than living off 28% commissions.">That changes the economics. PedidosYa only earns when someone orders delivery. RAPITIDO earns from four streams: delivery commission + monthly POS SaaS + reservation commission + payment-processing spread. Each stream is small, but together they make a healthier business than living off 28% commissions.</p>
+
+      <h4 data-es="Por qué el restaurante adopta" data-en="Why the restaurant adopts">Why the restaurant adopts</h4>
+      <p data-es-html="Hoy el dueño de un restaurante en Panamá paga: Vendus (POS) $30/mes + OpenTable (reservas) $60/mes + comisión PedidosYa 28%. RAPITIDO ofrece todo eso por <strong>$45/mes + 18% comisión</strong>. Y los tres sistemas se hablan entre sí." data-en-html="Today a restaurant owner in Panama pays: Vendus (POS) $30/mo + OpenTable (reservations) $60/mo + 28% PedidosYa commission. RAPITIDO offers all that for <strong>$45/mo + 18% commission</strong>. And the three systems talk to each other.">Today a restaurant owner in Panama pays: Vendus (POS) $30/mo + OpenTable (reservations) $60/mo + 28% PedidosYa commission. RAPITIDO offers all that for $45/mo + 18% commission. And the three systems talk to each other.</p>
+    </div>
+
+    <div class="ros-card">
+      <div class="rc-tag" data-es="STACK · RESTAURANT OS" data-en="STACK · RESTAURANT OS">STACK · RESTAURANT OS</div>
+      <h4 data-es="Todo lo que el restaurante recibe" data-en="Everything the restaurant gets">Everything the restaurant gets</h4>
+      <ul>
+        <li><strong>POS</strong> <span data-es="— punto de venta para meseros, integrado con cocina (KDS) y carta. Funciona offline." data-en="— point of sale for waiters, integrated with kitchen (KDS) and menu. Works offline.">— point of sale for waiters, integrated with kitchen (KDS) and menu. Works offline.</span></li>
+        <li><strong data-es="QR-MENU" data-en="QR-MENU">QR-MENU</strong> <span data-es="— cliente escanea, ordena desde su teléfono, paga directamente. Reduce error de mesero 90%." data-en="— customer scans, orders from their phone, pays directly. Cuts waiter error by 90%.">— customer scans, orders from their phone, pays directly. Cuts waiter error by 90%.</span></li>
+        <li><strong data-es="RESERVAS" data-en="RESERVATIONS">RESERVATIONS</strong> <span data-es="— motor de reservas con waitlist + recordatorios SMS/WhatsApp. Mapeo de mesa en vivo." data-en="— reservation engine with waitlist + SMS/WhatsApp reminders. Live table mapping.">— reservation engine with waitlist + SMS/WhatsApp reminders. Live table mapping.</span></li>
+        <li><strong data-es="INVENTARIO" data-en="INVENTORY">INVENTORY</strong> <span data-es="— stock se descuenta automático cuando se vende. Alertas de re-orden. Costing automático." data-en="— stock auto-decrements as it sells. Re-order alerts. Auto-costing.">— stock auto-decrements as it sells. Re-order alerts. Auto-costing.</span></li>
+        <li><strong data-es="DELIVERY" data-en="DELIVERY">DELIVERY</strong> <span data-es="— órdenes de la app entran al mismo POS. La cocina no usa un segundo dispositivo." data-en="— app orders flow into the same POS. Kitchen doesn't use a second device.">— app orders flow into the same POS. Kitchen doesn't use a second device.</span></li>
+        <li><strong data-es="ANALYTICS" data-en="ANALYTICS">ANALYTICS</strong> <span data-es="— top platos, margen por plato, hora pico, food cost trend. Datos que PedidosYa nunca compartió." data-en="— top dishes, margin per dish, peak hour, food cost trend. Data PedidosYa never shared.">— top dishes, margin per dish, peak hour, food cost trend. Data PedidosYa never shared.</span></li>
+        <li><strong data-es="PAGOS" data-en="PAYMENTS">PAYMENTS</strong> <span data-es="— tarjeta, efectivo, PLATA. Un solo terminal. Liquidación 7 días." data-en="— card, cash, PLATA. One terminal. 7-day settlement.">— card, cash, PLATA. One terminal. 7-day settlement.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section>
+  <div class="sec-head">
+    <div>
+      <div class="sec-num" data-es="05 · CRONOGRAMA" data-en="05 · ROADMAP">05 · ROADMAP</div>
+      <h3 data-es-html="<em>Cuatro fases</em>. Dos años hasta El Salvador." data-en-html="<em>Four phases</em>. Two years to El Salvador.">Four phases. Two years to El Salvador.</h3>
+    </div>
+    <p class="sec-sub" data-es="Boquete y David primero — donde el equipo come. Después PA City. Después SV (sincronizado con PLATA)." data-en="Boquete and David first — where the team eats. Then PA City. Then SV (synced with PLATA).">Boquete and David first — where the team eats. Then PA City. Then SV (synced with PLATA).</p>
+  </div>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-q">2026 · Q4 — 2027 · Q1</div>
+      <h5 data-es-html="<em>Boquete</em> + <em>David</em> · MVP" data-en-html="<em>Boquete</em> + <em>David</em> · MVP">Boquete + David · MVP</h5>
+      <p data-es-html="App + WhatsApp bot. 25-30 restaurantes seleccionados a mano por el equipo Sora. Flota inicial: 12 repartidores con bici eléctrica. <strong>Cero marketing público</strong> — boca-a-boca en Boquete + David. Daniel (chef ejecutivo de La Compañía) ayuda a curar el catálogo." data-en-html="App + WhatsApp bot. 25-30 hand-picked restaurants by the Sora team. Initial fleet: 12 drivers on e-bikes. <strong>Zero public marketing</strong> — word-of-mouth in Boquete + David. Daniel (La Compañía's executive chef) helps curate the catalog.">App + WhatsApp bot. 25-30 hand-picked restaurants by the Sora team. Initial fleet: 12 drivers on e-bikes. Zero public marketing — word-of-mouth in Boquete + David. Daniel (La Compañía's executive chef) helps curate the catalog.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-q">2027 · Q2-Q3</div>
+      <h5 data-es-html="<em>Restaurant OS</em> en vivo" data-en-html="<em>Restaurant OS</em> live">Restaurant OS live</h5>
+      <p data-es-html="Lanzamiento del paquete completo POS + reservas + inventario. Los 30 restaurantes iniciales migran de Vendus/OpenTable a RAPITIDO OS. <strong>Datos de validación</strong>: tiempo promedio de orden, retención, churn vs PedidosYa." data-en-html="Launch of full POS + reservations + inventory bundle. The 30 initial restaurants migrate from Vendus/OpenTable to RAPITIDO OS. <strong>Validation data</strong>: avg order time, retention, churn vs PedidosYa.">Launch of full POS + reservations + inventory bundle. The 30 initial restaurants migrate from Vendus/OpenTable to RAPITIDO OS. Validation data: avg order time, retention, churn vs PedidosYa.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-q">2027 · Q4 — 2028 · Q2</div>
+      <h5 data-es-html="<em>Panamá City</em> · escalado" data-en-html="<em>Panama City</em> · scale">Panama City · scale</h5>
+      <p data-es-html="Salto a PA City. Target: 400 restaurantes en 6 meses. Flota 200 repartidores. Marketing público: campaña \"comisión 18%\" dirigida a restaurantes + \"<strong>la propina es del repartidor, no nuestra</strong>\" para clientes." data-en-html="Jump to PA City. Target: 400 restaurants in 6 months. 200-driver fleet. Public marketing: '18% commission' campaign aimed at restaurants + '<strong>the tip is the driver's, not ours</strong>' for customers.">Jump to PA City. Target: 400 restaurants in 6 months. 200-driver fleet. Public marketing: '18% commission' campaign aimed at restaurants + 'the tip is the driver's, not ours' for customers.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-q">2028 · Q3+</div>
+      <h5 data-es-html="<em>El Salvador</em> · sync con PLATA" data-en-html="<em>El Salvador</em> · PLATA sync">El Salvador · PLATA sync</h5>
+      <p data-es-html="Lanzamiento en El Salvador junto con el go-live de PLATA. RAPITIDO es <strong>el primer caso de uso real</strong> que PLATA empuja — pagás tu cena con stablecoin, descuento 2%. Después: Costa Rica, Honduras, y donde haya capítulo Sora viable." data-en-html="Launch in El Salvador alongside PLATA go-live. RAPITIDO is <strong>the first real use case</strong> PLATA pushes — pay for dinner in stablecoin, 2% off. Then: Costa Rica, Honduras, wherever there's a viable Sora chapter.">Launch in El Salvador alongside PLATA go-live. RAPITIDO is the first real use case PLATA pushes — pay for dinner in stablecoin, 2% off. Then: Costa Rica, Honduras, wherever there's a viable Sora chapter.</p>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div class="foot-grid">
+    <div>
+      <div class="wordmark-foot">RAPITIDO</div>
+      <p class="tagline" data-es="La app de delivery + Restaurant OS de La Compañía. Mejor margen para el restaurante, salario real para el repartidor, mejor experiencia para el cliente." data-en="La Compañía's delivery app + Restaurant OS. Better margin for restaurants, real salary for drivers, better experience for customers.">La Compañía's delivery app + Restaurant OS. Better margin for restaurants, real salary for drivers, better experience for customers.</p>
+    </div>
+    <div>
+      <h6 data-es="MERCADOS" data-en="MARKETS">MARKETS</h6>
+      <ul>
+        <li data-es="Boquete + David · 2027" data-en="Boquete + David · 2027">Boquete + David · 2027</li>
+        <li data-es="Panamá City · 2027 Q4" data-en="Panama City · 2027 Q4">Panama City · 2027 Q4</li>
+        <li data-es="El Salvador · 2028" data-en="El Salvador · 2028">El Salvador · 2028</li>
+      </ul>
+    </div>
+    <div>
+      <h6 data-es="PRODUCTOS" data-en="PRODUCTS">PRODUCTS</h6>
+      <ul>
+        <li data-es="App Delivery (B2C)" data-en="Delivery App (B2C)">Delivery App (B2C)</li>
+        <li data-es="Restaurant OS (B2B)" data-en="Restaurant OS (B2B)">Restaurant OS (B2B)</li>
+        <li data-es="WhatsApp Bot" data-en="WhatsApp Bot">WhatsApp Bot</li>
+        <li data-es="RAPITIDO Pass" data-en="RAPITIDO Pass">RAPITIDO Pass</li>
+      </ul>
+    </div>
+    <div>
+      <h6 data-es="LA COMPAÑÍA" data-en="LA COMPAÑÍA">LA COMPAÑÍA</h6>
+      <ul>
+        <li><a href="lacompania.html" data-es="← Holding" data-en="← Holding">← Holding</a></li>
+        <li><a href="plata.html">PLATA · Money</a></li>
+        <li><a href="veta.html">VETA · Minerals</a></li>
+        <li><a href="sora-hq.html">Sora · HQ</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>RAPITIDO · LA COMPAÑÍA · MMXXVI</span>
+    <span data-es="EMPEZANDO EN BOQUETE + DAVID" data-en="STARTING IN BOQUETE + DAVID">STARTING IN BOQUETE + DAVID</span>
+  </div>
+</footer>
+
+<script>
+  const getLang = () => localStorage.getItem('sora.lang') || 'en';
+  function applyLang(lang){
+    document.querySelectorAll('[data-es]').forEach(el=>{
+      const v = el.getAttribute('data-' + lang);
+      if (v != null) { if (/<[a-z]/i.test(v)) el.innerHTML = v; else el.textContent = v; }
+    });
+    document.querySelectorAll('[data-es-html]').forEach(el=>{
+      const v = el.getAttribute('data-' + lang + '-html');
+      if(v != null) el.innerHTML = v;
+    });
+    document.documentElement.lang = lang;
+    localStorage.setItem('sora.lang', lang);
+    document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('active', b.dataset.lang === lang));
+  }
+  document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click', ()=>applyLang(b.dataset.lang)));
+  applyLang(getLang());
+</script>
+</body>
+</html>
