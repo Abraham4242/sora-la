@@ -1,0 +1,743 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TRAVESÍA · I · Golfo de Chiriquí · SORA</title>
+<meta name="description" content="TRAVESÍA · I — el primer fin de semana SORA en el Golfo de Chiriquí. Boca Brava, mesa de arena, mar abierto. 22 invitados, 2 noches.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23D9573B'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Georgia,serif' font-size='17' font-weight='400' fill='%23f7ecd0'%3ET%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f7ecd0;
+  --paper-2:#fbf3dd;
+  --paper-3:#ede0bd;
+  --paper-deep:#dccdaa;
+  --ink:#1a1410;
+  --ink-2:#2f261d;
+  --ink-3:#4f4332;
+  --ink-faint:#8a7d63;
+  --line:rgba(26,20,16,0.10);
+  --line-2:rgba(26,20,16,0.18);
+  --line-3:rgba(26,20,16,0.32);
+  --coral:#D9573B;
+  --coral-deep:#a8401f;
+  --coral-soft:#e88a6e;
+  --ochre:#c89030;
+  --ochre-deep:#a17225;
+  --ochre-soft:#e0b466;
+  --forest:#1d3a2c;
+  --forest-2:#2a5440;
+  --sea:#5a7d8c;
+  --sea-deep:#3d5d6b;
+  --sand:#e8d5a8;
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'Inter',-apple-system,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#e1d4ab;font-family:var(--sans);color:var(--ink);font-size:14px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.app{padding:32px 24px 80px;display:flex;flex-direction:column;align-items:center;gap:24px}
+
+/* PAGE */
+.page{
+  width:8.5in;
+  min-height:11in;
+  height:11in;
+  background:var(--paper);
+  position:relative;
+  padding:0.65in 0.85in 0.5in;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+  box-shadow:0 2px 4px rgba(0,0,0,.04),0 12px 40px rgba(0,0,0,.10);
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.92' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.10  0 0 0 0 0.08  0 0 0 0 0.05  0 0 0 0.022 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+/* HEAD / FOOT */
+.head{display:flex;justify-content:space-between;align-items:center;padding-bottom:10px;border-bottom:0.5px solid var(--line-2);margin-bottom:22px;flex-shrink:0}
+.head .mark{font-family:var(--serif);font-size:13px;letter-spacing:.20em;color:var(--ink-2);font-weight:500}
+.head .mark em{color:var(--coral);font-style:normal;font-weight:600}
+.head .pgnum{font-family:var(--mono);font-size:10px;letter-spacing:.20em;color:var(--ink-faint);font-weight:500}
+.foot{margin-top:auto;padding-top:10px;border-top:0.5px solid var(--line);display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:9px;letter-spacing:.18em;color:var(--ink-faint);text-transform:uppercase;flex-shrink:0}
+.foot .sec em{font-style:normal;color:var(--ink-3);font-weight:600}
+
+.eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--coral);font-weight:700;margin-bottom:10px}
+.title{font-family:var(--serif);font-weight:300;line-height:.98;letter-spacing:-.018em;color:var(--ink);margin-bottom:12px}
+.title em{font-style:italic;color:var(--coral-deep);font-weight:400}
+.lede{font-family:var(--serif);font-style:italic;font-weight:300;color:var(--ink-2);line-height:1.45}
+
+.kicker{font-family:var(--mono);font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;margin-bottom:6px}
+
+/* DATA STRIPS */
+.data-strip{display:grid;border:0.5px solid var(--line-2);border-radius:6px;background:var(--paper-2);margin:10px 0}
+.data-strip .cell{padding:11px 14px;border-right:0.5px solid var(--line-2)}
+.data-strip .cell:last-child{border-right:0}
+.data-strip .v{font-family:var(--serif);font-size:24px;font-weight:300;color:var(--ink);line-height:1;letter-spacing:-.01em}
+.data-strip .v em{font-style:italic;color:var(--coral-deep);font-weight:400}
+.data-strip .l{font-family:var(--mono);font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;margin-top:4px;line-height:1.3}
+
+/* CALLOUTS */
+.callout{background:var(--ink);color:var(--paper);padding:18px 22px;border-radius:7px;margin:10px 0;position:relative;overflow:hidden}
+.callout::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--coral),var(--ochre),var(--sea))}
+.callout .clabel{font-family:var(--mono);font-size:9.5px;letter-spacing:.22em;color:var(--coral-soft);text-transform:uppercase;font-weight:600;margin-bottom:7px}
+.callout p{font-family:var(--serif);font-size:13.5px;line-height:1.5;color:var(--paper);font-style:italic;font-weight:300}
+.callout p em{color:var(--coral-soft);font-style:italic;font-weight:400}
+
+.callout-light{background:var(--paper-2);border:0.5px solid var(--line-2);padding:14px 18px;border-radius:6px;margin:10px 0}
+.callout-light .clabel{font-family:var(--mono);font-size:9px;letter-spacing:.20em;color:var(--coral-deep);text-transform:uppercase;font-weight:700;margin-bottom:6px}
+.callout-light p{font-family:var(--sans);font-size:12px;line-height:1.55;color:var(--ink-2)}
+
+/* TILES / GRID */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:10px 0}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:10px 0}
+.tile{border:0.5px solid var(--line-2);border-radius:6px;padding:14px 16px;background:var(--paper-2)}
+.tile .t-num{font-family:var(--mono);font-size:9px;letter-spacing:.22em;color:var(--coral-deep);font-weight:700;margin-bottom:6px;text-transform:uppercase}
+.tile h5{font-family:var(--serif);font-size:15px;color:var(--ink);font-weight:500;margin-bottom:5px;line-height:1.2}
+.tile p{font-family:var(--sans);font-size:11.5px;color:var(--ink-3);line-height:1.5}
+.tile h5 em{font-style:italic;color:var(--coral-deep)}
+
+/* TABLES */
+.tbl{width:100%;border-collapse:collapse;margin:10px 0;font-family:var(--sans)}
+.tbl thead th{font-family:var(--mono);font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);font-weight:700;padding:7px 9px;text-align:left;border-bottom:1px solid var(--line-3);background:var(--paper-3)}
+.tbl tbody td{padding:7px 9px;border-bottom:0.5px solid var(--line);font-size:11.5px;color:var(--ink-2);line-height:1.4;vertical-align:top}
+.tbl tbody tr:last-child td{border-bottom:0}
+.tbl tbody td strong{color:var(--ink);font-weight:600}
+.tbl tbody td.num{font-family:var(--mono);font-size:11px;text-align:right;letter-spacing:.02em}
+.tbl tbody tr.hi td{background:rgba(217,87,59,0.08)}
+.tbl tbody tr.hi td strong{color:var(--coral-deep)}
+.tbl tbody tr.fav td{background:rgba(29,58,44,.06)}
+.tbl tbody tr.fav td strong{color:var(--forest)}
+
+/* ITINERARY DAYS */
+.itin{display:grid;gap:14px}
+.day-block{background:var(--paper-2);border:0.5px solid var(--line-2);border-radius:8px;padding:14px 18px}
+.day-block .day-head{display:flex;justify-content:space-between;align-items:baseline;padding-bottom:8px;border-bottom:0.5px solid var(--line);margin-bottom:8px}
+.day-block .day-head h5{font-family:var(--serif);font-size:18px;color:var(--ink);font-weight:500;letter-spacing:-.01em}
+.day-block .day-head h5 em{font-style:italic;color:var(--coral-deep)}
+.day-block .day-head .d-tag{font-family:var(--mono);font-size:9px;letter-spacing:.20em;color:var(--ink-faint);text-transform:uppercase;font-weight:600}
+.slot{display:grid;grid-template-columns:62px 1fr;gap:14px;padding:5px 0;border-bottom:0.5px solid rgba(26,20,16,.05);align-items:baseline}
+.slot:last-child{border-bottom:0}
+.slot .t{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--coral);font-weight:600}
+.slot .c{font-family:var(--sans);font-size:12px;color:var(--ink-2);line-height:1.45}
+.slot .c strong{color:var(--ink);font-weight:600}
+.slot .c em{color:var(--coral-deep);font-style:italic}
+
+/* MENU PANELS */
+.menu-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+.mcourse{background:var(--paper-2);border:0.5px solid var(--line);border-radius:6px;padding:14px 18px}
+.mcourse .ml{font-family:var(--mono);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--coral-deep);font-weight:700;margin-bottom:6px}
+.mcourse h5{font-family:var(--serif);font-style:italic;font-size:15px;color:var(--ink);font-weight:400;margin-bottom:8px;letter-spacing:-.005em}
+.mcourse ul{list-style:none}
+.mcourse ul li{font-family:var(--sans);font-size:11.5px;color:var(--ink-2);padding:4px 0;border-top:0.5px solid var(--line);line-height:1.45}
+.mcourse ul li:first-child{border-top:0}
+.mcourse ul li em{color:var(--coral-deep);font-style:italic;display:block;font-family:var(--serif);font-size:10.5px;margin-top:2px}
+
+/* COVER */
+.cover{padding:0.6in 0.8in;background:linear-gradient(180deg,#f7ecd0 0%,#f0dfb6 100%);display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+.cover::after{content:'';position:absolute;left:0;right:0;bottom:0;height:1.8in;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 200' preserveAspectRatio='none'><path d='M0,120 C100,90 200,140 300,110 C400,80 500,130 600,100 C700,70 800,110 800,110 L800,200 L0,200 Z' fill='%23D9573B' opacity='0.07'/><path d='M0,150 C100,130 250,170 400,140 C550,110 700,150 800,140 L800,200 L0,200 Z' fill='%235a7d8c' opacity='0.08'/></svg>") no-repeat bottom/cover;opacity:.9}
+.cover .top-mark{display:flex;justify-content:space-between;align-items:center;position:relative;z-index:2}
+.cover .top-mark .stamp{font-family:var(--mono);font-size:9.5px;letter-spacing:.28em;color:var(--ink-faint);text-transform:uppercase}
+.cover .top-mark .stamp em{color:var(--coral);font-style:normal;font-weight:600}
+.cover .center{flex:1;display:flex;flex-direction:column;justify-content:center;padding:32px 0;position:relative;z-index:2}
+.cover .roman{font-family:var(--serif);font-style:italic;font-size:30px;letter-spacing:.18em;color:var(--coral);font-weight:400;margin-bottom:10px}
+.cover .word{font-family:var(--serif);font-size:148px;font-weight:300;letter-spacing:-.045em;color:var(--ink);line-height:.86;margin-bottom:16px}
+.cover .word em{font-style:italic;color:var(--coral-deep);font-weight:400}
+.cover .tag{font-family:var(--serif);font-style:italic;font-size:23px;color:var(--ink-2);max-width:5.4in;line-height:1.3;font-weight:300;margin-bottom:30px}
+.cover .desc{font-family:var(--sans);font-size:13px;color:var(--ink-3);max-width:5in;line-height:1.6;margin-bottom:18px}
+.cover .desc strong{color:var(--ink);font-weight:600}
+.cover .bot{display:grid;grid-template-columns:1fr 1fr 1fr;gap:22px;padding-top:22px;border-top:0.5px solid var(--line-2);position:relative;z-index:2}
+.cover .bot .k{font-family:var(--mono);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;margin-bottom:6px}
+.cover .bot .v{font-family:var(--serif);font-size:14.5px;color:var(--ink);font-weight:400}
+.cover .bot .v em{font-style:italic;color:var(--coral-deep)}
+
+/* COVER · DECORATIVE SUN */
+.cover-sun{position:absolute;top:0.9in;right:0.7in;width:1.8in;height:1.8in;opacity:.35;pointer-events:none;z-index:1}
+
+/* LETTER */
+.letter .salut{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--ink);margin-bottom:14px;font-weight:300}
+.letter p{font-family:var(--serif);font-size:13px;line-height:1.65;color:var(--ink-2);margin-bottom:10px;font-weight:300}
+.letter p strong{color:var(--ink);font-weight:500}
+.letter p em{color:var(--coral-deep);font-style:italic}
+.letter .sig{margin-top:22px}
+.letter .sig .name{font-family:var(--serif);font-size:17px;font-style:italic;color:var(--ink);margin-bottom:2px}
+.letter .sig .role{font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--ink-faint);text-transform:uppercase}
+
+/* VENUE COMPARE */
+.venue-pick{display:grid;grid-template-columns:1.4fr 1fr;gap:14px;margin:14px 0}
+.venue{padding:18px 22px;border-radius:8px;border:0.5px solid var(--line-2)}
+.venue.primary{background:var(--ink);color:var(--paper);border-color:transparent;position:relative;overflow:hidden}
+.venue.primary::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--coral),var(--sea))}
+.venue.alt{background:var(--paper-2)}
+.venue .vlab{font-family:var(--mono);font-size:9px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;margin-bottom:8px}
+.venue.primary .vlab{color:var(--coral-soft)}
+.venue.alt .vlab{color:var(--ink-faint)}
+.venue h4{font-family:var(--serif);font-weight:400;font-size:22px;line-height:1.05;letter-spacing:-.01em;margin-bottom:5px}
+.venue.primary h4{color:var(--paper)}
+.venue.primary h4 em{color:var(--coral-soft);font-style:italic}
+.venue.alt h4{color:var(--ink)}
+.venue.alt h4 em{color:var(--coral-deep);font-style:italic}
+.venue .vsub{font-family:var(--serif);font-style:italic;font-size:13px;margin-bottom:12px;line-height:1.4}
+.venue.primary .vsub{color:rgba(247,236,208,.72)}
+.venue.alt .vsub{color:var(--ink-3)}
+.venue p{font-family:var(--sans);font-size:11.5px;line-height:1.55;margin-bottom:10px}
+.venue.primary p{color:rgba(247,236,208,.78)}
+.venue.alt p{color:var(--ink-3)}
+.venue ul{list-style:none;margin-top:6px}
+.venue ul li{font-family:var(--sans);font-size:11px;padding:3px 0 3px 13px;position:relative;line-height:1.4}
+.venue ul li::before{content:'·';position:absolute;left:2px;font-weight:700}
+.venue.primary ul li{color:rgba(247,236,208,.74)}
+.venue.primary ul li::before{color:var(--coral-soft)}
+.venue.alt ul li{color:var(--ink-3)}
+.venue.alt ul li::before{color:var(--coral-deep)}
+
+/* SORA EXPERIENCE · BOTTOM RIGHT PLACEMENT */
+.sora-exp{position:absolute;right:0.85in;bottom:0.6in;width:3.6in;background:linear-gradient(180deg,var(--coral) 0%,var(--coral-deep) 100%);color:var(--paper);padding:18px 22px;border-radius:9px;box-shadow:0 8px 24px rgba(168,64,31,.20),0 1px 2px rgba(0,0,0,.06);transform:rotate(0.4deg);z-index:2}
+.sora-exp::before{content:'';position:absolute;top:-1px;left:0;right:0;height:2px;background:rgba(247,236,208,.4);border-radius:9px 9px 0 0}
+.sora-exp .sl{font-family:var(--mono);font-size:9px;letter-spacing:.24em;color:var(--coral-soft);text-transform:uppercase;font-weight:700;margin-bottom:6px}
+.sora-exp h5{font-family:var(--serif);font-style:italic;font-weight:400;font-size:18px;line-height:1.15;color:var(--paper);margin-bottom:6px;letter-spacing:-.01em}
+.sora-exp p{font-family:var(--sans);font-size:11px;line-height:1.5;color:rgba(247,236,208,.92);margin-bottom:8px}
+.sora-exp .ssig{font-family:var(--mono);font-size:8.5px;letter-spacing:.20em;color:var(--coral-soft);text-transform:uppercase;font-weight:700;padding-top:6px;border-top:0.5px solid rgba(247,236,208,.3)}
+
+/* POSTER PAGE */
+.poster{padding:0;background:linear-gradient(165deg,var(--paper) 0%,var(--paper-3) 50%,#dac9a0 100%);position:relative;overflow:hidden;display:flex;flex-direction:column}
+.poster::before{content:'';position:absolute;top:-2in;right:-2in;width:6in;height:6in;border-radius:50%;background:radial-gradient(circle,var(--coral) 0%,rgba(217,87,59,0) 65%);opacity:.50}
+.poster::after{content:'';position:absolute;bottom:-3in;left:-2in;width:7in;height:5in;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 600' preserveAspectRatio='none'><path d='M0,400 C150,300 300,420 450,360 C600,300 750,380 800,360 L800,600 L0,600 Z' fill='%231a1410' opacity='0.10'/><path d='M0,460 C200,400 400,490 600,440 C700,420 800,450 800,440 L800,600 L0,600 Z' fill='%235a7d8c' opacity='0.16'/></svg>") no-repeat bottom/cover}
+.poster-in{position:relative;z-index:2;padding:0.9in 1in;display:flex;flex-direction:column;height:100%}
+.poster .pkey{font-family:var(--mono);font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:var(--coral);font-weight:700;margin-bottom:14px}
+.poster .proman{font-family:var(--serif);font-style:italic;font-size:36px;letter-spacing:.20em;color:var(--coral);font-weight:400;margin-bottom:18px}
+.poster h1{font-family:var(--serif);font-size:200px;font-weight:300;letter-spacing:-.05em;color:var(--ink);line-height:.85;margin-bottom:30px}
+.poster h1 em{font-style:italic;color:var(--coral-deep);font-weight:400}
+.poster .ptag{font-family:var(--serif);font-style:italic;font-size:26px;color:var(--ink-2);max-width:5.2in;line-height:1.3;font-weight:300;margin-bottom:30px}
+.poster .pmeta{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:auto;padding-top:24px;border-top:0.5px solid var(--line-2)}
+.poster .pmeta .k{font-family:var(--mono);font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;margin-bottom:5px}
+.poster .pmeta .v{font-family:var(--serif);font-size:16px;color:var(--ink);font-weight:400}
+.poster .pmeta .v em{color:var(--coral-deep);font-style:italic}
+
+/* LANG / PRINT */
+.lang-bar{position:fixed;top:18px;right:24px;display:flex;gap:6px;background:var(--paper);border:0.5px solid var(--line-2);border-radius:6px;padding:5px;z-index:50;box-shadow:0 4px 16px rgba(0,0,0,.08)}
+.lang-bar button{padding:6px 11px;font-family:var(--mono);font-size:10px;letter-spacing:.12em;background:transparent;border:0;color:var(--ink-faint);cursor:pointer;font-weight:600;border-radius:4px}
+.lang-bar button.act{background:var(--coral);color:var(--paper)}
+.print-bar{position:fixed;top:18px;left:24px;background:var(--coral);color:var(--paper);border:0;padding:9px 14px;font-family:var(--mono);font-size:10px;letter-spacing:.14em;font-weight:700;cursor:pointer;border-radius:6px;z-index:50;box-shadow:0 4px 16px rgba(0,0,0,.12);text-transform:uppercase}
+.print-bar:hover{background:var(--coral-deep)}
+
+[data-en]:not([data-es]){display:none}
+html[lang="en"] [data-es]:not([data-en]){display:none}
+html[lang="en"] [data-en]:not([data-es]){display:inline}
+
+@media print{
+  html,body{background:white}
+  .app{padding:0;gap:0}
+  .lang-bar,.print-bar{display:none !important}
+  .page{box-shadow:none;page-break-after:always;page-break-inside:avoid;margin:0}
+  .page:last-child{page-break-after:auto}
+  @page{size:letter portrait;margin:0}
+}
+</style>
+</head>
+<body>
+
+<button class="print-bar no-print" onclick="window.print()" data-es="IMPRIMIR DOCUMENTO" data-en="PRINT DOCUMENT">IMPRIMIR DOCUMENTO</button>
+<div class="lang-bar no-print">
+  <button class="act" data-lang="es">ES</button>
+  <button data-lang="en">EN</button>
+</div>
+
+<div class="app">
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<!-- PAGE 01 · COVER                                                 -->
+<!-- ════════════════════════════════════════════════════════════════ -->
+<section class="page cover">
+  <svg class="cover-sun" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="100" cy="100" r="56" fill="#D9573B"/>
+    <g stroke="#D9573B" stroke-width="1.2" fill="none" stroke-linecap="round">
+      <line x1="100" y1="8" x2="100" y2="32"/>
+      <line x1="100" y1="168" x2="100" y2="192"/>
+      <line x1="8" y1="100" x2="32" y2="100"/>
+      <line x1="168" y1="100" x2="192" y2="100"/>
+      <line x1="35" y1="35" x2="50" y2="50"/>
+      <line x1="150" y1="150" x2="165" y2="165"/>
+      <line x1="165" y1="35" x2="150" y2="50"/>
+      <line x1="50" y1="150" x2="35" y2="165"/>
+    </g>
+  </svg>
+
+  <div class="top-mark">
+    <div class="stamp"><em>SORA</em> · TRAVEL AGENCY · LA COMPAÑÍA · MMXXVI</div>
+    <div class="stamp" data-es="DOSSIER · PRIMERA EDICIÓN" data-en="DOSSIER · FIRST EDITION">DOSSIER · PRIMERA EDICIÓN</div>
+  </div>
+
+  <div class="center">
+    <div class="roman">I</div>
+    <div class="word"><em>T</em>ravesía</div>
+    <div class="tag" data-es="Un fin de semana frente al Pacífico — mar abierto, mesa de arena, fuego de leña y un capítulo nuevo de oficio en común." data-en="A weekend facing the Pacific — open sea, sandbar dinner, wood fire and a new chapter of craft in common.">Un fin de semana frente al Pacífico — mar abierto, mesa de arena, fuego de leña y un capítulo nuevo de oficio en común.</div>
+    <div class="desc" data-es-html="El primer evento SORA. Veintidós invitados. Dos noches en el <strong>Golfo de Chiriquí</strong>. Tres comidas comunales, una mesa que solo existe entre dos mareas, un velero al ocaso, un baño en agua oscura, una conversación que se construye despacio. <em>Lo que SORA será siempre, empieza acá.</em>" data-en-html="The first SORA event. Twenty-two guests. Two nights in the <strong>Gulf of Chiriquí</strong>. Three communal meals, a table that only exists between two tides, a sunset sail, a swim in dark water, a conversation that builds slowly. <em>What SORA will always be, begins here.</em>">El primer evento SORA. Veintidós invitados. Dos noches en el <strong>Golfo de Chiriquí</strong>. Tres comidas comunales, una mesa que solo existe entre dos mareas, un velero al ocaso, un baño en agua oscura, una conversación que se construye despacio. <em>Lo que SORA será siempre, empieza acá.</em></div>
+  </div>
+
+  <div class="bot">
+    <div><div class="k" data-es="ESCENARIO" data-en="SETTING">ESCENARIO</div><div class="v"><em>Isla Boca Brava</em> · Chiriquí</div></div>
+    <div><div class="k" data-es="VENTANA" data-en="WINDOW">VENTANA</div><div class="v" data-es="Sábado a Lunes · 3 días" data-en="Saturday to Monday · 3 days">Sábado a Lunes · 3 días</div></div>
+    <div><div class="k" data-es="INVITADOS" data-en="GUESTS">INVITADOS</div><div class="v"><em>XXII</em> · 22 personas</div></div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<!-- PAGE 02 · CARTA / INVITATION                                    -->
+<!-- ════════════════════════════════════════════════════════════════ -->
+<section class="page letter">
+  <div class="head">
+    <div class="mark"><em>T</em>RAVESÍA · I</div>
+    <div class="pgnum">02 / 09</div>
+  </div>
+
+  <div class="eyebrow" data-es="LA INVITACIÓN" data-en="THE INVITATION">LA INVITACIÓN</div>
+  <h1 class="title" style="font-size:42px" data-es-html="Un fin de semana <em>frente al mar</em>." data-en-html="A weekend <em>facing the sea</em>.">Un fin de semana <em>frente al mar</em>.</h1>
+
+  <div class="salut" data-es="A nuestros primeros 22 invitados — operadores, anfitriones, amigos del oficio, familia:" data-en="To our first 22 guests — operators, hosts, friends of the craft, family:">A nuestros primeros 22 invitados — operadores, anfitriones, amigos del oficio, familia:</div>
+
+  <p data-es-html="SORA empezó como una idea simple: <em>curar fines de semana memorables en Latinoamérica</em>. Sin tour bus, sin lista interminable, sin paquete forzado. Una mesa, una vista, un grupo elegido — y la conversación que solo aparece cuando la logística desaparece. Eso es Travesía." data-en-html="SORA began as a simple idea: <em>curate memorable weekends across Latin America</em>. No tour bus, no endless list, no forced package. A table, a view, a chosen group — and the conversation that only appears when logistics disappear. That is Travesía.">SORA empezó como una idea simple: <em>curar fines de semana memorables en Latinoamérica</em>. Sin tour bus, sin lista interminable, sin paquete forzado. Una mesa, una vista, un grupo elegido — y la conversación que solo aparece cuando la logística desaparece. Eso es Travesía.</p>
+
+  <p data-es-html="<strong>Empezamos en el Golfo de Chiriquí.</strong> Más exactamente, en una pequeña isla llamada Boca Brava — accesible en quince minutos de lancha desde Boca Chica, con vista directa al Pacífico, manglares al amanecer, y nombre que viene del primer banco de arena que aparece solo entre dos mareas. <em>Ese banco es donde cenaremos un sábado por la noche, con un fuego de leña y nada más que estrellas.</em>" data-en-html="<strong>We begin in the Gulf of Chiriquí.</strong> More specifically, on a small island called Boca Brava — fifteen minutes by boat from Boca Chica, facing the Pacific, mangroves at dawn, and a name that comes from the first sandbar that appears only between two tides. <em>That sandbar is where we will dine one Saturday night, with a wood fire and nothing more than stars.</em>"><strong>Empezamos en el Golfo de Chiriquí.</strong> Más exactamente, en una pequeña isla llamada Boca Brava — accesible en quince minutos de lancha desde Boca Chica, con vista directa al Pacífico, manglares al amanecer, y nombre que viene del primer banco de arena que aparece solo entre dos mareas. <em>Ese banco es donde cenaremos un sábado por la noche, con un fuego de leña y nada más que estrellas.</em></p>
+
+  <p data-es-html="No es un retiro corporativo. No es un evento de marca. No es una fiesta. Es una <em>travesía</em> — tres días de comer despacio, nadar, navegar, mirar el horizonte sin hacer scroll. Quien viene es porque ya se sumó a la idea de construir algo durable en Latinoamérica. Quien viene, viene a aportar tanto como a recibir." data-en-html="It is not a corporate retreat. Not a brand event. Not a party. It is a <em>travesía</em> — three days of eating slowly, swimming, sailing, watching the horizon without scrolling. Those who come are already aligned with building something durable in Latin America. They come to give as much as to receive.">No es un retiro corporativo. No es un evento de marca. No es una fiesta. Es una <em>travesía</em> — tres días de comer despacio, nadar, navegar, mirar el horizonte sin hacer scroll. Quien viene es porque ya se sumó a la idea de construir algo durable en Latinoamérica. Quien viene, viene a aportar tanto como a recibir.</p>
+
+  <p data-es-html="Este documento contiene lo que necesitan saber para decir sí. Los venues que hemos prerreservado, el itinerario hora por hora, la mesa común que prepararemos en conjunto con Daniel y los pescadores de Boca Chica, los costos sin sobreestimar, y el corazón del fin de semana: <em>la mesa de arena</em>." data-en-html="This document holds what you need to say yes. The venues we have pre-reserved, the hour-by-hour itinerary, the communal table we will prepare with Daniel and the fishermen of Boca Chica, the costs without overestimate, and the heart of the weekend: <em>the sandbar table</em>.">Este documento contiene lo que necesitan saber para decir sí. Los venues que hemos prerreservado, el itinerario hora por hora, la mesa común que prepararemos en conjunto con Daniel y los pescadores de Boca Chica, los costos sin sobreestimar, y el corazón del fin de semana: <em>la mesa de arena</em>.</p>
+
+  <p data-es-html="Confirmar antes del <strong>15 de junio</strong>. Cupo limitado a 22 por mesa. La fecha objetivo es el último fin de semana confirmable con marea favorable y cielo seco — la enviaremos por separado a los confirmados." data-en-html="Confirm before <strong>June 15</strong>. Limited to 22 at the table. Target date is the next confirmable weekend with favorable tide and dry sky — we'll send it separately to those confirmed.">Confirmar antes del <strong>15 de junio</strong>. Cupo limitado a 22 por mesa. La fecha objetivo es el último fin de semana confirmable con marea favorable y cielo seco — la enviaremos por separado a los confirmados.</p>
+
+  <div class="sig">
+    <div class="name">Abraham Eid</div>
+    <div class="role" data-es="FUNDADOR · SORA · LA COMPAÑÍA · BOQUETE" data-en="FOUNDER · SORA · LA COMPAÑÍA · BOQUETE">FUNDADOR · SORA · LA COMPAÑÍA · BOQUETE</div>
+  </div>
+
+  <div class="foot">
+    <div class="sec"><em data-es="INVITACIÓN · 02" data-en="INVITATION · 02">INVITACIÓN · 02</em></div>
+    <div>SORA · LA COMPAÑÍA · MMXXVI</div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<!-- PAGE 03 · EL GOLFO                                              -->
+<!-- ════════════════════════════════════════════════════════════════ -->
+<section class="page">
+  <div class="head">
+    <div class="mark"><em>T</em>RAVESÍA · I</div>
+    <div class="pgnum">03 / 09</div>
+  </div>
+
+  <div class="eyebrow" data-es="03 · EL GOLFO · POR QUÉ ACÁ" data-en="03 · THE GULF · WHY HERE">03 · EL GOLFO · POR QUÉ ACÁ</div>
+  <h1 class="title" style="font-size:42px" data-es-html="<em>Golfo de Chiriquí</em>. El Pacífico que no salió en revista." data-en-html="<em>Gulf of Chiriquí</em>. The Pacific that never made a magazine."><em>Golfo de Chiriquí</em>. El Pacífico que no salió en revista.</h1>
+  <p class="lede" style="font-size:13.5px;max-width:6.2in;margin-bottom:16px" data-es="Setenta islas e islotes, manglares vivos, una corriente fría que limpia y una costa que aún no fue construida. Una hora y media de Boquete, tres horas y media de la capital. Para SORA, el escenario ideal del primer capítulo." data-en="Seventy islands and islets, living mangroves, a cool current that cleans, and a coast not yet built. Ninety minutes from Boquete, three and a half hours from the capital. For SORA, the ideal stage for chapter one.">Setenta islas e islotes, manglares vivos, una corriente fría que limpia y una costa que aún no fue construida. Una hora y media de Boquete, tres horas y media de la capital. Para SORA, el escenario ideal del primer capítulo.</p>
+
+  <div class="g3">
+    <div class="tile">
+      <div class="t-num" data-es="DÓNDE EXACTAMENTE" data-en="WHERE EXACTLY">DÓNDE EXACTAMENTE</div>
+      <h5 data-es-html="<em>Boca Chica</em> y la Isla Boca Brava." data-en-html="<em>Boca Chica</em> and Boca Brava Island."><em>Boca Chica</em> y la Isla Boca Brava.</h5>
+      <p data-es="Boca Chica es el pueblo de pescadores en la costa. Boca Brava es la isla justo enfrente, separada por un canal de 200 metros. Quince minutos en lancha. Sin auto en la isla. Sin tránsito. Sin ruido." data-en="Boca Chica is the fishing village on the coast. Boca Brava is the island right across, separated by a 200-m channel. Fifteen minutes by boat. No cars on the island. No traffic. No noise.">Boca Chica es el pueblo de pescadores en la costa. Boca Brava es la isla justo enfrente, separada por un canal de 200 metros. Quince minutos en lancha. Sin auto en la isla. Sin tránsito. Sin ruido.</p>
+    </div>
+    <div class="tile">
+      <div class="t-num" data-es="CÓMO LLEGAMOS" data-en="HOW WE GET THERE">CÓMO LLEGAMOS</div>
+      <h5 data-es-html="<em>Boquete → Boca Brava</em> · 2 h 15 min." data-en-html="<em>Boquete → Boca Brava</em> · 2 h 15 min."><em>Boquete → Boca Brava</em> · 2 h 15 min.</h5>
+      <p data-es="Boquete a David (45 min auto). David a Horconcitos por carretera Panamericana (35 min). Horconcitos a Boca Chica por camino asfaltado (35 min). Lancha de Boca Chica a Boca Brava (15 min). Coordinamos vans desde Boquete y David — incluido." data-en="Boquete to David (45 min by car). David to Horconcitos on the Panamericana (35 min). Horconcitos to Boca Chica on paved road (35 min). Boat Boca Chica to Boca Brava (15 min). We coordinate vans from Boquete and David — included.">Boquete a David (45 min auto). David a Horconcitos por carretera Panamericana (35 min). Horconcitos a Boca Chica por camino asfaltado (35 min). Lancha de Boca Chica a Boca Brava (15 min). Coordinamos vans desde Boquete y David — incluido.</p>
+    </div>
+    <div class="tile">
+      <div class="t-num" data-es="QUÉ HAY ALLÁ" data-en="WHAT'S THERE">QUÉ HAY ALLÁ</div>
+      <h5 data-es-html="Manglar, agua oscura, <em>silencio</em>." data-en-html="Mangrove, dark water, <em>silence</em>.">Manglar, agua oscura, <em>silencio</em>.</h5>
+      <p data-es="Parque Nacional Marino Golfo de Chiriquí (14,740 ha). Manglares de Boca Chica con ostiones silvestres. Bancos de arena que aparecen con marea baja. Ballenas jorobadas entre julio y octubre. Pescadores artesanales todos los días." data-en="Gulf of Chiriquí Marine National Park (14,740 ha). Boca Chica mangroves with wild oysters. Sandbars that appear at low tide. Humpback whales between July and October. Artisanal fishermen every day.">Parque Nacional Marino Golfo de Chiriquí (14,740 ha). Manglares de Boca Chica con ostiones silvestres. Bancos de arena que aparecen con marea baja. Ballenas jorobadas entre julio y octubre. Pescadores artesanales todos los días.</p>
+    </div>
+  </div>
+
+  <div class="data-strip" style="grid-template-columns:repeat(5,1fr)">
+    <div class="cell"><div class="v"><em>70+</em></div><div class="l" data-es="ISLAS DEL GOLFO" data-en="GULF ISLANDS">ISLAS DEL GOLFO</div></div>
+    <div class="cell"><div class="v"><em>14,740</em></div><div class="l" data-es="HA · PARQUE NACIONAL MARINO" data-en="HA · MARINE NATIONAL PARK">HA · PARQUE NACIONAL MARINO</div></div>
+    <div class="cell"><div class="v"><em>28 °C</em></div><div class="l" data-es="TEMP AGUA MEDIA · DIC – ABR" data-en="MEAN WATER TEMP · DEC – APR">TEMP AGUA MEDIA · DIC – ABR</div></div>
+    <div class="cell"><div class="v"><em>2.5 m</em></div><div class="l" data-es="VARIACIÓN MAREA · BANCOS" data-en="TIDE RANGE · SANDBARS">VARIACIÓN MAREA · BANCOS</div></div>
+    <div class="cell"><div class="v"><em>15 min</em></div><div class="l" data-es="BOCA CHICA A BOCA BRAVA" data-en="BOCA CHICA TO BOCA BRAVA">BOCA CHICA A BOCA BRAVA</div></div>
+  </div>
+
+  <div class="callout-light">
+    <div class="clabel" data-es="POR QUÉ NO LAS LAJAS DIRECTAMENTE" data-en="WHY NOT LAS LAJAS DIRECTLY">POR QUÉ NO LAS LAJAS DIRECTAMENTE</div>
+    <p data-es-html="Las Lajas es magnífica — playa de 14 km, arena fina, oleaje constante. Pero está más expuesta, sin islas que rompan el viento, y los servicios son hotelería de playa media. <strong>Boca Chica + Boca Brava ofrece el mismo Pacífico con más intimidad</strong>: archipiélago, lanchas a 15 min, manglar navegable, y la posibilidad de la mesa de arena que en Las Lajas no existe. <em>Las Lajas será otra Travesía — pero esta primera la queremos en isla.</em>" data-en-html="Las Lajas is magnificent — a 14 km beach, fine sand, steady surf. But it's more exposed, with no islands to break the wind, and the services are mid-tier beach hotels. <strong>Boca Chica + Boca Brava offer the same Pacific with more intimacy</strong>: archipelago, 15-min boats, navigable mangrove, and the sandbar table possibility that doesn't exist at Las Lajas. <em>Las Lajas will be another Travesía — but this first one, we want on an island.</em>">Las Lajas es magnífica — playa de 14 km, arena fina, oleaje constante. Pero está más expuesta, sin islas que rompan el viento, y los servicios son hotelería de playa media. <strong>Boca Chica + Boca Brava ofrece el mismo Pacífico con más intimidad</strong>: archipiélago, lanchas a 15 min, manglar navegable, y la posibilidad de la mesa de arena que en Las Lajas no existe. <em>Las Lajas será otra Travesía — pero esta primera la queremos en isla.</em></p>
+  </div>
+
+  <div class="foot">
+    <div class="sec"><em data-es="EL GOLFO · 03" data-en="THE GULF · 03">EL GOLFO · 03</em></div>
+    <div>SORA · LA COMPAÑÍA · MMXXVI</div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<!-- PAGE 04 · VENUES                                                -->
+<!-- ════════════════════════════════════════════════════════════════ -->
+<section class="page">
+  <div class="head">
+    <div class="mark"><em>T</em>RAVESÍA · I</div>
+    <div class="pgnum">04 / 09</div>
+  </div>
+
+  <div class="eyebrow" data-es="04 · VENUE · PRERRESERVA Y ALTERNATIVAS" data-en="04 · VENUE · PRE-HOLD + ALTERNATIVES">04 · VENUE · PRERRESERVA Y ALTERNATIVAS</div>
+  <h1 class="title" style="font-size:38px" data-es-html="Hemos reservado <em>en firme</em>. Dejamos dos alternativas." data-en-html="Held <em>firm</em>. Two alternates ready.">Hemos reservado <em>en firme</em>. Dejamos dos alternativas.</h1>
+  <p class="lede" style="font-size:13px;max-width:6.2in;margin-bottom:12px" data-es="Cuatro venues investigados con tarifas verificadas. La primera opción es la que recomendamos. Las otras tres están disponibles si el grupo crece o las fechas cambian." data-en="Four venues researched with verified rates. The first is what we recommend. The other three stand ready if the group grows or dates shift.">Cuatro venues investigados con tarifas verificadas. La primera opción es la que recomendamos. Las otras tres están disponibles si el grupo crece o las fechas cambian.</p>
+
+  <div class="venue-pick">
+    <div class="venue primary">
+      <div class="vlab" data-es="★ PRIMERA OPCIÓN · RECOMENDADA" data-en="★ FIRST PICK · RECOMMENDED">★ PRIMERA OPCIÓN · RECOMENDADA</div>
+      <h4><em>Cala Mia</em> Boutique Resort</h4>
+      <div class="vsub" data-es="Isla Boca Brava · 11 casitas frente al mar" data-en="Boca Brava Island · 11 oceanfront casitas">Isla Boca Brava · 11 casitas frente al mar</div>
+      <p data-es-html="El único resort boutique de Boca Brava. Casitas individuales con techo de paja, terraza al canal, ducha al aire libre. Restaurante con vista a Bocas del Mar. Yoga deck, kayaks incluidos, snorkel ilimitado. Cocina honesta, mediterránea-panameña. Para 22 personas necesitamos las 11 casitas completas — dos huéspedes por casita." data-en-html="The only boutique resort on Boca Brava. Stand-alone thatched casitas, terrace over the channel, outdoor shower. Restaurant facing the Bocas. Yoga deck, kayaks included, unlimited snorkel. Honest Mediterranean-Panamanian kitchen. For 22 guests we take all 11 casitas — two per casita.">El único resort boutique de Boca Brava. Casitas individuales con techo de paja, terraza al canal, ducha al aire libre. Restaurante con vista a Bocas del Mar. Yoga deck, kayaks incluidos, snorkel ilimitado. Cocina honesta, mediterránea-panameña. Para 22 personas necesitamos las 11 casitas completas — dos huéspedes por casita.</p>
+      <ul>
+        <li data-es="Casita doble: $295/noche con desayuno · 11 casitas × 2 noches = $6,490" data-en="Double casita: $295/night w/ breakfast · 11 × 2 nights = $6,490">Casita doble: $295/noche con desayuno · 11 casitas × 2 noches = $6,490</li>
+        <li data-es="Buyout completo del resort: incluye restaurante, yoga deck, kayaks" data-en="Full resort buyout: includes restaurant, yoga deck, kayaks">Buyout completo del resort: incluye restaurante, yoga deck, kayaks</li>
+        <li data-es="Lancha de transfer desde Boca Chica incluida en buyout" data-en="Boat transfer from Boca Chica included in buyout">Lancha de transfer desde Boca Chica incluida en buyout</li>
+        <li data-es="Recargo evento privado (uso exclusivo): $500 una vez" data-en="Private event surcharge (exclusive use): $500 once">Recargo evento privado (uso exclusivo): $500 una vez</li>
+      </ul>
+    </div>
+
+    <div class="venue alt">
+      <div class="vlab" data-es="ALTERNATIVA · ESCALABLE A 30+" data-en="ALTERNATE · SCALES TO 30+">ALTERNATIVA · ESCALABLE A 30+</div>
+      <h4><em>Seagull Cove</em> Resort</h4>
+      <div class="vsub" data-es="Boca Chica · costa firme · 12 habitaciones" data-en="Boca Chica · mainland · 12 rooms">Boca Chica · costa firme · 12 habitaciones</div>
+      <p data-es-html="Resort familiar en la costa de Boca Chica, justo frente a Boca Brava. Habitaciones más grandes, piscina infinita con vista al golfo, restaurante propio. Menos íntimo que Cala Mia pero permite traer hasta 30 personas sin doblar. Ideal si crece el grupo." data-en-html="Family resort on the Boca Chica coast, directly across from Boca Brava. Larger rooms, infinity pool with gulf view, on-site restaurant. Less intimate than Cala Mia but accommodates up to 30 without doubling. Ideal if the group grows.">Resort familiar en la costa de Boca Chica, justo frente a Boca Brava. Habitaciones más grandes, piscina infinita con vista al golfo, restaurante propio. Menos íntimo que Cala Mia pero permite traer hasta 30 personas sin doblar. Ideal si crece el grupo.</p>
+      <ul>
+        <li data-es="Habitación doble: $165/noche · 11 × 2 = $3,630" data-en="Double room: $165/night · 11 × 2 = $3,630">Habitación doble: $165/noche · 11 × 2 = $3,630</li>
+        <li data-es="No requiere lancha — base en tierra firme" data-en="No boat required — mainland base">No requiere lancha — base en tierra firme</li>
+        <li data-es="Mismas excursiones de barco al manglar y la mesa de arena" data-en="Same boat excursions to mangrove and sandbar">Mismas excursiones de barco al manglar y la mesa de arena</li>
+      </ul>
+    </div>
+  </div>
+
+  <table class="tbl" style="margin-top:14px">
+    <thead>
+      <tr>
+        <th data-es="VENUE" data-en="VENUE">VENUE</th>
+        <th data-es="UBICACIÓN" data-en="LOCATION">UBICACIÓN</th>
+        <th data-es="CAPACIDAD" data-en="CAPACITY">CAPACIDAD</th>
+        <th data-es="TARIFA NOCHE DOBLE" data-en="DOUBLE RATE" class="num">TARIFA NOCHE DOBLE</th>
+        <th data-es="2 NOCHES · 11 HAB · 22 PERS" data-en="2 NIGHTS · 11 RM · 22 PPL" class="num">2 NOCHES · 11 HAB · 22 PERS</th>
+        <th data-es="NOTAS" data-en="NOTES">NOTAS</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="hi"><td><strong>Cala Mia</strong></td><td data-es="Isla Boca Brava" data-en="Boca Brava Island">Isla Boca Brava</td><td>11 casitas / 22</td><td class="num">$295</td><td class="num"><strong>$6,490</strong></td><td data-es="Buyout + yoga + kayak" data-en="Buyout + yoga + kayak">Buyout + yoga + kayak</td></tr>
+      <tr><td><strong>Seagull Cove</strong></td><td data-es="Boca Chica · tierra firme" data-en="Boca Chica · mainland">Boca Chica · tierra firme</td><td>12 hab / 24</td><td class="num">$165</td><td class="num">$3,630</td><td data-es="Sin lancha · piscina" data-en="No boat · pool">Sin lancha · piscina</td></tr>
+      <tr><td><strong>Boca Brava Lodge</strong></td><td data-es="Isla Boca Brava" data-en="Boca Brava Island">Isla Boca Brava</td><td>9 cabañas / 18</td><td class="num">$130</td><td class="num">$2,340</td><td data-es="Más rústico · solo 18" data-en="More rustic · 18 max">Más rústico · solo 18</td></tr>
+      <tr><td><strong data-es="Hotel Bocas del Mar" data-en="Hotel Bocas del Mar">Hotel Bocas del Mar</strong></td><td data-es="Boca Chica · costa" data-en="Boca Chica · coast">Boca Chica · costa</td><td>14 hab / 28</td><td class="num">$185</td><td class="num">$4,070</td><td data-es="Boutique · piscina · restaurante" data-en="Boutique · pool · restaurant">Boutique · piscina · restaurante</td></tr>
+      <tr><td><strong>Las Lajas Beach Resort</strong></td><td data-es="Las Lajas · 50 min de Boca Chica" data-en="Las Lajas · 50 min from Boca Chica">Las Lajas · 50 min de Boca Chica</td><td>18 hab / 36</td><td class="num">$155</td><td class="num">$3,410</td><td data-es="Sin acceso al archipiélago" data-en="No archipelago access">Sin acceso al archipiélago</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout-light">
+    <div class="clabel" data-es="POR QUÉ CALA MIA" data-en="WHY CALA MIA">POR QUÉ CALA MIA</div>
+    <p data-es-html="Es <strong>2.79× más caro</strong> que la opción más barata y la diferencia se siente en cada detalle: estar <em>en</em> la isla en vez de cruzar todos los días, casitas individuales en vez de cuartos de hotel, restaurante boutique que coordina menú a medida, yoga deck al amanecer, kayaks listos en la playa. Para el primer evento — donde marca tono — la diferencia vale." data-en-html="It's <strong>2.79× more expensive</strong> than the cheapest option and the difference shows in every detail: being <em>on</em> the island instead of crossing daily, individual casitas instead of hotel rooms, a boutique restaurant that builds a custom menu, dawn yoga deck, kayaks waiting on the beach. For the first event — which sets tone — the difference earns its keep.">Es <strong>2.79× más caro</strong> que la opción más barata y la diferencia se siente en cada detalle: estar <em>en</em> la isla en vez de cruzar todos los días, casitas individuales en vez de cuartos de hotel, restaurante boutique que coordina menú a medida, yoga deck al amanecer, kayaks listos en la playa. Para el primer evento — donde marca tono — la diferencia vale.</p>
+  </div>
+
+  <div class="foot">
+    <div class="sec"><em data-es="VENUE · 04" data-en="VENUE · 04">VENUE · 04</em></div>
+    <div>SORA · LA COMPAÑÍA · MMXXVI</div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<!-- PAGE 05 · ITINERARIO                                            -->
+<!-- ════════════════════════════════════════════════════════════════ -->
+<section class="page">
+  <div class="head">
+    <div class="mark"><em>T</em>RAVESÍA · I</div>
+    <div class="pgnum">05 / 09</div>
+  </div>
+
+  <div class="eyebrow" data-es="05 · ITINERARIO · TRES DÍAS" data-en="05 · ITINERARY · THREE DAYS">05 · ITINERARIO · TRES DÍAS</div>
+  <h1 class="title" style="font-size:38px" data-es-html="Sábado, <em>domingo</em>, lunes." data-en-html="Saturday, <em>Sunday</em>, Monday.">Sábado, <em>domingo</em>, lunes.</h1>
+  <p class="lede" style="font-size:13px;max-width:6.2in;margin-bottom:12px" data-es="Estructurado lo suficiente para que nadie pregunte qué sigue. Suelto lo suficiente para que cada momento respire." data-en="Structured enough that no one asks what's next. Loose enough for every moment to breathe.">Estructurado lo suficiente para que nadie pregunte qué sigue. Suelto lo suficiente para que cada momento respire.</p>
+
+  <div class="itin">
+    <div class="day-block">
+      <div class="day-head">
+        <h5><em data-es="Sábado" data-en="Saturday">Sábado</em> · <span data-es="Llegada y mesa común" data-en="Arrival and communal table">Llegada y mesa común</span></h5>
+        <div class="d-tag" data-es="DÍA 1 · LLEGADA" data-en="DAY 1 · ARRIVAL">DÍA 1 · LLEGADA</div>
+      </div>
+      <div class="slot"><div class="t">10:30</div><div class="c" data-es-html="<strong>Salida en van</strong> desde Boquete (Plaza Los Establos) y David (Hotel Gran Nacional)." data-en-html="<strong>Van departure</strong> from Boquete (Los Establos) and David (Gran Nacional Hotel)."><strong>Salida en van</strong> desde Boquete (Plaza Los Establos) y David (Hotel Gran Nacional).</div></div>
+      <div class="slot"><div class="t">12:45</div><div class="c" data-es-html="<strong>Llegada a Boca Chica.</strong> Almuerzo ligero en muelle: ceviche de corvina, plátanos verdes, jugo de mango fresco." data-en-html="<strong>Arrival Boca Chica.</strong> Light pier lunch: corvina ceviche, green plantains, fresh mango juice."><strong>Llegada a Boca Chica.</strong> Almuerzo ligero en muelle: ceviche de corvina, plátanos verdes, jugo de mango fresco.</div></div>
+      <div class="slot"><div class="t">14:00</div><div class="c" data-es-html="<strong>Lancha a Cala Mia</strong> · 15 min. Check-in en casitas. Tiempo libre — siesta, nado, kayak o hamaca." data-en-html="<strong>Boat to Cala Mia</strong> · 15 min. Check-in. Free time — siesta, swim, kayak or hammock."><strong>Lancha a Cala Mia</strong> · 15 min. Check-in en casitas. Tiempo libre — siesta, nado, kayak o hamaca.</div></div>
+      <div class="slot"><div class="t">16:30</div><div class="c" data-es-html="<strong>Velero al atardecer.</strong> Salida del muelle de Cala Mia en lancha grande, recorrido por el archipiélago con cumbia tradicional en vivo (trío de Boca Chica)." data-en-html="<strong>Sunset sail.</strong> Departing Cala Mia pier on a large lancha, archipelago circuit with live traditional cumbia (Boca Chica trio)."><strong>Velero al atardecer.</strong> Salida del muelle de Cala Mia en lancha grande, recorrido por el archipiélago con cumbia tradicional en vivo (trío de Boca Chica).</div></div>
+      <div class="slot"><div class="t">19:00</div><div class="c" data-es-html="<strong>Mesa de arena.</strong> ★ El plato fuerte de la primera noche. Detalles en página 08." data-en-html="<strong>Sandbar table.</strong> ★ The first night's main act. Details on page 08."><strong>Mesa de arena.</strong> ★ El plato fuerte de la primera noche. Detalles en página 08.</div></div>
+      <div class="slot"><div class="t">22:30</div><div class="c" data-es-html="<strong>Regreso a Cala Mia.</strong> Fogata baja en playa para quien quiera quedarse." data-en-html="<strong>Back to Cala Mia.</strong> Low beach fire for whoever wants to linger."><strong>Regreso a Cala Mia.</strong> Fogata baja en playa para quien quiera quedarse.</div></div>
+    </div>
+
+    <div class="day-block">
+      <div class="day-head">
+        <h5><em data-es="Domingo" data-en="Sunday">Domingo</em> · <span data-es="Mar, manglar y mesa larga" data-en="Sea, mangrove and long table">Mar, manglar y mesa larga</span></h5>
+        <div class="d-tag" data-es="DÍA 2 · TRAVESÍA" data-en="DAY 2 · TRAVERSE">DÍA 2 · TRAVESÍA</div>
+      </div>
+      <div class="slot"><div class="t">06:30</div><div class="c" data-es-html="<strong>Yoga al amanecer</strong> en yoga deck con Mara (instructora de Boquete). Opcional." data-en-html="<strong>Sunrise yoga</strong> on the deck with Mara (Boquete instructor). Optional."><strong>Yoga al amanecer</strong> en yoga deck con Mara (instructora de Boquete). Opcional.</div></div>
+      <div class="slot"><div class="t">08:00</div><div class="c" data-es-html="<strong>Desayuno largo.</strong> Mesa común en el restaurante: huevos camperos, frutas tropicales, pan de yuca, café Janson." data-en-html="<strong>Long breakfast.</strong> Communal table in restaurant: pasture eggs, tropical fruits, yuca bread, Janson coffee."><strong>Desayuno largo.</strong> Mesa común en el restaurante: huevos camperos, frutas tropicales, pan de yuca, café Janson.</div></div>
+      <div class="slot"><div class="t">10:00</div><div class="c" data-es-html="<strong>Excursión a Isla Bolaños y Gámez</strong> · snorkel, nado, picnic ligero en playa virgen. Lancha de Cala Mia." data-en-html="<strong>Bolaños and Gámez Island excursion</strong> · snorkel, swim, light picnic on virgin beach. Cala Mia boat."><strong>Excursión a Isla Bolaños y Gámez</strong> · snorkel, nado, picnic ligero en playa virgen. Lancha de Cala Mia.</div></div>
+      <div class="slot"><div class="t">15:00</div><div class="c" data-es-html="<strong>Manglar al atardecer.</strong> Salida en kayak doble por los manglares de Boca Chica. Ostiones silvestres en el agua." data-en-html="<strong>Mangrove at sunset.</strong> Double kayak through Boca Chica mangroves. Wild oysters in the water."><strong>Manglar al atardecer.</strong> Salida en kayak doble por los manglares de Boca Chica. Ostiones silvestres en el agua.</div></div>
+      <div class="slot"><div class="t">19:30</div><div class="c" data-es-html="<strong>Cena larga en restaurante Cala Mia.</strong> Menú de Daniel (Chef). Vino mendocino, ron Pedro Mandinga, cocktail signature." data-en-html="<strong>Long dinner at Cala Mia restaurant.</strong> Daniel's menu (Chef). Mendoza wine, Pedro Mandinga rum, signature cocktail."><strong>Cena larga en restaurante Cala Mia.</strong> Menú de Daniel (Chef). Vino mendocino, ron Pedro Mandinga, cocktail signature.</div></div>
+      <div class="slot"><div class="t">22:00</div><div class="c" data-es-html="<strong>Conversación abierta</strong> en yoga deck. Opcional — quien quiere, baja a dormir." data-en-html="<strong>Open conversation</strong> on yoga deck. Optional — whoever wants, goes to sleep."><strong>Conversación abierta</strong> en yoga deck. Opcional — quien quiere, baja a dormir.</div></div>
+    </div>
+
+    <div class="day-block">
+      <div class="day-head">
+        <h5><em data-es="Lunes" data-en="Monday">Lunes</em> · <span data-es="Despedida y vuelta" data-en="Farewell and return">Despedida y vuelta</span></h5>
+        <div class="d-tag" data-es="DÍA 3 · CIERRE" data-en="DAY 3 · CLOSING">DÍA 3 · CIERRE</div>
+      </div>
+      <div class="slot"><div class="t">07:00</div><div class="c" data-es-html="<strong>Café temprano</strong> con quien quiera caminar al manglar antes del calor." data-en-html="<strong>Early coffee</strong> with whoever wants to walk the mangrove before the heat."><strong>Café temprano</strong> con quien quiera caminar al manglar antes del calor.</div></div>
+      <div class="slot"><div class="t">09:30</div><div class="c" data-es-html="<strong>Brunch de despedida.</strong> Carimañolas, huevos rancheros, frutas, jugos. Conversación de cierre — qué construimos hacia adelante." data-en-html="<strong>Farewell brunch.</strong> Carimañolas, huevos rancheros, fruit, juices. Closing conversation — what we build forward."><strong>Brunch de despedida.</strong> Carimañolas, huevos rancheros, frutas, jugos. Conversación de cierre — qué construimos hacia adelante.</div></div>
+      <div class="slot"><div class="t">11:30</div><div class="c" data-es-html="<strong>Lancha de regreso</strong> a Boca Chica. Vans esperando." data-en-html="<strong>Boat back</strong> to Boca Chica. Vans waiting."><strong>Lancha de regreso</strong> a Boca Chica. Vans esperando.</div></div>
+      <div class="slot"><div class="t">14:15</div><div class="c" data-es-html="<strong>Llegada a Boquete y David.</strong> Fin oficial de Travesía I." data-en-html="<strong>Arrival Boquete and David.</strong> Travesía I officially closes."><strong>Llegada a Boquete y David.</strong> Fin oficial de Travesía I.</div></div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div class="sec"><em data-es="ITINERARIO · 05" data-en="ITINERARY · 05">ITINERARIO · 05</em></div>
+    <div>SORA · LA COMPAÑÍA · MMXXVI</div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<!-- PAGE 06 · MENÚ                                                  -->
+<!-- ════════════════════════════════════════════════════════════════ -->
+<section class="page">
+  <div class="head">
+    <div class="mark"><em>T</em>RAVESÍA · I</div>
+    <div class="pgnum">06 / 09</div>
+  </div>
+
+  <div class="eyebrow" data-es="06 · LA MESA COMÚN" data-en="06 · THE COMMUNAL TABLE">06 · LA MESA COMÚN</div>
+  <h1 class="title" style="font-size:38px" data-es-html="Comida del <em>Pacífico</em>, fuego de <em>leña</em>, mano panameña." data-en-html="Pacific <em>food</em>, wood <em>fire</em>, Panamanian hand.">Comida del <em>Pacífico</em>, fuego de <em>leña</em>, mano panameña.</h1>
+  <p class="lede" style="font-size:13px;max-width:6.2in;margin-bottom:12px" data-es="El chef Daniel coordina con los pescadores de Boca Chica. Lo que se sirve es lo que el mar dio esa mañana. La carne viene de Volcán, los vegetales de Boquete, las frutas del Pacífico. Sin importación, sin pretensión." data-en="Chef Daniel coordinates with Boca Chica fishermen. What is served is what the sea gave that morning. Meat from Volcán, vegetables from Boquete, fruit from the Pacific. No imports, no pretense.">El chef Daniel coordina con los pescadores de Boca Chica. Lo que se sirve es lo que el mar dio esa mañana. La carne viene de Volcán, los vegetales de Boquete, las frutas del Pacífico. Sin importación, sin pretensión.</p>
+
+  <div class="menu-col">
+    <div class="mcourse">
+      <div class="ml" data-es="SÁBADO · 12:45 · MUELLE" data-en="SATURDAY · 12:45 · PIER">SÁBADO · 12:45 · MUELLE</div>
+      <h5 data-es="Bienvenida en Boca Chica" data-en="Welcome at Boca Chica">Bienvenida en Boca Chica</h5>
+      <ul>
+        <li data-es-html="Ceviche de corvina con leche de tigre, maíz tostado<em data-es='Corvina del día con cilantro y rocoto suave' data-en='Day's corvina with cilantro and gentle rocoto'>Corvina del día con cilantro y rocoto suave</em>" data-en-html="Corvina ceviche with leche de tigre, toasted corn<em>Day's corvina with cilantro and gentle rocoto</em>">Ceviche de corvina con leche de tigre, maíz tostado<em>Corvina del día con cilantro y rocoto suave</em></li>
+        <li data-es-html="Patacones con guacamole de mango<em data-es='Plátano verde frito de Volcán y mango maduro' data-en='Volcán green plantain fried + ripe mango'>Plátano verde frito de Volcán y mango maduro</em>" data-en-html="Patacones with mango guacamole<em>Volcán green plantain fried + ripe mango</em>">Patacones con guacamole de mango<em>Volcán green plantain fried + ripe mango</em></li>
+        <li data-es-html="Jugo de mango y maracuyá<em data-es='Sin azúcar añadida, hielo de manantial' data-en='No added sugar, spring-water ice'>Sin azúcar añadida, hielo de manantial</em>" data-en-html="Mango + passionfruit juice<em>No added sugar, spring-water ice</em>">Jugo de mango y maracuyá<em>No added sugar, spring-water ice</em></li>
+      </ul>
+    </div>
+
+    <div class="mcourse" style="background:#fbe3d2;border-color:rgba(168,64,31,0.18)">
+      <div class="ml" data-es="SÁBADO · 19:00 · MESA DE ARENA" data-en="SATURDAY · 19:00 · SANDBAR">SÁBADO · 19:00 · MESA DE ARENA</div>
+      <h5 data-es="Cena entre dos mareas — al fuego" data-en="Dinner between two tides — over fire">Cena entre dos mareas — al fuego</h5>
+      <ul>
+        <li data-es-html="Ostiones del manglar a la brasa con limón verde y comino<em data-es='Cosechados esa tarde por Edgardo' data-en='Harvested that afternoon by Edgardo'>Cosechados esa tarde por Edgardo</em>" data-en-html="Mangrove oysters over coals with key lime and cumin<em>Harvested that afternoon by Edgardo</em>">Ostiones del manglar a la brasa con limón verde y comino<em>Cosechados esa tarde por Edgardo</em></li>
+        <li data-es-html="Pargo entero al sartén con coco, jengibre y curry verde<em data-es='Pargo de 4 kg pescado por Luchi, cocinado en sartén de hierro' data-en='4 kg snapper caught by Luchi, cooked in iron skillet'>Pargo de 4 kg pescado por Luchi, cocinado en sartén de hierro</em>" data-en-html="Whole snapper pan-seared with coconut, ginger and green curry<em>4 kg snapper caught by Luchi, cooked in iron skillet</em>">Pargo entero al sartén con coco, jengibre y curry verde<em>4 kg snapper caught by Luchi, cooked in iron skillet</em></li>
+        <li data-es-html="Arroz con coco y guandú<em data-es='Tradición afrocaribeña — Bocas del Toro adapted' data-en='Afrocaribbean tradition — Bocas del Toro adapted'>Tradición afrocaribeña — Bocas del Toro adapted</em>" data-en-html="Coconut rice with pigeon pea<em>Afrocaribbean tradition — Bocas del Toro adapted</em>">Arroz con coco y guandú<em>Tradición afrocaribeña — Bocas del Toro adapted</em></li>
+        <li data-es-html="Plátanos maduros caramelizados con sal de mar<em data-es='Volcán · cosecha de octubre' data-en='Volcán · October harvest'>Volcán · cosecha de octubre</em>" data-en-html="Caramelized ripe plantain with sea salt<em>Volcán · October harvest</em>">Plátanos maduros caramelizados con sal de mar<em>Volcán · October harvest</em></li>
+        <li data-es-html="Postre: torrejas de coco con miel de caña<em data-es='Receta de la abuela de Daniel — Las Tablas' data-en='Daniel's grandmother's recipe — Las Tablas'>Receta de la abuela de Daniel — Las Tablas</em>" data-en-html="Dessert: coconut torrejas with cane honey<em>Daniel's grandmother's recipe — Las Tablas</em>">Postre: torrejas de coco con miel de caña<em>Receta de la abuela de Daniel — Las Tablas</em></li>
+      </ul>
+    </div>
+
+    <div class="mcourse">
+      <div class="ml" data-es="DOMINGO · 08:00 · MESA LARGA" data-en="SUNDAY · 08:00 · LONG TABLE">DOMINGO · 08:00 · MESA LARGA</div>
+      <h5 data-es="Desayuno comunal" data-en="Communal breakfast">Desayuno comunal</h5>
+      <ul>
+        <li data-es-html="Huevos camperos rancheros con queso de cabra de Volcán<em data-es='Cocina chiricana de finca' data-en='Chiricana finca cooking'>Cocina chiricana de finca</em>" data-en-html="Pasture eggs rancheros with Volcán goat cheese<em>Chiricana finca cooking</em>">Huevos camperos rancheros con queso de cabra de Volcán<em>Chiricana finca cooking</em></li>
+        <li data-es-html="Pan de yuca casero · mantequilla cultivada<em data-es='Yuca de Tolé, fermentación de 48 horas' data-en='Tolé yuca, 48-hr fermentation'>Yuca de Tolé, fermentación de 48 horas</em>" data-en-html="House yuca bread · cultured butter<em>Tolé yuca, 48-hr fermentation</em>">Pan de yuca casero · mantequilla cultivada<em>Yuca de Tolé, fermentación de 48 horas</em></li>
+        <li data-es-html="Frutas tropicales: mamey, granadilla, maracuyá, mango bocadito" data-en-html="Tropical fruits: mamey, granadilla, passion fruit, bocadito mango">Frutas tropicales: mamey, granadilla, maracuyá, mango bocadito</li>
+        <li data-es-html="Café Janson (Boquete) y matcha ceremonial<em data-es='Tueste medio · grano de finca de altura' data-en='Medium roast · high-altitude finca bean'>Tueste medio · grano de finca de altura</em>" data-en-html="Janson coffee (Boquete) and ceremonial matcha<em>Medium roast · high-altitude finca bean</em>">Café Janson (Boquete) y matcha ceremonial<em>Medium roast · high-altitude finca bean</em></li>
+      </ul>
+    </div>
+
+    <div class="mcourse" style="background:#f3e7c8;border-color:rgba(200,144,48,.18)">
+      <div class="ml" data-es="DOMINGO · 19:30 · CENA LARGA" data-en="SUNDAY · 19:30 · LONG DINNER">DOMINGO · 19:30 · CENA LARGA</div>
+      <h5 data-es="Mesa al filo del mar · Cala Mia" data-en="Table by the sea · Cala Mia">Mesa al filo del mar · Cala Mia</h5>
+      <ul>
+        <li data-es-html="Sopa de mariscos al fuego — camarón, jaiba, mejillón<em data-es='Caldo concentrado de 18 horas' data-en='18-hr concentrated stock'>Caldo concentrado de 18 horas</em>" data-en-html="Wood-fire seafood soup — shrimp, crab, mussel<em>18-hr concentrated stock</em>">Sopa de mariscos al fuego — camarón, jaiba, mejillón<em>Caldo concentrado de 18 horas</em></li>
+        <li data-es-html="Cordero al sarmiento con yuca asada y mojo verde<em data-es='Cordero criado en Volcán · fuego de leña' data-en='Volcán-raised lamb · wood fire'>Cordero criado en Volcán · fuego de leña</em>" data-en-html="Lamb on vine cuttings with roasted yuca and green mojo<em>Volcán-raised lamb · wood fire</em>">Cordero al sarmiento con yuca asada y mojo verde<em>Cordero criado en Volcán · fuego de leña</em></li>
+        <li data-es-html="Vegetales de Boquete a la parrilla<em data-es='Calabacín, espárrago, hongo ostra, hojas amargas' data-en='Zucchini, asparagus, oyster mushroom, bitter greens'>Calabacín, espárrago, hongo ostra, hojas amargas</em>" data-en-html="Boquete vegetables on the grill<em>Zucchini, asparagus, oyster mushroom, bitter greens</em>">Vegetales de Boquete a la parrilla<em>Calabacín, espárrago, hongo ostra, hojas amargas</em></li>
+        <li data-es-html="Postre: helado de café Janson con miel de tronco<em data-es='Receta cooperativa abuelas de Boquete' data-en='Boquete grandmothers cooperative recipe'>Receta cooperativa abuelas de Boquete</em>" data-en-html="Dessert: Janson coffee ice cream with tree honey<em>Boquete grandmothers cooperative recipe</em>">Postre: helado de café Janson con miel de tronco<em>Receta cooperativa abuelas de Boquete</em></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout-light" style="margin-top:14px">
+    <div class="clabel" data-es="BAR · BEBIDAS DURANTE TODO EL FIN DE SEMANA" data-en="BAR · DRINKS THROUGHOUT">BAR · BEBIDAS DURANTE TODO EL FIN DE SEMANA</div>
+    <p data-es-html="<strong>Cocktail signature “Travesía”:</strong> ron Pedro Mandinga blanco + maracuyá + jengibre fresco + hierbabuena de la finca. <strong>Vinos:</strong> Malbec mendocino (Catena), Sauvignon Blanc casablanqueño (Casa Marín). <strong>Cervezas:</strong> La Rana Dorada artesanal panameña. <strong>Sin alcohol:</strong> agua de manantial, jugos de fruta fresca, té de hierbas locales, kombucha de Boquete." data-en-html="<strong>Signature “Travesía” cocktail:</strong> Pedro Mandinga white rum + passionfruit + fresh ginger + finca mint. <strong>Wine:</strong> Mendoza Malbec (Catena), Casablanca Sauvignon Blanc (Casa Marín). <strong>Beer:</strong> La Rana Dorada Panamanian craft. <strong>Non-alcoholic:</strong> spring water, fresh juices, local herbal teas, Boquete kombucha."><strong>Cocktail signature "Travesía":</strong> ron Pedro Mandinga blanco + maracuyá + jengibre fresco + hierbabuena de la finca. <strong>Vinos:</strong> Malbec mendocino (Catena), Sauvignon Blanc casablanqueño (Casa Marín). <strong>Cervezas:</strong> La Rana Dorada artesanal panameña. <strong>Sin alcohol:</strong> agua de manantial, jugos de fruta fresca, té de hierbas locales, kombucha de Boquete.</p>
+  </div>
+
+  <div class="foot">
+    <div class="sec"><em data-es="MESA COMÚN · 06" data-en="COMMUNAL · 06">MESA COMÚN · 06</em></div>
+    <div>SORA · LA COMPAÑÍA · MMXXVI</div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<!-- PAGE 07 · INVERSIÓN / COSTOS                                    -->
+<!-- ════════════════════════════════════════════════════════════════ -->
+<section class="page">
+  <div class="head">
+    <div class="mark"><em>T</em>RAVESÍA · I</div>
+    <div class="pgnum">07 / 09</div>
+  </div>
+
+  <div class="eyebrow" data-es="07 · INVERSIÓN POR INVITADO" data-en="07 · INVESTMENT PER GUEST">07 · INVERSIÓN POR INVITADO</div>
+  <h1 class="title" style="font-size:42px" data-es-html="<em>$895</em> por persona. Todo incluido." data-en-html="<em>$895</em> per person. All in."><em>$895</em> por persona. Todo incluido.</h1>
+  <p class="lede" style="font-size:13px;max-width:6.2in;margin-bottom:12px" data-es="Calculado para 22 invitados con tarifas verificadas en mayo de 2026. Sin sobreestimar. La diferencia entre costo y precio cubre la operación SORA y un pequeño margen para hacer la segunda Travesía mejor que esta." data-en="Calculated for 22 guests with rates verified May 2026. No overestimate. The gap between cost and price covers SORA operations and a small margin to make Travesía II better than this one.">Calculado para 22 invitados con tarifas verificadas en mayo de 2026. Sin sobreestimar. La diferencia entre costo y precio cubre la operación SORA y un pequeño margen para hacer la segunda Travesía mejor que esta.</p>
+
+  <table class="tbl">
+    <thead>
+      <tr>
+        <th data-es="PARTIDA" data-en="LINE ITEM">PARTIDA</th>
+        <th data-es="DETALLE" data-en="DETAIL">DETALLE</th>
+        <th data-es="UNIDAD" data-en="UNIT" class="num">UNIDAD</th>
+        <th data-es="CANT." data-en="QTY" class="num">CANT.</th>
+        <th data-es="TOTAL" data-en="TOTAL" class="num">TOTAL</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><strong data-es="Alojamiento" data-en="Lodging">Alojamiento</strong></td><td data-es="Cala Mia · 11 casitas dobles × 2 noches" data-en="Cala Mia · 11 double casitas × 2 nights">Cala Mia · 11 casitas dobles × 2 noches</td><td class="num">$295</td><td class="num">22</td><td class="num"><strong>$6,490</strong></td></tr>
+      <tr><td><strong data-es="Buyout privado" data-en="Private buyout">Buyout privado</strong></td><td data-es="Uso exclusivo + restaurante a la medida" data-en="Exclusive use + custom restaurant">Uso exclusivo + restaurante a la medida</td><td class="num">$500</td><td class="num">1</td><td class="num"><strong>$500</strong></td></tr>
+      <tr><td><strong data-es="Comidas" data-en="Meals">Comidas</strong></td><td data-es="6 comidas comunales × 22 personas (chef Daniel)" data-en="6 communal meals × 22 guests (Chef Daniel)">6 comidas comunales × 22 personas (chef Daniel)</td><td class="num">$42</td><td class="num">132</td><td class="num"><strong>$5,544</strong></td></tr>
+      <tr><td><strong data-es="Mesa de arena" data-en="Sandbar table">Mesa de arena</strong></td><td data-es="Logística banco + lancha doble + mesa larga + fuego + músicos" data-en="Sandbar logistics + double boat + long table + fire + musicians">Logística banco + lancha doble + mesa larga + fuego + músicos</td><td class="num">$2,200</td><td class="num">1</td><td class="num"><strong>$2,200</strong></td></tr>
+      <tr><td><strong data-es="Bar abierto" data-en="Open bar">Bar abierto</strong></td><td data-es="Vinos · cocktail signature · cervezas · sin alcohol" data-en="Wines · signature cocktail · beers · non-alcoholic">Vinos · cocktail signature · cervezas · sin alcohol</td><td class="num">$32</td><td class="num">22</td><td class="num"><strong>$704</strong></td></tr>
+      <tr><td><strong data-es="Transporte" data-en="Transport">Transporte</strong></td><td data-es="Van Boquete/David · ida y vuelta · 2 vehículos" data-en="Boquete/David van · round trip · 2 vehicles">Van Boquete/David · ida y vuelta · 2 vehículos</td><td class="num">$650</td><td class="num">2</td><td class="num"><strong>$1,300</strong></td></tr>
+      <tr><td><strong data-es="Excursiones" data-en="Excursions">Excursiones</strong></td><td data-es="Snorkel Bolaños · kayak manglar · velero cumbia" data-en="Bolaños snorkel · mangrove kayak · cumbia sail">Snorkel Bolaños · kayak manglar · velero cumbia</td><td class="num">$48</td><td class="num">22</td><td class="num"><strong>$1,056</strong></td></tr>
+      <tr><td><strong data-es="Yoga + músicos" data-en="Yoga + musicians">Yoga + músicos</strong></td><td data-es="Mara (yoga) + trío cumbia Boca Chica (2 sets)" data-en="Mara (yoga) + Boca Chica cumbia trio (2 sets)">Mara (yoga) + trío cumbia Boca Chica (2 sets)</td><td class="num">$280</td><td class="num">1</td><td class="num"><strong>$280</strong></td></tr>
+      <tr><td><strong data-es="Fotografía" data-en="Photography">Fotografía</strong></td><td data-es="Fotógrafa de Boquete · 3 días con galería compartida" data-en="Boquete photographer · 3 days with shared gallery">Fotógrafa de Boquete · 3 días con galería compartida</td><td class="num">$600</td><td class="num">1</td><td class="num"><strong>$600</strong></td></tr>
+      <tr><td><strong data-es="Contingencia 10%" data-en="Contingency 10%">Contingencia 10%</strong></td><td data-es="Para imprevistos · mar, clima, ajustes" data-en="For unforeseen · sea, weather, adjustments">Para imprevistos · mar, clima, ajustes</td><td class="num">—</td><td class="num">—</td><td class="num"><strong>$1,867</strong></td></tr>
+      <tr class="hi"><td colspan="4"><strong data-es="COSTO TOTAL · 22 INVITADOS · 3 DÍAS / 2 NOCHES" data-en="TOTAL COST · 22 GUESTS · 3 DAYS / 2 NIGHTS">COSTO TOTAL · 22 INVITADOS · 3 DÍAS / 2 NOCHES</strong></td><td class="num"><strong>$20,541</strong></td></tr>
+      <tr class="fav"><td colspan="4"><strong data-es="POR INVITADO · COSTO DIRECTO" data-en="PER GUEST · DIRECT COST">POR INVITADO · COSTO DIRECTO</strong></td><td class="num"><strong>$934</strong></td></tr>
+      <tr class="fav"><td colspan="4"><strong data-es="PRECIO POR INVITADO · CONSTRUYE TRAVESÍA II" data-en="PRICE PER GUEST · BUILDS TRAVESÍA II">PRECIO POR INVITADO · CONSTRUYE TRAVESÍA II</strong></td><td class="num"><strong>$895</strong></td></tr>
+    </tbody>
+  </table>
+
+  <div class="g3">
+    <div class="tile">
+      <div class="t-num" data-es="ESTÁ INCLUIDO" data-en="INCLUDED">ESTÁ INCLUIDO</div>
+      <h5 data-es-html="<em>Todo</em> excepto el vuelo." data-en-html="<em>Everything</em> except the flight."><em>Todo</em> excepto el vuelo.</h5>
+      <p data-es="Alojamiento, comida, bebida, transporte terrestre, todas las excursiones, yoga, músicos, fotografía, mesa de arena. Sin extras sorpresa el último día." data-en="Lodging, food, drink, ground transport, all excursions, yoga, musicians, photography, sandbar table. No surprise extras on day three.">Alojamiento, comida, bebida, transporte terrestre, todas las excursiones, yoga, músicos, fotografía, mesa de arena. Sin extras sorpresa el último día.</p>
+    </div>
+    <div class="tile">
+      <div class="t-num" data-es="NO ESTÁ INCLUIDO" data-en="NOT INCLUDED">NO ESTÁ INCLUIDO</div>
+      <h5 data-es-html="Vuelo a <em>David</em> + propinas." data-en-html="Flight to <em>David</em> + tips.">Vuelo a <em>David</em> + propinas.</h5>
+      <p data-es="Vuelo PTY → David (~$80 con Air Panama, 50 min). Propina al personal (sugerimos $40 / invitado, repartido por SORA). Llamadas internacionales y bebidas premium fuera de menú." data-en="Flight PTY → David (~$80 with Air Panama, 50 min). Staff tip (suggested $40 / guest, distributed by SORA). International calls and premium drinks outside menu.">Vuelo PTY → David (~$80 con Air Panama, 50 min). Propina al personal (sugerimos $40 / invitado, repartido por SORA). Llamadas internacionales y bebidas premium fuera de menú.</p>
+    </div>
+    <div class="tile">
+      <div class="t-num" data-es="POLÍTICA DE PAGO" data-en="PAYMENT TERMS">POLÍTICA DE PAGO</div>
+      <h5 data-es-html="<em>40%</em> al confirmar. <em>60%</em> 30 días antes." data-en-html="<em>40%</em> on confirm. <em>60%</em> 30 days prior."><em>40%</em> al confirmar. <em>60%</em> 30 días antes.</h5>
+      <p data-es="Cancelación con reembolso total hasta 45 días antes. 50% entre 45 y 30 días. Sin reembolso 30 días o menos — transferible a Travesía II." data-en="Full refund up to 45 days prior. 50% between 45 and 30 days. No refund within 30 days — transferable to Travesía II.">Cancelación con reembolso total hasta 45 días antes. 50% entre 45 y 30 días. Sin reembolso 30 días o menos — transferible a Travesía II.</p>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div class="sec"><em data-es="INVERSIÓN · 07" data-en="INVESTMENT · 07">INVERSIÓN · 07</em></div>
+    <div>SORA · LA COMPAÑÍA · MMXXVI</div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<!-- PAGE 08 · LA EXPERIENCIA SORA · MESA DE ARENA · BOTTOM-RIGHT    -->
+<!-- ════════════════════════════════════════════════════════════════ -->
+<section class="page">
+  <div class="head">
+    <div class="mark"><em>T</em>RAVESÍA · I</div>
+    <div class="pgnum">08 / 09</div>
+  </div>
+
+  <div class="eyebrow" data-es="08 · LA EXPERIENCIA SORA" data-en="08 · THE SORA EXPERIENCE">08 · LA EXPERIENCIA SORA</div>
+  <h1 class="title" style="font-size:42px" data-es-html="Una mesa que <em>solo existe</em> entre dos mareas." data-en-html="A table that <em>only exists</em> between two tides.">Una mesa que <em>solo existe</em> entre dos mareas.</h1>
+  <p class="lede" style="font-size:14px;max-width:6.2in;margin-bottom:14px" data-es="Cada Travesía SORA tendrá una experiencia firma — el momento que define ese capítulo. Para el primer fin de semana, ese momento es la mesa de arena. Una hora, después del atardecer, en un banco de arena que aparece por la marea y se borra por la siguiente. Sin segunda oportunidad. Sin fotos para Instagram que la repitan. Solo quienes están." data-en="Each SORA Travesía will have a signature experience — the moment that defines that chapter. For the first weekend, that moment is the sandbar table. One hour, after sunset, on a bar that the tide reveals and the next tide erases. No second chance. No Instagram photos that can repeat it. Only those who are there.">Cada Travesía SORA tendrá una experiencia firma — el momento que define ese capítulo. Para el primer fin de semana, ese momento es la mesa de arena. Una hora, después del atardecer, en un banco de arena que aparece por la marea y se borra por la siguiente. Sin segunda oportunidad. Sin fotos para Instagram que la repitan. Solo quienes están.</p>
+
+  <div class="kicker" data-es="LOGÍSTICA · QUÉ ESTAMOS COORDINANDO" data-en="LOGISTICS · WHAT WE'RE COORDINATING">LOGÍSTICA · QUÉ ESTAMOS COORDINANDO</div>
+
+  <div class="g2">
+    <div class="tile">
+      <div class="t-num" data-es="LA MAREA" data-en="THE TIDE">LA MAREA</div>
+      <h5 data-es-html="Marea <em>baja</em> a las 18:30 — banco emerge." data-en-html="<em>Low</em> tide at 18:30 — bar emerges.">Marea <em>baja</em> a las 18:30 — banco emerge.</h5>
+      <p data-es="Estudiamos las tablas de marea del IMA con 30 días de anticipación. Solo cuatro fines de semana al año tienen marea baja + cielo seco + ocaso simultáneos. La fecha de Travesía I es uno de ellos." data-en="We study the IMA tide tables 30 days ahead. Only four weekends per year align low tide + dry sky + sunset. Travesía I's date is one of them.">Estudiamos las tablas de marea del IMA con 30 días de anticipación. Solo cuatro fines de semana al año tienen marea baja + cielo seco + ocaso simultáneos. La fecha de Travesía I es uno de ellos.</p>
+    </div>
+    <div class="tile">
+      <div class="t-num" data-es="LA MESA" data-en="THE TABLE">LA MESA</div>
+      <h5 data-es-html="Una mesa <em>larga</em> de 7 metros, hecha en Boquete." data-en-html="A <em>seven-metre</em> long table, made in Boquete.">Una mesa <em>larga</em> de 7 metros, hecha en Boquete.</h5>
+      <p data-es="Construida por Sebastián (carpintero de Bajo Mono) en pino panameño, montada en tijeras para encajar en la lancha grande. Mantel de lino crudo. Vajilla de barro de la cooperativa La Arena. Velas en cilindros de vidrio." data-en="Built by Sebastián (Bajo Mono carpenter) in Panamanian pine, mounted on scissor stands to fit the large boat. Raw linen tablecloth. Earthenware from the La Arena cooperative. Candles in glass cylinders.">Construida por Sebastián (carpintero de Bajo Mono) en pino panameño, montada en tijeras para encajar en la lancha grande. Mantel de lino crudo. Vajilla de barro de la cooperativa La Arena. Velas en cilindros de vidrio.</p>
+    </div>
+    <div class="tile">
+      <div class="t-num" data-es="EL FUEGO" data-en="THE FIRE">EL FUEGO</div>
+      <h5 data-es-html="Fogón portátil, <em>leña de naranjo</em> de finca." data-en-html="Portable hearth, <em>orange-wood</em> from finca.">Fogón portátil, <em>leña de naranjo</em> de finca.</h5>
+      <p data-es="Daniel y dos cocineros bajan con el fogón armado, parrilla y plancha. La cena se cocina ahí mismo, en el banco. El pargo entrega su última hora en sartén de hierro. El olor a leña de naranjo se queda en la ropa." data-en="Daniel and two cooks bring the assembled hearth, grill and plancha. Dinner cooks right there, on the bar. The snapper gives its final hour in the iron skillet. The orange-wood smoke stays in clothes.">Daniel y dos cocineros bajan con el fogón armado, parrilla y plancha. La cena se cocina ahí mismo, en el banco. El pargo entrega su última hora en sartén de hierro. El olor a leña de naranjo se queda en la ropa.</p>
+    </div>
+    <div class="tile">
+      <div class="t-num" data-es="EL CIERRE" data-en="THE CLOSE">EL CIERRE</div>
+      <h5 data-es-html="A las 22:00 <em>regresa</em> la marea." data-en-html="At 22:00 the <em>tide</em> returns.">A las 22:00 <em>regresa</em> la marea.</h5>
+      <p data-es="La cena dura mientras dura la arena. Cuando el agua empieza a lamer las patas de la mesa, todos suben a la lancha. La mesa se desarma, la arena vuelve al mar, y la mañana siguiente nadie podría señalar dónde estuvimos. Esa es la idea." data-en="Dinner lasts as long as the sand. When water begins to lap the table legs, everyone boards the boat. The table breaks down, the sand returns to the sea, and the next morning no one could point to where we were. That is the idea.">La cena dura mientras dura la arena. Cuando el agua empieza a lamer las patas de la mesa, todos suben a la lancha. La mesa se desarma, la arena vuelve al mar, y la mañana siguiente nadie podría señalar dónde estuvimos. Esa es la idea.</p>
+    </div>
+  </div>
+
+  <!-- THE BOTTOM-RIGHT PLACED EXPERIENCE CARD -->
+  <div class="sora-exp">
+    <div class="sl" data-es="EXPERIENCIA FIRMA · TRAVESÍA I" data-en="SIGNATURE · TRAVESÍA I">EXPERIENCIA FIRMA · TRAVESÍA I</div>
+    <h5 data-es-html="“La mesa de arena.”" data-en-html="“The sandbar table.”">"La mesa de arena."</h5>
+    <p data-es="22 sillas, una mesa larga, un fuego de naranjo, el Pacífico a un metro. Empieza al apagarse el sol; termina cuando la marea regresa. Tres horas exactas. Solo quienes están." data-en="22 chairs, a long table, an orange-wood fire, the Pacific one metre away. Begins as the sun goes; ends when the tide returns. Exactly three hours. Only those who are there.">22 sillas, una mesa larga, un fuego de naranjo, el Pacífico a un metro. Empieza al apagarse el sol; termina cuando la marea regresa. Tres horas exactas. Solo quienes están.</p>
+    <div class="ssig" data-es="★ EL CORAZÓN DEL FIN DE SEMANA" data-en="★ HEART OF THE WEEKEND">★ EL CORAZÓN DEL FIN DE SEMANA</div>
+  </div>
+
+  <div class="foot">
+    <div class="sec"><em data-es="EXPERIENCIA SORA · 08" data-en="SORA EXPERIENCE · 08">EXPERIENCIA SORA · 08</em></div>
+    <div>SORA · LA COMPAÑÍA · MMXXVI</div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<!-- PAGE 09 · POSTER · MARKETING                                    -->
+<!-- ════════════════════════════════════════════════════════════════ -->
+<section class="page poster">
+  <div class="poster-in">
+    <div class="pkey" data-es="SORA · TRAVEL AGENCY · LA COMPAÑÍA" data-en="SORA · TRAVEL AGENCY · LA COMPAÑÍA">SORA · TRAVEL AGENCY · LA COMPAÑÍA</div>
+    <div class="proman">I</div>
+    <h1><em>T</em>ravesía</h1>
+    <div class="ptag" data-es="Un fin de semana frente al Pacífico — mar abierto, mesa de arena, fuego de leña y un capítulo nuevo de oficio en común." data-en="A weekend facing the Pacific — open sea, sandbar table, wood fire and a new chapter of craft in common.">Un fin de semana frente al Pacífico — mar abierto, mesa de arena, fuego de leña y un capítulo nuevo de oficio en común.</div>
+
+    <div class="pmeta">
+      <div>
+        <div class="k" data-es="ESCENARIO" data-en="SETTING">ESCENARIO</div>
+        <div class="v"><em>Boca Brava</em></div>
+        <div class="v" style="font-size:13px;color:var(--ink-3);margin-top:2px" data-es="Golfo de Chiriquí · Panamá" data-en="Gulf of Chiriquí · Panama">Golfo de Chiriquí · Panamá</div>
+      </div>
+      <div>
+        <div class="k" data-es="VENTANA" data-en="WINDOW">VENTANA</div>
+        <div class="v" data-es="Sábado a Lunes" data-en="Saturday to Monday">Sábado a Lunes</div>
+        <div class="v" style="font-size:13px;color:var(--ink-3);margin-top:2px"><em>22</em> <span data-es="invitados" data-en="guests">invitados</span> · <em>$895</em> <span data-es="todo incluido" data-en="all in">todo incluido</span></div>
+      </div>
+      <div>
+        <div class="k" data-es="EXPERIENCIA FIRMA" data-en="SIGNATURE">EXPERIENCIA FIRMA</div>
+        <div class="v" style="color:var(--coral-deep);font-style:italic" data-es="La mesa de arena" data-en="The sandbar table">La mesa de arena</div>
+        <div class="v" style="font-size:13px;color:var(--ink-3);margin-top:2px" data-es="Una hora · entre dos mareas" data-en="One hour · between two tides">Una hora · entre dos mareas</div>
+      </div>
+      <div>
+        <div class="k" data-es="CONFIRMAR" data-en="CONFIRM">CONFIRMAR</div>
+        <div class="v" data-es-html="Antes del <em>15 de junio</em>" data-en-html="Before <em>June 15</em>">Antes del <em>15 de junio</em></div>
+        <div class="v" style="font-size:13px;color:var(--ink-3);margin-top:2px">sora@lacompania.pa</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<script>
+  const getLang = () => localStorage.getItem('sora.lang') || 'es';
+  function applyLang(lang){
+    document.querySelectorAll('[data-es]').forEach(el=>{
+      const v = el.getAttribute('data-' + lang);
+      if (v != null) { if (/<[a-z]/i.test(v)) el.innerHTML = v; else el.textContent = v; }
+    });
+    document.querySelectorAll('[data-es-html]').forEach(el=>{
+      const v = el.getAttribute('data-' + lang + '-html');
+      if(v != null) el.innerHTML = v;
+    });
+    document.documentElement.lang = lang;
+    localStorage.setItem('sora.lang', lang);
+    document.querySelectorAll('.lang-bar button').forEach(b=>b.classList.toggle('act', b.dataset.lang === lang));
+  }
+  document.querySelectorAll('.lang-bar button').forEach(b=>b.addEventListener('click', ()=>applyLang(b.dataset.lang)));
+  applyLang(getLang());
+</script>
+</body>
+</html>
