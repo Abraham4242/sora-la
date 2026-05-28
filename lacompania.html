@@ -87,13 +87,15 @@
 
   /* BRANDS GRID */
   .brands{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-  @media (max-width:780px){.brands{grid-template-columns:1fr}}
+  .brands .brand-card:nth-child(5){grid-column:1 / -1}
+  @media (max-width:780px){.brands{grid-template-columns:1fr}.brands .brand-card:nth-child(5){grid-column:auto}}
   .brand-card{position:relative;background:var(--paper-2);border:0.5px solid var(--line);border-radius:14px;padding:36px 38px 32px;display:flex;flex-direction:column;min-height:280px;transition:all .22s cubic-bezier(0.25,1,0.5,1);overflow:hidden}
   .brand-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--coral,#D9573B)}
   .brand-card.b-sora::before{background:#D9573B}
   .brand-card.b-veta::before{background:#b8602a}
   .brand-card.b-hilo::before{background:#1f4eb8}
   .brand-card.b-rapitido::before{background:#c63320}
+  .brand-card.b-aula::before{background:#c89030}
   .brand-card:hover{transform:translateY(-4px);box-shadow:0 14px 40px rgba(20,17,12,.08);border-color:var(--line-2);background:var(--paper)}
   .brand-card .b-tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.22em;color:var(--ink-faint);text-transform:uppercase;font-weight:600;margin-bottom:14px}
   .brand-card h4{font-family:var(--serif);font-weight:400;font-size:38px;line-height:1;color:var(--ink);letter-spacing:.02em;margin-bottom:8px}
@@ -209,7 +211,7 @@
       <div class="sec-num" data-es="01 · MARCAS" data-en="01 · BRANDS">01 · BRANDS</div>
       <h3 data-es-html="Lo <em>que construimos</em>." data-en-html="What we <em>build</em>.">What we <em>build</em>.</h3>
     </div>
-    <p class="sec-sub" data-es="Cuatro apuestas. Cada una con identidad propia. Una infraestructura compartida abajo." data-en="Four bets. Each with its own identity. One shared infrastructure underneath.">Four bets. Each with its own identity. One shared infrastructure underneath.</p>
+    <p class="sec-sub" data-es="Cinco apuestas. Cada una con identidad propia. Una infraestructura compartida abajo." data-en="Five bets. Each with its own identity. One shared infrastructure underneath.">Five bets. Each with its own identity. One shared infrastructure underneath.</p>
   </div>
 
   <div class="brands">
@@ -254,6 +256,17 @@
       <div class="b-foot">
         <span class="b-meta">/rapitido.html</span>
         <span class="b-open" style="color:#c63320">OPEN →</span>
+      </div>
+    </a>
+
+    <a href="aula.html" class="brand-card b-aula">
+      <div class="b-tag" data-es="05 · DISEÑO · PILOTO BOQUETE + COMARCA 2026" data-en="05 · DESIGN · BOQUETE + COMARCA PILOT 2026">05 · DESIGN · BOQUETE + COMARCA PILOT 2026</div>
+      <h4 style="letter-spacing:.02em"><em style="color:#c89030">AULA</em></h4>
+      <div class="b-tag-line" data-es="Currículo de IA · 1-a-1 a escala · español · ngäbere · inglés" data-en="AI curriculum · 1-to-1 at scale · Spanish · Ngäbere · English">AI curriculum · 1-to-1 at scale · Spanish · Ngäbere · English</div>
+      <p data-es-html="El sistema educativo panameño tiene <strong>60-100 estudiantes por maestro</strong> en zonas rurales y <strong>50% de deserción</strong> en la Comarca antes de terminar primaria. AULA es un <strong>copiloto de IA</strong> que corre offline en un Raspberry Pi de $1,500: tutor 1-a-1 para cada niño, copiloto para cada maestro, currículo MEDUCA + rutas adaptativas + voz multilingüe nativa (incluye ngäbere). Pilotos en Bajo Boquete + Academia Boquete + 5 escuelas Ngäbe-Buglé. <em>Aula sin pared, maestro sin techo.</em>" data-en-html="Panama's rural classrooms have <strong>60-100 students per teacher</strong> and <strong>50% dropout</strong> in the Comarca before finishing primary. AULA is an <strong>AI copilot</strong> running offline on a $1,500 Raspberry Pi: 1-to-1 tutor for every child, copilot for every teacher, MEDUCA curriculum + adaptive paths + native multilingual voice (Ngäbere included). Pilots in Bajo Boquete + Academia Boquete + 5 Ngäbe-Buglé schools. <em>A classroom without walls, a teacher without ceilings.</em>">Panama's rural classrooms have 60-100 students per teacher and 50% dropout in the Comarca before finishing primary. AULA is an AI copilot running offline on a $1,500 Raspberry Pi: 1-to-1 tutor for every child, copilot for every teacher, MEDUCA curriculum + adaptive paths + native multilingual voice (Ngäbere included). Pilots in Bajo Boquete + Academia Boquete + 5 Ngäbe-Buglé schools. A classroom without walls, a teacher without ceilings.</p>
+      <div class="b-foot">
+        <span class="b-meta">/aula.html</span>
+        <span class="b-open" style="color:#c89030">OPEN →</span>
       </div>
     </a>
   </div>
@@ -581,6 +594,7 @@
         <li><a href="veta.html">VETA · Minerals</a></li>
         <li><a href="hilo.html">HILO · Money</a></li>
         <li><a href="rapitido.html">RAPITIDO · Delivery</a></li>
+        <li><a href="aula.html">AULA · Education</a></li>
         <li><a href="daily-notes.html" data-es="Notas Diarias" data-en="Daily Notes">Daily Notes</a></li>
       </ul>
     </div>
