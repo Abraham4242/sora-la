@@ -1,0 +1,532 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MANTO · Vestiduras de los enviados · La Compañía</title>
+<meta name="description" content="MANTO — vestiduras de los enviados. Lino, cáñamo y algodón ancestral para el cuerpo del Mensajero. La marca de ropa de La Compañía.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231a1a16'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Georgia,serif' font-size='17' font-weight='400' fill='%23e8d5a8' font-style='italic'%3EM%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f0e8d4;
+  --paper-2:#f6efdd;
+  --paper-3:#e6dcbe;
+  --paper-deep:#d4c8a4;
+  --ink:#1a1a16;
+  --ink-2:#2a2820;
+  --ink-3:#4a4538;
+  --ink-faint:#857d68;
+  --line:rgba(26,26,22,0.10);
+  --line-2:rgba(26,26,22,0.18);
+  --line-3:rgba(26,26,22,0.32);
+  --bone:#e8d5a8;
+  --bone-deep:#c4b182;
+  --sand:#d4bf94;
+  --olive:#5c5e3a;
+  --olive-deep:#3a3c22;
+  --terracotta:#a85c3d;
+  --terracotta-deep:#7a3f25;
+  --rust:#8b3a1f;
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'Inter',-apple-system,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+body{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.08  0 0 0 0 0.07  0 0 0 0 0.05  0 0 0 0.025 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--olive-deep);color:var(--bone)}
+[data-en]:not([data-es]){display:none}
+html[lang="en"] [data-es]:not([data-en]){display:none}
+html[lang="en"] [data-en]:not([data-es]){display:inline}
+
+/* HEADER */
+.top{position:sticky;top:0;z-index:50;background:rgba(240,232,212,.94);backdrop-filter:blur(14px);border-bottom:0.5px solid var(--line)}
+.top-in{max-width:1240px;margin:0 auto;padding:18px 36px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.brand{display:flex;align-items:baseline;gap:14px}
+.brand .word{font-family:var(--serif);font-style:italic;font-weight:400;font-size:24px;letter-spacing:.06em;color:var(--ink)}
+.brand .sub{font-family:var(--mono);font-size:10px;letter-spacing:.22em;color:var(--ink-3);text-transform:uppercase}
+.spacer{flex:1}
+.top-link{font-family:var(--sans);font-size:12px;color:var(--ink-2);padding:8px 14px;border:0.5px solid var(--line);border-radius:6px;transition:all .15s}
+.top-link:hover{background:var(--paper-2);border-color:var(--line-2)}
+.lang-toggle{display:inline-flex;border:0.5px solid var(--line);border-radius:6px;overflow:hidden}
+.lang-toggle button{padding:7px 13px;font-family:var(--mono);font-size:10.5px;letter-spacing:.10em;background:transparent;border:0;color:var(--ink-faint);cursor:pointer;font-weight:500}
+.lang-toggle button.active{background:var(--ink);color:var(--bone)}
+
+/* HERO */
+.wrap{max-width:1240px;margin:0 auto;padding:0 36px}
+.hero{padding:104px 0 64px;text-align:center;position:relative}
+.hero-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--terracotta-deep);font-weight:700;margin-bottom:28px}
+.hero h1{font-family:var(--serif);font-weight:300;font-style:italic;font-size:clamp(80px,14vw,180px);line-height:.86;letter-spacing:-.04em;color:var(--ink);margin-bottom:24px}
+.hero h1 strong{font-style:normal;color:var(--olive-deep);font-weight:300}
+.hero-lede{font-family:var(--serif);font-size:21px;color:var(--ink-2);font-weight:300;max-width:780px;margin:0 auto 32px;line-height:1.55;font-style:italic}
+.hero-meta{display:flex;justify-content:center;gap:36px;font-family:var(--mono);font-size:10.5px;letter-spacing:.20em;color:var(--ink-faint);text-transform:uppercase;flex-wrap:wrap}
+.hero-meta span{display:inline-flex;align-items:center;gap:8px}
+.hero-meta .dot{width:5px;height:5px;border-radius:50%;background:var(--terracotta)}
+
+/* CREDO */
+.credo{margin:32px auto 56px;max-width:980px;background:var(--ink);color:var(--bone);border-radius:14px;padding:48px 56px;position:relative;overflow:hidden}
+.credo::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--olive),var(--bone),var(--terracotta))}
+.credo .c-label{font-family:var(--mono);font-size:10.5px;letter-spacing:.28em;color:var(--bone);text-transform:uppercase;font-weight:700;margin-bottom:18px}
+.credo h2{font-family:var(--serif);font-weight:300;font-style:italic;font-size:clamp(30px,4.2vw,44px);line-height:1.15;color:var(--bone);letter-spacing:-.018em;margin-bottom:18px}
+.credo h2 strong{font-style:normal;color:var(--bone-deep);font-weight:400}
+.credo p{font-family:var(--serif);font-size:17px;line-height:1.6;color:rgba(232,213,168,0.74);font-weight:300}
+.credo p em{color:var(--bone);font-style:italic}
+
+/* SECTIONS */
+section{padding:64px 0 32px;border-top:0.5px solid var(--line)}
+section:first-of-type{border-top:0}
+.sec-head{margin-bottom:36px;display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap}
+.sec-num{font-family:var(--mono);font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--terracotta-deep);font-weight:700;margin-bottom:10px}
+.sec-head h3{font-family:var(--serif);font-weight:300;font-style:italic;font-size:clamp(34px,5vw,52px);line-height:1.04;color:var(--ink);letter-spacing:-.018em;max-width:680px}
+.sec-head h3 strong{font-style:normal;color:var(--olive-deep);font-weight:300}
+.sec-sub{font-family:var(--serif);font-size:16px;color:var(--ink-3);font-weight:300;max-width:380px;line-height:1.55;font-style:italic;text-align:right}
+
+/* COLLECTION GRID */
+.collection{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+@media (max-width:980px){.collection{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:620px){.collection{grid-template-columns:1fr}}
+.piece{display:flex;flex-direction:column;background:var(--paper-2);border:0.5px solid var(--line);border-radius:10px;overflow:hidden;transition:all .25s cubic-bezier(.25,1,.5,1)}
+.piece:hover{transform:translateY(-3px);box-shadow:0 14px 32px rgba(26,26,22,.10);border-color:var(--line-2)}
+.piece .ph{aspect-ratio:3/4;background:linear-gradient(180deg,var(--paper-3),var(--paper-deep));position:relative;overflow:hidden}
+.piece .ph img{width:100%;height:100%;object-fit:cover;display:block}
+.piece .ph::after{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(180deg,rgba(0,0,0,0) 70%,rgba(0,0,0,.16) 100%);pointer-events:none}
+.piece .ph-tag{position:absolute;top:14px;left:14px;font-family:var(--mono);font-size:9.5px;letter-spacing:.22em;color:var(--bone);text-transform:uppercase;font-weight:700;background:rgba(26,26,22,.72);padding:5px 9px;border-radius:3px;backdrop-filter:blur(8px);z-index:2}
+.piece .body{padding:22px 24px 24px;display:flex;flex-direction:column;flex:1}
+.piece h4{font-family:var(--serif);font-style:italic;font-weight:400;font-size:26px;line-height:1.05;color:var(--ink);letter-spacing:-.01em;margin-bottom:6px}
+.piece h4 small{display:block;font-style:normal;font-family:var(--mono);font-size:10px;color:var(--ink-faint);letter-spacing:.18em;text-transform:uppercase;font-weight:600;margin-top:6px;letter-spacing:.18em}
+.piece .ref{font-family:var(--serif);font-style:italic;font-size:13.5px;color:var(--terracotta-deep);margin-bottom:12px;line-height:1.4}
+.piece .ref::before{content:'· ';color:var(--terracotta)}
+.piece p{font-family:var(--sans);font-size:13px;color:var(--ink-3);line-height:1.55;margin-bottom:14px;flex:1}
+.piece .meta-row{display:flex;justify-content:space-between;align-items:baseline;padding-top:14px;border-top:0.5px solid var(--line)}
+.piece .fabric{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;color:var(--ink-faint);text-transform:uppercase;font-weight:600}
+.piece .price{font-family:var(--serif);font-size:18px;color:var(--ink);font-weight:400;font-style:italic}
+.piece .price em{font-style:italic;color:var(--terracotta-deep)}
+
+/* TEXTILE DEEP DIVE */
+.fabrics-intro{font-family:var(--serif);font-size:17px;color:var(--ink-2);font-weight:300;line-height:1.6;max-width:780px;margin-bottom:30px;font-style:italic}
+.fabrics-intro strong{font-style:normal;color:var(--ink);font-weight:500}
+.fabric-list{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+@media (max-width:880px){.fabric-list{grid-template-columns:1fr}}
+.fabric{display:grid;grid-template-columns:auto 1fr;gap:18px;padding:24px 28px;background:var(--paper-2);border:0.5px solid var(--line);border-radius:10px;align-items:start}
+.fabric .glyph{width:48px;height:48px;border-radius:50%;background:var(--ink);color:var(--bone);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-style:italic;font-size:24px;font-weight:400}
+.fabric.f-flax .glyph{background:#bcb285;color:var(--olive-deep)}
+.fabric.f-cotton .glyph{background:#f0e8d4;color:var(--ink);border:1px solid var(--line-2)}
+.fabric.f-hemp .glyph{background:var(--olive);color:var(--bone)}
+.fabric.f-wool .glyph{background:#8b8a7a;color:var(--paper)}
+.fabric.f-silk .glyph{background:var(--terracotta);color:var(--bone)}
+.fabric.f-alpaca .glyph{background:#7a6a55;color:var(--bone)}
+.fabric .info{display:flex;flex-direction:column}
+.fabric h5{font-family:var(--serif);font-style:italic;font-weight:400;font-size:22px;line-height:1.1;color:var(--ink);margin-bottom:3px;letter-spacing:-.005em}
+.fabric h5 small{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--terracotta-deep);font-weight:700;margin-top:4px;font-style:normal}
+.fabric p{font-family:var(--sans);font-size:13px;line-height:1.55;color:var(--ink-3);margin-bottom:8px}
+.fabric p strong{color:var(--ink);font-weight:600}
+.fabric .source{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;padding-top:8px;border-top:0.5px solid var(--line);margin-top:8px;line-height:1.5}
+.fabric .source em{font-style:normal;color:var(--terracotta-deep);font-weight:700}
+
+/* CLIMATE STRIP */
+.climate{margin-top:28px;background:var(--ink);color:var(--bone);border-radius:10px;padding:32px 36px;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+@media (max-width:880px){.climate{grid-template-columns:repeat(2,1fr)}}
+.climate .cl-c{}
+.climate .cl-l{font-family:var(--mono);font-size:9.5px;letter-spacing:.24em;color:var(--bone-deep);text-transform:uppercase;font-weight:700;margin-bottom:10px}
+.climate .cl-c h6{font-family:var(--serif);font-style:italic;font-size:20px;color:var(--bone);font-weight:400;margin-bottom:8px;line-height:1.1}
+.climate .cl-c p{font-family:var(--sans);font-size:12px;line-height:1.5;color:rgba(232,213,168,.74)}
+.climate .cl-c p strong{color:var(--bone);font-weight:500}
+
+/* LINEAGE / PROPHETIC IMAGERY */
+.lineage{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;margin-top:14px}
+@media (max-width:880px){.lineage{grid-template-columns:1fr}}
+.lineage .l-c{background:var(--paper-2);border:0.5px solid var(--line);border-radius:8px;padding:24px 26px;border-top:3px solid var(--terracotta)}
+.lineage .l-l{font-family:var(--mono);font-size:9.5px;letter-spacing:.22em;color:var(--terracotta-deep);text-transform:uppercase;font-weight:700;margin-bottom:10px}
+.lineage .l-c h6{font-family:var(--serif);font-style:italic;font-weight:400;font-size:22px;line-height:1.1;color:var(--ink);margin-bottom:10px;letter-spacing:-.005em}
+.lineage .l-c p{font-family:var(--sans);font-size:13px;color:var(--ink-3);line-height:1.55}
+.lineage .l-c p em{color:var(--terracotta-deep);font-style:italic}
+
+/* PULL QUOTE */
+.pullq{margin:40px auto;max-width:920px;padding:42px 52px;background:var(--paper-2);border-left:3px solid var(--olive-deep);border-radius:0 12px 12px 0;position:relative}
+.pullq::before{content:'"';position:absolute;top:12px;left:22px;font-family:var(--serif);font-style:italic;font-size:96px;color:var(--olive);opacity:.18;line-height:1}
+.pullq p{font-family:var(--serif);font-style:italic;font-weight:300;font-size:22px;line-height:1.5;color:var(--ink-2);position:relative;z-index:1}
+.pullq p strong{font-style:italic;color:var(--terracotta-deep);font-weight:400}
+.pullq cite{display:block;margin-top:14px;font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;color:var(--ink-faint);font-style:normal;text-transform:uppercase;font-weight:700}
+
+/* FOOTER */
+footer{margin-top:80px;padding:48px 0 32px;background:var(--ink);color:var(--bone)}
+footer .foot-grid{max-width:1240px;margin:0 auto;padding:0 36px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:36px}
+footer .wordmark-foot{font-family:var(--serif);font-style:italic;font-size:38px;font-weight:400;color:var(--bone);letter-spacing:.02em;margin-bottom:14px;line-height:1}
+footer .tagline{font-family:var(--serif);font-style:italic;font-size:14px;color:rgba(232,213,168,.62);line-height:1.55;max-width:300px}
+footer h6{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;color:var(--bone-deep);text-transform:uppercase;font-weight:700;margin-bottom:14px}
+footer ul{list-style:none}
+footer ul li{margin-bottom:10px;font-size:13px}
+footer ul a{color:rgba(232,213,168,.74);transition:color .15s}
+footer ul a:hover{color:var(--bone)}
+.foot-bottom{max-width:1240px;margin:0 auto;padding:24px 36px 0;border-top:1px solid rgba(232,213,168,.10);display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;font-family:var(--mono);font-size:10.5px;letter-spacing:.10em;color:rgba(232,213,168,.42);text-transform:uppercase}
+
+@media (max-width:880px){
+  .sec-head{flex-direction:column;align-items:flex-start}
+  .sec-sub{text-align:left}
+  footer .foot-grid{grid-template-columns:1fr 1fr;gap:32px}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-in">
+    <div class="brand">
+      <a href="lacompania.html" style="color:inherit"><span class="word"><em>M</em>anto</span></a>
+      <span class="sub" data-es="LA COMPAÑÍA · VESTIDURA" data-en="LA COMPAÑÍA · GARMENT">LA COMPAÑÍA · VESTIDURA</span>
+    </div>
+    <span class="spacer"></span>
+    <a class="top-link" href="lacompania.html" data-es="← La Compañía" data-en="← La Compañía">← La Compañía</a>
+    <a class="top-link" href="#colección" data-es="Colección" data-en="Collection">Colección</a>
+    <a class="top-link" href="#textiles" data-es="Textiles" data-en="Textiles">Textiles</a>
+    <div class="lang-toggle">
+      <button class="active" data-lang="es">ES</button>
+      <button data-lang="en">EN</button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-eyebrow" data-es="LA COMPAÑÍA · VESTIDURAS DE LOS ENVIADOS · MMXXVI" data-en="LA COMPAÑÍA · GARMENTS OF THE SENT · MMXXVI">LA COMPAÑÍA · VESTIDURAS DE LOS ENVIADOS · MMXXVI</div>
+  <h1><strong>M</strong>anto</h1>
+  <p class="hero-lede" data-es="Lino, cáñamo, algodón ancestral. El cuerpo del mensajero pide vestidura que pese poco, dure mucho, y diga algo. Hecha para el trópico. Reverente al linaje." data-en="Linen, hemp, ancestral cotton. The messenger's body asks for a garment that weighs little, lasts long, and says something. Made for the tropics. Reverent to lineage.">Lino, cáñamo, algodón ancestral. El cuerpo del mensajero pide vestidura que pese poco, dure mucho, y diga algo. Hecha para el trópico. Reverente al linaje.</p>
+  <div class="hero-meta">
+    <span><span class="dot"></span><span data-es="LINO BELGA" data-en="BELGIAN LINEN">LINO BELGA</span></span>
+    <span><span class="dot"></span><span data-es="ALGODÓN PIMA" data-en="PIMA COTTON">ALGODÓN PIMA</span></span>
+    <span><span class="dot"></span><span data-es="CÁÑAMO" data-en="HEMP">CÁÑAMO</span></span>
+    <span><span class="dot"></span><span data-es="HECHO EN PANAMÁ" data-en="MADE IN PANAMA">HECHO EN PANAMÁ</span></span>
+  </div>
+</header>
+
+<!-- CREDO -->
+<div class="credo">
+  <div class="c-label" data-es="CREDO" data-en="CREDO">CREDO</div>
+  <h2 data-es-html="Los profetas <strong>vestían lino</strong>. Los apóstoles <strong>caminaban descalzos</strong>. Lo que cargamos en el cuerpo es lo que el mundo ve primero — antes de la palabra, antes del oficio." data-en-html="The prophets <strong>wore linen</strong>. The apostles <strong>walked barefoot</strong>. What we carry on the body is what the world sees first — before the word, before the craft.">Los profetas <strong>vestían lino</strong>. Los apóstoles <strong>caminaban descalzos</strong>. Lo que cargamos en el cuerpo es lo que el mundo ve primero — antes de la palabra, antes del oficio.</h2>
+  <p data-es="MANTO viste a los miembros de La Compañía y a quienes comparten el oficio. No vendemos moda. Vendemos lo que aguanta: tres camisas que duran diez años, un manto que pasa de padre a hijo, un pantalón de lino que se ablanda con cada lavado en agua de quebrada. <em>El opuesto del consumo.</em>" data-en="MANTO clothes the members of La Compañía and those who share the craft. We don't sell fashion. We sell what lasts: three shirts that last ten years, a cloak that passes from father to son, linen pants that soften with every wash in spring water. <em>The opposite of consumption.</em>">MANTO viste a los miembros de La Compañía y a quienes comparten el oficio. No vendemos moda. Vendemos lo que aguanta: tres camisas que duran diez años, un manto que pasa de padre a hijo, un pantalón de lino que se ablanda con cada lavado en agua de quebrada. <em>El opuesto del consumo.</em></p>
+</div>
+
+<!-- 01 · COLECCIÓN PRIMERA -->
+<section id="colección">
+  <div class="sec-head">
+    <div>
+      <div class="sec-num" data-es="01 · COLECCIÓN PRIMERA · LOS ENVIADOS" data-en="01 · FIRST COLLECTION · THE SENT">01 · COLECCIÓN PRIMERA · LOS ENVIADOS</div>
+      <h3 data-es-html="Seis <strong>vestiduras</strong>. Una sola voz." data-en-html="Six <strong>garments</strong>. One voice.">Seis <strong>vestiduras</strong>. Una sola voz.</h3>
+    </div>
+    <p class="sec-sub" data-es="Cada pieza está nombrada por un linaje. Cada tejido viene de un sitio que tiene 3,000 años haciéndolo. Cada talla se ajusta sobre el cuerpo real." data-en="Each piece is named for a lineage. Each fabric comes from a place that has been making it for 3,000 years. Each size fits the real body.">Cada pieza está nombrada por un linaje. Cada tejido viene de un sitio que tiene 3,000 años haciéndolo. Cada talla se ajusta sobre el cuerpo real.</p>
+  </div>
+
+  <div class="collection">
+    <!-- PIECE 01 · LA TÚNICA -->
+    <article class="piece">
+      <div class="ph">
+        <span class="ph-tag" data-es="N.º 01 · TÚNICA" data-en="N.º 01 · TUNIC">N.º 01 · TÚNICA</span>
+        <img src="https://image.pollinations.ai/prompt/editorial%20fashion%20photograph%20full%20body%2C%20woman%20wearing%20flowing%20cream%20white%20linen%20tunic%20with%20long%20sleeves%20and%20wide%20cut%2C%20ancient%20Mediterranean%20biblical%20aesthetic%2C%20soft%20warm%20natural%20light%2C%20beige%20stucco%20wall%20background%2C%20minimalist%20composition%2C%20high-end%20magazine%20editorial%2C%20photorealistic%20professional%20fashion%20photography%2C%20serene%20expression%2C%20bare%20feet?width=600&height=800&seed=11&nologo=true&model=flux" alt="Túnica" loading="lazy">
+      </div>
+      <div class="body">
+        <h4><em>La Túnica</em><small data-es="Inspirada en el éfod" data-en="After the ephod">Inspirada en el éfod</small></h4>
+        <div class="ref" data-es=""De pies a cabeza, sin costura." — Juan 19:23" data-en=""From top to bottom, without seam." — John 19:23">"De pies a cabeza, sin costura." — Juan 19:23</div>
+        <p data-es="Lino belga 220 gsm. Corte recto, mangas anchas, sin botones. Una sola pieza. Hecha en taller pequeño en Panamá Oeste. Tres tallas — pequeña, mediana, grande." data-en="220 gsm Belgian linen. Straight cut, wide sleeves, no buttons. Single piece. Made in a small workshop in West Panama. Three sizes — small, medium, large.">Lino belga 220 gsm. Corte recto, mangas anchas, sin botones. Una sola pieza. Hecha en taller pequeño en Panamá Oeste. Tres tallas — pequeña, mediana, grande.</p>
+        <div class="meta-row">
+          <span class="fabric" data-es="LINO 100%" data-en="100% LINEN">LINO 100%</span>
+          <span class="price"><em>$220</em></span>
+        </div>
+      </div>
+    </article>
+
+    <!-- PIECE 02 · EL MANTO -->
+    <article class="piece">
+      <div class="ph">
+        <span class="ph-tag" data-es="N.º 02 · MANTO" data-en="N.º 02 · MANTLE">N.º 02 · MANTO</span>
+        <img src="https://image.pollinations.ai/prompt/fashion%20editorial%20portrait%20full%20body%2C%20model%20wearing%20flowing%20natural%20undyed%20linen%20cloak%20draped%20over%20shoulders%2C%20biblical%20prophet%20Elijah%20mantle%20aesthetic%2C%20warm%20desert%20golden%20hour%20light%2C%20sandstone%20colored%20background%2C%20soft%20heavy%20drape%2C%20photorealistic%20high%20fashion%20photography%2C%20full%20length%2C%20serene%20dignified%20pose?width=600&height=800&seed=22&nologo=true&model=flux" alt="El Manto" loading="lazy">
+      </div>
+      <div class="body">
+        <h4><em>El Manto</em><small data-es="Inspirado en Elías" data-en="After Elijah">Inspirado en Elías</small></h4>
+        <div class="ref" data-es=""Tomó el manto de Elías que se había caído." — 2 Reyes 2:13" data-en=""He took up the mantle of Elijah that had fallen." — 2 Kings 2:13">"Tomó el manto de Elías que se había caído." — 2 Reyes 2:13</div>
+        <p data-es="Cáñamo italiano 380 gsm. Capa abierta sin botones, broche de cuero crudo, cuello alto. Se pone encima de cualquier cosa. Para noches frescas en Boquete o noches en avión." data-en="380 gsm Italian hemp. Open cloak without buttons, raw leather clasp, high collar. Goes over anything. For cool Boquete nights or nights on a plane.">Cáñamo italiano 380 gsm. Capa abierta sin botones, broche de cuero crudo, cuello alto. Se pone encima de cualquier cosa. Para noches frescas en Boquete o noches en avión.</p>
+        <div class="meta-row">
+          <span class="fabric" data-es="CÁÑAMO 100%" data-en="100% HEMP">CÁÑAMO 100%</span>
+          <span class="price"><em>$385</em></span>
+        </div>
+      </div>
+    </article>
+
+    <!-- PIECE 03 · PANTALÓN PEREGRINO -->
+    <article class="piece">
+      <div class="ph">
+        <span class="ph-tag" data-es="N.º 03 · PANTALÓN" data-en="N.º 03 · TROUSERS">N.º 03 · PANTALÓN</span>
+        <img src="https://image.pollinations.ai/prompt/editorial%20fashion%20photography%20full%20body%2C%20man%20wearing%20wide%20leg%20natural%20beige%20linen%20trousers%20and%20matching%20loose%20linen%20shirt%2C%20walking%20barefoot%20on%20smooth%20stone%20floor%2C%20golden%20hour%20warm%20natural%20light%2C%20old%20mediterranean%20courtyard%20background%2C%20photorealistic%20high%20end%20fashion%2C%20relaxed%20stride%2C%20cinematic?width=600&height=800&seed=33&nologo=true&model=flux" alt="Pantalón Peregrino" loading="lazy">
+      </div>
+      <div class="body">
+        <h4><em>El Peregrino</em><small data-es="Pantalón del que llega" data-en="Trouser of the one arriving">Pantalón del que llega</small></h4>
+        <div class="ref" data-es=""Cíñete los lomos." — Lucas 12:35" data-en=""Gird your loins." — Luke 12:35">"Cíñete los lomos." — Lucas 12:35</div>
+        <p data-es="Lino italiano 180 gsm, pierna ancha, cintura con cordón. Sin cremallera. Para caminar, para comer largo, para dormir en avión. Cae bien con sandalia, con bota, descalzo." data-en="180 gsm Italian linen, wide leg, drawstring waist. No zipper. For walking, for long meals, for sleeping on planes. Works with sandals, boots, barefoot.">Lino italiano 180 gsm, pierna ancha, cintura con cordón. Sin cremallera. Para caminar, para comer largo, para dormir en avión. Cae bien con sandalia, con bota, descalzo.</p>
+        <div class="meta-row">
+          <span class="fabric" data-es="LINO 100%" data-en="100% LINEN">LINO 100%</span>
+          <span class="price"><em>$165</em></span>
+        </div>
+      </div>
+    </article>
+
+    <!-- PIECE 04 · VESTIDO DESIERTO -->
+    <article class="piece">
+      <div class="ph">
+        <span class="ph-tag" data-es="N.º 04 · VESTIDO" data-en="N.º 04 · DRESS">N.º 04 · VESTIDO</span>
+        <img src="https://image.pollinations.ai/prompt/editorial%20fashion%20photography%20full%20body%2C%20woman%20wearing%20long%20flowing%20natural%20cream%20colored%20linen%20dress%20to%20ankles%2C%20pilgrim%20aesthetic%20with%20vneck%20neckline%2C%20ancient%20mediterranean%20inspiration%2C%20soft%20warm%20afternoon%20light%2C%20ochre%20colored%20old%20wall%20background%2C%20photorealistic%20high%20fashion%20magazine%20quality%2C%20bare%20feet%2C%20serene%20composed%20pose?width=600&height=800&seed=44&nologo=true&model=flux" alt="Vestido Desierto" loading="lazy">
+      </div>
+      <div class="body">
+        <h4><em>El Desierto</em><small data-es="Vestido largo · una pieza" data-en="Long dress · one piece">Vestido largo · una pieza</small></h4>
+        <div class="ref" data-es=""Vendrá con el rocío de la mañana." — Salmo 110:3" data-en=""Like the morning dew." — Psalm 110:3">"Vendrá con el rocío de la mañana." — Salmo 110:3</div>
+        <p data-es="Algodón Pima peruano 140 gsm. Vestido largo hasta el tobillo, cuello en V, sin mangas. Para mujeres que caminan, viajan y reciben mesa. Tres colores: crudo, ocre, óliva." data-en="140 gsm Peruvian Pima cotton. Floor-length, V-neck, sleeveless. For women who walk, travel and host tables. Three colors: raw, ochre, olive.">Algodón Pima peruano 140 gsm. Vestido largo hasta el tobillo, cuello en V, sin mangas. Para mujeres que caminan, viajan y reciben mesa. Tres colores: crudo, ocre, óliva.</p>
+        <div class="meta-row">
+          <span class="fabric" data-es="ALGODÓN PIMA" data-en="PIMA COTTON">ALGODÓN PIMA</span>
+          <span class="price"><em>$245</em></span>
+        </div>
+      </div>
+    </article>
+
+    <!-- PIECE 05 · CAMISA APÓSTOL -->
+    <article class="piece">
+      <div class="ph">
+        <span class="ph-tag" data-es="N.º 05 · CAMISA" data-en="N.º 05 · SHIRT">N.º 05 · CAMISA</span>
+        <img src="https://image.pollinations.ai/prompt/minimalist%20editorial%20fashion%20photography%20half%20body%2C%20man%20wearing%20white%20linen%20wrap%20shirt%20with%20kimono%20style%20side%20ties%20and%20wide%20sleeves%2C%20ancient%20apostolic%20aesthetic%2C%20soft%20natural%20overcast%20light%2C%20seamless%20beige%20studio%20background%2C%20photorealistic%20high%20end%20fashion%20magazine%2C%20serene%20composed%20portrait?width=600&height=800&seed=55&nologo=true&model=flux" alt="Camisa Apóstol" loading="lazy">
+      </div>
+      <div class="body">
+        <h4><em>El Apóstol</em><small data-es="Camisa cruzada · sin botones" data-en="Wrap shirt · no buttons">Camisa cruzada · sin botones</small></h4>
+        <div class="ref" data-es=""No llevéis dos túnicas." — Marcos 6:9" data-en=""Take no spare tunic." — Mark 6:9">"No llevéis dos túnicas." — Marcos 6:9</div>
+        <p data-es="Lino panameño-belga 165 gsm, corte cruzado tipo kimono, cierre con dos cintas laterales. Sin botones, sin marcas. Se pone en 3 segundos. Cuello abierto." data-en="165 gsm Panama-Belgian linen, kimono-style wrap, two side ties. No buttons, no labels. Goes on in 3 seconds. Open collar.">Lino panameño-belga 165 gsm, corte cruzado tipo kimono, cierre con dos cintas laterales. Sin botones, sin marcas. Se pone en 3 segundos. Cuello abierto.</p>
+        <div class="meta-row">
+          <span class="fabric" data-es="LINO 100%" data-en="100% LINEN">LINO 100%</span>
+          <span class="price"><em>$175</em></span>
+        </div>
+      </div>
+    </article>
+
+    <!-- PIECE 06 · BUFANDA SACERDOTE -->
+    <article class="piece">
+      <div class="ph">
+        <span class="ph-tag" data-es="N.º 06 · TALIT" data-en="N.º 06 · TALIT">N.º 06 · TALIT</span>
+        <img src="https://image.pollinations.ai/prompt/editorial%20fashion%20photography%20portrait%2C%20person%20wearing%20long%20natural%20cream%20color%20linen%20scarf%20stole%20draped%20over%20shoulders%2C%20jewish%20talit%20prayer%20shawl%20aesthetic%20with%20fine%20tassels%2C%20warm%20afternoon%20light%2C%20old%20stone%20wall%20background%2C%20photorealistic%20fashion%20magazine%20quality%2C%20reverent%20composed%20pose%2C%20cinematic?width=600&height=800&seed=66&nologo=true&model=flux" alt="Talit Sacerdote" loading="lazy">
+      </div>
+      <div class="body">
+        <h4><em>El Talit</em><small data-es="Estola · bufanda ritual" data-en="Stole · ritual scarf">Estola · bufanda ritual</small></h4>
+        <div class="ref" data-es=""Y harás flecos en las cuatro puntas." — Deuteronomio 22:12" data-en=""You shall make tassels on the four corners." — Deut. 22:12">"Y harás flecos en las cuatro puntas." — Deuteronomio 22:12</div>
+        <p data-es="Lino italiano 130 gsm, dos metros largo, flecos a mano. Sirve de bufanda al avión, de pareo en la playa, de manto al hombro al amanecer. Una pieza que viaja todo." data-en="130 gsm Italian linen, two metres long, hand-knotted tassels. Scarf on the plane, pareo at the beach, shoulder mantle at dawn. A piece that travels everywhere.">Lino italiano 130 gsm, dos metros largo, flecos a mano. Sirve de bufanda al avión, de pareo en la playa, de manto al hombro al amanecer. Una pieza que viaja todo.</p>
+        <div class="meta-row">
+          <span class="fabric" data-es="LINO 100%" data-en="100% LINEN">LINO 100%</span>
+          <span class="price"><em>$95</em></span>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <div class="pullq">
+    <p data-es-html="<strong>"Cíñete los lomos como varón."</strong> No es un consejo, es una declaración: lo que vistes es lo que cargas. El lino enseña humildad porque se arruga; el cáñamo enseña perseverancia porque no se rompe; el algodón enseña hospitalidad porque recibe el sudor sin reproche." data-en-html="<strong>"Gird your loins like a man."</strong> Not advice, a declaration: what you wear is what you carry. Linen teaches humility because it wrinkles; hemp teaches perseverance because it doesn't break; cotton teaches hospitality because it receives sweat without reproach."><strong>"Cíñete los lomos como varón."</strong> No es un consejo, es una declaración: lo que vistes es lo que cargas. El lino enseña humildad porque se arruga; el cáñamo enseña perseverancia porque no se rompe; el algodón enseña hospitalidad porque recibe el sudor sin reproche.</p>
+    <cite data-es="LIBRO DE JOB 38:3 · LECTURA DE MANTO" data-en="BOOK OF JOB 38:3 · MANTO READING">LIBRO DE JOB 38:3 · LECTURA DE MANTO</cite>
+  </div>
+</section>
+
+<!-- 02 · TEXTILES DEEP DIVE -->
+<section id="textiles">
+  <div class="sec-head">
+    <div>
+      <div class="sec-num" data-es="02 · TEXTILES · ESCUELA DE TELAS" data-en="02 · TEXTILES · SCHOOL OF CLOTH">02 · TEXTILES · ESCUELA DE TELAS</div>
+      <h3 data-es-html="Seis fibras. <strong>Tres mil años</strong> de oficio." data-en-html="Six fibers. <strong>Three thousand years</strong> of craft.">Seis fibras. <strong>Tres mil años</strong> de oficio.</h3>
+    </div>
+    <p class="sec-sub" data-es="No es una moda. Cada fibra que usamos lleva milenios siendo tejida en un sitio específico. Honramos al sitio." data-en="Not fashion. Every fiber we use has been woven for millennia in a specific place. We honor the place.">No es una moda. Cada fibra que usamos lleva milenios siendo tejida en un sitio específico. Honramos al sitio.</p>
+  </div>
+
+  <p class="fabrics-intro" data-es-html="MANTO trabaja con seis fibras naturales — tres vegetales, tres animales — sourced en sus territorios ancestrales. <strong>Belgia y Egipto para el lino</strong>, Italia para el cáñamo, <strong>Perú para el algodón Pima</strong>, Mongolia para el cashmere de invierno, Suri-Bolivia para alpaca, e Italia/Japón para la seda de noche. La premisa es simple: cada tejido reluce donde nació." data-en-html="MANTO works with six natural fibers — three plant, three animal — sourced in their ancestral territories. <strong>Belgium and Egypt for linen</strong>, Italy for hemp, <strong>Peru for Pima cotton</strong>, Mongolia for winter cashmere, Suri-Bolivia for alpaca, and Italy/Japan for night silk. The premise is simple: each fabric shines where it was born.">MANTO trabaja con seis fibras naturales — tres vegetales, tres animales — sourced en sus territorios ancestrales. <strong>Belgia y Egipto para el lino</strong>, Italia para el cáñamo, <strong>Perú para el algodón Pima</strong>, Mongolia para el cashmere de invierno, Suri-Bolivia para alpaca, e Italia/Japón para la seda de noche. La premisa es simple: cada tejido reluce donde nació.</p>
+
+  <div class="fabric-list">
+    <div class="fabric f-flax">
+      <div class="glyph">L</div>
+      <div class="info">
+        <h5>Lino<small data-es="LINUM USITATISSIMUM · 6,000 AÑOS" data-en="LINUM USITATISSIMUM · 6,000 YEARS">LINUM USITATISSIMUM · 6,000 AÑOS</small></h5>
+        <p data-es-html="El tejido de los faraones, los profetas y los apóstoles. <strong>Belgia produce el mejor lino del mundo</strong> — el clima del Mar del Norte da fibras largas y finas. Egipto cultiva lino desde hace 6,000 años; sus momias se envolvían en él. Italia lo refina." data-en-html="The fabric of pharaohs, prophets, apostles. <strong>Belgium produces the world's best linen</strong> — the North Sea climate gives long fine fibers. Egypt has grown flax for 6,000 years; mummies were wrapped in it. Italy refines it.">El tejido de los faraones, los profetas y los apóstoles. <strong>Belgia produce el mejor lino del mundo</strong> — el clima del Mar del Norte da fibras largas y finas. Egipto cultiva lino desde hace 6,000 años; sus momias se envolvían en él. Italia lo refina.</p>
+        <p data-es-html="<strong>Para Panamá:</strong> el lino es <em>la fibra perfecta del trópico</em>. Respira como ninguna otra, seca rápido, se ablanda con el lavado, y se ve mejor con cinco años de uso que el primer día." data-en-html="<strong>For Panama:</strong> linen is <em>the perfect tropical fiber</em>. Breathes like nothing else, dries fast, softens with washing, looks better after five years than on day one."><strong>Para Panamá:</strong> el lino es <em>la fibra perfecta del trópico</em>. Respira como ninguna otra, seca rápido, se ablanda con el lavado, y se ve mejor con cinco años de uso que el primer día.</p>
+        <div class="source" data-es-html="ORÍGENES MANTO: <em>Libeco</em> (Bélgica) · <em>Solbiati</em> (Italia) · <em>Naqada</em> (Egipto)" data-en-html="MANTO SOURCING: <em>Libeco</em> (Belgium) · <em>Solbiati</em> (Italy) · <em>Naqada</em> (Egypt)">ORÍGENES MANTO: <em>Libeco</em> (Bélgica) · <em>Solbiati</em> (Italia) · <em>Naqada</em> (Egipto)</div>
+      </div>
+    </div>
+
+    <div class="fabric f-cotton">
+      <div class="glyph">A</div>
+      <div class="info">
+        <h5>Algodón Pima<small data-es="GOSSYPIUM BARBADENSE · COSTA DEL PACÍFICO" data-en="GOSSYPIUM BARBADENSE · PACIFIC COAST">GOSSYPIUM BARBADENSE · COSTA DEL PACÍFICO</small></h5>
+        <p data-es-html="El algodón <em>Pima</em> es nativo de la costa norte del Perú — Piura, Chimbote, Lambayeque. <strong>Fibra extra-larga de 4 cm</strong>, suave como la seda, resistente al lavado, ideal para vestidos y camisas que se usan a piel. Cultivado por la cultura Moche y Chimú antes de Colón." data-en-html="<em>Pima</em> cotton is native to Peru's north coast — Piura, Chimbote, Lambayeque. <strong>Extra-long 4 cm fiber</strong>, silk-smooth, wash-resistant, ideal for dresses and shirts worn on skin. Cultivated by Moche and Chimú before Columbus.">El algodón <em>Pima</em> es nativo de la costa norte del Perú — Piura, Chimbote, Lambayeque. <strong>Fibra extra-larga de 4 cm</strong>, suave como la seda, resistente al lavado, ideal para vestidos y camisas que se usan a piel. Cultivado por la cultura Moche y Chimú antes de Colón.</p>
+        <p data-es-html="<strong>Para Panamá:</strong> Pima absorbe humedad, no rasca, no pica con sudor. Es el algodón <em>más decente</em> para climas húmedos. Mejor que el algodón egipcio para piel sensible." data-en-html="<strong>For Panama:</strong> Pima absorbs moisture, doesn't scratch, doesn't itch with sweat. The <em>most decent</em> cotton for humid climates. Better than Egyptian cotton for sensitive skin."><strong>Para Panamá:</strong> Pima absorbe humedad, no rasca, no pica con sudor. Es el algodón <em>más decente</em> para climas húmedos. Mejor que el algodón egipcio para piel sensible.</p>
+        <div class="source" data-es-html="ORÍGENES MANTO: <em>Bergman Rivera</em> (Lima) · <em>Algodonera de Piura</em> · <em>Inca Tops</em>" data-en-html="MANTO SOURCING: <em>Bergman Rivera</em> (Lima) · <em>Algodonera de Piura</em> · <em>Inca Tops</em>">ORÍGENES MANTO: <em>Bergman Rivera</em> (Lima) · <em>Algodonera de Piura</em> · <em>Inca Tops</em></div>
+      </div>
+    </div>
+
+    <div class="fabric f-hemp">
+      <div class="glyph">C</div>
+      <div class="info">
+        <h5>Cáñamo<small data-es="CANNABIS SATIVA · CINCO MILENIOS" data-en="CANNABIS SATIVA · FIVE MILLENNIA">CANNABIS SATIVA · CINCO MILENIOS</small></h5>
+        <p data-es-html="El cáñamo es la fibra <em>más fuerte de origen vegetal</em>. Tres veces más resistente que el algodón. Naturalmente antimicrobiano. Las velas de los barcos de Colón eran cáñamo. Las primeras Levi's eran cáñamo. <strong>Italia y Polonia lideran el cáñamo textil hoy.</strong>" data-en-html="Hemp is the <em>strongest plant-origin fiber</em>. Three times stronger than cotton. Naturally antimicrobial. Columbus' sails were hemp. The first Levi's were hemp. <strong>Italy and Poland lead textile hemp today.</strong>">El cáñamo es la fibra <em>más fuerte de origen vegetal</em>. Tres veces más resistente que el algodón. Naturalmente antimicrobiano. Las velas de los barcos de Colón eran cáñamo. Las primeras Levi's eran cáñamo. <strong>Italia y Polonia lideran el cáñamo textil hoy.</strong></p>
+        <p data-es-html="<strong>Para Panamá:</strong> el cáñamo gana al lino en dos cosas: dura el doble y resiste la lluvia. Por eso el manto que pasa de generación es cáñamo." data-en-html="<strong>For Panama:</strong> hemp beats linen in two things: lasts twice as long, resists rain. That's why the cloak that passes generations is hemp."><strong>Para Panamá:</strong> el cáñamo gana al lino en dos cosas: dura el doble y resiste la lluvia. Por eso el manto que pasa de generación es cáñamo.</p>
+        <div class="source" data-es-html="ORÍGENES MANTO: <em>Canapa</em> (Veneto) · <em>Hemp Fortex</em> (cooperativa global)" data-en-html="MANTO SOURCING: <em>Canapa</em> (Veneto) · <em>Hemp Fortex</em> (global co-op)">ORÍGENES MANTO: <em>Canapa</em> (Veneto) · <em>Hemp Fortex</em> (cooperativa global)</div>
+      </div>
+    </div>
+
+    <div class="fabric f-alpaca">
+      <div class="glyph">α</div>
+      <div class="info">
+        <h5>Alpaca Suri<small data-es="VICUGNA PACOS · LOS ANDES" data-en="VICUGNA PACOS · THE ANDES">VICUGNA PACOS · LOS ANDES</small></h5>
+        <p data-es-html="La alpaca <em>Suri</em> es la más rara de las dos variedades — solo el 10% del rebaño mundial. <strong>Fibra hueca, hipoalergénica, sin lanolina</strong>, brilla con la luz. Tejida por los Quechua desde antes de los Incas. Bolivia y Sur del Perú son los únicos sitios donde rinde." data-en-html="<em>Suri</em> alpaca is the rarer of the two varieties — only 10% of the world herd. <strong>Hollow fiber, hypoallergenic, no lanolin</strong>, glows in the light. Woven by Quechua before the Incas. Bolivia and southern Peru are the only places it thrives.">La alpaca <em>Suri</em> es la más rara de las dos variedades — solo el 10% del rebaño mundial. <strong>Fibra hueca, hipoalergénica, sin lanolina</strong>, brilla con la luz. Tejida por los Quechua desde antes de los Incas. Bolivia y Sur del Perú son los únicos sitios donde rinde.</p>
+        <p data-es-html="<strong>Para Boquete y Volcán (altura):</strong> la alpaca regula temperatura como ninguna otra fibra. Calienta a 4° y respira a 18°. Ideal para las noches frescas del altiplano panameño." data-en-html="<strong>For Boquete and Volcán (altitude):</strong> alpaca regulates temperature like no other fiber. Warms at 4°, breathes at 18°. Ideal for the cool nights of Panama's highlands."><strong>Para Boquete y Volcán (altura):</strong> la alpaca regula temperatura como ninguna otra fibra. Calienta a 4° y respira a 18°. Ideal para las noches frescas del altiplano panameño.</p>
+        <div class="source" data-es-html="ORÍGENES MANTO: <em>Sol Alpaca</em> (Arequipa) · <em>Mallku</em> (Bolivia)" data-en-html="MANTO SOURCING: <em>Sol Alpaca</em> (Arequipa) · <em>Mallku</em> (Bolivia)">ORÍGENES MANTO: <em>Sol Alpaca</em> (Arequipa) · <em>Mallku</em> (Bolivia)</div>
+      </div>
+    </div>
+
+    <div class="fabric f-wool">
+      <div class="glyph">M</div>
+      <div class="info">
+        <h5>Lana Merino<small data-es="OVIS ARIES · NUEVA ZELANDA · AUSTRALIA" data-en="OVIS ARIES · NEW ZEALAND · AUSTRALIA">OVIS ARIES · NUEVA ZELANDA · AUSTRALIA</small></h5>
+        <p data-es-html="La merino es la lana de fibra fina — <strong>17 a 19 micras</strong>, suficientemente delgada para usarse a piel sin rascar. Nueva Zelanda y Australia producen el 80% del mundo. La lana merino regula humedad <em>en ambos sentidos</em>: absorbe sudor sin sentirlo húmedo, devuelve calor cuando enfría." data-en-html="Merino is fine-fiber wool — <strong>17 to 19 microns</strong>, thin enough to wear on skin without itch. New Zealand and Australia produce 80% of the world. Merino regulates humidity <em>both ways</em>: absorbs sweat without feeling wet, gives back heat when it cools.">La merino es la lana de fibra fina — <strong>17 a 19 micras</strong>, suficientemente delgada para usarse a piel sin rascar. Nueva Zelanda y Australia producen el 80% del mundo. La lana merino regula humedad <em>en ambos sentidos</em>: absorbe sudor sin sentirlo húmedo, devuelve calor cuando enfría.</p>
+        <p data-es-html="<strong>Para el miembro que viaja:</strong> camisa merino soporta 5 días seguidos sin lavar y sin olor. La fibra es naturalmente antibacteriana." data-en-html="<strong>For the traveling member:</strong> a merino shirt holds 5 days without washing without odor. The fiber is naturally antibacterial."><strong>Para el miembro que viaja:</strong> camisa merino soporta 5 días seguidos sin lavar y sin olor. La fibra es naturalmente antibacteriana.</p>
+        <div class="source" data-es-html="ORÍGENES MANTO: <em>Reda</em> (Italia) · <em>The Merino Company</em> (NZ)" data-en-html="MANTO SOURCING: <em>Reda</em> (Italy) · <em>The Merino Company</em> (NZ)">ORÍGENES MANTO: <em>Reda</em> (Italia) · <em>The Merino Company</em> (NZ)</div>
+      </div>
+    </div>
+
+    <div class="fabric f-silk">
+      <div class="glyph">S</div>
+      <div class="info">
+        <h5>Seda Tussah<small data-es="ANTHERAEA · INDIA · CHINA · JAPÓN" data-en="ANTHERAEA · INDIA · CHINA · JAPAN">ANTHERAEA · INDIA · CHINA · JAPÓN</small></h5>
+        <p data-es-html="La seda <em>Tussah</em> viene de gusano de bosque (no doméstico) — fibra irregular, tono dorado natural, sin necesidad de tinte. Tejida en India y China desde 3,000 a.C. Es la <strong>seda más ética</strong> porque el gusano sale del capullo antes de cosechar." data-en-html="<em>Tussah</em> silk comes from wild (non-domestic) silkworms — irregular fiber, natural golden tone, no dye needed. Woven in India and China since 3,000 BC. The <strong>most ethical silk</strong> because the worm leaves the cocoon before harvest.">La seda <em>Tussah</em> viene de gusano de bosque (no doméstico) — fibra irregular, tono dorado natural, sin necesidad de tinte. Tejida en India y China desde 3,000 a.C. Es la <strong>seda más ética</strong> porque el gusano sale del capullo antes de cosechar.</p>
+        <p data-es-html="<strong>Para noches en Panamá:</strong> la seda <em>enfría</em> en clima caliente — mal conocido. Una bufanda de seda al hombro en una noche húmeda baja la temperatura corporal en 2°C." data-en-html="<strong>For Panama nights:</strong> silk <em>cools</em> in hot climate — little known. A silk scarf on the shoulder on a humid night drops body temperature 2°C."><strong>Para noches en Panamá:</strong> la seda <em>enfría</em> en clima caliente — mal conocido. Una bufanda de seda al hombro en una noche húmeda baja la temperatura corporal en 2°C.</p>
+        <div class="source" data-es-html="ORÍGENES MANTO: <em>Eri silk co-op</em> (Assam) · <em>Tsumugi</em> (Japón)" data-en-html="MANTO SOURCING: <em>Eri silk co-op</em> (Assam) · <em>Tsumugi</em> (Japan)">ORÍGENES MANTO: <em>Eri silk co-op</em> (Assam) · <em>Tsumugi</em> (Japón)</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="climate">
+    <div class="cl-c">
+      <div class="cl-l" data-es="PANAMÁ · TIERRAS BAJAS" data-en="PANAMA · LOWLANDS">PANAMÁ · TIERRAS BAJAS</div>
+      <h6 data-es="Ciudad, Casco Antiguo, Bocas" data-en="City, Casco Antiguo, Bocas">Ciudad, Casco Antiguo, Bocas</h6>
+      <p data-es-html="32 °C, 85% humedad. <strong>Lino y Pima son obligatorios.</strong> Cáñamo para la noche fresca. Cero poliéster. Sandalia o descalzo. La camisa cruzada Apóstol gana." data-en-html="32 °C, 85% humidity. <strong>Linen and Pima are obligatory.</strong> Hemp for the cool night. Zero polyester. Sandal or barefoot. The Apóstol wrap shirt wins."><strong>Lino y Pima son obligatorios.</strong> Cáñamo para la noche fresca. Cero poliéster. Sandalia o descalzo.</p>
+    </div>
+    <div class="cl-c">
+      <div class="cl-l" data-es="PANAMÁ · BOQUETE / VOLCÁN" data-en="PANAMA · BOQUETE / VOLCÁN">PANAMÁ · BOQUETE / VOLCÁN</div>
+      <h6 data-es="1,200 m altura · noches a 14 °C" data-en="1,200 m altitude · nights at 14 °C">1,200 m altura · noches a 14 °C</h6>
+      <p data-es-html="Día tropical, noche fría. <strong>Alpaca para la noche</strong> + lino para el día. El Manto de cáñamo cubre la diferencia. Es el sitio donde la marca se viste mejor — capas." data-en-html="Tropical day, cold night. <strong>Alpaca at night</strong> + linen by day. The hemp Manto bridges. The site where the brand dresses best — layers.">Día tropical, noche fría. <strong>Alpaca para la noche</strong> + lino para el día. El Manto de cáñamo cubre la diferencia.</p>
+    </div>
+    <div class="cl-c">
+      <div class="cl-l" data-es="ANDES · MEDELLÍN · BOGOTÁ" data-en="ANDES · MEDELLÍN · BOGOTÁ">ANDES · MEDELLÍN · BOGOTÁ</div>
+      <h6 data-es="Clima eterno · 18-22 °C" data-en="Eternal spring · 18-22 °C">Clima eterno · 18-22 °C</h6>
+      <p data-es-html="El paraíso de la alpaca y el merino. Lino para el día, vestidos largos para la noche. <strong>Capas finas, todo natural.</strong>" data-en-html="Alpaca and merino paradise. Linen by day, long dresses at night. <strong>Thin layers, all natural.</strong>">El paraíso de la alpaca y el merino. Lino para el día, vestidos largos para la noche.</p>
+    </div>
+    <div class="cl-c">
+      <div class="cl-l" data-es="MEDIO ORIENTE · DESIERTO" data-en="MIDDLE EAST · DESERT">MEDIO ORIENTE · DESIERTO</div>
+      <h6 data-es="40 °C día · 12 °C noche" data-en="40 °C day · 12 °C night">40 °C día · 12 °C noche</h6>
+      <p data-es-html="Donde nació el oficio. <strong>Lino pesado y largo</strong> — protege del sol mejor que cualquier sintético. Cáñamo en la noche. Sin negro, sin lana." data-en-html="Where the craft was born. <strong>Heavy long linen</strong> — protects from sun better than any synthetic. Hemp at night. No black, no wool.">Donde nació el oficio. <strong>Lino pesado y largo</strong> — protege del sol mejor que cualquier sintético. Cáñamo en la noche.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 03 · LINAJE / PROPHETIC IMAGERY -->
+<section>
+  <div class="sec-head">
+    <div>
+      <div class="sec-num" data-es="03 · LINAJE · LA TELA SAGRADA" data-en="03 · LINEAGE · SACRED CLOTH">03 · LINAJE · LA TELA SAGRADA</div>
+      <h3 data-es-html="<strong>Tres tradiciones</strong>. Una sola vestidura." data-en-html="<strong>Three traditions</strong>. One garment."><strong>Tres tradiciones</strong>. Una sola vestidura.</h3>
+    </div>
+    <p class="sec-sub" data-es="MANTO bebe de tres ríos: el lino faraónico-bíblico, el algodón andino precolombino, el cáñamo asiático antiguo." data-en="MANTO drinks from three rivers: pharaonic-biblical linen, pre-Columbian Andean cotton, ancient Asian hemp.">MANTO bebe de tres ríos: el lino faraónico-bíblico, el algodón andino precolombino, el cáñamo asiático antiguo.</p>
+  </div>
+
+  <div class="lineage">
+    <div class="l-c">
+      <div class="l-l" data-es="LINAJE 01 · MEDITERRÁNEO" data-en="LINEAGE 01 · MEDITERRANEAN">LINAJE 01 · MEDITERRÁNEO</div>
+      <h6 data-es-html="El <em>lino</em> de los profetas." data-en-html="The prophets' <em>linen</em>.">El <em>lino</em> de los profetas.</h6>
+      <p data-es-html="Egipto, Canaán, Tiro. El sumo sacerdote del Templo vestía <em>kethonet</em> de lino. José fue vestido de lino fino por Faraón. Los apóstoles caminaban en túnicas sin costura. <strong>El lino habla de oficio y dignidad sin ostentación.</strong>" data-en-html="Egypt, Canaan, Tyre. The Temple high priest wore linen <em>kethonet</em>. Joseph was dressed in fine linen by Pharaoh. The apostles walked in seamless tunics. <strong>Linen speaks of craft and dignity without ostentation.</strong>">Egipto, Canaán, Tiro. El sumo sacerdote del Templo vestía <em>kethonet</em> de lino. José fue vestido de lino fino por Faraón. Los apóstoles caminaban en túnicas sin costura. <strong>El lino habla de oficio y dignidad sin ostentación.</strong></p>
+    </div>
+    <div class="l-c" style="border-top-color:var(--olive-deep)">
+      <div class="l-l" style="color:var(--olive-deep)" data-es="LINAJE 02 · ANDINO" data-en="LINEAGE 02 · ANDEAN">LINAJE 02 · ANDINO</div>
+      <h6 data-es-html="El <em>algodón</em> y <em>la alpaca</em> de las cosmogonías." data-en-html="The <em>cotton</em> and <em>alpaca</em> of cosmogonies.">El <em>algodón</em> y <em>la alpaca</em> de las cosmogonías.</h6>
+      <p data-es-html="Moche, Chimú, Wari, Inca. Tejidos como cosmogonía — el textil andino no es decoración, es <em>narrativa</em>. Los <em>uncus</em> incaicos llevaban geografía y mito en sus tramas. <strong>La tradición textil más rica de las Américas.</strong>" data-en-html="Moche, Chimú, Wari, Inca. Weavings as cosmogony — Andean textile isn't decoration, it's <em>narrative</em>. Inca <em>uncus</em> carried geography and myth in their weave. <strong>The richest textile tradition of the Americas.</strong>">Moche, Chimú, Wari, Inca. Tejidos como cosmogonía — el textil andino no es decoración, es <em>narrativa</em>. Los <em>uncus</em> incaicos llevaban geografía y mito en sus tramas. <strong>La tradición textil más rica de las Américas.</strong></p>
+    </div>
+    <div class="l-c" style="border-top-color:var(--rust)">
+      <div class="l-l" style="color:var(--rust)" data-es="LINAJE 03 · INDO-CHINO" data-en="LINEAGE 03 · INDO-CHINESE">LINAJE 03 · INDO-CHINO</div>
+      <h6 data-es-html="El <em>cáñamo</em> y la <em>seda</em> de los caminos." data-en-html="The <em>hemp</em> and <em>silk</em> of the roads.">El <em>cáñamo</em> y la <em>seda</em> de los caminos.</h6>
+      <p data-es-html="Ruta de la Seda. <em>Khadi</em> indio que vistió a Gandhi. Seda tussah de Bengala. Cáñamo de Sichuan. <strong>Estas fibras viajaron de Oriente a Roma</strong> antes que cualquier mapa moderno existiera. MANTO honra ese viaje original." data-en-html="The Silk Road. Indian <em>khadi</em> that clothed Gandhi. Bengali tussah silk. Sichuan hemp. <strong>These fibers traveled from East to Rome</strong> before any modern map existed. MANTO honors that original journey.">Ruta de la Seda. <em>Khadi</em> indio que vistió a Gandhi. Seda tussah de Bengala. Cáñamo de Sichuan. <strong>Estas fibras viajaron de Oriente a Roma</strong> antes que cualquier mapa moderno existiera. MANTO honra ese viaje original.</p>
+    </div>
+  </div>
+
+  <div class="pullq">
+    <p data-es-html="MANTO no es <em>workwear</em>, no es <em>resort wear</em>, no es <em>luxury</em>. Es lo que viste un mensajero que tiene que llegar a destino — <strong>poco peso, larga vida, sentido encima del cuerpo</strong>. Lo que viste alguien que recuerda que el textil fue, durante 8,000 años, la primera tecnología humana." data-en-html="MANTO is not <em>workwear</em>, not <em>resort wear</em>, not <em>luxury</em>. It's what a messenger wears who must arrive — <strong>little weight, long life, meaning on the body</strong>. What is worn by someone who remembers that textile was, for 8,000 years, the first human technology.">MANTO no es <em>workwear</em>, no es <em>resort wear</em>, no es <em>luxury</em>. Es lo que viste un mensajero que tiene que llegar a destino — <strong>poco peso, larga vida, sentido encima del cuerpo</strong>. Lo que viste alguien que recuerda que el textil fue, durante 8,000 años, la primera tecnología humana.</p>
+    <cite data-es="DECLARACIÓN MANTO · LA COMPAÑÍA" data-en="MANTO STATEMENT · LA COMPAÑÍA">DECLARACIÓN MANTO · LA COMPAÑÍA</cite>
+  </div>
+</section>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-grid">
+    <div>
+      <div class="wordmark-foot"><em>M</em>anto</div>
+      <p class="tagline" data-es="Vestiduras de los enviados. Lino, cáñamo, algodón ancestral. Para el cuerpo del mensajero." data-en="Garments of the sent. Linen, hemp, ancestral cotton. For the messenger's body.">Vestiduras de los enviados. Lino, cáñamo, algodón ancestral. Para el cuerpo del mensajero.</p>
+    </div>
+    <div>
+      <h6 data-es="COLECCIÓN" data-en="COLLECTION">COLECCIÓN</h6>
+      <ul>
+        <li data-es="Túnica · La sin costura" data-en="Tunic · The seamless">Túnica · La sin costura</li>
+        <li data-es="Manto · Cáñamo italiano" data-en="Manto · Italian hemp">Manto · Cáñamo italiano</li>
+        <li data-es="Peregrino · Pantalón ancho" data-en="Peregrino · Wide trouser">Peregrino · Pantalón ancho</li>
+        <li data-es="Desierto · Vestido largo" data-en="Desierto · Long dress">Desierto · Vestido largo</li>
+        <li data-es="Apóstol · Camisa cruzada" data-en="Apóstol · Wrap shirt">Apóstol · Camisa cruzada</li>
+        <li data-es="Talit · Estola ritual" data-en="Talit · Ritual stole">Talit · Estola ritual</li>
+      </ul>
+    </div>
+    <div>
+      <h6 data-es="TEXTILES" data-en="TEXTILES">TEXTILES</h6>
+      <ul>
+        <li>Lino · Bélgica + Egipto</li>
+        <li>Pima · Perú</li>
+        <li>Cáñamo · Italia</li>
+        <li>Alpaca · Andes</li>
+        <li>Merino · NZ</li>
+        <li>Tussah · India</li>
+      </ul>
+    </div>
+    <div>
+      <h6 data-es="LA COMPAÑÍA" data-en="LA COMPAÑÍA">LA COMPAÑÍA</h6>
+      <ul>
+        <li><a href="lacompania.html" data-es="← Holding" data-en="← Holding">← Holding</a></li>
+        <li><a href="sora-vigor.html">Vigor · Body</a></li>
+        <li><a href="ceiba.html">Ceiba · Education</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span><em>MANTO</em> · LA COMPAÑÍA · MMXXVI</span>
+    <span data-es="DISEÑADO EN BOQUETE · HECHO EN PANAMÁ + LATAM" data-en="DESIGNED IN BOQUETE · MADE IN PANAMA + LATAM">DISEÑADO EN BOQUETE · HECHO EN PANAMÁ + LATAM</span>
+  </div>
+</footer>
+
+<script>
+const getLang = () => localStorage.getItem('sora.lang') || 'es';
+function applyLang(lang){
+  document.querySelectorAll('[data-es]').forEach(el=>{
+    const v = el.getAttribute('data-' + lang);
+    if (v != null) { if (/<[a-z]/i.test(v)) el.innerHTML = v; else el.textContent = v; }
+  });
+  document.querySelectorAll('[data-es-html]').forEach(el=>{
+    const v = el.getAttribute('data-' + lang + '-html');
+    if(v != null) el.innerHTML = v;
+  });
+  document.documentElement.lang = lang;
+  localStorage.setItem('sora.lang', lang);
+  document.querySelectorAll('.lang-toggle button').forEach(b=>b.classList.toggle('active', b.dataset.lang === lang));
+}
+document.querySelectorAll('.lang-toggle button').forEach(b=>b.addEventListener('click', ()=>applyLang(b.dataset.lang)));
+applyLang(getLang());
+</script>
+</body>
+</html>

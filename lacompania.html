@@ -87,15 +87,15 @@
 
   /* BRANDS GRID */
   .brands{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-  .brands .brand-card:nth-child(5){grid-column:1 / -1}
-  @media (max-width:780px){.brands{grid-template-columns:1fr}.brands .brand-card:nth-child(5){grid-column:auto}}
+  @media (max-width:780px){.brands{grid-template-columns:1fr}}
   .brand-card{position:relative;background:var(--paper-2);border:0.5px solid var(--line);border-radius:14px;padding:36px 38px 32px;display:flex;flex-direction:column;min-height:280px;transition:all .22s cubic-bezier(0.25,1,0.5,1);overflow:hidden}
   .brand-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--coral,#D9573B)}
   .brand-card.b-sora::before{background:#D9573B}
   .brand-card.b-veta::before{background:#b8602a}
   .brand-card.b-hilo::before{background:#1f4eb8}
   .brand-card.b-rapitido::before{background:#c63320}
-  .brand-card.b-aula::before{background:#c89030}
+  .brand-card.b-ceiba::before{background:#1d3a2c}
+  .brand-card.b-manto::before{background:#a85c3d}
   .brand-card:hover{transform:translateY(-4px);box-shadow:0 14px 40px rgba(20,17,12,.08);border-color:var(--line-2);background:var(--paper)}
   .brand-card .b-tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.22em;color:var(--ink-faint);text-transform:uppercase;font-weight:600;margin-bottom:14px}
   .brand-card h4{font-family:var(--serif);font-weight:400;font-size:38px;line-height:1;color:var(--ink);letter-spacing:.02em;margin-bottom:8px}
@@ -259,14 +259,26 @@
       </div>
     </a>
 
-    <a href="aula.html" class="brand-card b-aula">
-      <div class="b-tag" data-es="05 · DISEÑO · PILOTO BOQUETE + COMARCA 2026" data-en="05 · DESIGN · BOQUETE + COMARCA PILOT 2026">05 · DESIGN · BOQUETE + COMARCA PILOT 2026</div>
-      <h4 style="letter-spacing:.02em"><em style="color:#c89030">AULA</em></h4>
-      <div class="b-tag-line" data-es="Currículo de IA · 1-a-1 a escala · español · ngäbere · inglés" data-en="AI curriculum · 1-to-1 at scale · Spanish · Ngäbere · English">AI curriculum · 1-to-1 at scale · Spanish · Ngäbere · English</div>
-      <p data-es-html="El sistema educativo panameño tiene <strong>60-100 estudiantes por maestro</strong> en zonas rurales y <strong>50% de deserción</strong> en la Comarca antes de terminar primaria. AULA es un <strong>copiloto de IA</strong> que corre offline en un Raspberry Pi de $1,500: tutor 1-a-1 para cada niño, copiloto para cada maestro, currículo MEDUCA + rutas adaptativas + voz multilingüe nativa (incluye ngäbere). Pilotos en Bajo Boquete + Academia Boquete + 5 escuelas Ngäbe-Buglé. <em>Aula sin pared, maestro sin techo.</em>" data-en-html="Panama's rural classrooms have <strong>60-100 students per teacher</strong> and <strong>50% dropout</strong> in the Comarca before finishing primary. AULA is an <strong>AI copilot</strong> running offline on a $1,500 Raspberry Pi: 1-to-1 tutor for every child, copilot for every teacher, MEDUCA curriculum + adaptive paths + native multilingual voice (Ngäbere included). Pilots in Bajo Boquete + Academia Boquete + 5 Ngäbe-Buglé schools. <em>A classroom without walls, a teacher without ceilings.</em>">Panama's rural classrooms have 60-100 students per teacher and 50% dropout in the Comarca before finishing primary. AULA is an AI copilot running offline on a $1,500 Raspberry Pi: 1-to-1 tutor for every child, copilot for every teacher, MEDUCA curriculum + adaptive paths + native multilingual voice (Ngäbere included). Pilots in Bajo Boquete + Academia Boquete + 5 Ngäbe-Buglé schools. A classroom without walls, a teacher without ceilings.</p>
+    <a href="ceiba.html" class="brand-card b-ceiba" style="border-top-color:#1d3a2c">
+      <div class="b-tag" data-es="05 · DOS EDICIONES · COMARCA + BOQUETE" data-en="05 · TWO EDITIONS · COMARCA + BOQUETE">05 · DOS EDICIONES · COMARCA + BOQUETE</div>
+      <h4 style="letter-spacing:.02em"><em style="color:#1d3a2c;font-style:italic">C</em>eiba</h4>
+      <div class="b-tag-line" data-es="Currículo de IA · hoja del día por niño · español + lenguas originarias" data-en="AI curriculum · daily per-child sheet · Spanish + originary languages">Currículo de IA · hoja del día por niño · español + lenguas originarias</div>
+      <p data-es-html="<strong>Ceiba</strong> es el árbol sagrado de las cosmogonías Maya y Ngäbe — raíces en la tierra, ramas al cielo. Un sitio web al que el maestro entra desde su celular, genera una hoja calibrada por niño, imprime y entrega. Sin tabletas, sin hardware nuevo, sin costo para la escuela. <em>Dos versiones del documento:</em> <strong>Ceiba · Comarca</strong> (escuelas con población indígena) y <strong>Ceiba · Boquete</strong> (contexto urbano-rural mestizo)." data-en-html="<strong>Ceiba</strong> is the sacred tree of Maya and Ngäbe cosmogonies — roots in the earth, branches in the sky. A web tool the teacher opens on her phone, generates a calibrated sheet per child, prints, hands out. No tablets, no new hardware, no cost to the school. <em>Two versions:</em> <strong>Ceiba · Comarca</strong> (indigenous-population schools) and <strong>Ceiba · Boquete</strong> (urban-rural mestizo context)."><strong>Ceiba</strong> es el árbol sagrado de las cosmogonías Maya y Ngäbe — raíces en la tierra, ramas al cielo. Un sitio web al que el maestro entra desde su celular, genera una hoja calibrada por niño, imprime y entrega. Sin tabletas, sin hardware nuevo, sin costo para la escuela. <em>Dos versiones del documento:</em> <strong>Ceiba · Comarca</strong> (escuelas con población indígena) y <strong>Ceiba · Boquete</strong> (contexto urbano-rural mestizo).</p>
       <div class="b-foot">
-        <span class="b-meta">/aula.html</span>
-        <span class="b-open" style="color:#c89030">OPEN →</span>
+        <span class="b-meta">/ceiba.html · /ceiba-comarca.html · /ceiba-boquete.html</span>
+        <span class="b-open" style="color:#1d3a2c">OPEN →</span>
+      </div>
+    </a>
+
+    <!-- MANTO · CLOTHING (6th brand) -->
+    <a href="manto.html" class="brand-card b-manto" style="border-top-color:#a85c3d">
+      <div class="b-tag" data-es="06 · COLECCIÓN PRIMERA · MMXXVI" data-en="06 · FIRST COLLECTION · MMXXVI">06 · COLECCIÓN PRIMERA · MMXXVI</div>
+      <h4 style="letter-spacing:.02em"><em style="color:#a85c3d;font-style:italic">M</em>anto</h4>
+      <div class="b-tag-line" data-es="Vestiduras de los enviados · lino, cáñamo, algodón ancestral" data-en="Garments of the sent · linen, hemp, ancestral cotton">Vestiduras de los enviados · lino, cáñamo, algodón ancestral</div>
+      <p data-es-html="La marca de ropa de La Compañía. Seis piezas para el cuerpo del mensajero — túnica sin costura, manto de cáñamo, pantalón peregrino, vestido desierto, camisa apóstol, talit. <strong>Lino belga, algodón Pima peruano, cáñamo italiano, alpaca andina</strong>. Hecha para el trópico de Panamá. Reverente al linaje — el lino de los profetas, los tejidos andinos, la ruta de la seda. <em>No es moda. Es lo que aguanta.</em>" data-en-html="La Compañía's clothing brand. Six pieces for the messenger's body — seamless tunic, hemp mantle, pilgrim trouser, desert dress, apostle shirt, talit. <strong>Belgian linen, Peruvian Pima cotton, Italian hemp, Andean alpaca</strong>. Made for Panama's tropics. Reverent to lineage — prophets' linen, Andean weaving, the Silk Road. <em>Not fashion. What lasts.</em>">La marca de ropa de La Compañía. Seis piezas para el cuerpo del mensajero — túnica sin costura, manto de cáñamo, pantalón peregrino, vestido desierto, camisa apóstol, talit. <strong>Lino belga, algodón Pima peruano, cáñamo italiano, alpaca andina</strong>. Hecha para el trópico de Panamá. Reverente al linaje — el lino de los profetas, los tejidos andinos, la ruta de la seda. <em>No es moda. Es lo que aguanta.</em></p>
+      <div class="b-foot">
+        <span class="b-meta">/manto.html</span>
+        <span class="b-open" style="color:#a85c3d">OPEN →</span>
       </div>
     </a>
   </div>
@@ -623,7 +635,10 @@
         <li><a href="veta.html">VETA · Minerals</a></li>
         <li><a href="hilo.html">HILO · Money</a></li>
         <li><a href="rapitido.html">RAPITIDO · Delivery</a></li>
-        <li><a href="aula.html">AULA · Education</a></li>
+        <li><a href="ceiba.html">CEIBA · Education</a></li>
+        <li><a href="ceiba-comarca.html">CEIBA · Comarca</a></li>
+        <li><a href="ceiba-boquete.html">CEIBA · Boquete</a></li>
+        <li><a href="manto.html">MANTO · Clothing</a></li>
         <li><a href="sora-vigor.html">VIGOR · Body Protocol</a></li>
         <li><a href="daily-notes.html" data-es="Notas Diarias" data-en="Daily Notes">Daily Notes</a></li>
       </ul>
