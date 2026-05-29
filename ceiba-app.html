@@ -198,6 +198,37 @@ input,select,textarea{font-family:inherit;font-size:inherit;color:inherit}
 .notes-area{width:100%;background:var(--paper-2);border:1px solid var(--line-2);border-radius:6px;padding:11px 14px;font-family:var(--serif);font-size:13.5px;font-style:italic;color:var(--ink-2);min-height:60px;resize:vertical}
 .notes-area:focus{outline:none;border-color:var(--forest);background:var(--paper)}
 
+/* PROFILE PANEL */
+.profile-card{background:var(--paper-2);border:1px solid var(--line);border-radius:8px;padding:14px 18px;margin-bottom:14px}
+.profile-row{display:flex;gap:10px;align-items:flex-start;padding:6px 0;border-bottom:0.5px solid var(--line);font-size:13px;line-height:1.5}
+.profile-row:last-child{border-bottom:0}
+.profile-row .pf-lab{flex:0 0 96px;font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;color:var(--ink-faint);text-transform:uppercase;font-weight:700;padding-top:2px}
+.profile-row .pf-val{flex:1;color:var(--ink-2);font-family:var(--sans);font-size:13px;line-height:1.55}
+.profile-row .pf-val em{color:var(--forest);font-style:italic;font-weight:500}
+.profile-row .pf-val.italic{font-family:var(--serif);font-style:italic;font-size:13.5px;color:var(--ink-2)}
+.tag-list{display:flex;flex-wrap:wrap;gap:5px;margin-top:4px}
+.tag-list .tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.10em;padding:3px 9px;border-radius:11px;background:var(--paper-3);color:var(--ink-3);font-weight:600;border:0.5px solid var(--line)}
+.tag-list .tag.strength{background:rgba(90,138,74,.14);color:var(--green-ok);border-color:rgba(90,138,74,.3)}
+.tag-list .tag.struggle{background:rgba(181,74,42,.12);color:var(--red);border-color:rgba(181,74,42,.3)}
+.tag-list .tag.bridge{background:rgba(200,144,48,.14);color:var(--ochre-deep);border-color:rgba(200,144,48,.3);font-style:italic}
+.tag-list .tag.interest{background:var(--paper-deep);color:var(--ink-2)}
+
+/* LEARNING PLAN */
+.plan-section{margin-top:14px}
+.plan-block{background:var(--paper-2);border:1px solid var(--line);border-radius:8px;padding:12px 16px;margin-bottom:10px;border-left:3px solid var(--forest)}
+.plan-block.reinforce{border-left-color:var(--ochre)}
+.plan-block.stretch{border-left-color:var(--green-ok)}
+.plan-block .plan-lab{font-family:var(--mono);font-size:9px;letter-spacing:.20em;color:var(--forest);text-transform:uppercase;font-weight:700;margin-bottom:4px;display:flex;justify-content:space-between;align-items:baseline}
+.plan-block.reinforce .plan-lab{color:var(--ochre-deep)}
+.plan-block.stretch .plan-lab{color:var(--green-ok)}
+.plan-block .plan-lab .sub-tag{background:var(--ink);color:var(--paper);padding:2px 7px;border-radius:3px;font-size:8.5px;font-weight:700}
+.plan-block .plan-what{font-family:var(--serif);font-size:14.5px;color:var(--ink);font-weight:500;line-height:1.3;margin-bottom:4px;letter-spacing:-.005em}
+.plan-block .plan-why{font-family:var(--serif);font-style:italic;font-size:12px;color:var(--ink-3);line-height:1.45;margin-bottom:6px}
+.plan-block .plan-activities{font-family:var(--sans);font-size:11px;color:var(--ink-3);line-height:1.5;display:flex;flex-wrap:wrap;gap:5px;margin-top:5px}
+.plan-block .plan-activities .act{background:var(--paper);border:0.5px solid var(--line);border-radius:5px;padding:3px 8px;font-style:italic}
+.plan-block .plan-edit{font-family:var(--mono);font-size:9px;color:var(--ink-faint);cursor:pointer;text-transform:uppercase;letter-spacing:.14em;font-weight:600}
+.plan-block .plan-edit:hover{color:var(--forest)}
+
 /* DETAIL FOOT */
 .detail-foot{background:var(--paper-3);border-top:1px solid var(--line-2);padding:16px 28px;display:flex;justify-content:space-between;align-items:center;gap:14px}
 .detail-foot .left{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;color:var(--ink-faint);text-transform:uppercase;font-weight:600}
@@ -355,26 +386,36 @@ input,select,textarea{font-family:inherit;font-size:inherit;color:inherit}
     </div>
 
     <div class="detail-body">
-      <!-- LEFT COLUMN · LEVELS + DAY MARK + NOTES -->
+      <!-- LEFT COLUMN · PROFILE + PLAN + LEVELS + DAY MARK + NOTES -->
       <div>
         <div class="detail-section">
+          <h5>Perfil del estudiante</h5>
+          <div class="profile-card" id="d-profile"></div>
+        </div>
+
+        <div class="detail-section" style="margin-top:18px">
+          <h5>Lo que necesita aprender · plan personalizado</h5>
+          <div class="plan-section" id="d-plan"></div>
+        </div>
+
+        <div class="detail-section" style="margin-top:18px">
           <h5>Niveles por materia · ajustar con + / −</h5>
           <div id="d-levels"></div>
         </div>
 
-        <div class="detail-section" style="margin-top:22px">
+        <div class="detail-section" style="margin-top:18px">
           <h5>Marcar el día de hoy</h5>
           <div class="day-mark" id="d-day-mark"></div>
         </div>
 
-        <div class="detail-section" style="margin-top:22px">
+        <div class="detail-section" style="margin-top:18px">
           <h5>Notas del maestro</h5>
           <textarea class="notes-area" id="d-notes" placeholder="Observaciones, contexto familiar, lo que ayuda a este niño..."></textarea>
         </div>
       </div>
 
       <!-- RIGHT COLUMN · SHEET PREVIEW + HISTORY -->
-      <div>
+      <div style="position:sticky;top:0">
         <div class="detail-section">
           <h5>Hoja de hoy · vista previa</h5>
           <div class="sheet-wrap">
@@ -382,7 +423,7 @@ input,select,textarea{font-family:inherit;font-size:inherit;color:inherit}
           </div>
         </div>
 
-        <div class="detail-section" style="margin-top:22px">
+        <div class="detail-section" style="margin-top:18px">
           <h5>Historial reciente · últimos 12 días</h5>
           <div class="history-list" id="d-history">
             <div class="empty">Sin historial todavía.</div>
@@ -479,7 +520,7 @@ input,select,textarea{font-family:inherit;font-size:inherit;color:inherit}
    All data stored in localStorage
    =========================================================== */
 
-const STORAGE_KEY = 'ceiba.v1';
+const STORAGE_KEY = 'ceiba.v2'; // bumped — v2 includes rich profiles + plans
 const SUBJECTS = [
   { id: 'lang', name: 'Lengua' },
   { id: 'math', name: 'Matemática' },
@@ -494,18 +535,311 @@ const LANG_NAMES = {
   guna: 'Guna', embera: 'Emberá', ingles: 'Inglés'
 };
 
-const SAMPLE_NAMES = [
-  ['Yarisma', 'Bejarano', 5, 'Pre-básica', 'ngabere', {lang:4, math:5, read:3, write:3, sci:4, cult:5}],
-  ['Delino',  'Mendoza',  5, 'Pre-básica', 'ngabere', {lang:2, math:5, read:2, write:1, sci:3, cult:4}],
-  ['Maribel', 'Castillo', 4, 'Pre-básica', 'es',      {lang:4, math:3, read:3, write:3, sci:3, cult:3}],
-  ['Justino', 'Rodríguez',5, 'Pre-básica', 'ngabere', {lang:3, math:4, read:3, write:2, sci:3, cult:4}],
-  ['Alfreda', 'Tugrí',    4, 'Pre-básica', 'buglere', {lang:2, math:2, read:2, write:1, sci:2, cult:4}],
-  ['Francisco','Nuñez',   5, 'Pre-básica', 'es',      {lang:5, math:4, read:4, write:4, sci:4, cult:3}],
-  ['Belisario','Pinto',   5, 'Pre-básica', 'ngabere', {lang:4, math:3, read:3, write:3, sci:3, cult:4}],
-  ['Luzmila', 'Atencio',  4, 'Pre-básica', 'ngabere', {lang:3, math:3, read:3, write:2, sci:3, cult:4}],
-  ['Ruperta', 'Jiménez',  5, 'Pre-básica', 'buglere', {lang:3, math:3, read:3, write:3, sci:3, cult:4}],
-  ['Caleb',   'Domínguez',5, 'Pre-básica', 'es',      {lang:4, math:4, read:4, write:3, sci:4, cult:3}],
+const SAMPLE_STUDENTS = [
+  {
+    firstName:'Yarisma', lastName:'Bejarano', age:5, grade:'Pre-básica', lang:'ngabere',
+    levels:{lang:4, math:5, read:3, write:3, sci:4, cult:5},
+    profile:{
+      personality:'Curiosa y observadora. Le toma tiempo confiar, pero cuando lo hace pregunta todo.',
+      interests:['el río Caldera', 'los peces y piedras de colores', 'los cuentos de Mama Tatda (su abuela)', 'dibujar con carbón'],
+      familyContext:'Vive en Müna con su abuela Mama Tatda (cuentacuentos de la comunidad) y dos hermanos menores. Su madre trabaja temporada de café en Renacimiento. Padre falleció hace tres años.',
+      learningStyle:['visual', 'narrativo', 'oral'],
+      strengths:['memoria oral excepcional', 'conteo en Ngäbere hasta 30 sin titubear', 'identifica 14 plantas medicinales por nombre'],
+      struggles:['timidez con grupos grandes', 'letras del español que no existen en Ngäbere (j, ñ)', 'se desconcentra cuando hay ruido fuerte'],
+      culturalBridges:['Mama Tatda conoce todos los cuentos de Tjabä — usar bilingüe', 'cuenta hasta 30 en Ngäbere — puente directo al español por equivalencia'],
+      walkToSchool:'45 min · sendero del río',
+      homeLanguage:'Ngäbere (80%) + Español (20%)',
+      healthNotes:'Sana. Necesita lentes — pendiente examen visual.',
+    },
+    plan:{
+      priorities:[
+        {subject:'lang', what:'Reconocer letras f, j, ñ', why:'No existen en Ngäbere — necesita asociación visual con palabras que le importen', activities:['jícara', 'ñame del huerto', 'fogón de la abuela']},
+        {subject:'lang', what:'Leer cuentos cortos bilingües de Tjabä', why:'Su abuela ya se los cuenta oralmente — puente perfecto', activities:['Tjabä cruza el río', 'Tjabä y el pez plateado']},
+        {subject:'write', what:'Escribir su nombre completo con confianza', why:'Lo escribe pero duda — necesita repetición sin presión', activities:['firma todos los dibujos', 'escribe en la arena del patio']},
+      ],
+      reinforcement:[
+        {subject:'math', what:'Pasar conteo de Ngäbere a Español con piedras del río', why:'Ya sabe contar en su lengua — solo necesita la equivalencia'},
+        {subject:'cult', what:'Documentar 5 plantas medicinales de su abuela', why:'Conocimiento de hogar como currículo'},
+      ],
+      stretch:[
+        {subject:'read', what:'Leer oraciones simples bilingües completas', why:'Está casi lista — pequeño empujón'},
+      ],
+    },
+    notes:'Mama Tatda viene los miércoles. Aprovechar.',
+  },
+  {
+    firstName:'Delino', lastName:'Mendoza', age:5, grade:'Pre-básica', lang:'ngabere',
+    levels:{lang:2, math:5, read:2, write:1, sci:3, cult:4},
+    profile:{
+      personality:'Energético, distraído, físico. Necesita movimiento para pensar. Sentido del humor inesperado.',
+      interests:['fútbol', 'cuevas y rocas', 'ayudar a su papá con el ganado', 'corretear con sus perros Lupo y Negra'],
+      familyContext:'Vive en Llano Tugrí con su padre Edgardo y abuela Mama Tila. Su madre falleció hace 8 meses (parto del hermano que también murió). Padre cuida ganado en altura, trabaja largas horas. Delino llega tarde con frecuencia.',
+      learningStyle:['kinestésico', 'concreto', 'requiere movimiento'],
+      strengths:['fuerte en conteo concreto (con objetos)', 'memoria espacial — conoce todos los senderos del cerro', 'lidera juegos en el patio'],
+      struggles:['sentarse quieto más de 10 min', 'reconocer letras abstractas sin contexto físico', 'duelo no procesado — periodos de tristeza súbita', 'a veces no desayuna'],
+      culturalBridges:['usar piedras del río para sumar/restar', 'permitirle trabajar de pie en mesa alta cuando posible', 'su conocimiento del campo y el ganado es enseñable'],
+      walkToSchool:'1 h 20 min · cuesta',
+      homeLanguage:'Ngäbere (95%) — papá habla poco español',
+      healthNotes:'Pendiente seguimiento nutricional. Duelo reciente: necesita un adulto presente que lo escuche.',
+    },
+    plan:{
+      priorities:[
+        {subject:'lang', what:'Estabilidad emocional + primeras 5 letras del abecedario', why:'Duelo reciente — la base afectiva va primero', activities:['reunión con Mama Tila esta semana', 'desayuno reforzado en escuela', 'sesiones cortas de 8 min con descansos']},
+        {subject:'math', what:'Aprovechar su fuerza en conteo — pasar de 20 a 50 con piedras', why:'Es su área fuerte — anclar autoestima', activities:['contar piedras del río en pares', 'contar el ganado al regreso']},
+        {subject:'write', what:'Escribir su nombre de pie en pizarra', why:'Sentado se frustra; de pie con tiza fluye', activities:['nombre × 5 al inicio del día', 'firma en el patio con palo en tierra']},
+      ],
+      reinforcement:[
+        {subject:'read', what:'Imágenes antes que palabras — secuencias de cuento', why:'Lectura abstracta no funciona ahora; secuencia visual sí'},
+        {subject:'sci', what:'Animales del campo que ya conoce', why:'Ya distingue 8 razas de ganado — usar eso'},
+      ],
+      stretch:[
+        {subject:'cult', what:'Cuento oral de un día con su papá en el campo', why:'Le da voz, le honra el contexto'},
+      ],
+    },
+    notes:'CRÍTICO: contactar a Mama Tila esta semana. Coordinar con cantina escolar — desayuno asegurado. Sesiones cortas con movimiento.',
+  },
+  {
+    firstName:'Maribel', lastName:'Castillo', age:4, grade:'Pre-básica', lang:'es',
+    levels:{lang:4, math:3, read:3, write:3, sci:3, cult:3},
+    profile:{
+      personality:'Tímida al inicio, conversadora al final. Cuidadosa con sus cosas. Empieza tarde pero termina bien.',
+      interests:['muñecas de trapo', 'la cocina de su mamá', 'los pollitos del patio', 'colores rosado y morado'],
+      familyContext:'Vive en Boca Chica (recién mudada de David). Su madre Gladys vende empanadas en la entrada de la escuela. Padre trabaja en el muelle. Hermana mayor de 11 años (Esther) la cuida después de clase.',
+      learningStyle:['visual', 'imitativa', 'social'],
+      strengths:['vocabulario en español rico para su edad', 'observa antes de actuar', 'paciente'],
+      struggles:['cambio reciente de escuela — todavía se ajusta', 'matemática abstracta sin objetos', 'velocidad — termina último siempre'],
+      culturalBridges:['su mamá hace empanadas — usar la cocina como matemática (mitades, tercios)', 'su hermana mayor puede ser tutora en casa'],
+      walkToSchool:'10 min · acompañada por hermana',
+      homeLanguage:'Español 100%',
+      healthNotes:'Sana. Asma leve en temporada lluviosa.',
+    },
+    plan:{
+      priorities:[
+        {subject:'math', what:'Sumas hasta 10 con objetos físicos (granos de maíz)', why:'Su debilidad es la abstracción — anclar en lo concreto', activities:['contar empanadas que vende su mamá', 'sumar pollitos del patio']},
+        {subject:'write', what:'Escribir nombres de su familia (Mamá, Papá, Esther)', why:'Conexión emocional acelera escritura', activities:['una palabra por día', 'pegar etiquetas en casa']},
+        {subject:'lang', what:'Compartir una cosa con la clase los viernes', why:'Trabajar la timidez con preparación', activities:['práctica en casa con hermana primero']},
+      ],
+      reinforcement:[
+        {subject:'sci', what:'El ciclo de la gallina — del huevo al pollito', why:'Ya tiene gallinas en casa — observación directa'},
+      ],
+      stretch:[
+        {subject:'cult', what:'Receta familiar de empanadas escrita en pasos', why:'Procedimiento + escritura + cultura, todo junto'},
+      ],
+    },
+    notes:'Esther (la hermana) viene a recogerla — buena aliada. Coordinar.',
+  },
+  {
+    firstName:'Justino', lastName:'Rodríguez', age:5, grade:'Pre-básica', lang:'ngabere',
+    levels:{lang:3, math:4, read:3, write:2, sci:3, cult:4},
+    profile:{
+      personality:'Tranquilo, metódico, perfeccionista a su manera. Borra mucho. No le gusta equivocarse.',
+      interests:['armar y desarmar cosas', 'figuras geométricas en piedras', 'el atardecer (lo mira siempre desde la ventana)'],
+      familyContext:'Vive en Cerro Iglesias (Mironó). Familia extensa: padres, dos hermanos mayores, abuelo paterno. Padre carpintero, abuelo curandero. Caminata media al colegio.',
+      learningStyle:['lógico-secuencial', 'visual-espacial', 'silencioso'],
+      strengths:['identifica patrones geométricos sin enseñarle', 'paciente con tareas largas', 'memoriza secuencias bien'],
+      struggles:['miedo a equivocarse — se bloquea', 'escritura lenta porque borra mucho', 'no participa hablando aunque sepa'],
+      culturalBridges:['su padre es carpintero — geometría aplicada', 'su abuelo conoce 22 plantas — ciencia viva'],
+      walkToSchool:'35 min · sendero',
+      homeLanguage:'Ngäbere (70%) + Español (30%)',
+      healthNotes:'Sano.',
+    },
+    plan:{
+      priorities:[
+        {subject:'write', what:'Escribir con tinta — no se puede borrar', why:'Forzar a soltar el perfeccionismo paralizante', activities:['lápiz cera primero, después marcador', 'celebrar los errores como descubrimientos']},
+        {subject:'lang', what:'Hablar en clase una oración por día', why:'Sabe pero no participa — protocolo gradual', activities:['empezar con responder al maestro 1-a-1', 'crecer a un grupo de 3']},
+        {subject:'math', what:'Geometría aplicada — clasificar maderas de su papá', why:'Su fuerza + su contexto + su interés', activities:['triángulos, círculos, cuadrados en madera']},
+      ],
+      reinforcement:[
+        {subject:'sci', what:'Plantas medicinales con su abuelo', why:'Conocimiento de hogar como currículo formal'},
+      ],
+      stretch:[
+        {subject:'read', what:'Cuentos largos con final abierto — predecir qué pasa', why:'Su paciencia + secuencia lo soportan'},
+      ],
+    },
+    notes:'Hablar con el papá sobre el bloqueo perfeccionista. Permitir tachones sin reprender.',
+  },
+  {
+    firstName:'Alfreda', lastName:'Tugrí', age:4, grade:'Pre-básica', lang:'buglere',
+    levels:{lang:2, math:2, read:2, write:1, sci:2, cult:4},
+    profile:{
+      personality:'Dulce y observadora. Sigue lo que hacen los demás antes de hacer ella misma. Sonríe poco pero cuando lo hace, vale.',
+      interests:['las gallinas y patos', 'las flores amarillas', 'ayudar a su mamá a tejer chácara'],
+      familyContext:'Vive en Nole Düima (la parte Buglé de la Comarca). Es la menor de 4 hermanos. Su mamá teje chácaras para vender en Cerro Iglesias. Padre se va por temporadas a la frontera con Costa Rica.',
+      learningStyle:['imitativa', 'visual', 'manual'],
+      strengths:['motricidad fina avanzada para su edad (tejido)', 'paciencia inusual', 'memoria de colores y patrones'],
+      struggles:['barrera de idioma — Buglere fuerte, español muy limitado', 'no entiende instrucciones largas en español', 'aislada socialmente porque pocos hablan Buglere'],
+      culturalBridges:['su tejido es matemática y arte', 'su mamá puede traducir conceptos clave', 'identificar otra niña Buglé-hablante como pareja'],
+      walkToSchool:'50 min · vereda Bugleré',
+      homeLanguage:'Buglere 95%',
+      healthNotes:'Sana. Bajo peso para su edad — coordinar con cantina.',
+    },
+    plan:{
+      priorities:[
+        {subject:'lang', what:'Vocabulario español 50 palabras esenciales con imágenes', why:'Sin léxico básico no puede acceder a nada más', activities:['palabras de la casa, comida, escuela, familia', '10 palabras por semana']},
+        {subject:'lang', what:'Materiales bilingües Buglere ↔ Español por la propia maestra', why:'Maestra puede aprender 30 palabras Buglere mínimas', activities:['lista colaborada con mamá de Alfreda']},
+        {subject:'math', what:'Patrones del tejido como matemática', why:'Ya sabe patrones — solo necesita el nombre español', activities:['secuencias, mitades, dobles en hilo']},
+      ],
+      reinforcement:[
+        {subject:'write', what:'Repasar líneas verticales y curvas (motricidad)', why:'Tiene buena mano — perfeccionar trazo'},
+      ],
+      stretch:[
+        {subject:'cult', what:'Documentar 3 diseños tradicionales Buglé', why:'Su conocimiento es patrimonio'},
+      ],
+    },
+    notes:'PRIORIDAD: identificar otra estudiante Buglé hablante en escuela. Mamá viene los lunes con tejidos — invitarla a colaborar en material bilingüe.',
+  },
+  {
+    firstName:'Francisco', lastName:'Nuñez', age:5, grade:'Pre-básica', lang:'es',
+    levels:{lang:5, math:4, read:4, write:4, sci:4, cult:3},
+    profile:{
+      personality:'Confiado, extrovertido, articulado. Hijo de maestros — habla como adulto a veces. Le gusta liderar.',
+      interests:['dinosaurios', 'libros (tiene biblioteca en casa)', 'preguntas tipo "¿por qué?"', 'tabletas (la familia tiene una)'],
+      familyContext:'Vive en Bajo Boquete. Ambos padres maestros (Mireya en escuela pública, Eduardo en Academia Boquete). Hijo único. Mucho estímulo en casa, posible sobreestimulación.',
+      learningStyle:['lecto-escrito', 'auditivo-verbal', 'rápido'],
+      strengths:['vocabulario avanzado', 'lectura emergente', 'curiosidad insaciable', 'autodisciplina'],
+      struggles:['cuando otros van más lento se frustra', 'menos paciencia con compañeros', 'cultura local (Bajo Boquete) un poco abstracta — vive en burbuja'],
+      culturalBridges:['llevarlo a otros niños como tutor (le hace bien dar)', 'puentes con la finca de café de su abuelo Felipe'],
+      walkToSchool:'12 min · en auto con papá',
+      homeLanguage:'Español 100% + ya algo de inglés en casa',
+      healthNotes:'Sano. Vista perfecta. Posible adelantamiento a 1° antes de tiempo — evaluar.',
+    },
+    plan:{
+      priorities:[
+        {subject:'cult', what:'Geografía y cultura de la Comarca — visitas si es posible', why:'Vive en burbuja Boquete — abrir el mundo panameño', activities:['mapa de Chiriquí completo', 'reconocimiento de comunidades indígenas']},
+        {subject:'lang', what:'Inglés como segundo idioma estructurado', why:'Ya tiene cabeza para esto', activities:['10 palabras + 1 frase por semana']},
+        {subject:'sci', what:'Proyecto largo (4 semanas) de elección propia', why:'Necesita un reto grande para no aburrirse', activities:['ciclo de la mariposa, plantas medicinales, dinosaurios de Panamá']},
+      ],
+      reinforcement:[
+        {subject:'read', what:'Lectura compartida — leer a otros niños', why:'Da y recibe — refuerza humildad'},
+      ],
+      stretch:[
+        {subject:'math', what:'Multiplicación temprana — ya está listo', why:'No retenerlo; alimentar la curiosidad'},
+      ],
+    },
+    notes:'Padres muy presentes — fácil coordinar. Riesgo: que se aburra en clase. Mantener desafío.',
+  },
+  {
+    firstName:'Belisario', lastName:'Pinto', age:5, grade:'Pre-básica', lang:'ngabere',
+    levels:{lang:4, math:3, read:3, write:3, sci:3, cult:4},
+    profile:{
+      personality:'Sereno, alegre, generoso. Comparte sin que le pidan. Su risa es contagiosa.',
+      interests:['música (canta todo el día)', 'los pájaros y sus cantos', 'pintar piedras', 'los pies descalzos en el río'],
+      familyContext:'Vive en Müna. Familia musical — su tío toca acordeón en grupo de cumbia tradicional. Madre canta en iglesia. Padre teje botas. Hermanos: 3 mayores, 1 menor.',
+      learningStyle:['auditivo-musical', 'social', 'rítmico'],
+      strengths:['memoria musical (aprende canciones de una sola escucha)', 'cooperativo en grupo', 'voz clara'],
+      struggles:['velocidad de escritura', 'enfoque en silencio (siempre tararea)', 'no le interesa competir'],
+      culturalBridges:['canciones tradicionales Ngäbe como vehículo de aprendizaje', 'familia musical disponible para colaborar', 'su tío puede venir a la escuela'],
+      walkToSchool:'30 min',
+      homeLanguage:'Ngäbere 60% + Español 40%',
+      healthNotes:'Sano.',
+    },
+    plan:{
+      priorities:[
+        {subject:'lang', what:'Canciones-letrero — letras conectadas a canciones que conoce', why:'Aprende por melodía — usa eso', activities:['"Cucú, cucú, cantaba la rana" con letra C', 'canción del abecedario Ngäbere si existe']},
+        {subject:'write', what:'Velocidad de escritura con ritmo (canta mientras escribe)', why:'El ritmo le da fluidez', activities:['8 letras en 4 minutos al compás']},
+        {subject:'cult', what:'Música tradicional Ngäbe — entrevista con su tío', why:'Patrimonio + voz + escritura juntos'},
+      ],
+      reinforcement:[
+        {subject:'sci', what:'Identificar 10 cantos de pájaros locales', why:'Ya conoce 6 — duplicar'},
+      ],
+      stretch:[
+        {subject:'math', what:'Ritmo y compás como matemática', why:'Negras, corcheas son fracciones — conexión nueva'},
+      ],
+    },
+    notes:'Invitar al tío músico para una sesión de música tradicional en clase. Aprovechar la risa para construir grupo.',
+  },
+  {
+    firstName:'Luzmila', lastName:'Atencio', age:4, grade:'Pre-básica', lang:'ngabere',
+    levels:{lang:3, math:3, read:3, write:2, sci:3, cult:4},
+    profile:{
+      personality:'Callada, observadora intensa. Habla poco pero entiende mucho. Su silencio no es desconexión — es escucha.',
+      interests:['dibujar caras', 'su gato Pelusa', 'los abuelos de otros niños', 'el viento (siempre lo siente con la mano)'],
+      familyContext:'Vive en Cerro Iglesias. Vive con la tía Carmela porque su madre trabaja interna en finca en Volcán. Ve a su madre 2 veces al mes. Padre desconocido.',
+      learningStyle:['observacional', 'visual', 'reflexivo'],
+      strengths:['dibujo expresivo (retrata emociones reales)', 'memoria de detalles que otros no notan', 'empática con compañeros'],
+      struggles:['hablar en voz alta', 'iniciar conversaciones', 'echa de menos a su mamá los lunes (siempre triste)', 'lentitud aparente que en realidad es procesamiento profundo'],
+      culturalBridges:['su dibujo es una vía de comunicación', 'la tía Carmela es estable y disponible'],
+      walkToSchool:'40 min · con tía y prima',
+      homeLanguage:'Ngäbere 75% + Español 25%',
+      healthNotes:'Sana. Estado emocional: lunes y viernes (extremos del ciclo con mamá) son los más difíciles.',
+    },
+    plan:{
+      priorities:[
+        {subject:'lang', what:'Comunicación por dibujo — luego nombrar lo dibujado', why:'Su voz vive en sus dibujos — formalizar', activities:['diario visual diario', 'una palabra que describe el dibujo']},
+        {subject:'write', what:'Cartas cortas a su mamá (4 líneas)', why:'Motivación emocional alta', activities:['acumular semana y enviar el domingo']},
+        {subject:'lang', what:'Confianza para hablar con un compañero', why:'Empezar pequeño — uno solo', activities:['pareja fija con compañera tranquila']},
+      ],
+      reinforcement:[
+        {subject:'cult', what:'Dibujar a los abuelos de los demás niños (proyecto comunitario)', why:'Su sensibilidad es regalo'},
+      ],
+      stretch:[
+        {subject:'math', what:'Geometría suave — círculos y simetría', why:'Su precisión visual lo soporta'},
+      ],
+    },
+    notes:'Lunes y viernes — atención especial. Coordinar con tía. Considerar enviar fotos de Luzmila a la mamá semanalmente.',
+  },
+  {
+    firstName:'Ruperta', lastName:'Jiménez', age:5, grade:'Pre-básica', lang:'buglere',
+    levels:{lang:3, math:3, read:3, write:3, sci:3, cult:4},
+    profile:{
+      personality:'Práctica, decidida, manos ocupadas. Resuelve antes de preguntar. Líder de juegos pero no de palabra.',
+      interests:['hacer cosas con sus manos', 'cocinar con su mamá', 'cuidar a su hermano menor', 'los animales del patio'],
+      familyContext:'Vive en Nole Düima. Familia grande: padres, 5 hermanos (ella es la segunda). Mamá vende verduras los sábados en mercado de San Félix. Padre trabaja en finca de plátanos. Ruperta cuida a su hermano de 2 años después de clase.',
+      learningStyle:['kinestésico', 'práctico', 'aprende haciendo'],
+      strengths:['independencia (5 años cuidando a otro niño)', 'lógica práctica', 'persistente'],
+      struggles:['barrera de idioma (Buglere fuerte)', 'cansada los lunes (fin de semana de mercado con mamá)', 'pierde paciencia con explicaciones largas'],
+      culturalBridges:['cocina con su mamá — matemática de medidas', 'cuidado del hermano — vocabulario afectivo bilingüe', 'puede emparejarse con Alfreda (otra Buglé)'],
+      walkToSchool:'1 h · sendero',
+      homeLanguage:'Buglere 85% + Español básico',
+      healthNotes:'Sana. Sueño irregular los domingos (regreso tarde del mercado).',
+    },
+    plan:{
+      priorities:[
+        {subject:'lang', what:'Español aplicado a cocina y mercado', why:'Vocabulario que ya vive', activities:['números, monedas, precios', 'nombres de verduras y frutas']},
+        {subject:'math', what:'Sumas con monedas y vueltos del mercado', why:'Lo hace ya en la calle — formalizar', activities:['ejercicios con monedas reales']},
+        {subject:'lang', what:'Pareja de aprendizaje con Alfreda (Buglé)', why:'Compañera de lengua acelera ambas', activities:['traducciones mutuas Buglere-Español']},
+      ],
+      reinforcement:[
+        {subject:'write', what:'Recetas familiares Buglé escritas (paso a paso)', why:'Procedimiento + idioma + cultura'},
+      ],
+      stretch:[
+        {subject:'sci', what:'Cuidado del hermano menor — el desarrollo del bebé', why:'Conocimiento empírico — formalizar'},
+      ],
+    },
+    notes:'Coordinar emparejamiento con Alfreda. Hablar con mamá para no llegar exhausta los lunes.',
+  },
+  {
+    firstName:'Caleb', lastName:'Domínguez', age:5, grade:'Pre-básica', lang:'es',
+    levels:{lang:4, math:4, read:4, write:3, sci:4, cult:3},
+    profile:{
+      personality:'Lectura mixta — confiado en clase pero ansioso en exámenes. Tiende a sobrepensar. Bromista cuando se relaja.',
+      interests:['números grandes', 'mapas y banderas', 'fútbol (sigue al Tauro)', 'su perro Cookie'],
+      familyContext:'Vive en David (centro). Padres separados. Vive con su mamá Yolanda (enfermera en Hospital Chiriquí). Ve a su papá los fines de semana. Una hermana mayor de 13 (Daniela) le ayuda con tareas.',
+      learningStyle:['lógico-numérico', 'lecto-escrito', 'ansioso bajo presión'],
+      strengths:['matemática avanzada para su edad', 'lectura fluida', 'memoria para datos (capitales, banderas)'],
+      struggles:['ansiedad bajo evaluación', 'sobreescritura — borra para "mejorar"', 'duda de su trabajo después de entregarlo', 'cultura panameña/comarcal — distante a su vida urbana'],
+      culturalBridges:['su mamá enfermera — conexión al cuerpo humano (ciencia)', 'fútbol como puente social'],
+      walkToSchool:'5 min en auto con mamá',
+      homeLanguage:'Español 100%',
+      healthNotes:'Sano. Manejo de ansiedad: ya empezó respiración con su mamá enfermera.',
+    },
+    plan:{
+      priorities:[
+        {subject:'lang', what:'Tolerancia al error — escritura sin posibilidad de borrar', why:'Igual que Justino, perfeccionismo paralizante', activities:['marcador grueso', 'celebrar errores como aprendizaje']},
+        {subject:'cult', what:'Comarca Ngäbe-Buglé — geografía y gente', why:'Vive a 1.5h pero no la conoce — abrir mundo', activities:['mapa Chiriquí completo', 'video corto de Müna']},
+        {subject:'sci', what:'Proyecto del cuerpo humano con apoyo de su mamá', why:'Conexión emocional + ciencia + recurso de casa', activities:['huesos, órganos básicos, ciclo cardiaco simple']},
+      ],
+      reinforcement:[
+        {subject:'math', what:'Multiplicación temprana — ya está listo', why:'No retenerlo'},
+      ],
+      stretch:[
+        {subject:'read', what:'Cuentos largos con final ambiguo', why:'Su lectura lo soporta, su tolerancia ambigua no — bueno'},
+      ],
+    },
+    notes:'Mamá Yolanda muy presente. Hablar de la ansiedad en evaluación — quizá quitar exámenes formales por ahora.',
+  },
 ];
+
 
 /* ============== STATE ============== */
 let state = loadState();
@@ -520,13 +854,15 @@ function loadState(){
 }
 
 function initialState(){
-  const students = SAMPLE_NAMES.map((n, i) => ({
-    id: 's' + Date.now() + i,
-    firstName: n[0], lastName: n[1],
-    age: n[2], grade: n[3], lang: n[4],
-    levels: n[5],
+  const students = SAMPLE_STUDENTS.map((s, i) => ({
+    id: 's' + (Date.now() + i),
+    firstName: s.firstName, lastName: s.lastName,
+    age: s.age, grade: s.grade, lang: s.lang,
+    levels: s.levels,
+    profile: s.profile,
+    plan: s.plan,
     history: [],
-    notes: '',
+    notes: s.notes || '',
     createdAt: Date.now() - (10-i) * 86400000,
   }));
   return {
@@ -544,78 +880,344 @@ function activeClass(){
   return state.classes.find(c => c.id === state.activeClassId) || state.classes[0];
 }
 
-/* ============== EXERCISE TEMPLATES ============== */
-/* Each template: function(student) → exercise object */
-const EXERCISE_BANK = {
-  lang: [
-    // Level 1 · letters
-    s => ({ label:'1 · LETRAS', q:'Repasa la letra A.', c:'A  A  A  A  A\n___  ___  ___  ___  ___', subject:'lang', level:1 }),
-    s => ({ label:'2 · LETRAS', q:'Une la letra con su sonido.', c:'M ─ "mmm"\nP ─ "ppp"\nS ─ "sss"', subject:'lang', level:2 }),
-    s => ({ label:'3 · PALABRAS', q:'Lee y dibuja.', c:'· sol\n· río\n· pez', subject:'lang', level:3 }),
-    s => ({ label:'4 · ORACIONES', q:'Escribe una oración con la palabra "agua".', c:'_______________________________', subject:'lang', level:4 }),
-    s => ({ label:'5 · LECTURA', q:'Lee el cuento corto y subraya los nombres.', c:'Tjabä caminó al río. Vio un pez. El pez saltó. Tjabä se rió.', subject:'lang', level:5 }),
-    s => ({ label:'6 · ESCRITURA', q:'Escribe tu nombre completo y cuántos años tienes.', c:'Nombre: _______________________\nEdad: ___ años', subject:'lang', level:6 }),
-    s => ({ label:'7 · GRAMÁTICA', q:'Subraya el sustantivo en cada oración.', c:'1. El niño come pan.\n2. La maestra escribe.\n3. El río pasa por la escuela.', subject:'lang', level:7 }),
-  ],
-  math: [
-    s => ({ label:'1 · CONTEO', q:'Cuenta los puntos. Escribe el número.', c:'● ● ● = ___\n● ● ● ● ● = ___', subject:'math', level:1 }),
-    s => ({ label:'2 · CONTEO', q:'Cuenta las piedras del río y escribe el número.', c:'● ● ● ● ● = ___\n● ● ● ● ● ● ● ● = ___', subject:'math', level:2 }),
-    s => ({ label:'3 · SUMAS', q:'Resuelve.', c:'3 + 2 = ___\n5 + 1 = ___\n4 + 3 = ___', subject:'math', level:3 }),
-    s => ({ label:'4 · RESTAS', q:'Resuelve.', c:'8 − 3 = ___\n10 − 4 = ___\n7 − 2 = ___', subject:'math', level:4 }),
-    s => ({ label:'5 · DECENAS', q:'Cuenta de 10 en 10.', c:'10 · 20 · 30 · ___ · ___ · ___ · ___ · ___', subject:'math', level:5 }),
-    s => ({ label:'6 · MULTIPLICAR', q:'Resuelve.', c:'4 × 3 = ___\n5 × 2 = ___\n6 × 4 = ___', subject:'math', level:6 }),
-    s => ({ label:'7 · PROBLEMAS', q:'Lee y resuelve.', c:'María tiene 12 mangos. Le regala 5 a su hermano. ¿Cuántos le quedan?\n\nRespuesta: ___ mangos', subject:'math', level:7 }),
-  ],
-  read: [
-    s => ({ label:'1 · DIBUJO', q:'Dibuja lo que viste hoy en el camino a la escuela.', c:'', drawLine:true, subject:'read', level:1 }),
-    s => ({ label:'2 · IMAGEN', q:'Mira el dibujo. Encierra lo que reconoces.', c:'☀  🌳  🐟  🏠  📚', subject:'read', level:2 }),
-    s => ({ label:'3 · CUENTO', q:'Lee este cuento corto y dibújalo.', c:'El niño caminó al río. Vio tres pájaros.', drawLine:true, subject:'read', level:3 }),
-    s => ({ label:'4 · COMPRENSIÓN', q:'Lee y responde.', c:'Yarisma tiene 5 años. Vive en Müna. Le gusta el río.\n\n¿Cuántos años tiene? ___\n¿Dónde vive? ___', subject:'read', level:4 }),
-    s => ({ label:'5 · COMPRENSIÓN', q:'Lee el párrafo y responde.', c:'El pez del río Caldera es plateado. Vive en agua fría. Come insectos pequeños.\n\n¿De qué color es? ___\n¿Qué come? ___', subject:'read', level:5 }),
-  ],
-  write: [
-    s => ({ label:'1 · TRAZO', q:'Repasa las líneas.', c:'─ ─ ─\n│ │ │\n○ ○ ○', drawLine:true, subject:'write', level:1 }),
-    s => ({ label:'2 · NOMBRE', q:'Escribe tu nombre dos veces.', c:'1) _______________________\n2) _______________________', subject:'write', level:2 }),
-    s => ({ label:'3 · PALABRAS', q:'Copia cada palabra dos veces.', c:'sol  ─ ______  ______\nrío  ─ ______  ______\nmamá ─ ______  ______', subject:'write', level:3 }),
-    s => ({ label:'4 · ORACIONES', q:'Completa las oraciones.', c:'Yo me llamo _______________.\nMi color favorito es _______________.\nMi comida favorita es _______________.', subject:'write', level:4 }),
-    s => ({ label:'5 · TEXTO', q:'Escribe un párrafo sobre tu familia (3 a 4 oraciones).', c:'_______________________________\n_______________________________\n_______________________________\n_______________________________', subject:'write', level:5 }),
-  ],
-  sci: [
-    s => ({ label:'1 · OBSERVAR', q:'Dibuja una planta que ves desde tu casa.', c:'', drawLine:true, subject:'sci', level:1 }),
-    s => ({ label:'2 · ANIMALES', q:'Une el animal con donde vive.', c:'pez ─ río\npájaro ─ árbol\nperro ─ casa', subject:'sci', level:2 }),
-    s => ({ label:'3 · CUERPO', q:'Nombra tres partes del cuerpo.', c:'1) _______________\n2) _______________\n3) _______________', subject:'sci', level:3 }),
-    s => ({ label:'4 · CICLO', q:'Pon en orden el ciclo del agua.', c:'· lluvia\n· río\n· mar\n· nube\n\nOrden: ___ → ___ → ___ → ___', subject:'sci', level:4 }),
-    s => ({ label:'5 · PLANTAS', q:'Describe qué necesita una planta para crecer (3 cosas).', c:'1) _______________\n2) _______________\n3) _______________', subject:'sci', level:5 }),
-  ],
-  cult: [
-    s => ({ label:'1 · CASA', q:'Dibuja tu casa y los animales que viven cerca.', c:'', drawLine:true, subject:'cult', level:1 }),
-    s => ({ label:'2 · COMIDA', q:'Dibuja la comida favorita de tu familia.', c:'', drawLine:true, subject:'cult', level:2 }),
-    s => ({ label:'3 · CUENTO', q:'¿Qué historia te contó alguien de tu familia? Cuéntala en 2 oraciones.', c:'1) _______________________________\n2) _______________________________', subject:'cult', level:3 }),
-    s => ({ label:'4 · PLANTAS', q:'Nombra dos plantas que crecen donde vives y para qué sirven.', c:'1) _______________ · sirve para _______________\n2) _______________ · sirve para _______________', subject:'cult', level:4 }),
-    s => ({ label:'5 · GEOGRAFÍA', q:'Dibuja un mapa de tu camino de la casa a la escuela.', c:'', drawLine:true, subject:'cult', level:5 }),
-  ],
+/* ============== EXERCISE BANK ============== */
+/* Each entry is keyed by subject + level. Multiple entries per (subject, level) so we can vary.
+   A template is a function(student) → exercise. Student data lets us personalize.
+   Each exercise: { label, q (instruction), c (content, multi-line), drawLine?, theme, subject, level } */
+
+// Helper for substituting student-specific content
+const SNAME = s => s.firstName;
+const SLANG = s => LANG_NAMES[s.lang] || 'español';
+const SINTEREST = s => (s.profile?.interests?.[0]) || 'el río';
+const SFAMILY = s => {
+  const fc = s.profile?.familyContext || '';
+  if (fc.includes('abuela')) return 'tu abuela';
+  if (fc.includes('mamá') || fc.includes('madre')) return 'tu mamá';
+  if (fc.includes('tía')) return 'tu tía';
+  return 'alguien de tu familia';
 };
 
-function pickExercise(subjectId, level){
-  const bank = EXERCISE_BANK[subjectId] || [];
-  const lev = Math.max(1, Math.min(level, bank.length));
-  return bank[lev - 1] || bank[bank.length - 1];
+const EXERCISE_BANK = {
+  /* ===================== LENGUA ===================== */
+  lang: {
+    1: [ // Reconocimiento básico de letras + sonidos
+      s => ({ label:'LETRA M', q:'Repasa la letra M cinco veces. Después dibuja algo que empiece con M.', c:'M  M  M  M  M\n___  ___  ___  ___  ___\n\nDibuja:', drawLine:true, theme:'letras' }),
+      s => ({ label:'LETRA S', q:'Repasa la letra S. Después dibuja un sol y una serpiente.', c:'S  S  S  S  S\n___  ___  ___  ___  ___', drawLine:true, theme:'letras' }),
+      s => ({ label:'LETRA P', q:'Repasa la letra P. Dibuja un pez y una piedra.', c:'P  P  P  P  P\n___  ___  ___  ___  ___', drawLine:true, theme:'letras' }),
+      s => ({ label:'SONIDOS', q:'Escucha a tu maestra. Encierra la letra que escuchas.', c:'1) M    P    S    L\n2) S    M    L    P\n3) L    P    M    S', theme:'fonética' }),
+      s => ({ label:'TU NOMBRE', q:`${s.firstName}, encierra las letras de tu nombre en esta lista.`, c:'A B C D E F G H I J K\nL M N Ñ O P Q R S T U\nV W X Y Z', theme:'identidad' }),
+      s => ({ label:'PRIMERA LETRA', q:'Dibuja algo que empiece con la primera letra de tu nombre.', c:`Mi nombre empieza con: ___\n\nDibujo:`, drawLine:true, theme:'identidad' }),
+    ],
+    2: [ // Mayúscula/minúscula, palabras simples
+      s => ({ label:'MAYÚSCULA + minúscula', q:'Une cada letra mayúscula con su minúscula.', c:'A ─ ─ ─ b\nB ─ ─ ─ a\nM ─ ─ ─ p\nP ─ ─ ─ m\nS ─ ─ ─ s', theme:'parejas' }),
+      s => ({ label:'PALABRAS DE LA CASA', q:'Lee cada palabra. Dibuja lo que es.', c:'mamá  ─ ___\npapá  ─ ___\ncasa  ─ ___\nperro ─ ___', drawLine:true, theme:'familia' }),
+      s => ({ label:'COMPLETA', q:'Completa la palabra con la letra que falta.', c:'_ amá  (m)\n_ apá  (p)\n_ ol   (s)\n_ ío   (r)', theme:'completar' }),
+      s => ({ label:'AGRUPAR', q:'Encierra todas las palabras que empiecen con la misma letra.', c:'sol · río · sapo · mamá · suelo · serpiente · papá', theme:'patrones' }),
+      s => ({ label:'BILINGÜE NGÄBE', q:s.lang==='ngabere' ? 'Une el dibujo con la palabra en Ngäbere y español.' : 'Une el dibujo con la palabra en español.',
+        c: s.lang==='ngabere'
+          ? 'ño    ─ piedra\njä    ─ pez\nkwasä ─ agua\nmü    ─ sol'
+          : 'agua   ─ ___\npiedra ─ ___\npez    ─ ___\nsol    ─ ___', theme:'bilingüe' }),
+      s => ({ label:'CONTAR LETRAS', q:'Cuenta cuántas letras tiene cada palabra.', c:`sol  → ___ letras\nrío  → ___ letras\nmamá → ___ letras\n${s.firstName.toLowerCase()} → ___ letras`, theme:'meta' }),
+    ],
+    3: [ // Palabras a oraciones simples
+      s => ({ label:'LEE Y DIBUJA', q:'Lee y dibuja lo que dice.', c:'1) un sol grande\n2) tres peces en el río\n3) la casa de mi abuela', drawLine:true, theme:'lectura-dibujo' }),
+      s => ({ label:'COMPLETA LA ORACIÓN', q:'Escribe la palabra que falta.', c:'Yo me llamo _____________.\nTengo ___ años.\nVivo en _____________.', theme:'identidad' }),
+      s => ({ label:'PALABRAS QUE RIMAN', q:'Une las palabras que riman.', c:'sol  ─ ─ ─ pez\nrío  ─ ─ ─ pan\nmiel ─ ─ ─ frío\nmar  ─ ─ ─ piel', theme:'fonética' }),
+      s => ({ label:'ORDENA LAS PALABRAS', q:'Escribe estas palabras en orden para formar una oración.', c:`mamá  ·  ${s.firstName}  ·  quiere  ·  a  ·  su\n\n→ _______________________________________`, theme:'sintaxis' }),
+      s => ({ label:'ANTES Y DESPUÉS', q:'Escribe la letra que va antes y después.', c:'___  M  ___\n___  P  ___\n___  S  ___\n___  R  ___', theme:'abecedario' }),
+      s => ({ label:'CUENTO CORTO', q:'Lee este cuento. Subraya el nombre del personaje.', c:'Tjabä caminó al río. Vio un pez plateado. Lo miró un rato y siguió su camino. En casa, contó lo que vio.', theme:'lectura' }),
+    ],
+    4: [ // Comprensión + producción simple
+      s => ({ label:'PREGUNTAS Y RESPUESTAS', q:'Lee y responde.', c:`Maribel tiene 4 años. Vive en Boca Chica. Le gustan las muñecas.\n\n¿Cuántos años tiene? ___\n¿Dónde vive? _____________\n¿Qué le gusta? _____________`, theme:'comprensión' }),
+      s => ({ label:'TUS GUSTOS', q:'Escribe oraciones completas.', c:'Mi comida favorita es _________________.\nMi color favorito es _________________.\nMi animal favorito es _________________.\nMe gusta jugar a _________________.', theme:'identidad' }),
+      s => ({ label:'PALABRA EN CONTEXTO', q:'Escribe una oración usando cada palabra.', c:'1) río   ─ _______________________________\n2) mamá  ─ _______________________________\n3) escuela ─ _______________________________', theme:'producción' }),
+      s => ({ label:'ARTÍCULOS', q:'Encierra el artículo correcto.', c:'(El / La) sol está caliente.\n(El / La) río pasa por mi casa.\n(El / La) maestra escribe.\n(El / La) papá trabaja.', theme:'gramática' }),
+      s => ({ label:'PLURAL Y SINGULAR', q:'Escribe el plural.', c:'pez   → ___________\nflor  → ___________\nmano  → ___________\nrío   → ___________', theme:'gramática' }),
+      s => ({ label:'CUENTO LARGO', q:'Lee y subraya con colores: nombres (rojo), acciones (azul).', c:'Yarisma caminó al río con su abuela. Vio cinco peces plateados. Su abuela contó un cuento de Tjabä. Yarisma se rió mucho.', theme:'lectura' }),
+    ],
+    5: [ // Lectura más larga, escritura de oraciones
+      s => ({ label:'COMPRENSIÓN PROFUNDA', q:'Lee y responde con oraciones completas.', c:`El pez del río Caldera es plateado y vive en agua fría. Come insectos pequeños y se esconde bajo las piedras grandes cuando hay lluvia fuerte.\n\n1) ¿De qué color es el pez?\n  → _______________________________\n2) ¿Qué come?\n  → _______________________________\n3) ¿Dónde se esconde y cuándo?\n  → _______________________________`, theme:'comprensión' }),
+      s => ({ label:'ESCRIBIR UNA HISTORIA', q:`Escribe una historia corta (4 oraciones) sobre ${SINTEREST(s)}.`, c:'1) _______________________________\n2) _______________________________\n3) _______________________________\n4) _______________________________', theme:'producción' }),
+      s => ({ label:'SINÓNIMOS', q:'Une cada palabra con otra que significa lo mismo.', c:'grande   ─ ─ ─ bonito\nfeliz    ─ ─ ─ enorme\nlindo    ─ ─ ─ rápido\nveloz    ─ ─ ─ contento', theme:'vocabulario' }),
+      s => ({ label:'ANTÓNIMOS', q:'Escribe el opuesto.', c:'grande  ↔ ___________\ncaliente ↔ ___________\nrápido  ↔ ___________\nclaro   ↔ ___________\ncerca   ↔ ___________', theme:'vocabulario' }),
+      s => ({ label:'PUNTUACIÓN', q:'Agrega puntos y mayúsculas donde falten.', c:'mi nombre es ' + s.firstName.toLowerCase() + ' tengo ' + s.age + ' años vivo en panamá voy a la escuela me gusta dibujar', theme:'puntuación' }),
+    ],
+    6: [ // Lectura compleja, redacción de párrafos
+      s => ({ label:'LECTURA + INFERENCIA', q:'Lee y responde. Algunas respuestas no están escritas — tienes que pensarlas.', c:`Cada mañana, Belisario sale temprano de su casa. Camina por el sendero hasta llegar al río. Allí canta una canción que su tío le enseñó. Después sigue su camino a la escuela.\n\n1) ¿Qué hace Belisario cada mañana? ___________________\n2) ¿Por qué crees que canta? (piénsalo) ___________________\n3) ¿De quién aprendió la canción? ___________________`, theme:'inferencia' }),
+      s => ({ label:'PÁRRAFO', q:`Escribe un párrafo (5-6 oraciones) titulado "Mi día perfecto".`, c:'_______________________________\n_______________________________\n_______________________________\n_______________________________\n_______________________________\n_______________________________', theme:'redacción' }),
+      s => ({ label:'PALABRAS COMPUESTAS', q:'Une las palabras para formar una sola.', c:'lava  +  manos   = _____________\nrasca + cielos    = _____________\nsaca  + puntas    = _____________\nguarda + bosque   = _____________', theme:'vocabulario' }),
+      s => ({ label:'PREFIJOS Y SUFIJOS', q:'Agrega "re-" al inicio. ¿Qué pasa con el significado?', c:'hacer    → ___________\nleer     → ___________\nempezar  → ___________\nconstruir → ___________', theme:'morfología' }),
+    ],
+    7: [ // Análisis y producción extendida
+      s => ({ label:'TIPOS DE PALABRAS', q:'Subraya los sustantivos con rojo, los verbos con azul, los adjetivos con verde.', c:'1) El pez plateado nada rápido.\n2) Mi abuela cocina la comida favorita.\n3) Los pájaros pequeños cantan en los árboles altos.', theme:'gramática' }),
+      s => ({ label:'CARTA', q:'Escribe una carta corta a alguien de tu familia.', c:'Querido(a) _______________:\n\n_______________________________\n_______________________________\n_______________________________\n\nCon cariño,\n_______________', theme:'comunicación' }),
+      s => ({ label:'COMPRENSIÓN AVANZADA', q:'Lee y responde explicando el "por qué".', c:'Cuando llueve mucho en el cerro, el río Caldera crece. Los peces se esconden bajo las piedras grandes. Los pájaros buscan refugio en los árboles más densos.\n\n¿Por qué los peces se esconden bajo piedras grandes y no pequeñas?\n→ _______________________________\n_______________________________', theme:'razonamiento' }),
+    ],
+  },
+
+  /* ===================== MATEMÁTICA ===================== */
+  math: {
+    1: [
+      s => ({ label:'CONTEO 1-5', q:'Cuenta los puntos y escribe el número.', c:'●●●        = ___\n●●●●       = ___\n●●●●●      = ___\n●●         = ___\n●          = ___', theme:'conteo' }),
+      s => ({ label:'COLOREA N COSAS', q:'Colorea 3 círculos. Después colorea 5 círculos abajo.', c:'○ ○ ○ ○ ○ ○\n\n○ ○ ○ ○ ○ ○ ○', theme:'cardinalidad' }),
+      s => ({ label:'MÁS Y MENOS', q:'Encierra el grupo que tiene MÁS.', c:'A) ● ● ●          B) ● ● ● ● ●\n\nA) ● ● ● ● ● ●    B) ● ●', theme:'comparación' }),
+      s => ({ label:'CONTAR EN LA NATURALEZA', q:`${s.firstName}, dibuja exactamente 4 piedras del río y 2 hojas.`, c:'4 piedras:', drawLine:true, theme:'concreto' }),
+      s => ({ label:'NÚMEROS DEL 1 AL 10', q:'Traza los números siguiendo el ejemplo.', c:'1  2  3  4  5  6  7  8  9  10\n___ ___ ___ ___ ___ ___ ___ ___ ___ ___', theme:'escritura-num' }),
+    ],
+    2: [
+      s => ({ label:'CONTEO HASTA 20', q:'Cuenta y escribe el número que falta.', c:'1, 2, ___, 4, 5\n5, 6, ___, 8, 9, 10\n10, ___, 12, 13, ___, 15\n15, 16, ___, 18, ___, 20', theme:'secuencia' }),
+      s => ({ label:'PIEDRAS DEL RÍO', q:`${s.firstName}, cuenta las piedras y escribe el total.`, c:'● ● ● ● ●     = ___\n● ● ● ● ● ● ● = ___\n● ● ● ● ● ● ● ● ● ● = ___', theme:'concreto' }),
+      s => ({ label:'CONTEO POR PAREJAS', q:'Cuenta de 2 en 2.', c:'2, 4, ___, ___, 10, ___, 14, ___, ___, 20', theme:'patrones' }),
+      s => ({ label:'NÚMERO MAYOR', q:'Encierra el número MAYOR.', c:'1)  7    3\n2)  12   18\n3)  5    9\n4)  20   15\n5)  11   14', theme:'comparación' }),
+      s => ({ label:'CONTEO BILINGÜE', q: s.lang==='ngabere' ? 'Cuenta en Ngäbere y en español.' : 'Cuenta del 1 al 10.',
+        c: s.lang==='ngabere' ? 'krati(1) krobu(2) krämä(3) krobogo(4) krärike(5)\n___ ___ ___ ___ ___ (escribe en español)' : '1 ___\n2 ___\n3 ___\n4 ___\n5 ___\n(escribe el nombre del número)', theme:'bilingüe' }),
+    ],
+    3: [
+      s => ({ label:'SUMAS BÁSICAS', q:'Resuelve. Puedes usar piedras o dedos.', c:'3 + 2 = ___\n5 + 1 = ___\n4 + 3 = ___\n2 + 6 = ___\n7 + 2 = ___\n4 + 4 = ___', theme:'suma' }),
+      s => ({ label:'PROBLEMAS CON COSAS REALES', q:`${s.firstName} tiene 4 mangos. Encuentra 3 más. ¿Cuántos tiene ahora?`, c:'Dibuja:\n\n\n\nRespuesta: ___ mangos', drawLine:true, theme:'aplicado' }),
+      s => ({ label:'CONTAR DE 5 EN 5', q:'Cuenta de 5 en 5.', c:'5, 10, ___, 20, 25, ___, ___, 40, 45, ___', theme:'patrones' }),
+      s => ({ label:'NÚMEROS HASTA 50', q:'Escribe el número que sigue.', c:'25, 26, ___\n39, 40, ___\n47, 48, ___\n29, 30, ___', theme:'secuencia' }),
+      s => ({ label:'DESCOMPONER', q:'Descompone en sumas distintas.', c:'5 = ___ + ___\n5 = ___ + ___\n5 = ___ + ___\n\n7 = ___ + ___\n7 = ___ + ___', theme:'composición' }),
+    ],
+    4: [
+      s => ({ label:'RESTAS BÁSICAS', q:'Resuelve.', c:'8 − 3 = ___\n10 − 4 = ___\n7 − 2 = ___\n12 − 5 = ___\n9 − 6 = ___\n15 − 7 = ___', theme:'resta' }),
+      s => ({ label:'FAMILIAS DE NÚMEROS', q:'Completa la familia. Una suma y una resta.', c:'3 + 4 = 7      7 − ___ = 3\n5 + 2 = ___    ___ − 5 = 2\n6 + ___ = 10   10 − 4 = ___', theme:'relaciones' }),
+      s => ({ label:'PROBLEMA DEL MERCADO', q:`${s.firstName} compra empanadas. Si tiene 10 monedas y gasta 4, ¿cuántas le quedan?`, c:'Plantea:\n10 − 4 = ___\n\nRespuesta: ___ monedas', theme:'aplicado' }),
+      s => ({ label:'MAYOR, MENOR O IGUAL', q:'Pon > , <  ó  = .', c:'8 ___ 5\n12 ___ 12\n7 ___ 11\n15 ___ 9\n20 ___ 20\n4 ___ 14', theme:'comparación' }),
+      s => ({ label:'NÚMEROS PARES', q:'Encierra los números pares (que se pueden dividir en 2 grupos iguales).', c:'1  2  3  4  5  6  7  8  9  10\n11  12  13  14  15  16  17  18  19  20', theme:'paridad' }),
+    ],
+    5: [
+      s => ({ label:'SUMAS DE DOS CIFRAS', q:'Resuelve sin usar dedos.', c:'24 + 13 = ___\n35 + 12 = ___\n42 + 26 = ___\n51 + 17 = ___\n63 + 24 = ___', theme:'suma-dc' }),
+      s => ({ label:'DECENAS Y UNIDADES', q:'Escribe cuántas decenas (D) y unidades (U) hay.', c:'34 → ___ D + ___ U\n67 → ___ D + ___ U\n82 → ___ D + ___ U\n90 → ___ D + ___ U\n55 → ___ D + ___ U', theme:'valor-posicional' }),
+      s => ({ label:'RESTAS HASTA 50', q:'Resuelve.', c:'45 − 12 = ___\n38 − 14 = ___\n50 − 25 = ___\n47 − 23 = ___\n29 − 19 = ___', theme:'resta-dc' }),
+      s => ({ label:'PROBLEMA DEL CAFÉ', q:'El abuelo de Yarisma cosecha 35 sacos de café. Vende 18. ¿Cuántos le quedan?', c:'Plantea:\n___ − ___ = ___\n\nRespuesta: ___ sacos', theme:'aplicado' }),
+      s => ({ label:'CONTEO HASTA 100', q:'Completa contando de 10 en 10.', c:'10, 20, ___, ___, ___, 60, ___, ___, 90, ___', theme:'centenas' }),
+    ],
+    6: [
+      s => ({ label:'TABLAS DEL 2 Y 3', q:'Aprende y escribe.', c:'2 × 1 = ___        3 × 1 = ___\n2 × 2 = ___        3 × 2 = ___\n2 × 3 = ___        3 × 3 = ___\n2 × 4 = ___        3 × 4 = ___\n2 × 5 = ___        3 × 5 = ___', theme:'multiplicación' }),
+      s => ({ label:'MULTIPLICACIÓN CON COSAS', q:'5 piedras × 3 grupos = ___ piedras en total.\nDibuja:', c:'', drawLine:true, theme:'aplicado' }),
+      s => ({ label:'RESTAS CON LLEVADAS', q:'Resuelve.', c:'52 − 28 = ___\n63 − 35 = ___\n81 − 47 = ___\n74 − 39 = ___', theme:'resta-llevadas' }),
+      s => ({ label:'PROBLEMA DE 2 PASOS', q:'El papá de Justino tiene 24 tablas. Usa 8 para una mesa. Después corta el resto en 4 partes iguales. ¿Cuántas tablas tiene cada parte?', c:'Paso 1: 24 − 8 = ___\nPaso 2: ___ ÷ 4 = ___\n\nRespuesta: ___ tablas por parte', theme:'multi-paso' }),
+      s => ({ label:'FRACCIONES SIMPLES', q:'Dibuja y colorea.', c:'½ de un círculo:\n\n¼ de un cuadrado:\n\n¾ de un rectángulo:', drawLine:true, theme:'fracciones' }),
+    ],
+    7: [
+      s => ({ label:'PROBLEMAS COMPUESTOS', q:'Lee y resuelve.', c:'La mamá de Maribel vende 24 empanadas el sábado y 18 el domingo. Si cada empanada cuesta $0.50, ¿cuánto dinero gana en total?\n\nPaso 1: total empanadas = ___\nPaso 2: total dinero = $___', theme:'aplicado-doble' }),
+      s => ({ label:'TABLAS DEL 4 Y 5', q:'Completa.', c:'4 × 3 = ___        5 × 6 = ___\n4 × 5 = ___        5 × 4 = ___\n4 × 7 = ___        5 × 8 = ___\n4 × 9 = ___        5 × 9 = ___', theme:'tablas' }),
+      s => ({ label:'GEOMETRÍA', q:'Encierra:  triángulos (rojo) · cuadrados (azul) · círculos (verde).', c:'△ □ ○ △ □ ○ △ △ □ ○\n○ △ □ ○ □ △ ○ □ △ ○', theme:'figuras' }),
+    ],
+  },
+
+  /* ===================== LECTURA ===================== */
+  read: {
+    1: [
+      s => ({ label:'IMAGEN A IMAGEN', q:'Mira cada dibujo. Encierra los que reconoces.', c:'☀  🌳  🐟  🏠  📚  🌙  🐦  🐈', theme:'reconocimiento' }),
+      s => ({ label:'DIBUJA TU CAMINO', q:`${s.firstName}, dibuja lo que viste hoy en el camino a la escuela.`, c:'', drawLine:true, theme:'experiencia' }),
+      s => ({ label:'UNE Y CONOCE', q:'Une cada palabra con su dibujo.', c:'sol  ─ ─ ─ 🐟\npez  ─ ─ ─ 🌳\nárbol ─ ─ ─ ☀', theme:'palabra-imagen' }),
+    ],
+    2: [
+      s => ({ label:'ETIQUETAR', q:'Escribe la palabra debajo de cada dibujo.', c:'☀ → ___________\n🌳 → ___________\n🐟 → ___________\n🏠 → ___________', theme:'producción' }),
+      s => ({ label:'LEE Y DIBUJA', q:'Lee y dibuja.', c:'1) tres peces en el río\n2) un sol grande\n3) la casa con un perro', drawLine:true, theme:'comprensión-básica' }),
+    ],
+    3: [
+      s => ({ label:'CUENTO + DIBUJO', q:'Lee y dibuja lo que pasa.', c:`${s.firstName} caminó al río. Vio tres pájaros amarillos. Los pájaros volaron alto.`, drawLine:true, theme:'narrativa' }),
+      s => ({ label:'¿QUIÉN HACE QUÉ?', q:'Lee y une.', c:'La maestra   ─ ─ ─ teje\nLa mamá      ─ ─ ─ enseña\nEl pez       ─ ─ ─ nada\nLa abuela    ─ ─ ─ cocina', theme:'comprensión' }),
+    ],
+    4: [
+      s => ({ label:'COMPRENSIÓN CORTA', q:'Lee y responde.', c:'Delino tiene 5 años. Vive en Llano Tugrí. Le gusta el fútbol y ayudar con el ganado.\n\n¿Cuántos años tiene? ___\n¿Dónde vive? _____________\n¿Qué le gusta? _____________', theme:'comprensión-básica' }),
+      s => ({ label:'ORDEN DE EVENTOS', q:'Numera del 1 al 4 según el orden correcto.', c:'___ Yarisma llegó al río.\n___ Yarisma se despidió de su abuela.\n___ Yarisma se lavó las manos.\n___ Yarisma regresó a su casa.', theme:'secuencia' }),
+    ],
+    5: [
+      s => ({ label:'PÁRRAFO COMPLETO', q:'Lee y responde con oraciones completas.', c:'El pez del río Caldera es plateado y vive en agua fría. Come insectos pequeños y se esconde bajo las piedras grandes cuando hay lluvia.\n\n1) ¿De qué color es?\n  → _______________________________\n2) ¿Qué come?\n  → _______________________________\n3) ¿Cuándo se esconde?\n  → _______________________________', theme:'comprensión-profunda' }),
+      s => ({ label:'TÍTULO', q:'Lee este texto. Inventa un título.', c:'Cada mañana las gallinas salen del corral. Buscan maíz que mamá les tira. Después de comer, ponen sus huevos. Mamá los recoge y prepara desayuno.\n\nTítulo: _______________________________', theme:'idea-principal' }),
+    ],
+    6: [
+      s => ({ label:'INFERENCIA', q:'Lee y piensa lo que no dice el texto.', c:'Belisario salió de su casa con paraguas. Caminó cantando bajo el árbol grande. Cuando llegó a la escuela, sus zapatos estaban mojados.\n\n¿Qué estaba pasando con el clima? ___________\n¿Por qué crees que iba cantando? ___________', theme:'inferencia' }),
+    ],
+    7: [
+      s => ({ label:'COMPARACIÓN', q:'Lee dos textos cortos. Encuentra dos cosas iguales y dos diferentes.', c:'TEXTO 1: El río Caldera es frío y rápido. Los peces son plateados.\nTEXTO 2: El río Chiriquí es ancho y lento. Los peces son dorados.\n\nIgual 1: ___________\nIgual 2: ___________\nDiferente 1: ___________\nDiferente 2: ___________', theme:'análisis' }),
+    ],
+  },
+
+  /* ===================== ESCRITURA ===================== */
+  write: {
+    1: [
+      s => ({ label:'TRAZOS BÁSICOS', q:'Repasa las líneas y formas.', c:'─ ─ ─ ─ ─\n│ │ │ │ │\n○ ○ ○ ○ ○\n△ △ △ △ △', drawLine:true, theme:'motricidad' }),
+      s => ({ label:'PRIMERA LETRA DE TU NOMBRE', q:`Escribe la primera letra de tu nombre cinco veces. ${s.firstName[0]}`, c:`${s.firstName[0]}  ${s.firstName[0]}  ${s.firstName[0]}  ${s.firstName[0]}  ${s.firstName[0]}\n___  ___  ___  ___  ___`, theme:'identidad' }),
+    ],
+    2: [
+      s => ({ label:'TU NOMBRE COMPLETO', q:`${s.firstName}, escribe tu nombre completo tres veces. Sin borrar.`, c:`${s.firstName} ${s.lastName}\n_______________________\n_______________________\n_______________________`, theme:'identidad' }),
+      s => ({ label:'COPIA DE PALABRAS', q:'Copia cada palabra dos veces.', c:'sol   ─ ______  ______\nrío   ─ ______  ______\nmamá  ─ ______  ______\ncasa  ─ ______  ______', theme:'copia' }),
+    ],
+    3: [
+      s => ({ label:'PALABRAS DE TU FAMILIA', q:'Escribe los nombres de tu familia.', c:'Mi mamá: _______________\nMi papá: _______________\nMi hermana(o): _______________\n' + (s.profile?.familyContext?.includes('abuela') ? 'Mi abuela: _______________\n' : ''), theme:'familia' }),
+      s => ({ label:'ORACIONES CON IMÁGENES', q:'Escribe una oración para cada dibujo.', c:'☀ → _______________________\n🌳 → _______________________\n🏠 → _______________________', theme:'producción' }),
+    ],
+    4: [
+      s => ({ label:'COMPLETA LAS ORACIONES', q:'Escribe tu respuesta.', c:'Yo me llamo _______________.\nTengo ___ años.\nMi color favorito es _______________.\nMi comida favorita es _______________.\nLo que más me gusta hacer es _______________.', theme:'identidad' }),
+      s => ({ label:'TU DÍA', q:'Escribe 3 cosas que hiciste hoy.', c:'1) _______________________________\n2) _______________________________\n3) _______________________________', theme:'narrativa' }),
+    ],
+    5: [
+      s => ({ label:'PÁRRAFO SOBRE TU FAMILIA', q:'Escribe 4-5 oraciones sobre tu familia.', c:'_______________________________\n_______________________________\n_______________________________\n_______________________________\n_______________________________', theme:'producción-extendida' }),
+      s => ({ label:'TUS DESEOS', q:'Escribe tres cosas que te gustaría aprender.', c:'1) Me gustaría aprender a _______________________.\n2) Me gustaría aprender a _______________________.\n3) Me gustaría aprender a _______________________.', theme:'reflexión' }),
+    ],
+    6: [
+      s => ({ label:'CARTA', q:'Escribe una carta corta a ' + SFAMILY(s) + '.', c:'Querido(a) _______________:\n\n_______________________________\n_______________________________\n_______________________________\n\nCon cariño,\n_______________', theme:'comunicación' }),
+      s => ({ label:'CUENTO BREVE', q:`Inventa un cuento corto. Personaje: ${s.firstName}. Lugar: ${SINTEREST(s)}. Algo pasa al final.`, c:'_______________________________\n_______________________________\n_______________________________\n_______________________________\n_______________________________\n_______________________________', theme:'creación' }),
+    ],
+    7: [
+      s => ({ label:'OPINIÓN', q:'¿Qué te gustaría cambiar de tu escuela? Explica con 4 oraciones.', c:'_______________________________\n_______________________________\n_______________________________\n_______________________________', theme:'opinión' }),
+    ],
+  },
+
+  /* ===================== CIENCIA ===================== */
+  sci: {
+    1: [
+      s => ({ label:'OBSERVAR PLANTA', q:'Dibuja una planta que ves desde tu casa o escuela.', c:'', drawLine:true, theme:'observación' }),
+      s => ({ label:'OBSERVAR ANIMAL', q:'Dibuja un animal que ves todos los días.', c:'¿Cuál? ___________\nDibujo:', drawLine:true, theme:'observación' }),
+    ],
+    2: [
+      s => ({ label:'HÁBITATS', q:'Une el animal con su casa.', c:'pez    ─ ─ ─ árbol\npájaro ─ ─ ─ río\nperro  ─ ─ ─ casa\nmono   ─ ─ ─ bosque', theme:'ecología-básica' }),
+      s => ({ label:'5 SENTIDOS', q:'Une.', c:'ojos    ─ ─ ─ oler\nnariz   ─ ─ ─ tocar\noídos   ─ ─ ─ ver\nboca    ─ ─ ─ probar\nmanos   ─ ─ ─ escuchar', theme:'cuerpo' }),
+    ],
+    3: [
+      s => ({ label:'PARTES DEL CUERPO', q:'Nombra 5 partes del cuerpo y dibújalas.', c:'1) ___________\n2) ___________\n3) ___________\n4) ___________\n5) ___________', drawLine:true, theme:'cuerpo' }),
+      s => ({ label:'EL CLIMA', q:'Dibuja el clima de hoy y descríbelo.', c:'Hoy hace _______________.\nDibujo:', drawLine:true, theme:'clima' }),
+    ],
+    4: [
+      s => ({ label:'CICLO DEL AGUA', q:'Pon en orden el ciclo.', c:'· lluvia\n· río\n· mar\n· nube\n\nOrden:\n1) ___________ → 2) ___________ → 3) ___________ → 4) ___________', theme:'ciclos' }),
+      s => ({ label:'PLANTAS Y SOL', q:'Marca con ✓ lo que necesita una planta.', c:'___ agua\n___ sol\n___ piedras\n___ tierra\n___ aire\n___ azúcar', theme:'plantas' }),
+    ],
+    5: [
+      s => ({ label:'CICLO DE VIDA', q:'Pon en orden la vida de la mariposa.', c:'· capullo\n· oruga\n· huevo\n· mariposa\n\nOrden: ___ → ___ → ___ → ___', theme:'ciclos-vida' }),
+      s => ({ label:'PLANTAS MEDICINALES', q:`Si ${SFAMILY(s)} usa alguna planta para sanar, dibújala y di para qué sirve.`, c:'Planta: ___________\nSirve para: ___________\nDibujo:', drawLine:true, theme:'etnobotánica' }),
+    ],
+    6: [
+      s => ({ label:'CADENA ALIMENTICIA', q:'Une la cadena.', c:'sol  →  pasto  →  vaca  →  humano\n\n1) ¿Qué come la vaca? ___________\n2) ¿Quién depende del sol? ___________\n3) ¿Qué pasa si no hay sol? ___________', theme:'cadenas' }),
+      s => ({ label:'EL CUERPO HUMANO', q:'Identifica los órganos.', c:'· bombea sangre → _______________\n· filtra el aire → _______________\n· piensa → _______________\n· digiere comida → _______________', theme:'cuerpo-avanzado' }),
+    ],
+    7: [
+      s => ({ label:'EXPERIMENTO', q:'Diseña un experimento simple para ver si una planta crece mejor con luz o en oscuridad.', c:'¿Qué necesitas?\n1) ___________\n2) ___________\n3) ___________\n\n¿Qué vas a hacer?\n_______________________________\n_______________________________', theme:'método-científico' }),
+    ],
+  },
+
+  /* ===================== CULTURA LOCAL ===================== */
+  cult: {
+    1: [
+      s => ({ label:'TU CASA', q:`Dibuja tu casa y todos los animales y plantas que viven cerca.`, c:'', drawLine:true, theme:'hogar' }),
+      s => ({ label:'TU COMIDA', q:'Dibuja la comida que más te gusta que prepara tu familia.', c:'¿Cuál es? _______________\nDibujo:', drawLine:true, theme:'alimentación' }),
+    ],
+    2: [
+      s => ({ label:'TU NOMBRE Y SU HISTORIA', q:`${s.firstName}, pregúntale a alguien de tu familia por qué te pusieron tu nombre.`, c:'Mi nombre: ' + s.firstName + '\nMe lo pusieron por: _______________________________\n_______________________________', theme:'identidad' }),
+      s => ({ label:'COSAS DE TU PUEBLO', q:`Dibuja 3 cosas que ves todos los días en ${s.profile?.familyContext?.split(' ').find(w=>['Müna','Boquete','David','Cerro','Llano','Nole','Boca'].some(p=>w.startsWith(p))) || 'tu pueblo'}.`, c:'1)\n\n2)\n\n3)', drawLine:true, theme:'lugar' }),
+    ],
+    3: [
+      s => ({ label:'UN CUENTO DE LA FAMILIA', q:`Pregúntale a ${SFAMILY(s)} una historia. Escríbela en 2 oraciones.`, c:'1) _______________________________\n_______________________________\n\n2) _______________________________\n_______________________________', theme:'oralidad' }),
+      s => ({ label:'EL TRABAJO EN TU FAMILIA', q:'¿En qué trabaja tu mamá y tu papá? Dibuja.', c:'Mi mamá: _______________\nMi papá: _______________\nDibujo:', drawLine:true, theme:'oficios' }),
+    ],
+    4: [
+      s => ({ label:'PLANTAS QUE CONOCES', q:`Nombra 2 plantas que crecen donde vives. ¿Para qué sirven?`, c:'1) _______________ · sirve para _______________\n2) _______________ · sirve para _______________', theme:'etnobotánica' }),
+      s => ({ label:'COMIDAS ESPECIALES', q:`Escribe 3 comidas que hacen en tu casa para fiestas o domingos.`, c:'1) _______________________________\n2) _______________________________\n3) _______________________________', theme:'cocina' }),
+    ],
+    5: [
+      s => ({ label:'MAPA DE TU CAMINO', q:'Dibuja un mapa de tu casa a la escuela. Marca los lugares importantes.', c:'', drawLine:true, theme:'geografía' }),
+      s => ({ label:'PALABRAS DE TU LENGUA', q: s.lang==='ngabere' || s.lang==='buglere' || s.lang==='guna' || s.lang==='embera'
+        ? `Escribe 5 palabras importantes en tu lengua (${SLANG(s)}) y su significado en español.`
+        : 'Escribe 5 palabras de tu lugar (regionales).',
+        c:'1) ___________ → ___________\n2) ___________ → ___________\n3) ___________ → ___________\n4) ___________ → ___________\n5) ___________ → ___________', theme:'lengua-materna' }),
+    ],
+    6: [
+      s => ({ label:'ÁRBOL FAMILIAR', q:'Dibuja tu árbol familiar (tres generaciones si puedes).', c:'Abuelos:\n\nPadres:\n\nHermanos:\n\nTú:', drawLine:true, theme:'genealogía' }),
+      s => ({ label:'CALENDARIO', q:'Escribe 3 fechas importantes de tu familia este año.', c:'1) ___________ → ___________\n2) ___________ → ___________\n3) ___________ → ___________', theme:'tiempo-cultural' }),
+    ],
+    7: [
+      s => ({ label:'TU COMUNIDAD HOY Y MAÑANA', q:'Escribe un párrafo sobre cómo te gustaría que fuera tu pueblo dentro de 10 años.', c:'_______________________________\n_______________________________\n_______________________________\n_______________________________', theme:'visión' }),
+    ],
+  },
+};
+
+function pickExercise(subjectId, level, student, themeAvoid){
+  const bank = EXERCISE_BANK[subjectId] || {};
+  const lev = Math.max(1, Math.min(level, 7));
+  // Try the requested level, then fall back to nearest available
+  let pool = bank[lev] || bank[lev-1] || bank[lev+1] || bank[1];
+  if (!pool || pool.length === 0) return { label:'-', q:'-', c:'', subject:subjectId, level:lev };
+  // Pick an exercise not recently used (vary by date+student)
+  const idx = ((student.firstName.charCodeAt(0) + new Date().getDate()) % pool.length);
+  let chosen = pool[idx];
+  // Avoid theme repeat if specified
+  if (themeAvoid) {
+    const alt = pool.find(fn => fn(student).theme !== themeAvoid);
+    if (alt) chosen = alt;
+  }
+  const ex = chosen(student);
+  ex.subject = subjectId; ex.level = lev;
+  return ex;
 }
 
 /* ============== GENERATE TODAY'S SHEET FOR STUDENT ============== */
-/* Picks 3 exercises calibrated to current levels — balanced across subjects */
+/* Logic:
+   1) First exercise: from the student's TOP PRIORITY in their plan (most urgent learning need)
+   2) Second exercise: from the next priority (a different subject ideally)
+   3) Third exercise: stretch goal OR reinforcement OR cultural bridge — something to nourish strength
+   Each calibrated to the student's current level in that subject. */
 function generateSheet(student){
-  // Priority: areas where they're struggling (lower level) get more practice
-  const subjectsByPriority = SUBJECTS
-    .map(s => ({ ...s, level: student.levels[s.id] || 1 }))
-    .sort((a, b) => a.level - b.level);
-  // Pick 3 exercises — first one from weakest area, then mix
-  const picks = [
-    subjectsByPriority[0],
-    subjectsByPriority[Math.min(2, subjectsByPriority.length - 1)],
-    subjectsByPriority[Math.min(4, subjectsByPriority.length - 1)],
-  ];
-  return picks.map(s => pickExercise(s.id, s.level));
+  const picks = [];
+  const usedSubjects = new Set();
+  const usedThemes = new Set();
+
+  // 1) Pull priorities from the learning plan
+  const priorities = student.plan?.priorities || [];
+  for (const p of priorities) {
+    if (picks.length >= 2) break;
+    if (usedSubjects.has(p.subject)) continue;
+    const level = student.levels[p.subject] || 1;
+    const ex = pickExercise(p.subject, level, student);
+    ex.planReason = p.what;
+    ex.planWhy = p.why;
+    picks.push(ex);
+    usedSubjects.add(p.subject);
+    if (ex.theme) usedThemes.add(ex.theme);
+  }
+
+  // 2) If priorities didn't give us enough, fill with weakest subjects
+  if (picks.length < 2) {
+    const weakSubjects = SUBJECTS
+      .filter(s => !usedSubjects.has(s.id))
+      .map(s => ({ ...s, level: student.levels[s.id] || 1 }))
+      .sort((a, b) => a.level - b.level);
+    for (const ws of weakSubjects) {
+      if (picks.length >= 2) break;
+      const ex = pickExercise(ws.id, ws.level, student);
+      picks.push(ex);
+      usedSubjects.add(ws.id);
+      if (ex.theme) usedThemes.add(ex.theme);
+    }
+  }
+
+  // 3) Third exercise: a stretch / strength / cultural-bridge — something that affirms
+  const stretch = (student.plan?.stretch || [])[0];
+  const reinforcement = (student.plan?.reinforcement || [])[0];
+  const candidate = stretch || reinforcement;
+  if (candidate && !usedSubjects.has(candidate.subject)) {
+    const level = student.levels[candidate.subject] || 1;
+    const ex = pickExercise(candidate.subject, level, student);
+    ex.planReason = candidate.what;
+    ex.planWhy = candidate.why;
+    picks.push(ex);
+    usedSubjects.add(candidate.subject);
+  } else {
+    // Fallback: strongest subject as confidence-builder
+    const strong = SUBJECTS
+      .filter(s => !usedSubjects.has(s.id))
+      .map(s => ({ ...s, level: student.levels[s.id] || 1 }))
+      .sort((a, b) => b.level - a.level)[0];
+    if (strong) {
+      const ex = pickExercise(strong.id, strong.level, student);
+      picks.push(ex);
+    }
+  }
+
+  return picks.filter(Boolean);
 }
 
 /* ============== RENDER · STUDENT GRID ============== */
@@ -707,11 +1309,17 @@ function openDetail(studentId){
   const cls = activeClass();
   const s = cls.students.find(x => x.id === studentId);
   if (!s) return;
+  // Ensure profile + plan exist (for students added without them)
+  ensureProfile(s);
   currentStudentId = studentId;
   // Head
   document.getElementById('d-av').textContent = s.firstName[0];
   document.getElementById('d-name').innerHTML = `<em>${s.firstName} ${s.lastName}</em>`;
   document.getElementById('d-meta').textContent = `${s.grade} · ${LANG_NAMES[s.lang]||s.lang} · ${s.age} años · ${s.history.length} días de historial`;
+  // Profile
+  renderProfile(s);
+  // Plan
+  renderPlan(s);
   // Levels
   renderLevels(s);
   // Day mark
@@ -724,6 +1332,140 @@ function openDetail(studentId){
   // History
   renderHistory(s);
   document.getElementById('detail-overlay').classList.add('open');
+}
+
+function renderProfile(student){
+  const p = student.profile || {};
+  const wrap = document.getElementById('d-profile');
+  wrap.innerHTML = `
+    ${p.personality ? `<div class="profile-row">
+      <div class="pf-lab">Personalidad</div>
+      <div class="pf-val italic">${p.personality}</div>
+    </div>` : ''}
+    ${p.familyContext ? `<div class="profile-row">
+      <div class="pf-lab">Familia · contexto</div>
+      <div class="pf-val">${p.familyContext}</div>
+    </div>` : ''}
+    ${p.walkToSchool ? `<div class="profile-row">
+      <div class="pf-lab">Camino</div>
+      <div class="pf-val">${p.walkToSchool}</div>
+    </div>` : ''}
+    ${p.homeLanguage ? `<div class="profile-row">
+      <div class="pf-lab">Lengua casa</div>
+      <div class="pf-val">${p.homeLanguage}</div>
+    </div>` : ''}
+    ${p.interests?.length ? `<div class="profile-row">
+      <div class="pf-lab">Intereses</div>
+      <div class="pf-val"><div class="tag-list">${p.interests.map(x=>`<span class="tag interest">${x}</span>`).join('')}</div></div>
+    </div>` : ''}
+    ${p.learningStyle?.length ? `<div class="profile-row">
+      <div class="pf-lab">Estilo</div>
+      <div class="pf-val"><div class="tag-list">${p.learningStyle.map(x=>`<span class="tag">${x}</span>`).join('')}</div></div>
+    </div>` : ''}
+    ${p.strengths?.length ? `<div class="profile-row">
+      <div class="pf-lab">Fortalezas</div>
+      <div class="pf-val"><div class="tag-list">${p.strengths.map(x=>`<span class="tag strength">✓ ${x}</span>`).join('')}</div></div>
+    </div>` : ''}
+    ${p.struggles?.length ? `<div class="profile-row">
+      <div class="pf-lab">Dificultades</div>
+      <div class="pf-val"><div class="tag-list">${p.struggles.map(x=>`<span class="tag struggle">! ${x}</span>`).join('')}</div></div>
+    </div>` : ''}
+    ${p.culturalBridges?.length ? `<div class="profile-row">
+      <div class="pf-lab">Puentes culturales</div>
+      <div class="pf-val"><div class="tag-list">${p.culturalBridges.map(x=>`<span class="tag bridge">↗ ${x}</span>`).join('')}</div></div>
+    </div>` : ''}
+    ${p.healthNotes ? `<div class="profile-row">
+      <div class="pf-lab">Salud · notas</div>
+      <div class="pf-val italic">${p.healthNotes}</div>
+    </div>` : ''}
+  `;
+  if (!Object.keys(p).length) {
+    wrap.innerHTML = '<div class="profile-row"><div class="pf-val italic" style="text-align:center;width:100%;color:var(--ink-faint);padding:14px">Sin perfil todavía. Las características se irán completando con el tiempo.</div></div>';
+  }
+}
+
+function renderPlan(student){
+  const plan = student.plan || { priorities:[], reinforcement:[], stretch:[] };
+  const wrap = document.getElementById('d-plan');
+  const subjName = id => SUBJECTS.find(x=>x.id===id)?.name || id;
+  let html = '';
+  if (plan.priorities?.length) {
+    html += plan.priorities.map((p,i) => `
+      <div class="plan-block">
+        <div class="plan-lab"><span>Prioridad ${i+1}</span><span class="sub-tag">${subjName(p.subject)}</span></div>
+        <div class="plan-what">${p.what}</div>
+        ${p.why ? `<div class="plan-why">${p.why}</div>` : ''}
+        ${p.activities?.length ? `<div class="plan-activities">${p.activities.map(a=>`<span class="act">${a}</span>`).join('')}</div>` : ''}
+      </div>
+    `).join('');
+  }
+  if (plan.reinforcement?.length) {
+    html += plan.reinforcement.map(r => `
+      <div class="plan-block reinforce">
+        <div class="plan-lab"><span>Reforzar</span><span class="sub-tag">${subjName(r.subject)}</span></div>
+        <div class="plan-what">${r.what}</div>
+        ${r.why ? `<div class="plan-why">${r.why}</div>` : ''}
+      </div>
+    `).join('');
+  }
+  if (plan.stretch?.length) {
+    html += plan.stretch.map(st => `
+      <div class="plan-block stretch">
+        <div class="plan-lab"><span>Ir más allá</span><span class="sub-tag">${subjName(st.subject)}</span></div>
+        <div class="plan-what">${st.what}</div>
+        ${st.why ? `<div class="plan-why">${st.why}</div>` : ''}
+      </div>
+    `).join('');
+  }
+  if (!html) {
+    html = '<div class="plan-block"><div class="plan-what" style="color:var(--ink-faint);font-style:italic">Sin plan personalizado todavía. Click en "Generar plan" para crear uno basado en los niveles actuales.</div></div>';
+  }
+  wrap.innerHTML = html;
+}
+
+/* Auto-fill profile + plan for students added without them */
+function ensureProfile(student){
+  if (student.profile && student.plan) return;
+  if (!student.profile) {
+    // Auto-generate a starter profile based on level data
+    const weakest = Object.entries(student.levels).sort((a,b)=>a[1]-b[1])[0];
+    const strongest = Object.entries(student.levels).sort((a,b)=>b[1]-a[1])[0];
+    student.profile = {
+      personality: 'Por descubrir — completar después de las primeras semanas.',
+      interests: [],
+      familyContext: '',
+      learningStyle: [],
+      strengths: strongest ? [`Más cómodo(a) con ${SUBJECTS.find(s=>s.id===strongest[0]).name.toLowerCase()}`] : [],
+      struggles: weakest ? [`Necesita más práctica en ${SUBJECTS.find(s=>s.id===weakest[0]).name.toLowerCase()}`] : [],
+      culturalBridges: [],
+      homeLanguage: LANG_NAMES[student.lang],
+      walkToSchool: '',
+      healthNotes: '',
+    };
+  }
+  if (!student.plan) {
+    // Auto-generate plan from weakest subjects
+    const sorted = SUBJECTS.map(s => ({...s, level: student.levels[s.id] || 1})).sort((a,b)=>a.level-b.level);
+    student.plan = {
+      priorities: sorted.slice(0, 3).map(s => ({
+        subject: s.id,
+        what: `Practicar ${s.name.toLowerCase()} a nivel ${s.level}`,
+        why: `Es el área con más espacio para crecer ahora mismo.`,
+        activities: [],
+      })),
+      reinforcement: sorted.slice(3, 5).map(s => ({
+        subject: s.id,
+        what: `Mantener ritmo en ${s.name.toLowerCase()}`,
+        why: 'Va bien — solo consolidar.',
+      })),
+      stretch: [{
+        subject: sorted[sorted.length - 1].id,
+        what: `Subir el techo en ${sorted[sorted.length-1].name.toLowerCase()}`,
+        why: 'Es su fuerza — no retenerle.',
+      }],
+    };
+  }
+  saveState();
 }
 
 function renderLevels(student){
