@@ -1,0 +1,1580 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cobre Panamá · Strategic Brief · La Compañía</title>
+<meta name="description" content="A comprehensive strategic brief on First Quantum Minerals, the Cobre Panamá mine, the 2023 crisis, the ongoing arbitration, and the 2026 path forward.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23b85439'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Georgia,serif' font-size='17' font-weight='400' fill='%23f7f0df'%3ECu%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f4eadb;
+  --paper-2:#faf2e2;
+  --paper-3:#e6dcc4;
+  --paper-deep:#d4c9ac;
+  --ink:#15110b;
+  --ink-2:#2a241a;
+  --ink-3:#4a4030;
+  --ink-faint:#867963;
+  --line:rgba(21,17,11,0.10);
+  --line-2:rgba(21,17,11,0.18);
+  --line-3:rgba(21,17,11,0.30);
+  --copper:#b85439;
+  --copper-deep:#8a3920;
+  --copper-soft:#d18567;
+  --stone:#3d3a32;
+  --stone-2:#5a5447;
+  --gold:#c89030;
+  --gold-deep:#a17225;
+  --forest:#2c4a3a;
+  --red:#9a3b22;
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'Inter',-apple-system,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#dccfb1;font-family:var(--sans);color:var(--ink);font-size:14px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.app{padding:32px 24px 80px;display:flex;flex-direction:column;align-items:center;gap:22px}
+
+.page{
+  width:8.5in;
+  min-height:11in;
+  height:11in;
+  background:var(--paper);
+  position:relative;
+  padding:0.65in 0.85in 0.5in;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+  box-shadow:0 2px 4px rgba(0,0,0,.04),0 12px 40px rgba(0,0,0,.10);
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.92' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.10  0 0 0 0 0.08  0 0 0 0 0.05  0 0 0 0.022 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+.head{display:flex;justify-content:space-between;align-items:center;padding-bottom:10px;border-bottom:0.5px solid var(--line-2);margin-bottom:22px;flex-shrink:0}
+.head .mark{font-family:var(--serif);font-size:13px;letter-spacing:.20em;color:var(--ink-2);font-weight:500}
+.head .mark em{color:var(--copper);font-style:normal;font-weight:600}
+.head .pgnum{font-family:var(--mono);font-size:10px;letter-spacing:.20em;color:var(--ink-faint);font-weight:500}
+.foot{margin-top:auto;padding-top:10px;border-top:0.5px solid var(--line);display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:9px;letter-spacing:.18em;color:var(--ink-faint);text-transform:uppercase;flex-shrink:0}
+.foot .sec em{font-style:normal;color:var(--ink-3);font-weight:600}
+
+.eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--copper-deep);font-weight:700;margin-bottom:10px}
+.title{font-family:var(--serif);font-weight:300;line-height:.98;letter-spacing:-.018em;color:var(--ink);margin-bottom:12px}
+.title em{font-style:italic;color:var(--copper-deep);font-weight:400}
+.lede{font-family:var(--serif);font-style:italic;font-weight:300;color:var(--ink-2);line-height:1.45}
+.kicker{font-family:var(--mono);font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;margin-bottom:6px;margin-top:4px}
+
+.body p{font-family:var(--sans);font-size:12.5px;line-height:1.55;color:var(--ink-2);margin-bottom:9px}
+.body p strong{color:var(--ink);font-weight:600}
+.body p em{color:var(--copper-deep);font-style:italic}
+
+/* STATS STRIPS */
+.data-strip{display:grid;grid-template-columns:repeat(4,1fr);border:0.5px solid var(--line-2);border-radius:6px;background:var(--paper-2);margin:10px 0}
+.data-strip .cell{padding:11px 14px;border-right:0.5px solid var(--line-2)}
+.data-strip .cell:last-child{border-right:0}
+.data-strip .v{font-family:var(--serif);font-size:23px;font-weight:300;color:var(--ink);line-height:1;letter-spacing:-.01em}
+.data-strip .v em{font-style:italic;color:var(--copper-deep);font-weight:400}
+.data-strip .l{font-family:var(--mono);font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;margin-top:4px;line-height:1.3}
+
+/* CALLOUTS */
+.callout{background:var(--ink);color:var(--paper);padding:15px 22px;border-radius:7px;margin:10px 0;position:relative;overflow:hidden}
+.callout::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--copper),var(--gold),var(--forest))}
+.callout .clabel{font-family:var(--mono);font-size:9px;letter-spacing:.22em;color:var(--copper-soft);text-transform:uppercase;font-weight:600;margin-bottom:7px}
+.callout p{font-family:var(--serif);font-size:13.5px;line-height:1.5;color:var(--paper);font-style:italic;font-weight:300}
+.callout p em{color:var(--copper-soft);font-style:italic;font-weight:400}
+
+.callout-light{background:var(--paper-2);border:0.5px solid var(--line-2);padding:12px 16px;border-radius:6px;margin:10px 0;border-left:3px solid var(--copper)}
+.callout-light .clabel{font-family:var(--mono);font-size:9px;letter-spacing:.20em;color:var(--copper-deep);text-transform:uppercase;font-weight:700;margin-bottom:6px}
+.callout-light p{font-family:var(--sans);font-size:12px;line-height:1.55;color:var(--ink-2)}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:10px 0}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:10px 0}
+.tile{border:0.5px solid var(--line-2);border-radius:6px;padding:13px 16px;background:var(--paper-2)}
+.tile .t-num{font-family:var(--mono);font-size:9px;letter-spacing:.22em;color:var(--copper-deep);font-weight:700;margin-bottom:6px;text-transform:uppercase}
+.tile h5{font-family:var(--serif);font-size:14px;color:var(--ink);font-weight:500;margin-bottom:5px;line-height:1.2}
+.tile h5 em{color:var(--copper-deep);font-style:italic}
+.tile p{font-family:var(--sans);font-size:11px;color:var(--ink-3);line-height:1.5}
+
+/* TABLES */
+.tbl{width:100%;border-collapse:collapse;margin:10px 0;font-family:var(--sans)}
+.tbl thead th{font-family:var(--mono);font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);font-weight:700;padding:7px 9px;text-align:left;border-bottom:1px solid var(--line-3);background:var(--paper-3)}
+.tbl tbody td{padding:7px 9px;border-bottom:0.5px solid var(--line);font-size:11.5px;color:var(--ink-2);line-height:1.4;vertical-align:top}
+.tbl tbody tr:last-child td{border-bottom:0}
+.tbl tbody td strong{color:var(--ink);font-weight:600}
+.tbl tbody td.num{font-family:var(--mono);font-size:11px;text-align:right}
+.tbl tbody tr.hi td{background:rgba(184,84,57,.08)}
+.tbl tbody tr.hi td strong{color:var(--copper-deep)}
+
+/* TIMELINE */
+.timeline{display:grid;gap:8px;margin:10px 0}
+.tl-row{display:grid;grid-template-columns:90px 1fr;gap:14px;padding:9px 0;border-bottom:0.5px solid var(--line);align-items:start}
+.tl-row:last-child{border-bottom:0}
+.tl-row .tl-date{font-family:var(--mono);font-size:10px;letter-spacing:.10em;color:var(--copper-deep);font-weight:700;text-transform:uppercase;line-height:1.4}
+.tl-row .tl-c h6{font-family:var(--serif);font-size:13.5px;color:var(--ink);font-weight:500;line-height:1.25;margin-bottom:3px;letter-spacing:-.005em}
+.tl-row .tl-c h6 em{color:var(--copper-deep);font-style:italic}
+.tl-row .tl-c p{font-family:var(--sans);font-size:11.5px;color:var(--ink-3);line-height:1.5}
+
+/* PEOPLE */
+.people{display:grid;grid-template-columns:1fr;gap:6px;margin:10px 0}
+.person{display:grid;grid-template-columns:32px 1fr auto;gap:12px;padding:8px 12px;border:0.5px solid var(--line);border-radius:5px;background:var(--paper-2);align-items:center}
+.person .glyph{width:32px;height:32px;background:var(--stone);color:var(--paper);font-family:var(--serif);font-style:italic;font-size:14px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:500}
+.person.fqm .glyph{background:var(--copper);color:var(--paper)}
+.person.gov .glyph{background:var(--gold);color:var(--ink)}
+.person.opp .glyph{background:var(--red);color:var(--paper)}
+.person.com .glyph{background:var(--forest);color:var(--paper)}
+.person .info{min-width:0}
+.person .info .nm{font-family:var(--serif);font-size:14.5px;color:var(--ink);font-weight:500;line-height:1.2;letter-spacing:-.005em}
+.person .info .nm em{color:var(--copper-deep);font-style:italic}
+.person .info .rl{font-family:var(--sans);font-size:11px;color:var(--ink-3);line-height:1.4;margin-top:2px}
+.person .info .rl strong{color:var(--ink-2);font-weight:600}
+.person .tg{font-family:var(--mono);font-size:8.5px;letter-spacing:.16em;color:var(--ink-faint);text-transform:uppercase;font-weight:700;text-align:right;flex-shrink:0}
+
+/* COVER */
+.cover{padding:0.65in 0.95in;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;
+  background:linear-gradient(165deg,#f4eadb 0%,#ead8b8 60%,#cfb88c 100%);
+}
+.cover::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--copper) 0%,var(--gold) 50%,var(--forest) 100%)}
+.cover::after{content:'Cu';position:absolute;right:0.6in;bottom:1.2in;font-family:var(--serif);font-style:italic;font-size:22in;color:rgba(184,84,57,.05);line-height:.85;pointer-events:none;font-weight:300;letter-spacing:-.08em}
+.cover .top-mark{display:flex;justify-content:space-between;align-items:center;position:relative;z-index:2}
+.cover .top-mark .stamp{font-family:var(--mono);font-size:9.5px;letter-spacing:.28em;color:var(--ink-faint);text-transform:uppercase;font-weight:700}
+.cover .top-mark .stamp em{color:var(--copper);font-style:normal;font-weight:700}
+.cover .center{flex:1;display:flex;flex-direction:column;justify-content:center;padding:36px 0;position:relative;z-index:2}
+.cover .roman{font-family:var(--mono);font-size:11px;letter-spacing:.34em;color:var(--copper-deep);font-weight:700;text-transform:uppercase;margin-bottom:32px}
+.cover .word{font-family:var(--serif);font-size:120px;font-weight:300;letter-spacing:-.038em;color:var(--ink);line-height:.86;margin-bottom:8px}
+.cover .word em{font-style:italic;color:var(--copper-deep);font-weight:400}
+.cover .sub-word{font-family:var(--serif);font-size:64px;font-weight:300;font-style:italic;color:var(--ink-2);line-height:.9;margin-bottom:30px;letter-spacing:-.025em}
+.cover .sub-word em{color:var(--copper);font-style:italic}
+.cover .tag{font-family:var(--serif);font-style:italic;font-size:22px;color:var(--ink-2);max-width:5.4in;line-height:1.3;font-weight:300;margin-bottom:32px}
+.cover .desc{font-family:var(--sans);font-size:13px;color:var(--ink-3);max-width:5.2in;line-height:1.6;margin-bottom:18px}
+.cover .desc strong{color:var(--ink);font-weight:600}
+.cover .bot{display:grid;grid-template-columns:1fr 1fr 1fr;gap:22px;padding-top:22px;border-top:0.5px solid var(--line-2);position:relative;z-index:2}
+.cover .bot .k{font-family:var(--mono);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-faint);font-weight:700;margin-bottom:6px}
+.cover .bot .v{font-family:var(--serif);font-size:15px;color:var(--ink);font-weight:400}
+.cover .bot .v em{font-style:italic;color:var(--copper-deep)}
+
+/* LANG / PRINT */
+.print-bar{position:fixed;top:18px;left:24px;background:var(--copper);color:var(--paper);border:0;padding:9px 14px;font-family:var(--mono);font-size:10px;letter-spacing:.14em;font-weight:700;cursor:pointer;border-radius:6px;z-index:50;box-shadow:0 4px 16px rgba(0,0,0,.12);text-transform:uppercase}
+.print-bar:hover{background:var(--copper-deep)}
+
+@media print{
+  html,body{background:white}
+  .app{padding:0;gap:0}
+  .print-bar{display:none !important}
+  .page{box-shadow:none;page-break-after:always;page-break-inside:avoid;margin:0}
+  .page:last-child{page-break-after:auto}
+  @page{size:letter portrait;margin:0}
+}
+</style>
+</head>
+<body>
+
+<button class="print-bar" onclick="window.print()">PRINT DOCUMENT</button>
+
+<div class="app">
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<!-- 01 · COVER                                                       -->
+<!-- ════════════════════════════════════════════════════════════════ -->
+<section class="page cover">
+  <div class="top-mark">
+    <div class="stamp"><em>LA COMPAÑÍA</em> · STRATEGIC BRIEF · MMXXVI</div>
+    <div class="stamp">VOL. I · DOSSIER MINERO</div>
+  </div>
+
+  <div class="center">
+    <div class="roman">21-PAGE STRATEGIC DOSSIER · CONFIDENTIAL</div>
+    <div class="word"><em>C</em>obre</div>
+    <div class="sub-word">Panam<em>á</em></div>
+    <div class="tag">The world's most consequential closed copper mine — its company, its origins, its crisis, its leaders, and the 2026 path forward.</div>
+    <div class="desc">A comprehensive brief on <strong>First Quantum Minerals</strong>, the <strong>$10-billion Cobre Panamá mine</strong>, the November 2023 Supreme Court ruling that closed it, the leadership and government players who shaped it, and the negotiations now reshaping it. Current to <strong>June 2026</strong>. Sourced from public reporting, company filings, and Panamanian press.</div>
+  </div>
+
+  <div class="bot">
+    <div><div class="k">SUBJECT</div><div class="v">First Quantum · <em>Cobre Panamá</em></div></div>
+    <div><div class="k">PREPARED FOR</div><div class="v"><em>La Compañía</em> · VETA</div></div>
+    <div><div class="k">CURRENT TO</div><div class="v"><em>June 2026</em> · v1.0</div></div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<!-- 02 · EXECUTIVE SUMMARY                                           -->
+<!-- ════════════════════════════════════════════════════════════════ -->
+<section class="page">
+  <div class="head">
+    <div class="mark"><em>Cu</em> · COBRE PANAMÁ</div>
+    <div class="pgnum">02 / 21</div>
+  </div>
+
+  <div class="eyebrow">02 · EXECUTIVE SUMMARY</div>
+  <h1 class="title" style="font-size:38px">The story <em>in one page</em>.</h1>
+  <p class="lede" style="font-size:14px;max-width:6.4in;margin-bottom:14px">A mine that produced 1.5% of global copper, 5% of Panama's GDP, and triggered the largest protest movement in modern Panamanian history. Closed since November 2023. Now slowly, partially, returning.</p>
+
+  <div class="data-strip" style="grid-template-columns:repeat(4,1fr)">
+    <div class="cell"><div class="v">$<em>10B</em></div><div class="l">Total investment to date</div></div>
+    <div class="cell"><div class="v"><em>300K</em></div><div class="l">Tonnes Cu / year at peak</div></div>
+    <div class="cell"><div class="v"><em>5%</em></div><div class="l">Of Panama's GDP</div></div>
+    <div class="cell"><div class="v"><em>7,000</em></div><div class="l">Direct jobs at peak</div></div>
+  </div>
+
+  <div class="g2">
+    <div class="tile">
+      <div class="t-num">THE COMPANY</div>
+      <h5><em>First Quantum</em> Minerals · Toronto</h5>
+      <p>Canadian copper major. TSX: FM. Founded 1996 by Philip and Tristan Pascall family. Operations in Zambia (Kansanshi, Sentinel), Panama (closed), Spain (closed), Mauritania (closed). Cobre Panamá was 40% of global revenue pre-closure. Market cap ~CAD $14-20B.</p>
+    </div>
+    <div class="tile">
+      <div class="t-num">THE MINE</div>
+      <h5><em>Cobre Panamá</em> · Donoso, Colón</h5>
+      <p>Open-pit copper porphyry. 13,600 hectares. 3.1 billion tonnes of proven reserves at 0.37% Cu. Own port (Punta Rincón), 300-MW power plant, 56 km internal roads. Caribbean concentrate ships to Asia/Europe. Commercial production: Sep 2019.</p>
+    </div>
+    <div class="tile">
+      <div class="t-num">THE OWNERSHIP</div>
+      <h5>FQM <em>90%</em> + KORES <em>10%</em></h5>
+      <p>Operated by Minera Panamá S.A. (MPSA). Korea Resources Corporation has held 10% since 2017 (originally 20% with LS-Nikko Copper). Jiangxi Copper (China) owns 19.5% of FQM parent — largest shareholder.</p>
+    </div>
+    <div class="tile">
+      <div class="t-num">THE STATUS</div>
+      <h5><em>Closed</em> · partial unlock April 2026</h5>
+      <p>Closure ordered Nov 28, 2023 after Supreme Court ruled the operating contract unconstitutional. Care + maintenance: 1,600 workers. April 7, 2026: Panama formally approved processing of 38 Mt stockpile (70,000 t recoverable Cu). Full restart decision: expected June 2026.</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="clabel">THE CORE TENSION · 2026</div>
+    <p>Panama needs the mine economically — it was <em>5% of GDP</em> and 75% of exports. First Quantum needs the mine for its global cash flow — it was <em>40% of revenue</em>. But the constitutional ruling, the protest movement, and the new fiscal terms make any restart politically expensive. The path through is being negotiated this year.</p>
+  </div>
+
+  <div class="g3">
+    <div class="tile">
+      <div class="t-num">ARBITRATION</div>
+      <h5 style="font-size:13px">FQM <em>dropped</em> ICC, suspended FTA</h5>
+      <p>March 2025: FQM discontinued the ICC arbitration ($20B claim) and suspended the Canada-Panama FTA claim — preconditions Mulino set for talks.</p>
+    </div>
+    <div class="tile">
+      <div class="t-num">STOCKPILE</div>
+      <h5 style="font-size:13px"><em>70,000 t</em> Cu unlocked</h5>
+      <p>April 2026: 38 Mt of pre-shutdown ore approved for processing. ~$250M capex. 700 new direct jobs. ~1 year processing.</p>
+    </div>
+    <div class="tile">
+      <div class="t-num">DECISION</div>
+      <h5 style="font-size:13px"><em>June 2026</em> announcement</h5>
+      <p>Mulino administration awaiting SGS audit (delayed past May 29). Public opinion has flipped: negative view of mine dropped from 80%+ to ~50%.</p>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div class="sec"><em>EXECUTIVE SUMMARY · 02</em></div>
+    <div>LA COMPAÑÍA · DOSSIER MINERO</div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<!-- 03 · THE COMPANY · FIRST QUANTUM MINERALS                        -->
+<!-- ════════════════════════════════════════════════════════════════ -->
+<section class="page">
+  <div class="head">
+    <div class="mark"><em>Cu</em> · COBRE PANAMÁ</div>
+    <div class="pgnum">03 / 21</div>
+  </div>
+
+  <div class="eyebrow">03 · THE COMPANY · FIRST QUANTUM MINERALS</div>
+  <h1 class="title" style="font-size:38px">A Toronto major <em>built on copper</em>.</h1>
+  <p class="lede" style="font-size:14px;max-width:6.4in;margin-bottom:12px">A 30-year-old Canadian mining company, listed on the TSX, with a global copper portfolio anchored in Zambia and — until 2023 — defined by Panama.</p>
+
+  <div class="kicker">CORPORATE IDENTITY</div>
+  <table class="tbl">
+    <thead><tr><th>FIELD</th><th>DETAIL</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Legal name</strong></td><td>First Quantum Minerals Ltd.</td></tr>
+      <tr><td><strong>Listing</strong></td><td>TSX: <strong>FM</strong> · OTC: FQVLF</td></tr>
+      <tr><td><strong>Headquarters</strong></td><td>Toronto, Canada (operational HQ Vancouver, BC; London office for executive leadership)</td></tr>
+      <tr><td><strong>Founded</strong></td><td>1996 by Philip Pascall (Zambian-born British engineer) + Clive Newall</td></tr>
+      <tr><td><strong>Market cap (2026)</strong></td><td>~CAD $14–20 billion (volatile, recovering with Panama negotiations)</td></tr>
+      <tr><td><strong>Pre-2023 market cap</strong></td><td>~CAD $32 billion (peak)</td></tr>
+      <tr><td><strong>Total revenue 2025</strong></td><td>~$5.2 billion (90%+ from Zambia post-Panama closure)</td></tr>
+      <tr><td><strong>Global ranking</strong></td><td>6th largest copper miner globally</td></tr>
+    </tbody>
+  </table>
+
+  <div class="kicker" style="margin-top:14px">GLOBAL ASSETS</div>
+  <table class="tbl">
+    <thead><tr><th>ASSET</th><th>COUNTRY</th><th>STATUS</th><th>PRODUCTION 2025</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Kansanshi</strong></td><td>Zambia</td><td>Operating · S3 expansion 2025</td><td>~200K t Cu</td></tr>
+      <tr><td><strong>Sentinel</strong></td><td>Zambia</td><td>Operating</td><td>~180K t Cu</td></tr>
+      <tr><td><strong>Enterprise</strong></td><td>Zambia</td><td>Nickel · operating</td><td>~25K t Ni</td></tr>
+      <tr class="hi"><td><strong>Cobre Panamá</strong></td><td>Panama</td><td><strong>Closed</strong> Nov 2023</td><td>0 (stockpile processing approved Apr 2026)</td></tr>
+      <tr><td><strong>Cobre Las Cruces</strong></td><td>Spain</td><td>Care and maintenance</td><td>Negligible</td></tr>
+      <tr><td><strong>Guelb Moghrein</strong></td><td>Mauritania</td><td>Closed 2022</td><td>0</td></tr>
+      <tr><td><strong>Taca Taca</strong></td><td>Argentina</td><td>Development · pre-feasibility</td><td>—</td></tr>
+      <tr><td><strong>Ravensthorpe</strong></td><td>Australia</td><td>Nickel · care and maintenance</td><td>0</td></tr>
+    </tbody>
+  </table>
+
+  <div class="kicker" style="margin-top:14px">OWNERSHIP STRUCTURE</div>
+  <div class="g3">
+    <div class="tile">
+      <div class="t-num">LARGEST SHAREHOLDER</div>
+      <h5><em>Jiangxi Copper</em> · 19.5%</h5>
+      <p>Chinese state-controlled copper smelter, increased stake from 18.3% in late 2023. Strategic supply integration.</p>
+    </div>
+    <div class="tile">
+      <div class="t-num">PUBLIC FLOAT</div>
+      <h5>~<em>70%</em> on TSX</h5>
+      <p>Institutional investors dominate — Canadian pension funds (CPP, OTPP), BlackRock, Vanguard among top holders.</p>
+    </div>
+    <div class="tile">
+      <div class="t-num">INSIDER OWNERSHIP</div>
+      <h5>Pascall family <em>~5%</em></h5>
+      <p>Founder family retains material stake. Philip Pascall (Chairman emeritus) and Tristan Pascall (CEO) personally aligned.</p>
+    </div>
+  </div>
+
+  <div class="callout-light">
+    <div class="clabel">2025 STRATEGIC SHIFT</div>
+    <p>After losing Panama in late 2023, FQM explored selling 15-20% of its Zambian assets to <strong>Saudi Manara Minerals</strong> for $1.5-2 billion. Talks reached advanced stage by late 2024 but <strong>dropped August 2025</strong> after FQM raised liquidity instead through: (1) gold streaming deal (largest such deal globally in 10 years per RBC), (2) debt refinancing, (3) two copper prepayment agreements totaling <strong>$1 billion</strong>. The Kansanshi S3 expansion came online August 2025.</p>
+  </div>
+
+  <div class="foot">
+    <div class="sec"><em>THE COMPANY · 03</em></div>
+    <div>LA COMPAÑÍA · DOSSIER MINERO</div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<!-- 04 · THE MINE · COBRE PANAMÁ                                     -->
+<!-- ════════════════════════════════════════════════════════════════ -->
+<section class="page">
+  <div class="head">
+    <div class="mark"><em>Cu</em> · COBRE PANAMÁ</div>
+    <div class="pgnum">04 / 21</div>
+  </div>
+
+  <div class="eyebrow">04 · THE MINE · TECHNICAL PROFILE</div>
+  <h1 class="title" style="font-size:38px">A <em>$10-billion</em> copper porphyry on the Caribbean.</h1>
+  <p class="lede" style="font-size:14px;max-width:6.4in;margin-bottom:12px">One of the largest greenfield copper mines built globally since 2010 — and a fully self-contained operation with its own deep-water port, coal power station, road network, and town-sized workforce.</p>
+
+  <div class="kicker">LOCATION + GEOGRAPHY</div>
+  <table class="tbl">
+    <thead><tr><th>ATTRIBUTE</th><th>DETAIL</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Location</strong></td><td>District of <strong>Donoso</strong>, Province of Colón, Panama</td></tr>
+      <tr><td><strong>Distance</strong></td><td>~120 km west of Panama City · 20 km inland from Caribbean coast</td></tr>
+      <tr><td><strong>Concession area</strong></td><td>13,600 hectares (34,000 acres)</td></tr>
+      <tr><td><strong>Operator</strong></td><td>Minera Panamá S.A. (MPSA) — 90% FQM, 10% Korea Resources</td></tr>
+      <tr><td><strong>Original concession</strong></td><td>Law 9 of February 26, 1997 — granted to Geo-Recursos Internacional / Minera Petaquilla</td></tr>
+      <tr><td><strong>Adjacent</strong></td><td>Mesoamerican Biological Corridor · Coclé del Norte communities · borders Ngäbe-Buglé Comarca</td></tr>
+    </tbody>
+  </table>
+
+  <div class="kicker" style="margin-top:14px">GEOLOGY + RESERVES</div>
+  <div class="g2">
+    <div class="tile">
+      <div class="t-num">DEPOSIT TYPE</div>
+      <h5><em>Open-pit</em> copper porphyry</h5>
+      <p>Three main deposits: <strong>Botija</strong>, <strong>Colina</strong>, <strong>Valle Grande</strong>. Discovered in 1968 by a joint Panama–United Nations exploration mission. Mineralization extends across 4 zones over 13,600 ha.</p>
+    </div>
+    <div class="tile">
+      <div class="t-num">RESERVES + GRADE</div>
+      <h5><em>3.1 billion</em> tonnes ore</h5>
+      <p>Proven + probable reserves: 3.1 Bt at <strong>0.37% Cu</strong>. Low grade but enormous tonnage. Approximately 9 million tonnes of contained copper plus substantial gold, silver, molybdenum byproducts.</p>
+    </div>
+  </div>
+
+  <div class="kicker" style="margin-top:14px">PROCESSING + INFRASTRUCTURE</div>
+  <div class="data-strip" style="grid-template-columns:repeat(4,1fr)">
+    <div class="cell"><div class="v"><em>85 Mtpa</em></div><div class="l">Plant throughput capacity</div></div>
+    <div class="cell"><div class="v"><em>300K t</em></div><div class="l">Annual copper output at peak</div></div>
+    <div class="cell"><div class="v"><em>300 MW</em></div><div class="l">On-site coal power station</div></div>
+    <div class="cell"><div class="v"><em>56 km</em></div><div class="l">Internal road network</div></div>
+  </div>
+
+  <div class="g2">
+    <div class="tile">
+      <div class="t-num">PORT</div>
+      <h5><em>Punta Rincón</em> · deep water</h5>
+      <p>Dedicated mine port on Caribbean coast. Ships copper concentrate to Asian and European smelters. Capesize-vessel capable. Reduces logistics dependence on Panamanian state ports.</p>
+    </div>
+    <div class="tile">
+      <div class="t-num">POWER</div>
+      <h5><em>Coal-fired</em> 300 MW plant</h5>
+      <p>On-site Caribbean coastal coal plant. Two units. <strong>One 150-MW unit restarted Q4 2025</strong> to support site maintenance and supply the national grid. Coal imported by sea.</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="clabel">SCALE IN GLOBAL CONTEXT</div>
+    <p>At peak production, Cobre Panamá represented approximately <em>1.5% of global copper supply</em> and ~2% of global mined copper. For comparison: it is in the league of Chuquicamata (Chile), Escondida (Chile), Grasberg (Indonesia). For First Quantum it was the <em>flagship</em> — generating ~40% of company revenue.</p>
+  </div>
+
+  <div class="foot">
+    <div class="sec"><em>THE MINE · 04</em></div>
+    <div>LA COMPAÑÍA · DOSSIER MINERO</div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<!-- 05 · ORIGINS · 1968–2013                                          -->
+<!-- ════════════════════════════════════════════════════════════════ -->
+<section class="page">
+  <div class="head">
+    <div class="mark"><em>Cu</em> · COBRE PANAMÁ</div>
+    <div class="pgnum">05 / 21</div>
+  </div>
+
+  <div class="eyebrow">05 · ORIGINS · 1968 → 2013</div>
+  <h1 class="title" style="font-size:38px">From <em>UN survey</em> to a Canadian major.</h1>
+  <p class="lede" style="font-size:14px;max-width:6.4in;margin-bottom:12px">The deposit was discovered before most of today's miners were born. Its title chain runs through a colorful Panamanian businessman, a Canadian junior, a Toronto mid-tier, and finally First Quantum.</p>
+
+  <div class="timeline">
+    <div class="tl-row">
+      <div class="tl-date">1968</div>
+      <div class="tl-c">
+        <h6><em>UN–Panama mineral mission</em> discovers the deposit</h6>
+        <p>A joint United Nations and Government of Panama geological survey identifies the Petaquilla porphyry copper deposit during a national mineral exploration program (1956–1982). Panama was looking for alternative revenue streams.</p>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">1987</div>
+      <div class="tl-c">
+        <h6><em>Richard Fifer</em> founds Adrian Resources</h6>
+        <p>Panamanian geologist Richard Fifer Carles (born 1957, University of Utah) — later called the "father of modern Panamanian mining" — founds the company that will become Petaquilla Minerals.</p>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">Aug 7, 1991</div>
+      <div class="tl-c">
+        <h6>Exploration contract 27-A signed under <em>President Endara</em></h6>
+        <p>Fifer's Geo-Recursos Internacional SA gets exploration rights for Coclé del Norte and San José del General in Donoso, Colón. Ministry of Commerce official Roberto Alfaro signs the contract.</p>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">Feb 26, 1997</div>
+      <div class="tl-c">
+        <h6><em>Law 9 of 1997</em> — original 25-year extraction contract</h6>
+        <p>National Assembly under President Ernesto Pérez Balladares ratifies the mining contract for Minera Petaquilla S.A. (formerly Geo-Recursos). Royalty rate set at ~$0.30/tonne — later called "scandalously low."</p>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">2005</div>
+      <div class="tl-c">
+        <h6>Petaquilla splits into <em>Gold</em> + <em>Copper</em></h6>
+        <p>Petaquilla Gold begins gold mining at Cerro Petaquilla (Molejón) — without an approved environmental impact study. Petaquilla Copper continues in joint venture with Inmet Mining and Teck.</p>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">2008</div>
+      <div class="tl-c">
+        <h6><em>Inmet</em> consolidates the copper project</h6>
+        <p>Inmet Mining Corporation (Toronto) buys out Teck's interest. Petaquilla Copper renamed Cobre Panamá under Inmet.</p>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">2010</div>
+      <div class="tl-c">
+        <h6>ANAM <em>$1.9M</em> environmental fine — annulled</h6>
+        <p>Panama's environmental authority fines Petaquilla Gold for damage near the mine — Supreme Court annuls the sanction. Prior reports documented 80% forest cover loss on 160 hectares; ANAM called environmental damage "irreversible."</p>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">2012</div>
+      <div class="tl-c">
+        <h6><em>Korea Panama Mining</em> JV buys 20%</h6>
+        <p>Korea Resources Corp (KORES) and LS-Nikko Copper form a 50/50 JV (Korea Panama Mining) and acquire a 20% interest in the project from Inmet. Korean offtake rights secured.</p>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">2013</div>
+      <div class="tl-c">
+        <h6><em>First Quantum</em> acquires Inmet for C$5.1 billion</h6>
+        <p>Hostile-then-friendly takeover. The deal is essentially about acquiring the Cobre Panamá project. First Quantum now holds 80% of Minera Panamá S.A. (MPSA), with KORES + LS-Nikko holding 20%.</p>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">2017</div>
+      <div class="tl-c">
+        <h6>FQM acquires <em>LS-Nikko's 10%</em> for $635M</h6>
+        <p>LS-Nikko Copper exits its equity stake in MPSA over six installments. KORES retains 10%. Final ownership: FQM <strong>90%</strong>, KORES <strong>10%</strong>.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout-light">
+    <div class="clabel">FIFER'S POLITICAL ARC</div>
+    <p>Fifer rotated through every administration: under <strong>Pérez Balladares</strong> (1994-99) he secured a 60-year operating license; under <strong>Mireya Moscoso</strong> (1999-2004) he became Coclé Governor; in 2005 he had an arrest warrant for stealing $100,000 from the governor's office (resolved by returning funds); under <strong>Torrijos</strong> (2004-09) he revived mine work at Molejón; under <strong>Martinelli</strong> (2009-14) Petaquilla Gold got its export license. Later became Chairman of <strong>CODEMIN</strong>, Panama's state mining company.</p>
+  </div>
+
+  <div class="foot">
+    <div class="sec"><em>ORIGINS · 05</em></div>
+    <div>LA COMPAÑÍA · DOSSIER MINERO</div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<!-- 06 · THE BUILD + THE CRASH · 2013–2023                            -->
+<!-- ════════════════════════════════════════════════════════════════ -->
+<section class="page">
+  <div class="head">
+    <div class="mark"><em>Cu</em> · COBRE PANAMÁ</div>
+    <div class="pgnum">06 / 21</div>
+  </div>
+
+  <div class="eyebrow">06 · THE BUILD + THE CRASH · 2013 → 2023</div>
+  <h1 class="title" style="font-size:38px">A decade of <em>capex</em>, then a year of <em>collapse</em>.</h1>
+  <p class="lede" style="font-size:14px;max-width:6.4in;margin-bottom:12px">$10 billion invested. Four years of construction. Four years of production. Then a Supreme Court ruling that overturned everything.</p>
+
+  <div class="timeline">
+    <div class="tl-row">
+      <div class="tl-date">2014–2018</div>
+      <div class="tl-c">
+        <h6>Construction phase under <em>President Varela</em></h6>
+        <p>First Quantum invests over $10 billion in capex over 5 years. 56 km of internal roads built, plant assembled, port constructed at Punta Rincón, 300-MW power plant erected, accommodation for ~7,000 workers. Construction workforce peaks at 16,000.</p>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">Dec 2017</div>
+      <div class="tl-c">
+        <h6><em>Supreme Court</em> rules Law 9 of 1997 unconstitutional</h6>
+        <p>The original 1997 contract is found to violate constitutional requirements. The decision sits unresolved for years — production proceeds under a legal cloud while a new contract is negotiated.</p>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">Sep 2019</div>
+      <div class="tl-c">
+        <h6><em>Commercial production</em> begins</h6>
+        <p>First copper concentrate ships. Production ramps from initial 150,000 t (2019) toward full capacity 300-350,000 t by 2021. KORES still holds 10%.</p>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">2020–2022</div>
+      <div class="tl-c">
+        <h6>Peak operation · <em>$3.5B annual revenue</em></h6>
+        <p>Cobre Panamá produces 300,000+ tonnes Cu/yr at full ramp. Becomes 40% of FQM's global revenue. Panama's exports become 75% copper. The mine contributes 3.5% of GDP, 7,000 direct jobs, 40,000 indirect.</p>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">2021–2023</div>
+      <div class="tl-c">
+        <h6>Negotiations on a <em>new contract</em> under Cortizo</h6>
+        <p>President Laurentino "Nito" Cortizo's administration pushes a renegotiation. Trade Minister Federico Alfaro Boyd leads. Framework agreement reached in 2021: $375M/year minimum payment (vs. ~$30M under old contract).</p>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">Oct 20, 2023</div>
+      <div class="tl-c">
+        <h6>National Assembly ratifies <em>Law 406</em></h6>
+        <p>The new 20-year concession (renewable for another 20). Royalties of $375M/year minimum, environmental commitments, hiring quotas. Signed by President Cortizo October 21. Protests erupt the same week.</p>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">Oct 23 – Nov 28, 2023</div>
+      <div class="tl-c">
+        <h6>The <em>protest wave</em> · largest in Panama's modern history</h6>
+        <p>SUNTRACS-led construction unions block the Inter-American Highway for 5+ weeks. Economy loses ~$1.7B. Demands center on the contract itself. Protests led by Saúl Méndez (SUNTRACS), backed by FRENADESO, environmental NGOs, and student movements. Public figures like Rubén Blades amplify opposition.</p>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">Nov 28, 2023</div>
+      <div class="tl-c">
+        <h6><em>Supreme Court rules 9–0</em> · Law 406 unconstitutional</h6>
+        <p>Justices Olmedo Arrocha, María Eugenia López, Maribel Cornejo and six colleagues issue unanimous ruling citing 25+ violations. Key findings: operating without legally binding comprehensive environmental program; mine location within Mesoamerican Biological Corridor threatens right to life and health; ESIA from 2011 was outdated.</p>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">Nov 29, 2023</div>
+      <div class="tl-c">
+        <h6>Cortizo orders <em>"orderly and safe closure"</em></h6>
+        <p>Production halts. Mine enters care and maintenance. ~3,500 of 7,000 direct workers laid off over following months. 120,000+ tonnes of finished concentrate stranded at the site, blocked from export.</p>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">Nov 14 + 29, 2023</div>
+      <div class="tl-c">
+        <h6>FQM files <em>two arbitration tracks</em></h6>
+        <p>(1) Notice of intent under Canada-Panama Free Trade Agreement. (2) MPSA initiates ICC arbitration in Miami under the 2023 concession agreement. Total claims to be valued at over $20 billion.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div class="sec"><em>BUILD + CRASH · 06</em></div>
+    <div>LA COMPAÑÍA · DOSSIER MINERO</div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<!-- 07 · THE 2023 CRISIS · DAY BY DAY                                 -->
+<!-- ════════════════════════════════════════════════════════════════ -->
+<section class="page">
+  <div class="head">
+    <div class="mark"><em>Cu</em> · COBRE PANAMÁ</div>
+    <div class="pgnum">07 / 21</div>
+  </div>
+
+  <div class="eyebrow">07 · THE 2023 CRISIS · DAY BY DAY</div>
+  <h1 class="title" style="font-size:38px">Five weeks that <em>shut a country</em>.</h1>
+  <p class="lede" style="font-size:14px;max-width:6.4in;margin-bottom:12px">From the contract's signing to the Supreme Court ruling, the most consequential protest movement in Panama since 1989.</p>
+
+  <div class="timeline">
+    <div class="tl-row">
+      <div class="tl-date">Oct 20</div>
+      <div class="tl-c">
+        <h6>Asamblea Nacional <em>ratifies Law 406</em></h6>
+        <p>National Assembly approves the new 20-year concession contract with FQM. Vote contested by minority bloc. President Cortizo signs into law October 21.</p>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">Oct 23</div>
+      <div class="tl-c">
+        <h6>SUNTRACS and FRENADESO <em>call nationwide protest</em></h6>
+        <p>Saúl Méndez (SUNTRACS Secretary General) declares "indefinite strike." Highway blockades begin on the Inter-American Highway near Aguadulce, then Santiago de Veraguas, then nationally.</p>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">Oct 25–28</div>
+      <div class="tl-c">
+        <h6><em>Inter-American Highway</em> blocked end-to-end</h6>
+        <p>Truck deliveries cease across the country. Food and fuel shortages emerge in interior provinces. Schools close. The Penonomé–David corridor effectively cut.</p>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">Oct 28</div>
+      <div class="tl-c">
+        <h6>Cortizo proposes <em>referendum</em></h6>
+        <p>President offers a national referendum to let the public decide. Asamblea Nacional drafts Law 1100 to authorize the vote. Opposition rejects the proposal as a delay tactic.</p>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">Nov 1–3</div>
+      <div class="tl-c">
+        <h6>Death of a <em>protester</em> in Chame · violence escalates</h6>
+        <p>Kenneth Darlington, a 77-year-old US citizen, shoots and kills 2 protesters during a confrontation at a roadblock in Chame. National outrage. Darlington arrested and charged. Protest movement intensifies.</p>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">Nov 3</div>
+      <div class="tl-c">
+        <h6>Constitutional <em>moratorium law passed</em></h6>
+        <p>Asamblea passes Law 407 establishing a moratorium on new metallic mining concessions in Panama. Does not affect Law 406 retroactively. Seen as a partial concession by Cortizo to defuse protests.</p>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">Nov 7–20</div>
+      <div class="tl-c">
+        <h6>Economy <em>seizes up</em></h6>
+        <p>Panamanian Chamber of Commerce estimates $80M/day in economic losses. Tourism collapses. Construction halts. Schools remain closed. Mulino, then opposition presidential candidate, calls for restraint but does not condemn the protests.</p>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">Nov 22</div>
+      <div class="tl-c">
+        <h6>Supreme Court <em>begins constitutional review</em></h6>
+        <p>Multiple constitutional challenges to Law 406 consolidate. Court convenes plenary session to hear arguments. Oral arguments held with both sides.</p>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">Nov 28</div>
+      <div class="tl-c">
+        <h6>The <em>9–0 ruling</em></h6>
+        <p>Supreme Court unanimously declares Law 406 unconstitutional. President of the Court María Eugenia López reads the decision. 25+ provisions found in violation of the constitution.</p>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">Nov 29</div>
+      <div class="tl-c">
+        <h6>Cortizo orders <em>closure</em></h6>
+        <p>Announces "orderly and safe closure of the mining operation." Production halts. Care and maintenance phase begins. Roadblocks gradually lifted over the following week.</p>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">Dec 14</div>
+      <div class="tl-c">
+        <h6>FQM <em>files ICC arbitration</em></h6>
+        <p>Minera Panamá initiates arbitration proceedings before the International Chamber of Commerce in Miami. Initial demand: full investment recovery + damages. The figure later escalates to $20 billion.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="clabel">THE PROTEST MOVEMENT IN NUMBERS</div>
+    <p>~<em>500,000 people</em> in the streets at peak (Nov 5 March of National Dignity). <em>5+ weeks</em> of highway blockades. <em>~$1.7 billion</em> in lost economic activity. <em>3 deaths</em> directly attributed to protest incidents. Approval rating of Cortizo administration dropped from 38% to under 20% during the crisis.</p>
+  </div>
+
+  <div class="foot">
+    <div class="sec"><em>THE CRISIS · 07</em></div>
+    <div>LA COMPAÑÍA · DOSSIER MINERO</div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<!-- 08 · THE SUPREME COURT RULING                                     -->
+<!-- ════════════════════════════════════════════════════════════════ -->
+<section class="page">
+  <div class="head">
+    <div class="mark"><em>Cu</em> · COBRE PANAMÁ</div>
+    <div class="pgnum">08 / 21</div>
+  </div>
+
+  <div class="eyebrow">08 · THE SUPREME COURT RULING · NOV 28, 2023</div>
+  <h1 class="title" style="font-size:38px">The <em>nine-zero decision</em> and what it actually said.</h1>
+  <p class="lede" style="font-size:14px;max-width:6.4in;margin-bottom:12px">A unanimous court found 25+ provisions of Law 406 unconstitutional. The reasoning has shaped every conversation since — and constrains every restart scenario now.</p>
+
+  <div class="kicker">THE JUSTICES (9 of 9 in favor)</div>
+  <div class="people">
+    <div class="person gov"><div class="glyph">M</div><div class="info"><div class="nm"><em>María Eugenia López Arias</em></div><div class="rl"><strong>President of the Supreme Court</strong> at the time of the ruling. Wrote the principal opinion.</div></div><div class="tg">PRES.</div></div>
+    <div class="person gov"><div class="glyph">O</div><div class="info"><div class="nm"><em>Olmedo Arrocha Osorio</em></div><div class="rl">Vice President of the Supreme Court. Central to the reasoning on constitutional environmental rights.</div></div><div class="tg">V-PRES.</div></div>
+    <div class="person gov"><div class="glyph">M</div><div class="info"><div class="nm"><em>Maribel Cornejo</em></div><div class="rl">Justice. Authored sections on property rights and indigenous consultation.</div></div><div class="tg">JUSTICE</div></div>
+    <div class="person gov"><div class="glyph">A</div><div class="info"><div class="nm">Ángela Russo de Cedeño</div><div class="rl">Justice.</div></div><div class="tg">JUSTICE</div></div>
+    <div class="person gov"><div class="glyph">C</div><div class="info"><div class="nm">Carlos Vásquez</div><div class="rl">Justice.</div></div><div class="tg">JUSTICE</div></div>
+    <div class="person gov"><div class="glyph">M</div><div class="info"><div class="nm">Miriam Cheng</div><div class="rl">Justice.</div></div><div class="tg">JUSTICE</div></div>
+  </div>
+
+  <div class="kicker" style="margin-top:14px">KEY GROUNDS FOR UNCONSTITUTIONALITY</div>
+  <table class="tbl">
+    <thead><tr><th>#</th><th>VIOLATION</th><th>CONSTITUTIONAL PROVISION</th></tr></thead>
+    <tbody>
+      <tr><td><strong>1</strong></td><td>Operating without legally binding, comprehensive, proactive environmental protection program</td><td>Art. 118 (right to a healthy environment)</td></tr>
+      <tr><td><strong>2</strong></td><td>Mine located within the <strong>Mesoamerican Biological Corridor</strong> — threat to right to life and health</td><td>Art. 17 (state duty to protect life)</td></tr>
+      <tr><td><strong>3</strong></td><td>ESIA dating from 2011 was severely outdated for an operation starting 2019</td><td>Art. 118</td></tr>
+      <tr><td><strong>4</strong></td><td>Concession exceeded territorial limits permitted for private extraction</td><td>Art. 257 (state ownership of subsoil)</td></tr>
+      <tr><td><strong>5</strong></td><td>Exclusive use of port + airspace + roads granted without competitive process</td><td>Art. 19 (equality before the law)</td></tr>
+      <tr><td><strong>6</strong></td><td>Tax + royalty regime not subject to normal fiscal review</td><td>Art. 264 (fiscal sovereignty)</td></tr>
+      <tr><td><strong>7</strong></td><td>Indigenous community consultation absent for Ngäbe-Buglé adjacent zones</td><td>ILO Convention 169 (ratified)</td></tr>
+      <tr><td><strong>8</strong></td><td>Duration (20 + 20 = 40 years) exceeded permissible concession terms</td><td>Art. 259</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout-light">
+    <div class="clabel">THE OPERATIVE LANGUAGE</div>
+    <p>The Court ruled that Law 406 was "inconstitutional in its entirety." This is the strongest possible holding — the entire contract is void, not severable. No legal framework currently exists for the mine to operate. Any restart requires a NEW law passing the Asamblea Nacional under stricter constitutional standards.</p>
+  </div>
+
+  <div class="callout">
+    <div class="clabel">WHAT THIS MEANS FOR ANY RESTART</div>
+    <p>Any new operating framework must: (a) include legally binding proactive environmental program, (b) be supported by a new ESIA, (c) respect the Mesoamerican Biological Corridor designation, (d) involve formal indigenous consultation, (e) submit to normal fiscal review, (f) have term + scope within constitutional limits, (g) <em>pass the Asamblea Nacional</em>. Mulino has no path to restart by decree.</p>
+  </div>
+
+  <div class="foot">
+    <div class="sec"><em>SUPREME COURT · 08</em></div>
+    <div>LA COMPAÑÍA · DOSSIER MINERO</div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<!-- 09 · LEADERSHIP · FIRST QUANTUM                                   -->
+<!-- ════════════════════════════════════════════════════════════════ -->
+<section class="page">
+  <div class="head">
+    <div class="mark"><em>Cu</em> · COBRE PANAMÁ</div>
+    <div class="pgnum">09 / 21</div>
+  </div>
+
+  <div class="eyebrow">09 · LEADERSHIP · FIRST QUANTUM CORPORATE</div>
+  <h1 class="title" style="font-size:38px">The <em>Pascall</em> family and the team they built.</h1>
+  <p class="lede" style="font-size:14px;max-width:6.4in;margin-bottom:12px">A founder-led company in transition. Philip Pascall died in September 2023, weeks before the protests began. His son Tristan took over as CEO in January 2023.</p>
+
+  <div class="kicker">THE FOUNDERS</div>
+  <div class="people">
+    <div class="person fqm"><div class="glyph">P</div><div class="info"><div class="nm">Philip Pascall <em>(1950–2023)</em></div><div class="rl"><strong>Co-founder + former Chairman/CEO</strong>. Zambian-born British engineer. Built the company from a single Zambian mine into a global major. Died September 2023.</div></div><div class="tg">FOUNDER</div></div>
+    <div class="person fqm"><div class="glyph">C</div><div class="info"><div class="nm">Clive Newall</div><div class="rl"><strong>Co-founder</strong>. Long-time President of First Quantum. Stepped back from operational role in early 2020s.</div></div><div class="tg">FOUNDER</div></div>
+  </div>
+
+  <div class="kicker" style="margin-top:14px">CURRENT EXECUTIVE TEAM</div>
+  <div class="people">
+    <div class="person fqm"><div class="glyph">T</div><div class="info"><div class="nm"><em>Tristan Pascall</em></div><div class="rl"><strong>CEO</strong> since Jan 1, 2023. Philip's son. UWA engineering + INSEAD MBA. Joined FQM 2007. GM of Cobre Panamá <strong>2015–2020</strong> — knows the asset personally. Took over weeks before the crisis.</div></div><div class="tg">CEO</div></div>
+    <div class="person fqm"><div class="glyph">R</div><div class="info"><div class="nm">Ryan MacWilliam</div><div class="rl"><strong>CFO</strong>. Led the 2024-2025 balance sheet restructuring (gold streaming, prepayments, debt refi). Architect of the alternative-to-Manara financing.</div></div><div class="tg">CFO</div></div>
+    <div class="person fqm"><div class="glyph">J</div><div class="info"><div class="nm">Juliet Wall</div><div class="rl"><strong>COO Africa/Europe</strong>. Oversees Kansanshi and Sentinel — currently 90%+ of company output.</div></div><div class="tg">COO</div></div>
+    <div class="person fqm"><div class="glyph">R</div><div class="info"><div class="nm">Rudi Badenhorst</div><div class="rl"><strong>COO Latin America</strong>. Direct oversight of Cobre Panamá care and maintenance + restart planning.</div></div><div class="tg">COO LATAM</div></div>
+    <div class="person fqm"><div class="glyph">H</div><div class="info"><div class="nm">Hannes Meyer</div><div class="rl"><strong>VP Group Treasury</strong>. Day-to-day of the company's $5-6B debt stack.</div></div><div class="tg">VP TREAS.</div></div>
+    <div class="person fqm"><div class="glyph">C</div><div class="info"><div class="nm">Christopher Lemon</div><div class="rl"><strong>General Counsel</strong>. Oversees the ICC arbitration and Canada-Panama FTA proceeding teams.</div></div><div class="tg">GC</div></div>
+    <div class="person fqm"><div class="glyph">L</div><div class="info"><div class="nm">Lisa Doddridge</div><div class="rl"><strong>VP Investor Relations</strong>. Primary contact for analyst community + earnings call lead.</div></div><div class="tg">VP IR</div></div>
+  </div>
+
+  <div class="kicker" style="margin-top:14px">BOARD OF DIRECTORS</div>
+  <div class="g2">
+    <div class="tile">
+      <div class="t-num">CHAIR</div>
+      <h5><em>Robert Harding</em></h5>
+      <p>Lead Independent Director, then Chair after Philip Pascall. Former Chairman of Brookfield Asset Management. Led the independent CEO search that named Tristan Pascall.</p>
+    </div>
+    <div class="tile">
+      <div class="t-num">SEARCH COMMITTEE 2022</div>
+      <h5>Harding · Adams · Hogenson</h5>
+      <p>Robert Harding, Andrew Adams, Kathleen Hogenson formed the Nominating Committee. Engaged Egon Zehnder for the executive search. Selected Tristan over external candidates.</p>
+    </div>
+  </div>
+  <div class="people" style="margin-top:8px">
+    <div class="person fqm"><div class="glyph">A</div><div class="info"><div class="nm">Andrew Adams</div><div class="rl">Director. Nominating Committee member.</div></div><div class="tg">DIR.</div></div>
+    <div class="person fqm"><div class="glyph">K</div><div class="info"><div class="nm">Kathleen Hogenson</div><div class="rl">Director. Nominating Committee member.</div></div><div class="tg">DIR.</div></div>
+    <div class="person fqm"><div class="glyph">P</div><div class="info"><div class="nm">Peter St. George</div><div class="rl">Director. Former banker (former CEO of Salomon Smith Barney Australia).</div></div><div class="tg">DIR.</div></div>
+    <div class="person fqm"><div class="glyph">J</div><div class="info"><div class="nm">Joanne Warner</div><div class="rl">Director.</div></div><div class="tg">DIR.</div></div>
+    <div class="person fqm"><div class="glyph">S</div><div class="info"><div class="nm">Simon Scott</div><div class="rl">Director.</div></div><div class="tg">DIR.</div></div>
+  </div>
+
+  <div class="foot">
+    <div class="sec"><em>LEADERSHIP FQM · 09</em></div>
+    <div>LA COMPAÑÍA · DOSSIER MINERO</div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<!-- 10 · LEADERSHIP · MINERA PANAMÁ                                   -->
+<!-- ════════════════════════════════════════════════════════════════ -->
+<section class="page">
+  <div class="head">
+    <div class="mark"><em>Cu</em> · COBRE PANAMÁ</div>
+    <div class="pgnum">10 / 21</div>
+  </div>
+
+  <div class="eyebrow">10 · LEADERSHIP · MINERA PANAMÁ S.A.</div>
+  <h1 class="title" style="font-size:38px">The <em>on-the-ground</em> team.</h1>
+  <p class="lede" style="font-size:14px;max-width:6.4in;margin-bottom:12px">The local subsidiary that operates the mine — 1,600 workers in care and maintenance, growing toward 2,300 with stockpile processing.</p>
+
+  <div class="kicker">SENIOR LOCAL LEADERSHIP</div>
+  <div class="people">
+    <div class="person fqm"><div class="glyph">M</div><div class="info"><div class="nm"><em>Manuel Aizpurúa</em></div><div class="rl"><strong>President of Minera Panamá</strong>. Took the role in the post-crisis era. Focused on closure logistics + community relations + government interface. Panamanian national.</div></div><div class="tg">PRES.</div></div>
+    <div class="person fqm"><div class="glyph">J</div><div class="info"><div class="nm">José Joaquín "Jay" Garrido</div><div class="rl"><strong>Country Manager</strong>. Oversees operations + employee relations + permits day to day.</div></div><div class="tg">COUNTRY</div></div>
+    <div class="person fqm"><div class="glyph">L</div><div class="info"><div class="nm">Luisa Turbay</div><div class="rl"><strong>VP Sustainability LATAM</strong>. Leads ESG, environmental compliance, community programs. Public face of the company on environmental questions.</div></div><div class="tg">VP ESG</div></div>
+    <div class="person fqm"><div class="glyph">Z</div><div class="info"><div class="nm">Zorel Morales</div><div class="rl"><strong>Communications + Public Affairs lead</strong> in Panama. Media-facing.</div></div><div class="tg">PR</div></div>
+  </div>
+
+  <div class="kicker" style="margin-top:14px">PRIOR LEADERSHIP (CONSTRUCTION + RAMP-UP ERA)</div>
+  <div class="people">
+    <div class="person fqm"><div class="glyph">T</div><div class="info"><div class="nm">Tristan Pascall</div><div class="rl">GM of Cobre Panamá <strong>2015–2020</strong>. Now CEO of FQM globally. Direct historical operational knowledge.</div></div><div class="tg">2015-20</div></div>
+    <div class="person fqm"><div class="glyph">K</div><div class="info"><div class="nm">Keith Green</div><div class="rl">Former General Manager. Construction and early production era.</div></div><div class="tg">PREV.</div></div>
+    <div class="person fqm"><div class="glyph">J</div><div class="info"><div class="nm">Jim Spitsbergen</div><div class="rl">Former Operations Director. Plant build-out era.</div></div><div class="tg">PREV.</div></div>
+  </div>
+
+  <div class="kicker" style="margin-top:14px">LEGAL + ADVISORY</div>
+  <div class="g2">
+    <div class="tile">
+      <div class="t-num">LOCAL COUNSEL</div>
+      <h5><em>Morgan &amp; Morgan</em> · Panama City</h5>
+      <p>Panama's largest law firm. FQM's lead local counsel for over a decade. Handles permitting, litigation, government relations. Specifically led work on Law 406 drafting and the constitutional defense.</p>
+    </div>
+    <div class="tile">
+      <div class="t-num">INT'L ARBITRATION</div>
+      <h5><em>Freshfields</em> + <em>White &amp; Case</em></h5>
+      <p>Freshfields Bruckhaus Deringer leads the ICC arbitration in Miami. White & Case advises on the Canada-Panama FTA proceedings. Total legal spend estimated &gt;$40M to date.</p>
+    </div>
+  </div>
+
+  <div class="callout-light">
+    <div class="clabel">CURRENT WORKFORCE PROFILE</div>
+    <p><strong>1,600 workers</strong> in care and maintenance (April 2026). Approval of stockpile processing adds approximately <strong>700 direct new positions</strong> + 1,000 contracted indirect — bringing total to ~2,300 direct + 3,500 indirect. When FQM opened applications for the new 1,000 positions, <strong>60,000+ applicants</strong> applied within 30 days — a strong signal of how labor market dynamics have shifted since 2023.</p>
+  </div>
+
+  <div class="foot">
+    <div class="sec"><em>LEADERSHIP MPSA · 10</em></div>
+    <div>LA COMPAÑÍA · DOSSIER MINERO</div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<!-- 11 · PANAMA GOVERNMENT · PAST ADMINISTRATIONS                     -->
+<!-- ════════════════════════════════════════════════════════════════ -->
+<section class="page">
+  <div class="head">
+    <div class="mark"><em>Cu</em> · COBRE PANAMÁ</div>
+    <div class="pgnum">11 / 21</div>
+  </div>
+
+  <div class="eyebrow">11 · GOVERNMENT · PAST ADMINISTRATIONS (1994–2024)</div>
+  <h1 class="title" style="font-size:38px">Five <em>presidents</em>. One mine.</h1>
+  <p class="lede" style="font-size:14px;max-width:6.4in;margin-bottom:12px">Every Panamanian administration of the last 30 years has been entangled with Cobre Panamá. Each had a different decision to make — and a different consequence.</p>
+
+  <div class="kicker">PRESIDENTIAL TIMELINE</div>
+  <table class="tbl">
+    <thead><tr><th>PRESIDENT</th><th>TERM</th><th>PARTY</th><th>KEY ACTION ON COBRE PANAMÁ</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Ernesto Pérez Balladares</strong></td><td>1994–1999</td><td>PRD</td><td>Signed <strong>Law 9 of 1997</strong> — the original 25-year concession contract</td></tr>
+      <tr><td><strong>Mireya Moscoso</strong></td><td>1999–2004</td><td>PA</td><td>Fifer's era — appointed governor of Coclé. Project still in exploration phase</td></tr>
+      <tr><td><strong>Martín Torrijos</strong></td><td>2004–2009</td><td>PRD</td><td>Revived mining work at Molejón. Petaquilla Gold begins operations without ESIA</td></tr>
+      <tr><td><strong>Ricardo Martinelli</strong></td><td>2009–2014</td><td>CD</td><td>Pro-mining. Petaquilla Gold gets export license. Inmet → FQM transition under his term</td></tr>
+      <tr><td><strong>Juan Carlos Varela</strong></td><td>2014–2019</td><td>Panameñista</td><td>Construction completed. <strong>Commercial production starts Sep 2019.</strong> Did not act on 2017 Supreme Court ruling on Law 9</td></tr>
+      <tr class="hi"><td><strong>Laurentino "Nito" Cortizo</strong></td><td>2019–2024</td><td>PRD</td><td>Negotiated Law 406. Signed Oct 2023. Ordered closure Nov 29, 2023 after Supreme Court ruling</td></tr>
+    </tbody>
+  </table>
+
+  <div class="kicker" style="margin-top:14px">CORTIZO CABINET · THE NEGOTIATION TEAM</div>
+  <div class="people">
+    <div class="person gov"><div class="glyph">F</div><div class="info"><div class="nm">Federico <em>Alfaro Boyd</em></div><div class="rl"><strong>Minister of Commerce and Industry</strong>. The public face of the Law 406 negotiation. Signed the contract. Became politically toxic post-crisis — has largely withdrawn from public life.</div></div><div class="tg">COM. MIN.</div></div>
+    <div class="person gov"><div class="glyph">J</div><div class="info"><div class="nm">Janaina Tewaney</div><div class="rl"><strong>Minister of Foreign Affairs</strong>. Handled the international dimension and post-closure communication with Canada.</div></div><div class="tg">FM</div></div>
+    <div class="person gov"><div class="glyph">H</div><div class="info"><div class="nm">Héctor Alexander</div><div class="rl"><strong>Minister of Economy and Finance</strong>. Modeled the fiscal benefits of Law 406. Came under fire for not warning about the political risk.</div></div><div class="tg">MEF</div></div>
+    <div class="person gov"><div class="glyph">T</div><div class="info"><div class="nm">Tomás Adams</div><div class="rl"><strong>Director General of Mineral Resources (DGRM)</strong>. Day-to-day regulator of FQM operations.</div></div><div class="tg">DGRM</div></div>
+    <div class="person gov"><div class="glyph">F</div><div class="info"><div class="nm">Federico Humbert</div><div class="rl"><strong>Comptroller General</strong>. Oversight of public-finance dimension of the contract.</div></div><div class="tg">CGR</div></div>
+  </div>
+
+  <div class="kicker" style="margin-top:12px">ASAMBLEA NACIONAL · KEY LAW 406 ACTORS</div>
+  <div class="people">
+    <div class="person gov"><div class="glyph">C</div><div class="info"><div class="nm">Crisanto Sarmiento</div><div class="rl">President of the Asamblea Nacional at the time of the Law 406 vote. PRD.</div></div><div class="tg">PRES. ASAMBLEA</div></div>
+    <div class="person gov"><div class="glyph">M</div><div class="info"><div class="nm">Marylin Vallarino</div><div class="rl">Key proponent of Law 406 in the chamber. Helped draft the framework with the executive.</div></div><div class="tg">DIPUTADA</div></div>
+    <div class="person opp"><div class="glyph">J</div><div class="info"><div class="nm">Juan Diego Vásquez</div><div class="rl">Opposition diputado. Filed one of the constitutional challenges to Law 406.</div></div><div class="tg">OPOS.</div></div>
+    <div class="person opp"><div class="glyph">W</div><div class="info"><div class="nm">Walkiria Chandler D'Orcy</div><div class="rl">Opposition voice. Independent. Argued the law violated environmental protections.</div></div><div class="tg">OPOS.</div></div>
+  </div>
+
+  <div class="foot">
+    <div class="sec"><em>PAST GOVERNMENT · 11</em></div>
+    <div>LA COMPAÑÍA · DOSSIER MINERO</div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<!-- 12 · GOVERNMENT · MULINO ADMINISTRATION                           -->
+<!-- ════════════════════════════════════════════════════════════════ -->
+<section class="page">
+  <div class="head">
+    <div class="mark"><em>Cu</em> · COBRE PANAMÁ</div>
+    <div class="pgnum">12 / 21</div>
+  </div>
+
+  <div class="eyebrow">12 · GOVERNMENT · MULINO ADMINISTRATION (2024–)</div>
+  <h1 class="title" style="font-size:38px">The team <em>negotiating</em> the path forward.</h1>
+  <p class="lede" style="font-size:14px;max-width:6.4in;margin-bottom:12px">President José Raúl Mulino took office July 1, 2024. He has no political stake in Cortizo's contract — and he openly states the mine's restart is a fiscal necessity. The team navigating it now.</p>
+
+  <div class="kicker">THE PRESIDENT</div>
+  <div class="people">
+    <div class="person gov"><div class="glyph">M</div><div class="info"><div class="nm"><em>José Raúl Mulino</em></div><div class="rl"><strong>President of Panama</strong> since July 1, 2024. RM party (Realizando Metas). Former Minister of Public Security under Martinelli. Took office on Martinelli's slate after Martinelli was disqualified. Position: open to negotiated restart but won't unilaterally restart. Required FQM to drop arbitration as precondition (which they did in March 2025).</div></div><div class="tg">PRESIDENT</div></div>
+  </div>
+
+  <div class="kicker" style="margin-top:14px">CABINET LEADS ON COBRE PANAMÁ</div>
+  <div class="people">
+    <div class="person gov"><div class="glyph">J</div><div class="info"><div class="nm"><em>Julio Moltó</em></div><div class="rl"><strong>Minister of Commerce and Industry</strong>. <strong>Lead negotiator</strong> with First Quantum. Oversees the SGS audit. Has been the public voice of the administration on the mine question.</div></div><div class="tg">COM. MIN.</div></div>
+    <div class="person gov"><div class="glyph">F</div><div class="info"><div class="nm"><em>Felipe Chapman</em></div><div class="rl"><strong>Minister of Economy and Finance</strong>. Architect of the fiscal terms for any restart. <strong>Key quote (2025):</strong> "For us, it's important to have an agreement that states very clearly that resources belong to the Republic of Panama." Said FQM has accepted state ownership of resources as starting framework.</div></div><div class="tg">MEF</div></div>
+    <div class="person gov"><div class="glyph">J</div><div class="info"><div class="nm"><em>Juan Carlos Navarro</em></div><div class="rl"><strong>Minister of Environment (MiAmbiente)</strong>. Confirmed audit transparency commitment under the Escazú Agreement. Final environmental sign-off on any restart.</div></div><div class="tg">MIN. AMB.</div></div>
+    <div class="person gov"><div class="glyph">J</div><div class="info"><div class="nm">Javier Martínez-Acha</div><div class="rl"><strong>Minister of Foreign Affairs</strong>. Manages bilateral relationship with Canada through the arbitration phase.</div></div><div class="tg">FM</div></div>
+    <div class="person gov"><div class="glyph">J</div><div class="info"><div class="nm">Juan Carlos Orillac</div><div class="rl"><strong>Minister of the Presidency</strong>. Coordinates inter-ministerial work on the mine question.</div></div><div class="tg">MIN. PRES.</div></div>
+  </div>
+
+  <div class="kicker" style="margin-top:14px">AUDIT TEAM</div>
+  <div class="g2">
+    <div class="tile">
+      <div class="t-num">CONSULTANT</div>
+      <h5><em>SGS Panama Control Services</em></h5>
+      <p>International testing/inspection firm. Conducting the comprehensive environmental + financial + operational audit. 6 preliminary reports delivered. <strong>Final report originally due May 29, 2026 — postponed indefinitely</strong> at SGS's request for additional verification + annex organization.</p>
+    </div>
+    <div class="tile">
+      <div class="t-num">SCOPE</div>
+      <h5>Three pillars</h5>
+      <p>(1) <strong>Legal + Financial</strong>: audit of tax, fiscal, contractual compliance. (2) <strong>Operational</strong>: technical compliance + labor status. (3) <strong>Sustainability</strong>: environmental performance vs. regulatory framework.</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="clabel">MULINO'S STATED POSITION (May 2026)</div>
+    <p>"I expect and trust that by June we will announce to the country the decision taken by the government on Cobre Panamá." Weekly press conference, mid-May. Subsequent audit delay has pushed this timeline. <em>Pragmatic, not ideological</em> — sees the fiscal hole and is willing to deal, but won't act without political cover.</p>
+  </div>
+
+  <div class="foot">
+    <div class="sec"><em>MULINO ADMIN · 12</em></div>
+    <div>LA COMPAÑÍA · DOSSIER MINERO</div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<!-- 13 · THE OPPOSITION · SUNTRACS + CIVIL SOCIETY                    -->
+<!-- ════════════════════════════════════════════════════════════════ -->
+<section class="page">
+  <div class="head">
+    <div class="mark"><em>Cu</em> · COBRE PANAMÁ</div>
+    <div class="pgnum">13 / 21</div>
+  </div>
+
+  <div class="eyebrow">13 · THE OPPOSITION · WHO STOPPED THE MINE</div>
+  <h1 class="title" style="font-size:38px">A coalition that <em>shut a country</em>.</h1>
+  <p class="lede" style="font-size:14px;max-width:6.4in;margin-bottom:12px">The protest movement was not one organization. It was construction unions, environmental NGOs, students, indigenous communities, and cultural figures — joined around one demand.</p>
+
+  <div class="kicker">UNIONS + WORKER MOVEMENTS</div>
+  <div class="people">
+    <div class="person opp"><div class="glyph">S</div><div class="info"><div class="nm"><em>Saúl Méndez</em></div><div class="rl"><strong>Secretary General of SUNTRACS</strong> (Sindicato Único Nacional de Trabajadores de la Construcción y Similares). The most visible protest leader. <strong>Charged 2024</strong> with "crimes against freedom and economic order" — fled the country, granted asylum abroad. Continues to lead from exile.</div></div><div class="tg">SUNTRACS</div></div>
+    <div class="person opp"><div class="glyph">J</div><div class="info"><div class="nm">Jaime Caballero</div><div class="rl"><strong>Foreign Relations Secretary, SUNTRACS</strong>. Arrested Feb 26, 2024. SUNTRACS' Panamá Oeste offices burned March 10, 2024.</div></div><div class="tg">SUNTRACS</div></div>
+    <div class="person opp"><div class="glyph">F</div><div class="info"><div class="nm">FRENADESO</div><div class="rl"><strong>Frente Nacional por la Defensa de los Derechos Económicos y Sociales</strong>. Coalition of left-political organizations. Co-organized highway blockades.</div></div><div class="tg">COALITION</div></div>
+    <div class="person opp"><div class="glyph">C</div><div class="info"><div class="nm">CONUSI</div><div class="rl"><strong>Confederación Nacional de Unidad Sindical Independiente</strong>. Independent labor confederation. Backed the protests.</div></div><div class="tg">UNION</div></div>
+  </div>
+
+  <div class="kicker" style="margin-top:14px">ENVIRONMENTAL + CIVIC ORGANIZATIONS</div>
+  <div class="people">
+    <div class="person com"><div class="glyph">C</div><div class="info"><div class="nm">Centro de Incidencia Ambiental (CIAM)</div><div class="rl">Leading environmental legal advocacy organization. Filed one of the constitutional challenges.</div></div><div class="tg">NGO</div></div>
+    <div class="person com"><div class="glyph">A</div><div class="info"><div class="nm">ANCON</div><div class="rl">Asociación Nacional para la Conservación de la Naturaleza. Oldest environmental group in Panama.</div></div><div class="tg">NGO</div></div>
+    <div class="person com"><div class="glyph">M</div><div class="info"><div class="nm">Fundación MarViva</div><div class="rl">Focused on coastal + marine impacts of the mine's port and concentrate shipping.</div></div><div class="tg">NGO</div></div>
+    <div class="person com"><div class="glyph">M</div><div class="info"><div class="nm">MOVIN</div><div class="rl">Movimiento Independiente. Civic coalition. <strong>2026 update</strong>: organized renewed anti-restart protests in May 2026 alongside Sal de las Redes.</div></div><div class="tg">COALITION</div></div>
+  </div>
+
+  <div class="kicker" style="margin-top:14px">ACADEMICS + CULTURAL FIGURES</div>
+  <div class="people">
+    <div class="person com"><div class="glyph">O</div><div class="info"><div class="nm">Olmedo Beluche</div><div class="rl">Sociologist. Longstanding critic of extractive industries in Panama. Public intellectual.</div></div><div class="tg">ACADEMIC</div></div>
+    <div class="person com"><div class="glyph">R</div><div class="info"><div class="nm">Raisa Banfield</div><div class="rl">Former Vice Mayor of Panama City. Environmental advocate. Frequently quoted in international press.</div></div><div class="tg">POLITICAL</div></div>
+    <div class="person com"><div class="glyph">L</div><div class="info"><div class="nm">Ligia Castro</div><div class="rl">Environmental scientist. Post-2023 became advisor to the Mulino administration.</div></div><div class="tg">ADVISOR</div></div>
+    <div class="person com"><div class="glyph">R</div><div class="info"><div class="nm"><em>Rubén Blades</em></div><div class="rl">Musician + cultural figure. The most prominent celebrity voice against the contract. His public statements during October-November 2023 are widely credited with shaping middle-class opinion.</div></div><div class="tg">CULTURAL</div></div>
+  </div>
+
+  <div class="callout-light">
+    <div class="clabel">2026 STATUS · THE OPPOSITION HAS WEAKENED</div>
+    <p>The May 2026 protests organized by MOVIN and Sal de las Redes drew "dozens of demonstrators" — not the half-million of 2023. Public opinion polls show negative views of the mine dropped from <strong>80%+ to ~50%</strong> (Felipe Chapman, May 2026). Cause: economic pain in Donoso + Coclé del Norte + the country's fiscal deterioration. <em>SUNTRACS leadership in exile or under prosecution.</em> The window for a negotiated restart is open in a way it wasn't in 2024.</p>
+  </div>
+
+  <div class="foot">
+    <div class="sec"><em>THE OPPOSITION · 13</em></div>
+    <div>LA COMPAÑÍA · DOSSIER MINERO</div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<!-- 14 · INTERNATIONAL STAKEHOLDERS                                   -->
+<!-- ════════════════════════════════════════════════════════════════ -->
+<section class="page">
+  <div class="head">
+    <div class="mark"><em>Cu</em> · COBRE PANAMÁ</div>
+    <div class="pgnum">14 / 21</div>
+  </div>
+
+  <div class="eyebrow">14 · INTERNATIONAL STAKEHOLDERS</div>
+  <h1 class="title" style="font-size:38px">Beyond Panama and <em>Toronto</em>.</h1>
+  <p class="lede" style="font-size:14px;max-width:6.4in;margin-bottom:12px">Korean state capital, Chinese strategic ownership, a failed Saudi deal, Canadian diplomacy, and a quiet US position on Western Hemisphere copper supply.</p>
+
+  <div class="g2">
+    <div class="tile">
+      <div class="t-num">EQUITY · MINE LEVEL</div>
+      <h5><em>KORES</em> · 10% of Minera Panamá</h5>
+      <p>Korea Resources Corporation (state-owned). Entered as 50/50 JV with LS-Nikko Copper in 2012 (20% combined). FQM bought out LS-Nikko's 10% for $635M in 2017. KORES retained 10%. <strong>Has tried to sell its 10% since 2014</strong> — Korean government mandate to divest overseas mining assets after 2018 losses on other projects. <strong>Filed its own arbitration</strong> against Panama in 2024 separately from FQM.</p>
+    </div>
+    <div class="tile">
+      <div class="t-num">EQUITY · PARENT LEVEL</div>
+      <h5><em>Jiangxi Copper</em> · 19.5% of FQM</h5>
+      <p>Chinese state-controlled copper smelter. Bought 18% of First Quantum in 2019 for ~$1.1 billion. <strong>Increased to 19.5% in late 2023</strong> during the Panama crisis (largest shareholder). Strategic supply integration — wants concentrate offtake from FQM mines. Three-year standstill agreement in place limiting how much more they can buy.</p>
+    </div>
+  </div>
+
+  <div class="g2">
+    <div class="tile">
+      <div class="t-num">FAILED PURSUIT 2024-25</div>
+      <h5><em>Saudi Manara Minerals</em> · Zambia</h5>
+      <p>Joint venture of Saudi's Ma'aden + Public Investment Fund ($925B SWF). Pursued 15-20% stake in FQM's Zambian assets ($1.5-2B value). Negotiations advanced 2024. <strong>Deal dropped August 2025</strong> — FQM raised liquidity via alternative means (gold streaming, copper prepayments, debt refi). Manara redirected to Pakistan + Brazil deals. Could re-engage on Cobre Panamá specifically.</p>
+    </div>
+    <div class="tile">
+      <div class="t-num">OFFTAKE</div>
+      <h5><em>LS-Nikko Copper</em> · 10% offtake retained</h5>
+      <p>Korean smelter sold its 10% equity in 2017 but <strong>retained 10% offtake rights</strong> on the mine's copper concentrate. When the mine operates, LS-Nikko ships 130,000+ tonnes annually to Korea for smelting. Currently dormant.</p>
+    </div>
+  </div>
+
+  <div class="kicker" style="margin-top:14px">DIPLOMATIC + GEOPOLITICAL DIMENSION</div>
+  <table class="tbl">
+    <thead><tr><th>COUNTRY</th><th>ROLE</th><th>STAKE</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Canada</strong></td><td>Home country of First Quantum. Active diplomatic engagement at Global Affairs Canada. Bilateral Investment Treaty + FTA active.</td><td>$10B Canadian investment</td></tr>
+      <tr><td><strong>South Korea</strong></td><td>State investor via KORES + offtake via LS-Nikko. Government supporting both arbitration tracks.</td><td>10% equity + 10% offtake</td></tr>
+      <tr><td><strong>China</strong></td><td>Largest FQM shareholder (Jiangxi Copper, 19.5%). State interests in copper supply security.</td><td>19.5% of FQM parent</td></tr>
+      <tr><td><strong>United States</strong></td><td>Strategic interest in Western Hemisphere copper supply for energy transition + EV manufacturing. Lower profile, actively monitoring. Cobre Panamá is among the largest Western Hemisphere copper sources.</td><td>Strategic / no equity</td></tr>
+      <tr><td><strong>Saudi Arabia</strong></td><td>Pursued via Manara Minerals for Zambian assets — dropped Aug 2025. Could re-enter as Cobre Panamá partner under restart deal.</td><td>None (potential)</td></tr>
+      <tr><td><strong>Japan</strong></td><td>Trading houses (Mitsui &amp; Co., Marubeni) discussed as potential strategic partners for FQM. No deals concluded.</td><td>None</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <div class="clabel">THE GEOPOLITICAL READ</div>
+    <p>Cobre Panamá is unusually <em>multi-aligned</em> for a single mine — Canadian operator, Korean state minority, Chinese state at the parent, Japanese trading-house offtake, Saudi sovereign interest circling. This is partly why the closure has international weight: a successful restart restores a meaningful Western Hemisphere copper source for the energy transition. A failed one signals to capital that Latin American constitutional risk is real.</p>
+  </div>
+
+  <div class="foot">
+    <div class="sec"><em>INTERNATIONAL · 14</em></div>
+    <div>LA COMPAÑÍA · DOSSIER MINERO</div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<!-- 15 · THE ARBITRATION                                              -->
+<!-- ════════════════════════════════════════════════════════════════ -->
+<section class="page">
+  <div class="head">
+    <div class="mark"><em>Cu</em> · COBRE PANAMÁ</div>
+    <div class="pgnum">15 / 21</div>
+  </div>
+
+  <div class="eyebrow">15 · THE ARBITRATION · TWO TRACKS</div>
+  <h1 class="title" style="font-size:38px">A $20-billion claim — <em>and what FQM gave up</em>.</h1>
+  <p class="lede" style="font-size:14px;max-width:6.4in;margin-bottom:12px">First Quantum filed two parallel arbitrations in 2023. In March 2025, in order to negotiate, FQM dropped one and suspended the other. This is the legal architecture of the current dispute.</p>
+
+  <div class="kicker">TRACK 1 · INTERNATIONAL CHAMBER OF COMMERCE (ICC)</div>
+  <table class="tbl">
+    <thead><tr><th>FIELD</th><th>DETAIL</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Filed by</strong></td><td>Minera Panamá S.A. (the local operating company)</td></tr>
+      <tr><td><strong>Date filed</strong></td><td>November 29, 2023 (day after Supreme Court ruling)</td></tr>
+      <tr><td><strong>Venue</strong></td><td>ICC International Court of Arbitration · seated in Miami, Florida</td></tr>
+      <tr><td><strong>Legal basis</strong></td><td>The 2023 concession agreement itself (Law 406) contained an arbitration clause</td></tr>
+      <tr><td><strong>Damages sought</strong></td><td>Recovery of $10B+ investment + lost profits + damages — escalated to <strong>~$20 billion</strong></td></tr>
+      <tr><td><strong>Status</strong></td><td>Originally scheduled hearings Sept 2025 → moved to Feb 2026 at Panama's request → <strong>DISCONTINUED by FQM March 2025</strong> as precondition for negotiation</td></tr>
+    </tbody>
+  </table>
+
+  <div class="kicker" style="margin-top:14px">TRACK 2 · CANADA-PANAMA FREE TRADE AGREEMENT (FTA)</div>
+  <table class="tbl">
+    <thead><tr><th>FIELD</th><th>DETAIL</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Filed by</strong></td><td>First Quantum Minerals Ltd. (Canadian parent)</td></tr>
+      <tr><td><strong>Date filed</strong></td><td>Notice of intent: November 14, 2023</td></tr>
+      <tr><td><strong>Legal basis</strong></td><td>Canada-Panama Free Trade Agreement investor-state dispute settlement (ISDS)</td></tr>
+      <tr><td><strong>Venue</strong></td><td>Investor-state arbitration under FTA rules (ICSID or UNCITRAL)</td></tr>
+      <tr><td><strong>Damages sought</strong></td><td>Similar scale — investment protection treaty damages</td></tr>
+      <tr><td><strong>Status</strong></td><td><strong>SUSPENDED by FQM March 2025</strong> — preserves the right to refile if negotiations fail. Suspension allowed talks to resume.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="kicker" style="margin-top:14px">TRACK 3 · KORES SEPARATE PROCEEDING</div>
+  <div class="callout-light">
+    <div class="clabel">KOREA RESOURCES CORP</div>
+    <p>KORES filed its own arbitration claim against Panama in 2024 — separate from First Quantum's. Filed under the bilateral investment treaty between South Korea and Panama (signed 2002). Status: <strong>still active</strong> — KORES did not drop its claim. South Korean government supporting. This is leverage FQM does not fully control.</p>
+  </div>
+
+  <div class="kicker" style="margin-top:14px">FRANCO-NEVADA · STREAMING PARTNER</div>
+  <div class="callout-light">
+    <div class="clabel">A FOURTH PROCEEDING</div>
+    <p>Franco-Nevada Corporation, FQM's <strong>precious-metals streaming partner</strong> at Cobre Panamá (gold + silver byproducts), filed its own arbitration claim against Panama. Hearings <strong>moved to 2026</strong>. Franco-Nevada's stream effectively gives them a parallel financial interest in the mine's reopening.</p>
+  </div>
+
+  <div class="callout">
+    <div class="clabel">WHY FQM DROPPED THE BIG CLAIM</div>
+    <p>Mulino made <em>"drop arbitration to talk"</em> a precondition publicly and repeatedly. FQM chose to bet that a negotiated restart is worth more than a $20B award (which could take 5+ years to collect, if at all, and would forever close the door to operating in Panama). The March 2025 decision was a <em>strategic concession in service of value</em>.</p>
+  </div>
+
+  <div class="foot">
+    <div class="sec"><em>ARBITRATION · 15</em></div>
+    <div>LA COMPAÑÍA · DOSSIER MINERO</div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<!-- 16 · THE STOCKPILE · APRIL 2026 UNLOCK                            -->
+<!-- ════════════════════════════════════════════════════════════════ -->
+<section class="page">
+  <div class="head">
+    <div class="mark"><em>Cu</em> · COBRE PANAMÁ</div>
+    <div class="pgnum">16 / 21</div>
+  </div>
+
+  <div class="eyebrow">16 · THE STOCKPILE · APRIL 2026 UNLOCK</div>
+  <h1 class="title" style="font-size:38px"><em>38 million tonnes</em> of ore, frozen for two years.</h1>
+  <p class="lede" style="font-size:14px;max-width:6.4in;margin-bottom:12px">On April 7, 2026, Panama formally approved the removal, processing and export of pre-shutdown stockpiled ore. The first real step toward partial restart since closure.</p>
+
+  <div class="data-strip" style="grid-template-columns:repeat(4,1fr)">
+    <div class="cell"><div class="v"><em>38 Mt</em></div><div class="l">Stockpiled ore on site</div></div>
+    <div class="cell"><div class="v"><em>70,000 t</em></div><div class="l">Recoverable copper</div></div>
+    <div class="cell"><div class="v">$<em>250M</em></div><div class="l">Required capex</div></div>
+    <div class="cell"><div class="v"><em>700</em></div><div class="l">New direct jobs (+ 1,600 existing)</div></div>
+  </div>
+
+  <div class="kicker">CHRONOLOGY OF THE UNLOCK</div>
+  <div class="timeline">
+    <div class="tl-row">
+      <div class="tl-date">Mar 2025</div>
+      <div class="tl-c">
+        <h6>Mulino authorizes <em>concentrate export</em> (first wave)</h6>
+        <p>120,000+ tonnes of <strong>finished concentrate</strong> (extracted before closure, blocked at site since 2023) approved for sale. Generated ~$30M in royalties for public infrastructure. Considered an "isolated humanitarian and environmental" act, not a restart.</p>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">Q4 2025</div>
+      <div class="tl-c">
+        <h6>150-MW <em>power unit restart</em></h6>
+        <p>One of the two 150-MW coal units fires up — supports site preservation work + feeds national grid. Symbolic and operational re-engagement of the facility.</p>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">Jan 2, 2026</div>
+      <div class="tl-c">
+        <h6>Mulino's <em>State of the Nation</em> address</h6>
+        <p>Mulino publicly announces government will authorize removal, processing, and export of stockpiled ore. Frames it as environmental risk mitigation (acid rock drainage).</p>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">Apr 7, 2026</div>
+      <div class="tl-c">
+        <h6>Formal <em>government approval</em></h6>
+        <p>Ministry of Commerce and Industry issues formal authorization. FQM announces same day. Processing can begin ~3 months after notice to proceed. Total processing window: ~12 months.</p>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">Apr–May 2026</div>
+      <div class="tl-c">
+        <h6><em>60,000+ job applications</em> in 30 days</h6>
+        <p>FQM opens hiring for 1,000 new positions tied to stockpile processing. Receives 60,000+ applications. Local sentiment indicator: economic pain is overriding mining opposition in the affected zones.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="kicker" style="margin-top:14px">SCOPE OF THE STOCKPILE PROCESSING</div>
+  <div class="g2">
+    <div class="tile">
+      <div class="t-num">WHAT IT IS</div>
+      <h5>Processing of <em>already-extracted</em> ore</h5>
+      <p>Material was mined before November 2023 and stockpiled. No new extraction, drilling, or blasting. The plant grinds + concentrates what's already there. Stockpile contains an estimated 70,000 tonnes of recoverable copper across 38 million tonnes of variable-grade ore.</p>
+    </div>
+    <div class="tile">
+      <div class="t-num">WHAT IT'S NOT</div>
+      <h5>This is <em>not</em> a mine restart</h5>
+      <p>Both FQM and the government explicitly emphasize: processing the stockpile is environmental mitigation + economic salvage, not legal authorization to resume mining. Restart still requires a new constitutional contract via the Asamblea Nacional.</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="clabel">WHY IT WAS APPROVED · THE OFFICIAL JUSTIFICATION</div>
+    <p>The Government framed approval as <em>environmental risk mitigation</em>: extended outdoor stockpile storage creates <strong>acid rock drainage</strong> risk to local watersheds. Processing converts the material into concentrate (manageable) and tailings (stored in the engineered tailings facility). The fiscal benefit is incidental, technically. In practice, the move generates ~$700M+ in copper revenue at current prices — meaningful to both parties.</p>
+  </div>
+
+  <div class="foot">
+    <div class="sec"><em>THE STOCKPILE · 16</em></div>
+    <div>LA COMPAÑÍA · DOSSIER MINERO</div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<!-- 17 · THE AUDIT · SGS                                              -->
+<!-- ════════════════════════════════════════════════════════════════ -->
+<section class="page">
+  <div class="head">
+    <div class="mark"><em>Cu</em> · COBRE PANAMÁ</div>
+    <div class="pgnum">17 / 21</div>
+  </div>
+
+  <div class="eyebrow">17 · THE AUDIT · SGS PANAMA CONTROL SERVICES</div>
+  <h1 class="title" style="font-size:38px">The <em>independent review</em> that's holding everything.</h1>
+  <p class="lede" style="font-size:14px;max-width:6.4in;margin-bottom:12px">Mulino made the audit a precondition for any restart decision. SGS — international inspection firm — is the auditor. Six preliminary reports delivered. The final one was due May 29, 2026 — and was postponed.</p>
+
+  <div class="kicker">THE AUDITOR</div>
+  <table class="tbl">
+    <thead><tr><th>FIELD</th><th>DETAIL</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Firm</strong></td><td>SGS Panama Control Services Inc.</td></tr>
+      <tr><td><strong>Parent</strong></td><td>SGS SA (Geneva) — world's largest inspection / testing firm</td></tr>
+      <tr><td><strong>Mandate from</strong></td><td>Ministry of Environment (MiAmbiente) of Panama</td></tr>
+      <tr><td><strong>Initial cost / scope</strong></td><td>Multi-million dollar contract; multi-disciplinary audit</td></tr>
+      <tr><td><strong>Status of final report</strong></td><td><strong>Postponed indefinitely</strong> as of May 29, 2026 — SGS requested extension for last-minute verifications + annex organization</td></tr>
+    </tbody>
+  </table>
+
+  <div class="kicker" style="margin-top:14px">AUDIT SCOPE · THREE PILLARS</div>
+  <div class="g3">
+    <div class="tile">
+      <div class="t-num">PILLAR 1</div>
+      <h5><em>Legal + Financial</em></h5>
+      <p>In-depth audit of legal, fiscal, and tax components. Has FQM complied with every obligation under prior contracts? What are the outstanding liabilities? Tax review.</p>
+    </div>
+    <div class="tile">
+      <div class="t-num">PILLAR 2</div>
+      <h5><em>Operational</em></h5>
+      <p>Review of technical compliance and labor status of the mine. Equipment condition. Workforce safety. Care and maintenance integrity.</p>
+    </div>
+    <div class="tile">
+      <div class="t-num">PILLAR 3</div>
+      <h5><em>Sustainability</em></h5>
+      <p>Environmental performance benchmarked against regulatory framework. Tailings, water, biodiversity, emissions, community impact. The most politically contentious pillar.</p>
+    </div>
+  </div>
+
+  <div class="kicker" style="margin-top:14px">EARLY FINDINGS (preliminary reports released)</div>
+  <ul style="list-style:none;font-family:var(--sans);font-size:13px;color:var(--ink-2);line-height:1.7">
+    <li>· <strong>Acid rock drainage</strong> is the dominant environmental concern. Audit, ~85% complete in mid-March 2026, highlighted this risk as central — and validated stockpile processing as a viable mitigation.</li>
+    <li>· FQM disputes that the mine uses mercury, sulphuric acid (in non-internal context), or cyanide — categorized by company as "scare words" used by NGOs.</li>
+    <li>· Tailings facility integrity confirmed as stable during care + maintenance.</li>
+    <li>· Watershed impact studies inconclusive on long-term sediment changes — additional sampling required.</li>
+    <li>· Health study independently noted increase in kidney disease near mine site since 2014 (per Guardian) — relationship to mining not established by the SGS audit.</li>
+  </ul>
+
+  <div class="callout-light">
+    <div class="clabel">WHY THE POSTPONEMENT MATTERS</div>
+    <p>Mulino had publicly promised a decision by June 2026. The audit was the analytical basis for that decision. With the audit pushed to indefinite future, the June timeline is no longer credible. Two interpretations: (a) genuine technical complexity, (b) political tactical delay to avoid making an unpopular decision during a sensitive moment. Both are likely true.</p>
+  </div>
+
+  <div class="foot">
+    <div class="sec"><em>THE AUDIT · 17</em></div>
+    <div>LA COMPAÑÍA · DOSSIER MINERO</div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<!-- 18 · ENVIRONMENTAL DIMENSION                                      -->
+<!-- ════════════════════════════════════════════════════════════════ -->
+<section class="page">
+  <div class="head">
+    <div class="mark"><em>Cu</em> · COBRE PANAMÁ</div>
+    <div class="pgnum">18 / 21</div>
+  </div>
+
+  <div class="eyebrow">18 · THE ENVIRONMENTAL DIMENSION</div>
+  <h1 class="title" style="font-size:38px">The <em>biological corridor</em> and the watershed.</h1>
+  <p class="lede" style="font-size:14px;max-width:6.4in;margin-bottom:12px">The mine sits inside the Mesoamerican Biological Corridor — one of the most biodiverse regions on Earth. The 2023 ruling cited this directly. The environmental case is not academic.</p>
+
+  <div class="kicker">CORE ENVIRONMENTAL CONCERNS</div>
+  <div class="g2">
+    <div class="tile">
+      <div class="t-num">CONCERN 01 · ACTIVE</div>
+      <h5><em>Acid rock drainage</em></h5>
+      <p>Open stockpiles of sulfide-bearing ore generate acidic leachate when exposed to rain. Without processing, this can leach into local watersheds. Was the official environmental justification for April 2026 stockpile-processing approval.</p>
+    </div>
+    <div class="tile">
+      <div class="t-num">CONCERN 02 · ACTIVE</div>
+      <h5><em>Tailings integrity</em></h5>
+      <p>The tailings storage facility (TSF) is a massive engineered structure holding ~500 million tonnes of mine waste. Long-term seismic + hydrological stability is a permanent risk. SGS audit confirmed current integrity during care + maintenance.</p>
+    </div>
+    <div class="tile">
+      <div class="t-num">CONCERN 03 · CONSTITUTIONAL</div>
+      <h5><em>Mesoamerican Biological Corridor</em></h5>
+      <p>The mine sits within the legally protected corridor. The Supreme Court's 2023 ruling cited this directly as part of the constitutional violation. Any restart must address this designation explicitly.</p>
+    </div>
+    <div class="tile">
+      <div class="t-num">CONCERN 04 · CONTESTED</div>
+      <h5><em>Mercury / cyanide / sulfuric acid</em></h5>
+      <p>NGO claims that the mine uses these compounds. <strong>FQM explicitly denies all three</strong> — categorizes the claims as "scare words." The truth: small amounts of sulfuric acid are used in copper concentrate processing globally; the mine maintains it does not depend on imported mercury or cyanide.</p>
+    </div>
+  </div>
+
+  <div class="kicker" style="margin-top:14px">CONTESTED HEALTH SIGNAL</div>
+  <div class="callout-light">
+    <div class="clabel">KIDNEY DISEASE NEAR THE SITE</div>
+    <p>The Guardian reported an increase in chronic kidney disease in communities near the mine since 2014, when site development began. The relationship is suggestive but <em>not causally established</em>. Possible causes include: heat stress, water quality changes, dust exposure, ergonomic factors. Independent epidemiological study has not been completed. SGS audit did not establish causation.</p>
+  </div>
+
+  <div class="kicker" style="margin-top:12px">WATER + AIR</div>
+  <div class="g2">
+    <div class="tile">
+      <div class="t-num">WATER MANAGEMENT</div>
+      <h5>Closed-loop on paper</h5>
+      <p>FQM maintains the mine uses a closed-loop water recycling system and does not draw from the Panama Canal watershed (a common but inaccurate claim — Cobre Panamá is 60+ km from the canal). Local streams (Río Caimito, Río San Juan) drainage area overlaps the concession.</p>
+    </div>
+    <div class="tile">
+      <div class="t-num">AIR + DUST</div>
+      <h5>Dust + power-plant emissions</h5>
+      <p>Open-pit operations generate dust. On-site coal power plant emits SO₂ + particulates. FQM has emission controls in place but local residents report respiratory complaints. Continuous monitoring is contractually required.</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="clabel">THE REAL ENVIRONMENTAL FRAME FOR ANY RESTART</div>
+    <p>The legal requirements set by the 2023 ruling are <em>concrete</em>: (1) updated ESIA from 2026 (the 2011 one is invalid), (2) a legally binding proactive environmental program (not reactive mitigation), (3) explicit acknowledgment of the Mesoamerican Biological Corridor designation, (4) consultation with Ngäbe-Buglé authorities, (5) financial assurance bond commensurate with closure costs, (6) third-party environmental monitoring with public reporting.</p>
+  </div>
+
+  <div class="foot">
+    <div class="sec"><em>ENVIRONMENTAL · 18</em></div>
+    <div>LA COMPAÑÍA · DOSSIER MINERO</div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<!-- 19 · ECONOMIC IMPACT · LOCAL + NATIONAL                           -->
+<!-- ════════════════════════════════════════════════════════════════ -->
+<section class="page">
+  <div class="head">
+    <div class="mark"><em>Cu</em> · COBRE PANAMÁ</div>
+    <div class="pgnum">19 / 21</div>
+  </div>
+
+  <div class="eyebrow">19 · ECONOMIC IMPACT · LOCAL + NATIONAL</div>
+  <h1 class="title" style="font-size:38px">A <em>$10-billion hole</em> in Panama's economy.</h1>
+  <p class="lede" style="font-size:14px;max-width:6.4in;margin-bottom:12px">Two years of closure have stress-tested the country's fiscal health and devastated Donoso district. The longer the closure runs, the more the political calculus shifts.</p>
+
+  <div class="kicker">PRE-CLOSURE CONTRIBUTION TO PANAMA</div>
+  <div class="data-strip" style="grid-template-columns:repeat(4,1fr)">
+    <div class="cell"><div class="v"><em>5%</em></div><div class="l">Share of national GDP</div></div>
+    <div class="cell"><div class="v"><em>75%</em></div><div class="l">Share of national exports</div></div>
+    <div class="cell"><div class="v"><em>3.5%</em></div><div class="l">Of total tax revenue</div></div>
+    <div class="cell"><div class="v">$<em>1.5B</em></div><div class="l">Foreign exchange annually</div></div>
+  </div>
+
+  <div class="kicker" style="margin-top:8px">CLOSURE COST (CUMULATIVE 2023–2026)</div>
+  <div class="data-strip" style="grid-template-columns:repeat(4,1fr)">
+    <div class="cell"><div class="v">$<em>1.7B</em></div><div class="l">Lost activity (protest period alone)</div></div>
+    <div class="cell"><div class="v"><em>54,000</em></div><div class="l">Direct + indirect jobs lost</div></div>
+    <div class="cell"><div class="v">$<em>2B+</em></div><div class="l">Regional GDP loss (Donoso area)</div></div>
+    <div class="cell"><div class="v"><em>~2%</em></div><div class="l">Drag on national GDP per year</div></div>
+  </div>
+
+  <div class="kicker" style="margin-top:14px">EMPLOYMENT PROFILE</div>
+  <table class="tbl">
+    <thead><tr><th>CATEGORY</th><th>AT PEAK (2022)</th><th>POST-CLOSURE (2024)</th><th>POST-STOCKPILE APPROVAL (Apr 2026)</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Direct workforce</strong></td><td>~7,000</td><td>~1,400</td><td>~1,600 + 700 incoming (= 2,300)</td></tr>
+      <tr><td><strong>Indirect employment</strong></td><td>~40,000</td><td>~10,000</td><td>~12,000 + growing</td></tr>
+      <tr><td><strong>Community program participants</strong></td><td>n/a</td><td>~9,000</td><td>~9,100+</td></tr>
+      <tr><td><strong>Estimated job applications (2026 hiring)</strong></td><td>—</td><td>—</td><td><strong>60,000+ in 30 days</strong></td></tr>
+    </tbody>
+  </table>
+
+  <div class="kicker" style="margin-top:14px">LOCAL IMPACT · DONOSO DISTRICT</div>
+  <div class="callout-light">
+    <div class="clabel">COMMUNITIES DIRECTLY AFFECTED</div>
+    <p>Donoso district has ~10,000 residents. Surrounding districts of <strong>La Pintada</strong>, <strong>Omar Torrijos</strong>, <strong>Coclé del Norte</strong>, and adjacent Ngäbe-Buglé villages depend on the mine economy. Key communities: Río Belén, Palmilla, Platanal, Aguacate, Limón, Quebrada Grande, Chalón, Miguel de la Borda, Río Indio, Govea, Río Diego. <strong>9,123 people benefited</strong> from Cobre Panamá community programs since March 2025 (cleaning, transport, water systems, transport service donations).</p>
+  </div>
+
+  <div class="callout">
+    <div class="clabel">THE POLITICAL FEEDBACK LOOP</div>
+    <p>Local communities <em>now mostly favor restart</em> — a complete inversion from late 2023. Cause: economic suffering. The Mulino administration cites this shift as one rationale for negotiation. Felipe Chapman (Economy Minister, May 2026): "Negative opinion has dropped from 80% to 50%. There is an agnostic block that could be persuaded under favorable conditions."</p>
+  </div>
+
+  <div class="kicker" style="margin-top:6px">PROJECTED ECONOMIC RECOVERY (if restart)</div>
+  <ul style="list-style:none;font-family:var(--sans);font-size:12.5px;color:var(--ink-2);line-height:1.7">
+    <li>· Panama GDP growth: from 4% (2025) to <strong>6%+ by 2027</strong> (per chambers of commerce projection)</li>
+    <li>· Mining sector contribution: restored to <strong>1.8-2.1% of GDP</strong></li>
+    <li>· Employment restoration: <strong>4,700 direct + multiplier of 8-10K indirect</strong> at full operation</li>
+    <li>· Foreign exchange: <strong>$1.2-1.8B annually</strong> back into balance of payments</li>
+  </ul>
+
+  <div class="foot">
+    <div class="sec"><em>ECONOMIC · 19</em></div>
+    <div>LA COMPAÑÍA · DOSSIER MINERO</div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<!-- 20 · WHAT COMES NEXT · SCENARIOS                                  -->
+<!-- ════════════════════════════════════════════════════════════════ -->
+<section class="page">
+  <div class="head">
+    <div class="mark"><em>Cu</em> · COBRE PANAMÁ</div>
+    <div class="pgnum">20 / 21</div>
+  </div>
+
+  <div class="eyebrow">20 · WHAT COMES NEXT · 2026–2028 SCENARIOS</div>
+  <h1 class="title" style="font-size:38px">Four paths <em>through the year</em>.</h1>
+  <p class="lede" style="font-size:14px;max-width:6.4in;margin-bottom:12px">Mulino has a decision to make. The audit will eventually arrive. The arbitration tracks can be reactivated. These are the realistic scenarios.</p>
+
+  <div class="kicker">SCENARIO A · PHASED RESTART (LIKELIEST)</div>
+  <div class="callout-light">
+    <div class="clabel">PROBABILITY: ~55%</div>
+    <p><strong>Path</strong>: Audit releases late 2026 → Cabinet decision Q4 2026 → Asamblea draft new mining law early 2027 → vote mid-2027 → restart H2 2027. <strong>FQM concedes</strong> on state ownership of resources, environmental bonding, increased royalty. Stockpile processing continues throughout. Production resumes 2028. <strong>Outcome</strong>: 200-300K t Cu/yr at full ramp by 2029, but under significantly stricter terms.</p>
+  </div>
+
+  <div class="kicker" style="margin-top:10px">SCENARIO B · INDEFINITE LIMBO</div>
+  <div class="callout-light">
+    <div class="clabel">PROBABILITY: ~25%</div>
+    <p><strong>Path</strong>: Audit reveals environmental issues that make restart politically impossible. Stockpile processing concludes early 2027 with ~70K t Cu sold. Mulino punts decision to next administration (2029). Mine stays in indefinite care + maintenance ($15-20M/year). <strong>Outcome</strong>: Slow value erosion. KORES arbitration proceeds. Workforce shrinks. The asset becomes a stranded $10B investment.</p>
+  </div>
+
+  <div class="kicker" style="margin-top:10px">SCENARIO C · ARBITRATION REACTIVATION</div>
+  <div class="callout-light">
+    <div class="clabel">PROBABILITY: ~12%</div>
+    <p><strong>Path</strong>: Negotiations collapse. FQM reactivates Canada-Panama FTA arbitration (suspended, not discontinued). KORES claim proceeds. Decisions arrive 2028-2030 — potentially $5-20B award to FQM. <strong>Outcome</strong>: Win on damages, lose the asset. Panama becomes much harder for future mining capital. Long-term reputation damage to both sides.</p>
+  </div>
+
+  <div class="kicker" style="margin-top:10px">SCENARIO D · STRATEGIC PARTNER ENTERS</div>
+  <div class="callout-light">
+    <div class="clabel">PROBABILITY: ~8%</div>
+    <p><strong>Path</strong>: A new state-anchored investor (Saudi Manara, Japanese consortium, or even a Panamanian state co-investment vehicle) takes meaningful equity in MPSA. Provides political cover + capital + diplomatic shield. <strong>Restart 2028</strong> under tripartite governance. <strong>Outcome</strong>: Less revenue per tonne for FQM, but lower political risk going forward. Could reshape the Latin American mining template.</p>
+  </div>
+
+  <div class="callout">
+    <div class="clabel">WHAT WATCHERS ARE TRACKING</div>
+    <p>(1) The SGS final report (delayed; expected H2 2026). (2) Mulino's mid-year address — will it commit to a decision? (3) FQM Q2 2026 earnings — restart timeline guidance. (4) Asamblea Nacional calendar — any draft mining law? (5) KORES arbitration filings. (6) Public sentiment polls in Donoso vs. Panama City — divergence is widening. (7) Copper price (currently ~$10K/t) — every $1K/t move shifts the negotiation math by ~$300M annually.</p>
+  </div>
+
+  <div class="callout-light" style="border-left-color:var(--forest)">
+    <div class="clabel" style="color:var(--forest)">IMPLICATIONS FOR VETA + LA COMPAÑÍA</div>
+    <p>Three structural lessons for any new Panama mining initiative: (1) <strong>Asamblea ratification is non-negotiable</strong> — bilateral concession without legislative cover is fragile. (2) <strong>Indigenous consultation is now constitutional</strong> — Ngäbe-Buglé and other Comarca-adjacent projects need congresos generales aligned from day one. (3) <strong>Streaming + JV structures are politically more viable than equity concessions</strong> — a Panamanian state entity retaining mineral title and granting metals streams to operators is what Mulino's team is exploring. The era of generous bilateral concessions is over.</p>
+  </div>
+
+  <div class="foot">
+    <div class="sec"><em>SCENARIOS · 20</em></div>
+    <div>LA COMPAÑÍA · DOSSIER MINERO</div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<!-- 21 · BIBLIOGRAPHY                                                 -->
+<!-- ════════════════════════════════════════════════════════════════ -->
+<section class="page">
+  <div class="head">
+    <div class="mark"><em>Cu</em> · COBRE PANAMÁ</div>
+    <div class="pgnum">21 / 21</div>
+  </div>
+
+  <div class="eyebrow">21 · BIBLIOGRAPHY · SOURCES</div>
+  <h1 class="title" style="font-size:38px">Where this <em>brief</em> comes from.</h1>
+  <p class="lede" style="font-size:13px;max-width:6.4in;margin-bottom:12px">Compiled from First Quantum corporate filings, Panamanian press, international mining journals, NGO reporting, and court records. All publicly available.</p>
+
+  <div class="kicker">COMPANY DOCUMENTS</div>
+  <ul style="list-style:none;font-family:var(--sans);font-size:11px;color:var(--ink-2);line-height:1.65;margin-bottom:14px">
+    <li>· First Quantum Minerals — corporate site, leadership profiles, Q1 2026 results (first-quantum.com)</li>
+    <li>· Press releases on stockpile approval (April 7, 2026), arbitration suspension (March 2025)</li>
+    <li>· Franco-Nevada Corp Form 6-K filings (SEC EDGAR)</li>
+    <li>· KORES corporate communications (Korean Ministry of Industry filings)</li>
+  </ul>
+
+  <div class="kicker">PANAMANIAN PRESS</div>
+  <ul style="list-style:none;font-family:var(--sans);font-size:11px;color:var(--ink-2);line-height:1.65;margin-bottom:14px">
+    <li>· La Prensa Panamá — historical reporting on Petaquilla + Fifer (prensa.com)</li>
+    <li>· La Estrella de Panamá — audit + decision timeline (laestrella.com.pa)</li>
+    <li>· Newsroom Panama — Fifer biography + community programs (newsroompanama.com)</li>
+    <li>· TVN-2, Telemetro — protest coverage 2023 (television archives)</li>
+  </ul>
+
+  <div class="kicker">INTERNATIONAL MINING + BUSINESS PRESS</div>
+  <ul style="list-style:none;font-family:var(--sans);font-size:11px;color:var(--ink-2);line-height:1.65;margin-bottom:14px">
+    <li>· Mining.com — extensive Cobre Panamá coverage (mining.com)</li>
+    <li>· Mining Technology, The Northern Miner, Mining Journal</li>
+    <li>· Bloomberg, Reuters — arbitration + negotiation reporting</li>
+    <li>· BNamericas, Fastmarkets — market analysis</li>
+    <li>· Investing News Network (INN), Canadian Mining Journal</li>
+    <li>· Globe and Mail — Tristan Pascall CEO appointment reporting</li>
+  </ul>
+
+  <div class="kicker">LEGAL + REGULATORY</div>
+  <ul style="list-style:none;font-family:var(--sans);font-size:11px;color:var(--ink-2);line-height:1.65;margin-bottom:14px">
+    <li>· Supreme Court of Panama — Ruling on Law 406, November 28, 2023 (corte-suprema.gob.pa)</li>
+    <li>· Asamblea Nacional — Law 9 of 1997, Law 406 of 2023, Law 407 of 2023 (asamblea.gob.pa)</li>
+    <li>· ICC International Court of Arbitration — case docket (Miami)</li>
+    <li>· Canada-Panama Free Trade Agreement (Global Affairs Canada)</li>
+    <li>· Dentons Mining Law Blog — legal commentary</li>
+    <li>· Business &amp; Human Rights Resource Centre</li>
+  </ul>
+
+  <div class="kicker">CIVIL SOCIETY + NGO REPORTING</div>
+  <ul style="list-style:none;font-family:var(--sans);font-size:11px;color:var(--ink-2);line-height:1.65;margin-bottom:14px">
+    <li>· International Trade Union Confederation (ITUC) — Global Rights Index 2024</li>
+    <li>· Peoples Dispatch — SUNTRACS coverage</li>
+    <li>· Centro de Incidencia Ambiental (CIAM) Panamá</li>
+    <li>· The Guardian — health concern reporting near mine site</li>
+  </ul>
+
+  <div class="kicker">ACADEMIC + HISTORICAL</div>
+  <ul style="list-style:none;font-family:var(--sans);font-size:11px;color:var(--ink-2);line-height:1.65;margin-bottom:14px">
+    <li>· SciELO Mexico — "The history of mining and mineral exploration in Panama" (2020)</li>
+    <li>· University of Panama, Universidad Tecnológica de Panamá — environmental impact studies</li>
+    <li>· Wikipedia entries (Cobre mine, Panama · Richard Fifer · First Quantum Minerals) — used as cross-reference, not primary</li>
+  </ul>
+
+  <div class="callout">
+    <div class="clabel">METHODOLOGY NOTE</div>
+    <p>This document compiles facts from publicly available reporting. Where sources conflict (e.g., on workforce numbers, royalty rates, environmental claims), the figure most consistent with multiple independent reports is used. Quotations from named officials are sourced from press conferences, earnings calls, or interviews. Forward-looking scenarios are <em>analytical</em>, not predictive. The picture is current to <strong>June 2, 2026</strong>.</p>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;padding-top:18px;border-top:0.5px solid var(--line-2);margin-top:18px">
+    <div>
+      <div style="font-family:var(--mono);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;margin-bottom:4px">COMPILED BY</div>
+      <div style="font-family:var(--serif);font-size:14px;color:var(--ink);font-weight:500">Abraham Eid</div>
+      <div style="font-family:var(--sans);font-size:11px;color:var(--ink-3);margin-top:2px">La Compañía · Boquete</div>
+    </div>
+    <div>
+      <div style="font-family:var(--mono);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;margin-bottom:4px">PREPARED FOR</div>
+      <div style="font-family:var(--serif);font-size:14px;color:var(--ink);font-weight:500">VETA · Internal</div>
+      <div style="font-family:var(--sans);font-size:11px;color:var(--ink-3);margin-top:2px">Mineral venture intelligence</div>
+    </div>
+    <div>
+      <div style="font-family:var(--mono);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;margin-bottom:4px">VERSION</div>
+      <div style="font-family:var(--serif);font-size:14px;color:var(--ink);font-weight:500">v1.0 · MMXXVI</div>
+      <div style="font-family:var(--sans);font-size:11px;color:var(--ink-3);margin-top:2px">June 2026</div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div class="sec"><em>BIBLIOGRAPHY · 21</em></div>
+    <div>LA COMPAÑÍA · DOSSIER MINERO</div>
+  </div>
+</section>
+
+</div>
+
+</body>
+</html>
