@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Beach Party · Pedasí · 06.06.2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{background:#070912}
+
+  .flyer{
+    position:relative;
+    width:1080px;
+    height:1350px;
+    overflow:hidden;
+    color:#fbf6e8;
+    font-family:'Inter',sans-serif;
+    isolation:isolate;
+  }
+
+  /* ===== BACKGROUND SKY GRADIENT — sunset that lands in deep ocean ===== */
+  .sky{
+    position:absolute;inset:0;
+    background:
+      radial-gradient(ellipse 60% 38% at 50% 46%, rgba(255,221,150,0.55) 0%, rgba(255,221,150,0) 60%),
+      radial-gradient(ellipse 95% 45% at 50% 56%, rgba(224,122,95,0.78) 0%, rgba(224,122,95,0) 70%),
+      linear-gradient(180deg,
+        #06070f 0%,
+        #0d1326 12%,
+        #1c1f3a 22%,
+        #3a2240 32%,
+        #6b2d3a 42%,
+        #a0432f 52%,
+        #c95b34 60%,
+        #d97241 66%,
+        #b25535 73%,
+        #5d2520 81%,
+        #1a1318 89%,
+        #06070f 100%
+      );
+  }
+
+  /* subtle horizontal haze band where horizon would sit */
+  .haze{
+    position:absolute;
+    left:0;right:0;
+    top:820px;
+    height:70px;
+    background:linear-gradient(180deg, rgba(255,200,140,0.0) 0%, rgba(255,200,140,0.22) 50%, rgba(255,200,140,0) 100%);
+    filter:blur(4px);
+    z-index:2;
+    mix-blend-mode:screen;
+  }
+
+  /* ===== SUN DISC ===== */
+  .sun{
+    position:absolute;
+    top:380px;left:50%;
+    transform:translateX(-50%);
+    width:500px;height:500px;
+    border-radius:50%;
+    background:
+      radial-gradient(circle at 50% 42%, #ffeebd 0%, #fcd17a 18%, #f6a85a 42%, #e07a5f 72%, #c25237 100%);
+    box-shadow:
+      0 0 100px 30px rgba(252,209,122,0.45),
+      0 0 260px 90px rgba(224,122,95,0.32);
+    z-index:1;
+  }
+  /* subtle horizon cut on the sun */
+  .sun-mask{
+    position:absolute;
+    top:830px;left:0;right:0;
+    height:50px;
+    background:linear-gradient(180deg, rgba(15,18,30,0) 0%, rgba(15,18,30,0.45) 100%);
+    z-index:3;
+  }
+
+  /* ===== OCEAN REFLECTION ===== */
+  .ocean{
+    position:absolute;
+    left:0;right:0;
+    top:870px;
+    height:340px;
+    background:
+      linear-gradient(180deg,
+        rgba(8,11,22,0.20) 0%,
+        rgba(8,11,22,0.55) 28%,
+        rgba(6,8,16,0.85) 65%,
+        #06070f 100%
+      );
+    z-index:3;
+  }
+  .light-streak{
+    position:absolute;
+    left:50%;
+    top:860px;
+    width:115px;
+    transform:translateX(-50%);
+    height:340px;
+    background:linear-gradient(180deg,
+      rgba(255,220,150,0.75) 0%,
+      rgba(252,209,122,0.40) 18%,
+      rgba(224,122,95,0.22) 40%,
+      rgba(0,0,0,0) 85%);
+    filter:blur(10px);
+    z-index:4;
+    mix-blend-mode:screen;
+    opacity:0.95;
+  }
+  .ripple{
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+    background:rgba(255,224,170,0.85);
+    border-radius:50%;
+    z-index:5;
+    mix-blend-mode:screen;
+    filter:blur(0.4px);
+  }
+  .r1{top:885px;width:100px;height:2px;opacity:0.95}
+  .r2{top:920px;width:170px;height:2px;opacity:0.7}
+  .r3{top:960px;width:255px;height:2px;opacity:0.5}
+  .r4{top:1005px;width:370px;height:2px;opacity:0.35}
+  .r5{top:1060px;width:510px;height:2px;opacity:0.22}
+  .r6{top:1130px;width:670px;height:1.5px;opacity:0.14}
+
+  /* faint horizon light line */
+  .horizon{
+    position:absolute;
+    top:866px;
+    left:0;right:0;
+    height:1.5px;
+    background:linear-gradient(90deg, transparent 0%, rgba(255,200,140,0.5) 30%, rgba(255,220,170,0.85) 50%, rgba(255,200,140,0.5) 70%, transparent 100%);
+    z-index:6;
+    filter:blur(0.6px);
+    opacity:0.85;
+  }
+
+  /* ===== STARS ===== */
+  .star{
+    position:absolute;
+    width:2px;height:2px;
+    background:#fbf6e8;
+    border-radius:50%;
+    z-index:7;
+    box-shadow:0 0 4px rgba(251,246,232,0.95);
+  }
+
+  /* ===== PALM SILHOUETTES ===== */
+  .palm{position:absolute;z-index:8;pointer-events:none}
+  .palm-left{top:-50px;left:-100px;width:480px;transform:rotate(-6deg)}
+  .palm-right{top:-30px;right:-140px;width:500px;transform:rotate(8deg) scaleX(-1)}
+  .palm-bl{display:none}
+
+  /* ===== TOP META BAR ===== */
+  .top-bar{
+    position:absolute;
+    top:60px;left:60px;right:60px;
+    display:flex;justify-content:space-between;align-items:center;
+    z-index:20;
+    font-family:'Inter',sans-serif;
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:0.32em;
+    text-transform:uppercase;
+    color:rgba(251,246,232,0.85);
+  }
+  .top-bar .left{display:flex;align-items:center;gap:14px}
+  .top-bar .left::before{
+    content:"";
+    display:inline-block;
+    width:24px;height:1px;
+    background:rgba(212,184,122,0.95);
+  }
+  .top-bar .right{color:#d4b87a}
+
+  /* ===== HERO TITLE ===== */
+  .hero{
+    position:absolute;
+    top:220px;
+    left:0;right:0;
+    text-align:center;
+    z-index:10;
+  }
+  .hero .line1, .hero .line2{
+    display:block;
+    font-family:'Instrument Serif', Georgia, serif;
+    font-style:italic;
+    font-weight:400;
+    color:#fbf6e8;
+    line-height:0.86;
+    letter-spacing:-0.028em;
+    text-shadow:0 10px 80px rgba(0,0,0,0.55);
+  }
+  .hero .line1{font-size:220px}
+  .hero .line2{font-size:220px;margin-top:-16px}
+  .hero .line2 .dot{
+    color:#f4b942;
+    font-style:italic;
+  }
+
+  /* ===== LOCATION + DATE ===== */
+  .center-info{
+    position:absolute;
+    top:920px;
+    left:0;right:0;
+    text-align:center;
+    z-index:15;
+  }
+  .place{
+    font-family:'Instrument Serif', Georgia, serif;
+    font-style:italic;
+    font-weight:400;
+    font-size:78px;
+    line-height:1;
+    color:#fbf6e8;
+    letter-spacing:-0.022em;
+    margin-bottom:10px;
+    text-shadow:0 4px 30px rgba(0,0,0,0.55);
+  }
+  .place .dot-orn{
+    color:#f4b942;
+    margin:0 14px;
+    vertical-align:14px;
+    font-size:34px;
+    font-style:normal;
+  }
+  .venue{
+    font-family:'Fraunces', Georgia, serif;
+    font-style:italic;
+    font-weight:400;
+    font-size:32px;
+    line-height:1;
+    color:#d4b87a;
+    margin-bottom:22px;
+    letter-spacing:-0.005em;
+  }
+  .date-row{
+    font-family:'Inter',sans-serif;
+    font-size:17px;
+    font-weight:700;
+    letter-spacing:0.40em;
+    text-transform:uppercase;
+    color:#d4b87a;
+  }
+  .date-row .sep{
+    display:inline-block;
+    margin:0 12px;
+    color:rgba(212,184,122,0.45);
+  }
+
+  /* ===== DETAILS STRIP ===== */
+  .details-wrap{
+    position:absolute;
+    top:1115px;
+    left:80px;right:80px;
+    z-index:15;
+    text-align:center;
+  }
+  .rule{
+    height:1px;
+    background:linear-gradient(90deg,
+      rgba(212,184,122,0) 0%,
+      rgba(212,184,122,0.45) 28%,
+      rgba(212,184,122,0.7) 50%,
+      rgba(212,184,122,0.45) 72%,
+      rgba(212,184,122,0) 100%);
+    margin:0 auto 18px;
+    width:100%;
+  }
+  .details{
+    font-family:'Fraunces', Georgia, serif;
+    font-weight:400;
+    font-style:italic;
+    font-size:30px;
+    line-height:1.25;
+    color:rgba(251,246,232,0.98);
+    letter-spacing:0.005em;
+  }
+  .details .dot{
+    color:#f4b942;
+    margin:0 12px;
+    font-style:normal;
+  }
+  .details .ymas{
+    color:#d4b87a;
+  }
+  .rule-2{margin-top:18px;margin-bottom:0}
+
+  /* ===== FOOTER ===== */
+  .footer{
+    position:absolute;
+    bottom:40px;
+    left:60px;right:60px;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    z-index:25;
+  }
+  .logo-block{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    justify-content:flex-end;
+    gap:0;
+    padding-bottom:24px;
+  }
+  .sora-mark{
+    font-family:'Instrument Serif', Georgia, serif;
+    font-weight:400;
+    font-size:72px;
+    line-height:0.9;
+    letter-spacing:0.32em;
+    text-indent:0.32em;
+    color:#fbf6e8;
+  }
+
+  /* QR block */
+  .qr-block{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-end;
+    gap:6px;
+    max-width:240px;
+  }
+  .qr-cta{
+    font-family:'Fraunces', Georgia, serif;
+    font-style:italic;
+    font-weight:400;
+    font-size:19px;
+    line-height:1.15;
+    color:#fbf6e8;
+    text-align:right;
+    margin-bottom:4px;
+  }
+  .qr-frame{
+    width:140px;height:140px;
+    background:#fbf6e8;
+    padding:12px;
+    border-radius:6px;
+    box-shadow:0 4px 18px rgba(0,0,0,0.25);
+    position:relative;
+  }
+  .qr-frame::before{
+    content:"";
+    position:absolute;
+    inset:-5px;
+    border:1px solid rgba(212,184,122,0.55);
+    border-radius:9px;
+    pointer-events:none;
+  }
+  .qr-frame svg{width:100% !important;height:100% !important;display:block}
+  .qr-meta{
+    font-family:'Inter',sans-serif;
+    font-weight:700;
+    font-size:10px;
+    letter-spacing:0.42em;
+    text-transform:uppercase;
+    color:#d4b87a;
+    text-align:right;
+    margin-top:4px;
+  }
+
+  /* ===== GRAIN OVERLAY ===== */
+  .grain{
+    position:absolute;inset:0;
+    z-index:50;
+    opacity:0.16;
+    mix-blend-mode:overlay;
+    pointer-events:none;
+  }
+
+</style>
+</head>
+<body>
+
+<div class="flyer">
+
+  <!-- Sky -->
+  <div class="sky"></div>
+
+  <!-- Stars -->
+  <div class="star" style="top:90px;left:140px"></div>
+  <div class="star" style="top:130px;left:300px;width:3px;height:3px"></div>
+  <div class="star" style="top:80px;left:480px;opacity:0.85"></div>
+  <div class="star" style="top:170px;left:670px"></div>
+  <div class="star" style="top:110px;left:870px;width:3px;height:3px"></div>
+  <div class="star" style="top:220px;left:200px;opacity:0.55"></div>
+  <div class="star" style="top:260px;left:580px;opacity:0.6"></div>
+  <div class="star" style="top:320px;left:80px;opacity:0.45"></div>
+  <div class="star" style="top:300px;left:960px;opacity:0.6"></div>
+  <div class="star" style="top:380px;left:380px;opacity:0.4"></div>
+  <div class="star" style="top:420px;left:780px;opacity:0.35"></div>
+
+  <!-- Sun -->
+  <div class="sun"></div>
+  <div class="sun-mask"></div>
+
+  <!-- Horizon light -->
+  <div class="horizon"></div>
+  <div class="haze"></div>
+
+  <!-- Ocean -->
+  <div class="ocean"></div>
+
+  <!-- Light streak + ripples -->
+  <div class="light-streak"></div>
+  <div class="ripple r1"></div>
+  <div class="ripple r2"></div>
+  <div class="ripple r3"></div>
+  <div class="ripple r4"></div>
+  <div class="ripple r5"></div>
+  <div class="ripple r6"></div>
+
+  <!-- ============ PALMS (spine + leaflet structure) ============ -->
+  <!-- Reusable palm symbol — origin at crown (300, 100) -->
+  <svg width="0" height="0" style="position:absolute" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <g id="palm-frond">
+        <!-- Spine -->
+        <path d="M 0 0 Q 80 -20 200 -40 T 380 -40" stroke="#04060e" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <!-- Leaflets — series of thin teardrops on both sides of spine -->
+        <g fill="#04060e">
+          <!-- generated leaflets -->
+          <ellipse cx="40"  cy="-12" rx="22" ry="5" transform="rotate(-30 40 -12)"/>
+          <ellipse cx="40"  cy="0"   rx="22" ry="5" transform="rotate( 30 40 0)"/>
+          <ellipse cx="70"  cy="-22" rx="26" ry="5.5" transform="rotate(-32 70 -22)"/>
+          <ellipse cx="70"  cy="-2"  rx="26" ry="5.5" transform="rotate( 32 70 -2)"/>
+          <ellipse cx="100" cy="-30" rx="30" ry="6" transform="rotate(-34 100 -30)"/>
+          <ellipse cx="100" cy="-6"  rx="30" ry="6" transform="rotate( 34 100 -6)"/>
+          <ellipse cx="135" cy="-38" rx="32" ry="6" transform="rotate(-36 135 -38)"/>
+          <ellipse cx="135" cy="-10" rx="32" ry="6" transform="rotate( 36 135 -10)"/>
+          <ellipse cx="170" cy="-44" rx="34" ry="6" transform="rotate(-38 170 -44)"/>
+          <ellipse cx="170" cy="-14" rx="34" ry="6" transform="rotate( 38 170 -14)"/>
+          <ellipse cx="210" cy="-48" rx="34" ry="5.5" transform="rotate(-40 210 -48)"/>
+          <ellipse cx="210" cy="-18" rx="34" ry="5.5" transform="rotate( 40 210 -18)"/>
+          <ellipse cx="250" cy="-50" rx="32" ry="5" transform="rotate(-42 250 -50)"/>
+          <ellipse cx="250" cy="-22" rx="32" ry="5" transform="rotate( 42 250 -22)"/>
+          <ellipse cx="290" cy="-50" rx="28" ry="4.5" transform="rotate(-44 290 -50)"/>
+          <ellipse cx="290" cy="-26" rx="28" ry="4.5" transform="rotate( 44 290 -26)"/>
+          <ellipse cx="325" cy="-48" rx="22" ry="4" transform="rotate(-46 325 -48)"/>
+          <ellipse cx="325" cy="-30" rx="22" ry="4" transform="rotate( 46 325 -30)"/>
+          <!-- frond tip -->
+          <path d="M 360 -42 Q 380 -50 392 -40 Q 380 -32 360 -38 Z"/>
+        </g>
+      </g>
+
+      <g id="palm-tree">
+        <!-- Trunk: gentle S-curve -->
+        <path d="M 296 800
+                 C 290 660, 298 540, 312 420
+                 C 322 320, 332 230, 340 160
+                 C 343 130, 344 112, 345 100"
+              stroke="#04060e" stroke-width="12" fill="none" stroke-linecap="round"/>
+        <!-- Trunk ring details -->
+        <g stroke="#04060e" stroke-width="2" opacity="0.55" fill="none">
+          <path d="M 290 760 q 11 -3 17 0"/>
+          <path d="M 293 700 q 11 -3 17 0"/>
+          <path d="M 297 640 q 11 -3 17 0"/>
+          <path d="M 302 580 q 11 -3 17 0"/>
+          <path d="M 307 520 q 11 -3 17 0"/>
+          <path d="M 313 460 q 11 -3 17 0"/>
+          <path d="M 320 400 q 11 -3 17 0"/>
+          <path d="M 326 340 q 11 -3 17 0"/>
+          <path d="M 332 280 q 11 -3 17 0"/>
+          <path d="M 338 220 q 11 -3 17 0"/>
+          <path d="M 342 160 q 11 -3 17 0"/>
+        </g>
+        <!-- Coconut cluster -->
+        <g fill="#04060e">
+          <ellipse cx="338" cy="106" rx="8" ry="9"/>
+          <ellipse cx="350" cy="108" rx="8" ry="9"/>
+          <ellipse cx="344" cy="116" rx="8" ry="9"/>
+        </g>
+
+        <!-- 8 fronds radiating from crown (345, 100) -->
+        <g>
+          <!-- up-left far -->
+          <use href="#palm-frond" transform="translate(345 100) rotate(190)"/>
+          <!-- up-left mid -->
+          <use href="#palm-frond" transform="translate(345 100) rotate(215)"/>
+          <!-- up -->
+          <use href="#palm-frond" transform="translate(345 100) rotate(245)"/>
+          <!-- up-right -->
+          <use href="#palm-frond" transform="translate(345 100) rotate(285)"/>
+          <!-- right -->
+          <use href="#palm-frond" transform="translate(345 100) rotate(330)"/>
+          <!-- right-down -->
+          <use href="#palm-frond" transform="translate(345 100) rotate(20)"/>
+          <!-- down center -->
+          <use href="#palm-frond" transform="translate(345 100) rotate(75)"/>
+          <!-- left -->
+          <use href="#palm-frond" transform="translate(345 100) rotate(155)"/>
+        </g>
+      </g>
+    </defs>
+  </svg>
+
+  <svg class="palm palm-left" viewBox="0 0 700 800" xmlns="http://www.w3.org/2000/svg">
+    <use href="#palm-tree"/>
+  </svg>
+
+  <svg class="palm palm-right" viewBox="0 0 700 800" xmlns="http://www.w3.org/2000/svg">
+    <use href="#palm-tree"/>
+  </svg>
+
+  <!-- Top bar -->
+  <div class="top-bar">
+    <div class="left">VOL. I · MMXXVI</div>
+    <div class="right">PEDASÍ NIGHTS</div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <span class="line1">beach</span>
+    <span class="line2">party<span class="dot">.</span></span>
+  </div>
+
+  <!-- LOCATION + DATE -->
+  <div class="center-info">
+    <div class="place"><span class="dot-orn">·</span> Pedasí <span class="dot-orn">·</span></div>
+    <div class="venue">Andrómeda Beach Club</div>
+    <div class="date-row">SÁBADO 6 JUNIO<span class="sep">/</span>4 PM<span class="sep">/</span>FRENTE AL MAR</div>
+  </div>
+
+  <!-- DETAILS -->
+  <div class="details-wrap">
+    <div class="rule"></div>
+    <div class="details">
+      DJ <span class="dot">·</span> Comida <span class="dot">·</span> Bebidas <span class="dot">·</span> <span class="ymas">y mucho más</span>
+    </div>
+    <div class="rule rule-2"></div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="logo-block">
+      <div class="sora-mark">SORA</div>
+    </div>
+    <div class="qr-block">
+      <div class="qr-cta">únete al chat.</div>
+      <div class="qr-frame" id="qr"></div>
+      <div class="qr-meta">WHATSAPP · RSVP</div>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      var qr = qrcode(0, 'M');
+      qr.addData('https://wa.me/50760003558');
+      qr.make();
+      var el = document.getElementById('qr');
+      if(el) el.innerHTML = qr.createSvgTag({ scalable: true, margin: 0 });
+    })();
+  </script>
+
+  <!-- Grain -->
+  <svg class="grain" viewBox="0 0 1080 1350" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <filter id="n">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/>
+      <feColorMatrix values="0 0 0 0 0.95
+                             0 0 0 0 0.92
+                             0 0 0 0 0.82
+                             0 0 0 0.7 0"/>
+    </filter>
+    <rect width="1080" height="1350" filter="url(#n)"/>
+  </svg>
+
+</div>
+
+</body>
+</html>
