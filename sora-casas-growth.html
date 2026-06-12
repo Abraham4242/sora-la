@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sora Casas · The Lead Machine — Content & Growth OS</title>
+<meta name="description" content="How SORA Casas turns content into keyword rankings, traffic, leads, and homes sold. The content calendar, daily cadence, and the unit math — made obvious.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#1d3a2c">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--paper:#f7f0df;--paper-2:#fcf6e6;--paper-3:#ede4ca;--paper-deep:#e3d9c2;--ink:#14110c;--ink-2:#2a251d;--ink-3:#4b4337;--ink-faint:#8a7e6a;
+    --line:rgba(20,17,12,.10);--line-2:rgba(20,17,12,.18);--forest:#1d3a2c;--forest-2:#2a5440;--gold:#d9a55c;--gold-deep:#b88842;--coral:#D9573B;--teal:#2e8a96;--mango:#e8a93b;
+    --serif:'Fraunces',Georgia,serif;--sans:'Inter',-apple-system,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  html[lang="en"] [lang="es"]{display:none !important}
+  html[lang="es"] [lang="en"]{display:none !important}
+  .top{position:sticky;top:0;z-index:50;background:rgba(247,240,223,.94);backdrop-filter:blur(14px);border-bottom:.5px solid var(--line)}
+  .top-in{max-width:1180px;margin:0 auto;padding:16px 32px;display:flex;align-items:center;gap:14px}
+  .brand .word{font-family:var(--serif);font-weight:600;font-size:20px;letter-spacing:.06em}.brand .word em{color:var(--coral);font-style:italic}
+  .brand .sub{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--ink-3);text-transform:uppercase;margin-left:10px}
+  .spacer{flex:1}
+  .lang-toggle{display:inline-flex;border:.5px solid var(--line-2);border-radius:7px;overflow:hidden}
+  .lang-toggle button{padding:6px 12px;font-family:var(--mono);font-size:10.5px;background:transparent;border:0;color:var(--ink-faint);cursor:pointer;font-weight:600;letter-spacing:.08em}
+  .lang-toggle button.active{background:var(--ink);color:var(--paper)}
+  .top a.back{font-size:12px;color:var(--ink-2);border:.5px solid var(--line);padding:7px 13px;border-radius:6px}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+
+  .hero{padding:64px 0 36px}
+  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--forest);font-weight:700;margin-bottom:20px}
+  h1{font-family:var(--serif);font-weight:300;font-size:clamp(44px,7vw,84px);line-height:.98;letter-spacing:-.025em;margin-bottom:20px}
+  h1 em{font-style:italic;color:var(--forest)}
+  .hero p{font-family:var(--serif);font-size:20px;font-style:italic;color:var(--ink-2);max-width:760px;line-height:1.5}
+
+  section{padding:52px 0;border-top:.5px solid var(--line)}
+  .sec-num{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--forest);font-weight:700;margin-bottom:10px}
+  h2{font-family:var(--serif);font-weight:300;font-size:clamp(30px,4.4vw,46px);line-height:1.05;letter-spacing:-.015em;margin-bottom:10px}
+  h2 em{font-style:italic;color:var(--forest)}
+  .sec-sub{font-family:var(--serif);font-style:italic;font-size:16px;color:var(--ink-3);max-width:640px;margin-bottom:34px}
+
+  /* HEADLINE EQUATION */
+  .eq{display:flex;align-items:stretch;gap:0;flex-wrap:wrap;background:var(--ink);border-radius:16px;overflow:hidden;margin-bottom:8px}
+  .eq .cell{flex:1;min-width:150px;padding:30px 26px;border-right:1px solid rgba(247,240,223,.12);position:relative}
+  .eq .cell:last-child{border-right:0}
+  .eq .v{font-family:var(--serif);font-weight:300;font-size:40px;color:var(--paper);line-height:1}
+  .eq .v.gold{color:var(--gold)}.eq .v.coral{color:var(--coral)}.eq .v.teal{color:#5bc0cf}
+  .eq .k{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(247,240,223,.6);margin-top:10px}
+  .eq .op{position:absolute;right:-11px;top:50%;transform:translateY(-50%);z-index:2;font-family:var(--serif);font-size:24px;color:var(--gold);background:var(--ink);width:22px;height:22px;display:flex;align-items:center;justify-content:center;border-radius:50%}
+  @media(max-width:720px){.eq .op{display:none}}
+
+  /* CASCADE FUNNEL */
+  .feeders{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:8px}
+  @media(max-width:680px){.feeders{grid-template-columns:1fr}}
+  .feeder{background:var(--paper-2);border:.5px solid var(--line);border-radius:12px;padding:20px 24px;border-top:3px solid var(--teal)}
+  .feeder.paid{border-top-color:var(--coral)}
+  .feeder .ft{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--teal);margin-bottom:8px}
+  .feeder.paid .ft{color:var(--coral)}
+  .feeder h4{font-family:var(--serif);font-size:18px;font-weight:500;margin-bottom:4px}
+  .feeder p{font-size:13px;color:var(--ink-3);line-height:1.45}
+  .converge{text-align:center;font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--ink-faint);text-transform:uppercase;margin:10px 0 14px}
+  .funnel{display:flex;flex-direction:column;align-items:center;gap:8px}
+  .frow{width:100%;display:flex;align-items:center;gap:18px;justify-content:center}
+  .fbar{background:var(--forest);color:var(--paper);border-radius:10px;padding:18px 24px;text-align:center;transition:transform .2s}
+  .fbar:hover{transform:scale(1.02)}
+  .fbar .v{font-family:var(--mono);font-weight:700;font-size:30px;line-height:1}
+  .fbar .k{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(247,240,223,.65);margin-top:6px}
+  .fbar.s1{width:92%;background:var(--forest)}.fbar.s2{width:74%;background:#24503a}.fbar.s3{width:58%;background:#2a5440}
+  .fbar.s4{width:44%;background:#356b50}.fbar.s5{width:32%;background:var(--teal)}.fbar.s6{width:24%;background:var(--gold-deep)}
+  .fbar.s7{width:30%;background:var(--coral)}
+  .conv{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--gold-deep);min-width:64px;text-align:left}
+  .conv span{display:block;font-size:9px;color:var(--ink-faint);font-weight:500;letter-spacing:.1em;text-transform:uppercase}
+  @media(max-width:680px){.conv{min-width:48px;font-size:10px}.fbar .v{font-size:22px}}
+
+  /* BACKWARD MATH */
+  .back-math{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+  @media(max-width:900px){.back-math{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:520px){.back-math{grid-template-columns:repeat(2,1fr)}}
+  .bm{background:var(--paper-2);border:.5px solid var(--line);border-radius:11px;padding:18px 16px;text-align:center;position:relative}
+  .bm .v{font-family:var(--serif);font-weight:400;font-size:30px;color:var(--forest);line-height:1}
+  .bm .k{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-top:8px;line-height:1.3}
+  .bm.home{background:var(--ink)}.bm.home .v{color:var(--gold)}.bm.home .k{color:rgba(247,240,223,.7)}
+
+  /* CONTENT ENGINE */
+  .engine{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:760px){.engine{grid-template-columns:1fr}}
+  .ecard{background:var(--paper-2);border:.5px solid var(--line);border-radius:13px;padding:26px 28px}
+  .ecard .t{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--gold-deep);margin-bottom:10px}
+  .ecard h4{font-family:var(--serif);font-size:22px;font-weight:400;margin-bottom:8px}.ecard h4 em{font-style:italic;color:var(--forest)}
+  .ecard p{font-size:14px;color:var(--ink-2);line-height:1.55;margin-bottom:12px}
+  .ecard .stat{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--ink-faint);text-transform:uppercase;border-top:.5px solid var(--line);padding-top:12px}
+  .chain{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:18px;background:var(--ink);border-radius:12px;padding:20px 24px}
+  .chain .c{text-align:center;color:var(--paper)}
+  .chain .c .v{font-family:var(--mono);font-weight:700;font-size:22px;color:var(--gold)}
+  .chain .c .k{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:rgba(247,240,223,.6);margin-top:4px}
+  .chain .ar{color:var(--gold);font-size:18px}
+
+  /* CALENDAR */
+  .cadence{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:24px}
+  @media(max-width:760px){.cadence{grid-template-columns:repeat(2,1fr)}}
+  .cd{background:var(--paper-2);border:.5px solid var(--line);border-radius:10px;padding:16px 14px;border-top:3px solid var(--forest)}
+  .cd .d{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--forest);margin-bottom:8px}
+  .cd .a{font-size:12.5px;color:var(--ink-2);line-height:1.4}
+  .cd .a b{color:var(--coral)}
+  .qgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  @media(max-width:860px){.qgrid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:520px){.qgrid{grid-template-columns:1fr}}
+  .q{background:var(--paper-2);border:.5px solid var(--line);border-radius:12px;padding:20px 20px;border-top:3px solid var(--gold-deep)}
+  .q .qh{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px}
+  .q .qn{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--gold-deep)}
+  .q .qm{font-family:var(--serif);font-style:italic;font-size:13px;color:var(--ink-faint)}
+  .q ul{list-style:none}
+  .q li{font-size:12.5px;color:var(--ink-2);padding:5px 0;border-top:.5px solid var(--line);line-height:1.35}
+  .q li:first-child{border-top:0}
+  .q li b{color:var(--forest)}
+  .q .pill{display:inline-block;font-family:var(--mono);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;background:var(--paper-3);color:var(--ink-3);padding:2px 7px;border-radius:20px;margin-left:4px}
+
+  /* RAMP TABLE */
+  .tbl{width:100%;border-collapse:collapse;font-size:13.5px}
+  .tbl th{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;text-align:right;padding:12px 12px;border-bottom:1px solid var(--line-2)}
+  .tbl th:first-child{text-align:left}
+  .tbl td{padding:13px 12px;text-align:right;border-bottom:.5px solid var(--line);font-variant-numeric:tabular-nums}
+  .tbl td:first-child{text-align:left;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--forest);font-weight:700}
+  .tbl tr:hover td{background:var(--paper-2)}
+  .tbl .big{font-family:var(--serif);font-size:16px;color:var(--ink)}
+  .tbl .rev{color:var(--gold-deep);font-weight:700}
+
+  /* KPI */
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  @media(max-width:760px){.kpis{grid-template-columns:repeat(2,1fr)}}
+  .kpi{background:var(--ink);color:var(--paper);border-radius:12px;padding:22px 22px;border-top:3px solid var(--teal)}
+  .kpi .v{font-family:var(--serif);font-weight:300;font-size:30px;color:var(--gold)}
+  .kpi .k{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(247,240,223,.65);margin-top:8px;line-height:1.3}
+
+  .note{font-family:var(--serif);font-style:italic;font-size:13.5px;color:var(--ink-faint);margin-top:18px;line-height:1.5}
+  footer{margin-top:40px;padding:36px 0;background:var(--ink);color:rgba(247,240,223,.6);font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;text-align:center}
+  footer a{color:var(--gold)}
+</style>
+</head>
+<body>
+<header class="top"><div class="top-in">
+  <div class="brand"><span class="word"><em>Sora</em> Casas</span><span class="sub" data-es="Sistema de Crecimiento" data-en="Growth System">Growth System</span></div>
+  <span class="spacer"></span>
+  <div class="lang-toggle"><button data-lang="es">ES</button><button data-lang="en" class="active">EN</button></div>
+  <a class="back" href="lacompania.html" data-es="← La Compañía" data-en="← La Compañía">← La Compañía</a>
+</div></header>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="eyebrow" data-es="SORA CASAS · LA MÁQUINA DE LEADS" data-en="SORA CASAS · THE LEAD MACHINE">SORA CASAS · THE LEAD MACHINE</div>
+    <h1 data-es-html="De <em>contenido</em><br>a casas vendidas." data-en-html="From <em>content</em><br>to homes sold.">From <em>content</em><br>to homes sold.</h1>
+    <p data-es="Una sola página que hace obvio — para todo el equipo — cómo el contenido se convierte en rankings, tráfico, leads, y casas vendidas. La matemática, el calendario, y el día a día." data-en="One page that makes it obvious — for the whole team — how content becomes rankings, traffic, leads, and homes sold. The math, the calendar, and the daily cadence.">One page that makes it obvious — for the whole team — how content becomes rankings, traffic, leads, and homes sold. The math, the calendar, and the daily cadence.</p>
+  </header>
+
+  <!-- 01 · THE ONE EQUATION -->
+  <section style="border-top:0">
+    <div class="sec-num" data-es="01 · LA ECUACIÓN" data-en="01 · THE ONE EQUATION">01 · THE ONE EQUATION</div>
+    <h2 data-es-html="Memoriza <em>esto</em>." data-en-html="Memorize <em>this</em>.">Memorize <em>this</em>.</h2>
+    <p class="sec-sub" data-es="Todo lo demás en esta página existe para producir el lado izquierdo de esta ecuación." data-en="Everything else on this page exists to produce the left side of this equation.">Everything else on this page exists to produce the left side of this equation.</p>
+    <div class="eq">
+      <div class="cell"><div class="v teal">100</div><div class="k" data-es="Leads" data-en="Leads">Leads</div><span class="op">=</span></div>
+      <div class="cell"><div class="v">3</div><div class="k" data-es="Visitas al sitio" data-en="Site visits">Site visits</div><span class="op">=</span></div>
+      <div class="cell"><div class="v gold">1</div><div class="k" data-es="Casa vendida" data-en="Home sold">Home sold</div><span class="op">=</span></div>
+      <div class="cell"><div class="v gold">$100K</div><div class="k" data-es="Ganancia bruta" data-en="Gross profit">Gross profit</div></div>
+    </div>
+    <p class="note" data-es="A ~$60–75 por lead, 100 leads cuestan $6–7.5K para generar → una casa de $400K con 25% de margen = $100K de ganancia. El trabajo entero es producir leads de forma barata y consistente." data-en="At ~$60–75 per lead, 100 leads cost $6–7.5K to generate → one $400K home at 25% margin = $100K gross profit. The whole job is producing leads cheaply and consistently.">At ~$60–75 per lead, 100 leads cost $6–7.5K to generate → one $400K home at 25% margin = $100K gross profit. The whole job is producing leads cheaply and consistently.</p>
+  </section>
+
+  <!-- 02 · THE CASCADE -->
+  <section>
+    <div class="sec-num" data-es="02 · LA CASCADA" data-en="02 · THE CASCADE">02 · THE CASCADE</div>
+    <h2 data-es-html="Cómo un <em>visitante</em> se vuelve una casa." data-en-html="How a <em>visitor</em> becomes a home.">How a <em>visitor</em> becomes a home.</h2>
+    <p class="sec-sub" data-es="Dos fuentes de tráfico alimentan un mismo embudo. Ejemplo a $15K/mes de pauta + contenido en ramp-up." data-en="Two traffic sources feed one funnel. Example at $15K/mo paid + content ramping.">Two traffic sources feed one funnel. Example at $15K/mo paid + content ramping.</p>
+
+    <div class="feeders">
+      <div class="feeder"><div class="ft" data-es="ORGÁNICO · GRATIS, COMPUESTO" data-en="ORGANIC · FREE, COMPOUNDING">ORGANIC · FREE, COMPOUNDING</div><h4 data-es="Contenido + canales" data-en="Content + channels">Content + channels</h4><p data-es="Pilares SEO, guías por zona, market reports + posts de valor en grupos/Reddit/YouTube. Crece para siempre, sin costo por clic." data-en="SEO pillars, zone guides, market reports + value posts in groups/Reddit/YouTube. Grows forever, no cost-per-click.">SEO pillars, zone guides, market reports + value posts in groups/Reddit/YouTube. Grows forever, no cost-per-click.</p></div>
+      <div class="feeder paid"><div class="ft" data-es="PAGADO · INSTANTÁNEO, ESCALABLE" data-en="PAID · INSTANT, SCALABLE">PAID · INSTANT, SCALABLE</div><h4 data-es="Google + Meta + YouTube" data-en="Google + Meta + YouTube">Google + Meta + YouTube</h4><p data-es="Búsqueda de alta intención + prospecting + retargeting + sponsorships de newsletter. Enciende y apaga a voluntad." data-en="High-intent search + prospecting + retargeting + newsletter sponsorships. Turns on and off at will.">High-intent search + prospecting + retargeting + newsletter sponsorships. Turns on and off at will.</p></div>
+    </div>
+    <div class="converge" data-es="▼ ambos alimentan el mismo embudo ▼" data-en="▼ both feed one funnel ▼">▼ both feed one funnel ▼</div>
+
+    <div class="funnel">
+      <div class="frow"><div class="fbar s1"><div class="v">5,000</div><div class="k" data-es="Sesiones / mes" data-en="Sessions / mo">Sessions / mo</div></div><div class="conv">↓ 4%<span data-es="capturados" data-en="capture">capture</span></div></div>
+      <div class="frow"><div class="fbar s2"><div class="v">200</div><div class="k">Leads / mo</div></div><div class="conv">↓ 50%<span data-es="calificados" data-en="qualify">qualify</span></div></div>
+      <div class="frow"><div class="fbar s3"><div class="v">100</div><div class="k" data-es="Calificados" data-en="Qualified">Qualified</div></div><div class="conv">↓ 30%<span data-es="agendan" data-en="book">book</span></div></div>
+      <div class="frow"><div class="fbar s4"><div class="v">30</div><div class="k" data-es="Llamadas discovery" data-en="Discovery calls">Discovery calls</div></div><div class="conv">↓ 20%<span data-es="viajan" data-en="travel">travel</span></div></div>
+      <div class="frow"><div class="fbar s5"><div class="v">6</div><div class="k" data-es="Visitas / Discovery Weekend" data-en="Site visits / Discovery Weekends">Site visits / Discovery Weekends</div></div><div class="conv">↓ 33%<span data-es="firman" data-en="sign">sign</span></div></div>
+      <div class="frow"><div class="fbar s7"><div class="v">2</div><div class="k" data-es="Casas vendidas / mes" data-en="Homes sold / mo">Homes sold / mo</div></div><div class="conv">×$400K</div></div>
+      <div class="frow"><div class="fbar s1" style="background:var(--gold-deep);width:92%"><div class="v">$800K</div><div class="k" data-es="Ingreso · $200K ganancia bruta / mes" data-en="Revenue · $200K gross profit / mo">Revenue · $200K gross profit / mo</div></div><div class="conv" style="opacity:0">.</div></div>
+    </div>
+  </section>
+
+  <!-- 03 · BACKWARD MATH -->
+  <section>
+    <div class="sec-num" data-es="03 · AL REVÉS" data-en="03 · WORK BACKWARD">03 · WORK BACKWARD</div>
+    <h2 data-es-html="Lo que toma vender <em>una casa</em>." data-en-html="What it takes to sell <em>one home</em>.">What it takes to sell <em>one home</em>.</h2>
+    <p class="sec-sub" data-es="Lee de derecha a izquierda: cada casa vendida exige esto arriba del embudo." data-en="Read right to left: every home sold demands this much at the top of the funnel.">Read right to left: every home sold demands this much at the top of the funnel.</p>
+    <div class="back-math">
+      <div class="bm"><div class="v">2,500</div><div class="k" data-es="Sesiones" data-en="Sessions">Sessions</div></div>
+      <div class="bm"><div class="v">100</div><div class="k">Leads</div></div>
+      <div class="bm"><div class="v">50</div><div class="k" data-es="Calificados" data-en="Qualified">Qualified</div></div>
+      <div class="bm"><div class="v">15</div><div class="k" data-es="Llamadas" data-en="Calls">Calls</div></div>
+      <div class="bm"><div class="v">3</div><div class="k" data-es="Visitas" data-en="Visits">Visits</div></div>
+      <div class="bm home"><div class="v">1</div><div class="k" data-es="Casa · $100K" data-en="Home · $100K">Home · $100K</div></div>
+    </div>
+    <p class="note" data-es="Esas 2,500 sesiones vienen de ~6 keywords en página 1 (≈30 artículos rankeando) O de ~$7.5K de pauta. El contenido es el motor que baja el costo por lead mes a mes." data-en="Those 2,500 sessions come from ~6 page-1 keywords (≈30 ranking articles) OR ~$7.5K of paid. Content is the engine that drives cost-per-lead down month over month.">Those 2,500 sessions come from ~6 page-1 keywords (≈30 ranking articles) OR ~$7.5K of paid. Content is the engine that drives cost-per-lead down month over month.</p>
+  </section>
+
+  <!-- 04 · CONTENT ENGINE -->
+  <section>
+    <div class="sec-num" data-es="04 · EL MOTOR DE CONTENIDO" data-en="04 · THE CONTENT ENGINE">04 · THE CONTENT ENGINE</div>
+    <h2 data-es-html="Cómo el contenido se vuelve <em>rankings</em> y tráfico." data-en-html="How content becomes <em>rankings</em> and traffic.">How content becomes <em>rankings</em> and traffic.</h2>
+    <div class="engine">
+      <div class="ecard"><div class="t" data-es="PILARES · 12" data-en="PILLARS · 12">PILLARS · 12</div><h4 data-es-html="Páginas <em>autoridad</em>" data-en-html="<em>Authority</em> pages"><em>Authority</em> pages</h4><p data-es="2,500–4,500 palabras sobre un tema grande de alta intención: «cost to build a house in Panama», «Friendly Nations Visa real estate», «Boquete vs Pedasí». Cada pilar persigue un keyword grande." data-en="2,500–4,500 words on one big, high-intent topic: “cost to build a house in Panama,” “Friendly Nations Visa real estate,” “Boquete vs Pedasí.” Each pillar targets one big keyword.">2,500–4,500 words on one big, high-intent topic: “cost to build a house in Panama,” “Friendly Nations Visa real estate,” “Boquete vs Pedasí.” Each pillar targets one big keyword.</p><div class="stat" data-es="1 pilar → 1 keyword grande + 10–20 long-tail" data-en="1 pillar → 1 big keyword + 10–20 long-tail">1 pillar → 1 big keyword + 10–20 long-tail</div></div>
+      <div class="ecard"><div class="t" data-es="CLUSTERS · 60" data-en="CLUSTERS · 60">CLUSTERS · 60</div><h4 data-es-html="Posts de <em>apoyo</em>" data-en-html="<em>Supporting</em> posts"><em>Supporting</em> posts</h4><p data-es="1,000–2,000 palabras respondiendo preguntas específicas que enlazan al pilar: «¿se puede tener título en Bocas?», «costo de septic en Pedasí». Cada cluster captura long-tail y fortalece al pilar." data-en="1,000–2,000 words answering specific questions that link to the pillar: “can you get title in Bocas?”, “septic cost in Pedasí.” Each cluster captures long-tail and strengthens the pillar.">1,000–2,000 words answering specific questions that link to the pillar: “can you get title in Bocas?”, “septic cost in Pedasí.” Each cluster captures long-tail and strengthens the pillar.</p><div class="stat" data-es="5 clusters por pilar · enlazan hacia arriba" data-en="5 clusters per pillar · all link up">5 clusters per pillar · all link up</div></div>
+    </div>
+    <div class="chain">
+      <div class="c"><div class="v">72</div><div class="k" data-es="Piezas / 12 meses" data-en="Pieces / 12 mo">Pieces / 12 mo</div></div>
+      <div class="ar">→</div>
+      <div class="c"><div class="v">12–15</div><div class="k" data-es="Keywords pág. 1" data-en="Page-1 keywords">Page-1 keywords</div></div>
+      <div class="ar">→</div>
+      <div class="c"><div class="v">3–5K</div><div class="k" data-es="Visitas orgánicas / mes" data-en="Organic visits / mo">Organic visits / mo</div></div>
+      <div class="ar">→</div>
+      <div class="c"><div class="v">~100</div><div class="k" data-es="Leads orgánicos / mes" data-en="Organic leads / mo">Organic leads / mo</div></div>
+      <div class="ar">→</div>
+      <div class="c"><div class="v">~1</div><div class="k" data-es="Casa / mes (sin pauta)" data-en="Home / mo (no ad spend)">Home / mo (no ad spend)</div></div>
+    </div>
+    <p class="note" data-es="El contenido compone: el artículo que publicas hoy sigue trayendo leads en 3 años. La pauta para cuando dejas de pagar. Por eso 60% del esfuerzo va a contenido buyer-intent." data-en="Content compounds: the article you publish today still brings leads in 3 years. Paid stops the day you stop paying. That's why 60% of effort goes to buyer-intent content.">Content compounds: the article you publish today still brings leads in 3 years. Paid stops the day you stop paying. That's why 60% of effort goes to buyer-intent content.</p>
+  </section>
+
+  <!-- 05 · THE CALENDAR -->
+  <section>
+    <div class="sec-num" data-es="05 · EL CALENDARIO" data-en="05 · THE CALENDAR">05 · THE CALENDAR</div>
+    <h2 data-es-html="Qué se publica, <em>cuándo</em>." data-en-html="What ships, <em>when</em>.">What ships, <em>when</em>.</h2>
+    <p class="sec-sub" data-es="Ritmo semanal fijo (≈12 piezas/mes) + despliegue de pilares por trimestre." data-en="Fixed weekly rhythm (≈12 pieces/mo) + a quarter-by-quarter pillar rollout.">Fixed weekly rhythm (≈12 pieces/mo) + a quarter-by-quarter pillar rollout.</p>
+
+    <div class="cadence">
+      <div class="cd"><div class="d" data-es="Lun" data-en="Mon">Mon</div><div class="a" data-es-html="<b>Pilar/cluster nuevo</b> + brief de 3 piezas de la semana" data-en-html="<b>New pillar/cluster</b> + brief the week's 3 pieces"><b>New pillar/cluster</b> + brief the week's 3 pieces</div></div>
+      <div class="cd"><div class="d" data-es="Mar" data-en="Tue">Tue</div><div class="a" data-es-html="<b>Refresh</b> de un post viejo + 1 reel/short" data-en-html="<b>Refresh</b> an old post + 1 reel/short"><b>Refresh</b> an old post + 1 reel/short</div></div>
+      <div class="cd"><div class="d" data-es="Mié" data-en="Wed">Wed</div><div class="a" data-es-html="<b>Cluster nuevo</b> + revisión de pauta/SEO" data-en-html="<b>New cluster</b> + paid/SEO review"><b>New cluster</b> + paid/SEO review</div></div>
+      <div class="cd"><div class="d" data-es="Jue" data-en="Thu">Thu</div><div class="a" data-es-html="<b>Refresh</b> + 1 post de valor en canal (FB/Reddit/YT)" data-en-html="<b>Refresh</b> + 1 value post in a channel (FB/Reddit/YT)"><b>Refresh</b> + 1 value post in a channel (FB/Reddit/YT)</div></div>
+      <div class="cd"><div class="d" data-es="Vie" data-en="Fri">Fri</div><div class="a" data-es-html="<b>Cluster nuevo</b> + newsletter + agenda próx. semana" data-en-html="<b>New cluster</b> + newsletter + plan next week"><b>New cluster</b> + newsletter + plan next week</div></div>
+    </div>
+
+    <div class="qgrid">
+      <div class="q"><div class="qh"><span class="qn">Q1 · M1–3</span><span class="qm" data-es="Wins fáciles" data-en="Easy wins">Easy wins</span></div>
+        <ul>
+          <li data-es-html="<b>4 pilares</b> sin backlinks: Boquete vs Pedasí · Custom Home Builder · Build in Pedasí · Friendly Nations Visa" data-en-html="<b>4 pillars</b>, no backlinks: Boquete vs Pedasí · Custom Home Builder · Build in Pedasí · Friendly Nations Visa"><b>4 pillars</b>, no backlinks: Boquete vs Pedasí · Custom Home Builder · Build in Pedasí · Friendly Nations Visa</li>
+          <li data-es="+ 8 clusters por pilar (32 piezas)" data-en="+ 8 clusters each (32 pieces)">+ 8 clusters each (32 pieces)</li>
+          <li data-es-html="Foundation técnica: schema, GA4, GSC <span class='pill'>semana 1</span>" data-en-html="Tech foundation: schema, GA4, GSC <span class='pill'>week 1</span>">Tech foundation: schema, GA4, GSC <span class="pill">week 1</span></li>
+        </ul>
+      </div>
+      <div class="q"><div class="qh"><span class="qn">Q2 · M4–6</span><span class="qm" data-es="El foso" data-en="The moat">The moat</span></div>
+        <ul>
+          <li data-es-html="<b>Cost to Build in Panama</b> (EL FOSO) + calculadora" data-en-html="<b>Cost to Build in Panama</b> (THE MOAT) + calculator"><b>Cost to Build in Panama</b> (THE MOAT) + calculator</li>
+          <li data-es="+ Boquete · Bocas · Playa Venao · Buying as Foreigner · Retire in Panama · QIV" data-en="+ Boquete · Bocas · Playa Venao · Buying as Foreigner · Retire in Panama · QIV">+ Boquete · Bocas · Playa Venao · Buying as Foreigner · Retire in Panama · QIV</li>
+          <li data-es-html="Primeros <b>10–15 backlinks</b> (3 guest posts, 3 podcasts)" data-en-html="First <b>10–15 backlinks</b> (3 guest posts, 3 podcasts)">First <b>10–15 backlinks</b> (3 guest posts, 3 podcasts)</li>
+        </ul>
+      </div>
+      <div class="q"><div class="qh"><span class="qn">Q3 · M7–9</span><span class="qm" data-es="Español + nicho" data-en="Spanish + niche">Spanish + niche</span></div>
+        <ul>
+          <li data-es-html="<b>Cluster en español</b>: casas en venta Pedasí/Boquete, comprar en Panamá" data-en-html="<b>Spanish cluster</b>: casas en venta Pedasí/Boquete, comprar en Panamá"><b>Spanish cluster</b>: casas en venta Pedasí/Boquete, comprar en Panamá</li>
+          <li data-es="+ Coffee Farm Boquete · Off-grid · Modular" data-en="+ Coffee Farm Boquete · Off-grid · Modular">+ Coffee Farm Boquete · Off-grid · Modular</li>
+          <li data-es-html="<b>Sora Market Report</b> trimestral (press-bait)" data-en-html="Quarterly <b>Sora Market Report</b> (press-bait)">Quarterly <b>Sora Market Report</b> (press-bait)</li>
+        </ul>
+      </div>
+      <div class="q"><div class="qh"><span class="qn">Q4 · M10–12</span><span class="qm" data-es="Autoridad" data-en="Authority">Authority</span></div>
+        <ul>
+          <li data-es-html="<b>Refresh pesado</b> de los 12 pilares + interlinking" data-en-html="<b>Heavy refresh</b> of all 12 pillars + interlinking"><b>Heavy refresh</b> of all 12 pillars + interlinking</li>
+          <li data-es="+ 30–40 backlinks acum. (newsletter + conferencia)" data-en="+ 30–40 cumulative backlinks (newsletter + conference)">+ 30–40 cumulative backlinks (newsletter + conference)</li>
+          <li data-es-html="Meta: <b>12–15 keywords en página 1</b>" data-en-html="Goal: <b>12–15 keywords on page 1</b>">Goal: <b>12–15 keywords on page 1</b></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 · THE WEEK -->
+  <section>
+    <div class="sec-num" data-es="06 · LA SEMANA OPERATIVA" data-en="06 · THE OPERATING WEEK">06 · THE OPERATING WEEK</div>
+    <h2 data-es-html="Qué hace cada quien <em>cada día</em>." data-en-html="What everyone does <em>each day</em>.">What everyone does <em>each day</em>.</h2>
+    <p class="sec-sub" data-es="Encima de esto, TODOS los días: responder leads en <2h, publicar/agendar 1 pieza, 1 activo social, iterar 1 landing, 1 outreach, 1 llamada discovery." data-en="On top of this, EVERY day: respond to leads in <2h, publish/schedule 1 piece, 1 social asset, iterate 1 landing, 1 outreach, 1 discovery call.">On top of this, EVERY day: respond to leads in &lt;2h, publish/schedule 1 piece, 1 social asset, iterate 1 landing, 1 outreach, 1 discovery call.</p>
+    <div class="cadence">
+      <div class="cd" style="border-top-color:var(--coral)"><div class="d" data-es="Lun · Ventas" data-en="Mon · Sales">Mon · Sales</div><div class="a" data-es="Revisión de pipeline: leads de la semana, llamadas agendadas, LOIs en riesgo, tasas de conversión." data-en="Pipeline review: week's leads, calls booked, LOIs at risk, conversion rates.">Pipeline review: week's leads, calls booked, LOIs at risk, conversion rates.</div></div>
+      <div class="cd" style="border-top-color:var(--gold-deep)"><div class="d" data-es="Mar · Obra" data-en="Tue · Build">Tue · Build</div><div class="a" data-es="Standup de construcción: % de avance, bloqueos, hitos de pago, riesgos." data-en="Build standup: % complete, blockers, milestone payments, risks.">Build standup: % complete, blockers, milestone payments, risks.</div></div>
+      <div class="cd" style="border-top-color:var(--teal)"><div class="d" data-es="Mié · Marketing" data-en="Wed · Marketing">Wed · Marketing</div><div class="a" data-es="Dashboards de pauta, calendario de contenido, cambios de ranking en los 15 keywords." data-en="Paid dashboards, content calendar, ranking changes on the 15 keywords.">Paid dashboards, content calendar, ranking changes on the 15 keywords.</div></div>
+      <div class="cd" style="border-top-color:var(--forest)"><div class="d" data-es="Jue · Comunidad" data-en="Thu · Community">Thu · Community</div><div class="a" data-es="Embudo de turismo, Sora Sundays, sentimiento de propietarios, referidos." data-en="Tourism funnel, Sora Sundays, homeowner sentiment, referrals.">Tourism funnel, Sora Sundays, homeowner sentiment, referrals.</div></div>
+      <div class="cd" style="border-top-color:var(--ink)"><div class="d" data-es="Vie · Estrategia" data-en="Fri · Strategy">Fri · Strategy</div><div class="a" data-es="Bloqueos y decisiones que necesitan al dueño. Prioridades del próximo sprint." data-en="Blockers and owner-level decisions. Next sprint's priorities.">Blockers and owner-level decisions. Next sprint's priorities.</div></div>
+    </div>
+  </section>
+
+  <!-- 07 · THE RAMP -->
+  <section>
+    <div class="sec-num" data-es="07 · LA RAMPA · 24 MESES" data-en="07 · THE RAMP · 24 MONTHS">07 · THE RAMP · 24 MONTHS</div>
+    <h2 data-es-html="Lo que <em>compone</em>." data-en-html="What it <em>compounds</em> to.">What it <em>compounds</em> to.</h2>
+    <p class="sec-sub" data-es="Misma máquina, más meses. El contenido baja el CAC; los referidos lo rematan." data-en="Same machine, more months. Content drives CAC down; referrals finish the job.">Same machine, more months. Content drives CAC down; referrals finish the job.</p>
+    <div style="overflow-x:auto">
+    <table class="tbl">
+      <thead><tr>
+        <th data-es="Mes" data-en="Month">Month</th>
+        <th data-es="Contenido (acum.)" data-en="Content (cum.)">Content (cum.)</th>
+        <th data-es="Keywords pág.1" data-en="Page-1 kw">Page-1 kw</th>
+        <th data-es="Orgánico/mes" data-en="Organic/mo">Organic/mo</th>
+        <th data-es="Leads/mes" data-en="Leads/mo">Leads/mo</th>
+        <th data-es="Visitas/mes" data-en="Site visits/mo">Site visits/mo</th>
+        <th data-es="Contratos/mes" data-en="Contracts/mo">Contracts/mo</th>
+        <th data-es="Ingreso acum." data-en="Cum. revenue">Cum. revenue</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>M3</td><td>32</td><td>2–3</td><td>100–300</td><td class="big">60</td><td>2</td><td>0–1</td><td class="rev">$0</td></tr>
+        <tr><td>M6</td><td>~50</td><td>4–6</td><td>~800</td><td class="big">200</td><td>6</td><td>2</td><td class="rev">$0.4–0.8M</td></tr>
+        <tr><td>M12</td><td>72</td><td>12–15</td><td>3–5K</td><td class="big">400</td><td>12</td><td>4</td><td class="rev">$2.4M</td></tr>
+        <tr><td>M18</td><td>~110</td><td>18–22</td><td>10–15K</td><td class="big">500</td><td>12</td><td>4–6</td><td class="rev">$4.8M</td></tr>
+        <tr><td>M24</td><td>~150</td><td>25+</td><td>50K</td><td class="big">600</td><td>15</td><td>6</td><td class="rev">$12M</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="note" data-es="Para M24: 30 casas entregadas, $2.85M de ganancia bruta acumulada, y los referidos de propietarios generan 30%+ de los cierres a CAC casi cero." data-en="By M24: 30 homes delivered, $2.85M cumulative gross profit, and homeowner referrals drive 30%+ of closings at near-zero CAC.">By M24: 30 homes delivered, $2.85M cumulative gross profit, and homeowner referrals drive 30%+ of closings at near-zero CAC.</p>
+  </section>
+
+  <!-- 08 · DASHBOARD -->
+  <section>
+    <div class="sec-num" data-es="08 · EL TABLERO SEMANAL" data-en="08 · THE WEEKLY DASHBOARD">08 · THE WEEKLY DASHBOARD</div>
+    <h2 data-es-html="Los <em>seis números</em> que vigilamos." data-en-html="The <em>six numbers</em> we watch.">The <em>six numbers</em> we watch.</h2>
+    <p class="sec-sub" data-es="Si estos seis se mueven en la dirección correcta, las casas se venden solas." data-en="If these six move in the right direction, the homes sell themselves.">If these six move in the right direction, the homes sell themselves.</p>
+    <div class="kpis">
+      <div class="kpi"><div class="v">≤ $75</div><div class="k" data-es="Costo por lead" data-en="Cost per lead">Cost per lead</div></div>
+      <div class="kpi"><div class="v">≥ 50%</div><div class="k" data-es="Leads → calificados" data-en="Leads → qualified">Leads → qualified</div></div>
+      <div class="kpi"><div class="v">≥ 20%</div><div class="k" data-es="Llamada → visita" data-en="Call → site visit">Call → site visit</div></div>
+      <div class="kpi"><div class="v">≥ 33%</div><div class="k" data-es="Visita → contrato" data-en="Visit → contract">Visit → contract</div></div>
+      <div class="kpi"><div class="v">↑</div><div class="k" data-es="Keywords en página 1" data-en="Keywords on page 1">Keywords on page 1</div></div>
+      <div class="kpi"><div class="v">↑</div><div class="k" data-es="Tráfico orgánico / mes" data-en="Organic traffic / mo">Organic traffic / mo</div></div>
+      <div class="kpi" style="border-top-color:var(--gold)"><div class="v">&lt; 2h</div><div class="k" data-es="Tiempo de respuesta a leads" data-en="Lead response time">Lead response time</div></div>
+      <div class="kpi" style="border-top-color:var(--coral)"><div class="v">2/mo</div><div class="k" data-es="Contratos firmados" data-en="Contracts signed">Contracts signed</div></div>
+    </div>
+  </section>
+</div>
+
+<footer>
+  SORA CASAS · <span data-es="LA MÁQUINA DE LEADS" data-en="THE LEAD MACHINE">THE LEAD MACHINE</span> · LA COMPAÑÍA · MMXXVI · <a href="lacompania.html">HOLDINGS</a>
+</footer>
+
+<script>
+  const getLang = () => localStorage.getItem('sora.lang') || 'en';
+  function applyLang(lang){
+    document.querySelectorAll('[data-es]').forEach(el=>{ const v=el.getAttribute('data-'+lang); if(v!=null){ if(/<[a-z]/i.test(v)) el.innerHTML=v; else el.textContent=v; } });
+    document.querySelectorAll('[data-es-html]').forEach(el=>{ const v=el.getAttribute('data-'+lang+'-html'); if(v!=null) el.innerHTML=v; });
+    document.documentElement.lang=lang; localStorage.setItem('sora.lang',lang);
+    document.querySelectorAll('.lang-toggle button').forEach(b=>b.classList.toggle('active', b.dataset.lang===lang));
+  }
+  document.querySelectorAll('.lang-toggle button').forEach(b=>b.addEventListener('click',()=>applyLang(b.dataset.lang)));
+  applyLang(getLang());
+</script>
+</body>
+</html>
