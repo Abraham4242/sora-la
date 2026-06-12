@@ -829,24 +829,8 @@
   .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
 </style>
 
-<!-- ░░░░░ SORA CASAS · CONFIG + ANALYTICS ░░░░░
-     Fill these IDs to go fully live. Each analytics tool loads ONLY if its ID is set. -->
-<script>
-window.SORA_CONFIG = {
-  whatsapp:    '50760000000',  // ⚠️ lead destination — digits only, country code first, no "+" (e.g. '50761234567')
-  leadEndpoint:'',             // server-side capture — paste a Formspree endpoint, e.g. 'https://formspree.io/f/xxxxxxx'
-  bookingUrl:  '',             // discovery-call booking, e.g. 'https://cal.com/sora/discovery'
-  ga4:         '',             // Google Analytics 4, e.g. 'G-XXXXXXXXXX'
-  metaPixel:   '',             // Meta Pixel id, e.g. '1234567890123456'
-  clarity:     ''              // Microsoft Clarity id, e.g. 'abcdefghij'
-};
-(function(C){
-  if (C.ga4){ var s=document.createElement('script'); s.async=1; s.src='https://www.googletagmanager.com/gtag/js?id='+C.ga4; document.head.appendChild(s);
-    window.dataLayer=window.dataLayer||[]; window.gtag=function(){dataLayer.push(arguments)}; gtag('js',new Date()); gtag('config',C.ga4); }
-  if (C.metaPixel){ !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js'); fbq('init',C.metaPixel); fbq('track','PageView'); }
-  if (C.clarity){ (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,'clarity','script',C.clarity); }
-})(window.SORA_CONFIG);
-</script>
+<!-- SORA CASAS · shared lead capture + analytics — single config source in leads.js -->
+<script src="leads.js"></script>
 </head>
 <body>
 
@@ -1451,6 +1435,8 @@ window.SORA_CONFIG = {
     🇵🇦 Panamá · 🇲🇽 México · 🇨🇴 Colombia · 🇻🇪 Venezuela
     <br><br>
     <a href="#" onclick="event.preventDefault();openWhatsApp('General')">WhatsApp</a> · <a href="mailto:hola@sora.la">hola@sora.la</a> · @sora.casas
+    <br><br>
+    <a href="guia.html">Guía de costos 2026</a> · <a href="discovery.html">Discovery Weekend</a> · <a href="qiv.html">Visa de Inversionista (QIV)</a>
     <br><br>
     <a href="privacidad.html">Privacidad</a> · <a href="terminos.html">Términos</a>
   </div>
