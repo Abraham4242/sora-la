@@ -1,0 +1,14 @@
+{
+  "updated": "",
+  "period": "",
+  "live": {
+    "organic_sessions": null,
+    "total_sessions": null,
+    "leads": null,
+    "keywords_page1": null,
+    "gsc_clicks": null,
+    "gsc_impressions": null,
+    "gsc_avg_position": null
+  },
+  "_note": "Populated by growth-connector.gs (GA4 + Search Console) on a daily trigger, or by hand. While values are null the dashboard shows plan targets and an 'awaiting connection' banner."
+}

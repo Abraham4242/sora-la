@@ -154,8 +154,29 @@
     <p data-es="Una sola página que hace obvio — para todo el equipo — cómo el contenido se convierte en rankings, tráfico, leads, y casas vendidas. La matemática, el calendario, y el día a día." data-en="One page that makes it obvious — for the whole team — how content becomes rankings, traffic, leads, and homes sold. The math, the calendar, and the daily cadence.">One page that makes it obvious — for the whole team — how content becomes rankings, traffic, leads, and homes sold. The math, the calendar, and the daily cadence.</p>
   </header>
 
+  <!-- 00 · LIVE THIS MONTH -->
+  <section style="border-top:0;padding-top:8px">
+    <div class="sec-num">
+      <span data-es="EN VIVO · ESTE MES" data-en="LIVE · THIS MONTH">LIVE · THIS MONTH</span>
+      <span id="live-badge" style="margin-left:10px;font-family:var(--mono);font-size:9px;letter-spacing:.1em;background:var(--coral);color:#fff;padding:2px 8px;border-radius:20px;display:none">LIVE</span>
+    </div>
+    <h2 data-es-html="Números <em>reales</em>." data-en-html="The <em>real</em> numbers.">The <em>real</em> numbers.</h2>
+    <div id="live-empty" style="background:var(--paper-3);border:.5px dashed var(--line-2);border-radius:13px;padding:24px 28px;font-family:var(--serif);font-style:italic;color:var(--ink-3);font-size:15px;line-height:1.55">
+      <span data-es-html="⚠ Esperando conexión con <b>GA4 + Search Console</b>. Las tarjetas de abajo (objetivos del plan) se reemplazarán por datos reales en cuanto conectes la fuente. <a href='#connect' style='color:var(--forest);font-weight:600'>Cómo conectar →</a>" data-en-html="⚠ Awaiting <b>GA4 + Search Console</b> connection. The cards below (plan targets) switch to real numbers the moment the data source is connected. <a href='#connect' style='color:var(--forest);font-weight:600'>How to connect →</a>">⚠ Awaiting <b>GA4 + Search Console</b> connection. The cards below (plan targets) switch to real numbers the moment the data source is connected. <a href="#connect" style="color:var(--forest);font-weight:600">How to connect →</a></span>
+    </div>
+    <div id="live-grid" class="kpis" style="display:none">
+      <div class="kpi"><div class="v" id="lv-org">—</div><div class="k" data-es="Sesiones orgánicas (mes)" data-en="Organic sessions (mo)">Organic sessions (mo)</div></div>
+      <div class="kpi"><div class="v" id="lv-leads">—</div><div class="k" data-es="Leads (mes)" data-en="Leads (mo)">Leads (mo)</div></div>
+      <div class="kpi"><div class="v" id="lv-kw">—</div><div class="k" data-es="Keywords en página 1" data-en="Keywords on page 1">Keywords on page 1</div></div>
+      <div class="kpi"><div class="v" id="lv-clicks">—</div><div class="k" data-es="Clics de búsqueda" data-en="Search clicks">Search clicks</div></div>
+      <div class="kpi"><div class="v" id="lv-impr">—</div><div class="k" data-es="Impresiones de búsqueda" data-en="Search impressions">Search impressions</div></div>
+      <div class="kpi"><div class="v" id="lv-pos">—</div><div class="k" data-es="Posición promedio" data-en="Avg. position">Avg. position</div></div>
+    </div>
+    <div id="live-updated" class="note" style="display:none"></div>
+  </section>
+
   <!-- 01 · THE ONE EQUATION -->
-  <section style="border-top:0">
+  <section>
     <div class="sec-num" data-es="01 · LA ECUACIÓN" data-en="01 · THE ONE EQUATION">01 · THE ONE EQUATION</div>
     <h2 data-es-html="Memoriza <em>esto</em>." data-en-html="Memorize <em>this</em>.">Memorize <em>this</em>.</h2>
     <p class="sec-sub" data-es="Todo lo demás en esta página existe para producir el lado izquierdo de esta ecuación." data-en="Everything else on this page exists to produce the left side of this equation.">Everything else on this page exists to produce the left side of this equation.</p>
@@ -334,6 +355,39 @@
       <div class="kpi" style="border-top-color:var(--coral)"><div class="v">2/mo</div><div class="k" data-es="Contratos firmados" data-en="Contracts signed">Contracts signed</div></div>
     </div>
   </section>
+
+  <!-- 09 · CONNECT THE DATA -->
+  <section id="connect">
+    <div class="sec-num" data-es="09 · CONECTAR LOS DATOS" data-en="09 · CONNECT THE DATA">09 · CONNECT THE DATA</div>
+    <h2 data-es-html="Cómo esto se vuelve <em>en vivo</em>." data-en-html="How this goes <em>live</em>.">How this goes <em>live</em>.</h2>
+    <p class="sec-sub" data-es="El cableado ya está hecho. Faltan 3 pasos que solo tú puedes dar (requieren tu cuenta de Google)." data-en="The wiring is done. Three steps remain that only you can do (they need your Google account).">The wiring is done. Three steps remain that only you can do (they need your Google account).</p>
+    <div class="qgrid">
+      <div class="q" style="border-top-color:var(--coral)"><div class="qh"><span class="qn" style="color:var(--coral)" data-es="PASO 1 · GA4" data-en="STEP 1 · GA4">STEP 1 · GA4</span></div>
+        <ul>
+          <li data-es-html="Crea una propiedad <b>GA4</b> para sora.la/casas en analytics.google.com" data-en-html="Create a <b>GA4</b> property for sora.la/casas at analytics.google.com"><b>GA4</b> property for sora.la/casas at analytics.google.com</li>
+          <li data-es-html="Dame el <b>Measurement ID</b> (G-XXXX) → lo pongo en leads.js y la recolección arranca" data-en-html="Give me the <b>Measurement ID</b> (G-XXXX) → I put it in leads.js and collection starts">Give me the <b>Measurement ID</b> (G-XXXX) → I wire it into leads.js</li>
+        </ul>
+      </div>
+      <div class="q" style="border-top-color:var(--teal)"><div class="qh"><span class="qn" style="color:var(--teal)" data-es="PASO 2 · SEARCH CONSOLE" data-en="STEP 2 · SEARCH CONSOLE">STEP 2 · SEARCH CONSOLE</span></div>
+        <ul>
+          <li data-es-html="Verifica el dominio en <b>Search Console</b> (search.google.com/search-console)" data-en-html="Verify the domain in <b>Search Console</b> (search.google.com/search-console)">Verify the domain in <b>Search Console</b></li>
+          <li data-es="Empieza a registrar clics, impresiones y posiciones de keywords" data-en="Starts logging clicks, impressions and keyword positions">Starts logging clicks, impressions and keyword positions</li>
+        </ul>
+      </div>
+      <div class="q" style="border-top-color:var(--gold-deep)"><div class="qh"><span class="qn" style="color:var(--gold-deep)" data-es="PASO 3 · CONECTOR" data-en="STEP 3 · CONNECTOR">STEP 3 · CONNECTOR</span></div>
+        <ul>
+          <li data-es-html="Pega <b>growth-connector.gs</b> en script.google.com (incluido en el repo)" data-en-html="Paste <b>growth-connector.gs</b> into script.google.com (in the repo)">Paste <b>growth-connector.gs</b> into script.google.com (in the repo)</li>
+          <li data-es-html="Lee GA4 + GSC y actualiza <b>growth-data.json</b> a diario → esta página se enciende sola" data-en-html="Reads GA4 + GSC and updates <b>growth-data.json</b> daily → this page lights up on its own">Reads GA4 + GSC, updates <b>growth-data.json</b> daily → this page lights up</li>
+        </ul>
+      </div>
+      <div class="q" style="border-top-color:var(--forest)"><div class="qh"><span class="qn" data-es="MIENTRAS TANTO" data-en="MEANWHILE">MEANWHILE</span></div>
+        <ul>
+          <li data-es="Sin conexión, las tarjetas muestran los OBJETIVOS del plan (sección 07)." data-en="Until connected, the cards show the plan's TARGETS (section 07).">Until connected, cards show the plan's TARGETS (section 07).</li>
+          <li data-es-html="¿Prefieres manual? Pásame los números de GA4/GSC y actualizo <b>growth-data.json</b> yo." data-en-html="Prefer manual? Send me the GA4/GSC numbers and I'll update <b>growth-data.json</b> myself.">Prefer manual? Send me the GA4/GSC numbers and I'll update <b>growth-data.json</b>.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 </div>
 
 <footer>
@@ -350,6 +404,31 @@
   }
   document.querySelectorAll('.lang-toggle button').forEach(b=>b.addEventListener('click',()=>applyLang(b.dataset.lang)));
   applyLang(getLang());
+
+  // ── Optional: track this dashboard page in GA4 (set the ID once you have it) ──
+  const GA4_ID = ''; // e.g. 'G-XXXXXXXXXX'
+  if (GA4_ID){ var g=document.createElement('script'); g.async=1; g.src='https://www.googletagmanager.com/gtag/js?id='+GA4_ID; document.head.appendChild(g);
+    window.dataLayer=window.dataLayer||[]; window.gtag=function(){dataLayer.push(arguments)}; gtag('js',new Date()); gtag('config',GA4_ID); }
+
+  // ── Live data: reads growth-data.json (same-origin). Point at your Apps Script
+  //    web-app URL instead if you prefer. Empty/null values → keeps the "awaiting" state. ──
+  const DATA_URL = 'growth-data.json';
+  const fmtN = n => (n==null ? '—' : Number(n).toLocaleString());
+  fetch(DATA_URL, {cache:'no-store'}).then(r=>r.ok?r.json():null).then(d=>{
+    if(!d || !d.live) return;
+    const L = d.live;
+    const has = ['organic_sessions','total_sessions','leads','keywords_page1','gsc_clicks','gsc_impressions','gsc_avg_position'].some(k=>L[k]!=null);
+    if(!has) return;
+    const set=(id,v)=>{ var el=document.getElementById(id); if(el) el.textContent=v; };
+    set('lv-org', fmtN(L.organic_sessions)); set('lv-leads', fmtN(L.leads)); set('lv-kw', fmtN(L.keywords_page1));
+    set('lv-clicks', fmtN(L.gsc_clicks)); set('lv-impr', fmtN(L.gsc_impressions));
+    set('lv-pos', L.gsc_avg_position==null ? '—' : L.gsc_avg_position);
+    document.getElementById('live-empty').style.display='none';
+    document.getElementById('live-grid').style.display='';
+    document.getElementById('live-badge').style.display='inline-block';
+    var u=document.getElementById('live-updated'); u.style.display='block';
+    u.textContent = (d.period ? d.period + ' · ' : '') + 'updated ' + (d.updated ? new Date(d.updated).toLocaleString() : '—');
+  }).catch(()=>{});
 </script>
 </body>
 </html>
