@@ -19,10 +19,16 @@
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
   a{color:inherit;text-decoration:none}
+  html[lang="en"] [lang="es"]{display:none !important}
+  html[lang="es"] [lang="en"]{display:none !important}
   .top{position:sticky;top:0;z-index:50;background:rgba(247,240,223,.94);backdrop-filter:blur(14px);border-bottom:.5px solid var(--line)}
-  .top-in{max-width:1080px;margin:0 auto;padding:14px 28px;display:flex;align-items:center}
+  .top-in{max-width:1080px;margin:0 auto;padding:14px 28px;display:flex;align-items:center;gap:12px}
   .top .wm{font-family:var(--serif);font-weight:600;font-size:18px}.top .wm em{font-style:italic;color:var(--coral-deep)}
-  .top a.back{margin-left:auto;font-size:12.5px;color:var(--ink-soft);border:.5px solid var(--line);padding:7px 13px;border-radius:7px}
+  .spacer{flex:1}
+  .lang-toggle{display:inline-flex;border:.5px solid var(--line-2);border-radius:7px;overflow:hidden}
+  .lang-toggle button{padding:6px 12px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;background:transparent;border:0;color:var(--ink-faint);cursor:pointer;font-weight:600}
+  .lang-toggle button.active{background:var(--forest);color:var(--paper)}
+  .top a.back{font-size:12.5px;color:var(--ink-soft);border:.5px solid var(--line);padding:7px 13px;border-radius:7px}
   .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
   .hero{padding:56px 0 40px;text-align:center}
   .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--forest);font-weight:700;margin-bottom:18px}
@@ -64,74 +70,91 @@
 </style>
 </head>
 <body>
-<header class="top"><div class="top-in"><span class="wm"><em>SORA</em> Casas</span><a class="back" href="index.html">← Casas</a></div></header>
+<header class="top"><div class="top-in">
+  <span class="wm"><em>SORA</em> Casas</span><span class="spacer"></span>
+  <div class="lang-toggle"><button data-lang="es">ES</button><button data-lang="en" class="active">EN</button></div>
+  <a class="back" href="index.html">← Casas</a>
+</div></header>
 
 <div class="wrap">
   <section class="hero" style="border-top:0">
     <div class="eyebrow">Sora Discovery Weekend</div>
-    <h1>Stop researching.<br>Decide <em>on the ground</em>.</h1>
-    <p class="lede">Three nights in Panama, built to answer one question: is this the place you build your home? Walk real lots with real Sora homeowners — not a sales office.</p>
-    <div class="offer"><div class="big"><em>$1,500</em> flight credit</div><div class="s">Applied to your home at closing</div></div>
+    <h1><span lang="es">Deja de investigar.<br>Decide <em>en el terreno</em>.</span><span lang="en">Stop researching.<br>Decide <em>on the ground</em>.</span></h1>
+    <p class="lede"><span lang="es">Tres noches en Panamá, diseñadas para responder una sola pregunta: ¿es aquí donde construyes tu casa? Camina lotes reales con propietarios reales de Sora — no una oficina de ventas.</span><span lang="en">Three nights in Panama, built to answer one question: is this the place you build your home? Walk real lots with real Sora homeowners — not a sales office.</span></p>
+    <div class="offer"><div class="big"><em>$1,500</em> <span lang="es">de crédito de vuelo</span><span lang="en">flight credit</span></div><div class="s"><span lang="es">Aplicado a tu casa al cierre</span><span lang="en">Applied to your home at closing</span></div></div>
     <div class="cta-row">
-      <a href="#apply" class="btn btn-primary">Apply for a weekend →</a>
-      <button class="btn btn-ghost" onclick="soraWhatsApp('Hi Sora — I want to come to a Discovery Weekend in Panama. What dates are open?')">Ask on WhatsApp</button>
+      <a href="#apply" class="btn btn-primary"><span lang="es">Aplicar a un fin de semana →</span><span lang="en">Apply for a weekend →</span></a>
+      <button class="btn btn-ghost" onclick="dwWA()"><span lang="es">Preguntar por WhatsApp</span><span lang="en">Ask on WhatsApp</span></button>
     </div>
   </section>
 
   <section>
-    <div class="eyebrow">The three days</div>
-    <h2>A weekend that <em>answers it</em>.</h2>
+    <div class="eyebrow"><span lang="es">Los tres días</span><span lang="en">The three days</span></div>
+    <h2><span lang="es">Un fin de semana que <em>lo responde</em>.</span><span lang="en">A weekend that <em>answers it</em>.</span></h2>
     <div class="days">
-      <div class="day"><div class="n">Day 1 · Land</div><h3>Arrive &amp; walk the lots</h3><p>Airport pickup, settle in, sunset lot walk through Sora's titled parcels. See exactly where your home could sit.</p></div>
-      <div class="day"><div class="n">Day 2 · People</div><h3>Homeowners &amp; the build</h3><p>Coffee with current Sora homeowners, tour a home under construction, architect dinner to sketch your floorplan and price it live.</p></div>
-      <div class="day"><div class="n">Day 3 · Path</div><h3>Attorney &amp; numbers</h3><p>Sit with our immigration + closing attorneys on visa paths (Friendly Nations / QIV), fixed pricing, and the 9-month timeline. No pressure, just clarity.</p></div>
+      <div class="day"><div class="n"><span lang="es">Día 1 · Llegada</span><span lang="en">Day 1 · Land</span></div><h3><span lang="es">Llega y camina los lotes</span><span lang="en">Arrive &amp; walk the lots</span></h3><p><span lang="es">Recogida en el aeropuerto, instalación, caminata al atardecer por los lotes titulados de Sora. Ve exactamente dónde podría estar tu casa.</span><span lang="en">Airport pickup, settle in, sunset lot walk through Sora's titled parcels. See exactly where your home could sit.</span></p></div>
+      <div class="day"><div class="n"><span lang="es">Día 2 · Gente</span><span lang="en">Day 2 · People</span></div><h3><span lang="es">Propietarios y la obra</span><span lang="en">Homeowners &amp; the build</span></h3><p><span lang="es">Café con propietarios actuales de Sora, tour de una casa en construcción, cena con el arquitecto para bocetar tu planta y cotizarla en vivo.</span><span lang="en">Coffee with current Sora homeowners, tour a home under construction, architect dinner to sketch your floorplan and price it live.</span></p></div>
+      <div class="day"><div class="n"><span lang="es">Día 3 · Camino</span><span lang="en">Day 3 · Path</span></div><h3><span lang="es">Abogado y números</span><span lang="en">Attorney &amp; numbers</span></h3><p><span lang="es">Siéntate con nuestros abogados de inmigración y cierre sobre las vías de visa (Naciones Amigas / QIV), el precio fijo y la línea de tiempo de 9 meses. Sin presión, solo claridad.</span><span lang="en">Sit with our immigration + closing attorneys on visa paths (Friendly Nations / QIV), fixed pricing, and the 9-month timeline. No pressure, just clarity.</span></p></div>
     </div>
   </section>
 
   <section>
-    <div class="eyebrow">Why we fly you down</div>
-    <h2>Because being here <em>decides it</em>.</h2>
+    <div class="eyebrow"><span lang="es">Por qué te llevamos</span><span lang="en">Why we fly you down</span></div>
+    <h2><span lang="es">Porque estar aquí <em>lo decide</em>.</span><span lang="en">Because being here <em>decides it</em>.</span></h2>
     <div class="proof">
-      <div><div class="v">25–40%</div><div class="l">Site visit → contract</div></div>
-      <div><div class="v">$1,500</div><div class="l">Flight credit at closing</div></div>
-      <div><div class="v">3 nights</div><div class="l">On the ground, with homeowners</div></div>
+      <div><div class="v">25–40%</div><div class="l"><span lang="es">Visita → contrato</span><span lang="en">Site visit → contract</span></div></div>
+      <div><div class="v">$1,500</div><div class="l"><span lang="es">Crédito de vuelo al cierre</span><span lang="en">Flight credit at closing</span></div></div>
+      <div><div class="v">3 <span lang="es">noches</span><span lang="en">nights</span></div><div class="l"><span lang="es">En el terreno, con propietarios</span><span lang="en">On the ground, with homeowners</span></div></div>
     </div>
   </section>
 
   <section id="apply">
     <div class="capture">
       <div id="form-wrap">
-        <div class="eyebrow" style="color:var(--mango)">Apply · limited weekends / month</div>
-        <h2>Apply for a <em>Discovery Weekend</em>.</h2>
-        <p class="sub">Tell us a little and a Sora host will reach out with open dates and a tailored itinerary. The $1,500 flight credit applies to your home at closing.</p>
+        <div class="eyebrow" style="color:var(--mango)"><span lang="es">Aplica · cupos limitados / mes</span><span lang="en">Apply · limited weekends / month</span></div>
+        <h2><span lang="es">Aplica a un <em>Discovery Weekend</em>.</span><span lang="en">Apply for a <em>Discovery Weekend</em>.</span></h2>
+        <p class="sub"><span lang="es">Cuéntanos un poco y un host de Sora te contactará con fechas disponibles y un itinerario a tu medida. El crédito de vuelo de $1,500 aplica a tu casa al cierre.</span><span lang="en">Tell us a little and a Sora host will reach out with open dates and a tailored itinerary. The $1,500 flight credit applies to your home at closing.</span></p>
         <form id="dw-form" onsubmit="return submitDW(event)">
-          <div class="field"><label>First name</label><input name="nombre" required placeholder="Your name"></div>
+          <div class="field"><label><span lang="es">Nombre</span><span lang="en">First name</span></label><input name="nombre" required placeholder="—"></div>
           <div class="field"><label>Email</label><input name="email" type="email" required placeholder="you@email.com"></div>
-          <div class="field"><label>WhatsApp / phone</label><input name="whatsapp" required placeholder="+1 …"></div>
-          <div class="field"><label>Market you're drawn to</label>
-            <select name="zona" required><option value="">Select…</option><option>Pedasí / Playa Venao</option><option>Boquete</option><option>Volcán</option><option>Bocas del Toro</option><option>Not sure yet</option></select>
+          <div class="field"><label><span lang="es">WhatsApp / teléfono</span><span lang="en">WhatsApp / phone</span></label><input name="whatsapp" required placeholder="+1 …"></div>
+          <div class="field"><label><span lang="es">Mercado que te atrae</span><span lang="en">Market you're drawn to</span></label>
+            <select name="zona" required><option value="">—</option><option>Pedasí / Playa Venao</option><option>Boquete</option><option>Volcán</option><option>Bocas del Toro</option><option lang="es">Aún no estoy seguro</option><option lang="en">Not sure yet</option></select>
           </div>
-          <div class="field"><label>Budget</label>
-            <select name="budget" required><option value="">Select…</option><option>$250K – $400K</option><option>$400K – $600K</option><option>$600K +</option><option>Exploring</option></select>
+          <div class="field"><label><span lang="es">Presupuesto</span><span lang="en">Budget</span></label>
+            <select name="budget" required><option value="">—</option><option>$250K – $400K</option><option>$400K – $600K</option><option>$600K +</option><option lang="es">Explorando</option><option lang="en">Exploring</option></select>
           </div>
-          <div class="field"><label>When could you travel?</label>
-            <select name="timeline" required><option value="">Select…</option><option>Next 1–2 months</option><option>3–6 months</option><option>Later this year</option><option>Flexible</option></select>
+          <div class="field"><label><span lang="es">¿Cuándo podrías viajar?</span><span lang="en">When could you travel?</span></label>
+            <select name="timeline" required><option value="">—</option><option lang="es">En 1–2 meses</option><option lang="en">Next 1–2 months</option><option lang="es">En 3–6 meses</option><option lang="en">3–6 months</option><option lang="es">Más adelante este año</option><option lang="en">Later this year</option><option lang="es">Flexible</option><option lang="en">Flexible</option></select>
           </div>
-          <button class="submit" type="submit">Apply for my weekend →</button>
-          <div class="fine">We'll only use your details to coordinate your visit. <a href="privacidad.html">Privacy policy</a>.</div>
+          <button class="submit" type="submit"><span lang="es">Aplicar a mi fin de semana →</span><span lang="en">Apply for my weekend →</span></button>
+          <div class="fine"><span lang="es">Solo usaremos tus datos para coordinar tu visita. <a href="privacidad.html">Política de privacidad</a>.</span><span lang="en">We'll only use your details to coordinate your visit. <a href="privacidad.html">Privacy policy</a>.</span></div>
         </form>
       </div>
-      <div class="ok" id="ok"><div class="big">✓</div><h2>Application received.</h2><p>A Sora host is reviewing your dates now and will reach out on WhatsApp with open weekends and your itinerary.</p>
-        <div class="cta-row" style="margin-top:20px"><button class="btn btn-ghost" style="background:var(--mango);border:0" onclick="soraWhatsApp('Hi Sora — I just applied for a Discovery Weekend. Can we lock dates?')">Open WhatsApp →</button></div>
+      <div class="ok" id="ok"><div class="big">✓</div><h2><span lang="es">Solicitud recibida.</span><span lang="en">Application received.</span></h2><p><span lang="es">Un host de Sora está revisando tus fechas y te contactará por WhatsApp con fines de semana disponibles y tu itinerario.</span><span lang="en">A Sora host is reviewing your dates now and will reach out on WhatsApp with open weekends and your itinerary.</span></p>
+        <div class="cta-row" style="margin-top:20px"><button class="btn btn-ghost" style="background:var(--mango);border:0" onclick="dwWA()"><span lang="es">Abrir WhatsApp →</span><span lang="en">Open WhatsApp →</span></button></div>
       </div>
     </div>
   </section>
 </div>
 
-<footer>SORA Casas · Una marca de La Compañía · <a href="index.html">sora.la/casas</a></footer>
+<footer>SORA Casas · <span lang="es">Una marca de La Compañía</span><span lang="en">A La Compañía brand</span> · <a href="index.html">sora.la/casas</a></footer>
 
 <script src="leads.js"></script>
 <script>
+  (function(){
+    var L = localStorage.getItem('sora-casas-lang') || 'en';
+    window.setLang = function(l){ document.documentElement.lang=l; localStorage.setItem('sora-casas-lang',l);
+      document.querySelectorAll('.lang-toggle button').forEach(function(b){ b.classList.toggle('active', b.dataset.lang===l); }); };
+    document.querySelectorAll('.lang-toggle button').forEach(function(b){ b.addEventListener('click', function(){ setLang(b.dataset.lang); }); });
+    setLang(L);
+  })();
+
+  function dwWA(){
+    var es = document.documentElement.lang==='es';
+    soraWhatsApp(es ? 'Hola Sora — quiero ir a un Discovery Weekend en Panamá. ¿Qué fechas hay disponibles?'
+                    : 'Hi Sora — I want to come to a Discovery Weekend in Panama. What dates are open?');
+  }
   async function submitDW(e){
     e.preventDefault();
     var data = Object.fromEntries(new FormData(e.target));
@@ -139,7 +162,8 @@
     track('discovery_apply', { zona: data.zona, budget: data.budget, timeline: data.timeline });
     document.getElementById('form-wrap').style.display='none';
     document.getElementById('ok').style.display='block';
-    soraWhatsApp('Hi Sora — I applied for a Discovery Weekend. ' + (data.nombre||'') + ', ' + (data.zona||'') + ', budget ' + (data.budget||'') + ', travel ' + (data.timeline||'') + '.');
+    var es = document.documentElement.lang==='es';
+    soraWhatsApp((es ? 'Hola Sora — apliqué a un Discovery Weekend. ' : 'Hi Sora — I applied for a Discovery Weekend. ') + (data.nombre||'') + ', ' + (data.zona||'') + ', ' + (data.budget||'') + ', ' + (data.timeline||'') + '.');
     return false;
   }
 </script>

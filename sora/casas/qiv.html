@@ -23,11 +23,16 @@
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
   a{color:inherit;text-decoration:none}
+  html[lang="en"] [lang="es"]{display:none !important}
+  html[lang="es"] [lang="en"]{display:none !important}
   .top{position:sticky;top:0;z-index:50;background:rgba(247,240,223,.94);backdrop-filter:blur(14px);border-bottom:.5px solid var(--line)}
-  .top-in{max-width:1080px;margin:0 auto;padding:14px 28px;display:flex;align-items:center;gap:14px}
+  .top-in{max-width:1080px;margin:0 auto;padding:14px 28px;display:flex;align-items:center;gap:12px}
   .top .wm{font-family:var(--serif);font-weight:600;font-size:18px;letter-spacing:.04em}
   .top .wm em{font-style:italic;color:var(--coral-deep)}
   .spacer{flex:1}
+  .lang-toggle{display:inline-flex;border:.5px solid var(--line-2);border-radius:7px;overflow:hidden}
+  .lang-toggle button{padding:6px 12px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;background:transparent;border:0;color:var(--ink-faint);cursor:pointer;font-weight:600}
+  .lang-toggle button.active{background:var(--forest);color:var(--paper)}
   .top a.back{font-size:12.5px;color:var(--ink-soft);border:.5px solid var(--line);padding:7px 13px;border-radius:7px}
   .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
 
@@ -37,11 +42,10 @@
   @keyframes p{0%,100%{opacity:1}50%{opacity:.35}}
   h1{font-family:var(--serif);font-weight:300;font-size:clamp(38px,6vw,68px);line-height:1.04;letter-spacing:-.02em;margin-bottom:20px}
   h1 em{font-style:italic;color:var(--forest)}
-  h1 .strike{position:relative;color:var(--coral-deep)}
+  h1 .strike{color:var(--coral-deep)}
   .lede{font-size:19px;color:var(--ink-soft);max-width:680px;margin:0 auto 18px;line-height:1.55}
   .lede b{color:var(--ink)}
 
-  /* COUNTDOWN */
   .count{display:flex;justify-content:center;gap:14px;margin:30px 0 8px;flex-wrap:wrap}
   .cbox{background:var(--ink);color:var(--paper);border-radius:14px;padding:18px 22px;min-width:96px}
   .cbox .n{font-family:var(--mono);font-weight:700;font-size:clamp(34px,6vw,52px);line-height:1;color:var(--mango)}
@@ -77,7 +81,6 @@
   .step h3{font-family:var(--serif);font-size:19px;font-weight:500;margin-bottom:7px}
   .step p{font-size:13.5px;color:var(--ink-soft);line-height:1.55}
 
-  /* FORM */
   .capture{background:var(--ink);color:var(--paper);border-radius:18px;padding:44px 48px;position:relative;overflow:hidden}
   .capture::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--forest),var(--mango),var(--coral))}
   .capture h2{color:var(--paper)} .capture h2 em{color:var(--mango)}
@@ -108,115 +111,133 @@
 <header class="top"><div class="top-in">
   <span class="wm"><em>SORA</em> Casas</span>
   <span class="spacer"></span>
-  <a class="back" href="index.html">← Casas</a>
+  <div class="lang-toggle"><button data-lang="es">ES</button><button data-lang="en" class="active">EN</button></div>
+  <a class="back" href="index.html"><span lang="es">← Casas</span><span lang="en">← Casas</span></a>
 </div></header>
 
 <div class="wrap">
   <section class="hero" style="border-top:0">
-    <div class="urg"><span class="pulse"></span><span id="urg-text">The window closes Oct 15, 2026</span></div>
-    <h1>Lock in residency at <em>$300K</em><br>before it becomes <span class="strike">$500K</span>.</h1>
-    <p class="lede">Panama's <b>Qualified Investor Visa</b> grants permanent residency for a qualifying real-estate purchase. On <b>October 15, 2026</b> the real-estate threshold rises from <b>$300,000 → $500,000</b>. Buy a titled SORA home before then and you save $200,000 on the threshold — and your path to a Panama passport.</p>
+    <div class="urg"><span class="pulse"></span><span id="urg-text"></span></div>
+    <h1>
+      <span lang="es">Asegura tu residencia en <em>$300K</em><br>antes de que sean <span class="strike">$500K</span>.</span>
+      <span lang="en">Lock in residency at <em>$300K</em><br>before it becomes <span class="strike">$500K</span>.</span>
+    </h1>
+    <p class="lede">
+      <span lang="es">La <b>Visa de Inversionista Calificado</b> de Panamá otorga residencia permanente por una compra de bienes raíces. El <b>15 de octubre de 2026</b> el umbral inmobiliario sube de <b>$300,000 → $500,000</b>. Compra una casa SORA titulada antes de esa fecha y ahorras $200,000 en el umbral — y en tu camino al pasaporte panameño.</span>
+      <span lang="en">Panama's <b>Qualified Investor Visa</b> grants permanent residency for a qualifying real-estate purchase. On <b>October 15, 2026</b> the real-estate threshold rises from <b>$300,000 → $500,000</b>. Buy a titled SORA home before then and you save $200,000 on the threshold — and your path to a Panama passport.</span>
+    </p>
 
     <div class="count" id="count">
-      <div class="cbox"><div class="n" id="d">—</div><div class="l">Days</div></div>
-      <div class="cbox"><div class="n" id="h">—</div><div class="l">Hours</div></div>
+      <div class="cbox"><div class="n" id="d">—</div><div class="l"><span lang="es">Días</span><span lang="en">Days</span></div></div>
+      <div class="cbox"><div class="n" id="h">—</div><div class="l"><span lang="es">Horas</span><span lang="en">Hours</span></div></div>
       <div class="cbox"><div class="n" id="m">—</div><div class="l">Min</div></div>
-      <div class="cbox"><div class="n" id="s">—</div><div class="l">Sec</div></div>
+      <div class="cbox"><div class="n" id="s">—</div><div class="l">Seg</div></div>
     </div>
-    <div class="deadline">Threshold change · 15 October 2026</div>
+    <div class="deadline"><span lang="es">Cambio de umbral · 15 octubre 2026</span><span lang="en">Threshold change · 15 October 2026</span></div>
 
     <div class="cta-row">
-      <a href="#capture" class="btn btn-primary">Get the pre-vetted $300K property list →</a>
-      <button class="btn btn-ghost" onclick="soraWhatsApp('Hi Sora — I want to lock in the Panama QIV at $300K before Oct 15, 2026. Can you send the qualifying property list?')">WhatsApp an advisor</button>
+      <a href="#capture" class="btn btn-primary"><span lang="es">Quiero la lista de propiedades de $300K →</span><span lang="en">Get the pre-vetted $300K property list →</span></a>
+      <button class="btn btn-ghost" onclick="qivWA()"><span lang="es">Hablar por WhatsApp</span><span lang="en">WhatsApp an advisor</span></button>
     </div>
   </section>
 
   <section>
-    <div class="sec-eyebrow">The stakes</div>
-    <h2>$200,000 hangs on <em>one date</em>.</h2>
+    <div class="sec-eyebrow"><span lang="es">Lo que está en juego</span><span lang="en">The stakes</span></div>
+    <h2><span lang="es">$200,000 dependen de <em>una sola fecha</em>.</span><span lang="en">$200,000 hangs on <em>one date</em>.</span></h2>
     <div class="stakes">
       <div class="stake now">
-        <div class="t">Now → Oct 15, 2026</div>
+        <div class="t"><span lang="es">Hasta el 15 oct 2026</span><span lang="en">Now → Oct 15, 2026</span></div>
         <div class="big">$300,000</div>
-        <p>Minimum titled real-estate investment to qualify for the Qualified Investor Visa — permanent residency in ~30 days, a path to citizenship in 5 years.</p>
+        <p><span lang="es">Inversión mínima en bienes raíces titulados para calificar a la Visa de Inversionista Calificado — residencia permanente en ~30 días, camino a la ciudadanía en 5 años.</span><span lang="en">Minimum titled real-estate investment to qualify for the Qualified Investor Visa — permanent residency in ~30 days, a path to citizenship in 5 years.</span></p>
       </div>
       <div class="stake after">
-        <div class="t">After Oct 15, 2026</div>
+        <div class="t"><span lang="es">Después del 15 oct 2026</span><span lang="en">After Oct 15, 2026</span></div>
         <div class="big">$500,000</div>
-        <p>The same residency now requires $200,000 more in property. Buyers in the next few months act now — or pay the difference forever.</p>
+        <p><span lang="es">La misma residencia exige $200,000 más en propiedad. Quien compre en los próximos meses actúa ahora — o paga la diferencia para siempre.</span><span lang="en">The same residency now requires $200,000 more in property. Buyers in the next few months act now — or pay the difference forever.</span></p>
       </div>
     </div>
   </section>
 
   <section>
-    <div class="sec-eyebrow">How SORA qualifies you</div>
-    <h2>A titled home that <em>counts</em>.</h2>
+    <div class="sec-eyebrow"><span lang="es">Cómo SORA te califica</span><span lang="en">How SORA qualifies you</span></div>
+    <h2><span lang="es">Una casa titulada que <em>cuenta</em>.</span><span lang="en">A titled home that <em>counts</em>.</span></h2>
     <div class="steps">
-      <div class="step"><div class="n">1</div><h3>Pick a qualifying home</h3><p>We send a curated list of titled SORA homes and lots at or above $300K in Pedasí, Boquete, Volcán and Bocas — every one QIV-eligible.</p></div>
-      <div class="step"><div class="n">2</div><h3>Buy &amp; file in parallel</h3><p>Our pre-vetted immigration attorney files your QIV while construction or closing proceeds — escrow-protected, USD-denominated, source-of-funds cleared up front.</p></div>
-      <div class="step"><div class="n">3</div><h3>Get residency</h3><p>Permanent residency, typically in ~30 days. Five years later, eligibility for a Panama passport — all anchored to a home you actually own and use.</p></div>
+      <div class="step"><div class="n">1</div><h3><span lang="es">Elige una casa que califique</span><span lang="en">Pick a qualifying home</span></h3><p><span lang="es">Te enviamos una lista curada de casas y lotes SORA titulados desde $300K en Pedasí, Boquete, Volcán y Bocas — todos elegibles para la QIV.</span><span lang="en">We send a curated list of titled SORA homes and lots at or above $300K in Pedasí, Boquete, Volcán and Bocas — every one QIV-eligible.</span></p></div>
+      <div class="step"><div class="n">2</div><h3><span lang="es">Compra y tramita en paralelo</span><span lang="en">Buy &amp; file in parallel</span></h3><p><span lang="es">Nuestro abogado de inmigración tramita tu QIV mientras avanza la construcción o el cierre — protegido por fideicomiso, en USD, con origen de fondos validado desde el inicio.</span><span lang="en">Our pre-vetted immigration attorney files your QIV while construction or closing proceeds — escrow-protected, USD-denominated, source-of-funds cleared up front.</span></p></div>
+      <div class="step"><div class="n">3</div><h3><span lang="es">Obtén residencia</span><span lang="en">Get residency</span></h3><p><span lang="es">Residencia permanente, típicamente en ~30 días. Cinco años después, elegibilidad para el pasaporte panameño — todo anclado a una casa que de verdad posees y usas.</span><span lang="en">Permanent residency, typically in ~30 days. Five years later, eligibility for a Panama passport — all anchored to a home you actually own and use.</span></p></div>
     </div>
   </section>
 
   <section id="capture">
     <div class="capture">
       <div id="form-wrap">
-        <div class="sec-eyebrow" style="color:var(--mango)">Free · No obligation</div>
-        <h2>Send me the <em>$300K QIV property list</em>.</h2>
-        <p class="sub">Get the curated list of qualifying titled homes + the QIV timeline, and a 15-minute call with a Sora advisor before the threshold changes.</p>
+        <div class="sec-eyebrow" style="color:var(--mango)"><span lang="es">Gratis · Sin compromiso</span><span lang="en">Free · No obligation</span></div>
+        <h2><span lang="es">Envíame la <em>lista de propiedades QIV de $300K</em>.</span><span lang="en">Send me the <em>$300K QIV property list</em>.</span></h2>
+        <p class="sub"><span lang="es">Recibe la lista curada de casas tituladas que califican + la línea de tiempo de la QIV, y una llamada de 15 minutos con un asesor de Sora antes de que cambie el umbral.</span><span lang="en">Get the curated list of qualifying titled homes + the QIV timeline, and a 15-minute call with a Sora advisor before the threshold changes.</span></p>
         <form id="qiv-form" onsubmit="return submitQIV(event)">
-          <div class="field"><label>First name</label><input name="nombre" required placeholder="Your name"></div>
+          <div class="field"><label><span lang="es">Nombre</span><span lang="en">First name</span></label><input name="nombre" required placeholder="—"></div>
           <div class="field"><label>Email</label><input name="email" type="email" required placeholder="you@email.com"></div>
-          <div class="field"><label>WhatsApp / phone</label><input name="whatsapp" required placeholder="+1 …"></div>
-          <div class="field"><label>Budget</label>
+          <div class="field"><label><span lang="es">WhatsApp / teléfono</span><span lang="en">WhatsApp / phone</span></label><input name="whatsapp" required placeholder="+1 …"></div>
+          <div class="field"><label><span lang="es">Presupuesto</span><span lang="en">Budget</span></label>
             <select name="budget" required>
-              <option value="">Select…</option>
-              <option>$300K – $400K</option>
-              <option>$400K – $500K</option>
-              <option>$500K – $750K</option>
-              <option>$750K +</option>
+              <option value="">—</option>
+              <option>$300K – $400K</option><option>$400K – $500K</option><option>$500K – $750K</option><option>$750K +</option>
             </select>
           </div>
-          <div class="field full"><label>When do you want residency?</label>
+          <div class="field full"><label><span lang="es">¿Cuándo quieres la residencia?</span><span lang="en">When do you want residency?</span></label>
             <select name="timeline" required>
-              <option value="">Select…</option>
-              <option>ASAP — before Oct 15, 2026</option>
-              <option>Within 6 months</option>
-              <option>Within 12 months</option>
-              <option>Just researching</option>
+              <option value="">—</option>
+              <option lang="es">Lo antes posible — antes del 15 oct 2026</option><option lang="en">ASAP — before Oct 15, 2026</option>
+              <option lang="es">En 6 meses</option><option lang="en">Within 6 months</option>
+              <option lang="es">En 12 meses</option><option lang="en">Within 12 months</option>
+              <option lang="es">Solo investigando</option><option lang="en">Just researching</option>
             </select>
           </div>
-          <button class="submit" type="submit">Send me the QIV property list →</button>
-          <div class="fineprint">We'll only use your details to send the list and follow up about the QIV. No spam. See our <a href="privacidad.html">privacy policy</a>.</div>
+          <button class="submit" type="submit"><span lang="es">Enviarme la lista QIV →</span><span lang="en">Send me the QIV property list →</span></button>
+          <div class="fineprint"><span lang="es">Solo usaremos tus datos para enviar la lista y dar seguimiento sobre la QIV. Sin spam. Ver nuestra <a href="privacidad.html">política de privacidad</a>.</span><span lang="en">We'll only use your details to send the list and follow up about the QIV. No spam. See our <a href="privacidad.html">privacy policy</a>.</span></div>
         </form>
       </div>
       <div class="ok" id="ok" style="display:none">
         <div class="big">✓</div>
-        <h2>You're in.</h2>
-        <p>Check your WhatsApp — a Sora advisor is sending your $300K QIV property list now. Want to skip the wait? Message us directly.</p>
-        <div class="cta-row" style="margin-top:22px"><button class="btn btn-ghost" onclick="soraWhatsApp('Hi Sora — I just requested the QIV $300K property list. Can we talk?')" style="background:var(--mango);color:#14110c;border:0">Open WhatsApp →</button></div>
+        <h2><span lang="es">Listo.</span><span lang="en">You're in.</span></h2>
+        <p><span lang="es">Revisa tu WhatsApp — un asesor de Sora te está enviando tu lista de propiedades QIV de $300K. ¿No quieres esperar? Escríbenos directo.</span><span lang="en">Check your WhatsApp — a Sora advisor is sending your $300K QIV property list now. Want to skip the wait? Message us directly.</span></p>
+        <div class="cta-row" style="margin-top:22px"><button class="btn btn-ghost" style="background:var(--mango);color:#14110c;border:0" onclick="qivWA()"><span lang="es">Abrir WhatsApp →</span><span lang="en">Open WhatsApp →</span></button></div>
       </div>
     </div>
   </section>
 </div>
 
 <footer>
-  SORA Casas · Una marca de La Compañía · <a href="index.html">sora.la/casas</a>
+  SORA Casas · <span lang="es">Una marca de La Compañía</span><span lang="en">A La Compañía brand</span> · <a href="index.html">sora.la/casas</a>
 </footer>
 
 <script src="leads.js"></script>
 <script>
-  // Countdown to the QIV threshold change.
+  // Language toggle — shared with the whole casas property via 'sora-casas-lang'.
+  (function(){
+    var L = localStorage.getItem('sora-casas-lang') || 'en';
+    window.setLang = function(l){ document.documentElement.lang=l; localStorage.setItem('sora-casas-lang',l);
+      document.querySelectorAll('.lang-toggle button').forEach(function(b){ b.classList.toggle('active', b.dataset.lang===l); }); };
+    document.querySelectorAll('.lang-toggle button').forEach(function(b){ b.addEventListener('click', function(){ setLang(b.dataset.lang); }); });
+    setLang(L);
+  })();
+
+  function qivWA(){
+    var es = document.documentElement.lang==='es';
+    soraWhatsApp(es ? 'Hola Sora — quiero asegurar la QIV de Panamá en $300K antes del 15 oct 2026. ¿Me envías la lista de propiedades que califican?'
+                    : 'Hi Sora — I want to lock in the Panama QIV at $300K before Oct 15, 2026. Can you send the qualifying property list?');
+  }
+
   var DEADLINE = new Date('2026-10-15T00:00:00-05:00').getTime();
   function tick(){
-    var diff = DEADLINE - Date.now();
-    if (diff < 0) diff = 0;
+    var diff = DEADLINE - Date.now(); if (diff < 0) diff = 0;
     var d = Math.floor(diff/86400000), h = Math.floor(diff%86400000/3600000), m = Math.floor(diff%3600000/60000), s = Math.floor(diff%60000/1000);
     document.getElementById('d').textContent = d;
     document.getElementById('h').textContent = String(h).padStart(2,'0');
     document.getElementById('m').textContent = String(m).padStart(2,'0');
     document.getElementById('s').textContent = String(s).padStart(2,'0');
-    document.getElementById('urg-text').textContent = d + ' days left · threshold rises to $500K';
+    var es = document.documentElement.lang==='es';
+    document.getElementById('urg-text').textContent = es ? (d + ' días — el umbral sube a $500K') : (d + ' days left · threshold rises to $500K');
   }
   tick(); setInterval(tick, 1000);
 
@@ -227,7 +248,8 @@
     track('qiv_lead', { budget: data.budget, timeline: data.timeline });
     document.getElementById('form-wrap').style.display = 'none';
     document.getElementById('ok').style.display = 'block';
-    soraWhatsApp('Hi Sora — I want the $300K QIV property list. Name: ' + (data.nombre||'') + ', budget: ' + (data.budget||'') + ', timeline: ' + (data.timeline||'') + '.');
+    var es = document.documentElement.lang==='es';
+    soraWhatsApp((es ? 'Hola Sora — quiero la lista QIV de $300K. Nombre: ' : 'Hi Sora — I want the $300K QIV property list. Name: ') + (data.nombre||'') + ', ' + (data.budget||'') + ', ' + (data.timeline||'') + '.');
     return false;
   }
 </script>

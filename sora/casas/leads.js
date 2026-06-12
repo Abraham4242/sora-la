@@ -4,8 +4,8 @@
    Fill the IDs below to go fully live. Each analytics tool loads ONLY if set.
    ════════════════════════════════════════════════════════════════════ */
 window.SORA_CONFIG = {
-  whatsapp:    '50760000000',  // ⚠️ lead destination — digits only, country code first, no "+" (e.g. '50761234567')
-  leadEndpoint:'',             // server-side capture — Formspree endpoint, e.g. 'https://formspree.io/f/xxxxxxx'
+  whatsapp:    '50764260039',  // ⚠️ lead destination — digits only, country code first, no "+"
+  leadEndpoint:'https://formsubmit.co/ajax/hola@sora.la',  // inbox capture (FormSubmit, no signup). First submit emails a one-time ACTIVATION link to this inbox — click it to turn delivery on. Swap to a Formspree form id anytime.
   bookingUrl:  '',             // discovery-call booking, e.g. 'https://cal.com/sora/discovery'
   ga4:         '',             // 'G-XXXXXXXXXX'
   metaPixel:   '',             // '1234567890123456'
