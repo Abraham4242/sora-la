@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MANO · Servicios Verificados · La Compañía</title>
+<meta name="description" content="MANO — Panama's verified home & professional services marketplace. Describe a job, get matched to top-rated, fairly-priced pros. Verification, real reviews, transparent pricing.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%232e8a96'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Georgia,serif' font-size='20' font-weight='600' fill='%23f7f0df'%3EM%3C/text%3E%3C/svg%3E">
+<meta property="og:title" content="MANO · Servicios Verificados">
+<meta property="og:description" content="Panama's verified home & professional services marketplace — matching, real reviews, transparent pricing.">
+<meta name="theme-color" content="#2e8a96">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f7f0df; --paper-2:#fcf6e6; --paper-3:#ede4ca; --paper-deep:#e3d9c2;
+    --ink:#14110c; --ink-2:#2a251d; --ink-3:#4b4337; --ink-faint:#8a7e6a;
+    --line:rgba(20,17,12,0.10); --line-2:rgba(20,17,12,0.18);
+    --mano:#2e8a96; --mano-deep:#1f6470; --mano-light:#4db0bd;
+    --forest:#1d3a2c; --gold:#d9a55c; --gold-deep:#b88842; --coral:#D9573B;
+    --serif:'Fraunces',Georgia,serif; --sans:'Inter',-apple-system,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  body{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.08  0 0 0 0 0.07  0 0 0 0 0.05  0 0 0 0.022 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--mano);color:var(--paper)}
+
+  .top{position:sticky;top:0;z-index:50;background:rgba(247,240,223,.94);backdrop-filter:blur(14px);border-bottom:0.5px solid var(--line)}
+  .top-in{max-width:1240px;margin:0 auto;padding:18px 36px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  .brand{display:flex;align-items:baseline;gap:14px}
+  .brand .word{font-family:var(--serif);font-weight:600;font-size:22px;letter-spacing:.14em;color:var(--mano-deep)}
+  .brand .sub{font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--ink-3);text-transform:uppercase}
+  .spacer{flex:1}
+  .top-link{font-family:var(--sans);font-size:12px;color:var(--ink-2);padding:8px 14px;border:0.5px solid var(--line);border-radius:6px;transition:all .15s}
+  .top-link:hover{background:var(--paper-2);border-color:var(--line-2)}
+  .lang-toggle{display:inline-flex;border:0.5px solid var(--line);border-radius:6px;overflow:hidden}
+  .lang-toggle button{padding:7px 13px;font-family:var(--mono);font-size:10.5px;letter-spacing:.10em;background:transparent;border:0;color:var(--ink-faint);cursor:pointer;font-weight:500}
+  .lang-toggle button.active{background:var(--ink);color:var(--paper)}
+
+  .wrap{max-width:1240px;margin:0 auto;padding:0 36px}
+  .breadcrumbs{padding:24px 0 0;font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--ink-faint);text-transform:uppercase}
+  .breadcrumbs a{color:var(--mano-deep);font-weight:700}
+
+  .hero{padding:80px 0 60px;position:relative}
+  .hero-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--mano-deep);font-weight:700;margin-bottom:24px}
+  .hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(72px,14vw,160px);line-height:.9;letter-spacing:.01em;color:var(--ink);margin-bottom:20px}
+  .hero h1 em{font-style:italic;color:var(--mano)}
+  .hero-lede{font-family:var(--serif);font-size:22px;color:var(--ink-2);font-weight:300;max-width:760px;margin-bottom:30px;line-height:1.5;font-style:italic}
+  .hero-meta{display:flex;gap:28px;font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;color:var(--ink-faint);text-transform:uppercase;flex-wrap:wrap}
+  .hero-meta span{display:inline-flex;align-items:center;gap:8px}
+  .hero-meta .dot{width:6px;height:6px;border-radius:50%;background:var(--mano)}
+
+  .mission{margin:8px auto 56px;background:var(--ink);color:var(--paper);border-radius:16px;padding:44px 52px;position:relative;overflow:hidden}
+  .mission::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--mano-deep),var(--mano-light),var(--mano-deep))}
+  .mission .m-label{font-family:var(--mono);font-size:10.5px;letter-spacing:.24em;color:var(--mano-light);text-transform:uppercase;font-weight:700;margin-bottom:16px}
+  .mission h2{font-family:var(--serif);font-weight:300;font-size:clamp(26px,4vw,38px);line-height:1.2;color:var(--paper);letter-spacing:-.015em}
+  .mission h2 em{color:var(--mano-light);font-style:italic}
+
+  section{padding:56px 0 28px;border-top:0.5px solid var(--line)}
+  .sec-num{font-family:var(--mono);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--mano-deep);font-weight:700;margin-bottom:10px}
+  .sec-head h3{font-family:var(--serif);font-weight:300;font-size:clamp(30px,5vw,46px);line-height:1.05;color:var(--ink);letter-spacing:-.015em;margin-bottom:36px}
+  .sec-head h3 em{font-style:italic;color:var(--mano)}
+
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  @media(max-width:820px){.steps{grid-template-columns:repeat(2,1fr)}}
+  .step{background:var(--paper-2);border:0.5px solid var(--line);border-radius:13px;padding:28px 26px;border-top:3px solid var(--mano)}
+  .step .n{font-family:var(--serif);font-style:italic;font-size:42px;color:var(--mano);line-height:1;margin-bottom:12px}
+  .step h4{font-family:var(--serif);font-size:20px;font-weight:500;margin-bottom:8px;color:var(--ink)}
+  .step p{font-family:var(--sans);font-size:13.5px;color:var(--ink-2);line-height:1.55}
+
+  .cats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  @media(max-width:820px){.cats{grid-template-columns:repeat(2,1fr)}}
+  .cat{background:var(--paper-2);border:0.5px solid var(--line);border-radius:11px;padding:20px 22px;display:flex;align-items:center;gap:12px;transition:all .18s}
+  .cat:hover{background:var(--paper);border-color:var(--line-2);transform:translateY(-2px)}
+  .cat .ic{font-size:22px}
+  .cat .nm{font-family:var(--serif);font-size:16px;color:var(--ink)}
+  .cat .ds{font-family:var(--mono);font-size:9px;letter-spacing:.10em;color:var(--ink-faint);text-transform:uppercase}
+
+  .pillars{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  @media(max-width:820px){.pillars{grid-template-columns:1fr}}
+  .pillar{background:var(--paper-2);border:0.5px solid var(--line);border-radius:13px;padding:30px 32px}
+  .pillar .pl{font-family:var(--mono);font-size:10px;letter-spacing:.20em;color:var(--mano-deep);text-transform:uppercase;font-weight:700;margin-bottom:12px}
+  .pillar h4{font-family:var(--serif);font-size:24px;font-weight:400;margin-bottom:8px;color:var(--ink)}
+  .pillar h4 em{font-style:italic;color:var(--mano)}
+  .pillar p{font-family:var(--serif);font-size:15px;color:var(--ink-2);line-height:1.6}
+
+  .nums{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;background:var(--ink);border-radius:16px;padding:40px 44px;color:var(--paper)}
+  @media(max-width:820px){.nums{grid-template-columns:repeat(2,1fr);gap:28px}}
+  .num .v{font-family:var(--serif);font-weight:300;font-size:52px;line-height:1;color:var(--mano-light)}
+  .num .l{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:rgba(247,240,223,.6);text-transform:uppercase;margin-top:8px}
+
+  .model{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  @media(max-width:820px){.model{grid-template-columns:1fr}}
+  .mcard{background:var(--paper-2);border:0.5px solid var(--line);border-radius:13px;padding:28px 30px;border-top:3px solid var(--gold-deep)}
+  .mcard .t{font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--gold-deep);text-transform:uppercase;font-weight:700;margin-bottom:10px}
+  .mcard h4{font-family:var(--serif);font-size:21px;font-weight:400;margin-bottom:8px;color:var(--ink)}
+  .mcard p{font-family:var(--sans);font-size:13.5px;color:var(--ink-2);line-height:1.55}
+
+  .cta{margin:40px 0 0;background:linear-gradient(135deg,#eaf4f3,#f3f9f5);border:0.5px solid var(--line-2);border-top:4px solid var(--mano);border-radius:16px;padding:44px 48px;text-align:center}
+  .cta h3{font-family:var(--serif);font-weight:300;font-size:clamp(26px,4vw,38px);color:var(--ink);margin-bottom:14px;letter-spacing:-.01em}
+  .cta h3 em{font-style:italic;color:var(--mano)}
+  .cta p{font-family:var(--serif);font-size:16px;color:var(--ink-2);max-width:560px;margin:0 auto 24px;line-height:1.6}
+  .cta .btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .btn{font-family:var(--sans);font-weight:600;font-size:14px;padding:13px 26px;border-radius:10px;transition:all .18s}
+  .btn-primary{background:var(--mano);color:#fff} .btn-primary:hover{background:var(--mano-deep)}
+  .btn-ghost{background:#fff;border:0.5px solid var(--line-2);color:var(--ink)} .btn-ghost:hover{border-color:var(--mano)}
+
+  /* THE GAP */
+  .gap{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:820px){.gap{grid-template-columns:1fr}}
+  .gap-card{border-radius:13px;padding:30px 32px;border:0.5px solid var(--line)}
+  .gap-old{background:var(--paper-3)}
+  .gap-new{background:var(--ink);color:var(--paper);border:0}
+  .gap-card .gl{font-family:var(--mono);font-size:10px;letter-spacing:.20em;text-transform:uppercase;font-weight:700;margin-bottom:14px}
+  .gap-old .gl{color:var(--ink-faint)} .gap-new .gl{color:var(--mano-light)}
+  .gap-card ul{list-style:none}
+  .gap-card li{font-family:var(--serif);font-size:15.5px;line-height:1.5;padding:9px 0;border-top:0.5px solid var(--line)}
+  .gap-new li{border-top-color:rgba(247,240,223,.14);color:rgba(247,240,223,.9)}
+  .gap-card li:first-child{border-top:0}
+  .gap-card li b{font-style:normal;color:var(--mano)} .gap-new li b{color:var(--mano-light)}
+
+  /* PRODUCT SHOWCASE */
+  .shots{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+  @media(max-width:820px){.shots{grid-template-columns:1fr}}
+  .frame{border-radius:12px;overflow:hidden;border:0.5px solid var(--line-2);box-shadow:0 18px 50px rgba(20,17,12,.12);background:#fff}
+  .frame .bar{display:flex;align-items:center;gap:6px;padding:9px 12px;background:var(--paper-3);border-bottom:0.5px solid var(--line)}
+  .frame .bar i{width:9px;height:9px;border-radius:50%;display:inline-block;opacity:.55}
+  .frame .bar .u{flex:1;margin-left:10px;font-family:var(--mono);font-size:9.5px;color:var(--ink-faint);letter-spacing:.06em;background:var(--paper);border:0.5px solid var(--line);border-radius:5px;padding:3px 9px;overflow:hidden;white-space:nowrap}
+  .frame img{width:100%;display:block}
+  .shot-cap{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--ink-faint);text-transform:uppercase;margin-top:12px}
+  .shot-cap b{color:var(--mano-deep)}
+  .shot-wide{grid-column:1 / -1}
+  .phone{max-width:300px;margin:0 auto;border:9px solid #14110c;border-radius:34px;overflow:hidden;box-shadow:0 22px 55px rgba(20,17,12,.18);background:#14110c}
+  .phone img{width:100%;display:block;border-radius:24px}
+
+  /* MATCHING WEIGHTS */
+  .weights{display:flex;flex-direction:column;gap:14px;max-width:680px}
+  .wrow{display:grid;grid-template-columns:130px 1fr 48px;align-items:center;gap:16px}
+  .wrow .wn{font-family:var(--mono);font-size:11px;letter-spacing:.10em;text-transform:uppercase;color:var(--ink-2);font-weight:600}
+  .wrow .wbar{height:10px;background:var(--paper-3);border-radius:6px;overflow:hidden}
+  .wrow .wbar span{display:block;height:100%;background:var(--mano);border-radius:6px}
+  .wrow .wv{font-family:var(--serif);font-style:italic;font-size:16px;color:var(--mano-deep);text-align:right}
+
+  /* ROADMAP */
+  .road{display:flex;flex-wrap:wrap;gap:10px}
+  .chip{font-family:var(--mono);font-size:11px;letter-spacing:.10em;text-transform:uppercase;padding:9px 16px;border-radius:8px;border:0.5px solid var(--line-2);background:var(--paper-2);color:var(--ink-3)}
+  .chip.live{background:var(--mano);color:#fff;border-color:var(--mano);font-weight:700}
+  .chip.next{border-color:var(--mano);color:var(--mano-deep)}
+
+  /* FOUNDER */
+  .founder{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center;background:linear-gradient(135deg,#eaf4f3,#f3f9f5);border:0.5px solid var(--line-2);border-top:4px solid var(--mano);border-radius:14px;padding:34px 38px}
+  @media(max-width:820px){.founder{grid-template-columns:1fr}}
+  .founder .av{width:74px;height:74px;border-radius:50%;background:var(--mano);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:30px;font-style:italic}
+  .founder .fr{font-family:var(--mono);font-size:10px;letter-spacing:.20em;color:var(--mano-deep);text-transform:uppercase;font-weight:700;margin-bottom:8px}
+  .founder h4{font-family:var(--serif);font-size:24px;font-weight:400;color:var(--ink);margin-bottom:8px}
+  .founder p{font-family:var(--serif);font-size:15px;color:var(--ink-2);line-height:1.6}
+
+  /* FAQ */
+  .faq{display:grid;gap:12px;max-width:820px}
+  .qa{background:var(--paper-2);border:0.5px solid var(--line);border-radius:11px;padding:22px 26px}
+  .qa h5{font-family:var(--serif);font-size:17px;font-weight:500;color:var(--ink);margin-bottom:7px}
+  .qa p{font-family:var(--sans);font-size:13.5px;color:var(--ink-2);line-height:1.6}
+
+  footer{margin-top:72px;padding:44px 0 32px;background:var(--ink);color:var(--paper)}
+  footer .fin{max-width:1240px;margin:0 auto;padding:0 36px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px;align-items:baseline}
+  footer .wm{font-family:var(--serif);font-size:28px;color:var(--paper);letter-spacing:.06em}
+  footer .ft{font-family:var(--serif);font-style:italic;font-size:14px;color:rgba(247,240,223,.6)}
+  footer .fl{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:rgba(247,240,223,.5);text-transform:uppercase}
+  footer .fl a{color:var(--mano-light)}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-in">
+    <div class="brand">
+      <span class="word">MANO</span>
+      <span class="sub" data-es="Servicios · La Compañía" data-en="Services · La Compañía">Services · La Compañía</span>
+    </div>
+    <span class="spacer"></span>
+    <a class="top-link" href="lacompania.html" data-es="← La Compañía" data-en="← La Compañía">← La Compañía</a>
+    <div class="lang-toggle">
+      <button class="active" data-lang="en">EN</button>
+      <button data-lang="es">ES</button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="breadcrumbs"><a href="lacompania.html">LA COMPAÑÍA</a> · <span data-es="MARCA 07 · MANO" data-en="BRAND 07 · MANO">BRAND 07 · MANO</span></div>
+
+  <header class="hero">
+    <div class="hero-eyebrow" data-es="07 · MVP EN VIVO · PANAMÁ · MMXXVI" data-en="07 · LIVE MVP · PANAMA · MMXXVI">07 · LIVE MVP · PANAMA · MMXXVI</div>
+    <h1><em>MANO</em></h1>
+    <p class="hero-lede" data-es="El directorio de confianza para los oficios de Panamá. Describe el trabajo, MANO te conecta con el profesional verificado, mejor calificado y más cercano — con precio transparente." data-en="The trusted directory for Panama's trades. Describe the job, MANO matches you to the verified, top-rated, nearest pro — with transparent pricing.">The trusted directory for Panama's trades. Describe the job, MANO matches you to the verified, top-rated, nearest pro — with transparent pricing.</p>
+    <div class="hero-meta">
+      <span><span class="dot"></span><span data-es="ESTILO ANGIE'S LIST · PARA PANAMÁ" data-en="ANGIE'S LIST · FOR PANAMA">ANGIE'S LIST · FOR PANAMA</span></span>
+      <span><span class="dot"></span><span data-es="BILINGÜE · ES / EN" data-en="BILINGUAL · ES / EN">BILINGUAL · ES / EN</span></span>
+      <span><span class="dot"></span>NEXT.JS · SQLITE</span>
+    </div>
+  </header>
+
+  <div class="mission">
+    <div class="m-label" data-es="LA TESIS" data-en="THE THESIS">THE THESIS</div>
+    <h2 data-es-html="En Panamá, conseguir un buen plomero o electricista es <em>boca a boca y a ciegas</em>. MANO trae verificación, reseñas reales y precios transparentes a un mercado que nunca tuvo un directorio de confianza." data-en-html="In Panama, finding a good plumber or electrician is <em>word-of-mouth and blind</em>. MANO brings verification, real reviews, and transparent pricing to a market that never had a trusted directory.">In Panama, finding a good plumber or electrician is <em>word-of-mouth and blind</em>. MANO brings verification, real reviews, and transparent pricing to a market that never had a trusted directory.</h2>
+  </div>
+
+  <!-- THE GAP -->
+  <section style="border-top:0">
+    <div class="sec-head">
+      <div class="sec-num" data-es="00 · LA OPORTUNIDAD" data-en="00 · THE OPENING">00 · THE OPENING</div>
+      <h3 data-es-html="Panamá nunca tuvo un <em>directorio de confianza</em>." data-en-html="Panama never had a <em>trusted directory</em>.">Panama never had a <em>trusted directory</em>.</h3>
+    </div>
+    <div class="gap">
+      <div class="gap-card gap-old">
+        <div class="gl" data-es="HOY · SIN MANO" data-en="TODAY · WITHOUT MANO">TODAY · WITHOUT MANO</div>
+        <ul>
+          <li data-es="Buscás plomero en grupos de Facebook y WhatsApp." data-en="You hunt for a plumber in Facebook and WhatsApp groups.">You hunt for a plumber in Facebook and WhatsApp groups.</li>
+          <li data-es="No hay reseñas — solo el «mi primo conoce a alguien»." data-en="No reviews — just “my cousin knows a guy.”">No reviews — just “my cousin knows a guy.”</li>
+          <li data-es="No sabés si el precio es justo hasta que llega la factura." data-en="You don't know if the price is fair until the bill arrives.">You don't know if the price is fair until the bill arrives.</li>
+          <li data-es="Cero verificación. Cero recurso si algo sale mal." data-en="Zero verification. Zero recourse if it goes wrong.">Zero verification. Zero recourse if it goes wrong.</li>
+        </ul>
+      </div>
+      <div class="gap-card gap-new">
+        <div class="gl" data-es="CON MANO" data-en="WITH MANO">WITH MANO</div>
+        <ul>
+          <li data-es-html="Un <b>match</b> rankeado en segundos, con el desglose visible." data-en-html="A ranked <b>match</b> in seconds, with the breakdown visible.">A ranked <b>match</b> in seconds, with the breakdown visible.</li>
+          <li data-es-html="<b>Reseñas reales</b> de trabajos completados, con histograma." data-en-html="<b>Real reviews</b> from completed jobs, with a histogram.">Real reviews from completed jobs, with a histogram.</li>
+          <li data-es-html="El <b>promedio del mercado</b> a la vista — sabés si es justo." data-en-html="The <b>market average</b> in plain sight — you know if it's fair.">The <b>market average</b> in plain sight — you know if it's fair.</li>
+          <li data-es-html="Cada pro <b>verificado</b>. Bilingüe. Soporte de la casa." data-en-html="Every pro <b>verified</b>. Bilingual. House-backed support.">Every pro <b>verified</b>. Bilingual. House-backed support.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section>
+    <div class="sec-head">
+      <div class="sec-num" data-es="01 · CÓMO FUNCIONA" data-en="01 · HOW IT WORKS">01 · HOW IT WORKS</div>
+      <h3 data-es-html="Cuatro pasos, <em>cero fricción</em>." data-en-html="Four steps, <em>zero friction</em>.">Four steps, <em>zero friction</em>.</h3>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><h4 data-es="Pide" data-en="Request">Request</h4><p data-es="Elige tu zona y el servicio, describe el trabajo y tu presupuesto." data-en="Pick your zone and service, describe the job and your budget.">Pick your zone and service, describe the job and your budget.</p></div>
+      <div class="step"><div class="n">2</div><h4 data-es="Match" data-en="Match">Match</h4><p data-es="El motor rankea por cercanía, calificación, precio y experiencia — y te muestra por qué." data-en="The engine ranks by proximity, rating, price and experience — and shows you why.">The engine ranks by proximity, rating, price and experience — and shows you why.</p></div>
+      <div class="step"><div class="n">3</div><h4 data-es="Contrata" data-en="Hire">Hire</h4><p data-es="Contacta al profesional verificado por WhatsApp. Ves su tarifa vs. el promedio del mercado." data-en="Contact the verified pro by WhatsApp. See their rate vs. the market average.">Contact the verified pro by WhatsApp. See their rate vs. the market average.</p></div>
+      <div class="step"><div class="n">4</div><h4 data-es="Califica" data-en="Review">Review</h4><p data-es="Tu reseña alimenta la red y mejora cada match futuro." data-en="Your review feeds the network and improves every future match.">Your review feeds the network and improves every future match.</p></div>
+    </div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <section>
+    <div class="sec-head">
+      <div class="sec-num" data-es="02 · CATEGORÍAS" data-en="02 · CATEGORIES">02 · CATEGORIES</div>
+      <h3 data-es-html="Ocho oficios <em>en vivo</em>." data-en-html="Eight trades <em>live</em>.">Eight trades <em>live</em>.</h3>
+    </div>
+    <div class="cats">
+      <div class="cat"><span class="ic">🔧</span><div><div class="nm" data-es="Plomería" data-en="Plumbing">Plumbing</div><div class="ds">Pedasí · PTY · David</div></div></div>
+      <div class="cat"><span class="ic">⚡</span><div><div class="nm" data-es="Electricidad" data-en="Electrical">Electrical</div><div class="ds">Verificado</div></div></div>
+      <div class="cat"><span class="ic">🧹</span><div><div class="nm" data-es="Limpieza" data-en="Cleaning">Cleaning</div><div class="ds">Res · Comercial</div></div></div>
+      <div class="cat"><span class="ic">❄️</span><div><div class="nm">A/C</div><div class="ds" data-es="Instalación · Servicio" data-en="Install · Service">Install · Service</div></div></div>
+      <div class="cat"><span class="ic">🎨</span><div><div class="nm" data-es="Pintura" data-en="Painting">Painting</div><div class="ds">Int · Ext</div></div></div>
+      <div class="cat"><span class="ic">🌿</span><div><div class="nm" data-es="Jardinería" data-en="Landscaping">Landscaping</div><div class="ds" data-es="Paisajismo" data-en="Gardens">Gardens</div></div></div>
+      <div class="cat"><span class="ic">🏗️</span><div><div class="nm" data-es="Remodelación" data-en="Remodeling">Remodeling</div><div class="ds" data-es="Llave en mano" data-en="Turnkey">Turnkey</div></div></div>
+      <div class="cat"><span class="ic">🐛</span><div><div class="nm" data-es="Fumigación" data-en="Pest Control">Pest Control</div><div class="ds">MINSA</div></div></div>
+    </div>
+    <p style="font-family:var(--serif);font-style:italic;font-size:14px;color:var(--ink-faint);margin-top:18px" data-es="Próximo: cuidadores / salud en casa, solar, grooming de mascotas, seguridad, handyman — categorías de alto margen del research de servicios en Panamá." data-en="Next: caregivers / home-health, solar, pet grooming, security, handyman — high-margin categories from the Panama services research.">Next: caregivers / home-health, solar, pet grooming, security, handyman — high-margin categories from the Panama services research.</p>
+  </section>
+
+  <!-- WHY MANO -->
+  <section>
+    <div class="sec-head">
+      <div class="sec-num" data-es="03 · POR QUÉ MANO" data-en="03 · WHY MANO">03 · WHY MANO</div>
+      <h3 data-es-html="Confianza, <em>por diseño</em>." data-en-html="Trust, <em>by design</em>.">Trust, <em>by design</em>.</h3>
+    </div>
+    <div class="pillars">
+      <div class="pillar"><div class="pl" data-es="VERIFICADO" data-en="VERIFIED">VERIFIED</div><h4 data-es-html="Cada profesional, <em>vetado</em>" data-en-html="Every pro, <em>vetted</em>">Every pro, <em>vetted</em></h4><p data-es="Identidad, oficio y referencias revisados antes de aparecer. El sello verde no se compra." data-en="Identity, trade and references checked before listing. The green check isn't for sale.">Identity, trade and references checked before listing. The green check isn't for sale.</p></div>
+      <div class="pillar"><div class="pl" data-es="PRECIO TRANSPARENTE" data-en="TRANSPARENT PRICING">TRANSPARENT PRICING</div><h4 data-es-html="El <em>promedio del mercado</em>, visible" data-en-html="The <em>market average</em>, visible">The <em>market average</em>, visible</h4><p data-es="Ves el rango mín–máx y el promedio por categoría y zona, y cómo se compara cada profesional. Sin sorpresas." data-en="See the min–max range and average by category and zone, and how each pro compares. No surprises.">See the min–max range and average by category and zone, and how each pro compares. No surprises.</p></div>
+      <div class="pillar"><div class="pl" data-es="RESEÑAS REALES" data-en="REAL REVIEWS">REAL REVIEWS</div><h4 data-es-html="Calificaciones de <em>trabajos hechos</em>" data-en-html="Ratings from <em>real jobs</em>">Ratings from <em>real jobs</em></h4><p data-es="Reseñas con estrellas e histograma, atadas a trabajos completados. La calificación promedio se calcula, no se inventa." data-en="Star reviews with a histogram, tied to completed jobs. The average rating is computed, not invented.">Star reviews with a histogram, tied to completed jobs. The average rating is computed, not invented.</p></div>
+      <div class="pillar"><div class="pl" data-es="MATCH INTELIGENTE" data-en="SMART MATCHING">SMART MATCHING</div><h4 data-es-html="Rankeado, y te <em>explica por qué</em>" data-en-html="Ranked, and it <em>tells you why</em>">Ranked, and it <em>tells you why</em></h4><p data-es="Motor geográfico que pondera cercanía, calificación, precio y experiencia — con el desglose visible y respeto por tu presupuesto." data-en="A geo engine weighing proximity, rating, price and experience — with the breakdown visible and your budget respected.">A geo engine weighing proximity, rating, price and experience — with the breakdown visible and your budget respected.</p></div>
+    </div>
+  </section>
+
+  <!-- PRODUCT SHOWCASE -->
+  <section>
+    <div class="sec-head">
+      <div class="sec-num" data-es="04 · EL PRODUCTO" data-en="04 · THE PRODUCT">04 · THE PRODUCT</div>
+      <h3 data-es-html="Construido y <em>corriendo</em>." data-en-html="Built and <em>running</em>.">Built and <em>running</em>.</h3>
+    </div>
+
+    <div class="nums" style="margin-bottom:28px">
+      <div class="num"><div class="v">42</div><div class="l" data-es="PROFESIONALES VERIFICADOS" data-en="VERIFIED PROS">VERIFIED PROS</div></div>
+      <div class="num"><div class="v">641</div><div class="l" data-es="RESEÑAS REALES" data-en="REAL REVIEWS">REAL REVIEWS</div></div>
+      <div class="num"><div class="v">8</div><div class="l" data-es="CATEGORÍAS" data-en="CATEGORIES">CATEGORIES</div></div>
+      <div class="num"><div class="v">20+</div><div class="l" data-es="ZONAS" data-en="ZONES">ZONES</div></div>
+    </div>
+
+    <div class="frame shot-wide" style="margin-bottom:14px">
+      <div class="bar"><i style="background:#e0625e"></i><i style="background:#e8b44a"></i><i style="background:#46b06a"></i><span class="u">mano.la · ¿dónde necesitas el servicio?</span></div>
+      <img src="mano-assets/home.png" alt="MANO — location-first home finder" loading="lazy">
+    </div>
+    <div class="shot-cap shot-wide" style="margin-bottom:32px" data-es-html="<b>Buscador por ubicación.</b> Elegí tu zona (o usá el GPS) y el servicio — MANO encuentra a los pros cerca de ti." data-en-html="<b>Location-first finder.</b> Pick your zone (or use GPS) and the service — MANO surfaces pros near you."><b>Location-first finder.</b> Pick your zone (or use GPS) and the service — MANO surfaces pros near you.</div>
+
+    <div class="shots">
+      <div>
+        <div class="frame">
+          <div class="bar"><i style="background:#e0625e"></i><i style="background:#e8b44a"></i><i style="background:#46b06a"></i><span class="u">mano.la/profesionales</span></div>
+          <img src="mano-assets/directory.png" alt="MANO directory with price transparency" loading="lazy">
+        </div>
+        <div class="shot-cap" data-es-html="<b>Directorio + precio transparente.</b> Rango mín–máx y promedio del mercado por categoría y zona." data-en-html="<b>Directory + transparent pricing.</b> Min–max range and market average by category and zone."><b>Directory + transparent pricing.</b> Min–max range and market average by category and zone.</div>
+      </div>
+      <div>
+        <div class="frame">
+          <div class="bar"><i style="background:#e0625e"></i><i style="background:#e8b44a"></i><i style="background:#46b06a"></i><span class="u">mano.la/profesional/…</span></div>
+          <img src="mano-assets/profile.png" alt="MANO pro profile with reviews and price comparison" loading="lazy">
+        </div>
+        <div class="shot-cap" data-es-html="<b>Perfil del pro.</b> Verificado, calificación, tarifa vs. promedio (−19%) e histograma de reseñas." data-en-html="<b>Pro profile.</b> Verified, rating, rate vs. average (−19%), and the review histogram."><b>Pro profile.</b> Verified, rating, rate vs. average (−19%), and the review histogram.</div>
+      </div>
+    </div>
+
+    <p style="font-family:var(--serif);font-style:italic;font-size:14px;color:var(--ink-faint);margin-top:24px" data-es="App Next.js + SQLite con flujo de cliente, profesional y admin; páginas SEO por zona; bilingüe ES/EN. Dataset sembrado con nombres y tarifas reales de Panamá." data-en="Next.js + SQLite app with client, pro and admin flows; per-zone SEO pages; bilingual ES/EN. Seeded with real Panama names and market rates.">Next.js + SQLite app with client, pro and admin flows; per-zone SEO pages; bilingual ES/EN. Seeded with real Panama names and market rates.</p>
+  </section>
+
+  <!-- MATCHING DEEP-DIVE -->
+  <section>
+    <div class="sec-head">
+      <div class="sec-num" data-es="05 · EL MATCH" data-en="05 · THE MATCH">05 · THE MATCH</div>
+      <h3 data-es-html="Cómo se <em>rankea</em>." data-en-html="How it <em>ranks</em>.">How it <em>ranks</em>.</h3>
+    </div>
+    <p style="font-family:var(--serif);font-size:17px;color:var(--ink-2);line-height:1.6;max-width:680px;margin-bottom:28px" data-es-html="Cada solicitud corre por un motor geográfico que puntúa a cada profesional disponible y verificado, y muestra el desglose. Ponderaciones (suman 1.0):" data-en-html="Every request runs through a geo engine that scores each available, verified pro and shows the breakdown. Weights (sum to 1.0):">Every request runs through a geo engine that scores each available, verified pro and shows the breakdown. Weights (sum to 1.0):</p>
+    <div class="weights">
+      <div class="wrow"><span class="wn" data-es="Cercanía" data-en="Proximity">Proximity</span><span class="wbar"><span style="width:35%"></span></span><span class="wv">35%</span></div>
+      <div class="wrow"><span class="wn" data-es="Calificación" data-en="Rating">Rating</span><span class="wbar"><span style="width:35%"></span></span><span class="wv">35%</span></div>
+      <div class="wrow"><span class="wn" data-es="Experiencia" data-en="Experience">Experience</span><span class="wbar"><span style="width:15%"></span></span><span class="wv">15%</span></div>
+      <div class="wrow"><span class="wn" data-es="Precio" data-en="Price">Price</span><span class="wbar"><span style="width:15%"></span></span><span class="wv">15%</span></div>
+    </div>
+    <p style="font-family:var(--serif);font-style:italic;font-size:14px;color:var(--ink-faint);margin-top:20px" data-es="El mejor match se asigna automáticamente; el cliente ve por qué y si está dentro de su presupuesto." data-en="The top match is auto-assigned; the client sees why, and whether it fits their budget.">The top match is auto-assigned; the client sees why, and whether it fits their budget.</p>
+  </section>
+
+  <!-- MODEL -->
+  <section>
+    <div class="sec-head">
+      <div class="sec-num" data-es="06 · MODELO" data-en="06 · MODEL">06 · MODEL</div>
+      <h3 data-es-html="Gratis para el cliente. <em>El pro paga por valor.</em>" data-en-html="Free for clients. <em>Pros pay for value.</em>">Free for clients. <em>Pros pay for value.</em></h3>
+    </div>
+    <div class="model">
+      <div class="mcard"><div class="t" data-es="LEADS" data-en="LEADS">LEADS</div><h4 data-es="Por solicitud calificada" data-en="Per qualified lead">Per qualified lead</h4><p data-es="El profesional paga por cada solicitud real que se le envía. Cobra solo cuando MANO entrega trabajo." data-en="Pros pay per real request routed to them. They pay only when MANO delivers work.">Pros pay per real request routed to them. They pay only when MANO delivers work.</p></div>
+      <div class="mcard"><div class="t" data-es="MEMBRESÍA" data-en="MEMBERSHIP">MEMBERSHIP</div><h4 data-es="Sello verificado + destacado" data-en="Verified badge + featured">Verified badge + featured</h4><p data-es="Cuota mensual por verificación, perfil destacado y prioridad en el ranking dentro de su zona." data-en="Monthly fee for verification, a featured profile, and ranking priority in their zone.">Monthly fee for verification, a featured profile, and ranking priority in their zone.</p></div>
+      <div class="mcard"><div class="t" data-es="LA CASA" data-en="THE HOUSE">THE HOUSE</div><h4 data-es="Sinergia La Compañía" data-en="La Compañía synergy">La Compañía synergy</h4><p data-es="Pagos en HILO con descuento, logística vía RAPITIDO, y el mismo manual de capítulos LATAM de SORA." data-en="Discounted HILO payments, logistics via RAPITIDO, and SORA's same LATAM chapter playbook.">Discounted HILO payments, logistics via RAPITIDO, and SORA's same LATAM chapter playbook.</p></div>
+    </div>
+  </section>
+
+  <!-- ROADMAP -->
+  <section>
+    <div class="sec-head">
+      <div class="sec-num" data-es="07 · EXPANSIÓN" data-en="07 · EXPANSION">07 · EXPANSION</div>
+      <h3 data-es-html="Panamá primero. Después, <em>capítulo por capítulo</em>." data-en-html="Panama first. Then, <em>chapter by chapter</em>.">Panama first. Then, <em>chapter by chapter</em>.</h3>
+    </div>
+    <div class="road">
+      <span class="chip live" data-es="PANAMÁ · EN VIVO" data-en="PANAMA · LIVE">PANAMA · LIVE</span>
+      <span class="chip next" data-es="MÉXICO · 2026" data-en="MEXICO · 2026">MEXICO · 2026</span>
+      <span class="chip next" data-es="COLOMBIA · 2026" data-en="COLOMBIA · 2026">COLOMBIA · 2026</span>
+      <span class="chip" data-es="VENEZUELA" data-en="VENEZUELA">VENEZUELA</span>
+      <span class="chip" data-es="+ CAPÍTULOS LATAM" data-en="+ LATAM CHAPTERS">+ LATAM CHAPTERS</span>
+    </div>
+    <p style="font-family:var(--serif);font-style:italic;font-size:15px;color:var(--ink-2);line-height:1.6;max-width:680px;margin-top:22px" data-es="MANO hereda el manual de capítulos de SORA: un mercado, una zona, una masa crítica de pros verificados — y recién ahí el siguiente. La densidad gana al alcance." data-en="MANO inherits SORA's chapter playbook: one market, one zone, a critical mass of verified pros — then the next. Density beats reach.">MANO inherits SORA's chapter playbook: one market, one zone, a critical mass of verified pros — then the next. Density beats reach.</p>
+  </section>
+
+  <!-- FOUNDER -->
+  <section>
+    <div class="sec-head">
+      <div class="sec-num" data-es="08 · QUIÉN" data-en="08 · WHO">08 · WHO</div>
+      <h3 data-es-html="Construido en <em>la casa</em>." data-en-html="Built in <em>the house</em>.">Built in <em>the house</em>.</h3>
+    </div>
+    <div class="founder">
+      <div class="av">A</div>
+      <div>
+        <div class="fr" data-es="FUNDADOR · LA COMPAÑÍA" data-en="FOUNDER · LA COMPAÑÍA">FOUNDER · LA COMPAÑÍA</div>
+        <h4>Abraham Eid</h4>
+        <p data-es="MANO es la séptima marca de La Compañía — la casa de negocios de Boquete detrás de SORA, VETA, HILO, RAPITIDO, CEIBA y MANTO. Capital paciente, infraestructura compartida, memoria institucional: el mismo motor de match, pagos y logística sirve a todas." data-en="MANO is La Compañía's seventh brand — the Boquete house of ventures behind SORA, VETA, HILO, RAPITIDO, CEIBA and MANTO. Patient capital, shared infrastructure, institutional memory: the same matching, payments and logistics stack serves them all.">MANO is La Compañía's seventh brand — the Boquete house of ventures behind SORA, VETA, HILO, RAPITIDO, CEIBA and MANTO. Patient capital, shared infrastructure, institutional memory: the same matching, payments and logistics stack serves them all.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section>
+    <div class="sec-head">
+      <div class="sec-num" data-es="09 · PREGUNTAS" data-en="09 · QUESTIONS">09 · QUESTIONS</div>
+      <h3 data-es-html="Lo <em>esencial</em>." data-en-html="The <em>essentials</em>.">The <em>essentials</em>.</h3>
+    </div>
+    <div class="faq">
+      <div class="qa"><h5 data-es="¿Qué significa “verificado”?" data-en="What does “verified” mean?">What does “verified” mean?</h5><p data-es="Revisamos identidad, oficio y referencias antes de listar a un profesional. El sello verde no se compra — se gana y se puede perder." data-en="We check identity, trade, and references before a pro is listed. The green check isn't for sale — it's earned, and it can be lost.">We check identity, trade, and references before a pro is listed. The green check isn't for sale — it's earned, and it can be lost.</p></div>
+      <div class="qa"><h5 data-es="¿Cuánto cuesta para el cliente?" data-en="What does it cost the client?">What does it cost the client?</h5><p data-es="Nada. MANO es gratis para quien busca un servicio. El profesional paga por solicitudes calificadas o por una membresía de verificación + destacado." data-en="Nothing. MANO is free for people seeking a service. Pros pay for qualified leads or a verification + featured membership.">Nothing. MANO is free for people seeking a service. Pros pay for qualified leads or a verification + featured membership.</p></div>
+      <div class="qa"><h5 data-es="¿Cómo sé que el precio es justo?" data-en="How do I know the price is fair?">How do I know the price is fair?</h5><p data-es="Cada perfil muestra la tarifa del pro contra el promedio del mercado de su categoría y zona, con el rango mín–máx. Sin facturas sorpresa." data-en="Every profile shows the pro's rate against the market average for their category and zone, with the min–max range. No surprise bills.">Every profile shows the pro's rate against the market average for their category and zone, with the min–max range. No surprise bills.</p></div>
+      <div class="qa"><h5 data-es="¿En qué se diferencia de un grupo de Facebook?" data-en="How is it different from a Facebook group?">How is it different from a Facebook group?</h5><p data-es="Verificación, reseñas atadas a trabajos reales, precio transparente y un match que te dice por qué. Una red que mejora con cada trabajo, no un muro que se pierde." data-en="Verification, reviews tied to real jobs, transparent pricing, and a match that tells you why. A network that improves with every job, not a feed that scrolls away.">Verification, reviews tied to real jobs, transparent pricing, and a match that tells you why. A network that improves with every job, not a feed that scrolls away.</p></div>
+    </div>
+  </section>
+
+  <div class="cta">
+    <h3 data-es-html="Una <em>mano</em> de confianza, a un mensaje." data-en-html="A trusted <em>hand</em>, one message away.">A trusted <em>hand</em>, one message away.</h3>
+    <p data-es="El MVP está construido. Panamá primero; los capítulos LATAM siguen el mismo camino que SORA." data-en="The MVP is built. Panama first; LATAM chapters follow SORA's same path.">The MVP is built. Panama first; LATAM chapters follow SORA's same path.</p>
+    <div class="btns">
+      <a class="btn btn-primary" href="lacompania.html" data-es="← Volver a La Compañía" data-en="← Back to La Compañía">← Back to La Compañía</a>
+      <a class="btn btn-ghost" href="#" data-es="Ver la app (MVP) →" data-en="View the app (MVP) →">View the app (MVP) →</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="fin">
+    <div>
+      <div class="wm">MANO</div>
+      <div class="ft" data-es="Servicios verificados de Panamá · Una marca de La Compañía" data-en="Panama's verified services · A La Compañía brand">Panama's verified services · A La Compañía brand</div>
+    </div>
+    <div class="fl">LA COMPAÑÍA · MMXXVI · <a href="lacompania.html">HOLDINGS</a></div>
+  </div>
+</footer>
+
+<script>
+  const getLang = () => localStorage.getItem('sora.lang') || 'en';
+  function applyLang(lang){
+    document.querySelectorAll('[data-es]').forEach(el=>{
+      const v = el.getAttribute('data-' + lang);
+      if (v != null) { if (/<[a-z]/i.test(v)) el.innerHTML = v; else el.textContent = v; }
+    });
+    document.querySelectorAll('[data-es-html]').forEach(el=>{
+      const v = el.getAttribute('data-' + lang + '-html');
+      if(v != null) el.innerHTML = v;
+    });
+    document.documentElement.lang = lang;
+    localStorage.setItem('sora.lang', lang);
+    document.querySelectorAll('.lang-toggle button').forEach(b=>b.classList.toggle('active', b.dataset.lang === lang));
+  }
+  document.querySelectorAll('.lang-toggle button').forEach(b=>b.addEventListener('click', ()=>applyLang(b.dataset.lang)));
+  applyLang(getLang());
+</script>
+</body>
+</html>
