@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sora Casas · Contracts & Docs</title>
+<meta name="robots" content="noindex"><meta name="theme-color" content="#1d3a2c">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="casas-ops.css">
+<style>
+  .tpls{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  @media(max-width:860px){.tpls{grid-template-columns:1fr}}
+  .tpl{background:#fff;border:.5px solid var(--line);border-radius:13px;padding:24px 26px}
+  .tpl .tt{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);font-weight:700;margin-bottom:8px}
+  .tpl h4{font-family:var(--serif);font-size:21px;font-weight:400;margin-bottom:10px}.tpl h4 em{font-style:italic;color:var(--forest)}
+  .tpl ul{list-style:none;margin-bottom:14px}
+  .tpl li{font-size:12.5px;color:var(--ink-2);padding:6px 0;border-top:.5px solid var(--line);line-height:1.45}
+  .tpl li:first-child{border-top:0}.tpl li b{color:var(--forest)}
+  .disc{background:#f6ecd5;border:.5px solid var(--warn);border-radius:10px;padding:14px 18px;font-size:12.5px;color:var(--ink-2);margin:18px 0;line-height:1.5}
+</style>
+</head>
+<body>
+<header class="top"><div class="top-in">
+  <div class="brand"><span class="word"><em>Sora</em> Casas</span><span class="sub" data-es="Contratos" data-en="Contracts">Contracts</span></div>
+  <span class="spacer"></span>
+  <button class="btn btn-primary" onclick="openForm()" data-es="+ Contrato" data-en="+ Contract">+ Contract</button>
+  <button class="btn btn-ghost" onclick="CasasOps.exportJSON(DOCS,'sora-contracts.json')">Export</button>
+  <label class="btn btn-ghost" style="cursor:pointer"><span data-es="Importar" data-en="Import">Import</span><input type="file" accept="application/json" onchange="CasasOps.importJSON(event,d=>{DOCS=d;save();render();})" style="display:none"></label>
+  <div class="lang-toggle"><button data-lang="es">ES</button><button data-lang="en" class="active">EN</button></div>
+  <a class="btn btn-ghost" href="sora-casas-ops.html">← Ops</a>
+</div></header>
+
+<div class="wrap">
+  <h1 data-es-html="Contratos y <em>documentos</em>" data-en-html="Contracts & <em>docs</em>">Contracts & <em>docs</em></h1>
+  <p class="lede" data-es="Los tres acuerdos que mueven el negocio — y un registro de cada uno firmado." data-en="The three agreements that move the business — and a register of every one signed.">The three agreements that move the business — and a register of every one signed.</p>
+
+  <div class="cards" id="cards"></div>
+
+  <div style="overflow-x:auto"><table>
+    <thead><tr>
+      <th data-es="Contrato" data-en="Contract">Contract</th><th data-es="Tipo" data-en="Type">Type</th><th data-es="Parte" data-en="Party">Party</th>
+      <th class="r" data-es="Valor" data-en="Value">Value</th><th data-es="Firmado" data-en="Signed">Signed</th><th data-es="Escrow" data-en="Escrow">Escrow</th><th data-es="Estado" data-en="Status">Status</th><th></th>
+    </tr></thead><tbody id="rows"></tbody>
+  </table></div>
+
+  <div class="section-label" data-es="PLANTILLAS · BORRADORES" data-en="TEMPLATES · DRAFTS">TEMPLATES · DRAFTS</div>
+  <div class="disc" data-es="⚠ Borradores de referencia, NO asesoría legal. El abogado de cierre debe revisar y adaptar cada contrato a la ley panameña antes de firmar." data-en="⚠ Reference drafts, NOT legal advice. The closing attorney must review and adapt every contract to Panamanian law before signing.">⚠ Reference drafts, NOT legal advice. The closing attorney must review and adapt every contract to Panamanian law before signing.</div>
+  <div class="tpls">
+    <div class="tpl">
+      <div class="tt" data-es="TIERRA" data-en="LAND">LAND</div>
+      <h4 data-es-html="Acuerdo de <em>Opción</em>" data-en-html="Land <em>Option</em>">Land <em>Option</em></h4>
+      <ul>
+        <li data-es-html="<b>Partes:</b> dueño (propietario) + Sora Real Estate Panamá S.A." data-en-html="<b>Parties:</b> owner (dueño) + Sora Real Estate Panamá S.A."><b>Parties:</b> owner + Sora Real Estate Panamá S.A.</li>
+        <li data-es-html="<b>Plazo:</b> opción exclusiva de 12 meses, renovable 6 meses" data-en-html="<b>Term:</b> 12-month exclusive option, renewable 6 months"><b>Term:</b> 12-month exclusive option, renewable 6 months</li>
+        <li data-es-html="<b>Fee de opción:</b> $2,500 al firmar (no reembolsable, se aplica al precio si se ejerce)" data-en-html="<b>Option fee:</b> $2,500 at signing (non-refundable, applied to price if exercised)"><b>Option fee:</b> $2,500 at signing (applied if exercised)</li>
+        <li data-es-html="<b>Strike:</b> costo base del dueño + spread de $5–10K, fijo por escrito" data-en-html="<b>Strike:</b> owner's cost basis + $5–10K spread, locked in writing"><b>Strike:</b> owner cost + $5–10K spread, locked</li>
+        <li data-es-html="<b>Ejercicio:</b> dentro de 60 días de recibir un depósito de comprador ≥25%" data-en-html="<b>Exercise:</b> within 60 days of a ≥25% buyer deposit"><b>Exercise:</b> within 60 days of a ≥25% buyer deposit</li>
+        <li data-es-html="<b>Protección:</b> exclusividad inscrita en el Registro Público como gravamen" data-en-html="<b>Protection:</b> exclusivity recorded in the Public Registry as an encumbrance"><b>Protection:</b> recorded in the Public Registry</li>
+      </ul>
+      <button class="btn btn-ghost" onclick="copyTpl('option')" data-es="Copiar borrador" data-en="Copy draft">Copy draft</button>
+    </div>
+    <div class="tpl">
+      <div class="tt" data-es="CONSTRUCCIÓN" data-en="BUILD">BUILD</div>
+      <h4 data-es-html="Contrato de <em>Precio Fijo</em>" data-en-html="Fixed-Price <em>Build</em>">Fixed-Price <em>Build</em></h4>
+      <ul>
+        <li data-es-html="<b>Partes:</b> comprador + Sora (Promotora)" data-en-html="<b>Parties:</b> buyer + Sora (Promotora)"><b>Parties:</b> buyer + Sora (Promotora)</li>
+        <li data-es-html="<b>Precio fijo</b> llave en mano; modelo + nivel de acabado + lote" data-en-html="<b>Fixed turnkey price;</b> model + finish tier + lot"><b>Fixed turnkey price;</b> model + finish tier + lot</li>
+        <li data-es-html="<b>Enfriamiento:</b> 7 días reembolso total; luego depósito 25–30% no reembolsable" data-en-html="<b>Cooling-off:</b> 7-day full refund; then 25–30% deposit non-refundable"><b>Cooling-off:</b> 7 days; then 25–30% deposit non-refundable</li>
+        <li data-es-html="<b>Hitos:</b> 15% fundación · 15% techo · 15% acabados · 5–10% ocupación · 15–20% cierre" data-en-html="<b>Milestones:</b> 15% foundation · 15% roof · 15% finishes · 5–10% occupancy · 15–20% closing"><b>Milestones:</b> 15/15/15 · 5–10% occ. · 15–20% closing</li>
+        <li data-es-html="<b>Escrow:</b> fondos retenidos por abogado independiente, liberación por firma conjunta" data-en-html="<b>Escrow:</b> funds held by independent attorney, joint sign-off release"><b>Escrow:</b> attorney-held, joint sign-off release</li>
+        <li data-es-html="<b>Garantía:</b> estructural 1 año + retención del 3% por 12 meses; penalidad por retraso" data-en-html="<b>Warranty:</b> 1-yr structural + 3% hold-back 12 mo; delay penalty"><b>Warranty:</b> 1-yr structural + 3% hold-back; delay penalty</li>
+      </ul>
+      <button class="btn btn-ghost" onclick="copyTpl('build')" data-es="Copiar borrador" data-en="Copy draft">Copy draft</button>
+    </div>
+    <div class="tpl">
+      <div class="tt">LOI</div>
+      <h4 data-es-html="Carta de <em>Intención</em>" data-en-html="Letter of <em>Intent</em>">Letter of <em>Intent</em></h4>
+      <ul>
+        <li data-es-html="<b>Intención</b> no vinculante de comprar/construir un modelo Sora en un lote" data-en-html="<b>Non-binding intent</b> to buy/build a Sora model on a lot"><b>Non-binding intent</b> to buy/build a Sora model on a lot</li>
+        <li data-es-html="<b>Precio indicativo</b> + nivel de acabado + mercado" data-en-html="<b>Indicative price</b> + finish tier + market"><b>Indicative price</b> + finish tier + market</li>
+        <li data-es-html="<b>Reserva:</b> depósito reembolsable de $5,000 aparta el lote 30 días" data-en-html="<b>Reservation:</b> $5,000 refundable deposit holds the lot 30 days"><b>Reservation:</b> $5,000 refundable deposit holds the lot 30 days</li>
+        <li data-es-html="<b>Contingencias:</b> debida diligencia de título + fuente de fondos (AML)" data-en-html="<b>Contingencies:</b> title due diligence + source-of-funds (AML)"><b>Contingencies:</b> title diligence + source-of-funds (AML)</li>
+        <li data-es-html="<b>Vía de visa:</b> referido a abogado FNV/QIV en paralelo" data-en-html="<b>Visa path:</b> referral to FNV/QIV attorney in parallel"><b>Visa path:</b> FNV/QIV attorney referral in parallel</li>
+        <li data-es-html="<b>Vence en 14 días</b> salvo conversión a contrato definitivo" data-en-html="<b>Expires in 14 days</b> unless converted to a definitive contract"><b>Expires in 14 days</b> unless converted</li>
+      </ul>
+      <button class="btn btn-ghost" onclick="copyTpl('loi')" data-es="Copiar borrador" data-en="Copy draft">Copy draft</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="modal"><div class="sheet">
+  <h3 id="form-title"><em data-es="Nuevo" data-en="New">New</em> <span data-es="contrato" data-en="contract">contract</span></h3>
+  <form id="doc-form" onsubmit="return saveDoc(event)"><input type="hidden" name="id">
+    <div class="grid2">
+      <div class="f full"><label data-es="Título" data-en="Title">Title</label><input name="title" required placeholder="Opción · Pedasí L3 · Cedeño"></div>
+      <div class="f"><label data-es="Tipo" data-en="Type">Type</label><select name="type"><option value="option" data-es="Opción de tierra" data-en="Land option">Land option</option><option value="build" data-es="Construcción precio fijo" data-en="Fixed-price build">Fixed-price build</option><option value="loi">LOI</option><option value="other" data-es="Otro" data-en="Other">Other</option></select></div>
+      <div class="f"><label data-es="Parte / contraparte" data-en="Party / counterparty">Party</label><input name="party" placeholder="Dueño / comprador"></div>
+      <div class="f"><label data-es="Vinculado a (deal/lote/obra)" data-en="Linked to (deal/lot/build)">Linked to</label><input name="linked" placeholder="—"></div>
+      <div class="f"><label data-es="Valor ($)" data-en="Value ($)">Value ($)</label><input name="value" type="number" min="0"></div>
+      <div class="f"><label data-es="Estado" data-en="Status">Status</label><select name="status"><option value="draft" data-es="Borrador" data-en="Draft">Draft</option><option value="sent" data-es="Enviado" data-en="Sent">Sent</option><option value="signed" data-es="Firmado" data-en="Signed">Signed</option><option value="active" data-es="Activo" data-en="Active">Active</option><option value="closed" data-es="Cerrado" data-en="Closed">Closed</option></select></div>
+      <div class="f"><label data-es="Firmado" data-en="Signed date">Signed date</label><input name="signed_date" type="date"></div>
+      <div class="f"><label data-es="Escrow" data-en="Escrow">Escrow</label><select name="escrow"><option value="none" data-es="N/A" data-en="N/A">N/A</option><option value="funded" data-es="Fondeado" data-en="Funded">Funded</option><option value="released" data-es="Liberado" data-en="Released">Released</option></select></div>
+      <div class="f full"><label data-es="Notas" data-en="Notes">Notes</label><textarea name="notes" rows="2"></textarea></div>
+    </div>
+    <div class="sheet-foot"><button type="button" class="btn btn-ghost" onclick="close_()" data-es="Cancelar" data-en="Cancel">Cancel</button><button type="submit" class="btn btn-primary" data-es="Guardar" data-en="Save">Save</button></div>
+  </form>
+</div></div>
+
+<script src="casas-ops.js"></script>
+<script>
+  const O=CasasOps,L=()=>O.lang();
+  const TYPE={option:{es:'Opción',en:'Option',c:'b-gold'},build:{es:'Construcción',en:'Build',c:'b-teal'},loi:{es:'LOI',en:'LOI',c:'b-blue'},other:{es:'Otro',en:'Other',c:'b-grey'}};
+  const STAT={draft:{es:'Borrador',en:'Draft',c:'b-grey'},sent:{es:'Enviado',en:'Sent',c:'b-blue'},signed:{es:'Firmado',en:'Signed',c:'b-green'},active:{es:'Activo',en:'Active',c:'b-teal'},closed:{es:'Cerrado',en:'Closed',c:'b-grey'}};
+  const ESC={none:{es:'—',en:'—'},funded:{es:'Fondeado',en:'Funded',c:'b-warn'},released:{es:'Liberado',en:'Released',c:'b-green'}};
+  const KEY='sora.casas.contracts';
+  const SEED=[
+    {id:'c1',title:'Opción · Pedasí L3 · Cedeño',type:'option',party:'Familia Cedeño',linked:'Pedasí · Lote Playa 3',value:34000,status:'signed',signed_date:'2026-04-10',escrow:'none',notes:'Ej. Ejercida.'},
+    {id:'c2',title:'Build precio fijo · Casa Bahía · Smith',type:'build',party:'John Smith',linked:'Build b1',value:400000,status:'active',signed_date:'2026-04-12',escrow:'funded',notes:'Ej. Depósito 30% en escrow.'}
+  ];
+  let DOCS=O.load(KEY,SEED);const save=()=>O.save(KEY,DOCS);
+
+  function render(){
+    const l=L();
+    const C=(v,k,cls='')=>`<div class="card ${cls}"><div class="v">${v}</div><div class="k">${k}</div></div>`;
+    document.getElementById('cards').innerHTML=
+      C(DOCS.length,l==='es'?'Contratos':'Contracts')+
+      C(DOCS.filter(d=>d.type==='option').length,l==='es'?'Opciones de tierra':'Land options','c-gold')+
+      C(DOCS.filter(d=>d.type==='build').length,l==='es'?'Contratos de obra':'Build contracts','c-teal')+
+      C(DOCS.filter(d=>d.status==='signed'||d.status==='active').length,l==='es'?'Firmados / activos':'Signed / active','c-ok')+
+      C(DOCS.filter(d=>d.escrow==='funded').length,l==='es'?'Escrow fondeado':'Escrow funded','c-coral')+
+      C(O.money0(DOCS.filter(d=>['signed','active'].includes(d.status)).reduce((a,d)=>a+(+d.value||0),0)),l==='es'?'Valor contratado':'Contracted value','c-gold');
+    if(!DOCS.length){document.getElementById('rows').innerHTML=`<tr><td colspan="8" class="empty">${l==='es'?'Sin contratos.':'No contracts yet.'}</td></tr>`;return;}
+    document.getElementById('rows').innerHTML=DOCS.map(d=>{
+      const t=TYPE[d.type]||{en:d.type,es:d.type,c:'b-grey'},s=STAT[d.status]||{en:d.status,es:d.status,c:'b-grey'},e=ESC[d.escrow]||{en:'—',es:'—'};
+      return `<tr>
+        <td><div class="nm">${O.esc(d.title)}</div><div class="td-sub">${O.esc(d.linked||'')}</div></td>
+        <td><span class="badge ${t.c}">${t[l]}</span></td><td>${O.esc(d.party||'—')}</td>
+        <td class="r">${O.money0(d.value)}</td><td>${O.dateShort(d.signed_date,l)}</td>
+        <td>${e.c?'<span class="badge '+e.c+'">'+e[l]+'</span>':'—'}</td>
+        <td><span class="badge ${s.c}">${s[l]}</span></td>
+        <td><div class="row-act"><button onclick="openForm('${d.id}')">✎</button><button onclick="del('${d.id}')">✕</button></div></td>
+      </tr>`;
+    }).join('');
+  }
+  const TPL={
+    option:'ACUERDO DE OPCIÓN DE COMPRA DE INMUEBLE\nPartes: [DUEÑO] y Sora Real Estate Panamá S.A.\nLote: [DESCRIPCIÓN / FINCA / FOLIO]\nPlazo: opción exclusiva de 12 meses, renovable por 6 meses con fee adicional de $1,000.\nFee de opción: $2,500 no reembolsable, aplicable al precio si se ejerce.\nPrecio de ejercicio (strike): $[STRIKE] (costo base del dueño + spread acordado), fijo.\nEjercicio: Sora ejerce dentro de 60 días de recibir un depósito de comprador ≥25%.\nExclusividad: durante el plazo el dueño no puede vender, gravar ni opcionar el lote a terceros; se inscribe en el Registro Público.\nReversión: si Sora no ejerce, el dueño conserva el fee y el lote queda libre.\n[Revisar con abogado de cierre antes de firmar.]',
+    build:'CONTRATO DE CONSTRUCCIÓN A PRECIO FIJO (LLAVE EN MANO)\nPartes: [COMPRADOR] y Sora Real Estate Panamá S.A. (Promotora).\nObra: modelo [MODELO], nivel de acabado [Esencial/Sora/Firma], lote [LOTE].\nPrecio fijo llave en mano: $[PRECIO] USD.\nEnfriamiento: 7 días con reembolso total; luego depósito 25–30% no reembolsable.\nHitos (contra avance verificado, liberados por firma conjunta y abogado en escrow):\n  - 15% fundación completa\n  - 15% estructura + techo\n  - 15% acabados sustancialmente completos\n  - 5–10% permiso de ocupación\n  - 15–20% al cierre / entrega de llaves\nPlazo: 9 meses; penalidad por retraso de ambas partes.\nGarantía: estructural 1 año + retención del 3% por 12 meses.\n[Revisar con abogado de cierre antes de firmar.]',
+    loi:'CARTA DE INTENCIÓN (NO VINCULANTE)\nDe: [COMPRADOR]  ·  Para: Sora Real Estate Panamá S.A.\nIntención de comprar/construir el modelo [MODELO] en [MERCADO/LOTE] a un precio indicativo de $[PRECIO].\nReserva: depósito reembolsable de $5,000 aparta el lote por 30 días.\nContingencias: debida diligencia de título; verificación de origen de fondos (AML); aprobación de financiamiento si aplica.\nVía migratoria: referido a abogado FNV/QIV en paralelo.\nVigencia: 14 días, salvo conversión a contrato definitivo.\nNo vinculante salvo las cláusulas de reserva y confidencialidad.\n[Revisar con abogado de cierre antes de firmar.]'
+  };
+  function copyTpl(k){ navigator.clipboard.writeText(TPL[k]).then(()=>alert(L()==='es'?'Borrador copiado':'Draft copied')); }
+  function openForm(id){const f=document.getElementById('doc-form');f.reset();const l=L();document.getElementById('form-title').innerHTML=`<em>${id?(l==='es'?'Editar':'Edit'):(l==='es'?'Nuevo':'New')}</em> ${l==='es'?'contrato':'contract'}`;if(id){const d=DOCS.find(x=>x.id===id);if(d)Object.keys(d).forEach(k=>{if(f.elements[k])f.elements[k].value=d[k];});}document.getElementById('modal').classList.add('open');}
+  function close_(){document.getElementById('modal').classList.remove('open');}
+  function saveDoc(e){e.preventDefault();const d=Object.fromEntries(new FormData(e.target));if(d.id){const i=DOCS.findIndex(x=>x.id===d.id);if(i>=0)DOCS[i]={...DOCS[i],...d};}else{d.id=O.uid();DOCS.push(d);}save();close_();render();return false;}
+  function del(id){if(confirm(L()==='es'?'¿Eliminar?':'Delete?')){DOCS=DOCS.filter(x=>x.id!==id);save();render();}}
+  O.initLang(render);
+</script>
+</body>
+</html>

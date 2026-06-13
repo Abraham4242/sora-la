@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sora Casas · Visa & Attorney Workflow</title>
+<meta name="robots" content="noindex"><meta name="theme-color" content="#1d3a2c">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="casas-ops.css">
+</head>
+<body>
+<header class="top"><div class="top-in">
+  <div class="brand"><span class="word"><em>Sora</em> Casas</span><span class="sub" data-es="Visas" data-en="Visas">Visas</span></div>
+  <span class="spacer"></span>
+  <button class="btn btn-primary" onclick="openForm()" data-es="+ Trámite" data-en="+ Filing">+ Filing</button>
+  <button class="btn btn-ghost" onclick="CasasOps.exportJSON(V,'sora-visas.json')">Export</button>
+  <label class="btn btn-ghost" style="cursor:pointer"><span data-es="Importar" data-en="Import">Import</span><input type="file" accept="application/json" onchange="CasasOps.importJSON(event,d=>{V=d;save();render();})" style="display:none"></label>
+  <div class="lang-toggle"><button data-lang="es">ES</button><button data-lang="en" class="active">EN</button></div>
+  <a class="btn btn-ghost" href="sora-casas-ops.html">← Ops</a>
+</div></header>
+
+<div class="wrap">
+  <h1 data-es-html="Visas y <em>residencia</em>" data-en-html="Visas & <em>residency</em>">Visas & <em>residency</em></h1>
+  <p class="lede" data-es="La visa se tramita en paralelo a la construcción. La vía migratoria es un argumento de venta central — y la QIV de $300K vence el 15 oct 2026." data-en="The visa is filed in parallel with construction. The residency path is a core selling point — and the $300K QIV closes Oct 15, 2026.">The visa is filed in parallel with construction. The residency path is a core selling point — and the $300K QIV closes Oct 15, 2026.</p>
+
+  <div class="cards" id="cards"></div>
+  <div class="pipe" id="pipe"></div>
+
+  <div class="bar">
+    <select id="f-type" onchange="render()"><option value="" data-es="Todos los tipos" data-en="All types">All types</option><option value="fnv">Friendly Nations</option><option value="qiv">Qualified Investor</option><option value="pensionado">Pensionado</option><option value="other" data-es="Otra" data-en="Other">Other</option></select>
+    <select id="f-status" onchange="render()"><option value="" data-es="Todos los estados" data-en="All statuses">All statuses</option><option value="intake" data-es="Intake" data-en="Intake">Intake</option><option value="sof" data-es="Origen de fondos" data-en="Source of funds">Source of funds</option><option value="filed" data-es="Presentada" data-en="Filed">Filed</option><option value="approved" data-es="Aprobada" data-en="Approved">Approved</option><option value="issued" data-es="Emitida" data-en="Issued">Issued</option><option value="denied" data-es="Negada" data-en="Denied">Denied</option></select>
+    <span class="spacer"></span><span class="note" id="count"></span>
+  </div>
+
+  <div style="overflow-x:auto"><table>
+    <thead><tr><th data-es="Comprador" data-en="Buyer">Buyer</th><th data-es="Visa" data-en="Visa">Visa</th><th data-es="Abogado" data-en="Attorney">Attorney</th><th data-es="Propiedad calificante" data-en="Qualifying property">Qualifying property</th><th class="r" data-es="Umbral" data-en="Threshold">Threshold</th><th data-es="Estado" data-en="Status">Status</th><th data-es="Alerta" data-en="Flag">Flag</th><th></th></tr></thead>
+    <tbody id="rows"></tbody>
+  </table></div>
+  <p class="note" data-es="FNV = Naciones Amigas ($200K). QIV = Inversionista Calificado ($300K hasta 15 oct 2026, luego $500K). Pensionado = $1,000/mes de pensión." data-en="FNV = Friendly Nations ($200K). QIV = Qualified Investor ($300K until Oct 15 2026, then $500K). Pensionado = $1,000/mo pension.">FNV = Friendly Nations ($200K). QIV = Qualified Investor ($300K until Oct 15 2026, then $500K). Pensionado = $1,000/mo pension.</p>
+</div>
+
+<div class="modal" id="modal"><div class="sheet">
+  <h3 id="form-title"><em data-es="Nuevo" data-en="New">New</em> <span data-es="trámite" data-en="filing">filing</span></h3>
+  <form id="v-form" onsubmit="return saveV(event)"><input type="hidden" name="id">
+    <div class="grid2">
+      <div class="f"><label data-es="Comprador" data-en="Buyer">Buyer</label><input name="buyer" required></div>
+      <div class="f"><label data-es="Deal vinculado" data-en="Linked deal">Linked deal</label><input name="deal" placeholder="—"></div>
+      <div class="f"><label data-es="Tipo de visa" data-en="Visa type">Visa type</label><select name="type" onchange="thr(this)"><option value="fnv">Friendly Nations ($200K)</option><option value="qiv">Qualified Investor ($300K→$500K)</option><option value="pensionado">Pensionado</option><option value="other" data-es="Otra" data-en="Other">Other</option></select></div>
+      <div class="f"><label data-es="Abogado de inmigración" data-en="Immigration attorney">Immigration attorney</label><input name="attorney" placeholder="—"></div>
+      <div class="f"><label data-es="Propiedad calificante" data-en="Qualifying property">Qualifying property</label><input name="property" placeholder="Casa Bahía · Pedasí"></div>
+      <div class="f"><label data-es="Umbral / inversión ($)" data-en="Threshold / investment ($)">Threshold ($)</label><input name="threshold" type="number" min="0" placeholder="300000"></div>
+      <div class="f"><label data-es="Estado" data-en="Status">Status</label><select name="status" id="stage-sel"></select></div>
+      <div class="f"><label data-es="Presentada" data-en="Filed date">Filed date</label><input name="filed" type="date"></div>
+      <div class="f"><label data-es="Aprobada" data-en="Approved date">Approved date</label><input name="approved" type="date"></div>
+      <div class="f full"><label data-es="Notas" data-en="Notes">Notes</label><textarea name="notes" rows="2"></textarea></div>
+    </div>
+    <div class="sheet-foot"><button type="button" class="btn btn-ghost" onclick="close_()" data-es="Cancelar" data-en="Cancel">Cancel</button><button type="submit" class="btn btn-primary" data-es="Guardar" data-en="Save">Save</button></div>
+  </form>
+</div></div>
+
+<script src="casas-ops.js"></script>
+<script>
+  const O=CasasOps,L=()=>O.lang();
+  const TYPE={fnv:{es:'FNV',en:'FNV',c:'b-teal'},qiv:{es:'QIV',en:'QIV',c:'b-coral'},pensionado:{es:'Pensionado',en:'Pensionado',c:'b-blue'},other:{es:'Otra',en:'Other',c:'b-grey'}};
+  const STAT={intake:{es:'Intake',en:'Intake',c:'b-grey'},sof:{es:'Origen fondos',en:'Source of funds',c:'b-warn'},filed:{es:'Presentada',en:'Filed',c:'b-teal'},approved:{es:'Aprobada',en:'Approved',c:'b-gold'},issued:{es:'Emitida',en:'Issued',c:'b-green'},denied:{es:'Negada',en:'Denied',c:'b-red'}};
+  const ORDER=['intake','sof','filed','approved','issued'];
+  const QIV_DEADLINE=new Date('2026-10-15T00:00:00-05:00').getTime();
+  const KEY='sora.casas.visas';
+  const SEED=[
+    {id:'v1',buyer:'John Smith',deal:'Casa Bahía · Smith',type:'qiv',attorney:'—',property:'Casa Bahía · Pedasí',threshold:300000,status:'sof',filed:'',approved:'',notes:'Ej. Origen de fondos en revisión. QIV $300K antes del 15 oct.'},
+    {id:'v2',buyer:'Linda Foster',deal:'Casa Montaña · Foster',type:'fnv',attorney:'—',property:'Casa Montaña · Boquete',threshold:200000,status:'intake',filed:'',approved:'',notes:'Ej.'}
+  ];
+  let V=O.load(KEY,SEED);const save=()=>O.save(KEY,V);const val=id=>document.getElementById(id).value;
+  (function(){const s=document.getElementById('stage-sel');['intake','sof','filed','approved','issued','denied'].forEach(k=>{const o=document.createElement('option');o.value=k;o.textContent=STAT[k].en;o.setAttribute('data-es',STAT[k].es);o.setAttribute('data-en',STAT[k].en);s.appendChild(o);});})();
+  function thr(sel){const f=sel.form;if(!f.threshold.value){f.threshold.value={fnv:200000,qiv:300000,pensionado:'',other:''}[sel.value]||'';}}
+
+  function qivFlag(x){ if(x.type!=='qiv') return null; if(['filed','approved','issued'].includes(x.status)) return null; const d=Math.ceil((QIV_DEADLINE-Date.now())/86400000); return d>0?d:0; }
+  function render(){
+    const l=L(),ft=val('f-type'),fs=val('f-status');
+    const view=V.filter(x=>(!ft||x.type===ft)&&(!fs||x.status===fs));
+    const C=(v,k,cls='')=>`<div class="card ${cls}"><div class="v">${v}</div><div class="k">${k}</div></div>`;
+    const qivSoon=V.filter(x=>qivFlag(x)!=null).length;
+    document.getElementById('cards').innerHTML=
+      C(V.length,l==='es'?'Trámites':'Filings','c-teal')+
+      C(V.filter(x=>x.type==='qiv').length,l==='es'?'QIV':'QIV','c-coral')+
+      C(V.filter(x=>x.type==='fnv').length,l==='es'?'Naciones Amigas':'Friendly Nations')+
+      C(V.filter(x=>['approved','issued'].includes(x.status)).length,l==='es'?'Aprobadas / emitidas':'Approved / issued','c-ok')+
+      C(qivSoon,l==='es'?'QIV por cerrar antes 15-oct':'QIV to lock before Oct 15','c-warn')+
+      C(O.money0(V.reduce((a,x)=>a+(+x.threshold||0),0)),l==='es'?'Inversión calificante':'Qualifying investment','c-gold');
+    document.getElementById('pipe').innerHTML=ORDER.map(st=>{const n=V.filter(x=>x.status===st).length;return `<div class="pseg" style="border-left-color:${stc(st)}"><div class="pn">${STAT[st][l]}</div><div class="pv">${n}</div></div>`;}).join('');
+    document.getElementById('count').textContent=view.length+' '+(l==='es'?'trámites':'filings');
+    if(!view.length){document.getElementById('rows').innerHTML=`<tr><td colspan="8" class="empty">${l==='es'?'Sin trámites.':'No filings yet.'}</td></tr>`;return;}
+    document.getElementById('rows').innerHTML=view.map(x=>{
+      const t=TYPE[x.type]||{en:x.type,es:x.type,c:'b-grey'},s=STAT[x.status]||{en:x.status,es:x.status,c:'b-grey'};
+      const q=qivFlag(x);
+      return `<tr>
+        <td><div class="nm">${O.esc(x.buyer)}</div><div class="td-sub">${O.esc(x.deal||'')}</div></td>
+        <td><span class="badge ${t.c}">${t[l]}</span></td><td>${O.esc(x.attorney||'—')}</td><td>${O.esc(x.property||'—')}</td>
+        <td class="r">${O.money0(x.threshold)}</td><td><span class="badge ${s.c}">${s[l]}</span></td>
+        <td>${q!=null?`<span class="warnsoon">${l==='es'?'QIV $300K · '+q+'d':'QIV $300K · '+q+'d'}</span>`:'—'}</td>
+        <td><div class="row-act"><button onclick="openForm('${x.id}')">✎</button><button onclick="del('${x.id}')">✕</button></div></td>
+      </tr>`;
+    }).join('');
+  }
+  function stc(st){return {intake:'#8a7e6a',sof:'#c98a2a',filed:'#2e8a96',approved:'#b88842',issued:'#3f8f5e'}[st]||'#8a7e6a';}
+  function openForm(id){const f=document.getElementById('v-form');f.reset();const l=L();document.getElementById('form-title').innerHTML=`<em>${id?(l==='es'?'Editar':'Edit'):(l==='es'?'Nuevo':'New')}</em> ${l==='es'?'trámite':'filing'}`;if(id){const x=V.find(o=>o.id===id);if(x)Object.keys(x).forEach(k=>{if(f.elements[k])f.elements[k].value=x[k];});}document.getElementById('modal').classList.add('open');}
+  function close_(){document.getElementById('modal').classList.remove('open');}
+  function saveV(e){e.preventDefault();const d=Object.fromEntries(new FormData(e.target));if(d.id){const i=V.findIndex(o=>o.id===d.id);if(i>=0)V[i]={...V[i],...d};}else{d.id=O.uid();V.push(d);}save();close_();render();return false;}
+  function del(id){if(confirm(L()==='es'?'¿Eliminar?':'Delete?')){V=V.filter(o=>o.id!==id);save();render();}}
+  O.initLang(render);
+</script>
+</body>
+</html>

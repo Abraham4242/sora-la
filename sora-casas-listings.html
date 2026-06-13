@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sora Casas · Listings · Inventory</title>
+<meta name="robots" content="noindex"><meta name="theme-color" content="#1d3a2c">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="casas-ops.css">
+</head>
+<body>
+<header class="top"><div class="top-in">
+  <div class="brand"><span class="word"><em>Sora</em> Casas</span><span class="sub" data-es="Inventario" data-en="Listings">Listings</span></div>
+  <span class="spacer"></span>
+  <button class="btn btn-primary" onclick="openForm()" data-es="+ Propiedad" data-en="+ Listing">+ Listing</button>
+  <button class="btn btn-ghost" onclick="CasasOps.exportJSON(LIST,'sora-listings.json')">Export</button>
+  <label class="btn btn-ghost" style="cursor:pointer"><span data-es="Importar" data-en="Import">Import</span><input type="file" accept="application/json" onchange="CasasOps.importJSON(event,d=>{LIST=d;save();render();})" style="display:none"></label>
+  <div class="lang-toggle"><button data-lang="es">ES</button><button data-lang="en" class="active">EN</button></div>
+  <a class="btn btn-ghost" href="sora-casas-ops.html">← Ops</a>
+</div></header>
+
+<div class="wrap">
+  <h1 data-es-html="El <em>inventario</em>" data-en-html="The <em>inventory</em>">The <em>inventory</em></h1>
+  <p class="lede" data-es="El lado de compra: casas Sora + propiedades en co-broke (MLS ACOBIR) + venta directa de dueños. Curado, sin sobreprecio." data-en="The buy-side: Sora homes + co-broke properties (MLS ACOBIR) + owner-direct sales. Curated, no markup.">The buy-side: Sora homes + co-broke properties (MLS ACOBIR) + owner-direct sales. Curated, no markup.</p>
+
+  <div class="cards" id="cards"></div>
+  <div class="bar">
+    <select id="f-market" onchange="render()"><option value="" data-es="Todos los mercados" data-en="All markets">All markets</option><option>Pedasí</option><option>Boquete</option><option>Volcán</option><option>Bocas del Toro</option><option>Coronado</option><option data-es="Ciudad de Panamá" data-en="Panama City">Panama City</option></select>
+    <select id="f-type" onchange="render()"><option value="" data-es="Todo tipo" data-en="All types">All types</option><option value="home" data-es="Casa" data-en="Home">Home</option><option value="lot" data-es="Lote" data-en="Lot">Lot</option><option value="condo">Condo</option><option value="farm" data-es="Finca" data-en="Farm">Farm</option></select>
+    <select id="f-status" onchange="render()"><option value="" data-es="Todos los estados" data-en="All statuses">All statuses</option><option value="available" data-es="Disponible" data-en="Available">Available</option><option value="reserved" data-es="Reservada" data-en="Reserved">Reserved</option><option value="sold" data-es="Vendida" data-en="Sold">Sold</option></select>
+    <span class="spacer"></span><span class="note" id="count"></span>
+  </div>
+
+  <div style="overflow-x:auto"><table>
+    <thead><tr>
+      <th data-es="Propiedad" data-en="Property">Property</th><th data-es="Tipo" data-en="Type">Type</th><th data-es="Mercado" data-en="Market">Market</th>
+      <th class="r" data-es="Precio" data-en="Price">Price</th><th data-es="Detalle" data-en="Detail">Detail</th><th data-es="Origen" data-en="Source">Source</th><th data-es="Título" data-en="Title">Title</th><th data-es="Estado" data-en="Status">Status</th><th></th>
+    </tr></thead><tbody id="rows"></tbody>
+  </table></div>
+  <p class="note" data-es="Origen co-broke = listing de un socio (MLS ACOBIR), comisión compartida. Este inventario puede alimentar el lado de compra del sitio." data-en="Co-broke source = a partner's listing (MLS ACOBIR), split commission. This inventory can feed the site's buy-side.">Co-broke source = a partner's listing (MLS ACOBIR), split commission. This inventory can feed the site's buy-side.</p>
+</div>
+
+<div class="modal" id="modal"><div class="sheet">
+  <h3 id="form-title"><em data-es="Nueva" data-en="New">New</em> <span data-es="propiedad" data-en="listing">listing</span></h3>
+  <form id="list-form" onsubmit="return saveL(event)"><input type="hidden" name="id">
+    <div class="grid2">
+      <div class="f full"><label data-es="Título" data-en="Title">Title</label><input name="title" required placeholder="Casa Bahía · Playa El Toro, Pedasí"></div>
+      <div class="f"><label data-es="Tipo" data-en="Type">Type</label><select name="type"><option value="home" data-es="Casa" data-en="Home">Home</option><option value="lot" data-es="Lote" data-en="Lot">Lot</option><option value="condo">Condo</option><option value="farm" data-es="Finca" data-en="Farm">Farm</option></select></div>
+      <div class="f"><label data-es="Mercado" data-en="Market">Market</label><select name="market"><option>Pedasí</option><option>Boquete</option><option>Volcán</option><option>Bocas del Toro</option><option>Coronado</option><option data-es="Ciudad de Panamá" data-en="Panama City">Panama City</option></select></div>
+      <div class="f"><label data-es="Precio ($)" data-en="Price ($)">Price ($)</label><input name="price" type="number" min="0" placeholder="400000"></div>
+      <div class="f"><label data-es="Tamaño" data-en="Size">Size</label><input name="size" placeholder="180 m² · 2,400 m² lote"></div>
+      <div class="f"><label data-es="Habitaciones" data-en="Beds">Beds</label><input name="beds" placeholder="3"></div>
+      <div class="f"><label data-es="Baños" data-en="Baths">Baths</label><input name="baths" placeholder="2.5"></div>
+      <div class="f"><label data-es="Origen" data-en="Source">Source</label><select name="source"><option value="sora" data-es="Construida por Sora" data-en="Sora-built">Sora-built</option><option value="cobroke" data-es="Co-broke (socio/MLS)" data-en="Co-broke (partner/MLS)">Co-broke (partner/MLS)</option><option value="owner" data-es="Venta directa del dueño" data-en="Owner-direct">Owner-direct</option></select></div>
+      <div class="f"><label data-es="Socio co-broke" data-en="Co-broke partner">Co-broke partner</label><input name="partner" placeholder="Casa Solution…"></div>
+      <div class="f"><label data-es="Comisión %" data-en="Commission %">Commission %</label><input name="commission" placeholder="3"></div>
+      <div class="f"><label data-es="Título" data-en="Title status">Title</label><select name="titled"><option value="titulado" data-es="Titulado" data-en="Titled">Titled</option><option value="proceso" data-es="En proceso" data-en="In process">In process</option><option value="no" data-es="ROP / sin título" data-en="ROP / untitled">ROP / untitled</option></select></div>
+      <div class="f"><label data-es="Estado" data-en="Status">Status</label><select name="status"><option value="available" data-es="Disponible" data-en="Available">Available</option><option value="reserved" data-es="Reservada" data-en="Reserved">Reserved</option><option value="sold" data-es="Vendida" data-en="Sold">Sold</option></select></div>
+      <div class="f"><label data-es="Coordenadas" data-en="Coordinates">Coordinates</label><input name="coords" placeholder="7.53,-80.03"></div>
+      <div class="f"><label data-es="Foto (URL)" data-en="Photo (URL)">Photo (URL)</label><input name="photo" placeholder="https://…"></div>
+      <div class="f full"><label data-es="Descripción / notas" data-en="Description / notes">Description / notes</label><textarea name="notes" rows="2"></textarea></div>
+    </div>
+    <div class="sheet-foot"><button type="button" class="btn btn-ghost" onclick="close_()" data-es="Cancelar" data-en="Cancel">Cancel</button><button type="submit" class="btn btn-primary" data-es="Guardar" data-en="Save">Save</button></div>
+  </form>
+</div></div>
+
+<script src="casas-ops.js"></script>
+<script>
+  const O=CasasOps,L=()=>O.lang();
+  const TYPE={home:{es:'Casa',en:'Home',c:'b-teal'},lot:{es:'Lote',en:'Lot',c:'b-gold'},condo:{es:'Condo',en:'Condo',c:'b-blue'},farm:{es:'Finca',en:'Farm',c:'b-green'}};
+  const SRC={sora:{es:'Sora',en:'Sora-built',c:'b-coral'},cobroke:{es:'Co-broke',en:'Co-broke',c:'b-blue'},owner:{es:'Dueño',en:'Owner',c:'b-grey'}};
+  const STAT={available:{es:'Disponible',en:'Available',c:'b-green'},reserved:{es:'Reservada',en:'Reserved',c:'b-warn'},sold:{es:'Vendida',en:'Sold',c:'b-red'}};
+  const TTL={titulado:{es:'Titulado',en:'Titled'},proceso:{es:'En proceso',en:'In process'},no:{es:'ROP',en:'ROP'}};
+  const KEY='sora.casas.listings';
+  const SEED=[
+    {id:'l1',title:'Casa Bahía · Playa El Toro, Pedasí',type:'home',market:'Pedasí',price:400000,size:'180 m²',beds:'3',baths:'2.5',source:'sora',partner:'',commission:'',titled:'titulado',status:'available',coords:'7.53,-80.03',notes:'Ej. Llave en mano, 9 meses.'},
+    {id:'l2',title:'Lote vista volcán · Boquete',type:'lot',market:'Boquete',price:62000,size:'5,000 m²',beds:'',baths:'',source:'owner',partner:'',commission:'3',titled:'proceso',status:'available',coords:'8.78,-82.44',notes:'Ej. Título en ANATI.'},
+    {id:'l3',title:'Condo Costa del Este (co-broke)',type:'condo',market:'Panama City',price:285000,size:'120 m²',beds:'2',baths:'2',source:'cobroke',partner:'Casa Solution',commission:'2.5',titled:'titulado',status:'available',coords:'',notes:'Ej. Listing MLS ACOBIR.'}
+  ];
+  let LIST=O.load(KEY,SEED);const save=()=>O.save(KEY,LIST);const val=id=>document.getElementById(id).value;
+
+  function render(){
+    const l=L(),fm=val('f-market'),ft=val('f-type'),fs=val('f-status');
+    const view=LIST.filter(x=>(!fm||x.market===fm)&&(!ft||x.type===ft)&&(!fs||x.status===fs));
+    const avail=LIST.filter(x=>x.status==='available');
+    const C=(v,k,cls='')=>`<div class="card ${cls}"><div class="v">${v}</div><div class="k">${k}</div></div>`;
+    const prices=avail.map(x=>+x.price||0).filter(Boolean);
+    document.getElementById('cards').innerHTML=
+      C(LIST.length,l==='es'?'Propiedades':'Listings')+
+      C(avail.length,l==='es'?'Disponibles':'Available','c-ok')+
+      C(LIST.filter(x=>x.source==='sora').length,l==='es'?'Construidas por Sora':'Sora-built','c-coral')+
+      C(LIST.filter(x=>x.source==='cobroke').length,l==='es'?'Co-broke (socios)':'Co-broke (partners)','c-teal')+
+      C(O.money0(avail.reduce((a,x)=>a+(+x.price||0),0)),l==='es'?'Valor del inventario':'Inventory value','c-gold')+
+      C(prices.length?O.money0(prices.reduce((a,b)=>a+b,0)/prices.length):'—',l==='es'?'Precio promedio':'Avg. price');
+    document.getElementById('count').textContent=view.length+' '+(l==='es'?'propiedades':'listings');
+    if(!view.length){document.getElementById('rows').innerHTML=`<tr><td colspan="9" class="empty">${l==='es'?'Sin propiedades.':'No listings yet.'}</td></tr>`;return;}
+    document.getElementById('rows').innerHTML=view.map(x=>{
+      const t=TYPE[x.type]||{en:x.type,es:x.type,c:'b-grey'},s=SRC[x.source]||{en:x.source,es:x.source,c:'b-grey'},st=STAT[x.status]||{en:x.status,es:x.status,c:'b-grey'};
+      const bb=[x.beds&&x.beds+'bd',x.baths&&x.baths+'ba',x.size].filter(Boolean).join(' · ');
+      return `<tr>
+        <td><div class="nm">${O.esc(x.title)}</div><div class="td-sub">${O.esc(x.coords||'')}</div></td>
+        <td><span class="badge ${t.c}">${t[l]}</span></td><td>${O.esc(x.market||'—')}</td>
+        <td class="r">${O.money0(x.price)}</td><td>${O.esc(bb||'—')}</td>
+        <td><span class="badge ${s.c}">${s[l]}</span>${x.partner?'<div class="td-sub">'+O.esc(x.partner)+(x.commission?' · '+x.commission+'%':'')+'</div>':''}</td>
+        <td>${O.lab(TTL,x.titled,l)}</td>
+        <td><span class="badge ${st.c}">${st[l]}</span></td>
+        <td><div class="row-act"><button onclick="openForm('${x.id}')">✎</button><button onclick="del('${x.id}')">✕</button></div></td>
+      </tr>`;
+    }).join('');
+  }
+  function openForm(id){const f=document.getElementById('list-form');f.reset();const l=L();document.getElementById('form-title').innerHTML=`<em>${id?(l==='es'?'Editar':'Edit'):(l==='es'?'Nueva':'New')}</em> ${l==='es'?'propiedad':'listing'}`;if(id){const x=LIST.find(o=>o.id===id);if(x)Object.keys(x).forEach(k=>{if(f.elements[k])f.elements[k].value=x[k];});}document.getElementById('modal').classList.add('open');}
+  function close_(){document.getElementById('modal').classList.remove('open');}
+  function saveL(e){e.preventDefault();const d=Object.fromEntries(new FormData(e.target));if(d.id){const i=LIST.findIndex(o=>o.id===d.id);if(i>=0)LIST[i]={...LIST[i],...d};}else{d.id=O.uid();LIST.push(d);}save();close_();render();return false;}
+  function del(id){if(confirm(L()==='es'?'¿Eliminar?':'Delete?')){LIST=LIST.filter(o=>o.id!==id);save();render();}}
+  O.initLang(render);
+</script>
+</body>
+</html>

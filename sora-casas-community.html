@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sora Casas · Community & Referrals</title>
+<meta name="robots" content="noindex"><meta name="theme-color" content="#1d3a2c">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="casas-ops.css">
+</head>
+<body>
+<header class="top"><div class="top-in">
+  <div class="brand"><span class="word"><em>Sora</em> Casas</span><span class="sub" data-es="Comunidad" data-en="Community">Community</span></div>
+  <span class="spacer"></span>
+  <button class="btn btn-primary" onclick="openH()" data-es="+ Propietario" data-en="+ Homeowner">+ Homeowner</button>
+  <button class="btn btn-ghost" onclick="openR()" data-es="+ Referido" data-en="+ Referral">+ Referral</button>
+  <button class="btn btn-ghost" onclick="CasasOps.exportJSON({homeowners:HO,referrals:REF},'sora-community.json')">Export</button>
+  <label class="btn btn-ghost" style="cursor:pointer"><span data-es="Importar" data-en="Import">Import</span><input type="file" accept="application/json" onchange="imp(event)" style="display:none"></label>
+  <div class="lang-toggle"><button data-lang="es">ES</button><button data-lang="en" class="active">EN</button></div>
+  <a class="btn btn-ghost" href="sora-casas-ops.html">← Ops</a>
+</div></header>
+
+<div class="wrap">
+  <h1 data-es-html="La <em>comunidad</em>" data-en-html="The <em>community</em>">The <em>community</em></h1>
+  <p class="lede" data-es="Los propietarios son el motor de referidos: a escala, 30%+ de los cierres vienen de ellos a CAC casi cero. Cada referido cerrado = $5,000 de crédito." data-en="Homeowners are the referral engine: at scale, 30%+ of closings come from them at near-zero CAC. Each closed referral = $5,000 credit.">Homeowners are the referral engine: at scale, 30%+ of closings come from them at near-zero CAC. Each closed referral = $5,000 credit.</p>
+
+  <div class="cards" id="cards"></div>
+
+  <div class="section-label" data-es="PROPIETARIOS" data-en="HOMEOWNERS">HOMEOWNERS</div>
+  <div style="overflow-x:auto"><table>
+    <thead><tr><th data-es="Propietario" data-en="Homeowner">Homeowner</th><th data-es="Mercado" data-en="Market">Market</th><th data-es="Casa" data-en="Home">Home</th><th data-es="Entregada" data-en="Delivered">Delivered</th><th data-es="Grupo WhatsApp" data-en="WhatsApp group">WhatsApp group</th><th data-es="Sentimiento" data-en="Sentiment">Sentiment</th><th class="r" data-es="Referidos" data-en="Referrals">Referrals</th><th></th></tr></thead>
+    <tbody id="ho-rows"></tbody>
+  </table></div>
+
+  <div class="section-label" data-es="REFERIDOS · PROGRAMA $5K" data-en="REFERRALS · $5K PROGRAM">REFERRALS · $5K PROGRAM</div>
+  <div style="overflow-x:auto"><table>
+    <thead><tr><th data-es="Refiere" data-en="Referrer">Referrer</th><th data-es="Referido" data-en="Referred">Referred</th><th data-es="Estado" data-en="Status">Status</th><th data-es="Crédito $5K" data-en="$5K credit">$5K credit</th><th data-es="Notas" data-en="Notes">Notes</th><th></th></tr></thead>
+    <tbody id="ref-rows"></tbody>
+  </table></div>
+</div>
+
+<!-- HOMEOWNER MODAL -->
+<div class="modal" id="modal-h"><div class="sheet">
+  <h3 id="ht"><em data-es="Nuevo" data-en="New">New</em> <span data-es="propietario" data-en="homeowner">homeowner</span></h3>
+  <form id="h-form" onsubmit="return saveH(event)"><input type="hidden" name="id">
+    <div class="grid2">
+      <div class="f"><label data-es="Nombre" data-en="Name">Name</label><input name="name" required></div>
+      <div class="f"><label data-es="Mercado" data-en="Market">Market</label><select name="market"><option>Pedasí</option><option>Boquete</option><option>Volcán</option><option>Bocas del Toro</option><option>Coronado</option></select></div>
+      <div class="f"><label data-es="Casa / modelo" data-en="Home / model">Home / model</label><input name="home" placeholder="Casa Bahía"></div>
+      <div class="f"><label data-es="Entregada" data-en="Delivered">Delivered</label><input name="delivered" type="date"></div>
+      <div class="f"><label data-es="En grupo WhatsApp" data-en="In WhatsApp group">In WhatsApp group</label><select name="wa"><option value="yes" data-es="Sí" data-en="Yes">Yes</option><option value="no">No</option></select></div>
+      <div class="f"><label data-es="Sentimiento" data-en="Sentiment">Sentiment</label><select name="sentiment"><option value="promoter" data-es="Promotor" data-en="Promoter">Promoter</option><option value="ok" data-es="Neutral" data-en="Neutral">Neutral</option><option value="risk" data-es="En riesgo" data-en="At risk">At risk</option></select></div>
+      <div class="f"><label data-es="Contacto" data-en="Contact">Contact</label><input name="contact"></div>
+      <div class="f full"><label data-es="Notas" data-en="Notes">Notes</label><textarea name="notes" rows="2"></textarea></div>
+    </div>
+    <div class="sheet-foot"><button type="button" class="btn btn-ghost" onclick="cl('modal-h')" data-es="Cancelar" data-en="Cancel">Cancel</button><button type="submit" class="btn btn-primary" data-es="Guardar" data-en="Save">Save</button></div>
+  </form>
+</div></div>
+
+<!-- REFERRAL MODAL -->
+<div class="modal" id="modal-r"><div class="sheet">
+  <h3 id="rt"><em data-es="Nuevo" data-en="New">New</em> <span data-es="referido" data-en="referral">referral</span></h3>
+  <form id="r-form" onsubmit="return saveR(event)"><input type="hidden" name="id">
+    <div class="grid2">
+      <div class="f"><label data-es="Quién refiere" data-en="Referrer">Referrer</label><input name="referrer" required placeholder="Homeowner"></div>
+      <div class="f"><label data-es="Referido (lead)" data-en="Referred (lead)">Referred (lead)</label><input name="referred" required></div>
+      <div class="f"><label data-es="Estado" data-en="Status">Status</label><select name="status"><option value="intro" data-es="Presentado" data-en="Introduced">Introduced</option><option value="pipeline" data-es="En pipeline" data-en="In pipeline">In pipeline</option><option value="closed" data-es="Cerrado" data-en="Closed">Closed</option><option value="lost" data-es="Perdido" data-en="Lost">Lost</option></select></div>
+      <div class="f"><label data-es="Crédito $5K" data-en="$5K credit">$5K credit</label><select name="credit"><option value="pending" data-es="Pendiente" data-en="Pending">Pending</option><option value="owed" data-es="Por pagar" data-en="Owed">Owed</option><option value="applied" data-es="Aplicado" data-en="Applied">Applied</option><option value="na">N/A</option></select></div>
+      <div class="f full"><label data-es="Notas" data-en="Notes">Notes</label><textarea name="notes" rows="2"></textarea></div>
+    </div>
+    <div class="sheet-foot"><button type="button" class="btn btn-ghost" onclick="cl('modal-r')" data-es="Cancelar" data-en="Cancel">Cancel</button><button type="submit" class="btn btn-primary" data-es="Guardar" data-en="Save">Save</button></div>
+  </form>
+</div></div>
+
+<script src="casas-ops.js"></script>
+<script>
+  const O=CasasOps,L=()=>O.lang();
+  const SENT={promoter:{es:'Promotor',en:'Promoter',c:'b-green'},ok:{es:'Neutral',en:'Neutral',c:'b-grey'},risk:{es:'En riesgo',en:'At risk',c:'b-red'}};
+  const RST={intro:{es:'Presentado',en:'Introduced',c:'b-blue'},pipeline:{es:'En pipeline',en:'In pipeline',c:'b-teal'},closed:{es:'Cerrado',en:'Closed',c:'b-green'},lost:{es:'Perdido',en:'Lost',c:'b-red'}};
+  const CR={pending:{es:'Pendiente',en:'Pending',c:'b-grey'},owed:{es:'Por pagar',en:'Owed',c:'b-warn'},applied:{es:'Aplicado',en:'Applied',c:'b-green'},na:{es:'N/A',en:'N/A',c:'b-grey'}};
+  const HK='sora.casas.homeowners', RK='sora.casas.referrals';
+  let HO=O.load(HK,[{id:'h1',name:'John & Mary Smith',market:'Pedasí',home:'Casa Bahía',delivered:'',wa:'yes',sentiment:'promoter',contact:'',notes:'Ej.'}]);
+  let REF=O.load(RK,[{id:'r1',referrer:'John & Mary Smith',referred:'(amigo de Sarasota)',status:'pipeline',credit:'pending',notes:'Ej. Presentado en Sora Sunday.'}]);
+  const save=()=>{O.save(HK,HO);O.save(RK,REF);};
+
+  function refCount(name){return REF.filter(r=>r.referrer===name).length;}
+  function render(){
+    const l=L();
+    const C=(v,k,cls='')=>`<div class="card ${cls}"><div class="v">${v}</div><div class="k">${k}</div></div>`;
+    const closed=REF.filter(r=>r.status==='closed').length;
+    const owed=REF.filter(r=>r.credit==='owed').length*5000;
+    document.getElementById('cards').innerHTML=
+      C(HO.length,l==='es'?'Propietarios':'Homeowners','c-teal')+
+      C(HO.filter(h=>h.wa==='yes').length,l==='es'?'En grupo WhatsApp':'In WhatsApp group')+
+      C(HO.filter(h=>h.sentiment==='promoter').length,l==='es'?'Promotores':'Promoters','c-ok')+
+      C(REF.length,l==='es'?'Referidos':'Referrals')+
+      C(closed,l==='es'?'Referidos cerrados':'Referrals closed','c-coral')+
+      C(O.money0(owed),l==='es'?'Créditos por pagar':'Credits owed','c-gold');
+    // homeowners
+    document.getElementById('ho-rows').innerHTML=HO.length?HO.map(h=>{
+      const s=SENT[h.sentiment]||{en:'—',es:'—',c:'b-grey'};
+      return `<tr><td><div class="nm">${O.esc(h.name)}</div><div class="td-sub">${O.esc(h.contact||'')}</div></td><td>${O.esc(h.market||'—')}</td><td>${O.esc(h.home||'—')}</td><td>${O.dateShort(h.delivered,l)}</td><td>${h.wa==='yes'?'<span class="badge b-green">'+(l==='es'?'Sí':'Yes')+'</span>':'<span class="badge b-grey">No</span>'}</td><td><span class="badge ${s.c}">${s[l]}</span></td><td class="r">${refCount(h.name)}</td><td><div class="row-act"><button onclick="openH('${h.id}')">✎</button><button onclick="delH('${h.id}')">✕</button></div></td></tr>`;
+    }).join(''):`<tr><td colspan="8" class="empty">${l==='es'?'Sin propietarios.':'No homeowners yet.'}</td></tr>`;
+    // referrals
+    document.getElementById('ref-rows').innerHTML=REF.length?REF.map(r=>{
+      const s=RST[r.status]||{en:'—',es:'—',c:'b-grey'},c=CR[r.credit]||{en:'—',es:'—',c:'b-grey'};
+      return `<tr><td>${O.esc(r.referrer)}</td><td>${O.esc(r.referred)}</td><td><span class="badge ${s.c}">${s[l]}</span></td><td><span class="badge ${c.c}">${c[l]}</span></td><td class="td-sub">${O.esc(r.notes||'')}</td><td><div class="row-act"><button onclick="openR('${r.id}')">✎</button><button onclick="delR('${r.id}')">✕</button></div></td></tr>`;
+    }).join(''):`<tr><td colspan="6" class="empty">${l==='es'?'Sin referidos.':'No referrals yet.'}</td></tr>`;
+  }
+  function openH(id){const f=document.getElementById('h-form');f.reset();const l=L();document.getElementById('ht').innerHTML=`<em>${id?(l==='es'?'Editar':'Edit'):(l==='es'?'Nuevo':'New')}</em> ${l==='es'?'propietario':'homeowner'}`;if(id){const h=HO.find(x=>x.id===id);if(h)Object.keys(h).forEach(k=>{if(f.elements[k])f.elements[k].value=h[k];});}document.getElementById('modal-h').classList.add('open');}
+  function openR(id){const f=document.getElementById('r-form');f.reset();const l=L();document.getElementById('rt').innerHTML=`<em>${id?(l==='es'?'Editar':'Edit'):(l==='es'?'Nuevo':'New')}</em> ${l==='es'?'referido':'referral'}`;if(id){const r=REF.find(x=>x.id===id);if(r)Object.keys(r).forEach(k=>{if(f.elements[k])f.elements[k].value=r[k];});}document.getElementById('modal-r').classList.add('open');}
+  function cl(id){document.getElementById(id).classList.remove('open');}
+  function saveH(e){e.preventDefault();const d=Object.fromEntries(new FormData(e.target));if(d.id){const i=HO.findIndex(x=>x.id===d.id);if(i>=0)HO[i]={...HO[i],...d};}else{d.id=O.uid();HO.push(d);}save();cl('modal-h');render();return false;}
+  function saveR(e){e.preventDefault();const d=Object.fromEntries(new FormData(e.target));if(d.id){const i=REF.findIndex(x=>x.id===d.id);if(i>=0)REF[i]={...REF[i],...d};}else{d.id=O.uid();REF.push(d);}save();cl('modal-r');render();return false;}
+  function delH(id){if(confirm(L()==='es'?'¿Eliminar?':'Delete?')){HO=HO.filter(x=>x.id!==id);save();render();}}
+  function delR(id){if(confirm(L()==='es'?'¿Eliminar?':'Delete?')){REF=REF.filter(x=>x.id!==id);save();render();}}
+  function imp(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const d=JSON.parse(r.result);if(d.homeowners)HO=d.homeowners;if(d.referrals)REF=d.referrals;save();render();}catch(_){alert('JSON?');}};r.readAsText(f);}
+  O.initLang(render);
+</script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sora Casas · Builds · Construction Tracker</title>
+<meta name="robots" content="noindex"><meta name="theme-color" content="#1d3a2c">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="casas-ops.css">
+<style>
+  .prog{height:7px;background:var(--paper-3);border-radius:5px;overflow:hidden;min-width:80px}
+  .prog span{display:block;height:100%;background:var(--forest);border-radius:5px}
+  .float-pos{color:var(--ok);font-weight:700}.float-neg{color:var(--coral);font-weight:700}
+  .ms{display:flex;gap:3px;margin-top:5px}
+  .ms i{width:13px;height:6px;border-radius:2px;background:var(--paper-3)}
+  .ms i.done{background:var(--ok)}
+</style>
+</head>
+<body>
+<header class="top"><div class="top-in">
+  <div class="brand"><span class="word"><em>Sora</em> Casas</span><span class="sub" data-es="Construcción" data-en="Builds">Builds</span></div>
+  <span class="spacer"></span>
+  <button class="btn btn-primary" onclick="openForm()" data-es="+ Obra" data-en="+ Build">+ Build</button>
+  <button class="btn btn-ghost" onclick="CasasOps.exportJSON(BUILDS,'sora-builds.json')">Export</button>
+  <label class="btn btn-ghost" style="cursor:pointer"><span data-es="Importar" data-en="Import">Import</span><input type="file" accept="application/json" onchange="CasasOps.importJSON(event,d=>{BUILDS=d;save();render();})" style="display:none"></label>
+  <div class="lang-toggle"><button data-lang="es">ES</button><button data-lang="en" class="active">EN</button></div>
+  <a class="btn btn-ghost" href="sora-casas-ops.html">← Ops</a>
+</div></header>
+
+<div class="wrap">
+  <h1 data-es-html="Las <em>obras</em>" data-en-html="The <em>builds</em>">The <em>builds</em></h1>
+  <p class="lede" data-es="Construimos con dinero del comprador, no del banco. El float (gastado − cobrado) es el número que importa: lo mantenemos bajo." data-en="We build on buyer money, not bank money. The float (spent − collected) is the number that matters: keep it low.">We build on buyer money, not bank money. The float (spent − collected) is the number that matters: keep it low.</p>
+
+  <div class="cards" id="cards"></div>
+  <div class="pipe" id="pipe"></div>
+
+  <div class="bar">
+    <select id="f-market" onchange="render()"><option value="" data-es="Todos los mercados" data-en="All markets">All markets</option><option>Pedasí</option><option>Boquete</option><option>Volcán</option><option>Bocas del Toro</option><option>Coronado</option></select>
+    <select id="f-stage" onchange="render()"><option value="" data-es="Todas las etapas" data-en="All stages">All stages</option></select>
+    <span class="spacer"></span><span class="note" id="count"></span>
+  </div>
+
+  <div style="overflow-x:auto"><table>
+    <thead><tr>
+      <th data-es="Obra" data-en="Build">Build</th><th data-es="Mercado" data-en="Market">Market</th><th data-es="Comprador" data-en="Buyer">Buyer</th>
+      <th data-es="Etapa / avance" data-en="Stage / progress">Stage / progress</th>
+      <th class="r" data-es="Contrato" data-en="Contract">Contract</th><th class="r" data-es="Cobrado" data-en="Collected">Collected</th><th class="r" data-es="Gastado" data-en="Spent">Spent</th><th class="r" data-es="Float" data-en="Float">Float</th>
+      <th data-es="Entrega" data-en="Delivery">Delivery</th><th></th>
+    </tr></thead><tbody id="rows"></tbody>
+  </table></div>
+  <p class="note" data-es="Float positivo = el comprador va adelante (Sora en verde). Hitos: 30% depósito · 15% fundación · 15% techo · 15% acabados · 10% ocupación · 15% cierre." data-en="Positive float = buyer is ahead (Sora in the green). Milestones: 30% deposit · 15% foundation · 15% roof · 15% finishes · 10% occupancy · 15% closing.">Positive float = buyer is ahead (Sora in the green). Milestones: 30% deposit · 15% foundation · 15% roof · 15% finishes · 10% occupancy · 15% closing.</p>
+</div>
+
+<div class="modal" id="modal"><div class="sheet">
+  <h3 id="form-title"><em data-es="Nueva" data-en="New">New</em> <span data-es="obra" data-en="build">build</span></h3>
+  <form id="build-form" onsubmit="return saveBuild(event)"><input type="hidden" name="id">
+    <div class="grid2">
+      <div class="f"><label data-es="Nombre" data-en="Name">Name</label><input name="name" required placeholder="Casa Bahía · Pedasí L3"></div>
+      <div class="f"><label data-es="Mercado" data-en="Market">Market</label><select name="market"><option>Pedasí</option><option>Boquete</option><option>Volcán</option><option>Bocas del Toro</option><option>Coronado</option></select></div>
+      <div class="f"><label data-es="Comprador (deal)" data-en="Buyer (deal)">Buyer (deal)</label><input name="buyer" placeholder="John Smith"></div>
+      <div class="f"><label data-es="Lote (Land Bank)" data-en="Lot (Land Bank)">Lot</label><input name="lot" placeholder="Pedasí · Lote 3"></div>
+      <div class="f"><label data-es="Modelo" data-en="Model">Model</label><input name="model" placeholder="Casa Bahía 180m²"></div>
+      <div class="f"><label data-es="Precio de contrato ($)" data-en="Contract price ($)">Contract price ($)</label><input name="contract" type="number" min="0" placeholder="400000"></div>
+      <div class="f"><label data-es="Etapa" data-en="Stage">Stage</label><select name="stage" id="stage-sel"></select></div>
+      <div class="f"><label data-es="% avance" data-en="% complete">% complete</label><input name="pct" type="number" min="0" max="100" placeholder="0"></div>
+      <div class="f"><label data-es="Cobrado al comprador ($)" data-en="Collected from buyer ($)">Collected ($)</label><input name="collected" type="number" min="0" placeholder="120000"></div>
+      <div class="f"><label data-es="Gastado a la fecha ($)" data-en="Spent to date ($)">Spent ($)</label><input name="spent" type="number" min="0" placeholder="50000"></div>
+      <div class="f"><label data-es="Inicio" data-en="Start">Start</label><input name="start" type="date"></div>
+      <div class="f"><label data-es="Entrega objetivo" data-en="Target delivery">Target delivery</label><input name="delivery" type="date"></div>
+      <div class="f"><label data-es="Jefe de obra" data-en="Construction manager">Manager</label><input name="manager" placeholder="—"></div>
+      <div class="f full"><label data-es="Notas" data-en="Notes">Notes</label><textarea name="notes" rows="2"></textarea></div>
+    </div>
+    <div class="sheet-foot"><button type="button" class="btn btn-ghost" onclick="close_()" data-es="Cancelar" data-en="Cancel">Cancel</button><button type="submit" class="btn btn-primary" data-es="Guardar" data-en="Save">Save</button></div>
+  </form>
+</div></div>
+
+<script src="casas-ops.js"></script>
+<script>
+  const O=CasasOps,L=()=>O.lang();
+  const STAGE={design:{es:'Diseño',en:'Design',c:'b-grey',ms:0},permits:{es:'Permisos',en:'Permits',c:'b-blue',ms:0},foundation:{es:'Fundación',en:'Foundation',c:'b-teal',ms:2},framing:{es:'Estructura',en:'Framing',c:'b-gold',ms:3},finishes:{es:'Acabados',en:'Finishes',c:'b-warn',ms:4},occupancy:{es:'Ocupación',en:'Occupancy',c:'b-coral',ms:5},delivered:{es:'Entregada',en:'Delivered',c:'b-green',ms:6}};
+  const ORDER=['design','permits','foundation','framing','finishes','occupancy','delivered'];
+  const KEY='sora.casas.builds';
+  const SEED=[
+    {id:'b1',name:'Casa Bahía · Pedasí L3',market:'Pedasí',buyer:'John Smith',lot:'Pedasí · Lote Playa 3',model:'Casa Bahía 180m²',contract:400000,stage:'framing',pct:45,collected:240000,spent:160000,start:'2026-04-10',delivery:'2027-01-10',manager:'—',notes:'Ej. Hito techo por cobrar.'},
+    {id:'b2',name:'Casa Montaña · Boquete',market:'Boquete',buyer:'(network)',lot:'Boquete · Lote Montaña 2',model:'Casa Montaña 220m²',contract:350000,stage:'foundation',pct:18,collected:105000,spent:60000,start:'2026-05-20',delivery:'2027-02-20',manager:'—',notes:'Ej. Build #1 autofinanciado.'}
+  ];
+  let BUILDS=O.load(KEY,SEED); const save=()=>O.save(KEY,BUILDS);
+  (function(){const s=document.getElementById('stage-sel'),f=document.getElementById('f-stage');ORDER.forEach(k=>{[s,f].forEach(sel=>{const o=document.createElement('option');o.value=k;o.textContent=STAGE[k].en;o.setAttribute('data-es',STAGE[k].es);o.setAttribute('data-en',STAGE[k].en);sel.appendChild(o);});});})();
+  const val=id=>document.getElementById(id).value;
+
+  function render(){
+    const l=L(),fm=val('f-market'),fst=val('f-stage');
+    const active=BUILDS.filter(b=>b.stage!=='delivered');
+    const view=BUILDS.filter(b=>(!fm||b.market===fm)&&(!fst||b.stage===fst));
+    const float=active.reduce((a,b)=>a+((+b.spent||0)-(+b.collected||0)),0);
+    const C=(v,k,cls='')=>`<div class="card ${cls}"><div class="v">${v}</div><div class="k">${k}</div></div>`;
+    document.getElementById('cards').innerHTML=
+      C(active.length,l==='es'?'Obras activas':'Active builds','c-teal')+
+      C(O.money0(active.reduce((a,b)=>a+(+b.contract||0),0)),l==='es'?'Valor en construcción':'Value in construction')+
+      C(O.money0(active.reduce((a,b)=>a+(+b.collected||0),0)),l==='es'?'Cobrado (comprador)':'Collected (buyer)','c-ok')+
+      C(O.money0(active.reduce((a,b)=>a+(+b.spent||0),0)),l==='es'?'Gastado a la fecha':'Spent to date','c-coral')+
+      C(`<span class="${float>0?'float-neg':'float-pos'}">${O.money0(Math.abs(float))}</span>`,float>0?(l==='es'?'Float desplegado (cash out)':'Float deployed (cash out)'):(l==='es'?'Float positivo (comprador adelante)':'Positive float (buyer ahead)'),'c-gold')+
+      C(BUILDS.filter(b=>b.stage==='delivered').length,l==='es'?'Entregadas':'Delivered','c-ok');
+    document.getElementById('pipe').innerHTML=ORDER.map(st=>{const n=BUILDS.filter(b=>b.stage===st).length;return `<div class="pseg" style="border-left-color:${stc(st)}"><div class="pn">${STAGE[st][l]}</div><div class="pv">${n}</div></div>`;}).join('');
+    document.getElementById('count').textContent=view.length+' '+(l==='es'?'obras':'builds');
+    if(!view.length){document.getElementById('rows').innerHTML=`<tr><td colspan="10" class="empty">${l==='es'?'Sin obras.':'No builds yet.'}</td></tr>`;return;}
+    document.getElementById('rows').innerHTML=view.sort((a,b)=>ORDER.indexOf(a.stage)-ORDER.indexOf(b.stage)).map(b=>{
+      const fl=(+b.spent||0)-(+b.collected||0);
+      const msDone=STAGE[b.stage].ms; const ms=[0,1,2,3,4,5].map(i=>`<i class="${i<msDone?'done':''}"></i>`).join('');
+      return `<tr>
+        <td><div class="nm">${O.esc(b.name)}</div><div class="td-sub">${O.esc(b.model||'')}${b.lot?' · '+O.esc(b.lot):''}</div></td>
+        <td>${O.esc(b.market||'—')}</td><td>${O.esc(b.buyer||'—')}</td>
+        <td><span class="badge ${STAGE[b.stage].c}">${STAGE[b.stage][l]}</span><div class="prog" style="margin-top:6px"><span style="width:${Math.min(100,+b.pct||0)}%"></span></div><div class="ms">${ms}</div></td>
+        <td class="r">${O.money0(b.contract)}</td><td class="r">${O.money0(b.collected)}</td><td class="r">${O.money0(b.spent)}</td>
+        <td class="r"><span class="${fl>0?'float-neg':'float-pos'}">${fl>0?'':'+'}${O.money0(Math.abs(fl))}</span></td>
+        <td>${O.dateShort(b.delivery,l)}</td>
+        <td><div class="row-act"><button onclick="openForm('${b.id}')">✎</button><button onclick="del('${b.id}')">✕</button></div></td>
+      </tr>`;
+    }).join('');
+  }
+  function stc(st){return {design:'#8a7e6a',permits:'#3a6e9c',foundation:'#2e8a96',framing:'#b88842',finishes:'#c98a2a',occupancy:'#D9573B',delivered:'#3f8f5e'}[st];}
+  function openForm(id){const f=document.getElementById('build-form');f.reset();const l=L();document.getElementById('form-title').innerHTML=`<em>${id?(l==='es'?'Editar':'Edit'):(l==='es'?'Nueva':'New')}</em> ${l==='es'?'obra':'build'}`;if(id){const b=BUILDS.find(x=>x.id===id);if(b)Object.keys(b).forEach(k=>{if(f.elements[k])f.elements[k].value=b[k];});}document.getElementById('modal').classList.add('open');}
+  function close_(){document.getElementById('modal').classList.remove('open');}
+  function saveBuild(e){e.preventDefault();const d=Object.fromEntries(new FormData(e.target));if(d.id){const i=BUILDS.findIndex(x=>x.id===d.id);if(i>=0)BUILDS[i]={...BUILDS[i],...d};}else{d.id=O.uid();BUILDS.push(d);}save();close_();render();return false;}
+  function del(id){if(confirm(L()==='es'?'¿Eliminar?':'Delete?')){BUILDS=BUILDS.filter(x=>x.id!==id);save();render();}}
+  O.initLang(render);
+</script>
+</body>
+</html>

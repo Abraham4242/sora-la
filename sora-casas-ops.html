@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sora Casas · Ops Hub</title>
+<meta name="robots" content="noindex"><meta name="theme-color" content="#1d3a2c">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="casas-ops.css">
+<style>
+  .flow{display:flex;align-items:center;gap:7px;flex-wrap:wrap;background:var(--ink);border-radius:12px;padding:16px 20px;margin-bottom:24px}
+  .flow span{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:rgba(247,240,223,.85)}
+  .flow .ar{color:var(--gold)}
+  .tools{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  @media(max-width:900px){.tools{grid-template-columns:repeat(2,1fr)}}@media(max-width:560px){.tools{grid-template-columns:1fr}}
+  .tool{background:#fff;border:.5px solid var(--line);border-radius:14px;padding:24px 26px;border-top:3px solid var(--forest);transition:all .18s;display:block}
+  .tool:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(20,17,12,.09);border-color:var(--line-2)}
+  .tool .n{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;margin-bottom:10px}
+  .tool h3{font-family:var(--serif);font-size:23px;font-weight:400;margin-bottom:6px}.tool h3 em{font-style:italic;color:var(--forest)}
+  .tool p{font-size:13px;color:var(--ink-2);line-height:1.5;margin-bottom:16px;min-height:38px}
+  .tool .foot{display:flex;justify-content:space-between;align-items:baseline;border-top:.5px solid var(--line);padding-top:13px}
+  .tool .cnt{font-family:var(--serif);font-size:30px;color:var(--forest)}.tool .cnt small{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);margin-left:5px}
+  .tool .go{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--coral);font-weight:700}
+  .t-crm{border-top-color:var(--coral)}.t-land{border-top-color:var(--gold-deep)}.t-build{border-top-color:var(--teal)}.t-list{border-top-color:var(--blue)}.t-doc{border-top-color:var(--warn)}.t-comm{border-top-color:var(--ok)}.t-visa{border-top-color:var(--coral)}.t-dash{border-top-color:var(--ink)}
+</style>
+</head>
+<body>
+<header class="top"><div class="top-in">
+  <div class="brand"><span class="word"><em>Sora</em> Casas</span><span class="sub" data-es="Centro de Operaciones" data-en="Ops Hub">Ops Hub</span></div>
+  <span class="spacer"></span>
+  <div class="lang-toggle"><button data-lang="es">ES</button><button data-lang="en" class="active">EN</button></div>
+  <a class="btn btn-ghost" href="sora-hq.html">← Sora HQ</a>
+</div></header>
+
+<div class="wrap">
+  <h1 data-es-html="El <em>sistema</em>" data-en-html="The <em>system</em>">The <em>system</em></h1>
+  <p class="lede" data-es="Todas las herramientas de Sora Casas en un solo lugar. Cada lead recorre esta cadena hasta convertirse en una casa entregada y un nuevo referido." data-en="Every Sora Casas tool in one place. Each lead travels this chain until it becomes a delivered home and a new referral.">Every Sora Casas tool in one place. Each lead travels this chain until it becomes a delivered home and a new referral.</p>
+
+  <div class="flow">
+    <span data-es="Embudos" data-en="Funnels">Funnels</span><span class="ar">→</span>
+    <span>CRM</span><span class="ar">→</span>
+    <span data-es="Tierra" data-en="Land">Land</span><span class="ar">→</span>
+    <span data-es="Contrato" data-en="Contract">Contract</span><span class="ar">→</span>
+    <span data-es="Obra" data-en="Build">Build</span><span class="ar">→</span>
+    <span data-es="Visa" data-en="Visa">Visa</span><span class="ar">→</span>
+    <span data-es="Entrega" data-en="Delivery">Delivery</span><span class="ar">→</span>
+    <span data-es="Comunidad → Referido" data-en="Community → Referral">Community → Referral</span>
+  </div>
+
+  <div class="tools" id="tools"></div>
+
+  <p class="note" data-es="Cada herramienta guarda sus datos en este navegador (localStorage) y exporta/importa JSON para compartir con el equipo. Las bases de investigación (canales, brokers) viven en sora-real-estate/." data-en="Each tool stores data in this browser (localStorage) and exports/imports JSON to share with the team. The research databases (channels, brokers) live in sora-real-estate/.">Each tool stores data in this browser (localStorage) and exports/imports JSON to share with the team. The research databases (channels, brokers) live in sora-real-estate/.</p>
+</div>
+
+<script src="casas-ops.js"></script>
+<script>
+  const O=CasasOps;
+  const TOOLS=[
+    {cls:'t-crm',n:'01 · '+'',href:'sora-casas-crm.html',key:'sora.casas.crm',unit:{es:'deals',en:'deals'},
+      t:{es:'CRM · Pipeline',en:'CRM · Pipeline'},d:{es:'Cada lead hasta casa vendida. La pieza que faltaba.',en:'Every lead to home sold. The missing piece.'}},
+    {cls:'t-land',href:'sora-casas-land.html',key:'sora.casas.landbank',unit:{es:'lotes',en:'lots'},
+      t:{es:'Banco de Tierras',en:'Land Bank'},d:{es:'Lotes, dueños, opciones, strikes y vencimientos.',en:'Lots, owners, options, strikes and expiries.'}},
+    {cls:'t-build',href:'sora-casas-builds.html',key:'sora.casas.builds',unit:{es:'obras',en:'builds'},
+      t:{es:'Obras',en:'Builds'},d:{es:'Avance, hitos y el float de capital de trabajo.',en:'Progress, milestones and the working-capital float.'}},
+    {cls:'t-list',href:'sora-casas-listings.html',key:'sora.casas.listings',unit:{es:'propiedades',en:'listings'},
+      t:{es:'Inventario',en:'Listings'},d:{es:'Lado de compra: Sora + co-broke + dueños.',en:'Buy-side: Sora + co-broke + owners.'}},
+    {cls:'t-doc',href:'sora-casas-contracts.html',key:'sora.casas.contracts',unit:{es:'contratos',en:'contracts'},
+      t:{es:'Contratos',en:'Contracts'},d:{es:'Registro + borradores de opción, obra y LOI.',en:'Register + option/build/LOI drafts.'}},
+    {cls:'t-comm',href:'sora-casas-community.html',key:'sora.casas.homeowners',unit:{es:'propietarios',en:'homeowners'},
+      t:{es:'Comunidad',en:'Community'},d:{es:'Propietarios + el programa de referidos de $5K.',en:'Homeowners + the $5K referral program.'}},
+    {cls:'t-visa',href:'sora-casas-visas.html',key:'sora.casas.visas',unit:{es:'trámites',en:'filings'},
+      t:{es:'Visas',en:'Visas'},d:{es:'FNV/QIV por comprador. Alerta del 15-oct.',en:'FNV/QIV per buyer. Oct-15 flag.'}},
+    {cls:'t-dash',href:'sora-casas-growth.html',key:null,unit:{es:'',en:''},
+      t:{es:'Máquina de Leads',en:'Lead Machine'},d:{es:'Cómo el contenido se vuelve casas. El tablero.',en:'How content becomes homes. The dashboard.'}}
+  ];
+  function render(){
+    const l=O.lang();
+    document.getElementById('tools').innerHTML=TOOLS.map(x=>{
+      const cnt = x.key ? O.peek(x.key).length : '↗';
+      const unit = x.key ? `<small>${x.unit[l]}</small>` : '';
+      return `<a class="tool ${x.cls}" href="${x.href}">
+        <div class="n">SORA CASAS</div>
+        <h3>${x.t[l].replace(/^(\S+)/,'<em>$1</em>')}</h3>
+        <p>${x.d[l]}</p>
+        <div class="foot"><div class="cnt">${cnt}${unit}</div><div class="go">${l==='es'?'Abrir →':'Open →'}</div></div>
+      </a>`;
+    }).join('');
+  }
+  O.initLang(render);
+</script>
+</body>
+</html>
