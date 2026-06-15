@@ -91,6 +91,20 @@
   .tbl td.num{font-family:var(--mono);font-weight:600}
   .tbl tr:last-child td{border-bottom:0;font-weight:700;background:rgba(194,119,138,.08)}
 
+  /* demand matrix */
+  .dmx{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--paper-2);border:0.5px solid var(--line);border-radius:12px;overflow:hidden}
+  .dmx th,.dmx td{padding:11px 13px;text-align:left;border-bottom:0.5px solid var(--line);vertical-align:top}
+  .dmx th{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--tez-deep);background:var(--paper-3)}
+  .dmx tr:last-child td{border-bottom:0}
+  .dmx .mk{font-family:var(--serif);font-weight:600;font-size:15px;white-space:nowrap}
+  .dmx .sz{font-family:var(--mono);font-size:11px;color:var(--ink-3);white-space:nowrap}
+  .dmx .vd{font-size:12.5px;color:var(--ink-2);line-height:1.45}
+  .chips3{display:flex;gap:4px}
+  .sc{font-family:var(--mono);font-size:11px;font-weight:700;width:22px;height:22px;display:grid;place-items:center;border-radius:5px;color:#fff}
+  .scd{background:#2e8a96}.scn{background:#b88842}.sca{background:#9c5061}
+  .dlegend{display:flex;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--ink-faint);text-transform:uppercase;margin-bottom:16px}
+  .dlegend b{color:var(--ink-2)}
+
   /* flow steps */
   .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
   @media(max-width:820px){.flow{grid-template-columns:repeat(2,1fr)}}
@@ -316,6 +330,42 @@
         </ul>
       </div>
     </div>
+  </section>
+
+  <!-- DEMAND MAP · LATAM -->
+  <section>
+    <div class="sec-num" data-es="◆ MAPA DE DEMANDA · LATAM" data-en="◆ DEMAND MAP · LATAM">◆ MAPA DE DEMANDA · LATAM</div>
+    <div class="sec-head"><h3 data-es-html="Dónde está la demanda — y dónde el <em>hueco</em>." data-en-html="Where the demand is — and where the <em>gap</em> is.">Dónde está la demanda — y dónde el <em>hueco</em>.</h3></div>
+    <p class="sec-intro" data-es="12 mercados puntuados por investigación. La lección: la mayor demanda (Brasil, México) es la menos alcanzable — son hubs rivales, proteccionistas, dominados por gigantes locales. El terreno que gana un re-exportador de Zona Libre es el clúster andino + caribe + centroamérica: importador, adyacente y con hueco K-beauty." data-en="12 markets scored by research. The lesson: the biggest demand (Brazil, Mexico) is the least reachable — rival hubs, protectionist, dominated by local giants. What a Free-Zone re-exporter wins is the Andean + Caribbean + Central-America cluster: import-dependent, adjacent, with a K-beauty gap.">12 mercados puntuados por investigación. La lección: la mayor demanda (Brasil, México) es la menos alcanzable — son hubs rivales, proteccionistas, dominados por gigantes locales. El terreno que gana un re-exportador de Zona Libre es el clúster andino + caribe + centroamérica: importador, adyacente y con hueco K-beauty.</p>
+    <div class="dlegend">
+      <span><span class="sc scd" style="width:auto;height:auto;padding:2px 6px;display:inline">D</span> = <b data-es="Demanda" data-en="Demand">Demanda</b></span>
+      <span><span class="sc scn" style="width:auto;height:auto;padding:2px 6px;display:inline">N</span> = <b data-es="Necesidad / hueco" data-en="Need / gap">Necesidad / hueco</b></span>
+      <span><span class="sc sca" style="width:auto;height:auto;padding:2px 6px;display:inline">A</span> = <b data-es="Alcance (re-export)" data-en="Reach (re-export)">Alcance (re-export)</b></span>
+      <span data-es="· puntaje /5" data-en="· score /5">· puntaje /5</span>
+    </div>
+    <table class="dmx">
+      <thead><tr>
+        <th data-es="Mercado" data-en="Market">Mercado</th>
+        <th data-es="Tamaño" data-en="Size">Tamaño</th>
+        <th>D · N · A</th>
+        <th data-es="Veredicto" data-en="Verdict">Veredicto</th>
+      </tr></thead>
+      <tbody>
+        <tr style="border-left:3px solid var(--tez)"><td class="mk">🇵🇦 Panamá</td><td class="sz">~$540M</td><td><div class="chips3"><span class="sc scd">3</span><span class="sc scn">5</span><span class="sc sca">5</span></div></td><td class="vd" data-es="Casa base: 100% importador, hub Zona Libre, dolarizado. Empieza aquí." data-en="Home base: 100% import-dependent, Free-Zone hub, dollarized. Start here.">Casa base: 100% importador, hub Zona Libre, dolarizado. Empieza aquí.</td></tr>
+        <tr style="border-left:3px solid var(--tez)"><td class="mk">🇨🇴 Colombia</td><td class="sz">~$3.5B</td><td><div class="chips3"><span class="sc scd">5</span><span class="sc scn">3</span><span class="sc sca">4</span></div></td><td class="vd" data-es="El premio alcanzable — pero gana solo el hueco K-beauty/asiático (INVIMA + etiqueta en español)." data-en="The reachable prize — but win only the K-beauty/Asian gap (INVIMA + Spanish labeling).">El premio alcanzable — pero gana solo el hueco K-beauty/asiático (INVIMA + etiqueta en español).</td></tr>
+        <tr style="border-left:3px solid var(--tez)"><td class="mk">🇵🇪 Perú</td><td class="sz">~$2.6B</td><td><div class="chips3"><span class="sc scd">4</span><span class="sc scn">4</span><span class="sc sca">3</span></div></td><td class="vd" data-es="Tier-1: grande, ~75% importador, K-beauty en alza (requiere NSO DIGEMID con titular local)." data-en="Tier-1: large, ~75% import-reliant, surging K-beauty (needs local DIGEMID NSO holder).">Tier-1: grande, ~75% importador, K-beauty en alza (requiere NSO DIGEMID con titular local).</td></tr>
+        <tr style="border-left:3px solid var(--tez)"><td class="mk">🇬🇹 Guatemala</td><td class="sz">~$1.8B</td><td><div class="chips3"><span class="sc scd">3</span><span class="sc scn">4</span><span class="sc sca">4</span></div></td><td class="vd" data-es="El mayor de Centroamérica; registro RTCA compartido con Panamá. Gana por precio y surtido." data-en="Biggest in Central America; RTCA registration shared with Panama. Win on price and assortment.">El mayor de Centroamérica; registro RTCA compartido con Panamá. Gana por precio y surtido.</td></tr>
+        <tr style="border-left:3px solid var(--tez)"><td class="mk">🇪🇨 Ecuador</td><td class="sz">~$1.6B</td><td><div class="chips3"><span class="sc scd">3</span><span class="sc scn">4</span><span class="sc sca">5</span></div></td><td class="vd" data-es="Secundario fuerte: dolarizado (cero FX) y ya el #2 destino de re-export de la Zona Libre." data-en="Strong secondary: dollarized (zero FX) and already the #2 Free-Zone re-export destination.">Secundario fuerte: dolarizado (cero FX) y ya el #2 destino de re-export de la Zona Libre.</td></tr>
+        <tr style="border-left:3px solid var(--tez)"><td class="mk">🇨🇷 Costa Rica</td><td class="sz">~$606M</td><td><div class="chips3"><span class="sc scd">3</span><span class="sc scn">4</span><span class="sc sca">5</span></div></td><td class="vd" data-es="Ancla tier-2: importador y adyacente, pero población pequeña y comprador de valor. Registro Registrelo." data-en="Tier-2 anchor: import-reliant and adjacent, but small population and value buyer. Registrelo filing.">Ancla tier-2: importador y adyacente, pero población pequeña y comprador de valor. Registro Registrelo.</td></tr>
+        <tr style="border-left:3px solid var(--tez)"><td class="mk">🇩🇴 R. Dominicana</td><td class="sz">~$895M</td><td><div class="chips3"><span class="sc scd">5</span><span class="sc scn">4</span><span class="sc sca">3</span></div></td><td class="vd" data-es="Mayor gasto per cápita de LatAm + boom K-beauty; pero fuera de CAFTA-DR (paga arancel + registro sanitario)." data-en="Top per-capita spend in LatAm + K-beauty boom; but outside CAFTA-DR (tariff + sanitary registry).">Mayor gasto per cápita de LatAm + boom K-beauty; pero fuera de CAFTA-DR (paga arancel + registro sanitario).</td></tr>
+        <tr style="border-left:3px solid var(--gold-deep)"><td class="mk">🇻🇪 Venezuela</td><td class="sz">~$1.4B</td><td><div class="chips3"><span class="sc scd">3</span><span class="sc scn">5</span><span class="sc sca">4</span></div></td><td class="vd" data-es="NECESIDAD, no volumen: el mayor comprador histórico de la Zona Libre; escasez = hueco — pero riesgo FX/pago (entrar con stablecoin)." data-en="NEED, not volume: the historic top Free-Zone buyer; scarcity = gap — but FX/payment risk (enter with stablecoin).">NECESIDAD, no volumen: el mayor comprador histórico de la Zona Libre; escasez = hueco — pero riesgo FX/pago (entrar con stablecoin).</td></tr>
+        <tr style="border-left:3px solid var(--ink-ghost)"><td class="mk">🇨🇱 Chile</td><td class="sz">~$3.75B</td><td><div class="chips3"><span class="sc scd">5</span><span class="sc scn">2</span><span class="sc sca">3</span></div></td><td class="vd" data-es="Maduro y de alto gasto, pero bien surtido y lejos del sur. Poca whitespace para un re-exportador." data-en="Mature and high-spend, but well-supplied and far south. Thin whitespace for a re-exporter.">Maduro y de alto gasto, pero bien surtido y lejos del sur. Poca whitespace para un re-exportador.</td></tr>
+        <tr style="border-left:3px solid var(--ink-ghost)"><td class="mk">🇲🇽 México</td><td class="sz">~$11B+</td><td><div class="chips3"><span class="sc scd">5</span><span class="sc scn">2</span><span class="sc sca">2</span></div></td><td class="vd" data-es="Entrada selectiva: demanda enorme pero es hub rival, anclado a EE.UU., NOM-141 + COFEPRIS de 4-12 meses." data-en="Selective entry: huge demand but a rival hub, US-anchored, NOM-141 + 4-12mo COFEPRIS.">Entrada selectiva: demanda enorme pero es hub rival, anclado a EE.UU., NOM-141 + COFEPRIS de 4-12 meses.</td></tr>
+        <tr style="border-left:3px solid var(--ink-ghost)"><td class="mk">🇧🇷 Brasil</td><td class="sz">~$31–37B</td><td><div class="chips3"><span class="sc scd">5</span><span class="sc scn">2</span><span class="sc sca">2</span></div></td><td class="vd" data-es="Despriorizar: fortaleza proteccionista (~100% de carga import.), ANVISA y dominio de gigantes locales. Solo vía socio AFE." data-en="Deprioritize: protectionist fortress (~100% import load), ANVISA, local-giant dominance. Only via an AFE partner.">Despriorizar: fortaleza proteccionista (~100% de carga import.), ANVISA y dominio de gigantes locales. Solo vía socio AFE.</td></tr>
+        <tr style="border-left:3px solid var(--ink-ghost)"><td class="mk">🇦🇷 Argentina</td><td class="sz">~$6B</td><td><div class="chips3"><span class="sc scd">4</span><span class="sc scn">4</span><span class="sc sca">2</span></div></td><td class="vd" data-es="Selectivo: grande y premiumizando, pero lejos, sin preferencia (no-Mercosur), riesgo FX/pago, y Shein/Temu cierran el hueco." data-en="Selective: large and premiumizing, but distant, no preference (non-Mercosur), FX/payment risk, and Shein/Temu closing the gap.">Selectivo: grande y premiumizando, pero lejos, sin preferencia (no-Mercosur), riesgo FX/pago, y Shein/Temu cierran el hueco.</td></tr>
+      </tbody>
+    </table>
+    <div class="note" data-es="TRES GRUPOS · PRIORIDAD (borde rosa): Panamá, Colombia, Perú, Guatemala, Ecuador, Costa Rica, R. Dominicana — demanda alcanzable + hueco importador. · NECESIDAD (borde dorado): Venezuela — escasez, no volumen. · GRANDE PERO BLOQUEADO (borde gris): Chile, México, Brasil, Argentina — demanda enorme, pero hubs rivales / proteccionistas / lejanos donde la ventaja de la Zona Libre se neutraliza." data-en="THREE GROUPS · PRIORITY (rose border): Panama, Colombia, Peru, Guatemala, Ecuador, Costa Rica, Dom. Rep. — reachable demand + import gap. · NEED (gold border): Venezuela — scarcity, not volume. · BIG BUT BLOCKED (gray border): Chile, Mexico, Brazil, Argentina — huge demand, but rival / protectionist / distant hubs where the Free-Zone edge is neutralized.">TRES GRUPOS · PRIORIDAD (borde rosa): Panamá, Colombia, Perú, Guatemala, Ecuador, Costa Rica, R. Dominicana — demanda alcanzable + hueco importador. · NECESIDAD (borde dorado): Venezuela — escasez, no volumen. · GRANDE PERO BLOQUEADO (borde gris): Chile, México, Brasil, Argentina — demanda enorme, pero hubs rivales / proteccionistas / lejanos donde la ventaja de la Zona Libre se neutraliza.</div>
   </section>
 
   <!-- 05 · UNIT ECONOMICS -->
