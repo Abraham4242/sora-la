@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>SORA Casas · Compra · Vende · Construye</title>
-<meta name="description" content="Sora Casas — el mercado de propiedades curado en Panamá y LATAM, con configurador 3D de casas personalizadas. Compra · vende · construye con Sora.">
+<meta name="description" content="Sora Casas. Compra una casa verificada, construye una de cuatro casas llave en mano, o vende la tuya en Panamá y Latinoamérica. Configurador 3D incluido.">
 <meta name="theme-color" content="#1d3a2c">
 <link rel="canonical" href="https://sora.la/casas/">
 <meta name="robots" content="index,follow,max-image-preview:large">
@@ -367,6 +367,74 @@
     letter-spacing:1.4px;text-transform:uppercase;
     color:var(--coral-deep);font-weight:700;
   }
+
+  /* ---- listing card carousel ---- */
+  .listing-img{overflow:hidden}
+  .lc-track{position:absolute;inset:0}
+  .lc-slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity .45s ease}
+  .lc-slide.on{opacity:1}
+  .lc-arrow{
+    position:absolute;top:50%;transform:translateY(-50%);
+    width:30px;height:30px;border-radius:50%;
+    background:rgba(247,240,223,0.92);color:var(--ink);
+    display:grid;place-items:center;font-size:16px;line-height:1;
+    opacity:0;transition:opacity .2s,background .2s;z-index:4;
+    backdrop-filter:blur(6px);
+  }
+  .listing:hover .lc-arrow{opacity:.95}
+  .lc-arrow:hover{background:#fff}
+  .lc-prev{left:9px}.lc-next{right:9px}
+  .lc-dots{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:5px;z-index:4}
+  .lc-dot{width:6px;height:6px;border-radius:50%;background:rgba(247,240,223,0.5);transition:all .25s}
+  .lc-dot.on{background:#fff;width:15px;border-radius:3px}
+  @media (hover:none){.lc-arrow{opacity:.9}}
+
+  /* ============ PROPERTY DETAIL PAGE ============ */
+  .casa-page{position:fixed;inset:0;z-index:200;background:var(--paper);overflow-y:auto;display:none}
+  .casa-page.open{display:block}
+  .casa-top{position:sticky;top:0;z-index:10;background:rgba(247,240,223,0.94);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+  .casa-top-inner{max-width:1180px;margin:0 auto;padding:12px 22px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+  .casa-back{font-family:var(--mono);font-size:11px;letter-spacing:1.4px;text-transform:uppercase;color:var(--ink-soft);display:inline-flex;align-items:center;gap:8px;font-weight:600;padding:8px 12px;border-radius:8px}
+  .casa-back:hover{background:rgba(20,17,12,0.05);color:var(--ink)}
+  .casa-top-brand{font-family:var(--display);font-size:21px;letter-spacing:.04em;color:var(--ink)}
+  .casa-wrap{max-width:1180px;margin:0 auto;padding:24px 22px 90px}
+  .casa-gallery{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:16/9;max-height:62vh;background:#1a1712}
+  .cg-slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity .5s ease}
+  .cg-slide.on{opacity:1}
+  .cg-arrow{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;background:rgba(247,240,223,0.92);display:grid;place-items:center;font-size:20px;line-height:1;z-index:3;color:var(--ink);transition:background .2s}
+  .cg-arrow:hover{background:#fff}
+  .cg-prev{left:16px}.cg-next{right:16px}
+  .cg-count{position:absolute;bottom:16px;right:16px;font-family:var(--mono);font-size:11px;letter-spacing:1px;background:rgba(20,17,12,0.68);color:var(--paper);padding:6px 12px;border-radius:20px;z-index:3}
+  .cg-badge{position:absolute;top:16px;left:16px;z-index:3}
+  .casa-thumbs{display:flex;gap:10px;margin-top:12px;overflow-x:auto;padding-bottom:4px}
+  .casa-thumb{width:94px;height:64px;flex:none;border-radius:10px;background-size:cover;background-position:center;cursor:pointer;opacity:.55;border:2px solid transparent;transition:opacity .2s,border-color .2s}
+  .casa-thumb:hover{opacity:.85}
+  .casa-thumb.on{opacity:1;border-color:var(--forest)}
+  .casa-grid{display:grid;grid-template-columns:1fr;gap:34px;margin-top:36px}
+  @media (min-width:900px){.casa-grid{grid-template-columns:1.55fr 1fr;gap:50px;align-items:start}}
+  .casa-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:1.8px;text-transform:uppercase;color:var(--coral-deep);font-weight:600;margin-bottom:14px}
+  .casa-h1{font-family:var(--display);font-size:clamp(34px,5vw,52px);line-height:1.03;letter-spacing:-0.02em;color:var(--ink);margin-bottom:9px}
+  .casa-loc{font-family:var(--mono);font-size:12px;letter-spacing:1.4px;text-transform:uppercase;color:var(--ink-faint);font-weight:600;margin-bottom:26px}
+  .casa-lead{font-family:var(--serif);font-size:20px;line-height:1.5;color:var(--ink-soft);margin-bottom:8px;font-weight:300}
+  .casa-h2{font-family:var(--serif);font-size:23px;font-weight:500;color:var(--ink);margin:36px 0 16px}
+  .casa-body p{color:var(--ink-soft);font-size:15.5px;line-height:1.72;margin-bottom:16px}
+  .casa-feats{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:11px 24px}
+  .casa-feats li{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;color:var(--ink-soft);line-height:1.45}
+  .casa-feats li::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--forest);margin-top:6px;flex:none}
+  @media (max-width:560px){.casa-feats{grid-template-columns:1fr}}
+  .casa-card{background:var(--paper-2);border:1px solid var(--line);border-radius:18px;padding:26px}
+  @media (min-width:900px){.casa-card{position:sticky;top:86px}}
+  .casa-price{font-family:var(--display);font-size:42px;color:var(--forest);letter-spacing:-0.01em;line-height:1}
+  .casa-price-note{font-family:var(--mono);font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:var(--ink-faint);margin-top:7px;margin-bottom:22px}
+  .casa-specs{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:22px}
+  .casa-spec{background:var(--paper-2);padding:14px 15px}
+  .casa-spec .k{font-family:var(--mono);font-size:9.5px;letter-spacing:1.1px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:5px}
+  .casa-spec .v{font-family:var(--serif);font-size:17px;color:var(--ink)}
+  .casa-cta{width:100%;margin-bottom:9px}
+  .casa-mini{font-family:var(--mono);font-size:10px;letter-spacing:.2px;color:var(--ink-faint);text-align:center;margin-top:12px;line-height:1.6}
+  .casa-similar{margin-top:64px;border-top:1px solid var(--line);padding-top:42px}
+  .casa-similar h3{font-family:var(--serif);font-size:24px;font-weight:500;color:var(--ink);margin-bottom:6px}
+  .casa-similar-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(258px,1fr));gap:22px;margin-top:22px}
 
   /* ============ MODELS (BUILD) ============ */
   .models-row{
@@ -854,6 +922,7 @@
         <button data-lang="es" class="active">ES</button>
         <button data-lang="en">EN</button>
       </div>
+      <a href="equipo.html" title="Acceso equipo Sora" aria-label="Acceso equipo Sora" style="text-decoration:none;font-size:15px;opacity:.42;transition:opacity .15s;line-height:1" onmouseover="this.style.opacity=.9" onmouseout="this.style.opacity=.42">🔒</a>
       <button class="menu-btn" onclick="document.getElementById('topnav').classList.toggle('open')">☰</button>
     </div>
   </div>
@@ -870,12 +939,12 @@
     <span lang="en">Your home in the <em>tropics</em>.</span>
   </h1>
   <p class="hero-sub">
-    <span lang="es">Compra una casa lista, vende la tuya, o construye una de cuatro casas Sora — precios llave en mano de $155K a $815K. Hechas para el clima, el suelo y la vida de Panamá.</span>
-    <span lang="en">Buy a finished home, sell yours, or build one of four Sora homes — turnkey prices from $155K to $815K. Made for Panama's climate, soil, and pace of life.</span>
+    <span lang="es">Compra una casa lista, vende la tuya, o construye una de cuatro casas Sora. Precios llave en mano de $155K a $815K, pensadas para el clima y la vida de Panamá.</span>
+    <span lang="en">Buy a finished home, sell yours, or build one of four Sora homes. Turnkey prices from $155K to $815K, built for Panama's climate and pace of life.</span>
   </p>
   <div class="hero-pills">
-    <div class="hero-pill"><span lang="es">10 propiedades curadas</span><span lang="en">10 curated properties</span></div>
-    <div class="hero-pill"><span lang="es">4 modelos curados</span><span lang="en">4 curated models</span></div>
+    <div class="hero-pill"><span lang="es">10 propiedades verificadas</span><span lang="en">10 verified properties</span></div>
+    <div class="hero-pill"><span lang="es">4 modelos de casa</span><span lang="en">4 home models</span></div>
     <div class="hero-pill"><span lang="es">Construcción llave en mano</span><span lang="en">Turnkey construction</span></div>
     <div class="hero-pill"><span lang="es">3% comisión venta</span><span lang="en">3% sell-side commission</span></div>
   </div>
@@ -901,11 +970,11 @@
 <!-- ============ BUY MODE ============ -->
 <section class="section mode-section active" id="mode-buy">
   <div class="section-head">
-    <div class="section-eyebrow"><span lang="es">Mercado curado</span><span lang="en">Curated market</span></div>
+    <div class="section-eyebrow"><span lang="es">Propiedades verificadas</span><span lang="en">Verified listings</span></div>
     <h2 class="section-title"><span lang="es">Casas a la <em>venta</em></span><span lang="en">Homes for <em>sale</em></span></h2>
     <p class="section-sub">
-      <span lang="es">Propiedades verificadas en Panamá, México, Colombia y Venezuela. Cada listing es revisado por Sora antes de publicarse. Sin sobreprecios, sin sorpresas.</span>
-      <span lang="en">Verified properties in Panama, Mexico, Colombia and Venezuela. Every listing is reviewed by Sora before it goes live. No markup, no surprises.</span>
+      <span lang="es">Diez propiedades en Panamá, México, Colombia y Venezuela. Sora revisa cada una antes de publicarla, con precio fijo.</span>
+      <span lang="en">Ten properties across Panama, Mexico, Colombia and Venezuela. Sora checks each one before it goes live, at a fixed price.</span>
     </p>
   </div>
 
@@ -936,12 +1005,12 @@
   <div class="section-head">
     <div class="section-eyebrow"><span lang="es">Cuatro casas Sora</span><span lang="en">Four Sora homes</span></div>
     <h2 class="section-title">
-      <span lang="es">Cuatro paquetes <em>perfectos</em></span>
-      <span lang="en">Four <em>perfect</em> starter packs</span>
+      <span lang="es">Cuatro casas, cuatro <em>precios</em></span>
+      <span lang="en">Four homes, four <em>prices</em></span>
     </h2>
     <p class="section-sub">
-      <span lang="es">No te hacemos elegir entre 18 opciones. Cuatro casas diseñadas para cuatro compradores reales, cada una con un precio llave en mano claro: <strong>$155K, $385K, $485K, $815K</strong>. Lo que ves es lo que recibes — sin extras escondidos, sin sorpresas en facturación.</span>
-      <span lang="en">We don't make you pick between 18 options. Four homes designed for four real buyers, each at a clear turnkey price: <strong>$155K, $385K, $485K, $815K</strong>. What you see is what you get — no hidden extras, no billing surprises.</span>
+      <span lang="es">Nada de elegir entre 18 opciones. Cuatro casas para cuatro compradores reales, cada una con un precio llave en mano fijo: <strong>$155K, $385K, $485K, $815K</strong>.</span>
+      <span lang="en">No picking between 18 options. Four homes for four real buyers, each at a fixed turnkey price: <strong>$155K, $385K, $485K, $815K</strong>.</span>
     </p>
   </div>
 
@@ -1368,16 +1437,16 @@
       <div style="font-family:var(--display);font-size:42px;color:var(--coral);margin-bottom:6px">01</div>
       <h3 style="font-size:26px;margin-bottom:8px"><span lang="es">Comprar</span><span lang="en">Buy</span></h3>
       <p style="color:var(--ink-soft);font-size:14px;line-height:1.55">
-        <span lang="es">Casas, apartamentos, lotes y fincas curados por nuestros brokers en Panamá y los chapters de LATAM. Sin sobreprecios extranjeros — vemos al vendedor, te ahorramos el viaje.</span>
-        <span lang="en">Houses, apartments, lots and farms curated by our brokers in Panama and the LATAM chapters. No foreigner markup — we know the seller, we save you the trip.</span>
+        <span lang="es">Casas, apartamentos, lotes y fincas que revisan nuestros brokers en Panamá y el resto de Latinoamérica. Sin sobreprecio para extranjeros. Conocemos al vendedor y te ahorramos el viaje.</span>
+        <span lang="en">Houses, apartments, lots and farms our brokers check across Panama and the rest of Latin America. No foreigner markup. We know the seller and save you the trip.</span>
       </p>
     </div>
     <div class="sell-card">
       <div style="font-family:var(--display);font-size:42px;color:var(--coral);margin-bottom:6px">02</div>
       <h3 style="font-size:26px;margin-bottom:8px"><span lang="es">Construir</span><span lang="en">Build</span></h3>
       <p style="color:var(--ink-soft);font-size:14px;line-height:1.55">
-        <span lang="es">Cuatro paquetes llave en mano: Casa Refugio ($155K), Bahía ($385K), Montaña ($485K), Punta ($815K). Cada uno completo — sin tiers, sin extras escondidos. Construcción con nuestra red de contratistas en cada región.</span>
-        <span lang="en">Four turnkey packs: Casa Refugio ($155K), Bahía ($385K), Montaña ($485K), Punta ($815K). Each fully loaded — no tiers, no hidden extras. Construction with our regional contractor network.</span>
+        <span lang="es">Cuatro casas llave en mano: Casa Refugio ($155K), Bahía ($385K), Montaña ($485K), Punta ($815K). Cada una con precio fijo y completa. Construimos con nuestra red de contratistas en cada región.</span>
+        <span lang="en">Four turnkey homes: Casa Refugio ($155K), Bahía ($385K), Montaña ($485K), Punta ($815K). Each fully built at a fixed price. We build with our regional contractor network.</span>
       </p>
     </div>
     <div class="sell-card">
@@ -1436,13 +1505,25 @@
     <br><br>
     <a href="#" onclick="event.preventDefault();openWhatsApp('General')">WhatsApp</a> · <a href="mailto:hola@sora.la">hola@sora.la</a> · @sora.casas
     <br><br>
-    <a href="guia.html">Guía de costos 2026</a> · <a href="discovery.html">Discovery Weekend</a> · <a href="qiv.html">Visa de Inversionista (QIV)</a>
+    <a href="datos.html"><span lang="es">Por qué Latinoamérica</span><span lang="en">Why Latin America</span></a> · <a href="guia.html">Guía de costos 2026</a> · <a href="discovery.html">Discovery Weekend</a> · <a href="qiv.html">Visa de Inversionista (QIV)</a>
     <br><br>
     <a href="privacidad.html">Privacidad</a> · <a href="terminos.html">Términos</a>
     <br><br>
-    <a href="socios.html" style="opacity:.4;font-size:11px;letter-spacing:.04em">· Equipo · Red de Socios</a> <a href="mercados.html" style="opacity:.4;font-size:11px;letter-spacing:.04em">· Mapa de Mercados</a>
+    <a href="equipo.html" style="opacity:.6;font-size:11px;letter-spacing:.04em">🔒 Equipo Sora</a> · <a href="socios.html" style="opacity:.4;font-size:11px;letter-spacing:.04em">Red de Socios</a> · <a href="mercados.html" style="opacity:.4;font-size:11px;letter-spacing:.04em">Mapa de Mercados</a>
   </div>
 </footer>
+
+<!-- ============ PROPERTY DETAIL PAGE ============ -->
+<div class="casa-page" id="casa-page">
+  <div class="casa-top">
+    <div class="casa-top-inner">
+      <a class="casa-back" href="#buy" onclick="event.preventDefault();closeCasa()">← <span lang="es">Volver a casas</span><span lang="en">Back to homes</span></a>
+      <div class="casa-top-brand">SORA</div>
+      <button class="btn btn-primary" style="padding:9px 16px" onclick="openWhatsApp('Pagina de propiedad')"><span lang="es">Hablar con Sora</span><span lang="en">Talk to Sora</span></button>
+    </div>
+  </div>
+  <div class="casa-wrap" id="casa-body"></div>
+</div>
 
 <!-- ============ MODALS ============ -->
 <div class="modal-back" id="modal-save">
@@ -1801,60 +1882,137 @@ const LAND_COST = {
 };
 
 // Verified Unsplash photo IDs. Type-matched fallback library used for any wrong-looking listing.
+const U = (id) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=1280&q=80`;
 const IMG = {
-  lotMountain: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=900&q=80',
-  lotJungle:   'https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=900&q=80',
-  lotVineyard: 'https://images.unsplash.com/photo-1559548331-f9cb98001426?auto=format&fit=crop&w=900&q=80',
-  coffee:      'https://images.unsplash.com/photo-1442975631115-c4f7b05b8a2c?auto=format&fit=crop&w=900&q=80',
-  beach:       'https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=900&q=80',
-  stilt:       'https://images.unsplash.com/photo-1572120360610-d971b9d7767c?auto=format&fit=crop&w=900&q=80',
-  smaColonial: 'https://images.unsplash.com/photo-1568084680786-a84f91d1153c?auto=format&fit=crop&w=900&q=80',
-  ctgColonial: 'https://images.unsplash.com/photo-1583531352515-8884af6ab84f?auto=format&fit=crop&w=900&q=80',
-  pobladoApt:  'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=900&q=80',
-  altamiraApt: 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=900&q=80'
+  // Exteriors
+  lotMountain: U('1469854523086-cc02fe5d8800'),
+  lotJungle:   U('1502082553048-f009c37129b9'),
+  lotVineyard: U('1559548331-f9cb98001426'),
+  coffee:      U('1442975631115-c4f7b05b8a2c'),
+  beach:       U('1613490493576-7fde63acd811'),
+  stilt:       U('1572120360610-d971b9d7767c'),
+  smaColonial: U('1568084680786-a84f91d1153c'),
+  ctgColonial: U('1583531352515-8884af6ab84f'),
+  pobladoApt:  U('1545324418-cc1a3fa10c00'),
+  altamiraApt: U('1502672260266-1c1ef2d93688'),
+  // Interiors
+  intLiving:   U('1600210492486-724fe5c67fb0'),
+  intKitchen:  U('1600489000022-c2086d79f9d4'),
+  intBedroom:  U('1505693416388-ac5ce068fe85'),
+  intBath:     U('1600566753086-00f18fb6b3ea'),
+  // Views + details
+  villaPool:   U('1600596542815-ffad4c1539a9'),
+  terrace:     U('1600607687939-ce8a6c25118c'),
+  oceanView:   U('1505228395891-9a51e7e86bf6'),
+  jungleCanopy:U('1448375240586-882707db888b'),
+  volcano:     U('1519681393784-d120267933ba'),
+  cityNight:   U('1480714378408-67cf0d13bc1b'),
+  vineyard:    U('1506377247377-2a5b3b417ebb'),
+  colonialPatio:U('1564501049412-61c2a3083791'),
+  dock:        U('1505881502353-a1986add3762')
 };
 
 const PROPS = [
-  {id:'p1', country:'PA', flag:'🇵🇦', type:'lote', titleEs:'Lote con vista al Volcán', titleEn:'Lot with Volcano view', loc:'Bajo Boquete, Chiriquí', price:'$85,000', size:'1,200 m²', beds:0, status:'available', tone:'finca',
-    img: IMG.lotMountain,
-    descEs:'Terreno residencial con vista directa al Volcán Barú. Acceso pavimentado, agua y luz disponibles. Listo para construir Casa Montaña.',
-    descEn:'Residential lot with direct Volcán Barú view. Paved access, water and electricity available. Ready to build Casa Montaña.'},
-  {id:'p2', country:'PA', flag:'🇵🇦', type:'finca', titleEs:'Finca cafetera Geisha', titleEn:'Geisha coffee farm', loc:'Volcán, Chiriquí', price:'$320,000', size:'4 ha', beds:3, status:'available', tone:'finca',
-    img: IMG.coffee,
-    descEs:'Finca de café Geisha en producción, con casa principal de 3 hab. Beneficio húmedo incluido. 1,650 m de altura.',
-    descEn:'Producing Geisha coffee farm with 3-bedroom main house. Wet mill included. 1,650 m elevation.'},
-  {id:'p3', country:'PA', flag:'🇵🇦', type:'casa', titleEs:'Casa frente al mar · Pedasí', titleEn:'Beachfront home · Pedasí', loc:'Pedasí, Los Santos', price:'$435,000', size:'185 m²', beds:3, status:'new', tone:'beach',
-    img: IMG.beach,
-    descEs:'Casa nueva tipo Casa Bahía, terminada 2026. Frente al mar, piscina, paneles solares. Construida por Sora.',
-    descEn:'New build, Casa Bahía model, finished 2026. Beachfront, pool, solar panels. Built by Sora.'},
-  {id:'p4', country:'PA', flag:'🇵🇦', type:'casa', titleEs:'Casa en pilotes · Bocas', titleEn:'Stilt home · Bocas', loc:'Isla Bastimentos, Bocas del Toro', price:'$245,000', size:'140 m²', beds:3, status:'sold', tone:'jungle',
-    img: IMG.stilt,
-    descEs:'Casa de madera con muelle privado y vista al Caribe. 3 hab, 2 baños. Energía solar. Vendida en 11 días.',
-    descEn:'Wooden home with private dock and Caribbean view. 3 bed, 2 bath. Solar power. Sold in 11 days.'},
-  {id:'p5', country:'MX', flag:'🇲🇽', type:'lote', titleEs:'Lote en la selva · Aldea Zama', titleEn:'Jungle lot · Aldea Zama', loc:'Aldea Zama, Tulum', price:'$185,000', size:'450 m²', beds:0, status:'available', tone:'jungle',
-    img: IMG.lotJungle,
+  {id:'p1', country:'PA', flag:'🇵🇦', type:'lote', titleEs:'Lote con vista al Volcán', titleEn:'Lot with volcano view', loc:'Bajo Boquete, Chiriquí', price:'$85,000', size:'1,200 m²', beds:0, baths:0, built:'Lote', status:'available', tone:'finca',
+    img: IMG.lotMountain, gallery:[IMG.lotMountain, IMG.volcano, IMG.jungleCanopy, IMG.coffee],
+    descEs:'Terreno residencial con vista directa al Volcán Barú. Acceso pavimentado, agua y luz en la vía. Listo para construir Casa Montaña.',
+    descEn:'Residential lot with a direct Volcán Barú view. Paved access, water and power on the street. Ready to build Casa Montaña.',
+    moreEs:'Terreno listo para construir en una de las zonas más buscadas de Boquete. La calle pavimentada llega hasta el lindero y tanto el agua como la electricidad ya están en la vía. La pendiente suave permite asentar una casa de una o dos plantas mirando al Barú, sin grandes movimientos de tierra.',
+    moreEn:'Build-ready land in one of Boquete’s most sought-after pockets. The paved road reaches the property line, and both water and power are already on the street. The gentle slope lets you set a one or two-story home facing Barú without major earthworks.',
+    featsEs:['Vista directa al Volcán Barú','Agua y luz en la vía','Calle pavimentada al lindero','Clima de primavera todo el año','Listo para Casa Montaña'],
+    featsEn:['Direct Volcán Barú view','Water and power on the street','Paved road to the lot line','Spring climate year-round','Ready for Casa Montaña'],
+    hoodEs:'Bajo Boquete es el corazón de la comunidad de jubilados extranjeros en Chiriquí. Mercado orgánico los martes, café de especialidad y senderos al bosque nublado a diez minutos.',
+    hoodEn:'Bajo Boquete is the heart of Chiriquí’s foreign-retiree community, with a Tuesday organic market, specialty coffee and cloud-forest trails ten minutes away.'},
+  {id:'p2', country:'PA', flag:'🇵🇦', type:'finca', titleEs:'Finca cafetera Geisha', titleEn:'Geisha coffee farm', loc:'Volcán, Chiriquí', price:'$320,000', size:'4 ha', beds:3, baths:2, built:'2009', status:'available', tone:'finca',
+    img: IMG.coffee, gallery:[IMG.coffee, IMG.volcano, IMG.intLiving, IMG.jungleCanopy],
+    descEs:'Finca de café Geisha en producción con casa principal de 3 habitaciones. Beneficio húmedo incluido, a 1,650 m de altura.',
+    descEn:'Producing Geisha coffee farm with a 3-bedroom main house. Wet mill included, at 1,650 m elevation.',
+    moreEs:'Cuatro hectáreas de café Geisha en plena producción, la variedad que ha hecho famoso a Panamá en las subastas internacionales. Viene con la casa principal de tres habitaciones, beneficio húmedo y un caudal de agua propio. Una compra que vive de su propia cosecha mientras tú disfrutas la altura.',
+    moreEn:'Four hectares of Geisha coffee in full production, the variety that made Panama famous at international auctions. It comes with the three-bedroom main house, a wet mill and its own water source. A property that pays its way through the harvest while you enjoy the elevation.',
+    featsEs:['Café Geisha en producción','Casa principal de 3 habitaciones','Beneficio húmedo en sitio','Agua propia','1,650 m sobre el nivel del mar'],
+    featsEn:['Producing Geisha coffee','3-bedroom main house','On-site wet mill','Own water source','1,650 m above sea level'],
+    hoodEs:'Volcán es más fresco y tranquilo que Boquete, con fincas trabajadas por familias que llevan generaciones en el café. Frontera con Costa Rica a una hora.',
+    hoodEn:'Volcán is cooler and quieter than Boquete, with farms worked by families who have grown coffee for generations. The Costa Rica border is an hour away.'},
+  {id:'p3', country:'PA', flag:'🇵🇦', type:'casa', titleEs:'Casa frente al mar · Pedasí', titleEn:'Beachfront home · Pedasí', loc:'Pedasí, Los Santos', price:'$435,000', size:'185 m²', beds:3, baths:3, built:'2026', status:'new', tone:'beach',
+    img: IMG.beach, gallery:[IMG.beach, IMG.villaPool, IMG.intLiving, IMG.oceanView],
+    descEs:'Casa nueva modelo Bahía, terminada en 2026. Frente al mar, con piscina y paneles solares. Construida por Sora.',
+    descEn:'New Bahía-model home, finished in 2026. Beachfront, with a pool and solar panels. Built by Sora.',
+    moreEs:'Una de las primeras casas que Sora terminó en Pedasí, sobre el modelo Bahía. Tres habitaciones, techos altos para el cruce de brisa y una piscina que mira al mar. Los paneles solares cubren casi todo el consumo, algo que importa cuando vives a media hora de un pueblo tranquilo.',
+    moreEn:'One of the first homes Sora finished in Pedasí, built on the Bahía model. Three bedrooms, high ceilings for cross-breeze and a pool that faces the water. Solar panels cover nearly all the load, which matters when you live half an hour from a quiet town.',
+    featsEs:['Frente de playa','Piscina','Paneles solares','Techos altos para brisa cruzada','Construida y respaldada por Sora'],
+    featsEn:['Beachfront','Pool','Solar panels','High ceilings for cross-breeze','Built and backed by Sora'],
+    hoodEs:'Pedasí pasó de pueblo de pescadores a uno de los puntos favoritos de extranjeros en el Pacífico panameño. Surf, pesca y el aeropuerto de Chitré a una hora.',
+    hoodEn:'Pedasí went from a fishing town to one of the favorite foreign spots on Panama’s Pacific coast. Surf, fishing and the Chitré airport an hour away.'},
+  {id:'p4', country:'PA', flag:'🇵🇦', type:'casa', titleEs:'Casa en pilotes · Bocas', titleEn:'Stilt home · Bocas', loc:'Isla Bastimentos, Bocas del Toro', price:'$245,000', size:'140 m²', beds:3, baths:2, built:'2018', status:'sold', tone:'jungle',
+    img: IMG.stilt, gallery:[IMG.stilt, IMG.dock, IMG.intBedroom, IMG.jungleCanopy],
+    descEs:'Casa de madera sobre pilotes con muelle privado y vista al Caribe. 3 habitaciones, energía solar. Vendida en 11 días.',
+    descEn:'Wooden stilt home with a private dock and Caribbean view. 3 bedrooms, solar power. Sold in 11 days.',
+    moreEs:'Una casa de madera sobre el agua, con muelle propio para amarrar la lancha y nadar desde la terraza. Tres habitaciones, energía solar y el sonido del Caribe de fondo. Se vendió en once días; la dejamos aquí como referencia de lo que se mueve en Bocas.',
+    moreEn:'A wooden home over the water, with its own dock to tie up the boat and swim from the deck. Three bedrooms, solar power and the Caribbean in the background. It sold in eleven days; we keep it here as a reference for what moves in Bocas.',
+    featsEs:['Muelle privado','Sobre el agua','Energía solar','Acceso por lancha','Vendida en 11 días'],
+    featsEn:['Private dock','Over the water','Solar power','Boat access','Sold in 11 days'],
+    hoodEs:'Bastimentos es la isla más natural del archipiélago de Bocas: selva, playas de surf y una comunidad pequeña de extranjeros que llegaron y se quedaron.',
+    hoodEn:'Bastimentos is the wildest island in the Bocas archipelago: jungle, surf beaches and a small community of foreigners who arrived and stayed.'},
+  {id:'p5', country:'MX', flag:'🇲🇽', type:'lote', titleEs:'Lote en la selva · Aldea Zama', titleEn:'Jungle lot · Aldea Zama', loc:'Aldea Zama, Tulum', price:'$185,000', size:'450 m²', beds:0, baths:0, built:'Lote', status:'available', tone:'jungle',
+    img: IMG.lotJungle, gallery:[IMG.lotJungle, IMG.jungleCanopy, IMG.terrace, IMG.villaPool],
     descEs:'Lote para construir en zona consolidada de Tulum. Cerca de la zona hotelera, cenotes y restaurantes. Permisos al día.',
-    descEn:'Buildable lot in established Tulum zone. Near hotel zone, cenotes, restaurants. Permits in order.'},
-  {id:'p6', country:'MX', flag:'🇲🇽', type:'casa', titleEs:'Casa colonial · Centro', titleEn:'Colonial home · Centro', loc:'San Miguel de Allende', price:'$680,000', size:'320 m²', beds:3, status:'available', tone:'sunset',
-    img: IMG.smaColonial,
-    descEs:'Casa del siglo XVIII con patio interior, fuente y bóveda. A 4 cuadras del Jardín. Restaurada 2024.',
-    descEn:'18th-century home with interior patio, fountain and vaulted ceilings. 4 blocks from El Jardín. Restored 2024.'},
-  {id:'p7', country:'MX', flag:'🇲🇽', type:'lote', titleEs:'Lote en viñedos · Valle de Guadalupe', titleEn:'Vineyard lot · Valle de Guadalupe', loc:'Valle de Guadalupe, Baja California', price:'$220,000', size:'5,000 m²', beds:0, status:'available', tone:'mountain',
-    img: IMG.lotVineyard,
-    descEs:'Media hectárea apta para viñedo boutique o casa de campo. Vista a los cerros, pozo de agua.',
-    descEn:'Half-hectare apt for boutique vineyard or country house. Hill views, well water.'},
-  {id:'p8', country:'CO', flag:'🇨🇴', type:'apto', titleEs:'Penthouse El Poblado', titleEn:'El Poblado Penthouse', loc:'El Poblado, Medellín', price:'$320,000', size:'180 m²', beds:3, status:'available', tone:'sunset',
-    img: IMG.pobladoApt,
-    descEs:'Penthouse moderno con terraza panorámica al valle de Aburrá. 3 hab, 3 baños, parqueo doble.',
-    descEn:'Modern penthouse with panoramic terrace over Aburrá valley. 3 bed, 3 bath, two parking spots.'},
-  {id:'p9', country:'CO', flag:'🇨🇴', type:'casa', titleEs:'Casa colonial · Getsemaní', titleEn:'Colonial home · Getsemaní', loc:'Getsemaní, Cartagena', price:'$590,000', size:'240 m²', beds:4, status:'new', tone:'beach',
-    img: IMG.ctgColonial,
-    descEs:'Casa restaurada del siglo XVII con patio central y piscina. 4 hab. A una cuadra del Centenario.',
-    descEn:'17th-century restored home with central patio and pool. 4 bed. One block from Centenario park.'},
-  {id:'p10', country:'VE', flag:'🇻🇪', type:'apto', titleEs:'Penthouse Altamira', titleEn:'Altamira Penthouse', loc:'Altamira, Caracas', price:'$240,000', size:'260 m²', beds:3, status:'available', tone:'mountain',
-    img: IMG.altamiraApt,
-    descEs:'Penthouse renovado con vista al Ávila. 3 hab, 3 baños, planta eléctrica, tanque de agua, parqueo.',
-    descEn:'Renovated penthouse with Ávila view. 3 bed, 3 bath, backup generator, water tank, parking.'}
+    descEn:'Buildable lot in an established Tulum zone. Near the hotel strip, cenotes and restaurants. Permits in order.',
+    moreEs:'Aldea Zama es la zona planificada de Tulum, con calles, servicios y reglamento de construcción, algo poco común en la zona. El lote tiene 450 m² entre vegetación, a pocos minutos de la playa y de los cenotes. Los permisos están en regla, así que se puede empezar a construir sin sorpresas.',
+    moreEn:'Aldea Zama is Tulum’s planned zone, with streets, services and building rules, which is rare for the area. The lot is 450 m² among the vegetation, a few minutes from the beach and the cenotes. Permits are in order, so building can start without surprises.',
+    featsEs:['Zona planificada con servicios','450 m² entre vegetación','Cerca de playa y cenotes','Permisos al día','Apto para renta vacacional'],
+    featsEn:['Planned zone with services','450 m² among the trees','Near beach and cenotes','Permits in order','Suited for vacation rental'],
+    hoodEs:'Tulum sigue siendo uno de los destinos de mayor crecimiento de México, con vuelos directos desde casi todo Estados Unidos al nuevo aeropuerto.',
+    hoodEn:'Tulum is still one of Mexico’s fastest-growing destinations, with direct flights from much of the United States to the new airport.'},
+  {id:'p6', country:'MX', flag:'🇲🇽', type:'casa', titleEs:'Casa colonial · Centro', titleEn:'Colonial home · Centro', loc:'San Miguel de Allende', price:'$680,000', size:'320 m²', beds:3, baths:3, built:'s. XVIII', status:'available', tone:'sunset',
+    img: IMG.smaColonial, gallery:[IMG.smaColonial, IMG.colonialPatio, IMG.intKitchen, IMG.intLiving],
+    descEs:'Casa del siglo XVIII con patio interior, fuente y techos de bóveda. A cuatro cuadras del Jardín. Restaurada en 2024.',
+    descEn:'18th-century home with an interior patio, fountain and vaulted ceilings. Four blocks from El Jardín. Restored in 2024.',
+    moreEs:'Una casona del siglo XVIII restaurada con mano cuidadosa en 2024: se mantuvo la cantera, las vigas y los techos de bóveda, y se modernizó todo lo que no se ve. El patio con fuente es el corazón de la casa. Tres habitaciones, a cuatro cuadras del Jardín principal.',
+    moreEn:'An 18th-century house carefully restored in 2024: the stonework, beams and vaulted ceilings were kept, and everything you don’t see was modernized. The patio with its fountain is the heart of the house. Three bedrooms, four blocks from the main Jardín.',
+    featsEs:['Patio interior con fuente','Techos de bóveda originales','Restauración completa 2024','A 4 cuadras del Jardín','Cantera y vigas conservadas'],
+    featsEn:['Interior patio with fountain','Original vaulted ceilings','Full 2024 restoration','4 blocks from El Jardín','Stonework and beams preserved'],
+    hoodEs:'San Miguel de Allende aparece año tras año entre las mejores ciudades del mundo para viajeros, y tiene la comunidad de jubilados estadounidenses más establecida del centro de México.',
+    hoodEn:'San Miguel de Allende lands among the world’s best cities for travelers year after year, and holds the most established US-retiree community in central Mexico.'},
+  {id:'p7', country:'MX', flag:'🇲🇽', type:'lote', titleEs:'Lote en viñedos · Valle de Guadalupe', titleEn:'Vineyard lot · Valle de Guadalupe', loc:'Valle de Guadalupe, Baja California', price:'$220,000', size:'5,000 m²', beds:0, baths:0, built:'Lote', status:'available', tone:'mountain',
+    img: IMG.lotVineyard, gallery:[IMG.lotVineyard, IMG.vineyard, IMG.volcano, IMG.terrace],
+    descEs:'Media hectárea apta para viñedo boutique o casa de campo. Vista a los cerros y pozo de agua.',
+    descEn:'Half-hectare suited for a boutique vineyard or country house. Hill views and a water well.',
+    moreEs:'Media hectárea en el valle vinícola más conocido de México, con tierra que ya da uva y un pozo propio. Sirve para un viñedo pequeño, una casa de campo o las dos cosas. El valle se llena los fines de semana con gente de San Diego y Los Ángeles que cruza por el vino.',
+    moreEn:'Half a hectare in Mexico’s best-known wine valley, with land that already grows grapes and its own well. It works for a small vineyard, a country house, or both. The valley fills on weekends with people from San Diego and Los Angeles who cross over for the wine.',
+    featsEs:['5,000 m² con uva','Pozo de agua propio','Vista a los cerros','A 90 min de la frontera','Apto para viñedo boutique'],
+    featsEn:['5,000 m² with vines','Own water well','Hill views','90 min from the border','Suited for a boutique vineyard'],
+    hoodEs:'El Valle de Guadalupe es la capital del vino mexicano, con más de 150 bodegas y una escena de restaurantes que atrae visitantes de todo el sur de California.',
+    hoodEn:'Valle de Guadalupe is the capital of Mexican wine, with over 150 wineries and a restaurant scene that draws visitors from across Southern California.'},
+  {id:'p8', country:'CO', flag:'🇨🇴', type:'apto', titleEs:'Penthouse El Poblado', titleEn:'El Poblado penthouse', loc:'El Poblado, Medellín', price:'$320,000', size:'180 m²', beds:3, baths:3, built:'2019', status:'available', tone:'sunset',
+    img: IMG.pobladoApt, gallery:[IMG.pobladoApt, IMG.cityNight, IMG.intLiving, IMG.intBath],
+    descEs:'Penthouse moderno con terraza panorámica al valle de Aburrá. 3 habitaciones, 3 baños, parqueo doble.',
+    descEn:'Modern penthouse with a panoramic terrace over the Aburrá valley. 3 bedrooms, 3 baths, double parking.',
+    moreEs:'Un penthouse en la mejor zona de Medellín, con terraza que abarca todo el valle de Aburrá y una luz que cambia con el día. Tres habitaciones, tres baños y dos parqueos. El edificio tiene gimnasio, portería 24 horas y está a pasos de los restaurantes de Provenza.',
+    moreEn:'A penthouse in Medellín’s best area, with a terrace that takes in the whole Aburrá valley and light that shifts through the day. Three bedrooms, three baths and two parking spots. The building has a gym, 24-hour security and sits steps from the Provenza restaurants.',
+    featsEs:['Terraza panorámica','Gimnasio y portería 24h','Parqueo doble','A pasos de Provenza','Clima de primavera todo el año'],
+    featsEn:['Panoramic terrace','Gym and 24h security','Double parking','Steps from Provenza','Spring climate year-round'],
+    hoodEs:'El Poblado es el barrio donde se concentran los extranjeros y nómadas digitales en Medellín, con cafés, coworkings y la mejor conexión de la ciudad.',
+    hoodEn:'El Poblado is the neighborhood where foreigners and digital nomads cluster in Medellín, with cafes, coworkings and the city’s best connectivity.'},
+  {id:'p9', country:'CO', flag:'🇨🇴', type:'casa', titleEs:'Casa colonial · Getsemaní', titleEn:'Colonial home · Getsemaní', loc:'Getsemaní, Cartagena', price:'$590,000', size:'240 m²', beds:4, baths:4, built:'s. XVII', status:'new', tone:'beach',
+    img: IMG.ctgColonial, gallery:[IMG.ctgColonial, IMG.colonialPatio, IMG.villaPool, IMG.intBedroom],
+    descEs:'Casa restaurada del siglo XVII con patio central y piscina. 4 habitaciones, a una cuadra del Parque Centenario.',
+    descEn:'Restored 17th-century home with a central patio and pool. 4 bedrooms, a block from Centenario park.',
+    moreEs:'Una casa colonial del siglo XVII dentro de Getsemaní, el barrio más vivo de Cartagena. Patio central con piscina, balcones de madera y cuatro habitaciones repartidas en dos plantas. Restaurada hace poco, lista para vivir o para rentar por noche a buen precio.',
+    moreEn:'A 17th-century colonial home inside Getsemaní, Cartagena’s liveliest neighborhood. A central patio with a pool, wooden balconies and four bedrooms across two floors. Recently restored, ready to live in or to rent by the night at a strong rate.',
+    featsEs:['Patio central con piscina','Balcones de madera','Cuatro habitaciones','Dentro de la ciudad amurallada','Fuerte potencial de renta'],
+    featsEn:['Central patio with pool','Wooden balconies','Four bedrooms','Inside the walled city','Strong rental potential'],
+    hoodEs:'Getsemaní pasó de barrio popular a uno de los lugares más codiciados del Caribe, con música en las plazas y casas coloniales que cambian de mano cada vez más rápido.',
+    hoodEn:'Getsemaní went from a working-class quarter to one of the most coveted spots in the Caribbean, with music in the squares and colonial homes changing hands faster every year.'},
+  {id:'p10', country:'VE', flag:'🇻🇪', type:'apto', titleEs:'Penthouse Altamira', titleEn:'Altamira penthouse', loc:'Altamira, Caracas', price:'$240,000', size:'260 m²', beds:3, baths:3, built:'1998', status:'available', tone:'mountain',
+    img: IMG.altamiraApt, gallery:[IMG.altamiraApt, IMG.cityNight, IMG.intKitchen, IMG.terrace],
+    descEs:'Penthouse renovado con vista al Ávila. 3 habitaciones, 3 baños, planta eléctrica, tanque de agua y parqueo.',
+    descEn:'Renovated penthouse with an Ávila view. 3 bedrooms, 3 baths, backup generator, water tank and parking.',
+    moreEs:'Un penthouse renovado en Altamira, con el cerro Ávila de fondo y 260 m² bien distribuidos. Trae lo que importa en Caracas hoy: planta eléctrica, tanque de agua y dos parqueos en un edificio con portería. Para quien conoce la ciudad y compra con dólares en efectivo, el precio es difícil de igualar.',
+    moreEn:'A renovated penthouse in Altamira, with the Ávila mountain behind it and 260 m² of well-laid-out space. It brings what matters in Caracas today: a backup generator, water tank and two parking spots in a building with a doorman. For someone who knows the city and buys with cash dollars, the price is hard to match.',
+    featsEs:['Vista al Ávila','Planta eléctrica','Tanque de agua','Dos parqueos','Edificio con portería'],
+    featsEn:['Ávila mountain view','Backup generator','Water tank','Two parking spots','Building with a doorman'],
+    hoodEs:'Altamira es de las zonas más seguras y caminables del este de Caracas, con su plaza, restaurantes y la línea de metro a pocos minutos.',
+    hoodEn:'Altamira is among the safest and most walkable areas of eastern Caracas, with its plaza, restaurants and the metro line minutes away.'}
 ];
 
 const TONE_GRADIENTS = {
@@ -1938,13 +2096,14 @@ function init(){
   renderModels();
   renderPackSidebar();
   renderMarket();
-  initThree();
   updateViewerLabels();
-  updateScene();
+  // The 3D viewer must never block the rest of the site (listings, routing, detail pages)
+  try { initThree(); updateScene(); }
+  catch(e){ console.warn('3D viewer unavailable on this device:', e); }
 
-  // Deep link via #buy / #build / #sell / #about
-  const hash = (location.hash || '').replace('#','');
-  if(['buy','build','sell','about'].includes(hash)) setMode(hash);
+  // Routing: #buy/#build/#sell/#about and #casa/<id>
+  window.addEventListener('hashchange', route);
+  route();
 }
 
 window.setLang = function(lang){
@@ -1957,6 +2116,7 @@ window.setLang = function(lang){
   renderMarket();
   renderModels();
   updateViewerLabels();
+  if(casaState.id) renderCasa(casaState.id);
 };
 
 window.setMode = function(mode){
@@ -1987,19 +2147,28 @@ function renderMarket(){
     </div>`;
     return;
   }
+  const grad = 'linear-gradient(180deg,rgba(20,17,12,0.0) 55%,rgba(20,17,12,0.35) 100%)';
   grid.innerHTML = items.map(p=>{
     const title = lang==='es' ? p.titleEs : p.titleEn;
-    const beds = p.beds > 0 ? `<span>${p.beds} ${lang==='es'?'hab':'bd'}</span>` : '';
+    const beds = p.beds > 0 ? `<span>🛏 ${p.beds} ${lang==='es'?'hab':'bd'}</span>` : '';
     let badge = '';
     if(p.status === 'new') badge = `<div class="listing-badge new">${lang==='es'?'Nuevo':'New'}</div>`;
     else if(p.status === 'sold') badge = `<div class="listing-badge sold">${lang==='es'?'Vendido':'Sold'}</div>`;
     else badge = `<div class="listing-badge">${lang==='es'?'Disponible':'Available'}</div>`;
-    const bg = p.img
-      ? `linear-gradient(180deg,rgba(20,17,12,0.0) 50%,rgba(20,17,12,0.35) 100%),url('${p.img}')`
-      : (TONE_GRADIENTS[p.tone]||TONE_GRADIENTS.beach);
+    const fallback = (TONE_GRADIENTS[p.tone]||TONE_GRADIENTS.beach);
+    const imgs = (p.gallery && p.gallery.length) ? p.gallery : [p.img];
+    const slides = imgs.map((src,i)=>`<div class="lc-slide${i===0?' on':''}" style="background-image:${grad},url('${src}'),${fallback}"></div>`).join('');
+    const dots = imgs.map((_,i)=>`<span class="lc-dot${i===0?' on':''}"></span>`).join('');
+    const carousel = imgs.length>1
+      ? `<button class="lc-arrow lc-prev" aria-label="Anterior" onclick="lcStep(event,this,-1)">‹</button>
+         <button class="lc-arrow lc-next" aria-label="Siguiente" onclick="lcStep(event,this,1)">›</button>
+         <div class="lc-dots">${dots}</div>`
+      : '';
     return `
-      <article class="listing" onclick="openListing('${p.id}')">
-        <div class="listing-img" style="background-image:${bg};background-size:cover;background-position:center">
+      <article class="listing" data-i="0" onclick="openCasa('${p.id}')">
+        <div class="listing-img">
+          <div class="lc-track">${slides}</div>
+          ${carousel}
           ${badge}
           <div class="listing-flag">${p.flag}</div>
         </div>
@@ -2007,19 +2176,32 @@ function renderMarket(){
           <div class="listing-title">${title}</div>
           <div class="listing-loc">${p.loc}</div>
           <div class="listing-meta">
-            <span>📏 ${p.size}</span>
+            <span>📐 ${p.size}</span>
             ${beds}
-            <span>${lang==='es'?'🔎 Verificado':'🔎 Verified'}</span>
+            <span>🔎 ${lang==='es'?'Verificado':'Verified'}</span>
           </div>
           <div class="listing-price">
             <div class="listing-price-val">${p.price}</div>
-            <div class="listing-price-cta">${lang==='es'?'Ver →':'View →'}</div>
+            <div class="listing-price-cta">${lang==='es'?'Ver casa →':'View home →'}</div>
           </div>
         </div>
       </article>
     `;
   }).join('');
 }
+
+/* ---- listing card carousel ---- */
+window.lcStep = function(ev, btn, dir){
+  ev.stopPropagation();
+  const card = btn.closest('.listing');
+  const slides = card.querySelectorAll('.lc-slide');
+  const dots = card.querySelectorAll('.lc-dot');
+  const n = slides.length; if(!n) return;
+  let i = (parseInt(card.dataset.i||'0') + dir + n) % n;
+  card.dataset.i = i;
+  slides.forEach((s,k)=>s.classList.toggle('on', k===i));
+  dots.forEach((d,k)=>d.classList.toggle('on', k===i));
+};
 
 window.openListing = function(id){
   const p = PROPS.find(x=>x.id===id);
@@ -2058,6 +2240,139 @@ window.openListing = function(id){
 window.closeModal = function(){
   document.querySelectorAll('.modal-back').forEach(m=>m.classList.remove('open'));
 };
+
+/* ============ PROPERTY DETAIL PAGE ============ */
+let casaState = {id:null, imgs:[], i:0};
+
+window.openCasa = function(id){
+  if(!PROPS.find(x=>x.id===id)) return;
+  location.hash = 'casa/' + id;
+};
+window.closeCasa = function(){ location.hash = 'buy'; };
+
+function openCasaView(id){
+  const p = PROPS.find(x=>x.id===id);
+  if(!p){ closeCasaView(); return; }
+  renderCasa(id);
+  const page = document.getElementById('casa-page');
+  page.classList.add('open');
+  page.scrollTop = 0;
+  document.body.style.overflow = 'hidden';
+}
+function closeCasaView(){
+  const page = document.getElementById('casa-page');
+  if(page) page.classList.remove('open');
+  document.body.style.overflow = '';
+  casaState.id = null;
+}
+
+window.casaStep = function(dir){
+  const n = casaState.imgs.length; if(!n) return;
+  casaState.i = (casaState.i + dir + n) % n;
+  syncCasaGallery();
+};
+window.casaThumb = function(i){ casaState.i = i; syncCasaGallery(); };
+function syncCasaGallery(){
+  const g = document.getElementById('casa-gallery'); if(!g) return;
+  g.querySelectorAll('.cg-slide').forEach((s,k)=>s.classList.toggle('on', k===casaState.i));
+  document.querySelectorAll('#casa-body .casa-thumb').forEach((t,k)=>t.classList.toggle('on', k===casaState.i));
+  const c = document.getElementById('cg-count');
+  if(c) c.textContent = (casaState.i+1) + ' / ' + casaState.imgs.length;
+}
+
+function renderCasa(id){
+  const p = PROPS.find(x=>x.id===id); if(!p) return;
+  const lang = state.lang;
+  casaState = { id:id, imgs:(p.gallery && p.gallery.length ? p.gallery : [p.img]), i:0 };
+  const t = (es,en)=> lang==='es' ? es : en;
+  const title = t(p.titleEs, p.titleEn);
+  const lead  = t(p.descEs, p.descEn);
+  const more  = t(p.moreEs, p.moreEn);
+  const feats = lang==='es' ? p.featsEs : p.featsEn;
+  const hood  = t(p.hoodEs, p.hoodEn);
+  const typeLabel = ({lote:t('Lote','Lot'), finca:t('Finca','Farm'), casa:t('Casa','House'), apto:t('Apartamento','Apartment')})[p.type] || '';
+  const countryName = ({PA:'Panamá', MX:'México', CO:'Colombia', VE:'Venezuela'})[p.country] || '';
+  let badge = '';
+  if(p.status==='new') badge = `<div class="listing-badge new cg-badge">${t('Nuevo','New')}</div>`;
+  else if(p.status==='sold') badge = `<div class="listing-badge sold cg-badge">${t('Vendido','Sold')}</div>`;
+  else badge = `<div class="listing-badge cg-badge">${t('Disponible','Available')}</div>`;
+  const grad = 'linear-gradient(180deg,rgba(20,17,12,0) 72%,rgba(20,17,12,0.22) 100%)';
+  const fallback = (TONE_GRADIENTS[p.tone]||TONE_GRADIENTS.beach);
+  const slides = casaState.imgs.map((src,i)=>`<div class="cg-slide${i===0?' on':''}" style="background-image:${grad},url('${src}'),${fallback}"></div>`).join('');
+  const thumbs = casaState.imgs.map((src,i)=>`<div class="casa-thumb${i===0?' on':''}" style="background-image:url('${src}'),${fallback}" onclick="casaThumb(${i})"></div>`).join('');
+  const multi = casaState.imgs.length>1;
+
+  const specs = [];
+  specs.push(['📐 '+t('Área','Area'), p.size]);
+  if(p.beds>0) specs.push(['🛏 '+t('Habitaciones','Bedrooms'), p.beds]);
+  if(p.baths>0) specs.push(['🛁 '+t('Baños','Baths'), p.baths]);
+  specs.push([t('Tipo','Type'), typeLabel]);
+  specs.push([t('Año','Built'), p.built]);
+  specs.push([t('País','Country'), p.flag+' '+countryName]);
+  const specsHtml = specs.map(s=>`<div class="casa-spec"><div class="k">${s[0]}</div><div class="v">${s[1]}</div></div>`).join('');
+
+  const isLand = (p.type==='lote' || p.type==='finca');
+  const buildCta = isLand
+    ? `<button class="btn btn-ghost casa-cta" onclick="closeCasa();setTimeout(()=>setMode('build'),80)">${t('Construir una casa Sora aquí','Build a Sora home here')} →</button>`
+    : '';
+
+  let sim = PROPS.filter(x=>x.id!==id && x.country===p.country);
+  if(sim.length<3) sim = sim.concat(PROPS.filter(x=>x.id!==id && x.country!==p.country && x.type===p.type));
+  sim = sim.slice(0,3);
+  const simHtml = sim.map(s=>{
+    const stitle = lang==='es' ? s.titleEs : s.titleEn;
+    const img0 = (s.gallery && s.gallery[0]) || s.img;
+    return `<article class="listing" onclick="openCasa('${s.id}')">
+      <div class="listing-img"><div class="lc-track"><div class="lc-slide on" style="background-image:linear-gradient(180deg,rgba(20,17,12,0) 55%,rgba(20,17,12,.35) 100%),url('${img0}'),${TONE_GRADIENTS[s.tone]||TONE_GRADIENTS.beach}"></div></div><div class="listing-flag">${s.flag}</div></div>
+      <div class="listing-body"><div class="listing-title">${stitle}</div><div class="listing-loc">${s.loc}</div>
+        <div class="listing-price"><div class="listing-price-val">${s.price}</div><div class="listing-price-cta">${t('Ver →','View →')}</div></div></div>
+    </article>`;
+  }).join('');
+
+  const cleanTitle = title.replace(/<[^>]*>/g,'').replace(/'/g,'');
+  document.getElementById('casa-body').innerHTML = `
+    <div class="casa-gallery" id="casa-gallery">
+      ${slides}
+      ${badge}
+      ${multi ? `<button class="cg-arrow cg-prev" aria-label="Anterior" onclick="casaStep(-1)">‹</button><button class="cg-arrow cg-next" aria-label="Siguiente" onclick="casaStep(1)">›</button><div class="cg-count" id="cg-count">1 / ${casaState.imgs.length}</div>` : ''}
+    </div>
+    ${multi ? `<div class="casa-thumbs">${thumbs}</div>` : ''}
+    <div class="casa-grid">
+      <div class="casa-body">
+        <div class="casa-eyebrow">${typeLabel} · ${p.loc}</div>
+        <h1 class="casa-h1">${title}</h1>
+        <div class="casa-loc">${p.flag} ${p.loc}</div>
+        <p class="casa-lead">${lead}</p>
+        <p>${more}</p>
+        <h2 class="casa-h2">${t('Lo que incluye','What you get')}</h2>
+        <ul class="casa-feats">${feats.map(f=>`<li>${f}</li>`).join('')}</ul>
+        <h2 class="casa-h2">${t('Sobre la zona','About the area')}</h2>
+        <p>${hood}</p>
+      </div>
+      <aside>
+        <div class="casa-card">
+          <div class="casa-price">${p.price}</div>
+          <div class="casa-price-note">${p.status==='sold' ? t('Vendida · referencia','Sold · reference') : t('Precio fijo, sin sobreprecio','Fixed price, no markup')}</div>
+          <div class="casa-specs">${specsHtml}</div>
+          <button class="btn btn-primary casa-cta" onclick="openWhatsApp('${cleanTitle}')">${t('Contactar a Sora','Contact Sora')} →</button>
+          ${buildCta}
+          <div class="casa-mini">${t('Respondemos por WhatsApp en horas hábiles. Coordinamos un tour presencial o por video.','We reply on WhatsApp during business hours. We arrange a tour in person or by video.')}</div>
+        </div>
+      </aside>
+    </div>
+    <div class="casa-similar">
+      <h3>${t('Casas similares','Similar homes')}</h3>
+      <div class="casa-similar-grid">${simHtml}</div>
+    </div>
+  `;
+}
+
+function route(){
+  const h = (location.hash||'').replace('#','');
+  if(h.indexOf('casa/')===0){ openCasaView(h.split('/')[1]); return; }
+  closeCasaView();
+  if(['buy','build','sell','about'].includes(h)) setMode(h);
+}
 
 /* ============ RENDER MODELS ============ */
 const PACK_BADGES = {
