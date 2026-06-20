@@ -390,51 +390,139 @@
   @media (hover:none){.lc-arrow{opacity:.9}}
 
   /* ============ PROPERTY DETAIL PAGE ============ */
-  .casa-page{position:fixed;inset:0;z-index:200;background:var(--paper);overflow-y:auto;display:none}
+  .casa-page{position:fixed;inset:0;z-index:200;background:var(--paper);overflow-y:auto;overflow-x:hidden;display:none}
   .casa-page.open{display:block}
-  .casa-top{position:sticky;top:0;z-index:10;background:rgba(247,240,223,0.94);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
-  .casa-top-inner{max-width:1180px;margin:0 auto;padding:12px 22px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+  .casa-top{position:sticky;top:0;z-index:30;background:rgba(247,240,223,0.9);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+  .casa-top-inner{max-width:1180px;margin:0 auto;padding:11px 22px;display:flex;align-items:center;justify-content:space-between;gap:14px}
   .casa-back{font-family:var(--mono);font-size:11px;letter-spacing:1.4px;text-transform:uppercase;color:var(--ink-soft);display:inline-flex;align-items:center;gap:8px;font-weight:600;padding:8px 12px;border-radius:8px}
   .casa-back:hover{background:rgba(20,17,12,0.05);color:var(--ink)}
   .casa-top-brand{font-family:var(--display);font-size:21px;letter-spacing:.04em;color:var(--ink)}
-  .casa-wrap{max-width:1180px;margin:0 auto;padding:24px 22px 90px}
-  .casa-gallery{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:16/9;max-height:62vh;background:#1a1712}
-  .cg-slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity .5s ease}
-  .cg-slide.on{opacity:1}
-  .cg-arrow{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;background:rgba(247,240,223,0.92);display:grid;place-items:center;font-size:20px;line-height:1;z-index:3;color:var(--ink);transition:background .2s}
-  .cg-arrow:hover{background:#fff}
-  .cg-prev{left:16px}.cg-next{right:16px}
-  .cg-count{position:absolute;bottom:16px;right:16px;font-family:var(--mono);font-size:11px;letter-spacing:1px;background:rgba(20,17,12,0.68);color:var(--paper);padding:6px 12px;border-radius:20px;z-index:3}
-  .cg-badge{position:absolute;top:16px;left:16px;z-index:3}
-  .casa-thumbs{display:flex;gap:10px;margin-top:12px;overflow-x:auto;padding-bottom:4px}
-  .casa-thumb{width:94px;height:64px;flex:none;border-radius:10px;background-size:cover;background-position:center;cursor:pointer;opacity:.55;border:2px solid transparent;transition:opacity .2s,border-color .2s}
+  .casa-wrap{max-width:1180px;margin:0 auto;padding:0 22px 110px}
+  /* cinematic hero */
+  .casa-hero{position:relative;width:100vw;margin-left:calc(-50vw + 50%);height:clamp(420px,66vh,680px);overflow:hidden;background:#16130d;cursor:zoom-in}
+  .ch-slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity .8s ease}
+  .ch-slide.on{opacity:1;animation:chZoom 11s ease-out forwards}
+  @keyframes chZoom{from{transform:scale(1.07)}to{transform:scale(1.0)}}
+  .ch-scrim{position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(180deg,rgba(20,17,12,.32) 0%,rgba(20,17,12,0) 26%,rgba(20,17,12,0) 48%,rgba(20,17,12,.74) 100%)}
+  .ch-inner{position:absolute;left:0;right:0;bottom:0;z-index:3;max-width:1180px;margin:0 auto;padding:34px 22px;color:var(--paper)}
+  .ch-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(247,240,223,.82);margin-bottom:12px}
+  .ch-title{font-family:var(--display);font-size:clamp(36px,6vw,68px);line-height:1.0;letter-spacing:-.02em;color:#fdfaf0;max-width:14ch;text-shadow:0 2px 30px rgba(0,0,0,.25)}
+  .ch-meta{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-top:14px}
+  .ch-price{font-family:var(--display);font-size:clamp(26px,3.4vw,38px);color:#fff;letter-spacing:-.01em}
+  .ch-pm2{font-family:var(--mono);font-size:12px;color:rgba(247,240,223,.72);letter-spacing:.3px}
+  .ch-loc{font-family:var(--mono);font-size:12px;letter-spacing:1.2px;text-transform:uppercase;color:rgba(247,240,223,.8);font-weight:600}
+  .ch-badge{position:absolute;top:0;left:50%;transform:translateX(-50%);max-width:1180px;width:100%;padding:18px 22px;z-index:4;pointer-events:none}
+  .ch-badge .listing-badge{position:static}
+  .ch-arrow{position:absolute;top:45%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;background:rgba(20,17,12,.32);border:1px solid rgba(255,255,255,.3);color:#fff;display:grid;place-items:center;font-size:22px;z-index:4;backdrop-filter:blur(4px);transition:background .2s}
+  .ch-arrow:hover{background:rgba(20,17,12,.6)}
+  .ch-prev{left:18px}.ch-next{right:18px}
+  .ch-viewall{position:absolute;bottom:20px;right:22px;z-index:4;font-family:var(--mono);font-size:10px;letter-spacing:1px;text-transform:uppercase;font-weight:600;color:#fff;background:rgba(20,17,12,.42);border:1px solid rgba(255,255,255,.28);padding:8px 13px;border-radius:30px;display:inline-flex;gap:7px;align-items:center;backdrop-filter:blur(4px)}
+  .ch-viewall:hover{background:rgba(20,17,12,.66)}
+  .ch-viewall svg{width:13px;height:13px}
+  .ch-count{position:absolute;bottom:24px;left:22px;z-index:4;font-family:var(--mono);font-size:11px;letter-spacing:1px;color:rgba(247,240,223,.85)}
+  /* thumbnail rail */
+  .casa-thumbs{display:flex;gap:9px;margin-top:14px;overflow-x:auto;padding-bottom:4px}
+  .casa-thumb{width:96px;height:64px;flex:none;border-radius:9px;background-size:cover;background-position:center;cursor:pointer;opacity:.5;border:2px solid transparent;transition:opacity .2s,border-color .2s}
   .casa-thumb:hover{opacity:.85}
   .casa-thumb.on{opacity:1;border-color:var(--forest)}
-  .casa-grid{display:grid;grid-template-columns:1fr;gap:34px;margin-top:36px}
-  @media (min-width:900px){.casa-grid{grid-template-columns:1.55fr 1fr;gap:50px;align-items:start}}
-  .casa-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:1.8px;text-transform:uppercase;color:var(--coral-deep);font-weight:600;margin-bottom:14px}
-  .casa-h1{font-family:var(--display);font-size:clamp(34px,5vw,52px);line-height:1.03;letter-spacing:-0.02em;color:var(--ink);margin-bottom:9px}
-  .casa-loc{font-family:var(--mono);font-size:12px;letter-spacing:1.4px;text-transform:uppercase;color:var(--ink-faint);font-weight:600;margin-bottom:26px}
-  .casa-lead{font-family:var(--serif);font-size:20px;line-height:1.5;color:var(--ink-soft);margin-bottom:8px;font-weight:300}
-  .casa-h2{font-family:var(--serif);font-size:23px;font-weight:500;color:var(--ink);margin:36px 0 16px}
-  .casa-body p{color:var(--ink-soft);font-size:15.5px;line-height:1.72;margin-bottom:16px}
-  .casa-feats{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:11px 24px}
-  .casa-feats li{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;color:var(--ink-soft);line-height:1.45}
-  .casa-feats li::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--forest);margin-top:6px;flex:none}
+  /* essence */
+  .casa-essence{display:flex;align-items:center;gap:18px;margin:42px auto 6px;max-width:780px}
+  .casa-essence .rule{flex:1;height:1px;background:var(--line)}
+  .casa-essence p{font-family:var(--serif);font-style:italic;font-size:clamp(20px,2.6vw,27px);line-height:1.35;color:var(--forest);text-align:center}
+  /* grid */
+  .casa-grid{display:grid;grid-template-columns:1fr;gap:36px;margin-top:42px}
+  @media (min-width:900px){.casa-grid{grid-template-columns:1.55fr 1fr;gap:56px;align-items:start}}
+  .casa-kicker{font-family:var(--mono);font-size:10.5px;letter-spacing:1.8px;text-transform:uppercase;color:var(--coral-deep);font-weight:600;margin-bottom:13px}
+  .casa-body p{color:var(--ink-soft);font-size:15.5px;line-height:1.74;margin-bottom:16px}
+  .casa-body p.casa-lead{font-family:var(--serif);font-size:19px;line-height:1.55;color:var(--ink);font-weight:300;margin-bottom:18px}
+  .casa-h2{font-family:var(--serif);font-size:22px;font-weight:500;color:var(--ink);margin:38px 0 16px;display:flex;align-items:center;gap:10px}
+  .casa-h2 svg{width:17px;height:17px;color:var(--forest)}
+  .casa-feats{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:12px 26px}
+  .casa-feats li{display:flex;gap:9px;align-items:flex-start;font-size:14.5px;color:var(--ink-soft);line-height:1.45}
+  .casa-feats li svg{width:15px;height:15px;color:var(--forest);flex:none;margin-top:2px}
   @media (max-width:560px){.casa-feats{grid-template-columns:1fr}}
-  .casa-card{background:var(--paper-2);border:1px solid var(--line);border-radius:18px;padding:26px}
-  @media (min-width:900px){.casa-card{position:sticky;top:86px}}
-  .casa-price{font-family:var(--display);font-size:42px;color:var(--forest);letter-spacing:-0.01em;line-height:1}
-  .casa-price-note{font-family:var(--mono);font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:var(--ink-faint);margin-top:7px;margin-bottom:22px}
-  .casa-specs{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:22px}
-  .casa-spec{background:var(--paper-2);padding:14px 15px}
-  .casa-spec .k{font-family:var(--mono);font-size:9.5px;letter-spacing:1.1px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:5px}
-  .casa-spec .v{font-family:var(--serif);font-size:17px;color:var(--ink)}
+  .casa-nearby{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:10px 26px;margin-top:8px}
+  .casa-nearby li{display:flex;gap:9px;align-items:center;font-size:13.5px;color:var(--ink-soft)}
+  .casa-nearby li svg{width:14px;height:14px;color:var(--coral-deep);flex:none}
+  .casa-nearby b{font-family:var(--mono);font-weight:600;color:var(--ink);font-size:12.5px}
+  @media (max-width:560px){.casa-nearby{grid-template-columns:1fr}}
+  /* sticky card */
+  .casa-card{background:var(--paper-2);border:1px solid var(--line);border-radius:18px;padding:24px}
+  @media (min-width:900px){.casa-card{position:sticky;top:80px}}
+  .casa-price{font-family:var(--display);font-size:40px;color:var(--forest);letter-spacing:-.01em;line-height:1;display:flex;align-items:baseline;gap:10px}
+  .casa-price .pm2{font-family:var(--mono);font-size:12px;color:var(--ink-faint);letter-spacing:.2px}
+  .casa-price-note{font-family:var(--mono);font-size:10px;letter-spacing:1.1px;text-transform:uppercase;color:var(--ink-faint);margin-top:8px;margin-bottom:20px;display:flex;align-items:center;gap:7px}
+  .casa-price-note svg{width:13px;height:13px;color:var(--forest)}
+  .casa-specs{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:20px}
+  .casa-spec{background:var(--paper-2);padding:13px 14px;display:flex;gap:10px;align-items:center}
+  .casa-spec svg{width:17px;height:17px;color:var(--ink-faint);flex:none}
+  .casa-spec .k{font-family:var(--mono);font-size:8.5px;letter-spacing:1px;text-transform:uppercase;color:var(--ink-faint)}
+  .casa-spec .v{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.1}
   .casa-cta{width:100%;margin-bottom:9px}
   .casa-mini{font-family:var(--mono);font-size:10px;letter-spacing:.2px;color:var(--ink-faint);text-align:center;margin-top:12px;line-height:1.6}
-  .casa-similar{margin-top:64px;border-top:1px solid var(--line);padding-top:42px}
-  .casa-similar h3{font-family:var(--serif);font-size:24px;font-weight:500;color:var(--ink);margin-bottom:6px}
-  .casa-similar-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(258px,1fr));gap:22px;margin-top:22px}
+  /* process band */
+  .casa-process{margin-top:62px;background:var(--paper-2);border:1px solid var(--line);border-radius:20px;padding:34px 32px}
+  .casa-process h3{font-family:var(--serif);font-size:21px;font-weight:500;margin-bottom:22px}
+  .casa-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+  @media (max-width:760px){.casa-steps{grid-template-columns:1fr 1fr;gap:22px}}
+  .casa-step .n{font-family:var(--display);font-size:30px;color:var(--coral-deep);line-height:1}
+  .casa-step .t{font-family:var(--serif);font-size:15px;font-weight:500;margin:8px 0 5px;color:var(--ink)}
+  .casa-step p{font-size:12.5px;color:var(--ink-soft);line-height:1.5;margin:0}
+  /* closing CTA band */
+  .casa-ctaband{position:relative;width:100vw;margin-left:calc(-50vw + 50%);margin-top:66px;background:var(--forest-deep);color:var(--paper);overflow:hidden}
+  .casa-ctaband::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 82% 130%,rgba(224,122,95,.2),transparent 58%);pointer-events:none}
+  .ctaband-in{max-width:1180px;margin:0 auto;padding:54px 22px;position:relative;z-index:2;text-align:center}
+  .ctaband-in .eye{font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+  .ctaband-in h3{font-family:var(--display);font-size:clamp(28px,4vw,44px);line-height:1.05;color:#fdfaf0;margin-bottom:12px}
+  .ctaband-in p{color:rgba(247,240,223,.74);font-size:15px;max-width:540px;margin:0 auto 24px;line-height:1.55}
+  .ctaband-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  /* similar */
+  .casa-similar{margin-top:60px}
+  .casa-similar h3{font-family:var(--serif);font-size:23px;font-weight:500;color:var(--ink);margin-bottom:3px}
+  .casa-similar .ssub{font-family:var(--mono);font-size:11px;letter-spacing:.4px;color:var(--ink-faint);text-transform:uppercase;margin-bottom:20px}
+  .casa-similar-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(258px,1fr));gap:22px}
+  /* mobile sticky CTA */
+  .casa-mcta{position:fixed;left:0;right:0;bottom:0;z-index:40;display:none;align-items:center;gap:12px;background:rgba(247,240,223,.97);backdrop-filter:blur(12px);border-top:1px solid var(--line-2);padding:11px 16px}
+  .casa-mcta .mp{font-family:var(--display);font-size:24px;color:var(--forest);line-height:1}
+  .casa-mcta .btn{flex:1;margin:0}
+  @media (max-width:899px){.casa-mcta{display:flex}}
+  /* lightbox */
+  .casa-lightbox{position:fixed;inset:0;z-index:300;background:rgba(16,13,9,.95);display:none;flex-direction:column;align-items:center;justify-content:center}
+  .casa-lightbox.open{display:flex}
+  .clb-img{width:92vw;height:80vh;max-width:1400px;background-size:contain;background-repeat:no-repeat;background-position:center;border-radius:4px}
+  .clb-cap{font-family:var(--mono);font-size:12px;letter-spacing:1px;text-transform:uppercase;color:rgba(247,240,223,.72);margin-top:16px}
+  .clb-count{font-family:var(--mono);font-size:11px;color:rgba(247,240,223,.5);margin-top:6px}
+  .clb-close{position:absolute;top:20px;right:24px;color:#fff;font-size:24px;line-height:1;width:40px;height:40px;border-radius:50%;display:grid;place-items:center}
+  .clb-close:hover{background:rgba(255,255,255,.12)}
+  .clb-arrow{position:absolute;top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);color:#fff;display:grid;place-items:center;font-size:24px}
+  .clb-arrow:hover{background:rgba(255,255,255,.22)}
+  .clb-prev{left:20px}.clb-next{right:20px}
+  /* scroll reveal */
+  .reveal-up{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,1,.36,1)}
+  .reveal-up.in{opacity:1;transform:none}
+  /* finance + actions + map */
+  .casa-fin{font-family:var(--mono);font-size:11px;color:var(--ink-soft);margin:-6px 0 18px;line-height:1.5}
+  .casa-fin b{color:var(--forest);font-weight:600}.casa-fin span{color:var(--ink-faint)}
+  .casa-actions{display:flex;gap:7px;margin-top:12px}
+  .casa-act{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:6px;font-family:var(--mono);font-size:9.5px;letter-spacing:.5px;text-transform:uppercase;font-weight:600;color:var(--ink-soft);border:1px solid var(--line-2);border-radius:9px;padding:9px 5px;background:none;cursor:pointer;transition:all .15s}
+  .casa-act:hover{border-color:var(--ink-faint);color:var(--ink)}
+  .casa-act.on{color:var(--coral-deep);border-color:var(--coral-deep);background:rgba(184,84,57,.07)}
+  .casa-act svg{width:13px;height:13px}
+  .casa-mapsec{margin-top:46px}
+  .casa-map{border-radius:14px;overflow:hidden;border:1px solid var(--line);height:340px;background:var(--paper-2);margin-top:4px}
+  .casa-map iframe{width:100%;height:100%;border:0;display:block;filter:saturate(.92) contrast(.98)}
+  .map-note{font-family:var(--mono);font-size:10.5px;color:var(--ink-faint);margin-top:9px;letter-spacing:.2px}
+  @media print{
+    body>*{display:none!important}
+    .casa-page{display:block!important;position:static!important;overflow:visible!important;height:auto!important;background:#fff!important}
+    .casa-top,.ch-arrow,.ch-viewall,.ch-count,.casa-thumbs,.casa-mcta,.casa-lightbox,.casa-actions,.casa-ctaband,.casa-process,.casa-similar,.casa-mapsec{display:none!important}
+    .casa-hero{height:280px!important;width:100%!important;margin:0 0 16px!important;page-break-inside:avoid}
+    .casa-grid{display:block!important}
+    .casa-grid aside{margin-top:20px}
+    .casa-card{position:static!important;page-break-inside:avoid;border:1px solid #ccc}
+    .reveal-up{opacity:1!important;transform:none!important;transition:none!important}
+    @page{margin:14mm}
+  }
 
   /* ============ MODELS (BUILD) ============ */
   .models-row{
@@ -1909,7 +1997,15 @@ const IMG = {
   cityNight:   U('1480714378408-67cf0d13bc1b'),
   vineyard:    U('1506377247377-2a5b3b417ebb'),
   colonialPatio:U('1564501049412-61c2a3083791'),
-  dock:        U('1505881502353-a1986add3762')
+  dock:        U('1505881502353-a1986add3762'),
+  intLiving2:  U('1600585154526-990dced4db0d'),
+  intKitchen2: U('1556912173-3bb406ef7e77'),
+  intBedroom2: U('1522708323590-d24dbb6b0267'),
+  intBath2:    U('1620626011761-996317b8d101'),
+  poolDeck:    U('1572331165267-854da2b010cc'),
+  aerialCoast: U('1507525428034-b723cf961d3e'),
+  gardenTerr:  U('1416879595882-3373a0480b5b'),
+  diningRoom:  U('1617806118233-18e1de247200')
 };
 
 const PROPS = [
@@ -2022,6 +2118,54 @@ const TONE_GRADIENTS = {
   finca:    'linear-gradient(135deg,#8a722a 0%,#b8985a 50%,#e3d09e 100%)',
   sunset:   'linear-gradient(135deg,#5a2a2c 0%,#c66a4a 50%,#e9b969 100%)',
   city:     'linear-gradient(135deg,#2a1f3a 0%,#5a4a6e 50%,#a89dba 100%)'
+};
+
+/* Detail-page extras: a one-line essence + "distance to" facts per property (· separates label and detail) */
+const CASA_EXTRA = {
+  p1:{essEs:'El primer lienzo en blanco con vista al Barú.', essEn:'A blank canvas facing Barú, ready when you are.',
+      nearEs:['5 min · al centro de Boquete','10 min · a senderos del bosque nublado','45 min · al aeropuerto de David','1 h · a la frontera con Costa Rica'],
+      nearEn:['5 min · to Boquete town','10 min · to cloud-forest trails','45 min · to David airport','1 h · to the Costa Rica border']},
+  p2:{essEs:'Una finca que se paga sola, taza tras taza.', essEn:'A farm that pays its own way, cup after cup.',
+      nearEs:['10 min · al pueblo de Volcán','1 h · a la frontera con Costa Rica','1,650 m · de altura','4 ha · de café Geisha en producción'],
+      nearEn:['10 min · to Volcán town','1 h · to the Costa Rica border','1,650 m · elevation','4 ha · of producing Geisha coffee']},
+  p3:{essEs:'Despiertas con el Pacífico bajo los pies.', essEn:'Wake to the Pacific under your feet.',
+      nearEs:['2 min · a la playa','10 min · al pueblo de Pedasí','1 h · al aeropuerto de Chitré','Surf y pesca · a la puerta'],
+      nearEn:['2 min · to the beach','10 min · to Pedasí town','1 h · to Chitré airport','Surf and fishing · at the door']},
+  p4:{essEs:'Madera sobre el agua, con el Caribe de patio.', essEn:'Wood over the water, the Caribbean for a yard.',
+      nearEs:['Muelle propio · para la lancha','15 min · en lancha a Bocas town','Selva y arrecife · alrededor'],
+      nearEn:['Private dock · for the boat','15 min · by boat to Bocas town','Jungle and reef · all around']},
+  p5:{essEs:'Selva consolidada, a minutos de la arena.', essEn:'Established jungle, minutes from the sand.',
+      nearEs:['5 min · a la zona hotelera','5 min · a los cenotes','15 min · al pueblo de Tulum','25 min · al aeropuerto nuevo'],
+      nearEn:['5 min · to the hotel zone','5 min · to the cenotes','15 min · to Tulum town','25 min · to the new airport']},
+  p6:{essEs:'Cantera del siglo XVIII, confort de hoy.', essEn:'18th-century stone, today’s comfort.',
+      nearEs:['4 cuadras · a El Jardín','Caminable · todo el centro','1 h 30 · al aeropuerto de Querétaro'],
+      nearEn:['4 blocks · to El Jardín','Walkable · the whole centro','1 h 30 · to Querétaro airport']},
+  p7:{essEs:'Media hectárea que ya da uva.', essEn:'Half a hectare that already grows grapes.',
+      nearEs:['Bodegas · por todo el valle','Pozo de agua · propio','90 min · a la frontera de San Diego'],
+      nearEn:['Wineries · across the valley','Water well · on the land','90 min · to the San Diego border']},
+  p8:{essEs:'Todo el valle de Aburrá desde tu terraza.', essEn:'The whole Aburrá valley from your terrace.',
+      nearEs:['A pasos · de Provenza','Gimnasio y portería · 24 h','Clima de primavera · todo el año'],
+      nearEn:['Steps · from Provenza','Gym and security · 24 h','Spring weather · year-round']},
+  p9:{essEs:'Música en la plaza, piscina en el patio.', essEn:'Music in the square, a pool in the patio.',
+      nearEs:['1 cuadra · al Parque Centenario','Caminable · la ciudad amurallada','15 min · al aeropuerto'],
+      nearEn:['1 block · to Centenario park','Walkable · the walled city','15 min · to the airport']},
+  p10:{essEs:'El Ávila de fondo, dólares de frente.', essEn:'The Ávila behind you, dollars up front.',
+      nearEs:['A pasos · de la Plaza Altamira','Minutos · a la línea de metro','Planta, tanque y 2 parqueos · incluidos'],
+      nearEn:['Steps · from Plaza Altamira','Minutes · to the metro line','Generator, tank and 2 parking · included']}
+};
+
+/* Per-property map coordinates (approx, neighborhood-level) + extended detail gallery (6 photos) */
+const CASA_MEDIA = {
+  p1:{lat:8.782,lon:-82.435,gal:[IMG.lotMountain,IMG.volcano,IMG.gardenTerr,IMG.jungleCanopy,IMG.aerialCoast,IMG.coffee]},
+  p2:{lat:8.770,lon:-82.633,gal:[IMG.coffee,IMG.volcano,IMG.intLiving,IMG.diningRoom,IMG.jungleCanopy,IMG.gardenTerr]},
+  p3:{lat:7.533,lon:-80.030,gal:[IMG.beach,IMG.villaPool,IMG.intLiving,IMG.intBedroom2,IMG.poolDeck,IMG.oceanView]},
+  p4:{lat:9.308,lon:-82.183,gal:[IMG.stilt,IMG.dock,IMG.intBedroom,IMG.intLiving2,IMG.jungleCanopy,IMG.oceanView]},
+  p5:{lat:20.184,lon:-87.461,gal:[IMG.lotJungle,IMG.jungleCanopy,IMG.terrace,IMG.gardenTerr,IMG.villaPool,IMG.aerialCoast]},
+  p6:{lat:20.914,lon:-100.744,gal:[IMG.smaColonial,IMG.colonialPatio,IMG.intKitchen,IMG.intLiving,IMG.diningRoom,IMG.intBath2]},
+  p7:{lat:32.097,lon:-116.600,gal:[IMG.lotVineyard,IMG.vineyard,IMG.gardenTerr,IMG.volcano,IMG.terrace,IMG.aerialCoast]},
+  p8:{lat:6.209,lon:-75.567,gal:[IMG.pobladoApt,IMG.cityNight,IMG.intLiving,IMG.intKitchen2,IMG.intBath,IMG.poolDeck]},
+  p9:{lat:10.423,lon:-75.547,gal:[IMG.ctgColonial,IMG.colonialPatio,IMG.villaPool,IMG.intBedroom,IMG.diningRoom,IMG.poolDeck]},
+  p10:{lat:10.497,lon:-66.853,gal:[IMG.altamiraApt,IMG.cityNight,IMG.intKitchen,IMG.intLiving2,IMG.intBath2,IMG.terrace]}
 };
 
 /* ============ STATE ============ */
@@ -2258,11 +2402,13 @@ function openCasaView(id){
   page.classList.add('open');
   page.scrollTop = 0;
   document.body.style.overflow = 'hidden';
+  lbOpen = false;
 }
 function closeCasaView(){
   const page = document.getElementById('casa-page');
   if(page) page.classList.remove('open');
   document.body.style.overflow = '';
+  lbOpen = false;
   casaState.id = null;
 }
 
@@ -2273,98 +2419,236 @@ window.casaStep = function(dir){
 };
 window.casaThumb = function(i){ casaState.i = i; syncCasaGallery(); };
 function syncCasaGallery(){
-  const g = document.getElementById('casa-gallery'); if(!g) return;
-  g.querySelectorAll('.cg-slide').forEach((s,k)=>s.classList.toggle('on', k===casaState.i));
-  document.querySelectorAll('#casa-body .casa-thumb').forEach((t,k)=>t.classList.toggle('on', k===casaState.i));
-  const c = document.getElementById('cg-count');
-  if(c) c.textContent = (casaState.i+1) + ' / ' + casaState.imgs.length;
+  const i = casaState.i, n = casaState.imgs.length;
+  document.querySelectorAll('#casa-page .ch-slide').forEach((s,k)=>s.classList.toggle('on', k===i));
+  document.querySelectorAll('#casa-page .casa-thumb').forEach((t,k)=>t.classList.toggle('on', k===i));
+  const hc = document.getElementById('ch-count'); if(hc) hc.textContent = (i+1)+' / '+n;
+  const lb = document.getElementById('clb-img'); if(lb) lb.style.backgroundImage = "url('"+casaState.imgs[i]+"')";
+  const lc = document.getElementById('clb-count'); if(lc) lc.textContent = (i+1)+' / '+n;
+  const cap = document.getElementById('clb-cap'); if(cap && casaState.caps) cap.textContent = casaState.caps[i]||'';
 }
+
+const _ci = (d)=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
+const CICON = {
+  ruler:_ci('<path d="M3 8 8 3l13 13-5 5Z"/><path d="M9 9l1.4 1.4M12 6l1.4 1.4M6 11l1.4 1.4M15 9l1.4 1.4"/>'),
+  bed:_ci('<path d="M2 17v-5h20v5M2 17v3M22 17v3M2 12V8a2 2 0 0 1 2-2h6v6"/>'),
+  bath:_ci('<path d="M4 12V6a2 2 0 0 1 4 0M3 12h18v2a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5Z"/>'),
+  home:_ci('<path d="M3 10.5 12 3l9 7.5V21H3Z"/>'),
+  cal:_ci('<rect x="3" y="4.5" width="18" height="16" rx="2"/><path d="M3 9h18M8 2.5v4M16 2.5v4"/>'),
+  pin:_ci('<path d="M12 21s7-6.5 7-11.5A7 7 0 0 0 5 9.5C5 14.5 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.3"/>'),
+  check:_ci('<path d="M20 6 9 17l-5-5"/>'),
+  shield:_ci('<path d="M12 3 5 6v6c0 4 3 6.5 7 9 4-2.5 7-5 7-9V6Z"/><path d="m9 12 2 2 4-4"/>'),
+  expand:_ci('<path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/>'),
+  heart:_ci('<path d="M12 20s-7-4.5-9-9a4.5 4.5 0 0 1 9-2 4.5 4.5 0 0 1 9 2c-2 4.5-9 9-9 9Z"/>'),
+  share:_ci('<circle cx="18" cy="5" r="2.4"/><circle cx="6" cy="12" r="2.4"/><circle cx="18" cy="19" r="2.4"/><path d="m8.1 11 7.8-4.6M8.1 13l7.8 4.6"/>'),
+  doc:_ci('<path d="M6 2.5h8l5 5V21a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1Z"/><path d="M14 2.5v5h5M9 14h6M9 17h4"/>')
+};
+function captionsFor(type, lang, n){
+  const map = {
+    casa:[['Exterior','Exterior'],['Interior','Interior'],['Detalle','Detail'],['Entorno','Surroundings']],
+    apto:[['El edificio','The building'],['Interior','Interior'],['La vista','The view'],['La zona','The area']],
+    lote:[['El terreno','The land'],['La vista','The view'],['El entorno','The setting'],['Acceso','Access']],
+    finca:[['La finca','The farm'],['La vista','The view'],['La casa','The house'],['El entorno','The setting']]
+  };
+  const arr = map[type] || map.casa, out = [];
+  for(let i=0;i<n;i++){ const c = arr[i%arr.length]; out.push(lang==='es'?c[0]:c[1]); }
+  return out;
+}
+function pricePerM2(p){
+  const pr = parseFloat((p.price||'').replace(/[^0-9.]/g,''));
+  let m = parseFloat((p.size||'').replace(/[^0-9.]/g,''));
+  if(/ha/i.test(p.size||'')) m = m*10000;
+  if(!pr || !m) return '';
+  return '$'+Math.round(pr/m).toLocaleString('en-US');
+}
+let lbOpen = false;
+window.openLightbox = function(){ const lb=document.getElementById('casa-lightbox'); if(lb){ lb.classList.add('open'); lbOpen=true; } };
+window.closeLightbox = function(){ const lb=document.getElementById('casa-lightbox'); if(lb){ lb.classList.remove('open'); lbOpen=false; } };
+function armReveal(){
+  const page = document.getElementById('casa-page'); if(!page) return;
+  const els = page.querySelectorAll('.reveal-up:not(.in)');
+  // reveal on open with a light stagger — guaranteed (no timing/observer dependency)
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    els.forEach((el,i)=>{ el.style.transitionDelay = Math.min(i*55,330)+'ms'; el.classList.add('in'); });
+  }));
+}
+document.addEventListener('keydown', function(e){
+  const cp = document.getElementById('casa-page');
+  if(!cp || !cp.classList.contains('open')) return;
+  if(e.key==='ArrowRight') casaStep(1);
+  else if(e.key==='ArrowLeft') casaStep(-1);
+  else if(e.key==='Escape'){ if(lbOpen) closeLightbox(); else closeCasa(); }
+});
+function monthlyEst(p){
+  const pr = parseFloat((p.price||'').replace(/[^0-9.]/g,'')); if(!pr) return '';
+  const loan = pr*0.7, r = 0.07/12, n = 360;            // illustrative: 30% down, 7%, 30 yr
+  const m = loan*r/(1-Math.pow(1+r,-n));
+  return '$'+Math.round(m).toLocaleString('en-US');
+}
+function casaToast(msg){
+  let t = document.getElementById('casaToast');
+  if(!t){ t = document.createElement('div'); t.id='casaToast'; t.style.cssText='position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#0f2218;color:#f7f0df;font-family:var(--mono);font-size:12px;letter-spacing:.3px;padding:11px 18px;border-radius:30px;z-index:400;opacity:0;transition:opacity .2s;pointer-events:none'; document.body.appendChild(t); }
+  t.textContent = msg; requestAnimationFrame(()=>t.style.opacity='1'); clearTimeout(t._ct); t._ct=setTimeout(()=>t.style.opacity='0',1900);
+}
+function isFav(id){ try{ return JSON.parse(localStorage.getItem('sora.casas.favs')||'[]').includes(id); }catch(e){ return false; } }
+window.saveCasa = function(id, btn){
+  let favs=[]; try{ favs=JSON.parse(localStorage.getItem('sora.casas.favs')||'[]'); }catch(e){}
+  const i=favs.indexOf(id), on=i<0; if(on) favs.push(id); else favs.splice(i,1);
+  try{ localStorage.setItem('sora.casas.favs',JSON.stringify(favs)); }catch(e){}
+  if(btn) btn.classList.toggle('on',on);
+  casaToast(on ? (state.lang==='es'?'Guardada ♥':'Saved ♥') : (state.lang==='es'?'Quitada':'Removed'));
+};
+window.shareCasa = function(id){
+  const p=PROPS.find(x=>x.id===id);
+  const ttl = p ? (state.lang==='es'?p.titleEs:p.titleEn).replace(/<[^>]*>/g,'') : 'Sora Casas';
+  const url = location.href.split('#')[0]+'#casa/'+id;
+  if(navigator.share){ navigator.share({title:ttl, url:url}).catch(()=>{}); }
+  else if(navigator.clipboard){ navigator.clipboard.writeText(url); casaToast(state.lang==='es'?'Enlace copiado':'Link copied'); }
+  else casaToast(url);
+};
+window.printCasa = function(){ window.print(); };
 
 function renderCasa(id){
   const p = PROPS.find(x=>x.id===id); if(!p) return;
   const lang = state.lang;
-  casaState = { id:id, imgs:(p.gallery && p.gallery.length ? p.gallery : [p.img]), i:0 };
+  const x = CASA_EXTRA[id] || {};
+  const media = (typeof CASA_MEDIA!=='undefined' && CASA_MEDIA[id]) || {};
+  const imgs = (media.gal && media.gal.length) ? media.gal : (p.gallery && p.gallery.length ? p.gallery : [p.img]);
   const t = (es,en)=> lang==='es' ? es : en;
+  casaState = { id:id, imgs:imgs, i:0, caps: captionsFor(p.type, lang, imgs.length) };
   const title = t(p.titleEs, p.titleEn);
   const lead  = t(p.descEs, p.descEn);
   const more  = t(p.moreEs, p.moreEn);
   const feats = lang==='es' ? p.featsEs : p.featsEn;
   const hood  = t(p.hoodEs, p.hoodEn);
+  const essence = t(x.essEs, x.essEn);
+  const near = (lang==='es' ? x.nearEs : x.nearEn) || [];
   const typeLabel = ({lote:t('Lote','Lot'), finca:t('Finca','Farm'), casa:t('Casa','House'), apto:t('Apartamento','Apartment')})[p.type] || '';
   const countryName = ({PA:'Panamá', MX:'México', CO:'Colombia', VE:'Venezuela'})[p.country] || '';
+  const countryEn = ({PA:'Panama', MX:'Mexico', CO:'Colombia', VE:'Venezuela'})[p.country] || '';
+  const pm2 = pricePerM2(p);
+  const monthly = monthlyEst(p);
+  const geo = media.lat ? media : null;
+  const fav = isFav(id);
   let badge = '';
-  if(p.status==='new') badge = `<div class="listing-badge new cg-badge">${t('Nuevo','New')}</div>`;
-  else if(p.status==='sold') badge = `<div class="listing-badge sold cg-badge">${t('Vendido','Sold')}</div>`;
-  else badge = `<div class="listing-badge cg-badge">${t('Disponible','Available')}</div>`;
-  const grad = 'linear-gradient(180deg,rgba(20,17,12,0) 72%,rgba(20,17,12,0.22) 100%)';
+  if(p.status==='new') badge = `<div class="listing-badge new">${t('Nuevo','New')}</div>`;
+  else if(p.status==='sold') badge = `<div class="listing-badge sold">${t('Vendido','Sold')}</div>`;
+  else badge = `<div class="listing-badge">${t('Disponible','Available')}</div>`;
   const fallback = (TONE_GRADIENTS[p.tone]||TONE_GRADIENTS.beach);
-  const slides = casaState.imgs.map((src,i)=>`<div class="cg-slide${i===0?' on':''}" style="background-image:${grad},url('${src}'),${fallback}"></div>`).join('');
-  const thumbs = casaState.imgs.map((src,i)=>`<div class="casa-thumb${i===0?' on':''}" style="background-image:url('${src}'),${fallback}" onclick="casaThumb(${i})"></div>`).join('');
-  const multi = casaState.imgs.length>1;
+  const multi = imgs.length>1;
+  const heroSlides = imgs.map((src,i)=>`<div class="ch-slide${i===0?' on':''}" style="background-image:url('${src}'),${fallback}"></div>`).join('');
+  const thumbs = imgs.map((src,i)=>`<div class="casa-thumb${i===0?' on':''}" style="background-image:url('${src}'),${fallback}" onclick="casaThumb(${i})"></div>`).join('');
 
   const specs = [];
-  specs.push(['📐 '+t('Área','Area'), p.size]);
-  if(p.beds>0) specs.push(['🛏 '+t('Habitaciones','Bedrooms'), p.beds]);
-  if(p.baths>0) specs.push(['🛁 '+t('Baños','Baths'), p.baths]);
-  specs.push([t('Tipo','Type'), typeLabel]);
-  specs.push([t('Año','Built'), p.built]);
-  specs.push([t('País','Country'), p.flag+' '+countryName]);
-  const specsHtml = specs.map(s=>`<div class="casa-spec"><div class="k">${s[0]}</div><div class="v">${s[1]}</div></div>`).join('');
+  specs.push([CICON.ruler, t('Área','Area'), p.size]);
+  if(p.beds>0) specs.push([CICON.bed, t('Habitaciones','Bedrooms'), p.beds]);
+  if(p.baths>0) specs.push([CICON.bath, t('Baños','Baths'), p.baths]);
+  specs.push([CICON.home, t('Tipo','Type'), typeLabel]);
+  specs.push([CICON.cal, t('Año','Built'), p.built]);
+  specs.push([CICON.pin, t('País','Country'), p.flag+' '+(lang==='es'?countryName:countryEn)]);
+  const specsHtml = specs.map(s=>`<div class="casa-spec">${s[0]}<div><div class="k">${s[1]}</div><div class="v">${s[2]}</div></div></div>`).join('');
 
   const isLand = (p.type==='lote' || p.type==='finca');
   const buildCta = isLand
     ? `<button class="btn btn-ghost casa-cta" onclick="closeCasa();setTimeout(()=>setMode('build'),80)">${t('Construir una casa Sora aquí','Build a Sora home here')} →</button>`
     : '';
+  const steps = isLand
+    ? [[t('Opción','Option'), t('Aseguramos el lote con un acuerdo simple mientras verificamos el título.','We lock the lot with a simple agreement while we verify title.')],
+       [t('Diseño','Design'), t('Eliges un modelo Sora y los acabados en el configurador 3D.','You pick a Sora model and the finishes in the 3D configurator.')],
+       [t('Construcción','Build'), t('Obra llave en mano, pagos por hito, nuestra red de contratistas.','Turnkey build, milestone payments, our contractor network.')],
+       [t('Llaves','Keys'), t('Entrega en alrededor de nueve meses, documentada paso a paso.','Delivery in about nine months, documented step by step.')]]
+    : [[t('Reserva','Reserve'), t('$5,000 reembolsable bloquea la casa mientras avanzamos.','$5,000 refundable holds the home while we move.')],
+       [t('Verificación','Verify'), t('Sora revisa título, gravámenes y due diligence con el abogado.','Sora checks title, liens and due diligence with the attorney.')],
+       [t('Cierre','Close'), t('Escritura ante notario, fondos en cuenta de plica.','Notarized deed, funds held in escrow.')],
+       [t('Llaves','Keys'), t('Recibes la casa, lista para vivir o rentar.','You get the home, ready to live in or rent.')]];
+  const stepsHtml = steps.map((s,i)=>`<div class="casa-step"><div class="n">${i+1}</div><div class="t">${s[0]}</div><p>${s[1]}</p></div>`).join('');
 
-  let sim = PROPS.filter(x=>x.id!==id && x.country===p.country);
-  if(sim.length<3) sim = sim.concat(PROPS.filter(x=>x.id!==id && x.country!==p.country && x.type===p.type));
+  let sim = PROPS.filter(s=>s.id!==id && s.country===p.country);
+  if(sim.length<3) sim = sim.concat(PROPS.filter(s=>s.id!==id && s.country!==p.country && s.type===p.type));
   sim = sim.slice(0,3);
   const simHtml = sim.map(s=>{
     const stitle = lang==='es' ? s.titleEs : s.titleEn;
     const img0 = (s.gallery && s.gallery[0]) || s.img;
-    return `<article class="listing" onclick="openCasa('${s.id}')">
-      <div class="listing-img"><div class="lc-track"><div class="lc-slide on" style="background-image:linear-gradient(180deg,rgba(20,17,12,0) 55%,rgba(20,17,12,.35) 100%),url('${img0}'),${TONE_GRADIENTS[s.tone]||TONE_GRADIENTS.beach}"></div></div><div class="listing-flag">${s.flag}</div></div>
-      <div class="listing-body"><div class="listing-title">${stitle}</div><div class="listing-loc">${s.loc}</div>
-        <div class="listing-price"><div class="listing-price-val">${s.price}</div><div class="listing-price-cta">${t('Ver →','View →')}</div></div></div>
-    </article>`;
+    return `<article class="listing" onclick="openCasa('${s.id}')"><div class="listing-img"><div class="lc-track"><div class="lc-slide on" style="background-image:linear-gradient(180deg,rgba(20,17,12,0) 55%,rgba(20,17,12,.35) 100%),url('${img0}'),${TONE_GRADIENTS[s.tone]||TONE_GRADIENTS.beach}"></div></div><div class="listing-flag">${s.flag}</div></div><div class="listing-body"><div class="listing-title">${stitle}</div><div class="listing-loc">${s.loc}</div><div class="listing-price"><div class="listing-price-val">${s.price}</div><div class="listing-price-cta">${t('Ver →','View →')}</div></div></div></article>`;
   }).join('');
 
   const cleanTitle = title.replace(/<[^>]*>/g,'').replace(/'/g,'');
   document.getElementById('casa-body').innerHTML = `
-    <div class="casa-gallery" id="casa-gallery">
-      ${slides}
-      ${badge}
-      ${multi ? `<button class="cg-arrow cg-prev" aria-label="Anterior" onclick="casaStep(-1)">‹</button><button class="cg-arrow cg-next" aria-label="Siguiente" onclick="casaStep(1)">›</button><div class="cg-count" id="cg-count">1 / ${casaState.imgs.length}</div>` : ''}
+    <div class="casa-hero" onclick="openLightbox()">
+      ${heroSlides}
+      <div class="ch-scrim"></div>
+      <div class="ch-badge">${badge}</div>
+      ${multi ? `<button class="ch-arrow ch-prev" aria-label="${t('Anterior','Previous')}" onclick="event.stopPropagation();casaStep(-1)">‹</button><button class="ch-arrow ch-next" aria-label="${t('Siguiente','Next')}" onclick="event.stopPropagation();casaStep(1)">›</button><div class="ch-count" id="ch-count">1 / ${imgs.length}</div><button class="ch-viewall" onclick="event.stopPropagation();openLightbox()">${CICON.expand} ${t('Ver fotos','View photos')}</button>` : ''}
+      <div class="ch-inner">
+        <div class="ch-eyebrow">${typeLabel} · ${lang==='es'?countryName:countryEn}</div>
+        <div class="ch-title">${title}</div>
+        <div class="ch-meta"><div class="ch-price">${p.price}</div>${pm2?`<div class="ch-pm2">${pm2}/m²</div>`:''}<div class="ch-loc">${p.flag} ${p.loc}</div></div>
+      </div>
     </div>
     ${multi ? `<div class="casa-thumbs">${thumbs}</div>` : ''}
+    ${essence ? `<div class="casa-essence reveal-up"><span class="rule"></span><p>${essence}</p><span class="rule"></span></div>` : ''}
     <div class="casa-grid">
-      <div class="casa-body">
-        <div class="casa-eyebrow">${typeLabel} · ${p.loc}</div>
-        <h1 class="casa-h1">${title}</h1>
-        <div class="casa-loc">${p.flag} ${p.loc}</div>
+      <div class="casa-body reveal-up">
+        <div class="casa-kicker">${t('Sobre esta propiedad','About this property')}</div>
         <p class="casa-lead">${lead}</p>
         <p>${more}</p>
-        <h2 class="casa-h2">${t('Lo que incluye','What you get')}</h2>
-        <ul class="casa-feats">${feats.map(f=>`<li>${f}</li>`).join('')}</ul>
-        <h2 class="casa-h2">${t('Sobre la zona','About the area')}</h2>
+        <h2 class="casa-h2">${CICON.check} ${t('Lo que incluye','What you get')}</h2>
+        <ul class="casa-feats">${feats.map(f=>`<li>${CICON.check}<span>${f}</span></li>`).join('')}</ul>
+        <h2 class="casa-h2">${CICON.pin} ${t('La zona','The area')}</h2>
         <p>${hood}</p>
+        ${near.length ? `<ul class="casa-nearby">${near.map(nf=>{const pp=nf.split('·');return `<li>${CICON.pin}<span><b>${(pp[0]||'').trim()}</b> ${(pp[1]||'').trim()}</span></li>`}).join('')}</ul>` : ''}
       </div>
       <aside>
-        <div class="casa-card">
-          <div class="casa-price">${p.price}</div>
-          <div class="casa-price-note">${p.status==='sold' ? t('Vendida · referencia','Sold · reference') : t('Precio fijo, sin sobreprecio','Fixed price, no markup')}</div>
+        <div class="casa-card reveal-up">
+          <div class="casa-price">${p.price}${pm2?`<span class="pm2">${pm2}/m²</span>`:''}</div>
+          <div class="casa-price-note">${CICON.shield} ${p.status==='sold' ? t('Vendida · referencia','Sold · reference') : t('Precio fijo, sin sobreprecio','Fixed price, no markup')}</div>
+          ${monthly && p.status!=='sold' ? `<div class="casa-fin">${t('desde','from')} <b>~${monthly}/${t('mes','mo')}</b> · <span>${t('estimado · 30% inicial, 30 años','est. · 30% down, 30 yr')}</span></div>` : ''}
           <div class="casa-specs">${specsHtml}</div>
           <button class="btn btn-primary casa-cta" onclick="openWhatsApp('${cleanTitle}')">${t('Contactar a Sora','Contact Sora')} →</button>
           ${buildCta}
+          <div class="casa-actions">
+            <button class="casa-act${fav?' on':''}" onclick="saveCasa('${id}',this)">${CICON.heart} ${t('Guardar','Save')}</button>
+            <button class="casa-act" onclick="shareCasa('${id}')">${CICON.share} ${t('Compartir','Share')}</button>
+            <button class="casa-act" onclick="printCasa()">${CICON.doc} ${t('Ficha','PDF')}</button>
+          </div>
           <div class="casa-mini">${t('Respondemos por WhatsApp en horas hábiles. Coordinamos un tour presencial o por video.','We reply on WhatsApp during business hours. We arrange a tour in person or by video.')}</div>
         </div>
       </aside>
     </div>
-    <div class="casa-similar">
+    ${geo?`<div class="casa-mapsec reveal-up"><h2 class="casa-h2">${CICON.pin} ${t('Ubicación','Location')}</h2><div class="casa-map"><iframe loading="lazy" title="map" src="https://www.openstreetmap.org/export/embed.html?bbox=${(geo.lon-0.018).toFixed(4)}%2C${(geo.lat-0.012).toFixed(4)}%2C${(geo.lon+0.018).toFixed(4)}%2C${(geo.lat+0.012).toFixed(4)}&layer=mapnik&marker=${geo.lat}%2C${geo.lon}"></iframe></div><div class="map-note">${t('Mapa del sector. La ubicación exacta se comparte al avanzar.','Area map. The exact location is shared as you move forward.')} <a href="https://www.openstreetmap.org/?mlat=${geo.lat}&mlon=${geo.lon}#map=14/${geo.lat}/${geo.lon}" target="_blank" rel="noopener" style="color:var(--coral-deep);font-weight:600">${t('Ver en el mapa','Open map')} ↗</a></div></div>`:''}
+    <div class="casa-process reveal-up">
+      <h3>${isLand ? t('Cómo funciona construir con Sora','How building with Sora works') : t('Cómo funciona comprar con Sora','How buying with Sora works')}</h3>
+      <div class="casa-steps">${stepsHtml}</div>
+    </div>
+    <div class="casa-similar reveal-up">
       <h3>${t('Casas similares','Similar homes')}</h3>
+      <div class="ssub">${t('Más en '+countryName, 'More in '+countryEn)}</div>
       <div class="casa-similar-grid">${simHtml}</div>
     </div>
+    <div class="casa-ctaband reveal-up">
+      <div class="ctaband-in">
+        <div class="eye">Sora Casas</div>
+        <h3>${t('¿Lista para verla en persona?','Ready to see it in person?')}</h3>
+        <p>${t('Coordinamos un tour presencial o por video, sin compromiso. Y si vienes, aplicamos un crédito de viaje al cierre.','We set up a tour in person or by video, no pressure. And if you come, we apply a travel credit at closing.')}</p>
+        <div class="ctaband-btns">
+          <button class="btn btn-primary" onclick="openWhatsApp('${cleanTitle}')">${t('Hablar por WhatsApp','Chat on WhatsApp')} →</button>
+          <a class="btn btn-ghost" href="discovery.html" style="border-color:rgba(247,240,223,.3);color:var(--paper)">${t('Discovery Weekend','Discovery Weekend')}</a>
+        </div>
+      </div>
+    </div>
+    <div class="casa-lightbox" id="casa-lightbox" onclick="if(event.target.id==='casa-lightbox')closeLightbox()">
+      <button class="clb-close" aria-label="${t('Cerrar','Close')}" onclick="closeLightbox()">✕</button>
+      ${multi ? `<button class="clb-arrow clb-prev" onclick="casaStep(-1)">‹</button><button class="clb-arrow clb-next" onclick="casaStep(1)">›</button>` : ''}
+      <div class="clb-img" id="clb-img" style="background-image:url('${imgs[0]}')"></div>
+      <div class="clb-cap" id="clb-cap">${casaState.caps[0]||''}</div>
+      <div class="clb-count" id="clb-count">1 / ${imgs.length}</div>
+    </div>
+    <div class="casa-mcta">
+      <div class="mp">${p.price}</div>
+      <button class="btn btn-primary" onclick="openWhatsApp('${cleanTitle}')">${t('Contactar','Contact')} →</button>
+    </div>
   `;
+  requestAnimationFrame(armReveal);
 }
 
 function route(){
