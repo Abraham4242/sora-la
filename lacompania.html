@@ -98,7 +98,17 @@
   .brand-card.b-manto::before{background:#a85c3d}
   .brand-card.b-mano::before{background:#2e8a96}
   .brand-card.b-tez::before{background:#c2778a}
-  .brand-card:hover{transform:translateY(-4px);box-shadow:0 14px 40px rgba(20,17,12,.08);border-color:var(--line-2);background:var(--paper)}
+  .brand-card:hover{transform:translateY(-4px);box-shadow:0 14px 40px rgba(20,17,12,.10);border-color:var(--line-2)}
+  /* each brand card washed in its own color */
+  .brand-card.b-sora{background:linear-gradient(160deg,#fbe9e2,#fcf6e6 62%)}
+  .brand-card.b-veta{background:linear-gradient(160deg,#f6e8d9,#fcf6e6 62%)}
+  .brand-card.b-hilo{background:linear-gradient(160deg,#e6ecfa,#fcf6e6 62%)}
+  .brand-card.b-rapitido{background:linear-gradient(160deg,#fbe6e1,#fcf6e6 62%)}
+  .brand-card.b-ceiba{background:linear-gradient(160deg,#e2ece6,#fcf6e6 62%)}
+  .brand-card.b-manto{background:linear-gradient(160deg,#f3e6dd,#fcf6e6 62%)}
+  .brand-card.b-mano{background:linear-gradient(160deg,#dfeef0,#fcf6e6 62%)}
+  .brand-card.b-tez{background:linear-gradient(160deg,#f6e5ea,#fcf6e6 62%)}
+  .brand-card .b-tag{position:relative;z-index:2}
   .brand-card .b-tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.22em;color:var(--ink-faint);text-transform:uppercase;font-weight:600;margin-bottom:14px}
   .brand-card h4{font-family:var(--serif);font-weight:400;font-size:38px;line-height:1;color:var(--ink);letter-spacing:.02em;margin-bottom:8px}
   .brand-card h4 em{font-style:italic;color:#D9573B}
@@ -178,8 +188,8 @@
       <span class="sub" data-es="Holdings · MMXXVI" data-en="Holdings · MMXXVI">Holdings · MMXXVI</span>
     </div>
     <span class="spacer"></span>
-    <a class="top-link" href="sora-hq.html" data-es="SORA →" data-en="SORA →">SORA →</a>
-    <a class="top-link" href="sora-ops.html" data-es="Ops" data-en="Ops">Ops</a>
+    <a class="top-link" href="sora/casas/" data-es="SORA CASAS →" data-en="SORA CASAS →">SORA CASAS →</a>
+    <a class="top-link" href="sora-hq.html" data-es="RECURSOS INTERNOS →" data-en="INTERNAL RESOURCES →">INTERNAL RESOURCES →</a>
     <div class="lang-toggle">
       <button class="active" data-lang="en">EN</button>
       <button data-lang="es">ES</button>
@@ -190,8 +200,8 @@
 <div class="wrap">
 
 <header class="hero">
-  <div class="hero-eyebrow" data-es="LA COMPAÑÍA · UNA CASA DE NEGOCIOS · MMXXVI" data-en="LA COMPAÑÍA · A HOUSE OF VENTURES · MMXXVI">LA COMPAÑÍA · A HOUSE OF VENTURES · MMXXVI</div>
-  <h1 data-es-html="Una <em>casa</em>.<br>Muchas marcas." data-en-html="One <em>house</em>.<br>Many brands.">One <em>house</em>.<br>Many brands.</h1>
+  <div class="hero-eyebrow" data-es="LA COMPAÑÍA · GRUPO OPERADOR · MMXXVI" data-en="LA COMPAÑÍA · AN OPERATING GROUP · MMXXVI">LA COMPAÑÍA · AN OPERATING GROUP · MMXXVI</div>
+  <h1 data-es-html="Una <em>compañía</em>.<br>Muchas marcas." data-en-html="One <em>company</em>.<br>Many brands.">One <em>company</em>.<br>Many brands.</h1>
   <p class="hero-lede" data-es="Un paraguas para emprendimientos, marcas y activos en las Américas. La primera marca es Sora — y desde acá crecen las demás." data-en="An umbrella for ventures, brands, and assets across the Americas. The first brand is Sora — and from here grow the rest.">An umbrella for ventures, brands, and assets across the Americas. The first brand is Sora — and from here grow the rest.</p>
   <div class="hero-meta">
     <span><span class="dot"></span>BOQUETE · PANAMÁ</span>
@@ -202,8 +212,8 @@
 
 <div class="mission">
   <div class="m-label" data-es="MISIÓN" data-en="MISSION">MISSION</div>
-  <h2 data-es-html="Construir <em>negocios duraderos</em> en latitudes que importan — viajes, tierra, mobilidad, salud. Cada uno con su propia marca; todos bajo el mismo techo." data-en-html="Build <em>durable ventures</em> in latitudes that matter — travel, land, mobility, health. Each with its own brand; all under one roof.">Build <em>durable ventures</em> in latitudes that matter — travel, land, mobility, health. Each with its own brand; all under one roof.</h2>
-  <p data-es="La Compañía no fabrica clones. Cada vertical tiene su lógica de mercado, su voz y su estética. La casa provee capital paciente, infraestructura compartida, y memoria institucional." data-en="La Compañía doesn't make clones. Each vertical has its own market logic, voice, and aesthetic. The house provides patient capital, shared infrastructure, and institutional memory.">La Compañía doesn't make clones. Each vertical has its own market logic, voice, and aesthetic. The house provides patient capital, shared infrastructure, and institutional memory.</p>
+  <h2 data-es-html="Construir y operar <em>empresas reales</em> que resuelven problemas reales en Panamá y Latinoamérica — y conservarlas." data-en-html="Build and run <em>real companies</em> that solve real problems in Panama and Latin America — and keep them.">Build and run <em>real companies</em> that solve real problems in Panama and Latin America — and keep them.</h2>
+  <p data-es="La Compañía no es un fondo ni una franquicia: somos operadores. Arrancamos y manejamos empresas — bienes raíces, viajes, dinero, servicios, educación — financiadas con nuestro propio flujo de caja. Cada marca compite sola en su mercado; el grupo le da el mismo equipo, la misma tecnología y la misma base legal y financiera, para que cada una se construya más rápido, más barata y más segura." data-en="La Compañía isn't a fund or a franchise — we're operators. We start and run companies — real estate, travel, money, services, education — funded from our own cash flow. Each brand competes on its own in its market; the group gives every one the same team, the same technology, and the same legal and financial backbone, so each gets built faster, cheaper, and safer.">La Compañía isn't a fund or a franchise — we're operators. We start and run companies — real estate, travel, money, services, education — funded from our own cash flow. Each brand competes on its own in its market; the group gives every one the same team, the same technology, and the same legal and financial backbone, so each gets built faster, cheaper, and safer.</p>
 </div>
 
 <!-- BRANDS -->
@@ -527,124 +537,70 @@
       <div class="sec-num" data-es="03 · PERSONAS" data-en="03 · PEOPLE">03 · PEOPLE</div>
       <h3 data-es-html="Los <em>que la mueven</em>." data-en-html="Those who <em>move it</em>.">Those who <em>move it</em>.</h3>
     </div>
-    <p class="sec-sub" data-es="Ocho personas. Disciplinas independientes — vehículos, seguridad, electrónica, cocina, medicina, operaciones — bajo un solo techo." data-en="Eight people. Independent disciplines — vehicles, security, electronics, kitchen, medicine, operations — under one roof.">Eight people. Independent disciplines — vehicles, security, electronics, kitchen, medicine, operations — under one roof.</p>
+    <p class="sec-sub" data-es="El núcleo que construye Sora en Chiriquí: fundador, operaciones y desarrollo de negocio, comunidad, y ley." data-en="The core that builds Sora in Chiriquí: founder, operations and business development, community, and law.">The core that builds Sora in Chiriquí: founder, operations and business development, community, and law.</p>
   </div>
 
   <div class="people">
     <div class="person founder">
       <div class="role" data-es="FUNDADOR · CEO" data-en="FOUNDER · CEO">FOUNDER · CEO</div>
       <h6>Abraham Eid</h6>
-      <p data-es="Visión, capital, estrategia, marca. Boquete + LATAM." data-en="Vision, capital, strategy, brand. Boquete + LATAM.">Vision, capital, strategy, brand. Boquete + LATAM.</p>
-    </div>
-
-    <div class="person family">
-      <div class="role" data-es="GERENTE GENERAL · PANAMÁ" data-en="GENERAL MANAGER · PANAMA">GENERAL MANAGER · PANAMA</div>
-      <h6>Marcos Vallejos</h6>
-      <p data-es="P&L de Panamá. Comercial, partners, ventas, hosts." data-en="Panama P&L. Commercial, partners, sales, hosts.">Panama P&L. Commercial, partners, sales, hosts.</p>
+      <p data-es="Visión, capital, estrategia y marca. Construye las empresas y arma el equipo. Boquete + LATAM." data-en="Vision, capital, strategy, and brand. Builds the companies and assembles the team. Boquete + LATAM.">Vision, capital, strategy, and brand. Builds the companies and assembles the team. Boquete + LATAM.</p>
     </div>
 
     <div class="person">
-      <div class="role" data-es="DIR. DE TRANSPORTE" data-en="DIRECTOR OF TRANSPORTATION">DIRECTOR OF TRANSPORTATION</div>
-      <h6>Minor Jiménez</h6>
-      <p data-es="Flota, choferes, logística, traslados de huéspedes y carga. Seguridad vial." data-en="Fleet, drivers, logistics, guest + cargo transfers. Road safety.">Fleet, drivers, logistics, guest + cargo transfers. Road safety.</p>
-    </div>
-
-    <div class="person family">
-      <div class="role" data-es="GERENTE DE OPERACIONES" data-en="OPERATIONS MANAGER">OPERATIONS MANAGER</div>
-      <h6>Elías Vallejos</h6>
-      <p data-es="Día a día. Vendors, mantenimiento, calendario operativo, coordinación entre áreas." data-en="Day-to-day. Vendors, maintenance, operations calendar, cross-team coordination.">Day-to-day. Vendors, maintenance, operations calendar, cross-team coordination.</p>
-    </div>
-
-    <div class="person family">
-      <div class="role" data-es="JEFE DE SEGURIDAD FÍSICA" data-en="MANAGER OF PHYSICAL SECURITY">MANAGER OF PHYSICAL SECURITY</div>
-      <h6>Gabriel Vallejos</h6>
-      <p data-es="Seguridad de sitio, eventos, personal y traslados. Protocolos + entrenamiento." data-en="Site, event, personnel and transport security. Protocols + training.">Site, event, personnel and transport security. Protocols + training.</p>
+      <div class="role" data-es="GERENTE DE OPERACIONES · DESARROLLO DE NEGOCIO" data-en="OPERATIONS MANAGER · BUSINESS DEVELOPMENT">OPERATIONS MANAGER · BUSINESS DEVELOPMENT</div>
+      <h6>Alejandra</h6>
+      <p data-es="Operaciones del día a día y desarrollo de negocio en terreno, basada en David. Sourcing de tierra (lotes titulados en Pedasí, Boquete, Volcán), relaciones con socios de referido, y el CRM + Land Bank. Bilingüe, boots-on-the-ground en Chiriquí." data-en="Day-to-day operations and on-the-ground business development, based in David. Land sourcing (titled lots in Pedasí, Boquete, Volcán), referral-partner relationships, and the CRM + Land Bank. Bilingual, boots-on-the-ground in Chiriquí.">Day-to-day operations and on-the-ground business development, based in David. Land sourcing (titled lots in Pedasí, Boquete, Volcán), referral-partner relationships, and the CRM + Land Bank. Bilingual, boots-on-the-ground in Chiriquí.</p>
     </div>
 
     <div class="person">
-      <div class="role" data-es="ESPECIALISTA EN ELECTRÓNICA" data-en="ELECTRONICS SPECIALIST">ELECTRONICS SPECIALIST</div>
-      <h6>Abdiel</h6>
-      <p data-es="A/V, iluminación, redes, IT, sistemas de control. Stack técnico de Sora." data-en="A/V, lighting, networking, IT, control systems. Sora technical stack.">A/V, lighting, networking, IT, control systems. Sora technical stack.</p>
-    </div>
-
-    <div class="person family">
-      <div class="role" data-es="CHEF EJECUTIVO" data-en="EXECUTIVE CHEF">EXECUTIVE CHEF</div>
-      <h6>Daniel Vallejos</h6>
-      <p data-es="Cocinas, menús, F&B. Carta para eventos, residencias y futura clínica de Bajo Mono." data-en="Kitchens, menus, F&B. Menus for events, residences, and the future Bajo Mono clinic.">Kitchens, menus, F&B. Menus for events, residences, and the future Bajo Mono clinic.</p>
+      <div class="role" data-es="COMUNIDAD · ENLACES" data-en="COMMUNITY · CONNECTIONS">COMMUNITY · CONNECTIONS</div>
+      <h6>Palacios</h6>
+      <p data-es="Jefe de la policía en Boquete. Fuerte en desarrollo comunitario; nos conecta con la gente clave en Chiriquí y en Panamá en general — autoridades, dueños, comunidad." data-en="Head of police in Boquete. Heavy in community development; connects us with the key people across Chiriquí and Panama at large — authorities, landowners, community.">Head of police in Boquete. Heavy in community development; connects us with the key people across Chiriquí and Panama at large — authorities, landowners, community.</p>
     </div>
 
     <div class="person">
-      <div class="role" data-es="ESPECIALISTA EN MEDICINA" data-en="MEDICINAL SPECIALIST">MEDICINAL SPECIALIST</div>
-      <h6>Sebastián Rodríguez</h6>
-      <p data-es="Protocolos clínicos, péptidos, elixirs, sourcing farmacéutico. Líder técnico para Bajo Mono." data-en="Clinical protocols, peptides, elixirs, pharmaceutical sourcing. Technical lead for Bajo Mono.">Clinical protocols, peptides, elixirs, pharmaceutical sourcing. Technical lead for Bajo Mono.</p>
+      <div class="role" data-es="ABOGADA · LEGAL" data-en="ATTORNEY · LEGAL">ATTORNEY · LEGAL</div>
+      <h6>Karina</h6>
+      <p data-es="Abogada. Constituye la sociedad anónima (Sora Real Estate Panamá S.A.) y lleva el trabajo legal de bienes raíces a futuro — títulos, opciones, contratos y cierres." data-en="Attorney. Forms the corporation (Sora Real Estate Panamá S.A.) and carries the future real-estate legal work — title, options, contracts, and closings.">Attorney. Forms the corporation (Sora Real Estate Panamá S.A.) and carries the future real-estate legal work — title, options, contracts, and closings.</p>
     </div>
   </div>
-
-  <div class="people-note" data-es-html="Cuatro de los ocho son hermanos · <em>Vallejos</em> · marca señalada con V" data-en-html="Four of eight are brothers · <em>Vallejos</em> · marked with V">Four of eight are brothers · <em>Vallejos</em> · marked with V</div>
 </section>
 
-<!-- DAILY NOTES -->
+<!-- MONTHLY RHYTHM -->
 <section>
   <div class="sec-head">
     <div>
-      <div class="sec-num" data-es="04 · NOTAS DIARIAS" data-en="04 · DAILY NOTES">04 · DAILY NOTES</div>
-      <h3 data-es-html="El <em>ritmo</em> del día." data-en-html="The day's <em>rhythm</em>.">The day's <em>rhythm</em>.</h3>
+      <div class="sec-num" data-es="04 · RITMO MENSUAL" data-en="04 · MONTHLY RHYTHM">04 · MONTHLY RHYTHM</div>
+      <h3 data-es-html="Las <em>metas</em> del mes." data-en-html="The month's <em>goals</em>.">The month's <em>goals</em>.</h3>
     </div>
-    <p class="sec-sub" data-es="Una nota por día. Tareas por persona, checkboxes, contador." data-en="One note per day. Tasks per person, checkboxes, counter.">One note per day. Tasks per person, checkboxes, counter.</p>
+    <p class="sec-sub" data-es="Pocas metas, claras, mes a mes. De este mes al próximo." data-en="A few clear goals, month by month. From this month into next.">A few clear goals, month by month. From this month into next.</p>
   </div>
 
-  <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:18px;align-items:stretch">
-    <a href="daily-2026-05-27.html" style="display:flex;flex-direction:column;justify-content:space-between;background:var(--ink);color:var(--paper);border-radius:14px;padding:32px 36px;position:relative;overflow:hidden;text-decoration:none">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:stretch">
+    <div style="display:flex;flex-direction:column;background:var(--ink);color:var(--paper);border-radius:14px;padding:34px 36px;position:relative;overflow:hidden">
       <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--forest),var(--gold),var(--forest))"></div>
-      <div>
-        <div style="font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;color:var(--gold);text-transform:uppercase;font-weight:700;margin-bottom:10px" data-es="HOY · MIÉRCOLES" data-en="TODAY · WEDNESDAY">TODAY · WEDNESDAY</div>
-        <h4 style="font-family:var(--serif);font-weight:400;font-size:42px;color:var(--paper);line-height:1;margin-bottom:8px;letter-spacing:-.015em">27 <em style="font-style:italic;color:var(--gold);font-weight:300">May</em> 2026</h4>
-        <p style="font-family:var(--serif);font-style:italic;font-size:15px;color:rgba(247,240,223,0.74);line-height:1.55;margin-top:14px;max-width:560px" data-es="Marcos cierra Towerbank · Minor agenda Bocas + YouTube · Fercho arranca elixirs energía · Abdiel arma registro de tierras LATAM · Comarca mañana." data-en="Marcos closes Towerbank · Minor schedules Bocas + YouTube · Fercho starts energy elixirs · Abdiel scaffolds LATAM land registry · Comarca tomorrow.">Marcos closes Towerbank · Minor schedules Bocas + YouTube · Fercho starts energy elixirs · Abdiel scaffolds LATAM land registry · Comarca tomorrow.</p>
-      </div>
-      <div style="display:flex;justify-content:space-between;align-items:end;margin-top:24px">
-        <span style="font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:rgba(247,240,223,0.5);text-transform:uppercase">/daily-2026-05-27.html</span>
-        <span style="font-family:var(--mono);font-size:11.5px;letter-spacing:.22em;color:var(--gold);text-transform:uppercase;font-weight:700" data-es="ABRIR NOTA →" data-en="OPEN NOTE →">OPEN NOTE →</span>
-      </div>
-    </a>
+      <div style="font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;color:var(--gold);text-transform:uppercase;font-weight:700;margin-bottom:8px" data-es="ESTE MES" data-en="THIS MONTH">THIS MONTH</div>
+      <h4 style="font-family:var(--serif);font-weight:400;font-size:38px;color:var(--paper);line-height:1;margin-bottom:18px;letter-spacing:-.015em">Junio <em style="font-style:italic;color:var(--gold);font-weight:300">2026</em></h4>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:12px">
+        <li style="font-family:var(--serif);font-size:15px;color:rgba(247,240,223,0.85);line-height:1.45;padding-left:18px;position:relative"><span style="position:absolute;left:0;color:var(--gold)">›</span><span data-es-html="<strong style='color:#fff'>Sora Casas en vivo</strong> — dominio, GA4 + Search Console, formulario de leads probado de punta a punta" data-en-html="<strong style='color:#fff'>Sora Casas live</strong> — domain, GA4 + Search Console, lead form tested end-to-end"><strong style="color:#fff">Sora Casas live</strong> — domain, GA4 + Search Console, lead form tested end-to-end</span></li>
+        <li style="font-family:var(--serif);font-size:15px;color:rgba(247,240,223,0.85);line-height:1.45;padding-left:18px;position:relative"><span style="position:absolute;left:0;color:var(--gold)">›</span><span data-es-html="<strong style='color:#fff'>Primeras páginas del foso</strong> — “Build a Home in Pedasí” + costo de construcción publicadas e indexadas" data-en-html="<strong style='color:#fff'>First moat pages</strong> — “Build a Home in Pedasí” + cost-to-build live and indexed"><strong style="color:#fff">First moat pages</strong> — “Build a Home in Pedasí” + cost-to-build live and indexed</span></li>
+        <li style="font-family:var(--serif);font-size:15px;color:rgba(247,240,223,0.85);line-height:1.45;padding-left:18px;position:relative"><span style="position:absolute;left:0;color:var(--gold)">›</span><span data-es-html="<strong style='color:#fff'>1–2 opciones de lote</strong> tituladas, firmadas o de palabra (Pedasí/Boquete) — Alejandra" data-en-html="<strong style='color:#fff'>1–2 titled lot options</strong> signed or verbally agreed (Pedasí/Boquete) — Alejandra"><strong style="color:#fff">1–2 titled lot options</strong> signed or verbally agreed (Pedasí/Boquete) — Alejandra</span></li>
+        <li style="font-family:var(--serif);font-size:15px;color:rgba(247,240,223,0.85);line-height:1.45;padding-left:18px;position:relative"><span style="position:absolute;left:0;color:var(--gold)">›</span><span data-es-html="<strong style='color:#fff'>Constituir la sociedad</strong> — Sora Real Estate Panamá S.A. arrancada — Karina" data-en-html="<strong style='color:#fff'>Form the entity</strong> — Sora Real Estate Panamá S.A. kicked off — Karina"><strong style="color:#fff">Form the entity</strong> — Sora Real Estate Panamá S.A. kicked off — Karina</span></li>
+      </ul>
+    </div>
 
-    <a href="daily-notes.html" style="display:flex;flex-direction:column;justify-content:space-between;background:var(--paper-2);border:0.5px solid var(--line);border-radius:14px;padding:32px 36px;text-decoration:none">
-      <div>
-        <div style="font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;color:var(--forest);text-transform:uppercase;font-weight:700;margin-bottom:10px" data-es="ARCHIVO" data-en="ARCHIVE">ARCHIVE</div>
-        <h4 style="font-family:var(--serif);font-weight:400;font-size:32px;color:var(--ink);line-height:1.1;margin-bottom:10px;letter-spacing:-.01em" data-es-html="Todas las <em style='font-style:italic;color:var(--forest);font-weight:300'>notas</em>" data-en-html="All <em style='font-style:italic;color:var(--forest);font-weight:300'>notes</em>">All <em style="font-style:italic;color:var(--forest);font-weight:300">notes</em></h4>
-        <p style="font-family:var(--serif);font-size:14px;color:var(--ink-3);line-height:1.55" data-es="Cada día queda registrado. La memoria operativa de La Compañía." data-en="Every day stays on the record. La Compañía's operating memory.">Every day stays on the record. La Compañía's operating memory.</p>
-      </div>
-      <span style="font-family:var(--mono);font-size:11.5px;letter-spacing:.22em;color:var(--forest);text-transform:uppercase;font-weight:700;margin-top:24px" data-es="VER ARCHIVO →" data-en="VIEW ARCHIVE →">VIEW ARCHIVE →</span>
-    </a>
+    <div style="display:flex;flex-direction:column;background:var(--paper-2);border:0.5px solid var(--line);border-radius:14px;padding:34px 36px;border-top:4px solid var(--gold-deep)">
+      <div style="font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;color:var(--gold-deep);text-transform:uppercase;font-weight:700;margin-bottom:8px" data-es="PRÓXIMO MES" data-en="NEXT MONTH">NEXT MONTH</div>
+      <h4 style="font-family:var(--serif);font-weight:400;font-size:38px;color:var(--ink);line-height:1;margin-bottom:18px;letter-spacing:-.015em">Julio <em style="font-style:italic;color:var(--forest);font-weight:300">2026</em></h4>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:12px">
+        <li style="font-family:var(--serif);font-size:15px;color:var(--ink-2);line-height:1.45;padding-left:18px;position:relative"><span style="position:absolute;left:0;color:var(--gold-deep)">›</span><span data-es-html="<strong>2–3 opciones de lote firmadas</strong> en los mercados clave" data-en-html="<strong>2–3 lot options signed</strong> across the key markets"><strong>2–3 lot options signed</strong> across the key markets</span></li>
+        <li style="font-family:var(--serif);font-size:15px;color:var(--ink-2);line-height:1.45;padding-left:18px;position:relative"><span style="position:absolute;left:0;color:var(--gold-deep)">›</span><span data-es-html="<strong>Casa Bahía + Casa Montaña con precio real</strong> desde BOM de proveedores — precio fijo aterrizado (Fercho)" data-en-html="<strong>Casa Bahía + Casa Montaña priced</strong> from a real supplier BOM — fixed price grounded (Fercho)"><strong>Casa Bahía + Casa Montaña priced</strong> from a real supplier BOM — fixed price grounded (Fercho)</span></li>
+        <li style="font-family:var(--serif);font-size:15px;color:var(--ink-2);line-height:1.45;padding-left:18px;position:relative"><span style="position:absolute;left:0;color:var(--gold-deep)">›</span><span data-es-html="<strong>Primeras llamadas discovery</strong> → primera visita al sitio agendada" data-en-html="<strong>First discovery calls</strong> → first site visit booked"><strong>First discovery calls</strong> → first site visit booked</span></li>
+        <li style="font-family:var(--serif);font-size:15px;color:var(--ink-2);line-height:1.45;padding-left:18px;position:relative"><span style="position:absolute;left:0;color:var(--gold-deep)">›</span><span data-es-html="<strong>Empuje QIV</strong> (cuenta regresiva al 15 oct) + primer test de pauta en vivo" data-en-html="<strong>QIV push</strong> (countdown to Oct 15) + first paid-ads test live"><strong>QIV push</strong> (countdown to Oct 15) + first paid-ads test live</span></li>
+      </ul>
+    </div>
   </div>
-</section>
-
-<!-- VIGOR · MEMBER PROTOCOL -->
-<section>
-  <div class="sec-head">
-    <div>
-      <div class="sec-num" data-es="04 · MIEMBROS · PROTOCOLO DEL CUERPO" data-en="04 · MEMBERS · BODY PROTOCOL">04 · MIEMBROS · PROTOCOLO DEL CUERPO</div>
-      <h3 data-es-html="Lo que <em>el cuerpo</em> sostiene." data-en-html="What the <em>body</em> sustains.">Lo que <em>el cuerpo</em> sostiene.</h3>
-    </div>
-    <p class="sec-sub" data-es="Construir ventures pide un cuerpo lúcido y duradero. VIGOR es el protocolo interno: alimentación, movimiento, biokinética, respiración, descanso." data-en="Building ventures asks for a lucid and lasting body. VIGOR is the internal protocol: nourishment, movement, biokinetics, breath, rest.">Construir ventures pide un cuerpo lúcido y duradero. VIGOR es el protocolo interno: alimentación, movimiento, biokinética, respiración, descanso.</p>
-  </div>
-
-  <a href="sora-vigor.html" style="display:grid;grid-template-columns:1fr 1.4fr;gap:32px;padding:36px 40px;background:linear-gradient(135deg,#f5ecd6,#fbf3dd);border:0.5px solid var(--line-2);border-radius:14px;border-top:4px solid var(--forest);align-items:center;transition:all .22s cubic-bezier(.25,1,.5,1);text-decoration:none;color:inherit">
-    <div>
-      <div style="font-family:var(--mono);font-size:10px;letter-spacing:.28em;color:var(--forest);text-transform:uppercase;font-weight:700;margin-bottom:14px" data-es="PROTOCOLO INTERNO · MIEMBROS LA COMPAÑÍA" data-en="INTERNAL PROTOCOL · LA COMPAÑÍA MEMBERS">PROTOCOLO INTERNO · MIEMBROS LA COMPAÑÍA</div>
-      <h4 style="font-family:var(--serif);font-weight:300;font-size:74px;line-height:.9;letter-spacing:-.025em;color:var(--ink);margin-bottom:12px"><em style="font-style:italic;color:var(--forest)">V</em>igor</h4>
-      <div style="font-family:var(--serif);font-style:italic;font-size:17px;color:var(--ink-3);line-height:1.4" data-es="El cuerpo como vehículo. Vivir mucho y bien." data-en="The body as vehicle. Live long and well.">El cuerpo como vehículo. Vivir mucho y bien.</div>
-    </div>
-    <div>
-      <p style="font-family:var(--serif);font-size:16.5px;line-height:1.55;color:var(--ink-2);margin-bottom:16px;font-weight:300" data-es-html="Tres pilares — <strong>alimentación</strong>, <strong>movimiento</strong>, <strong>biokinética</strong> — más respiración y descanso. Tres niveles de membresía: Novicio (90 días), Operativo (años 1–5), Maestro (5+). Integra elixirs, péptidos, medicinas y químicos en una pirámide de intervención que va de lo simple a lo molecular." data-en-html="Three pillars — <strong>nourishment</strong>, <strong>movement</strong>, <strong>biokinetics</strong> — plus breath and rest. Three membership tiers: Novice (90 days), Operative (years 1–5), Master (5+). Integrates elixirs, peptides, medicines and chemicals into an intervention pyramid from simple to molecular.">Tres pilares — <strong>alimentación</strong>, <strong>movimiento</strong>, <strong>biokinética</strong> — más respiración y descanso. Tres niveles de membresía: Novicio (90 días), Operativo (años 1–5), Maestro (5+). Integra elixirs, péptidos, medicinas y químicos en una pirámide de intervención que va de lo simple a lo molecular.</p>
-      <div style="display:flex;gap:14px;flex-wrap:wrap;font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--ink-faint);text-transform:uppercase;font-weight:600;padding-top:14px;border-top:0.5px solid var(--line)">
-        <span data-es="2 COMIDAS / DÍA" data-en="2 MEALS / DAY">2 COMIDAS / DÍA</span>·
-        <span data-es="3 FUERZA + 1 SPRINT" data-en="3 STRENGTH + 1 SPRINT">3 FUERZA + 1 SPRINT</span>·
-        <span data-es="11 MIN FRÍO · 4× SAUNA" data-en="11 MIN COLD · 4× SAUNA">11 MIN FRÍO · 4× SAUNA</span>·
-        <span data-es="HRV &gt; 55" data-en="HRV &gt; 55">HRV &gt; 55</span>·
-        <span style="color:var(--forest);font-weight:700" data-es="ABRIR PROTOCOLO →" data-en="OPEN PROTOCOL →">ABRIR PROTOCOLO →</span>
-      </div>
-    </div>
-  </a>
 </section>
 
 </div>
@@ -653,7 +609,7 @@
   <div class="foot-grid">
     <div>
       <div class="wordmark-foot">LA COMPAÑÍA</div>
-      <p class="tagline" data-es="Una casa de negocios en las Américas. Capital paciente, infraestructura compartida, memoria institucional." data-en="A house of ventures in the Americas. Patient capital, shared infrastructure, institutional memory.">A house of ventures in the Americas. Patient capital, shared infrastructure, institutional memory.</p>
+      <p class="tagline" data-es="Un grupo operador que construye y maneja empresas reales en Latinoamérica — un equipo, una base, muchas marcas." data-en="An operating group building and running real companies across Latin America — one team, one backbone, many brands.">An operating group building and running real companies across Latin America — one team, one backbone, many brands.</p>
     </div>
     <div>
       <h6 data-es="MARCAS" data-en="BRANDS">BRANDS</h6>
