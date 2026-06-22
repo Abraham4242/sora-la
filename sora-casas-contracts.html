@@ -17,6 +17,9 @@
   .tpl li{font-size:12.5px;color:var(--ink-2);padding:6px 0;border-top:.5px solid var(--line);line-height:1.45}
   .tpl li:first-child{border-top:0}.tpl li b{color:var(--forest)}
   .disc{background:#f6ecd5;border:.5px solid var(--warn);border-radius:10px;padding:14px 18px;font-size:12.5px;color:var(--ink-2);margin:18px 0;line-height:1.5}
+  .tpl.dl{border-left:3px solid var(--forest)}
+  .tpl .meta{font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--ink-3);margin-bottom:12px;text-transform:uppercase}
+  .tpl .acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
 </style>
 </head>
 <body>
@@ -86,6 +89,53 @@
       <button class="btn btn-ghost" onclick="copyTpl('loi')" data-es="Copiar borrador" data-en="Copy draft">Copy draft</button>
     </div>
   </div>
+
+  <div class="section-label" data-es="DOCUMENTOS DESCARGABLES" data-en="DOWNLOADABLE DOCUMENTS">DOWNLOADABLE DOCUMENTS</div>
+  <p class="lede" data-es="Para el equipo de campo — descarga o imprime a PDF desde el teléfono. Funciona sin conexión." data-en="For the field team — download or print to PDF from your phone. Works offline.">For the field team — download or print to PDF from your phone. Works offline.</p>
+  <div class="tpls">
+    <div class="tpl dl">
+      <div class="tt" data-es="TIERRA · CONTRATO" data-en="LAND · CONTRACT">LAND · CONTRACT</div>
+      <h4 data-es-html="Contrato de <em>Opción de Compra</em>" data-en-html="Purchase <em>Option Contract</em>">Purchase <em>Option Contract</em></h4>
+      <div class="meta">español · .md</div>
+      <ul>
+        <li data-es-html="Amarra un lote unas semanas mientras el abogado verifica el título — <b>sin obligación de comprar</b>" data-en-html="Locks a lot for weeks while the attorney verifies title — <b>no obligation to buy</b>">Locks a lot for weeks while title is verified — <b>no obligation to buy</b></li>
+        <li data-es-html="<b>Prima 1–3%</b> que se abona al precio si se ejerce; precio fijo bloqueado" data-en-html="<b>1–3% option fee</b> credited to price if exercised; price locked"><b>1–3% option fee</b> credited if exercised; price locked</li>
+        <li data-es-html="<b>Escape de título:</b> si el lote no está titulado limpio, se cancela y se devuelve la prima" data-en-html="<b>Title escape hatch:</b> if not clean-titled, cancel and the fee is returned"><b>Title escape hatch</b> — cancel + refund if not clean-titled</li>
+      </ul>
+      <div class="acts">
+        <button class="btn btn-primary" onclick="dlDoc('option')" data-es="↓ Descargar" data-en="↓ Download">↓ Download</button>
+        <button class="btn btn-ghost" onclick="printDoc('option')" data-es="Ver / Imprimir" data-en="View / Print">View / Print</button>
+      </div>
+    </div>
+    <div class="tpl dl">
+      <div class="tt" data-es="SOCIOS · ACUERDO" data-en="PARTNERS · AGREEMENT">PARTNERS · AGREEMENT</div>
+      <h4 data-es-html="Acuerdo de <em>Referido</em>" data-en-html="Referral <em>Agreement</em>">Referral <em>Agreement</em></h4>
+      <div class="meta">español + EN summary · .md</div>
+      <ul>
+        <li data-es-html="<b>Track A · corredor licenciado:</b> co-broke 2–3% del contrato (split MLS ACOBIR)" data-en-html="<b>Track A · licensed broker:</b> 2–3% co-broke of contract (MLS ACOBIR split)"><b>Track A · licensed broker:</b> 2–3% co-broke (MLS ACOBIR split)</li>
+        <li data-es-html="<b>Track B · referidor no licenciado</b> (hotel/tour/abogado): tarifa fija $3–5K por cierre" data-en-html="<b>Track B · unlicensed referrer</b> (hotel/tour/lawyer): flat $3–5K per closing"><b>Track B · unlicensed referrer:</b> flat $3–5K per closing</li>
+        <li data-es-html="Paga solo al <b>depósito</b> del cliente · atribución 180 días · no-elusión 12 meses" data-en-html="Pays only on client <b>deposit</b> · 180-day attribution · 12-mo non-circumvention">Pays on <b>deposit</b> only · 180-day attribution · 12-mo non-circumvention</li>
+      </ul>
+      <div class="acts">
+        <button class="btn btn-primary" onclick="dlDoc('referral')" data-es="↓ Descargar" data-en="↓ Download">↓ Download</button>
+        <button class="btn btn-ghost" onclick="printDoc('referral')" data-es="Ver / Imprimir" data-en="View / Print">View / Print</button>
+      </div>
+    </div>
+    <div class="tpl dl">
+      <div class="tt" data-es="CAMPO · PLAN" data-en="FIELD · PLAN">FIELD · PLAN</div>
+      <h4 data-es-html="Plan de Semana · <em>Alejandra</em>" data-en-html="Week Plan · <em>Alejandra</em>">Week Plan · <em>Alejandra</em></h4>
+      <div class="meta">español · .md</div>
+      <ul>
+        <li data-es-html="<b>Top 8 negocios</b> en Chiriquí para visitar en persona (con direcciones)" data-en-html="<b>Top 8 Chiriquí businesses</b> to visit in person (with addresses)"><b>Top 8 Chiriquí businesses</b> to visit in person (with addresses)</li>
+        <li data-es-html="Guion de <b>conversación de opción</b> + llamar a Nander y Bolívar primero" data-en-html="<b>Option-conversation</b> script + call Nander and Bolívar first"><b>Option-conversation</b> script + call Nander & Bolívar first</li>
+        <li data-es-html="Llamadas + registro en el Land Bank · ruta día por día (David→Boquete→Volcán)" data-en-html="Calling + Land Bank logging · day-by-day route (David→Boquete→Volcán)">Calling + Land Bank logging · day-by-day route</li>
+      </ul>
+      <div class="acts">
+        <button class="btn btn-primary" onclick="dlDoc('alejandra')" data-es="↓ Descargar" data-en="↓ Download">↓ Download</button>
+        <button class="btn btn-ghost" onclick="printDoc('alejandra')" data-es="Ver / Imprimir" data-en="View / Print">View / Print</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="modal" id="modal"><div class="sheet">
@@ -107,7 +157,46 @@
 </div></div>
 
 <script src="casas-ops.js"></script>
+<script src="casas-docs-data.js"></script>
 <script>
+  // ── Downloadable documents (self-contained: base64 UTF-8 payloads in casas-docs-data.js) ──
+  function b64utf8(b64){ return new TextDecoder().decode(Uint8Array.from(atob(b64), c=>c.charCodeAt(0))); }
+  function getDoc(k){ return (window.SORA_DOCS||[]).find(d=>d.key===k); }
+  function dlDoc(k){ var d=getDoc(k); if(!d) return alert('Doc not found'); var t=b64utf8(d.b64);
+    var b=new Blob([t],{type:'text/markdown;charset=utf-8'}), u=URL.createObjectURL(b);
+    var a=document.createElement('a'); a.href=u; a.download=d.file; document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(()=>URL.revokeObjectURL(u),1500); }
+  function mdInline(s){ s=s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    s=s.replace(/`([^`]+)`/g,'<code>$1</code>').replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>')
+       .replace(/\[([^\]]+)\]\(([^)]+)\)/g,'<a href="$2">$1</a>'); return s; }
+  function mdToHtml(md){ var ls=md.replace(/\r/g,'').split('\n'), out=[], i=0;
+    var cells=r=>r.replace(/^\s*\|/,'').replace(/\|\s*$/,'').split('|').map(c=>c.trim());
+    while(i<ls.length){ var ln=ls[i];
+      if(/^\s*\|.*\|/.test(ln) && i+1<ls.length && /-/.test(ls[i+1]) && /^\s*\|?[\s:|-]+\|?\s*$/.test(ls[i+1])){
+        var h='<table><thead><tr>'+cells(ln).map(c=>'<th>'+mdInline(c)+'</th>').join('')+'</tr></thead><tbody>'; i+=2;
+        while(i<ls.length && /^\s*\|.*\|/.test(ls[i])){ h+='<tr>'+cells(ls[i]).map(c=>'<td>'+mdInline(c)+'</td>').join('')+'</tr>'; i++; }
+        out.push(h+'</tbody></table>'); continue; }
+      if(/^###\s+/.test(ln)){ out.push('<h3>'+mdInline(ln.replace(/^###\s+/,''))+'</h3>'); i++; continue; }
+      if(/^##\s+/.test(ln)){ out.push('<h2>'+mdInline(ln.replace(/^##\s+/,''))+'</h2>'); i++; continue; }
+      if(/^#\s+/.test(ln)){ out.push('<h1>'+mdInline(ln.replace(/^#\s+/,''))+'</h1>'); i++; continue; }
+      if(/^\s*---\s*$/.test(ln)){ out.push('<hr>'); i++; continue; }
+      if(/^>\s?/.test(ln)){ var bq=[]; while(i<ls.length && /^>\s?/.test(ls[i])){ bq.push(mdInline(ls[i].replace(/^>\s?/,''))); i++; } out.push('<blockquote>'+bq.join('<br>')+'</blockquote>'); continue; }
+      if(/^\s*\d+\.\s+/.test(ln)){ var ol=[]; while(i<ls.length && /^\s*\d+\.\s+/.test(ls[i])){ ol.push('<li>'+mdInline(ls[i].replace(/^\s*\d+\.\s+/,''))+'</li>'); i++; } out.push('<ol>'+ol.join('')+'</ol>'); continue; }
+      if(/^\s*[-*]\s+/.test(ln)){ var ul=[]; while(i<ls.length && /^\s*[-*]\s+/.test(ls[i])){ ul.push('<li>'+mdInline(ls[i].replace(/^\s*[-*]\s+/,''))+'</li>'); i++; } out.push('<ul>'+ul.join('')+'</ul>'); continue; }
+      if(/^\s*$/.test(ln)){ i++; continue; }
+      out.push('<p>'+mdInline(ln)+'</p>'); i++; }
+    return out.join('\n'); }
+  function printDoc(k){ var d=getDoc(k); if(!d) return alert('Doc not found');
+    var css='body{font-family:Georgia,serif;color:#14110c;max-width:760px;margin:32px auto;padding:0 24px;line-height:1.55}'
+      +'h1{font-size:26px}h2{font-size:20px;margin-top:28px;border-bottom:1px solid #ddd;padding-bottom:4px}h3{font-size:16px;margin-top:20px}'
+      +'table{border-collapse:collapse;width:100%;margin:14px 0;font-size:13px}th,td{border:1px solid #ccc;padding:6px 9px;text-align:left;vertical-align:top}th{background:#f3efe3}'
+      +'code{font-family:ui-monospace,monospace;background:#f3efe3;padding:1px 4px;border-radius:3px;font-size:90%}'
+      +'blockquote{border-left:3px solid #b88842;margin:14px 0;padding:6px 14px;color:#4b4337;background:#faf6ea}hr{border:0;border-top:1px solid #ddd;margin:22px 0}'
+      +'ul,ol{padding-left:22px}li{margin:3px 0}@media print{body{margin:0}}';
+    var w=window.open('','_blank'); if(!w) return alert(L()==='es'?'Permite ventanas emergentes para imprimir.':'Allow pop-ups to print.');
+    w.document.write('<!doctype html><html><head><meta charset="utf-8"><title>'+d.file+'</title><style>'+css+'</style></head><body>'+mdToHtml(b64utf8(d.b64))+'</body></html>');
+    w.document.close(); w.focus(); setTimeout(()=>w.print(),400); }
+
   const O=CasasOps,L=()=>O.lang();
   const TYPE={option:{es:'Opción',en:'Option',c:'b-gold'},build:{es:'Construcción',en:'Build',c:'b-teal'},loi:{es:'LOI',en:'LOI',c:'b-blue'},other:{es:'Otro',en:'Other',c:'b-grey'}};
   const STAT={draft:{es:'Borrador',en:'Draft',c:'b-grey'},sent:{es:'Enviado',en:'Sent',c:'b-blue'},signed:{es:'Firmado',en:'Signed',c:'b-green'},active:{es:'Activo',en:'Active',c:'b-teal'},closed:{es:'Cerrado',en:'Closed',c:'b-grey'}};
@@ -152,6 +241,7 @@
   function close_(){document.getElementById('modal').classList.remove('open');}
   function saveDoc(e){e.preventDefault();const d=Object.fromEntries(new FormData(e.target));if(d.id){const i=DOCS.findIndex(x=>x.id===d.id);if(i>=0)DOCS[i]={...DOCS[i],...d};}else{d.id=O.uid();DOCS.push(d);}save();close_();render();return false;}
   function del(id){if(confirm(L()==='es'?'¿Eliminar?':'Delete?')){DOCS=DOCS.filter(x=>x.id!==id);save();render();}}
+  O.cloudSync(KEY, d=>{ DOCS=d; render(); });
   O.initLang(render);
 </script>
 </body>
