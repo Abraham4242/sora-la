@@ -156,6 +156,7 @@
   </form>
 </div></div>
 
+<script src="casas-ops.js"></script>
 <script>
   // ── i18n ──
   const STATUS = { prospecto:{es:'Prospecto',en:'Prospect'}, opcion:{es:'En opción',en:'Optioned'}, ejercido:{es:'Ejercido',en:'Exercised'}, vendido:{es:'Vendido',en:'Sold'}, liberado:{es:'Liberado',en:'Released'} };
@@ -178,7 +179,7 @@
     {id:'3',name:'Pedasí · Lote Playa 3',market:'Pedasí',owner:'Ej: Familia Cedeño',owner_contact:'+507 6xxx-xxxx',size:'1,800 m²',title:'titulado',strike:34000,fee:2500,signed:'2026-04-10',expires:'2027-04-10',status:'ejercido',buyer:'J. Smith (depósito 30%)',coords:'7.53,-80.03',notes:'Ejemplo. Ejercido — Casa Bahía en construcción.'}
   ];
   let LOTS = JSON.parse(localStorage.getItem(KEY) || 'null') || SEED;
-  const save = () => localStorage.setItem(KEY, JSON.stringify(LOTS));
+  const save = () => { localStorage.setItem(KEY, JSON.stringify(LOTS)); if(window.CasasOps) CasasOps.cloudPush(KEY, LOTS); };
   const money = n => n? '$'+Number(n).toLocaleString() : '—';
   const daysTo = d => d? Math.ceil((new Date(d+'T00:00:00') - Date.now())/86400000) : null;
 
@@ -246,6 +247,7 @@
   function importJSON(e){ const f=e.target.files[0]; if(!f) return; const r=new FileReader(); r.onload=()=>{ try{ const d=JSON.parse(r.result); if(Array.isArray(d)){ LOTS=d; save(); render(); } }catch(_){ alert('JSON?'); } }; r.readAsText(f); }
 
   applyLang(localStorage.getItem('sora.lang')||'en');
+  if(window.CasasOps){ CasasOps.cloudSync(KEY, d=>{ LOTS=d; localStorage.setItem(KEY, JSON.stringify(d)); render(); }); }
 </script>
 </body>
 </html>

@@ -164,6 +164,7 @@
       DEALS.push({id:O.uid(),name:x.nombre||x.name||'(lead)',contact:x.email||x.whatsapp||'',source:x.type==='reservation'?'organic':(x.type==='sell'?'walkin':(x.type||'organic')),persona:'',market:x.zona||'',model:x.type||'',lot:'',value:'',stage:'lead',owner:'',next_action:L()==='es'?'Responder en <2h':'Respond in <2h',next_date:new Date().toISOString().slice(0,10),notes:'Auto-importado del embudo · '+(x.type||'')}); added++; have.add(c); });
     save(); render(); alert((L()==='es'?'Importados: ':'Imported: ')+added);
   }
+  O.cloudSync(KEY, d=>{ DEALS=d; render(); });
   O.initLang(render);
 </script>
 </body>

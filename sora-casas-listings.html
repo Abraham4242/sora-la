@@ -112,6 +112,7 @@
   function close_(){document.getElementById('modal').classList.remove('open');}
   function saveL(e){e.preventDefault();const d=Object.fromEntries(new FormData(e.target));if(d.id){const i=LIST.findIndex(o=>o.id===d.id);if(i>=0)LIST[i]={...LIST[i],...d};}else{d.id=O.uid();LIST.push(d);}save();close_();render();return false;}
   function del(id){if(confirm(L()==='es'?'¿Eliminar?':'Delete?')){LIST=LIST.filter(o=>o.id!==id);save();render();}}
+  O.cloudSync(KEY, d=>{ LIST=d; render(); });
   O.initLang(render);
 </script>
 </body>

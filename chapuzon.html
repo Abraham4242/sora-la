@@ -50,63 +50,73 @@ html,body{background:#e1d4ab;font-family:var(--sans);color:var(--ink);font-size:
 /* HEADER STAMP */
 .stamp{
   display:flex;justify-content:space-between;align-items:center;
-  padding:0.55in 0.6in 0;
-  font-family:var(--mono);font-size:10px;letter-spacing:.28em;color:var(--ink-faint);text-transform:uppercase;font-weight:600
+  padding:0.5in 0.6in 0;
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.30em;color:var(--ink-faint);text-transform:uppercase;font-weight:700
 }
 .stamp em{color:var(--coral);font-style:normal;font-weight:700}
+.stamp .left-stamp{display:inline-flex;align-items:center;gap:10px}
+.stamp .left-stamp::before{content:'';width:18px;height:1px;background:var(--coral);opacity:.55;display:inline-block}
 
 /* HERO IMAGE BAND */
 .hero-img{
   position:relative;
   margin:24px 0.6in 0;
-  height:3.4in;
+  height:3.3in;
   border-radius:10px;
   overflow:hidden;
   background:linear-gradient(180deg,#7fc6e0 0%,#5fb8d4 38%,#3d7a91 100%);
   box-shadow:0 6px 24px rgba(31,81,104,.20),0 1px 2px rgba(0,0,0,.08)
 }
 .hero-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-.hero-img::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(31,81,104,0) 0%,rgba(26,20,16,.18) 78%,rgba(26,20,16,.42) 100%);pointer-events:none}
-.hero-overlay{position:absolute;left:24px;bottom:18px;right:24px;display:flex;justify-content:space-between;align-items:flex-end;color:#fff;z-index:2}
-.hero-overlay .place{font-family:var(--serif);font-style:italic;font-weight:400;font-size:22px;line-height:1.1;letter-spacing:-.005em;text-shadow:0 1px 2px rgba(0,0,0,.35)}
-.hero-overlay .place small{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:rgba(255,255,255,.86);font-style:normal;margin-top:4px}
-.hero-overlay .credit{font-family:var(--mono);font-size:9px;letter-spacing:.20em;text-transform:uppercase;font-weight:600;color:rgba(255,255,255,.78)}
+.hero-img::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(31,81,104,0) 0%,rgba(26,20,16,.22) 78%,rgba(26,20,16,.48) 100%);pointer-events:none}
+.hero-overlay{position:absolute;left:22px;bottom:18px;right:22px;display:flex;justify-content:space-between;align-items:flex-end;color:#fff;z-index:2;gap:18px}
+.hero-overlay .place{font-family:var(--mono);font-size:10px;letter-spacing:.28em;color:rgba(255,255,255,.92);text-transform:uppercase;font-weight:700;line-height:1.4;text-shadow:0 1px 2px rgba(0,0,0,.3)}
+.hero-overlay .place .ph{font-family:var(--serif);font-style:italic;font-weight:400;font-size:16px;letter-spacing:0;text-transform:none;color:#fff;display:block;margin-bottom:5px;line-height:1}
+.hero-overlay .credit{font-family:var(--mono);font-size:9px;letter-spacing:.24em;text-transform:uppercase;font-weight:700;color:rgba(255,255,255,.74);text-align:right;line-height:1.5}
 
 /* HEADLINE BAND */
-.head-band{padding:30px 0.6in 0;text-align:center}
-.head-band .roman{font-family:var(--serif);font-style:italic;font-size:18px;letter-spacing:.30em;color:var(--coral);font-weight:400;margin-bottom:6px}
-.head-band h1{font-family:var(--serif);font-weight:300;font-size:140px;line-height:.88;letter-spacing:-.045em;color:var(--ink);margin-bottom:14px}
+.head-band{padding:28px 0.6in 0;text-align:center}
+.head-band .roman{display:inline-flex;align-items:center;gap:14px;font-family:var(--serif);font-style:italic;font-size:14px;letter-spacing:.32em;color:var(--coral);font-weight:400;margin-bottom:6px}
+.head-band .roman::before,.head-band .roman::after{content:'';display:inline-block;width:28px;height:1px;background:var(--coral);opacity:.55}
+.head-band h1{font-family:var(--serif);font-weight:300;font-size:144px;line-height:.86;letter-spacing:-.045em;color:var(--ink);margin-bottom:14px}
 .head-band h1 em{font-style:italic;color:var(--coral-deep);font-weight:400}
-.head-band .birthday{font-family:var(--serif);font-style:italic;font-weight:400;font-size:22px;color:var(--coral-deep);margin-bottom:14px;line-height:1.2;letter-spacing:.005em}
+.head-band .birthday{font-family:var(--serif);font-style:italic;font-weight:400;font-size:23px;color:var(--coral-deep);margin-bottom:12px;line-height:1.2;letter-spacing:.002em;display:inline-flex;align-items:baseline;gap:14px}
 .head-band .birthday em{font-style:italic;color:var(--coral);font-weight:500}
-.head-band .tagline{font-family:var(--serif);font-style:italic;font-weight:300;font-size:18px;color:var(--ink-2);max-width:5.6in;margin:0 auto 0;line-height:1.35}
+.head-band .birthday .xx{font-family:var(--serif);font-style:italic;font-weight:400;font-size:16px;letter-spacing:.22em;color:var(--coral);opacity:.65}
+.head-band .tagline{font-family:var(--serif);font-style:italic;font-weight:300;font-size:17px;color:var(--ink-2);max-width:5.2in;margin:0 auto;line-height:1.4}
 
 /* DATE / TIME / PLACE BAR */
-.meta-bar{margin:24px 0.6in 0;display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2);padding:14px 0}
-.meta-bar .col{padding:0 18px;text-align:center;border-right:0.5px solid var(--line);display:flex;flex-direction:column;justify-content:center}
-.meta-bar .col:last-child{border-right:0}
-.meta-bar .lab{font-family:var(--mono);font-size:9px;letter-spacing:.26em;color:var(--ink-faint);text-transform:uppercase;font-weight:700;margin-bottom:6px}
-.meta-bar .val{font-family:var(--serif);font-size:18px;color:var(--ink);font-weight:400;line-height:1.1}
+.meta-bar{margin:22px 0.6in 0;display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border-top:0.5px solid var(--line-2);border-bottom:0.5px solid var(--line-2);padding:18px 0;position:relative}
+.meta-bar::before,.meta-bar::after{content:'';position:absolute;left:0;right:0;height:1px;background:var(--coral);opacity:.18}
+.meta-bar::before{top:-3px}
+.meta-bar::after{bottom:-3px}
+.meta-bar .col{padding:0 14px;text-align:center;position:relative;display:flex;flex-direction:column;justify-content:center}
+.meta-bar .col::after{content:'·';position:absolute;right:-6px;top:50%;transform:translateY(-50%);font-family:var(--serif);font-size:18px;color:var(--ink-faint);opacity:.4}
+.meta-bar .col:last-child::after{display:none}
+.meta-bar .lab{font-family:var(--mono);font-size:9px;letter-spacing:.30em;color:var(--coral-deep);text-transform:uppercase;font-weight:700;margin-bottom:8px}
+.meta-bar .val{font-family:var(--serif);font-size:20px;color:var(--ink);font-weight:400;line-height:1.1;letter-spacing:-.005em}
 .meta-bar .val em{color:var(--coral-deep);font-style:italic;font-weight:400}
-.meta-bar .val small{display:block;font-family:var(--sans);font-size:11.5px;font-weight:400;color:var(--ink-3);margin-top:3px}
+.meta-bar .val small{display:block;font-family:var(--mono);font-size:9.5px;font-weight:600;color:var(--ink-faint);margin-top:6px;letter-spacing:.10em;text-transform:uppercase}
 
 /* DESCRIPTION + DETAILS BLOCK */
-.body{padding:18px 0.6in 0;display:grid;grid-template-columns:1.3fr 1fr;gap:28px}
-.body .desc p{font-family:var(--serif);font-style:italic;font-weight:300;font-size:14.5px;line-height:1.5;color:var(--ink-2);margin-bottom:8px}
-.body .desc p strong{font-style:normal;color:var(--ink);font-weight:500}
+.body{padding:20px 0.6in 0;display:grid;grid-template-columns:1.25fr 1fr;gap:32px}
+.body .desc p{font-family:var(--serif);font-style:italic;font-weight:300;font-size:14px;line-height:1.55;color:var(--ink-2);margin-bottom:10px;display:grid;grid-template-columns:48px 1fr;gap:14px;align-items:baseline}
+.body .desc p strong{font-style:normal;color:var(--coral);font-weight:600;font-family:var(--mono);font-size:11px;letter-spacing:.05em;line-height:1.4;text-align:right}
 .body .desc p em{color:var(--coral-deep);font-style:italic}
 .body .details ul{list-style:none}
-.body .details ul li{font-family:var(--sans);font-size:12px;color:var(--ink-2);padding:6px 0 6px 14px;position:relative;line-height:1.45;border-bottom:0.5px solid var(--line)}
+.body .details ul li{font-family:var(--sans);font-size:11.5px;color:var(--ink-2);padding:8px 0;line-height:1.5;border-bottom:0.5px solid var(--line)}
 .body .details ul li:last-child{border-bottom:0}
-.body .details ul li::before{content:'·';position:absolute;left:2px;color:var(--coral);font-weight:700}
-.body .details ul li strong{color:var(--ink);font-weight:600;font-family:var(--mono);font-size:10px;letter-spacing:.10em;text-transform:uppercase;display:block;margin-bottom:1px;color:var(--coral-deep)}
+.body .details ul li strong{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--coral-deep);margin-bottom:3px}
+.body .details ul li em{color:var(--coral-deep);font-style:italic}
 
 /* RSVP FOOTER */
-.rsvp{margin-top:auto;display:flex;justify-content:space-between;align-items:center;padding:18px 0.6in 0.5in;border-top:1px solid var(--line-2)}
-.rsvp .left{font-family:var(--mono);font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-faint);font-weight:600}
-.rsvp .left em{color:var(--coral);font-style:normal;font-weight:700}
-.rsvp .right{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--ink);font-weight:400}
-.rsvp .right em{color:var(--coral-deep);font-style:italic}
+.rsvp{margin-top:auto;display:flex;justify-content:space-between;align-items:center;padding:18px 0.6in 0.5in;border-top:0.5px solid var(--line-2);position:relative}
+.rsvp::before{content:'';position:absolute;top:-3px;left:0.6in;right:0.6in;height:1px;background:var(--coral);opacity:.18}
+.rsvp .left{font-family:var(--mono);font-size:9.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--ink-faint);font-weight:700;line-height:1.4}
+.rsvp .left em{color:var(--coral-deep);font-style:normal;font-weight:700;display:block;margin-top:3px;font-size:14px;letter-spacing:.10em;color:var(--ink)}
+.rsvp .right{font-family:var(--serif);font-style:italic;font-size:18px;color:var(--ink);font-weight:400;text-align:right}
+.rsvp .right small{display:block;font-family:var(--mono);font-size:9px;letter-spacing:.22em;color:var(--ink-faint);text-transform:uppercase;font-weight:700;margin-bottom:3px;font-style:normal}
+.rsvp .right em{color:var(--coral-deep);font-style:italic;font-weight:500}
 
 /* LANG / PRINT */
 .lang-bar{position:fixed;top:18px;right:24px;display:flex;gap:6px;background:var(--paper);border:0.5px solid var(--line-2);border-radius:6px;padding:5px;z-index:50;box-shadow:0 4px 16px rgba(0,0,0,.08)}
@@ -141,16 +151,19 @@ html[lang="en"] [data-en]:not([data-es]){display:inline}
 
     <!-- STAMP -->
     <div class="stamp">
-      <div><em>SORA</em> · TRAVEL AGENCY · LA COMPAÑÍA · MMXXVI</div>
-      <div data-es="ENCUENTRO N.º 1" data-en="GATHERING N.º 1">ENCUENTRO N.º 1</div>
+      <div class="left-stamp"><em>SORA</em> · TRAVEL AGENCY · LA COMPAÑÍA · MMXXVI</div>
+      <div data-es="ENCUENTRO N.º I · CUMPLEAÑOS" data-en="GATHERING N.º I · BIRTHDAY">ENCUENTRO N.º I · CUMPLEAÑOS</div>
     </div>
 
     <!-- HERO IMAGE -->
     <div class="hero-img">
       <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=1600&q=80" alt="Pool side" onerror="this.style.display='none'">
       <div class="hero-overlay">
-        <div class="place">Hotel Bocas del Mar<small data-es="Boca Chica · Golfo de Chiriquí · Panamá" data-en="Boca Chica · Gulf of Chiriquí · Panama">Boca Chica · Golfo de Chiriquí · Panamá</small></div>
-        <div class="credit">PISCINA · MAR · MESA LARGA</div>
+        <div class="place">
+          <span class="ph">Hotel Bocas del Mar</span>
+          <span data-es="Boca Chica · Chiriquí · PA" data-en="Boca Chica · Chiriquí · PA">Boca Chica · Chiriquí · PA</span>
+        </div>
+        <div class="credit" data-es="Piscina<br>Playa<br>Atardecer" data-en="Pool<br>Beach<br>Sunset">Piscina<br>Playa<br>Atardecer</div>
       </div>
     </div>
 
@@ -158,8 +171,8 @@ html[lang="en"] [data-en]:not([data-es]){display:inline}
     <div class="head-band">
       <div class="roman">I</div>
       <h1><em>C</em>hapuzón</h1>
-      <div class="birthday" data-es-html="Por los <em>veinte</em> de Gabriel." data-en-html="For Gabriel's <em>twenty</em>.">Por los <em>veinte</em> de Gabriel.</div>
-      <div class="tagline" data-es="El primer encuentro Sora. Piscina, mar, sol cayendo y nada más que hacer." data-en="The first Sora gathering. Pool, sea, sun coming down and nothing else to do.">El primer encuentro Sora. Piscina, mar, sol cayendo y nada más que hacer.</div>
+      <div class="birthday"><span class="xx">XX</span><span data-es-html="Por los <em>veinte</em> de Gabriel." data-en-html="For Gabriel's <em>twenty</em>.">Por los <em>veinte</em> de Gabriel.</span><span class="xx">XX</span></div>
+      <div class="tagline" data-es="Piscina, mar, sol cayendo y la noche por delante." data-en="Pool, sea, sun coming down and the night ahead.">Piscina, mar, sol cayendo y la noche por delante.</div>
     </div>
 
     <!-- META BAR -->
@@ -198,8 +211,14 @@ html[lang="en"] [data-en]:not([data-es]){display:inline}
 
     <!-- RSVP -->
     <div class="rsvp">
-      <div class="left"><span data-es="CONFIRMAR ANTES DEL" data-en="CONFIRM BY">CONFIRMAR ANTES DEL</span> <em data-es="JUEVES 28" data-en="THU 28">JUEVES 28</em></div>
-      <div class="right" data-es-html="WhatsApp: <em>+507 6000 0000</em>" data-en-html="WhatsApp: <em>+507 6000 0000</em>">WhatsApp: <em>+507 6000 0000</em></div>
+      <div class="left">
+        <span data-es="CONFIRMAR ANTES DEL" data-en="CONFIRM BY">CONFIRMAR ANTES DEL</span>
+        <em data-es="Jueves 28 · Mayo" data-en="Thursday May 28">Jueves 28 · Mayo</em>
+      </div>
+      <div class="right">
+        <small data-es="ESCRIBIR POR WHATSAPP" data-en="WHATSAPP">ESCRIBIR POR WHATSAPP</small>
+        <span data-es-html="<em>+507 6000 0000</em>" data-en-html="<em>+507 6000 0000</em>"><em>+507 6000 0000</em></span>
+      </div>
     </div>
 
   </section>

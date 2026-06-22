@@ -115,6 +115,8 @@
   function delH(id){if(confirm(L()==='es'?'¿Eliminar?':'Delete?')){HO=HO.filter(x=>x.id!==id);save();render();}}
   function delR(id){if(confirm(L()==='es'?'¿Eliminar?':'Delete?')){REF=REF.filter(x=>x.id!==id);save();render();}}
   function imp(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const d=JSON.parse(r.result);if(d.homeowners)HO=d.homeowners;if(d.referrals)REF=d.referrals;save();render();}catch(_){alert('JSON?');}};r.readAsText(f);}
+  O.cloudSync(HK, d=>{ HO=d; render(); });
+  O.cloudSync(RK, d=>{ REF=d; render(); });
   O.initLang(render);
 </script>
 </body>

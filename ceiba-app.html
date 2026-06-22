@@ -854,7 +854,7 @@ function loadState(){
 }
 
 function initialState(){
-  const students = SAMPLE_STUDENTS.map((s, i) => ({
+  const preBasicaStudents = SAMPLE_STUDENTS.map((s, i) => ({
     id: 's' + (Date.now() + i),
     firstName: s.firstName, lastName: s.lastName,
     age: s.age, grade: s.grade, lang: s.lang,
@@ -865,10 +865,25 @@ function initialState(){
     notes: s.notes || '',
     createdAt: Date.now() - (10-i) * 86400000,
   }));
+  const seventhGradeStudents = SAMPLE_STUDENTS_7G.map((s, i) => ({
+    id: 's7' + (Date.now() + i),
+    firstName: s.firstName, lastName: s.lastName,
+    age: s.age, grade: s.grade, lang: s.lang,
+    levels: s.levels,
+    profile: s.profile,
+    plan: s.plan,
+    history: [],
+    notes: s.notes || '',
+    createdAt: Date.now() - (12-i) * 86400000,
+  }));
   return {
     teacher: 'Yesenia Santos',
-    classes: [{ id: 'c1', name: 'Pre-básica B', students }],
+    classes: [
+      { id: 'c1', name: 'Pre-básica B', students: preBasicaStudents },
+      { id: 'c2', name: '7° Grado B · Pre-media', students: seventhGradeStudents },
+    ],
     activeClassId: 'c1',
+    answerKeys: {}, // sheetId → { exId: correctIndex } for autograde scanning
   };
 }
 

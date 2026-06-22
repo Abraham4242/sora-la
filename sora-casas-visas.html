@@ -107,6 +107,7 @@
   function close_(){document.getElementById('modal').classList.remove('open');}
   function saveV(e){e.preventDefault();const d=Object.fromEntries(new FormData(e.target));if(d.id){const i=V.findIndex(o=>o.id===d.id);if(i>=0)V[i]={...V[i],...d};}else{d.id=O.uid();V.push(d);}save();close_();render();return false;}
   function del(id){if(confirm(L()==='es'?'¿Eliminar?':'Delete?')){V=V.filter(o=>o.id!==id);save();render();}}
+  O.cloudSync(KEY, d=>{ V=d; render(); });
   O.initLang(render);
 </script>
 </body>

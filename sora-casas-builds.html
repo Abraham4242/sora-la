@@ -123,6 +123,7 @@
   function close_(){document.getElementById('modal').classList.remove('open');}
   function saveBuild(e){e.preventDefault();const d=Object.fromEntries(new FormData(e.target));if(d.id){const i=BUILDS.findIndex(x=>x.id===d.id);if(i>=0)BUILDS[i]={...BUILDS[i],...d};}else{d.id=O.uid();BUILDS.push(d);}save();close_();render();return false;}
   function del(id){if(confirm(L()==='es'?'¿Eliminar?':'Delete?')){BUILDS=BUILDS.filter(x=>x.id!==id);save();render();}}
+  O.cloudSync(KEY, d=>{ BUILDS=d; render(); });
   O.initLang(render);
 </script>
 </body>

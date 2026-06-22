@@ -165,7 +165,26 @@
       </div>
     </div>
   </div>
-  <div class="disc" data-es="Las versiones INTERNAS del prospecto (con cifras financieras) no se publican en este sitio público. Pídelas a Abraham." data-en="The INTERNAL prospectus versions (with financials) are not published on this public site. Request them from Abraham.">The INTERNAL prospectus versions (with financials) are not published on this public site. Request them from Abraham.</div>
+  <div class="section-label" data-es="INTERNO · CON CLAVE" data-en="INTERNAL · PASSCODE">INTERNAL · PASSCODE</div>
+  <p class="lede" data-es="El prospecto INTERNO (con cifras financieras y estrategia) va cifrado de extremo a extremo (AES-256). El PDF nunca está accesible en una URL pública — solo el texto cifrado. Ingresa la clave para abrir las versiones EN/ES." data-en="The INTERNAL prospectus (financials + strategy) is end-to-end encrypted (AES-256). The PDF is never reachable at a public URL — only ciphertext. Enter the passcode to unlock the EN/ES versions.">The INTERNAL prospectus (financials + strategy) is end-to-end encrypted (AES-256). The PDF is never reachable at a public URL — only ciphertext. Enter the passcode to unlock the EN/ES versions.</p>
+  <div class="tpl dl" id="vault" style="max-width:540px;border-left-color:var(--coral,#D9573B)">
+    <div class="tt" style="color:var(--coral,#D9573B)">🔒 <span data-es="INTERNO · CIFRADO" data-en="INTERNAL · ENCRYPTED">INTERNAL · ENCRYPTED</span></div>
+    <h4 data-es-html="Prospecto <em>Interno</em>" data-en-html="<em>Internal</em> Prospectus"><em>Internal</em> Prospectus</h4>
+    <div class="meta">AES-256 · PDF · EN + ES</div>
+    <div id="vault-locked">
+      <input id="vault-code" type="password" autocomplete="off" placeholder="Passcode"
+        onkeydown="if(event.key==='Enter')vaultUnlock()"
+        style="width:100%;padding:11px 13px;font-family:var(--mono);font-size:13px;border:.5px solid var(--line-2);border-radius:8px;background:#fff;margin-bottom:10px">
+      <button class="btn btn-primary" onclick="vaultUnlock()" data-es="Desbloquear" data-en="Unlock">Unlock</button>
+      <div id="vault-err" style="display:none;color:var(--coral,#D9573B);font-size:12.5px;margin-top:10px" data-es="Clave incorrecta." data-en="Wrong passcode.">Wrong passcode.</div>
+    </div>
+    <div id="vault-open" style="display:none">
+      <div class="acts">
+        <button class="btn btn-primary" onclick="dlVault('internal-en')" data-es="↓ Inglés" data-en="↓ English">↓ English</button>
+        <button class="btn btn-primary" onclick="dlVault('internal-es')" data-es="↓ Español" data-en="↓ Español">↓ Español</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="modal" id="modal"><div class="sheet">
@@ -188,6 +207,7 @@
 
 <script src="casas-ops.js"></script>
 <script src="casas-docs-data.js"></script>
+<script src="casas-vault-data.js"></script>
 <script>
   // ── Downloadable documents (self-contained: base64 UTF-8 payloads in casas-docs-data.js) ──
   function b64utf8(b64){ return new TextDecoder().decode(Uint8Array.from(atob(b64), c=>c.charCodeAt(0))); }
@@ -226,6 +246,36 @@
     var w=window.open('','_blank'); if(!w) return alert(L()==='es'?'Permite ventanas emergentes para imprimir.':'Allow pop-ups to print.');
     w.document.write('<!doctype html><html><head><meta charset="utf-8"><title>'+d.file+'</title><style>'+css+'</style></head><body>'+mdToHtml(b64utf8(d.b64))+'</body></html>');
     w.document.close(); w.focus(); setTimeout(()=>w.print(),400); }
+
+  // ── Passcode vault: internal PDFs are AES-256-GCM encrypted in casas-vault-data.js.
+  //    The raw financials are never served at a public URL — only ciphertext. ──
+  const _b64b = s => Uint8Array.from(atob(s), c=>c.charCodeAt(0));
+  async function _vaultKey(pass, saltB64){
+    const km = await crypto.subtle.importKey('raw', new TextEncoder().encode(pass), 'PBKDF2', false, ['deriveKey']);
+    return crypto.subtle.deriveKey({name:'PBKDF2', salt:_b64b(saltB64), iterations:200000, hash:'SHA-256'}, km, {name:'AES-GCM', length:256}, false, ['decrypt']);
+  }
+  async function _vaultDecrypt(v, pass){
+    const key = await _vaultKey(pass, v.salt);
+    const pt = await crypto.subtle.decrypt({name:'AES-GCM', iv:_b64b(v.iv)}, key, _b64b(v.data));
+    return new Blob([pt], {type:'application/pdf'});
+  }
+  let _vaultPass = null;
+  async function vaultUnlock(){
+    const pass = document.getElementById('vault-code').value;
+    const err = document.getElementById('vault-err');
+    try{
+      await _vaultDecrypt((window.SORA_VAULT||[])[0], pass);   // throws if wrong passcode
+      _vaultPass = pass;
+      document.getElementById('vault-locked').style.display='none';
+      document.getElementById('vault-open').style.display='';
+    }catch(_){ err.style.display='block'; }
+  }
+  async function dlVault(key){
+    if(!_vaultPass) return;
+    const v=(window.SORA_VAULT||[]).find(x=>x.key===key); if(!v) return;
+    const b=await _vaultDecrypt(v,_vaultPass), u=URL.createObjectURL(b), a=document.createElement('a');
+    a.href=u; a.download=v.file; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(u),1500);
+  }
 
   const O=CasasOps,L=()=>O.lang();
   const TYPE={option:{es:'Opción',en:'Option',c:'b-gold'},build:{es:'Construcción',en:'Build',c:'b-teal'},loi:{es:'LOI',en:'LOI',c:'b-blue'},other:{es:'Otro',en:'Other',c:'b-grey'}};
