@@ -21,7 +21,7 @@
   .tool .foot{display:flex;justify-content:space-between;align-items:baseline;border-top:.5px solid var(--line);padding-top:13px}
   .tool .cnt{font-family:var(--serif);font-size:30px;color:var(--forest)}.tool .cnt small{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);margin-left:5px}
   .tool .go{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--coral);font-weight:700}
-  .t-crm{border-top-color:var(--coral)}.t-land{border-top-color:var(--gold-deep)}.t-build{border-top-color:var(--teal)}.t-list{border-top-color:var(--blue)}.t-doc{border-top-color:var(--warn)}.t-comm{border-top-color:var(--ok)}.t-visa{border-top-color:var(--coral)}.t-dash{border-top-color:var(--ink)}
+  .t-crm{border-top-color:var(--coral)}.t-land{border-top-color:var(--gold-deep)}.t-build{border-top-color:var(--teal)}.t-list{border-top-color:var(--blue)}.t-doc{border-top-color:var(--warn)}.t-comm{border-top-color:var(--ok)}.t-visa{border-top-color:var(--coral)}.t-dash{border-top-color:var(--ink)}.t-hq{border-top-color:#b8602a;background:linear-gradient(160deg,#f6e8d9,#fff 62%)}
 </style>
 </head>
 <body>
@@ -29,7 +29,7 @@
   <div class="brand"><span class="word"><em>Sora</em> Casas</span><span class="sub" data-es="Centro de Operaciones" data-en="Ops Hub">Ops Hub</span></div>
   <span class="spacer"></span>
   <div class="lang-toggle"><button data-lang="es">ES</button><button data-lang="en" class="active">EN</button></div>
-  <a class="btn btn-ghost" href="sora-hq.html">← Sora HQ</a>
+  <a class="btn btn-ghost" href="lacompania.html">← La Compañía</a>
 </div></header>
 
 <div class="wrap">
@@ -71,7 +71,9 @@
     {cls:'t-visa',href:'sora-casas-visas.html',key:'sora.casas.visas',unit:{es:'trámites',en:'filings'},
       t:{es:'Visas',en:'Visas'},d:{es:'FNV/QIV por comprador. Alerta del 15-oct.',en:'FNV/QIV per buyer. Oct-15 flag.'}},
     {cls:'t-dash',href:'sora-casas-growth.html',key:null,unit:{es:'',en:''},
-      t:{es:'Máquina de Leads',en:'Lead Machine'},d:{es:'Cómo el contenido se vuelve casas. El tablero.',en:'How content becomes homes. The dashboard.'}}
+      t:{es:'Máquina de Leads',en:'Lead Machine'},d:{es:'Cómo el contenido se vuelve casas. El tablero.',en:'How content becomes homes. The dashboard.'}},
+    {cls:'t-hq',href:'sora-hq.html',key:null,unit:{es:'',en:''},kicker:'LA COMPAÑÍA',
+      t:{es:'Sora HQ',en:'Sora HQ'},d:{es:'El centro de mando SORA más amplio — sourcing, inteligencia, tooling, LATAM, marcas hermanas.',en:'The broader SORA command center — sourcing, intelligence, tooling, LATAM, sister brands.'}}
   ];
   function render(){
     const l=O.lang();
@@ -79,7 +81,7 @@
       const cnt = x.key ? O.peek(x.key).length : '↗';
       const unit = x.key ? `<small>${x.unit[l]}</small>` : '';
       return `<a class="tool ${x.cls}" href="${x.href}">
-        <div class="n">SORA CASAS</div>
+        <div class="n">${x.kicker||'SORA CASAS'}</div>
         <h3>${x.t[l].replace(/^(\S+)/,'<em>$1</em>')}</h3>
         <p>${x.d[l]}</p>
         <div class="foot"><div class="cnt">${cnt}${unit}</div><div class="go">${l==='es'?'Abrir →':'Open →'}</div></div>
