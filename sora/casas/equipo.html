@@ -123,7 +123,7 @@
 </head>
 <body>
 <div id="login"><div class="lcard"><div class="lmark"><svg width="22" height="22" viewBox="0 0 32 32"><path d="M7 18 L16 10 L25 18 L25 25 L7 25 Z" fill="#f7f0df"/></svg></div><div class="lword">Sora</div><div class="lsub">Casas · Operaciones</div>
-  <input id="pass" type="password" placeholder="Código de acceso" autocomplete="off"><button onclick="doLogin()">Entrar</button><div class="lerr" id="lerr"></div><div class="lhint">Acceso interno del equipo · demo: <b style="color:#9fb0a4">sora2026</b></div></div></div>
+  <input id="pass" type="password" placeholder="Código de acceso" autocomplete="off"><button onclick="doLogin()">Entrar</button><div class="lerr" id="lerr"></div><div class="lhint">Acceso interno del equipo · La Compañía</div></div></div>
 
 <div id="app">
   <aside>
@@ -460,7 +460,7 @@ function saveQuick(){
 
 /* ===== LOGIN / BOOT ===== */
 const TEAM_PASS='sora2026';
-function doLogin(){const v=$('#pass').value.trim();if(v===TEAM_PASS||v==='sora'){sessionStorage.setItem('sora.team','1');boot();}else{$('#lerr').textContent='Código incorrecto. Intenta de nuevo.';$('#pass').value='';}}
+function doLogin(){const v=$('#pass').value.trim();if(v===TEAM_PASS){sessionStorage.setItem('sora.team','1');boot();}else{$('#lerr').textContent='Código incorrecto. Intenta de nuevo.';$('#pass').value='';}}
 function logout(){sessionStorage.removeItem('sora.team');location.reload()}
 function onSearch(q){const sv=$$('.view.show')[0];if(sv&&sv.id==='view-crm')renderCrm();else if(sv&&sv.id==='view-prospectos')renderProspectos();else{if(!$('#view-inicio').classList.contains('show'))route('inicio');$$('#directory .tile').forEach(t=>{t.style.display=t.textContent.toLowerCase().includes(q.toLowerCase())?'':'none'})}}
 async function boot(){
@@ -489,7 +489,7 @@ if(sessionStorage.getItem('sora.team'))boot();else $('#pass').focus();
 <script src="team-i18n.js"></script>
 <script>
 const EQUIPO_DICT={
- "Casas · Operaciones":"Homes · Operations","Entrar":"Enter","Acceso interno del equipo · demo:":"Internal team access · demo:","Código incorrecto. Intenta de nuevo.":"Wrong code. Try again.",
+ "Casas · Operaciones":"Homes · Operations","Entrar":"Enter","Acceso interno del equipo · La Compañía":"Internal team access · La Compañía","Código incorrecto. Intenta de nuevo.":"Wrong code. Try again.",
  "Casas":"Homes","Fundador · GM":"Founder · GM","Inicio":"Home","Nuevo":"New","Hoy":"Today","Responder en menos de 2 h":"Respond within 2 h","Directorio de herramientas":"Tools directory",
  "Leads":"Leads","Nuevo lead":"New lead","Prospectos":"Prospects","Agregar":"Add","Ajustes":"Settings",
  "Buenos días,":"Good morning,","Buenas tardes,":"Good afternoon,","Buenas noches,":"Good evening,","Esto es lo que pasa hoy en Sora Casas.":"Here's what's happening today at Sora Casas.",
