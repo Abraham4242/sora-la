@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Colombia 2026 — What to Build · La Compañía</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#0f2218">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--paper:#f7f0df;--paper-2:#fcf6e6;--paper-3:#ede4ca;--ink:#14110c;--ink-2:#2a251d;--ink-soft:#4a4337;--ink-faint:#807761;--line:rgba(20,17,12,.12);--line-2:rgba(20,17,12,.2);--forest:#1d3a2c;--forest-2:#2a5440;--forest-deep:#0f2218;--coral:#e07a5f;--coral-deep:#b85439;--mango:#f4b942;--teal:#2e8a96;--gold-deep:#b39656;--serif:"Fraunces",Georgia,serif;--display:"Instrument Serif",Georgia,serif;--sans:"Inter",-apple-system,sans-serif;--mono:"JetBrains Mono",monospace}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.7;-webkit-font-smoothing:antialiased}
+  a{color:var(--coral-deep)}
+  .hero{background:linear-gradient(135deg,#0f2218 0%,#1d3a2c 55%,#2e6a72 100%);color:#fff;padding:72px 22px 56px}
+  .hero-in{max-width:860px;margin:0 auto}
+  .kicker{font-family:var(--mono);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--mango);font-weight:700;margin-bottom:16px}
+  .hero h1{font-family:var(--display);font-weight:400;font-size:clamp(36px,6.5vw,64px);line-height:1.02}
+  .hero h1 em{font-style:italic;color:var(--mango)}
+  .hero .sub{font-family:var(--serif);font-weight:300;font-size:clamp(16px,2.2vw,20px);color:#d7e0d4;margin-top:16px;max-width:64ch}
+  .hero .meta{font-family:var(--mono);font-size:11px;letter-spacing:.05em;color:#9fb0a4;margin-top:18px}
+  .wrap{max-width:820px;margin:0 auto;padding:0 22px}
+  .tldr{background:var(--forest-deep);color:#eee7d6;border-radius:18px;padding:24px 28px;margin:36px 0}
+  .tldr b{color:var(--mango)}
+  .tldr .lab{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mango);font-weight:700;margin-bottom:8px}
+  .toc{background:var(--paper-2);border:1px solid var(--line);border-radius:16px;padding:18px 24px;margin:28px 0}
+  .toc .lab{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:8px}
+  .toc ol{columns:2;column-gap:28px;padding-left:18px}
+  @media(max-width:560px){.toc ol{columns:1}}
+  .toc a{color:var(--forest);text-decoration:none;font-size:14px;line-height:1.9}
+  h2.s{font-family:var(--serif);font-weight:500;font-size:clamp(24px,4vw,34px);color:var(--forest-deep);margin:50px 0 6px;line-height:1.1}
+  h2.s .n{font-family:var(--mono);font-size:13px;color:var(--coral-deep);font-weight:700;display:block;letter-spacing:.1em;margin-bottom:4px}
+  h3{font-family:var(--serif);font-weight:500;font-size:20px;color:var(--forest-deep);margin:26px 0 6px}
+  p{font-size:16.5px;color:var(--ink-soft);margin:14px 0}
+  p strong{color:var(--ink-2)}
+  ul,ol.list{margin:14px 0;padding-left:22px}
+  li{font-size:16px;color:var(--ink-soft);margin:7px 0}
+  .pull{font-family:var(--display);font-size:clamp(22px,3.6vw,30px);line-height:1.25;color:var(--forest);border-left:3px solid var(--mango);padding:6px 0 6px 22px;margin:28px 0}
+  table{width:100%;border-collapse:collapse;margin:18px 0;font-size:13.5px}
+  th,td{border:1px solid var(--line-2);padding:8px 11px;text-align:left;vertical-align:top}
+  th{background:var(--paper-3);font-family:var(--mono);font-size:10px;letter-spacing:.05em;text-transform:uppercase}
+  .box{border-radius:16px;padding:18px 22px;margin:22px 0}
+  .box.tip{background:rgba(46,138,150,.08);border:1px solid rgba(46,138,150,.3)}
+  .box.warn{background:rgba(184,84,57,.07);border:1px solid rgba(184,84,57,.32)}
+  .box h4{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;margin-bottom:8px}
+  .box.warn h4{color:var(--coral-deep)}.box.tip h4{color:var(--teal)}
+  .box p{margin:6px 0;font-size:14.5px}
+  pre{background:var(--forest-deep);color:#cfe0d4;border-radius:14px;padding:18px 20px;overflow-x:auto;font-family:var(--mono);font-size:12px;line-height:1.55;margin:18px 0}
+  .steps{counter-reset:s;margin:18px 0}
+  .stp{position:relative;padding:0 0 18px 50px;border-left:2px solid var(--line-2);margin-left:16px}
+  .stp:last-child{border-left-color:transparent}
+  .stp::before{counter-increment:s;content:counter(s);position:absolute;left:-17px;top:-2px;width:34px;height:34px;border-radius:50%;background:var(--forest);color:#fff;font-family:var(--display);font-size:17px;display:grid;place-items:center}
+  .stp h4{font-family:var(--serif);font-size:17px;color:var(--forest-deep);margin-bottom:2px}
+  .stp p{margin:3px 0;font-size:14.5px}
+  footer{border-top:1px solid var(--line);margin-top:60px;padding:30px 22px 70px;text-align:center;font-family:var(--mono);font-size:11px;letter-spacing:.05em;color:var(--ink-faint)}
+</style>
+</head>
+<body>
+<header class="hero"><div class="hero-in">
+  <div class="kicker">La Compañía · LATAM · Internal strategy</div>
+  <h1>Colombia 2026<br><em>What to build, and how</em></h1>
+  <div class="sub">Medellín focus. A founder's deep dive: the political tailwind, the community-events flywheel, the business portfolio, the Tez angle, the honest risks, and the sequenced roadmap.</div>
+  <div class="meta">Created 2026-06-24 · synthesizes 3 deep-research reports + the Tez thesis · confirm legal/tax/visa with a Colombian lawyer before acting</div>
+</div></header>
+
+<div class="wrap">
+  <div class="tldr">
+    <div class="lab">The one-paragraph thesis</div>
+    Colombia just elected its most pro-business, pro-US president in a generation, the peso is at a 6-year high, and FDI is returning, exactly as you'd be entering. The right move is not to pick one business; it's to build a <b>curated community/events engine first</b> (your instinct, and the correct one), use it to meet the right people and earn trust, and let that network throw off the higher-margin ventures you already have pieces of: <b>Tez</b> (beauty, in the world's beauty capital), <b>medical-tourism concierge</b>, <b>AI-nearshore services</b>, and eventually <b>real estate</b>. The single biggest risk is reputational and now literally at the border: Medellín is expelling the "foreign-men-party" economy. Build the classy version and the crackdown becomes your moat.
+  </div>
+
+  <div class="toc"><div class="lab">Contents</div><ol>
+    <li><a href="#c1">The political inflection</a></li>
+    <li><a href="#c2">The strategy: community → flywheel</a></li>
+    <li><a href="#c3">The events business (deep dive)</a></li>
+    <li><a href="#c4">The business portfolio, ranked</a></li>
+    <li><a href="#c5">Tez — the crown jewel</a></li>
+    <li><a href="#c6">The honest dark side</a></li>
+    <li><a href="#c7">Legal / tax / visa setup</a></li>
+    <li><a href="#c8">The sequenced roadmap</a></li>
+  </ol></div>
+
+  <h2 class="s" id="c1"><span class="n">01</span>The political inflection: "El Tigre" won, and it's a tailwind</h2>
+  <p><strong>"El Tigre" = Abelardo de la Espriella.</strong> He won the <strong>June 21, 2026 runoff</strong> against the leftist Iván Cepeda by the narrowest margin in Colombian history (~49.66% vs 48.70%, ~250k votes), inaugurated <strong>August 7, 2026</strong>. He self-branded as "El Tigre" (supporters = "la manada"); Trump congratulated "'El Tigre' (THE TIGER!)" by name. A Miami-and-Bogotá criminal-defense lawyer and political newcomer, he ran independent on "Defensores de la Patria," backed by the Uribista base and evangelicals. His VP is <strong>José Manuel Restrepo, a former finance minister markets trust</strong>, which is why the agenda reads as credible.</p>
+  <h3>Why it's a tailwind for a US, crypto-wealthy founder</h3>
+  <ul>
+    <li><strong>Direction of travel:</strong> lower taxes (promises 35%→30% corporate, abolish the wealth tax, kill the 4×1,000), deregulation, a pivot back to Washington and away from China, hardline security (ending Petro's failed "paz total"), 6–7% growth ambition. The win triggered a <strong>peso rally to ~3,425/USD, strongest in ~6 years</strong>; analysts expect "the return of capital."</li>
+    <li><strong>Underwrite on today's rules, not the promises.</strong> He has no congressional majority and inherits a fiscal crisis, so cuts will be slow. In force now: <strong>35% corporate tax, 20% non-resident dividend withholding (no US treaty relief), a wealth tax, and new DIAN crypto-reporting (Res. 000240, transactions &gt;$50k auto-flagged, first big report May 2027).</strong></li>
+  </ul>
+  <div class="box tip"><h4>Bottom line</h4><p>About as favorable a macro-political inflection as Colombia offers. Treat the de la Espriella agenda as upside option value, not your base case.</p></div>
+
+  <h2 class="s" id="c2"><span class="n">02</span>The strategy: community first, then the flywheel</h2>
+  <p>Your instinct, events as the immediate play that develops into a larger flywheel, is right, and the evidence backs a <strong>specific version</strong>. What works (asset-light, recurring): Hampton ($8.5k/yr founder community, ~$8M ARR, events just break even), EO/YPO, South Park Commons (community → a $500M fund), Summit → Powder Mountain (events → real estate). What fails: capital-heavy physical clubs with big leases (Soho House's chronic losses, The Wing, NeueHouse bankruptcy).</p>
+  <p class="pull">Events should break even. The community is the asset. Spin-offs are where the money is. Stay asset-light until you have operating partners.</p>
+  <pre>   Content (your edge) ─┐
+                        ▼
+  Free top-of-funnel  (run club, wellness mornings, founder mixers)
+                        ▼
+  Curated paid experiences  (supper clubs, investor dinners)   ← filters for quality
+                        ▼
+  Vetted PAID MEMBERSHIP   ← the recurring-revenue asset, the trust pool
+                        ▼
+  Spin-offs you already have pieces of:
+     • TEZ (beauty)          → sell to the network + clinics, content-led
+     • Medical-tourism       → the network has patients AND providers
+     • Real estate           → relocation/rental referral fees → co-invest later
+     • AI-nearshore services → sell to US in USD (backlash-proof)</pre>
+  <p>Every spin-off is de-risked because you already vetted the people. The events business is the customer-acquisition and trust layer for everything else, not the profit center.</p>
+
+  <h2 class="s" id="c3"><span class="n">03</span>The events business (the immediate play)</h2>
+  <p><strong>The gap in Medellín 2026:</strong> a large, under-organized expat/nomad/founder population, a booming wellness + padel scene, world-class medical-tourism inflow, and <strong>no credible, recurring, curated, monetized membership community</strong> (the incumbent, MDE Community, runs mostly free WhatsApp groups). The scene's center of gravity has shifted <strong>from El Poblado/Provenza toward Laureles and Envigado</strong>. Build on <strong>Luma</strong>.</p>
+  <table>
+    <thead><tr><th>Format</th><th>Audience</th><th>Economics</th><th>Role</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Founder/operator supper club</strong> (flagship)</td><td>founders, operators, investors</td><td>ticket ~$60–90, ingredients ~25–30%, venue rev-share Mon/Tue</td><td>quality filter → founding members</td></tr>
+      <tr><td><strong>Founders &amp; Funders mixer</strong> (sponsor-funded)</td><td>startup/tech/web3 + pros</td><td>free/token; title sponsor $5–25k</td><td>volume + sponsor B2B</td></tr>
+      <tr><td><strong>Wellness-social morning</strong> (free)</td><td>mixed-gender, health-conscious</td><td>free; wellness-brand activation</td><td>reputation-positive top-of-funnel</td></tr>
+      <tr><td><strong>Founding Members dinner → membership</strong></td><td>best people surfaced above</td><td><strong>~$50–100/mo</strong> or annual rate</td><td>the monetization engine + the asset</td></tr>
+      <tr><td><strong>Quarterly rooftop "sunset"</strong> (premium)</td><td>broad-but-curated</td><td>ticketed + sponsored, dress code</td><td>reach, deliberately not a party</td></tr>
+    </tbody>
+  </table>
+  <p><strong>Monetization stack (not bottle service):</strong> tickets (break-even filter) → <strong>membership/subscription (the durable asset)</strong> → sponsorship (sell first-party access, not logos) → F&amp;B margin where you control the bar (beverage gross 70–85%) → brand partnerships + referral commissions from real estate, clinics, wellness, relocation. Avoid the promoter trap ($1,500 table minimums = low-margin, narco-and-scopolamine-adjacent).</p>
+  <p><strong>Partner with:</strong> MDE Community, DareToShift, The Medellín Run Club, padel/wellness studios, upscale venues (Charlee/Envy, Click Clack, Salón Amador), tasting-menu chefs (Carmen, X.O., El Cielo), and AmCham Medellín for credibility. <strong>Avoid:</strong> bachelor-party/VIP-nightlife/bottle-service operators and anything anchored on Parque Lleras.</p>
+
+  <h2 class="s" id="c4"><span class="n">04</span>The business portfolio, ranked</h2>
+  <table>
+    <thead><tr><th>#</th><th>Business</th><th>Why / fit</th><th>Capital · speed</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td><strong>Tez — beauty on the medical-tourism halo</strong></td><td>best fit for your assets; $3.5B+ BPC market, $42.5M influencer economy (your terrain)</td><td>Low–Mid · Medium</td></tr>
+      <tr><td>2</td><td><strong>Medical-tourism concierge</strong></td><td>$3B+ market; bottleneck is the trusted English layer (vetting, recovery housing, aftercare)</td><td>Low · Fast</td></tr>
+      <tr><td>3</td><td><strong>AI-nearshore services</strong></td><td>sells to US in USD, backlash-proof; your "work of 5–10 with Claude" edge</td><td>Low–Mid · Medium</td></tr>
+      <tr><td>4</td><td><strong>30+ day furnished housing</strong></td><td>the legal STR (sub-30-day is building-banned); ~6–10% yields</td><td>High · Slow</td></tr>
+      <tr><td>5</td><td><strong>Content / media studio</strong></td><td>your core skill; the distribution engine that makes 1, 2, 4 work</td><td>Low · Fast</td></tr>
+    </tbody>
+  </table>
+  <p>Lower priority: F&amp;B/nightlife as a cashflow bet (low margin, extortion-exposed; only as a brand-halo asset); generic tourism (crowded, reputationally adjacent to the party economy).</p>
+
+  <h2 class="s" id="c5"><span class="n">05</span>Tez — the crown-jewel intersection</h2>
+  <p>Medellín is a global <strong>beauty capital</strong>, a <strong>medical-tourism</strong> magnet, and an <strong>influencer-economy</strong> city. Tez sits at the center of all three. The upgrade for a resident founder: in <code>tez.html</code>, Tez is a Panama Free-Zone duty-free re-export play with Colombia as the top export market. Keep that supply backbone, but <strong>add a Medellín-native brand layer</strong> that captures the beauty-capital halo the re-export framing leaves on the table.</p>
+  <h3>Four channels (in order of trust)</h3>
+  <ol class="list">
+    <li><strong>Clinics/spas/salons (B2B):</strong> post-procedure skincare (SPF, healing serums) into the exact clinics doing the surgeries; recurring buyers who prescribe to patients.</li>
+    <li><strong>Content/influencer DTC (your edge):</strong> "the skincare of the world's beauty capital"; recruit Colombia's ~2–2.5M catalog-reseller army.</li>
+    <li><strong>Retail/pharmacy:</strong> needs INVIMA NSO (valid 7 yrs, Andean bloc; Colombian NIT + RETHUS químico farmacéutico).</li>
+    <li><strong>Medical-tourist take-home:</strong> patients flying home as a distribution channel ("I got my glow in Medellín" kit).</li>
+  </ol>
+  <div class="box tip"><h4>Anchor product: SPF</h4><p>Colombia sunscreen demand grew ~63% (2022→2027 est.) — tropical, daily, high-repurchase, and the natural post-procedure product. Lead with SPF + healing serums (matches the "lead with hard data" finding in tez.html). Tez is the highest-margin, most-defensible asset, but a 12–24 month brand build; fund it with the faster cashflow plays while it matures.</p></div>
+
+  <h2 class="s" id="c6"><span class="n">06</span>The honest dark side (read twice)</h2>
+  <div class="box warn"><h4>The border crackdown targets exactly the wrong events business</h4><p>Mayor Fico Gutiérrez is running a popular war on sex tourism: prostitution bans in El Poblado/Provenza, minor curfews, hotel closures, and crucially <strong>600+ foreigners denied entry at Medellín's airport in early 2026</strong> (vs 110 in all of 2025), mostly US citizens, some with <strong>10-year bans</strong>, flagged via luggage/phone searches and the US "Angel Watch" data-share. They target "passport bros" running "parties for foreigners." An events brand marketing parties for foreign men builds the exact profile that gets people banned. <strong>Non-negotiable:</strong> mixed-gender, founder/wellness/dining framing, vetted guest lists, locals visibly included, zero "parties for foreigners" marketing. The crackdown is killing your sleazy competition — it's a moat for a clean operator.</p></div>
+  <ul>
+    <li><strong>Scopolamine</strong> ("Devil's Breath") drink-spiking via dating apps, concentrated in Parque Lleras; a cluster of suspicious US-citizen deaths. Keep events out of that exposure.</li>
+    <li><strong>Extortion ("vacuna")</strong> ~$1B/yr; ~380 combos, "todos pagan." Another reason to avoid cash-nightlife/physical-party venues (highest extortion + AML/narco-front surface).</li>
+    <li><strong>Gentrification backlash</strong> ("digital nomads, temporary colonizers"). Mitigate by employing/including locals and avoiding the displacing STR model.</li>
+    <li><strong>Level 3 travel advisory;</strong> Medellín city homicide at record lows (~11/100k) but rural Antioquia deteriorating (Gulf Clan).</li>
+  </ul>
+  <div class="box tip"><h4>The clean-operator test</h4><p>Pick businesses that (a) employ locals, (b) earn in USD or build a real brand/asset, (c) have no nightlife/sex/drug adjacency, (d) are fully formalized. Beauty, medical-tourism concierge, AI-services, 30+ day housing, and a curated community all pass. Nightlife and party-tourism fail.</p></div>
+
+  <h2 class="s" id="c7"><span class="n">07</span>Legal / tax / visa setup</h2>
+  <ul>
+    <li><strong>Entity: SAS</strong> — 100% foreign ownership, no minimum capital, ~3–6 weeks; formed remotely via apostilled POA; a local legal representative is required; <strong>register foreign capital with Banco de la República (Form 4)</strong> — this is what later lets you repatriate profits.</li>
+    <li><strong>Visa: M (Migrant) investor</strong>, not the Digital Nomad Visa (now ~42% rejection rate, no local income, doesn't count toward residency). Own-company route ~100 SMMLV (~$46k) with work permit; property route 350 SMMLV (~$150–165k), no work permit. 5 continuous years on M → R (permanent).</li>
+    <li><strong>Tax traps:</strong> &gt;183 days in any 365-day window = tax resident, taxed on <strong>worldwide income</strong> (relevant to crypto). No US–Colombia treaty (relief only via US FTC/FEIE). DIAN crypto reporting from 2026. <strong>Don't over-stay before you invest</strong> — crossing 183 days first can disqualify your money from FDI registration and block the investor visa.</li>
+    <li><strong>In force:</strong> IVA 19%, corporate 35% (small co. can opt into Régimen Simple), ICA, 4×1,000, mandatory e-invoicing, monthly contador.</li>
+    <li><strong>Sector:</strong> Tez retail needs INVIMA NSO; 30+ day rentals need RNT registration; events need alcaldía permits (Ley 1493) + OSA (Sayco-Acinpro) music licensing.</li>
+  </ul>
+
+  <h2 class="s" id="c8"><span class="n">08</span>The sequenced roadmap</h2>
+  <div class="steps">
+    <div class="stp"><h4>Phase 0 — Legal + recon (weeks 0–4)</h4><p>Immigration lawyer; set up the SAS with a vetted local legal rep; choose the M-investor path; plan the 183-day line. Join MDE Community, DareToShift, AmCham, run/padel/wellness communities. Stand up Luma + content.</p></div>
+    <div class="stp"><h4>Phase 1 — Cashflow + network (months 1–3)</h4><p>Launch the events portfolio (free wellness morning + supper club + sponsor mixer). In parallel start the content studio, take first medical-tourism concierge referrals and first AI-nearshore US clients (the fast-cash plays). Convert the best people into a paid founding membership (~day 60–90).</p></div>
+    <div class="stp"><h4>Phase 2 — Brand build (months 3–12)</h4><p>Fund Tez with Phase-1 cashflow: INVIMA registration, clinic relationships, content-led DTC, SPF-first launch. Formalize referral-fee deals (real estate, clinics, wellness, relocation) off the membership base.</p></div>
+    <div class="stp"><h4>Phase 3 — Real assets (year 2+)</h4><p>Deploy capital into 30+ day recovery-stay housing that feeds the medical-tourism funnel; real-estate co-investment only with operating partners (the Summit/Powder Mountain lesson: amateurs lose money on the real-estate spin-off). A physical Tez clinic-spa is the last thing, once the brand justifies it.</p></div>
+  </div>
+  <p class="pull">Content + community generate the network and the fast cash; the network de-risks Tez and the concierge; the concierge fills the housing; the housing sells Tez aftercare. Each layer funds and feeds the next, and none of it touches the part of the market that gets foreigners banned.</p>
+
+  <p style="font-family:var(--mono);font-size:12px;color:var(--ink-faint);margin-top:30px">Synthesized from three deep-research reports (political/macro, business portfolio, events flywheel) + the Tez thesis (<code>tez.html</code>) and Medellín lifestyle research. Verified: de la Espriella ("El Tigre") won the June 21 2026 runoff; 600+ early-2026 Medellín airport inadmissions; ~42% DNV rejection rate; 35% corporate / 20% non-resident dividend / DIAN crypto-reporting baseline. Treat venue prices, follower counts, and self-reported figures as indicative; confirm legal/tax/visa with a Colombian lawyer before acting.</p>
+</div>
+<footer>La Compañía · Internal strategy · not for distribution · no em-dashes, plain language, honest about risk</footer>
+</body>
+</html>
